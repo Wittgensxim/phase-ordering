@@ -1,0 +1,4 @@
+pass_a,pass_b,benchmark_count,benchmarks,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges
+gvn,simplifycfg,5,Shootout_nestedloop;UnitTests_2003_04_22_Switch;UnitTests_2003_05_02_DependentPHI;UnitTests_2008_04_18_LoopBug;UnitTests_TestLoop,enablement;read_write,strong,strong,strong;weak,none,bb;inst;loop,mixed,expansion,gvn->simplifycfg;simplifycfg->gvn
+simplifycfg,sroa,3,UnitTests_2003_04_22_Switch;UnitTests_2003_05_02_DependentPHI;UnitTests_2008_04_18_LoopBug,enablement;read_write,strong,strong,strong,none,inst,mixed;symmetric_rewrite,expansion,simplifycfg->sroa;sroa->simplifycfg
+instcombine,sroa,2,UnitTests_2003_04_22_Switch;UnitTests_2003_05_02_DependentPHI,enablement;read_write,strong,strong,strong,none,inst,mixed;symmetric_rewrite,expansion,instcombine->sroa;sroa->instcombine

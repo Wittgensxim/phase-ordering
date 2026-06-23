@@ -1,0 +1,6 @@
+benchmark,input_ir,candidate_passes,inactive_passes,enable_edges,dependency_pairs,independent_pairs,dependent_pairs,uncertain_pairs,validation_pairs,agree_dependent,agree_independent,false_positive,false_negative,uncertain_commuting,uncertain_non_commuting
+BenchmarkGame_fannkuch,results\benchmark_suite_extra\BenchmarkGame_fannkuch\BenchmarkGame_fannkuch.ll,instcombine;simplifycfg;sroa;early-cse;gvn;sccp;loop-simplify;loop-rotate;loop-unroll,adce;dce,42,36,10,16,10,36,16,10,0,0,3,7
+BenchmarkGame_n_body,results\benchmark_suite_extra\BenchmarkGame_n_body\BenchmarkGame_n_body.ll,instcombine;simplifycfg;sroa;early-cse;gvn;sccp;loop-rotate;loop-unroll,adce;dce;loop-simplify,36,28,5,13,10,28,12,5,1,0,8,2
+Misc_evalloop,results\benchmark_suite_extra\Misc_evalloop\Misc_evalloop.ll,instcombine;simplifycfg;sroa;early-cse;gvn;sccp;loop-simplify;loop-rotate;loop-unroll,adce;dce,48,36,6,18,12,36,15,6,3,0,9,3
+Misc_revertBits,results\benchmark_suite_extra\Misc_revertBits\Misc_revertBits.ll,instcombine;simplifycfg;sroa;early-cse;gvn;sccp;dce;adce;loop-rotate;loop-unroll,loop-simplify,54,45,11,14,20,45,12,11,2,0,19,1
+Shootout_ackermann,results\benchmark_suite_extra\Shootout_ackermann\Shootout_ackermann.ll,instcombine;simplifycfg;sroa;early-cse;gvn;sccp,adce;dce;loop-rotate;loop-simplify;loop-unroll,23,15,1,5,9,15,2,1,3,0,8,1

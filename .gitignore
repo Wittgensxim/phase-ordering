@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local logs and temporary files
+logs/
+*.log
+
+# LLVM/generated benchmark artifacts
+results/**
+
+# Keep compact suite-level reports that document current experiments
+!results/
+!results/benchmark_suite/
+!results/benchmark_suite/suite_summary.json
+!results/benchmark_suite/suite_summary.csv
+!results/benchmark_suite/false_positive_attribution.csv
+!results/benchmark_suite/stable_false_positive_pairs.csv
+!results/benchmark_suite/rewrite_direction_report.csv
+!results/benchmark_suite/failed_benchmarks.csv
+!results/benchmark_suite_extra/
+!results/benchmark_suite_extra/suite_summary.json
+!results/benchmark_suite_extra/suite_summary.csv
+!results/benchmark_suite_extra/false_positive_attribution.csv
+!results/benchmark_suite_extra/stable_false_positive_pairs.csv
+!results/benchmark_suite_extra/rewrite_direction_report.csv
+!results/benchmark_suite_extra/failed_benchmarks.csv
+!results/benchmark_suite_broader/
+!results/benchmark_suite_broader/suite_summary.json
+!results/benchmark_suite_broader/suite_summary.csv
+!results/benchmark_suite_broader/false_positive_attribution.csv
+!results/benchmark_suite_broader/stable_false_positive_pairs.csv
+!results/benchmark_suite_broader/rewrite_direction_report.csv
+!results/benchmark_suite_broader/failed_benchmarks.csv
+
+# Local IDE state
+.vscode/
+.idea/
+

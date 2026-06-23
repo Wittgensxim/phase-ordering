@@ -1,0 +1,2 @@
+pass_a,pass_b,benchmark_count,benchmarks,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges
+gvn,simplifycfg,2,BenchmarkGame_n_body;Misc_revertBits,enablement;read_write,strong,strong,weak,none,bb;inst;loop,mixed,expansion,gvn->simplifycfg;simplifycfg->gvn

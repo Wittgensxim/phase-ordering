@@ -1,0 +1,4 @@
+{"pass": "instcombine", "reads": ["func:main", "inst:%a", "inst:%b"], "writes": ["inst:%sum"]}
+{"pass": "instcombine", "reads": ["bb:loop"], "writes": ["inst:%folded"]}
+{"pass": "simplifycfg", "reads": ["func:main", "inst:%sum", "bb:then"], "writes": ["bb:exit"]}
+{"pass": "dce", "reads": ["func:helper", "inst:%dead"], "writes": ["inst:%dead.removed"]}

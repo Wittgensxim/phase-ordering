@@ -1,0 +1,24 @@
+{
+  "benchmarks": [
+    {
+      "name": "UnitTests_2003_04_22_Switch",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-04-22-Switch.c"
+    },
+    {
+      "name": "UnitTests_2003_05_02_DependentPHI",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-05-02-DependentPHI.c"
+    },
+    {
+      "name": "UnitTests_TestLoop",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/TestLoop.c"
+    },
+    {
+      "name": "UnitTests_2008_04_18_LoopBug",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/2008-04-18-LoopBug.c"
+    },
+    {
+      "name": "Shootout_nestedloop",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/nestedloop.c"
+    }
+  ]
+}

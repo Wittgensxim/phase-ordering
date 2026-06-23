@@ -1,0 +1,24 @@
+{
+  "benchmarks": [
+    {
+      "name": "BenchmarkGame_fannkuch",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/fannkuch.c"
+    },
+    {
+      "name": "BenchmarkGame_n_body",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/n-body.c"
+    },
+    {
+      "name": "Misc_evalloop",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/evalloop.c"
+    },
+    {
+      "name": "Misc_revertBits",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/revertBits.c"
+    },
+    {
+      "name": "Shootout_ackermann",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/ackermann.c"
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "summary": {
+    "benchmarks": 5,
+    "validation_pairs": 127,
+    "false_positive": 13,
+    "false_negative": 0,
+    "uncertain_commuting": 28,
+    "uncertain_non_commuting": 7,
+    "stable_false_positive_pairs": 3
+  },
+  "benchmarks": [
+    {
+      "benchmark": "UnitTests_2003_04_22_Switch",
+      "input_ir": "results\\benchmark_suite\\UnitTests_2003_04_22_Switch\\UnitTests_2003_04_22_Switch.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 31,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 9,
+      "agree_independent": 9,
+      "false_positive": 5,
+      "false_negative": 0,
+      "uncertain_commuting": 4,
+      "uncertain_non_commuting": 1
+    },
+    {
+      "benchmark": "UnitTests_2003_05_02_DependentPHI",
+      "input_ir": "results\\benchmark_suite\\UnitTests_2003_05_02_DependentPHI\\UnitTests_2003_05_02_DependentPHI.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "loop-rotate"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify",
+        "loop-unroll",
+        "sccp"
+      ],
+      "enable_edges": 29,
+      "dependency_pairs": 15,
+      "independent_pairs": 0,
+      "dependent_pairs": 10,
+      "uncertain_pairs": 5,
+      "validation_pairs": 15,
+      "agree_dependent": 6,
+      "agree_independent": 0,
+      "false_positive": 4,
+      "false_negative": 0,
+      "uncertain_commuting": 4,
+      "uncertain_non_commuting": 1
+    },
+    {
+      "benchmark": "UnitTests_TestLoop",
+      "input_ir": "results\\benchmark_suite\\UnitTests_TestLoop\\UnitTests_TestLoop.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 31,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 13,
+      "agree_independent": 9,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 3,
+      "uncertain_non_commuting": 2
+    },
+    {
+      "benchmark": "UnitTests_2008_04_18_LoopBug",
+      "input_ir": "results\\benchmark_suite\\UnitTests_2008_04_18_LoopBug\\UnitTests_2008_04_18_LoopBug.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 41,
+      "dependency_pairs": 28,
+      "independent_pairs": 4,
+      "dependent_pairs": 13,
+      "uncertain_pairs": 11,
+      "validation_pairs": 28,
+      "agree_dependent": 11,
+      "agree_independent": 4,
+      "false_positive": 2,
+      "false_negative": 0,
+      "uncertain_commuting": 10,
+      "uncertain_non_commuting": 1
+    },
+    {
+      "benchmark": "Shootout_nestedloop",
+      "input_ir": "results\\benchmark_suite\\Shootout_nestedloop\\Shootout_nestedloop.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 36,
+      "dependency_pairs": 28,
+      "independent_pairs": 7,
+      "dependent_pairs": 12,
+      "uncertain_pairs": 9,
+      "validation_pairs": 28,
+      "agree_dependent": 11,
+      "agree_independent": 7,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 7,
+      "uncertain_non_commuting": 2
+    }
+  ],
+  "stable_false_positive_pairs": [
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "benchmark_count": 5,
+      "benchmarks": [
+        "Shootout_nestedloop",
+        "UnitTests_2003_04_22_Switch",
+        "UnitTests_2003_05_02_DependentPHI",
+        "UnitTests_2008_04_18_LoopBug",
+        "UnitTests_TestLoop"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "strong",
+        "weak"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": [
+        "mixed"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->simplifycfg",
+        "simplifycfg->gvn"
+      ]
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sroa",
+      "benchmark_count": 3,
+      "benchmarks": [
+        "UnitTests_2003_04_22_Switch",
+        "UnitTests_2003_05_02_DependentPHI",
+        "UnitTests_2008_04_18_LoopBug"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "strong"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": [
+        "mixed",
+        "symmetric_rewrite"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->sroa",
+        "sroa->simplifycfg"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sroa",
+      "benchmark_count": 2,
+      "benchmarks": [
+        "UnitTests_2003_04_22_Switch",
+        "UnitTests_2003_05_02_DependentPHI"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "strong"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": [
+        "mixed",
+        "symmetric_rewrite"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->sroa",
+        "sroa->instcombine"
+      ]
+    }
+  ]
+}

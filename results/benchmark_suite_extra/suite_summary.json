@@ -1,0 +1,210 @@
+{
+  "summary": {
+    "benchmarks": 5,
+    "validation_pairs": 160,
+    "false_positive": 9,
+    "false_negative": 0,
+    "uncertain_commuting": 47,
+    "uncertain_non_commuting": 14,
+    "stable_false_positive_pairs": 1
+  },
+  "benchmarks": [
+    {
+      "benchmark": "BenchmarkGame_fannkuch",
+      "input_ir": "results\\benchmark_suite_extra\\BenchmarkGame_fannkuch\\BenchmarkGame_fannkuch.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 42,
+      "dependency_pairs": 36,
+      "independent_pairs": 10,
+      "dependent_pairs": 16,
+      "uncertain_pairs": 10,
+      "validation_pairs": 36,
+      "agree_dependent": 16,
+      "agree_independent": 10,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 3,
+      "uncertain_non_commuting": 7
+    },
+    {
+      "benchmark": "BenchmarkGame_n_body",
+      "input_ir": "results\\benchmark_suite_extra\\BenchmarkGame_n_body\\BenchmarkGame_n_body.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 36,
+      "dependency_pairs": 28,
+      "independent_pairs": 5,
+      "dependent_pairs": 13,
+      "uncertain_pairs": 10,
+      "validation_pairs": 28,
+      "agree_dependent": 12,
+      "agree_independent": 5,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 8,
+      "uncertain_non_commuting": 2
+    },
+    {
+      "benchmark": "Misc_evalloop",
+      "input_ir": "results\\benchmark_suite_extra\\Misc_evalloop\\Misc_evalloop.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 48,
+      "dependency_pairs": 36,
+      "independent_pairs": 6,
+      "dependent_pairs": 18,
+      "uncertain_pairs": 12,
+      "validation_pairs": 36,
+      "agree_dependent": 15,
+      "agree_independent": 6,
+      "false_positive": 3,
+      "false_negative": 0,
+      "uncertain_commuting": 9,
+      "uncertain_non_commuting": 3
+    },
+    {
+      "benchmark": "Misc_revertBits",
+      "input_ir": "results\\benchmark_suite_extra\\Misc_revertBits\\Misc_revertBits.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "loop-simplify"
+      ],
+      "enable_edges": 54,
+      "dependency_pairs": 45,
+      "independent_pairs": 11,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 20,
+      "validation_pairs": 45,
+      "agree_dependent": 12,
+      "agree_independent": 11,
+      "false_positive": 2,
+      "false_negative": 0,
+      "uncertain_commuting": 19,
+      "uncertain_non_commuting": 1
+    },
+    {
+      "benchmark": "Shootout_ackermann",
+      "input_ir": "results\\benchmark_suite_extra\\Shootout_ackermann\\Shootout_ackermann.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll"
+      ],
+      "enable_edges": 23,
+      "dependency_pairs": 15,
+      "independent_pairs": 1,
+      "dependent_pairs": 5,
+      "uncertain_pairs": 9,
+      "validation_pairs": 15,
+      "agree_dependent": 2,
+      "agree_independent": 1,
+      "false_positive": 3,
+      "false_negative": 0,
+      "uncertain_commuting": 8,
+      "uncertain_non_commuting": 1
+    }
+  ],
+  "stable_false_positive_pairs": [
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "benchmark_count": 2,
+      "benchmarks": [
+        "BenchmarkGame_n_body",
+        "Misc_revertBits"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "weak"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": [
+        "mixed"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->simplifycfg",
+        "simplifycfg->gvn"
+      ]
+    }
+  ]
+}

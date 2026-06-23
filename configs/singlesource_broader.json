@@ -1,0 +1,64 @@
+{
+  "benchmarks": [
+    {
+      "name": "UnitTests_2003_04_22_Switch",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-04-22-Switch.c"
+    },
+    {
+      "name": "UnitTests_2003_05_02_DependentPHI",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-05-02-DependentPHI.c"
+    },
+    {
+      "name": "UnitTests_TestLoop",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/TestLoop.c"
+    },
+    {
+      "name": "UnitTests_2008_04_18_LoopBug",
+      "source": "E:/llvm-test-suite/SingleSource/UnitTests/2008-04-18-LoopBug.c"
+    },
+    {
+      "name": "Shootout_nestedloop",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/nestedloop.c"
+    },
+    {
+      "name": "BenchmarkGame_fannkuch",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/fannkuch.c"
+    },
+    {
+      "name": "BenchmarkGame_n_body",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/n-body.c"
+    },
+    {
+      "name": "Misc_evalloop",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/evalloop.c"
+    },
+    {
+      "name": "Misc_revertBits",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/revertBits.c"
+    },
+    {
+      "name": "Shootout_ackermann",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/ackermann.c"
+    },
+    {
+      "name": "BenchmarkGame_nsieve_bits",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/nsieve-bits.c"
+    },
+    {
+      "name": "BenchmarkGame_partialsums",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/partialsums.c"
+    },
+    {
+      "name": "BenchmarkGame_recursive",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/recursive.c"
+    },
+    {
+      "name": "BenchmarkGame_puzzle",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/puzzle.c"
+    },
+    {
+      "name": "Misc_pi",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/pi.c"
+    }
+  ]
+}
