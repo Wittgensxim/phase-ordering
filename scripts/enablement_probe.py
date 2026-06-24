@@ -152,8 +152,7 @@ class OptFootprintRunner:
         prefix = tuple(prefix)
         before_path = self._prefix_output(prefix)
         before_ir = before_path.read_text(encoding="utf-8")
-        after_path = self.work_dir / f"{_safe_name(_prefix_label(prefix, pass_name))}.ll"
-        run_opt_pipeline(self.opt_path, before_path, [pass_name], after_path)
+        after_path = self._prefix_output(prefix + (pass_name,))
         after_ir = after_path.read_text(encoding="utf-8")
         return build_footprint_record(pass_name, before_ir, after_ir)
 

@@ -1,0 +1,8 @@
+benchmark,error
+Shootout_heapsort,"opt failed for pass instcombine with exit code 1
+LLVM ERROR: Instruction Combining on benchmark_heapsort did not reach a fixpoint after 1 iterations. Use 'instcombine<no-verify-fixpoint>' or function attribute 'instcombine-no-verify-fixpoint' to suppress this error.
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace and instructions to reproduce the bug.
+Stack dump:
+0.	Program arguments: E:\\llvm\\build\\bin\\opt.exe -S -passes=instcombine results\\benchmark_suite_extended\\Shootout_heapsort\\Shootout_heapsort.ll -o results\\benchmark_suite_extended\\Shootout_heapsort\\pass_outputs\\instcombine.after.ll
+1.	Running pass ""function(instcombine<max-iterations=1;verify-fixpoint>)"" on module ""results\benchmark_suite_extended\Shootout_heapsort\Shootout_heapsort.ll""
+2.	Running pass ""instcombine<max-iterations=1;verify-fixpoint>"" on function ""benchmark_heapsort"""

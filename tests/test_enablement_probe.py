@@ -4,6 +4,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -244,6 +245,48 @@ class EnablementProbeTests(unittest.TestCase):
         self.assertEqual(result["summary"]["enable_edges"], 1)
         self.assertEqual(result["edges"][0]["enabler"], "A")
         self.assertEqual(result["edges"][0]["enabled"], "B")
+
+    def test_opt_footprint_runner_uses_full_pipeline_for_prefixed_after_ir(self):
+        from enablement_probe import OptFootprintRunner
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_path = Path(tmpdir)
+            input_ir = tmp_path / "input.ll"
+            input_ir.write_text("original\n", encoding="utf-8")
+            calls = []
+
+            def fake_run_opt_pipeline(opt_path, input_path, passes, output_path):
+                calls.append((Path(input_path), tuple(passes), Path(output_path)))
+                Path(output_path).write_text(
+                    "pipeline:" + ",".join(passes) + "\n",
+                    encoding="utf-8",
+                )
+
+            def fake_build_footprint_record(pass_name, before_ir, after_ir):
+                return {
+                    "pass": pass_name,
+                    "reads": [before_ir.strip()],
+                    "writes": [after_ir.strip()],
+                }
+
+            with patch("enablement_probe.run_opt_pipeline", fake_run_opt_pipeline):
+                with patch(
+                    "enablement_probe.build_footprint_record",
+                    fake_build_footprint_record,
+                ):
+                    runner = OptFootprintRunner(
+                        input_ir=input_ir,
+                        opt_path=Path("opt"),
+                        work_dir=tmp_path / "work",
+                    )
+                    record = runner(("A",), "B")
+
+        self.assertEqual(record["reads"], ["pipeline:A"])
+        self.assertEqual(record["writes"], ["pipeline:A,B"])
+        self.assertEqual(calls[0][0], input_ir)
+        self.assertEqual(calls[0][1], ("A",))
+        self.assertEqual(calls[1][0], input_ir)
+        self.assertEqual(calls[1][1], ("A", "B"))
 
     def test_write_outputs_emits_json_and_csv(self):
         from enablement_probe import write_outputs

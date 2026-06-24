@@ -191,6 +191,7 @@ class RunBenchmarkSuiteTests(unittest.TestCase):
                 },
                 "false_positive_rows": [],
                 "rewrite_direction_rows": [],
+                "confirmation_rows": [],
                 "paths": {},
             }
 
@@ -217,6 +218,65 @@ class RunBenchmarkSuiteTests(unittest.TestCase):
             self.assertEqual(result["failed_benchmark_rows"][0]["benchmark"], "bad")
             self.assertIn("opt failed", result["failed_benchmark_rows"][0]["error"])
             self.assertTrue(failed_csv.exists())
+
+    def test_write_suite_outputs_emits_independence_confirmation_reports(self):
+        from run_benchmark_suite import write_suite_outputs
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            write_suite_outputs(
+                benchmark_results=[
+                    {
+                        "summary": {
+                            "benchmark": "demo",
+                            "input_ir": "demo.ll",
+                            "candidate_passes": ["gvn", "simplifycfg"],
+                            "inactive_passes": [],
+                            "enable_edges": 0,
+                            "dependency_pairs": 1,
+                            "independent_pairs": 0,
+                            "dependent_pairs": 1,
+                            "uncertain_pairs": 0,
+                            "validation_pairs": 1,
+                            "agree_dependent": 0,
+                            "agree_independent": 0,
+                            "false_positive": 1,
+                            "false_negative": 0,
+                            "uncertain_commuting": 0,
+                            "uncertain_non_commuting": 0,
+                            "confirmed_independent_pairs": 0,
+                            "likely_independent_pairs": 1,
+                            "needs_attribution_pairs": 0,
+                            "order_sensitive_pairs": 0,
+                        }
+                    }
+                ],
+                false_positive_rows=[],
+                rewrite_direction_rows=[],
+                confirmation_rows=[
+                    {
+                        "benchmark": "demo",
+                        "pass_a": "gvn",
+                        "pass_b": "simplifycfg",
+                        "confirmation": "likely_independent",
+                        "safety": "candidate",
+                        "support_reason": "exact_convergence_to_single_pass_result",
+                        "agreement": "false_positive",
+                        "final_ir_relation": "final_matches_a_only",
+                        "direction_classification": "commuting_false_positive",
+                        "uncertainty_risk": "none",
+                        "footprint_classification": "dependent",
+                    }
+                ],
+                failed_benchmark_rows=[],
+                stable_false_positive_rows=[],
+                out_dir=tmpdir,
+                min_stable_count=2,
+            )
+
+            self.assertTrue((Path(tmpdir) / "independence_confirmation_report.csv").exists())
+            self.assertTrue((Path(tmpdir) / "independence_confirmation_pairs.csv").exists())
+            self.assertTrue((Path(tmpdir) / "high_risk_uncertain_report.csv").exists())
+            self.assertTrue((Path(tmpdir) / "pair_attribution_report.csv").exists())
 
     def test_suite_summary_counts_uncertain_pairs(self):
         from run_benchmark_suite import _build_benchmark_summary

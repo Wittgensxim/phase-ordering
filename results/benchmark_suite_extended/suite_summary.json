@@ -1,0 +1,1011 @@
+{
+  "summary": {
+    "benchmarks": 24,
+    "failed_benchmarks": 1,
+    "validation_pairs": 758,
+    "false_positive": 43,
+    "false_negative": 0,
+    "uncertain_commuting": 143,
+    "uncertain_non_commuting": 68,
+    "stable_false_positive_pairs": 3
+  },
+  "benchmarks": [
+    {
+      "benchmark": "UnitTests_2003_04_22_Switch",
+      "input_ir": "results\\benchmark_suite_extended\\UnitTests_2003_04_22_Switch\\UnitTests_2003_04_22_Switch.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 31,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 9,
+      "agree_independent": 9,
+      "false_positive": 5,
+      "false_negative": 0,
+      "uncertain_commuting": 4,
+      "uncertain_non_commuting": 1,
+      "confirmed_independent_pairs": 9,
+      "likely_independent_pairs": 4,
+      "needs_attribution_pairs": 5,
+      "order_sensitive_pairs": 10
+    },
+    {
+      "benchmark": "UnitTests_2003_05_02_DependentPHI",
+      "input_ir": "results\\benchmark_suite_extended\\UnitTests_2003_05_02_DependentPHI\\UnitTests_2003_05_02_DependentPHI.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "loop-rotate"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify",
+        "loop-unroll",
+        "sccp"
+      ],
+      "enable_edges": 29,
+      "dependency_pairs": 15,
+      "independent_pairs": 0,
+      "dependent_pairs": 10,
+      "uncertain_pairs": 5,
+      "validation_pairs": 15,
+      "agree_dependent": 6,
+      "agree_independent": 0,
+      "false_positive": 4,
+      "false_negative": 0,
+      "uncertain_commuting": 4,
+      "uncertain_non_commuting": 1,
+      "confirmed_independent_pairs": 0,
+      "likely_independent_pairs": 3,
+      "needs_attribution_pairs": 5,
+      "order_sensitive_pairs": 7
+    },
+    {
+      "benchmark": "UnitTests_TestLoop",
+      "input_ir": "results\\benchmark_suite_extended\\UnitTests_TestLoop\\UnitTests_TestLoop.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 31,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 13,
+      "agree_independent": 9,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 3,
+      "uncertain_non_commuting": 2,
+      "confirmed_independent_pairs": 9,
+      "likely_independent_pairs": 3,
+      "needs_attribution_pairs": 1,
+      "order_sensitive_pairs": 15
+    },
+    {
+      "benchmark": "UnitTests_2008_04_18_LoopBug",
+      "input_ir": "results\\benchmark_suite_extended\\UnitTests_2008_04_18_LoopBug\\UnitTests_2008_04_18_LoopBug.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 41,
+      "dependency_pairs": 28,
+      "independent_pairs": 4,
+      "dependent_pairs": 13,
+      "uncertain_pairs": 11,
+      "validation_pairs": 28,
+      "agree_dependent": 11,
+      "agree_independent": 4,
+      "false_positive": 2,
+      "false_negative": 0,
+      "uncertain_commuting": 10,
+      "uncertain_non_commuting": 1,
+      "confirmed_independent_pairs": 4,
+      "likely_independent_pairs": 8,
+      "needs_attribution_pairs": 4,
+      "order_sensitive_pairs": 12
+    },
+    {
+      "benchmark": "Shootout_nestedloop",
+      "input_ir": "results\\benchmark_suite_extended\\Shootout_nestedloop\\Shootout_nestedloop.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 36,
+      "dependency_pairs": 28,
+      "independent_pairs": 7,
+      "dependent_pairs": 12,
+      "uncertain_pairs": 9,
+      "validation_pairs": 28,
+      "agree_dependent": 11,
+      "agree_independent": 7,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 7,
+      "uncertain_non_commuting": 2,
+      "confirmed_independent_pairs": 7,
+      "likely_independent_pairs": 6,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 13
+    },
+    {
+      "benchmark": "BenchmarkGame_fannkuch",
+      "input_ir": "results\\benchmark_suite_extended\\BenchmarkGame_fannkuch\\BenchmarkGame_fannkuch.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 42,
+      "dependency_pairs": 36,
+      "independent_pairs": 10,
+      "dependent_pairs": 16,
+      "uncertain_pairs": 10,
+      "validation_pairs": 36,
+      "agree_dependent": 16,
+      "agree_independent": 10,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 3,
+      "uncertain_non_commuting": 7,
+      "confirmed_independent_pairs": 10,
+      "likely_independent_pairs": 3,
+      "needs_attribution_pairs": 0,
+      "order_sensitive_pairs": 23
+    },
+    {
+      "benchmark": "BenchmarkGame_n_body",
+      "input_ir": "results\\benchmark_suite_extended\\BenchmarkGame_n_body\\BenchmarkGame_n_body.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 36,
+      "dependency_pairs": 28,
+      "independent_pairs": 5,
+      "dependent_pairs": 13,
+      "uncertain_pairs": 10,
+      "validation_pairs": 28,
+      "agree_dependent": 12,
+      "agree_independent": 5,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 8,
+      "uncertain_non_commuting": 2,
+      "confirmed_independent_pairs": 5,
+      "likely_independent_pairs": 8,
+      "needs_attribution_pairs": 1,
+      "order_sensitive_pairs": 14
+    },
+    {
+      "benchmark": "Misc_evalloop",
+      "input_ir": "results\\benchmark_suite_extended\\Misc_evalloop\\Misc_evalloop.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 48,
+      "dependency_pairs": 36,
+      "independent_pairs": 6,
+      "dependent_pairs": 18,
+      "uncertain_pairs": 12,
+      "validation_pairs": 36,
+      "agree_dependent": 15,
+      "agree_independent": 6,
+      "false_positive": 3,
+      "false_negative": 0,
+      "uncertain_commuting": 9,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 6,
+      "likely_independent_pairs": 10,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 18
+    },
+    {
+      "benchmark": "Misc_revertBits",
+      "input_ir": "results\\benchmark_suite_extended\\Misc_revertBits\\Misc_revertBits.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "loop-simplify"
+      ],
+      "enable_edges": 54,
+      "dependency_pairs": 45,
+      "independent_pairs": 11,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 20,
+      "validation_pairs": 45,
+      "agree_dependent": 12,
+      "agree_independent": 11,
+      "false_positive": 2,
+      "false_negative": 0,
+      "uncertain_commuting": 19,
+      "uncertain_non_commuting": 1,
+      "confirmed_independent_pairs": 11,
+      "likely_independent_pairs": 17,
+      "needs_attribution_pairs": 4,
+      "order_sensitive_pairs": 13
+    },
+    {
+      "benchmark": "Shootout_ackermann",
+      "input_ir": "results\\benchmark_suite_extended\\Shootout_ackermann\\Shootout_ackermann.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll"
+      ],
+      "enable_edges": 23,
+      "dependency_pairs": 15,
+      "independent_pairs": 1,
+      "dependent_pairs": 5,
+      "uncertain_pairs": 9,
+      "validation_pairs": 15,
+      "agree_dependent": 2,
+      "agree_independent": 1,
+      "false_positive": 3,
+      "false_negative": 0,
+      "uncertain_commuting": 8,
+      "uncertain_non_commuting": 1,
+      "confirmed_independent_pairs": 1,
+      "likely_independent_pairs": 8,
+      "needs_attribution_pairs": 3,
+      "order_sensitive_pairs": 3
+    },
+    {
+      "benchmark": "BenchmarkGame_nsieve_bits",
+      "input_ir": "results\\benchmark_suite_extended\\BenchmarkGame_nsieve_bits\\BenchmarkGame_nsieve_bits.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 42,
+      "dependency_pairs": 36,
+      "independent_pairs": 11,
+      "dependent_pairs": 15,
+      "uncertain_pairs": 10,
+      "validation_pairs": 36,
+      "agree_dependent": 15,
+      "agree_independent": 11,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 7,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 11,
+      "likely_independent_pairs": 5,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 18
+    },
+    {
+      "benchmark": "BenchmarkGame_partialsums",
+      "input_ir": "results\\benchmark_suite_extended\\BenchmarkGame_partialsums\\BenchmarkGame_partialsums.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "loop-simplify"
+      ],
+      "enable_edges": 38,
+      "dependency_pairs": 45,
+      "independent_pairs": 22,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 9,
+      "validation_pairs": 45,
+      "agree_dependent": 12,
+      "agree_independent": 22,
+      "false_positive": 2,
+      "false_negative": 0,
+      "uncertain_commuting": 4,
+      "uncertain_non_commuting": 5,
+      "confirmed_independent_pairs": 22,
+      "likely_independent_pairs": 4,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 17
+    },
+    {
+      "benchmark": "BenchmarkGame_recursive",
+      "input_ir": "results\\benchmark_suite_extended\\BenchmarkGame_recursive\\BenchmarkGame_recursive.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll"
+      ],
+      "enable_edges": 22,
+      "dependency_pairs": 15,
+      "independent_pairs": 2,
+      "dependent_pairs": 8,
+      "uncertain_pairs": 5,
+      "validation_pairs": 15,
+      "agree_dependent": 6,
+      "agree_independent": 2,
+      "false_positive": 2,
+      "false_negative": 0,
+      "uncertain_commuting": 3,
+      "uncertain_non_commuting": 2,
+      "confirmed_independent_pairs": 2,
+      "likely_independent_pairs": 3,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 8
+    },
+    {
+      "benchmark": "BenchmarkGame_puzzle",
+      "input_ir": "results\\benchmark_suite_extended\\BenchmarkGame_puzzle\\BenchmarkGame_puzzle.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "loop-simplify"
+      ],
+      "enable_edges": 47,
+      "dependency_pairs": 45,
+      "independent_pairs": 19,
+      "dependent_pairs": 16,
+      "uncertain_pairs": 10,
+      "validation_pairs": 45,
+      "agree_dependent": 16,
+      "agree_independent": 19,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 7,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 19,
+      "likely_independent_pairs": 6,
+      "needs_attribution_pairs": 1,
+      "order_sensitive_pairs": 19
+    },
+    {
+      "benchmark": "Misc_pi",
+      "input_ir": "results\\benchmark_suite_extended\\Misc_pi\\Misc_pi.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 32,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 13,
+      "agree_independent": 9,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 2,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 9,
+      "likely_independent_pairs": 1,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 16
+    },
+    {
+      "benchmark": "Shootout_ary3",
+      "input_ir": "results\\benchmark_suite_extended\\Shootout_ary3\\Shootout_ary3.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 40,
+      "dependency_pairs": 28,
+      "independent_pairs": 6,
+      "dependent_pairs": 11,
+      "uncertain_pairs": 11,
+      "validation_pairs": 28,
+      "agree_dependent": 10,
+      "agree_independent": 6,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 5,
+      "uncertain_non_commuting": 6,
+      "confirmed_independent_pairs": 6,
+      "likely_independent_pairs": 4,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 16
+    },
+    {
+      "benchmark": "Shootout_matrix",
+      "input_ir": "results\\benchmark_suite_extended\\Shootout_matrix\\Shootout_matrix.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 41,
+      "dependency_pairs": 28,
+      "independent_pairs": 5,
+      "dependent_pairs": 12,
+      "uncertain_pairs": 11,
+      "validation_pairs": 28,
+      "agree_dependent": 11,
+      "agree_independent": 5,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 5,
+      "uncertain_non_commuting": 6,
+      "confirmed_independent_pairs": 5,
+      "likely_independent_pairs": 4,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 17
+    },
+    {
+      "benchmark": "Shootout_sieve",
+      "input_ir": "results\\benchmark_suite_extended\\Shootout_sieve\\Shootout_sieve.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 38,
+      "dependency_pairs": 36,
+      "independent_pairs": 13,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 9,
+      "validation_pairs": 36,
+      "agree_dependent": 14,
+      "agree_independent": 13,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 7,
+      "uncertain_non_commuting": 2,
+      "confirmed_independent_pairs": 13,
+      "likely_independent_pairs": 5,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 16
+    },
+    {
+      "benchmark": "Stanford_Bubblesort",
+      "input_ir": "results\\benchmark_suite_extended\\Stanford_Bubblesort\\Stanford_Bubblesort.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 33,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 13,
+      "agree_independent": 9,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 2,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 9,
+      "likely_independent_pairs": 1,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 16
+    },
+    {
+      "benchmark": "Stanford_Quicksort",
+      "input_ir": "results\\benchmark_suite_extended\\Stanford_Quicksort\\Stanford_Quicksort.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce"
+      ],
+      "enable_edges": 37,
+      "dependency_pairs": 36,
+      "independent_pairs": 13,
+      "dependent_pairs": 18,
+      "uncertain_pairs": 5,
+      "validation_pairs": 36,
+      "agree_dependent": 18,
+      "agree_independent": 13,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 2,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 13,
+      "likely_independent_pairs": 1,
+      "needs_attribution_pairs": 1,
+      "order_sensitive_pairs": 21
+    },
+    {
+      "benchmark": "Stanford_Towers",
+      "input_ir": "results\\benchmark_suite_extended\\Stanford_Towers\\Stanford_Towers.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "loop-simplify"
+      ],
+      "enable_edges": 33,
+      "dependency_pairs": 28,
+      "independent_pairs": 9,
+      "dependent_pairs": 14,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 14,
+      "agree_independent": 9,
+      "false_positive": 0,
+      "false_negative": 0,
+      "uncertain_commuting": 2,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 9,
+      "likely_independent_pairs": 1,
+      "needs_attribution_pairs": 1,
+      "order_sensitive_pairs": 17
+    },
+    {
+      "benchmark": "Misc_lowercase",
+      "input_ir": "results\\benchmark_suite_extended\\Misc_lowercase\\Misc_lowercase.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "loop-simplify"
+      ],
+      "enable_edges": 45,
+      "dependency_pairs": 45,
+      "independent_pairs": 19,
+      "dependent_pairs": 16,
+      "uncertain_pairs": 10,
+      "validation_pairs": 45,
+      "agree_dependent": 15,
+      "agree_independent": 19,
+      "false_positive": 1,
+      "false_negative": 0,
+      "uncertain_commuting": 6,
+      "uncertain_non_commuting": 4,
+      "confirmed_independent_pairs": 19,
+      "likely_independent_pairs": 5,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 19
+    },
+    {
+      "benchmark": "Misc_mandel",
+      "input_ir": "results\\benchmark_suite_extended\\Misc_mandel\\Misc_mandel.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "loop-simplify",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "adce",
+        "dce",
+        "sccp"
+      ],
+      "enable_edges": 45,
+      "dependency_pairs": 28,
+      "independent_pairs": 2,
+      "dependent_pairs": 21,
+      "uncertain_pairs": 5,
+      "validation_pairs": 28,
+      "agree_dependent": 13,
+      "agree_independent": 2,
+      "false_positive": 8,
+      "false_negative": 0,
+      "uncertain_commuting": 4,
+      "uncertain_non_commuting": 1,
+      "confirmed_independent_pairs": 2,
+      "likely_independent_pairs": 10,
+      "needs_attribution_pairs": 2,
+      "order_sensitive_pairs": 14
+    },
+    {
+      "benchmark": "Misc_flops_1",
+      "input_ir": "results\\benchmark_suite_extended\\Misc_flops_1\\Misc_flops_1.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": [
+        "loop-simplify"
+      ],
+      "enable_edges": 51,
+      "dependency_pairs": 45,
+      "independent_pairs": 14,
+      "dependent_pairs": 16,
+      "uncertain_pairs": 15,
+      "validation_pairs": 45,
+      "agree_dependent": 12,
+      "agree_independent": 14,
+      "false_positive": 4,
+      "false_negative": 0,
+      "uncertain_commuting": 12,
+      "uncertain_non_commuting": 3,
+      "confirmed_independent_pairs": 14,
+      "likely_independent_pairs": 6,
+      "needs_attribution_pairs": 10,
+      "order_sensitive_pairs": 15
+    }
+  ],
+  "failed_benchmarks": [
+    {
+      "benchmark": "Shootout_heapsort",
+      "error": "opt failed for pass instcombine with exit code 1\nLLVM ERROR: Instruction Combining on benchmark_heapsort did not reach a fixpoint after 1 iterations. Use 'instcombine<no-verify-fixpoint>' or function attribute 'instcombine-no-verify-fixpoint' to suppress this error.\nPLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace and instructions to reproduce the bug.\nStack dump:\n0.\tProgram arguments: E:\\\\llvm\\\\build\\\\bin\\\\opt.exe -S -passes=instcombine results\\\\benchmark_suite_extended\\\\Shootout_heapsort\\\\Shootout_heapsort.ll -o results\\\\benchmark_suite_extended\\\\Shootout_heapsort\\\\pass_outputs\\\\instcombine.after.ll\n1.\tRunning pass \"function(instcombine<max-iterations=1;verify-fixpoint>)\" on module \"results\\benchmark_suite_extended\\Shootout_heapsort\\Shootout_heapsort.ll\"\n2.\tRunning pass \"instcombine<max-iterations=1;verify-fixpoint>\" on function \"benchmark_heapsort\""
+    }
+  ],
+  "stable_false_positive_pairs": [
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "benchmark_count": 13,
+      "benchmarks": [
+        "BenchmarkGame_n_body",
+        "BenchmarkGame_partialsums",
+        "Misc_flops_1",
+        "Misc_lowercase",
+        "Misc_revertBits",
+        "Shootout_ary3",
+        "Shootout_matrix",
+        "Shootout_nestedloop",
+        "Stanford_Bubblesort",
+        "UnitTests_2003_04_22_Switch",
+        "UnitTests_2003_05_02_DependentPHI",
+        "UnitTests_2008_04_18_LoopBug",
+        "UnitTests_TestLoop"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "none",
+        "strong",
+        "weak"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": [
+        "mixed"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->simplifycfg",
+        "simplifycfg->gvn"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "benchmark_count": 5,
+      "benchmarks": [
+        "BenchmarkGame_partialsums",
+        "Misc_flops_1",
+        "Misc_pi",
+        "Shootout_ackermann",
+        "UnitTests_2003_05_02_DependentPHI"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "strong"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": [
+        "mixed",
+        "symmetric_rewrite"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->simplifycfg",
+        "simplifycfg->instcombine"
+      ]
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sroa",
+      "benchmark_count": 5,
+      "benchmarks": [
+        "Misc_flops_1",
+        "Shootout_ackermann",
+        "UnitTests_2003_04_22_Switch",
+        "UnitTests_2003_05_02_DependentPHI",
+        "UnitTests_2008_04_18_LoopBug"
+      ],
+      "dependency_kinds": [
+        "enablement",
+        "read_write"
+      ],
+      "dependency_strength": [
+        "strong"
+      ],
+      "read_write_strength": [
+        "strong"
+      ],
+      "enablement_strength": [
+        "strong"
+      ],
+      "uncertainty_risk": [
+        "none"
+      ],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": [
+        "mixed",
+        "symmetric_rewrite"
+      ],
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->sroa",
+        "sroa->simplifycfg"
+      ]
+    }
+  ],
+  "independence_confirmation": {
+    "confirmed_independent": 215,
+    "likely_independent": 126,
+    "needs_attribution": 60,
+    "order_sensitive": 357
+  },
+  "pair_recommendations": {
+    "confirmed_independent": 5,
+    "likely_independent_candidate": 12,
+    "context_sensitive_keep_dependent": 32,
+    "needs_attribution": 4
+  }
+}

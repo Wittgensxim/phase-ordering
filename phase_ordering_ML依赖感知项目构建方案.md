@@ -550,17 +550,30 @@ failed benchmark 记录
 
 ### 16.1 提高确认 independent 的能力
 
-当前不要直接把 `uncertain_commuting` 升为 independent。更合适的路线是增加分层：
+当前已经实现确认层，不直接把 `uncertain_commuting` 升为 independent，而是增加分层：
 
 ```text
-independent:
-  当前规则已经能证明没有依赖证据。
+confirmed_independent:
+  footprint 已经判 independent，黑盒也 commuting。
 
 likely_independent:
-  黑盒在多个 benchmark 上 commuting，且只存在弱证据或同方向 rewrite 候选。
+  footprint 仍可能是 dependent/uncertain，但黑盒 commuting，
+  且存在 exact convergence 或 same-direction rewrite evidence。
 
-confirmed_independent:
-  经过 transformation-level 归因，确认交集是无害的同方向 rewrite。
+needs_attribution:
+  黑盒 commuting，但缺少足够 rewrite 解释，暂不进入 independent 训练。
+
+order_sensitive:
+  黑盒 non-commuting，或出现 false_negative，必须保留为依赖/顺序敏感。
+```
+
+对应输出：
+
+```text
+independence_confirmation_report.csv
+independence_confirmation_pairs.csv
+high_risk_uncertain_report.csv
+pair_attribution_report.csv
 ```
 
 这样可以逐步扩大可确认 independent 的数量，同时避免引入 false negative。
@@ -582,9 +595,20 @@ instcombine + sroa
 1. 从 rewrite_direction_report.csv 找出对应 pair。
 2. 对比 A-only、B-only、A->B、B->A 的 IR。
 3. 判断重叠对象是同方向删除、同方向替换，还是实际冲突。
-4. 把可解释模式写成新的降权规则或 confirmed-independent rule。
+4. 把可解释模式写成 benchmark-local likely-independent rule。
 5. 重跑 broader suite，确认 false_negative 仍为 0。
 ```
+
+extended suite 证明 `gvn + simplifycfg` 不能全局降权：
+
+```text
+likely observations = 7
+needs attribution = 8
+order-sensitive observations = 9
+recommendation = context_sensitive_keep_dependent
+```
+
+因此策略应是局部确认，而不是 pair-level 全局降权。
 
 ### 16.3 处理 high-risk uncertain
 
@@ -649,10 +673,92 @@ uncertain:
 最重要的当前结论：
 
 ```text
-1. broader suite 上 false_negative = 0，说明当前安全边界有效。
-2. strict independent = 125 / 456，black-box commuting = 250 / 456，说明可确认 independent 还有提升空间。
-3. false_positive 集中在少数稳定 pass pair 上，适合做专项归因。
-4. uncertain 已经把一批证据不足的 pair 从 dependent 中拆出来，但不能直接当 independent。
-5. 下一阶段重点是 confirmed independent 和 transformation-level 归因，而不是马上进入 ML。
+1. extended suite 上 false_negative = 0，说明当前安全边界在更多样例上仍有效。
+2. strict independent = 215 / 758，black-box commuting = 401 / 758，说明可确认 independent 仍有提升空间。
+3. 新确认层额外标出 126 个 likely_independent observation，但不会把 order_sensitive 放进 independent。
+4. gvn + simplifycfg 被证明是 context-sensitive，不能全局降权。
+5. 下一阶段重点是 needs_attribution 和 context-sensitive 条件规则，而不是马上进入 ML。
 ```
 
+## 18. 2026-06-24 extended suite 更新
+
+本轮新增：
+
+```text
+configs/singlesource_extended.json
+scripts/confirm_independence.py
+results/benchmark_suite_extended/independence_confirmation_report.csv
+results/benchmark_suite_extended/independence_confirmation_pairs.csv
+results/benchmark_suite_extended/high_risk_uncertain_report.csv
+results/benchmark_suite_extended/pair_attribution_report.csv
+```
+
+extended suite：
+
+```text
+configured benchmarks = 25
+successful benchmarks = 24
+failed benchmarks = 1
+validation_pairs = 758
+strict independent = 215
+dependent = 332
+uncertain = 211
+black-box commuting = 401
+black-box non-commuting = 357
+false_positive = 43
+false_negative = 0
+uncertain_commuting = 143
+uncertain_non_commuting = 68
+```
+
+独立性确认层：
+
+```text
+confirmed_independent observations = 215
+likely_independent observations = 126
+needs_attribution observations = 60
+order_sensitive observations = 357
+
+confirmed_independent pair recommendations = 5
+likely_independent_candidate pair recommendations = 12
+context_sensitive_keep_dependent pair recommendations = 32
+needs_attribution pair recommendations = 4
+```
+
+本轮曾在 extended suite 第一次运行时发现：
+
+```text
+Stanford_Bubblesort: instcombine + sccp false_negative
+Stanford_Quicksort:  instcombine + sccp false_negative
+```
+
+根因是 enablement probing 和 commutativity test 使用了不同 pipeline 语义：
+
+```text
+旧 enablement probing:
+  original -> A
+  A-output -> B
+
+commutativity:
+  original -> A,B
+```
+
+修复后 enablement probing 的 after-side 改成：
+
+```text
+original -> A,B
+```
+
+这让 enablement probing 和 commutativity test 对齐。重跑 extended suite 后：
+
+```text
+false_negative = 0
+```
+
+当前测试：
+
+```text
+python -W error -m unittest discover tests
+Ran 57 tests
+OK
+```

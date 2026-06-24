@@ -17,6 +17,17 @@ from collect_pass_footprints import collect_pass_footprints, write_footprints_js
 from commutativity_test import run_commutativity_tests, write_outputs as write_commutativity_outputs
 from compare_validation import build_validation_rows, summarize as summarize_validation
 from compare_validation import write_outputs as write_validation_outputs
+from confirm_independence import (
+    CONFIRMATION_FIELDS,
+    HIGH_RISK_FIELDS,
+    PAIR_ATTRIBUTION_FIELDS,
+    PAIR_CONFIRMATION_FIELDS,
+    build_confirmation_rows,
+    build_high_risk_rows,
+    build_pair_attribution_rows,
+    build_pair_confirmation_rows,
+    summarize_confirmation_rows,
+)
 from enablement_probe import OptFootprintRunner, probe_first_order_enablement
 from enablement_probe import write_outputs as write_enablement_outputs
 
@@ -116,6 +127,10 @@ SUMMARY_FIELDS = [
     "false_negative",
     "uncertain_commuting",
     "uncertain_non_commuting",
+    "confirmed_independent_pairs",
+    "likely_independent_pairs",
+    "needs_attribution_pairs",
+    "order_sensitive_pairs",
 ]
 
 
@@ -345,6 +360,11 @@ def run_benchmark(benchmark, passes, clang_path, opt_path, llvm_diff_path, out_d
         commutativity_rows=commutativity_rows,
         pass_outputs_dir=pass_outputs_dir,
     )
+    confirmation_rows = build_confirmation_rows(
+        benchmark["name"],
+        validation_rows=validation_rows,
+        rewrite_direction_rows=rewrite_direction_rows,
+    )
     summary = _build_benchmark_summary(
         benchmark_name=benchmark["name"],
         input_ir=ir_path,
@@ -352,11 +372,13 @@ def run_benchmark(benchmark, passes, clang_path, opt_path, llvm_diff_path, out_d
         enablement=enablement,
         dependency_rows=dependency_rows,
         validation_rows=validation_rows,
+        confirmation_rows=confirmation_rows,
     )
     return {
         "summary": summary,
         "false_positive_rows": false_positive_rows,
         "rewrite_direction_rows": rewrite_direction_rows,
+        "confirmation_rows": confirmation_rows,
         "paths": {
             "footprints": str(footprints_path),
             "enablement": str(enablement_json),
@@ -373,6 +395,7 @@ def run_suite(benchmarks, passes, clang_path, opt_path, llvm_diff_path, out_dir,
     benchmark_results = []
     false_positive_rows = []
     rewrite_direction_rows = []
+    confirmation_rows = []
     failed_benchmark_rows = []
     for benchmark in benchmarks:
         try:
@@ -396,6 +419,7 @@ def run_suite(benchmarks, passes, clang_path, opt_path, llvm_diff_path, out_dir,
         benchmark_results.append(result)
         false_positive_rows.extend(result["false_positive_rows"])
         rewrite_direction_rows.extend(result["rewrite_direction_rows"])
+        confirmation_rows.extend(result["confirmation_rows"])
 
     stable_rows = build_stable_false_positive_rows(
         false_positive_rows,
@@ -405,14 +429,17 @@ def run_suite(benchmarks, passes, clang_path, opt_path, llvm_diff_path, out_dir,
         benchmark_results=benchmark_results,
         false_positive_rows=false_positive_rows,
         rewrite_direction_rows=rewrite_direction_rows,
+        confirmation_rows=confirmation_rows,
         failed_benchmark_rows=failed_benchmark_rows,
         stable_false_positive_rows=stable_rows,
         out_dir=output_path,
+        min_stable_count=min_stable_count,
     )
     return {
         "benchmarks": benchmark_results,
         "false_positive_rows": false_positive_rows,
         "rewrite_direction_rows": rewrite_direction_rows,
+        "confirmation_rows": confirmation_rows,
         "failed_benchmark_rows": failed_benchmark_rows,
         "stable_false_positive_rows": stable_rows,
     }
@@ -422,9 +449,11 @@ def write_suite_outputs(
     benchmark_results,
     false_positive_rows,
     rewrite_direction_rows,
+    confirmation_rows,
     failed_benchmark_rows,
     stable_false_positive_rows,
     out_dir,
+    min_stable_count,
 ):
     output_path = Path(out_dir)
     summaries = [result["summary"] for result in benchmark_results]
@@ -438,6 +467,35 @@ def write_suite_outputs(
         rewrite_direction_rows,
         output_path / "rewrite_direction_report.csv",
         REWRITE_DIRECTION_FIELDS,
+    )
+    write_rows_csv(
+        confirmation_rows,
+        output_path / "independence_confirmation_report.csv",
+        CONFIRMATION_FIELDS,
+    )
+    pair_confirmation_rows = build_pair_confirmation_rows(
+        confirmation_rows,
+        min_stable_count=min_stable_count,
+    )
+    write_rows_csv(
+        pair_confirmation_rows,
+        output_path / "independence_confirmation_pairs.csv",
+        PAIR_CONFIRMATION_FIELDS,
+    )
+    high_risk_rows = build_high_risk_rows(confirmation_rows)
+    write_rows_csv(
+        high_risk_rows,
+        output_path / "high_risk_uncertain_report.csv",
+        HIGH_RISK_FIELDS,
+    )
+    pair_attribution_rows = build_pair_attribution_rows(
+        confirmation_rows,
+        target_pairs=[("gvn", "simplifycfg")],
+    )
+    write_rows_csv(
+        pair_attribution_rows,
+        output_path / "pair_attribution_report.csv",
+        PAIR_ATTRIBUTION_FIELDS,
     )
     write_rows_csv(
         failed_benchmark_rows,
@@ -458,6 +516,29 @@ def write_suite_outputs(
         "benchmarks": summaries,
         "failed_benchmarks": failed_benchmark_rows,
         "stable_false_positive_pairs": stable_false_positive_rows,
+        "independence_confirmation": summarize_confirmation_rows(confirmation_rows),
+        "pair_recommendations": {
+            "confirmed_independent": sum(
+                1
+                for row in pair_confirmation_rows
+                if row["recommendation"] == "confirmed_independent"
+            ),
+            "likely_independent_candidate": sum(
+                1
+                for row in pair_confirmation_rows
+                if row["recommendation"] == "likely_independent_candidate"
+            ),
+            "context_sensitive_keep_dependent": sum(
+                1
+                for row in pair_confirmation_rows
+                if row["recommendation"] == "context_sensitive_keep_dependent"
+            ),
+            "needs_attribution": sum(
+                1
+                for row in pair_confirmation_rows
+                if row["recommendation"] == "needs_attribution"
+            ),
+        },
     }
     (output_path / "suite_summary.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
@@ -562,6 +643,7 @@ def _build_benchmark_summary(
     enablement,
     dependency_rows,
     validation_rows,
+    confirmation_rows=None,
 ):
     dependency_summary = {
         "dependency_pairs": len(dependency_rows),
@@ -576,6 +658,7 @@ def _build_benchmark_summary(
         ),
     }
     validation_summary = summarize_validation(validation_rows)
+    confirmation_summary = summarize_confirmation_rows(confirmation_rows or [])
     return {
         "benchmark": benchmark_name,
         "input_ir": str(input_ir),
@@ -590,6 +673,12 @@ def _build_benchmark_summary(
         "false_negative": validation_summary["false_negative"],
         "uncertain_commuting": validation_summary["uncertain_commuting"],
         "uncertain_non_commuting": validation_summary["uncertain_non_commuting"],
+        "confirmed_independent_pairs": confirmation_summary.get(
+            "confirmed_independent", 0
+        ),
+        "likely_independent_pairs": confirmation_summary.get("likely_independent", 0),
+        "needs_attribution_pairs": confirmation_summary.get("needs_attribution", 0),
+        "order_sensitive_pairs": confirmation_summary.get("order_sensitive", 0),
     }
 
 

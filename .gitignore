@@ -18,6 +18,10 @@ results/**
 !results/benchmark_suite/stable_false_positive_pairs.csv
 !results/benchmark_suite/rewrite_direction_report.csv
 !results/benchmark_suite/failed_benchmarks.csv
+!results/benchmark_suite/independence_confirmation_report.csv
+!results/benchmark_suite/independence_confirmation_pairs.csv
+!results/benchmark_suite/high_risk_uncertain_report.csv
+!results/benchmark_suite/pair_attribution_report.csv
 !results/benchmark_suite_extra/
 !results/benchmark_suite_extra/suite_summary.json
 !results/benchmark_suite_extra/suite_summary.csv
@@ -25,6 +29,10 @@ results/**
 !results/benchmark_suite_extra/stable_false_positive_pairs.csv
 !results/benchmark_suite_extra/rewrite_direction_report.csv
 !results/benchmark_suite_extra/failed_benchmarks.csv
+!results/benchmark_suite_extra/independence_confirmation_report.csv
+!results/benchmark_suite_extra/independence_confirmation_pairs.csv
+!results/benchmark_suite_extra/high_risk_uncertain_report.csv
+!results/benchmark_suite_extra/pair_attribution_report.csv
 !results/benchmark_suite_broader/
 !results/benchmark_suite_broader/suite_summary.json
 !results/benchmark_suite_broader/suite_summary.csv
@@ -32,8 +40,22 @@ results/**
 !results/benchmark_suite_broader/stable_false_positive_pairs.csv
 !results/benchmark_suite_broader/rewrite_direction_report.csv
 !results/benchmark_suite_broader/failed_benchmarks.csv
+!results/benchmark_suite_broader/independence_confirmation_report.csv
+!results/benchmark_suite_broader/independence_confirmation_pairs.csv
+!results/benchmark_suite_broader/high_risk_uncertain_report.csv
+!results/benchmark_suite_broader/pair_attribution_report.csv
+!results/benchmark_suite_extended/
+!results/benchmark_suite_extended/suite_summary.json
+!results/benchmark_suite_extended/suite_summary.csv
+!results/benchmark_suite_extended/false_positive_attribution.csv
+!results/benchmark_suite_extended/stable_false_positive_pairs.csv
+!results/benchmark_suite_extended/rewrite_direction_report.csv
+!results/benchmark_suite_extended/failed_benchmarks.csv
+!results/benchmark_suite_extended/independence_confirmation_report.csv
+!results/benchmark_suite_extended/independence_confirmation_pairs.csv
+!results/benchmark_suite_extended/high_risk_uncertain_report.csv
+!results/benchmark_suite_extended/pair_attribution_report.csv
 
 # Local IDE state
 .vscode/
 .idea/
-

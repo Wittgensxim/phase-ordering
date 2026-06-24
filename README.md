@@ -15,23 +15,24 @@ LLVM IR / SingleSource C
   -> 输出 batch benchmark suite 报告
 ```
 
-当前最重要的实验结论是：
+当前最重要的实验结论来自 extended SingleSource suite：
 
 ```text
-broader SingleSource suite:
-15 benchmarks
-456 validation pairs
-125 strict independent
-196 dependent
-135 uncertain
-27 false_positive
+extended SingleSource suite:
+25 configured benchmarks
+24 successful benchmarks
+1 failed benchmark
+758 validation pairs
+215 strict independent
+332 dependent
+211 uncertain
+43 false_positive
 0 false_negative
-98 uncertain_commuting
-37 uncertain_non_commuting
-0 failed benchmarks
+143 uncertain_commuting
+68 uncertain_non_commuting
 ```
 
-这说明当前版本保持了安全底线：没有把真实 non-commuting 的 pair 错判成 independent。不过 analyzer 仍然偏保守，真实黑盒 commuting 是 `250 / 456`，严格判 independent 是 `125 / 456`，中间还有大量 `uncertain` 需要进一步确认。
+这说明当前版本在更多 SingleSource 样例上仍然守住了安全底线：没有把真实 non-commuting 的 pair 错判成 independent。extended suite 的黑盒 commuting 是 `401 / 758`，严格判 independent 是 `215 / 758`，新增确认层进一步标出 `126` 个 `likely_independent` 观察点，但不会把 `order_sensitive` 或 `high-risk uncertain` 放进 independent。
 
 ## 当前目录
 
@@ -40,6 +41,7 @@ configs/
   singlesource_smoke.json     # 5 个 SingleSource smoke benchmark
   singlesource_extra.json     # 5 个额外 SingleSource benchmark
   singlesource_broader.json   # 15 个 SingleSource benchmark，当前主实验入口
+  singlesource_extended.json  # 25 个 SingleSource benchmark，当前扩展验证入口
 
 examples/
   demo.c
@@ -55,12 +57,14 @@ scripts/
   compare_validation.py       # 对照 dependency matrix 和黑盒验证
   benchmark_suite.py          # benchmark 编译与调度辅助
   run_benchmark_suite.py      # 一键批量运行完整链路
+  confirm_independence.py     # 生成 confirmed/likely/order-sensitive 独立性确认报告
   pass_pipeline.py            # LLVM pass pipeline 名称映射
 
 results/
   benchmark_suite/            # smoke suite 结果
   benchmark_suite_extra/      # extra suite 结果
   benchmark_suite_broader/    # broader suite 结果，当前主结果
+  benchmark_suite_extended/   # extended suite 结果，当前最新结果
 
 tests/
   test_*.py                   # 当前共 51 个 unittest
@@ -122,6 +126,10 @@ suite_summary.csv
 false_positive_attribution.csv
 stable_false_positive_pairs.csv
 rewrite_direction_report.csv
+independence_confirmation_report.csv
+independence_confirmation_pairs.csv
+high_risk_uncertain_report.csv
+pair_attribution_report.csv
 failed_benchmarks.csv
 ```
 
@@ -403,6 +411,64 @@ instcombine + sroa         3 / 15 benchmarks
 
 这些 pair 常带有 strong read/write 或 enablement 证据，但黑盒结果 commuting，说明当前 analyzer 对同方向 rewrite、结构归一化和 transformation 语义的理解仍偏粗。
 
+### Extended suite
+
+入口：
+
+```powershell
+python scripts\run_benchmark_suite.py --manifest configs\singlesource_extended.json --out-dir results\benchmark_suite_extended --min-stable-count 5
+```
+
+结果：
+
+```text
+configured benchmarks = 25
+successful benchmarks = 24
+failed benchmarks = 1
+validation_pairs = 758
+strict independent = 215
+dependent = 332
+uncertain = 211
+black-box commuting = 401
+black-box non-commuting = 357
+false_positive = 43
+false_negative = 0
+uncertain_commuting = 143
+uncertain_non_commuting = 68
+stable_false_positive_pairs = 3
+```
+
+新增独立性确认层结果：
+
+```text
+confirmed_independent observations = 215
+likely_independent observations = 126
+needs_attribution observations = 60
+order_sensitive observations = 357
+
+confirmed_independent pair recommendations = 5
+likely_independent_candidate pair recommendations = 12
+context_sensitive_keep_dependent pair recommendations = 32
+needs_attribution pair recommendations = 4
+```
+
+这轮 extended suite 一开始暴露了 2 个 `false_negative`，都来自 `Stanford_Bubblesort` / `Stanford_Quicksort` 中的 `instcombine + sccp`。根因是旧版 `enablement_probe.py` 的 prefixed after-side 使用两次独立 `opt` 调用：
+
+```text
+original -> A
+then A-output -> B
+```
+
+而黑盒 commutativity 使用单次 pass manager 管线：
+
+```text
+original -> A,B
+```
+
+对 `instcombine + sccp` 这类会依赖同一 pass manager 内属性/range/poison-fixup 传播的组合，两种运行方式不等价。现在 `OptFootprintRunner` 已改成 before-side 仍使用 `original -> A`，after-side 使用 `original -> A,B`，与 commutativity test 对齐。重跑 extended suite 后 `false_negative` 回到 0。
+
+`Shootout_heapsort` 当前失败原因是 LLVM 23 的 `instcombine` fixpoint verify 错误，已记录在 `failed_benchmarks.csv`，不会中断整批实验。
+
 ## rewrite_direction_report.csv
 
 `run_benchmark_suite.py` 会为 false positive 和 uncertain pair 生成：
@@ -439,6 +505,33 @@ order_sensitive:
   这类不能升成 independent，应优先归因。
 ```
 
+## independence_confirmation_report.csv
+
+确认层不会改变 dependency matrix 的原始分类，而是在 validation 之后额外标记哪些 pair 可以进入后续训练或归因：
+
+```text
+confirmed_independent:
+  footprint 已判 independent，黑盒也 commuting。
+
+likely_independent:
+  footprint 仍可能是 dependent/uncertain，但黑盒 commuting，且 A->B / B->A 有精确收敛或同方向 rewrite 证据。
+
+needs_attribution:
+  黑盒 commuting，但还没有足够 rewrite 解释，暂不进入 independent 训练。
+
+order_sensitive:
+  黑盒 non-commuting，或出现 false_negative，必须保留为依赖/顺序敏感。
+```
+
+对 `gvn + simplifycfg` 的 extended 归因很关键：它在 13 个 benchmark 中表现为稳定 false positive，但在另外 9 个 benchmark 中是真实 non-commuting。因此当前报告把它标为：
+
+```text
+recommendation = context_sensitive_keep_dependent
+safe_for_independent_training = false
+```
+
+也就是说，不能全局降权；只能在具体 benchmark 上根据 `exact_convergence_to_single_pass_result` 或 `same_direction_rewrite_candidate` 这类证据局部标为 likely independent。
+
 ## 当前实现边界
 
 ```text
@@ -447,7 +540,8 @@ order_sensitive:
 3. enablement probing 目前是一阶 A -> B，还没有系统覆盖 {A, C} -> B 这类高阶启用。
 4. weak / strong token 分层仍是启发式规则。
 5. same-direction rewrite 目前只是候选报告，还没有自动升级为 confirmed independent。
-6. licm 因 LLVM 23 MemorySSA / loop pass manager 要求暂未纳入默认 pass 集合。
+6. likely_independent 仍是候选标签，不直接等同 confirmed independent。
+7. licm 因 LLVM 23 MemorySSA / loop pass manager 要求暂未纳入默认 pass 集合。
 ```
 
 ## 测试
@@ -469,25 +563,35 @@ benchmark suite 批量调度
 false positive attribution
 rewrite direction report
 failed benchmark 记录
+独立性确认层
+pipeline-aligned enablement probing
 ```
 
 最新已验证结果：
 
 ```text
-Ran 51 tests
+Ran 57 tests
 OK
 ```
 
-## 下一步
+## 本轮已完成和下一步
 
-当前最合理的下一阶段是提高“确认独立”的能力：
+本轮已经完成：
 
 ```text
-1. 优先排查 high-risk uncertain / order_sensitive，避免引入 false negative。
-2. 对 same_direction_rewrite_candidate 做人工归因，找出可安全降权的模式。
-3. 针对稳定 false positive，尤其是 gvn + simplifycfg，做 transformation-level 归因。
-4. 增加 likely_independent / confirmed_independent 的分层，而不是直接把 uncertain 当 independent。
-5. 在更多 SingleSource 样例上验证 false_negative 是否仍为 0。
-6. 等 dependency label 稳定后，再构建 ML profitability / local ranking 数据集。
+1. 增加 high-risk uncertain / order_sensitive 报告。
+2. 增加 same-direction / exact-convergence 独立性候选确认。
+3. 对 gvn + simplifycfg 做 pair-level attribution，确认它是 context-sensitive，不能全局降权。
+4. 增加 confirmed_independent / likely_independent / needs_attribution / order_sensitive 分层。
+5. 扩展到 25 个 SingleSource benchmark，并修复 extended suite 暴露的 instcombine + sccp false_negative。
+6. 重跑后 extended suite 保持 false_negative = 0。
 ```
 
+下一步建议：
+
+```text
+1. 针对 60 个 needs_attribution observation 做更细的 IR rewrite 归因。
+2. 对 12 个 likely_independent_candidate pair 做跨 benchmark 稳定性检查。
+3. 对 context_sensitive_keep_dependent pair 建立条件化规则，而不是全局降权。
+4. 等 confirmed/likely 标签稳定后，再构建 ML profitability / local ranking 数据集。
+```
