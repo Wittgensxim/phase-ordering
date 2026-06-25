@@ -666,6 +666,226 @@ uncertain:
 
 目标是让 ML 使用更干净的标签，避免把当前 analyzer 的保守偏差直接学进去。
 
+### 16.6 局部化独立性判断
+
+当前 pairwise dependency matrix 仍然是 benchmark 级别聚合结果：
+
+```text
+pass pair 在任意位置出现强依赖证据
+  -> 整个 benchmark 上该 pair 倾向 dependent / order-sensitive
+```
+
+这个口径对安全性有利，但会带来一个长期问题：代码越长，函数、basic block、loop、load/store 越多，两个 pass 在某个区域发生交集的概率就越高。结果是很多 pair 可能只有少数局部区域顺序敏感，却在全局统计里被整体标为 dependent，导致可确认 independent 的数量被低估。
+
+下一阶段应把问题从“这个 pass pair 在整个程序上是否独立”改成：
+
+```text
+这个 pass pair 在哪些 region 独立？
+在哪些 region 顺序敏感？
+哪些 region 还需要 attribution？
+```
+
+建议引入 region-level dependency matrix。region 可以先采用三层粒度：
+
+```text
+function region:
+  func:<function>
+
+loop region:
+  loop:<function>:<header-block>
+
+basic-block region:
+  bb:<function>:<basic-block>
+```
+
+每个 footprint token 都映射到一个或多个 region。之后不只输出全局 pair 结论，还输出：
+
+```text
+pass_a,pass_b,region,classification,confirmation,evidence
+gvn,simplifycfg,main.loop1,order_sensitive,...
+gvn,simplifycfg,main.loop2,confirmed_independent,...
+gvn,simplifycfg,helper,likely_independent,...
+```
+
+最终再聚合成 pair-level summary：
+
+```text
+total_regions
+confirmed_independent_regions
+likely_independent_regions
+needs_attribution_regions
+order_sensitive_regions
+local_independence_rate
+unsafe_region_rate
+```
+
+这样即使全局 pair 仍然是 `context_sensitive_keep_dependent`，也能说明它在大部分局部区域是可交换的，只是少数区域必须保序。
+
+### 16.7 transformation instance 级别归因
+
+region-level 仍然可能过粗。更进一步，应把一个 pass 的 footprint 拆成多个 transformation instance：
+
+```text
+gvn.instance.1:
+  删除 main:%12
+
+simplifycfg.instance.3:
+  合并 main:cond.false -> main:exit
+```
+
+然后判断 instance 之间是否存在冲突：
+
+```text
+same-direction:
+  A 和 B 都删除同一个冗余对象，或最终收敛到同一个结果。
+
+blocking:
+  A 改写了 B 的匹配条件，导致 B 在 A 后不再触发。
+
+enabling:
+  A 创造了 B 的优化机会。
+
+conflicting:
+  A 和 B 对同一对象产生不同最终结果。
+```
+
+这样可以避免把整个 pass 的所有 writes 混成一个大集合。代码越长，pass-level footprint 会变大；但 transformation instance 通常仍然是局部的，因此更适合判断真实依赖。
+
+### 16.8 conflict slicing
+
+对于发生交集的 pair，不应只记录“有交集”，而应切出真正导致风险的最小证据：
+
+```text
+WA ∩ RB:
+  A 写的对象是否真的改变了 B 的 rewrite 条件？
+
+WB ∩ RA:
+  B 写的对象是否真的改变了 A 的 rewrite 条件？
+
+WA ∩ WB:
+  A 和 B 是同方向改写，还是冲突改写？
+```
+
+输出可以增加：
+
+```text
+conflict_slice_kind:
+  same_direction
+  enablement
+  blocking
+  conflicting_write
+  structural_noise
+  unknown
+
+slice_tokens:
+  最小相关 token 集合
+```
+
+这个切片结果可以直接服务于 `needs_attribution`。如果一个 observation 从 `unknown` 被解释成 `same_direction` 或 `exact_convergence`，它可以进入 `likely_independent`；如果解释成 `blocking` 或 `conflicting_write`，则保持 `order_sensitive` 或 dependent。
+
+### 16.9 CFG / dominance / loop scope 约束
+
+长代码中的很多假依赖来自“两个 pass 都碰到了同一个函数”，但它们实际位于互不影响的控制流区域。后续可以给 region-level 判断增加 CFG 约束：
+
+```text
+same_function:
+  是否在同一函数。
+
+same_loop:
+  是否在同一 loop 或嵌套 loop。
+
+same_basic_block:
+  是否在同一 basic block。
+
+dominance_relation:
+  A 改写区域是否 dominate B 改写区域。
+
+same_cfg_path:
+  两个改写是否可能在同一条控制流路径上互相影响。
+```
+
+短期不需要实现完整控制流证明，可以先用启发式降噪：
+
+```text
+不同函数 -> 默认 region-independent。
+不同 top-level loop 且没有共享 exit/header -> 倾向 region-independent。
+只共享 function token，但没有共享 inst/loop token -> 降为 weak evidence。
+```
+
+这样可以缓解“函数越大，所有 pass 都看起来相关”的问题。
+
+### 16.10 memory 相关假依赖的处理
+
+对于 C benchmark，长代码里 load/store/call 会越来越多。如果只用 `inst:load` / `inst:store` 级 token，很容易把不相关内存操作判成冲突。后续可以增加 memory 层 footprint：
+
+```text
+memory_object:
+  alloca / global / argument based object
+
+alias_group:
+  基于简单别名规则或 LLVM alias analysis 的分组
+
+memoryssa_use / memoryssa_def:
+  如果后续接入 LLVM MemorySSA，可记录内存 def-use / clobber 关系
+```
+
+短期可以先做轻量版本：
+
+```text
+alloca:<function>:<name>
+global:<name>
+arg:<function>:<index>
+unknown_memory
+```
+
+只有当两个 pass 触碰同一个 memory object 或 `unknown_memory` 时，才把内存交集保留为强证据；否则降为 weak 或 region-local independent。
+
+### 16.11 推荐实施顺序
+
+为了避免一次改动过大，建议按下面顺序推进：
+
+```text
+Step 1:
+  在现有 footprint token 上实现 region extractor。
+  不改变原始 dependency matrix，只新增 region_dependency_matrix.csv。
+
+Step 2:
+  生成 local independence summary。
+  输出每个 pass pair 的 confirmed / likely / order-sensitive region 数量。
+
+Step 3:
+  对 gvn + simplifycfg、instcombine + sccp 等 context-sensitive pair 做 region-level attribution。
+  目标是解释它们到底在哪些 region 顺序敏感。
+
+Step 4:
+  引入 transformation instance id。
+  先从 already changed instruction / block group 推断 instance，不需要 LLVM instrumentation。
+
+Step 5:
+  加入 conflict slicing。
+  把 needs_attribution 拆成 same_direction / blocking / conflicting_write / structural_noise / unknown。
+
+Step 6:
+  再考虑 CFG、dominance、memory object 等增强特征。
+```
+
+这个方向的核心目标不是直接增加全局 independent 数量，而是避免长代码把所有 pass pair 都“全局判死”。最终报告应从：
+
+```text
+gvn + simplifycfg = dependent
+```
+
+升级为：
+
+```text
+gvn + simplifycfg = context-sensitive
+local independence rate = 72%
+unsafe regions = 8%
+needs attribution regions = 20%
+```
+
+这比单个全局标签更适合作为 phase ordering ML 的输入，也更符合大型程序中 pass 交互的真实形态。
+
 ## 17. 当前结论
 
 当前项目已经从 demo 级原型推进到可批量验证的依赖感知分析框架。

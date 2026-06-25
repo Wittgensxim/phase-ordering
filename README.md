@@ -595,3 +595,66 @@ OK
 3. 对 context_sensitive_keep_dependent pair 建立条件化规则，而不是全局降权。
 4. 等 confirmed/likely 标签稳定后，再构建 ML profitability / local ranking 数据集。
 ```
+
+## 下一阶段设计：局部化独立性判断
+
+当前 benchmark 级 pair 判断有一个长期问题：代码越长，函数、basic block、loop、load/store 越多，两个 pass 在某个局部区域发生交集的概率就越高。如果仍然只输出一个全局标签，就容易出现：
+
+```text
+某个 pass pair 只有一个 loop 顺序敏感
+  -> 整个 benchmark 上都被标成 dependent / context-sensitive
+```
+
+下一阶段应把问题从“这个 pass pair 是否全局独立”改成：
+
+```text
+这个 pass pair 在哪些 region 独立？
+在哪些 region 顺序敏感？
+哪些 region 还需要 attribution？
+```
+
+推荐先新增 region-level 报告，而不是替换现有 dependency matrix：
+
+```text
+region_dependency_matrix.csv
+local_independence_summary.csv
+```
+
+region 可以先分三层：
+
+```text
+function region:    func:<function>
+loop region:        loop:<function>:<header-block>
+basic-block region: bb:<function>:<basic-block>
+```
+
+目标输出从单个全局标签升级为：
+
+```text
+gvn + simplifycfg:
+  global = context_sensitive_keep_dependent
+  confirmed_independent_regions = ...
+  likely_independent_regions = ...
+  order_sensitive_regions = ...
+  needs_attribution_regions = ...
+  local_independence_rate = ...
+```
+
+实施顺序建议：
+
+```text
+1. 给现有 footprint token 增加 region extractor。
+2. 新增 region_dependency_matrix.csv，不改变原 dependency matrix。
+3. 聚合 local independence summary，统计每个 pair 的局部独立率和 unsafe region 比例。
+4. 优先对 gvn + simplifycfg、instcombine + sccp 这类 context-sensitive pair 做局部归因。
+5. 再引入 transformation instance，把一个 pass 的 writes 拆成多个 rewrite instance。
+6. 最后增加 CFG / dominance / memory object 等更强的局部约束。
+```
+
+这条路线的目标不是简单提高全局 independent 数字，而是解决“大程序里一处冲突导致整个 pair 被判死”的问题。最终 ML 也应学习局部决策：
+
+```text
+在哪些 region 可以重排 pass？
+在哪些 region 必须保序？
+哪些 region 需要继续归因？
+```
