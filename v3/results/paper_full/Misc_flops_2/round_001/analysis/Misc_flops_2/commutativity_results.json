@@ -1,0 +1,537 @@
+{
+  "summary": {
+    "total_pairs": 66,
+    "commuting_pairs": 41,
+    "non_commuting_pairs": 25
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %.05 = phi i32 [ 1, %0 ], [ %11, %7 ]\n    >   %.0 = phi double [ %2, %0 ], [ %8, %7 ]\n    <   %.05 = phi i32 [ 1, %0 ], [ %11, %7 ]\n    <   %.0 = phi double [ %2, %0 ], [ %10, %7 ]\n  in block %7 / %7:\n    >   %8 = fneg double %.0\n        %8 = load double, ptr @sa, align 8\n        %9 = fsub double %8, %.0\n        store double %9, ptr @sa, align 8\n    <   %10 = fneg double %.0\n  in block %14 / %14:\n    >   %.16 = phi i32 [ 1, %12 ], [ %25, %16 ]\n    >   %.03 = phi double [ 0.000000e+00, %12 ], [ %24, %16 ]\n    >   %.02 = phi double [ 0.000000e+00, %12 ], [ %22, %16 ]\n    >   %.01 = phi double [ %13, %12 ], [ %21, %16 ]\n    >   %.1 = phi double [ %.0, %12 ], [ %17, %16 ]\n    <   %.16 = phi i32 [ 1, %12 ], [ %25, %16 ]\n    <   %.03 = phi double [ 0.000000e+00, %12 ], [ %23, %16 ]\n    <   %.02 = phi double [ 0.000000e+00, %12 ], [ %24, %16 ]\n    <   %.01 = phi double [ %13, %12 ], [ %20, %16 ]\n    <   %.1 = phi double [ %.0, %12 ], [ %21, %16 ]\n  in block %16 / %16:\n    >   %17 = fneg double %.1\n        %17 = load double, ptr @sa, align 8\n        %18 = fsub double %17, %.1\n        store double %18, ptr @sa, align 8\n        %19 = load double, ptr @two, align 8\n        %20 = fadd double %.01, %19\n    >   %22 = call double @llvm.fmuladd.f64(double %.1, double %21, double %.02)\n    <   %21 = fneg double %.1\n        %22 = fdiv double %.1, %20\n        %23 = fsub double %.03, %22\n    <   %24 = call double @llvm.fmuladd.f64(double %.1, double %20, double %.02)"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__dce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %6 = phi double [ %4, %0 ], [ %10, %8 ]\n    >   %.05 = phi i32 [ 1, %0 ], [ %11, %8 ]\n    >   %.0 = phi double [ %2, %0 ], [ %9, %8 ]\n    <   %6 = phi double [ %4, %0 ], [ %9, %8 ]\n    <   %.05 = phi i32 [ 1, %0 ], [ %11, %8 ]\n    <   %.0 = phi double [ %2, %0 ], [ %10, %8 ]\n  in block %8 / %8:\n    >   %9 = fneg double %.0\n        %9 = fsub double %6, %.0\n        store double %9, ptr @sa, align 8\n    <   %10 = fneg double %.0\n  in block %13 / %13:\n    >   %14 = phi double [ %6, %12 ], [ %18, %16 ]\n    >   %.16 = phi i32 [ 1, %12 ], [ %24, %16 ]\n    >   %.03 = phi double [ 0.000000e+00, %12 ], [ %23, %16 ]\n    >   %.02 = phi double [ 0.000000e+00, %12 ], [ %21, %16 ]\n    >   %.01 = phi double [ %6, %12 ], [ %20, %16 ]\n    >   %.1 = phi double [ %.0, %12 ], [ %17, %16 ]\n    <   %14 = phi double [ %6, %12 ], [ %17, %16 ]\n    <   %.16 = phi i32 [ 1, %12 ], [ %24, %16 ]\n    <   %.03 = phi double [ 0.000000e+00, %12 ], [ %22, %16 ]\n    <   %.02 = phi double [ 0.000000e+00, %12 ], [ %23, %16 ]\n    <   %.01 = phi double [ %6, %12 ], [ %19, %16 ]\n    <   %.1 = phi double [ %.0, %12 ], [ %20, %16 ]\n  in block %16 / %16:\n    >   %17 = fneg double %.1\n        %17 = fsub double %14, %.1\n        store double %17, ptr @sa, align 8\n        %18 = load double, ptr @two, align 8\n        %19 = fadd double %.01, %18\n    >   %21 = call double @llvm.fmuladd.f64(double %.1, double %20, double %.02)\n    <   %20 = fneg double %.1\n        %21 = fdiv double %.1, %19\n        %22 = fsub double %.03, %21\n    <   %23 = call double @llvm.fmuladd.f64(double %.1, double %19, double %.02)"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__adce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %.06 = phi double [ %2, %0 ], [ %9, %8 ]\n    >   %.051 = phi i32 [ 1, %0 ], [ %10, %8 ]\n    <   %.04 = phi double [ %2, %0 ], [ %9, %8 ]\n    <   %.053 = phi i32 [ 1, %0 ], [ %10, %8 ]\n  in block %8 / %8:\n    >   %11 = icmp samesign ult i32 %.051, 156250000\n    >   br i1 %11, label %5, label %12, !llvm.loop !7\n    <   %11 = icmp samesign ult i32 %10, 156250001\n    <   br i1 %11, label %5, label %12, !llvm.loop !7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function main:\n  in block %0 / %0:\n    <   %sa.promoted = load double, ptr @sa, align 8"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %.05 = phi i32 [ 1, %0 ], [ %11, %9 ]\n    >   %.0 = phi double [ %2, %0 ], [ %10, %9 ]\n    >   %exitcond.not = icmp eq i32 %.05, 156250001\n    >   br i1 %exitcond.not, label %12, label %6\n    <   %.05 = phi i32 [ 1, %0 ], [ %11, %9 ]\n    <   %.0 = phi double [ %2, %0 ], [ %10, %9 ]\n    <   %exitcond = icmp ne i32 %.05, 156250001\n    <   br i1 %exitcond, label %6, label %12"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %.05 = phi i32 [ 1, %0 ], [ %15, %14 ]\n    >   %6 = icmp samesign ult i32 %.05, 156250001\n    >   br i1 %6, label %7, label %16\n    <   %.05 = phi i32 [ 1, %0 ], [ %16, %15 ]\n    <   %.0 = phi double [ %2, %0 ], [ %.0, %15 ]\n    <   %6 = icmp samesign ult i32 %.05, 156250001\n    <   br i1 %6, label %7, label %17"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\instcombine__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__dce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__adce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %.05 = phi i32 [ 1, %0 ], [ %18, %12 ]\n    <   %.05 = phi i32 [ 1, %0 ], [ %26, %23 ]\n  in block %12 / %12:\n    >   %16 = load double, ptr @sa, align 8\n    >   %17 = fadd double %16, %.0\n    >   store double %17, ptr @sa, align 8\n    >   %18 = add nuw nsw i32 %.05, 2\n  in block %23 / %12:\n    >   %13 = fneg double %.0\n    >   %14 = load double, ptr @sa, align 8\n    >   %15 = fadd double %14, %13\n    >   store double %15, ptr @sa, align 8\n        %24 = load double, ptr @sa, align 8\n        %25 = fadd double %24, %.0\n        store double %25, ptr @sa, align 8\n    >   %18 = add nuw nsw i32 %.05, 2\n    <   %26 = add nuw nsw i32 %.05, 4"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\simplifycfg__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__adce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__dce.ll",
+      "details": "in function main:\n  in block %19 / %19:\n    >   %.16 = phi i32 [ 1, %17 ], [ %32, %31 ]\n    >   %.04 = phi double [ 0.000000e+00, %17 ], [ %27, %31 ]\n    >   %.03 = phi double [ 0.000000e+00, %17 ], [ %30, %31 ]\n    >   %.02 = phi double [ 0.000000e+00, %17 ], [ %28, %31 ]\n    >   %.01 = phi double [ %18, %17 ], [ %25, %31 ]\n    >   %.1 = phi double [ %.0.lcssa, %17 ], [ %21, %31 ]\n    >   %exitcond1 = icmp ne i32 %.16, 156250001\n    >   br i1 %exitcond1, label %20, label %33\n    <   %.16 = phi i32 [ 1, %17 ], [ %30, %29 ]\n    <   %.03 = phi double [ 0.000000e+00, %17 ], [ %28, %29 ]\n    <   %.02 = phi double [ 0.000000e+00, %17 ], [ %26, %29 ]\n    <   %.01 = phi double [ %18, %17 ], [ %25, %29 ]\n    <   %.1 = phi double [ %.0.lcssa, %17 ], [ %21, %29 ]\n    <   %exitcond1 = icmp ne i32 %.16, 156250001\n    <   br i1 %exitcond1, label %20, label %31"
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\dce__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__adce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function main:\n  in block %17 / %17:\n    <   %.0.lcssa = phi double [ %11, %14 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function main:\n  in block %0 / %0:\n    <   %sa.promoted = load double, ptr @sa, align 8"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function main:\n  in block %17 / %17:\n    <   %.0.lcssa = phi double [ %.0, %10 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %.05 = phi i32 [ 1, %0 ], [ %19, %18 ]\n    >   %11 = icmp samesign ule i32 %.05, 156250000\n    >   br i1 %11, label %12, label %20\n    <   %.05 = phi i32 [ 1, %0 ], [ %21, %20 ]\n    <   %.0 = phi double [ %7, %0 ], [ %.0, %20 ]\n    <   %11 = icmp samesign ule i32 %.05, 156250000\n    <   br i1 %11, label %12, label %22"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\early-cse__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__early-cse.ll",
+      "details": "in function main:\n  in block %35 / %35:\n    >   %36 = load double, ptr @sa, align 8"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__adce.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function main:\n  in block %9 / %9:\n    >   %10 = phi double [ %8, %0 ], [ %12, %9 ]\n    >   %.06 = phi double [ %6, %0 ], [ %11, %9 ]\n    >   %.051 = phi i32 [ 1, %0 ], [ %13, %9 ]\n    >   %11 = fneg double %.06\n    >   %12 = fadd double %10, %11\n    >   store double %12, ptr @sa, align 8\n    >   %13 = add nsw i32 %.051, 1\n    >   %14 = icmp sle i32 %13, 156250000\n    >   br i1 %14, label %9, label %15, !llvm.loop !7\n    <   %.06 = phi double [ %6, %0 ], [ %11, %9 ]\n    <   %.052 = phi i32 [ 1, %0 ], [ %13, %9 ]\n    <   %10 = phi double [ %8, %0 ], [ %12, %9 ]\n    <   %11 = fneg double %.06\n    <   %12 = fadd double %10, %11\n    <   store double %12, ptr @sa, align 8\n    <   %13 = add nsw i32 %.052, 1\n    <   %14 = icmp sle i32 %13, 156250000\n    <   br i1 %14, label %9, label %15, !llvm.loop !7"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__gvn.ll",
+      "details": "in function main:\n  in block %9 / %9:\n    >   %10 = phi double [ %8, %0 ], [ %14, %12 ]\n    >   %.05 = phi i32 [ 1, %0 ], [ %15, %12 ]\n    >   %.0 = phi double [ %6, %0 ], [ %13, %12 ]\n    >   %11 = icmp sle i32 %.05, 156250000\n    >   br i1 %11, label %12, label %16\n    <   %10 = phi double [ poison, %0 ], [ %15, %13 ]\n    <   %11 = phi double [ %8, %0 ], [ %15, %13 ]\n    <   %.05 = phi i32 [ 1, %0 ], [ %16, %13 ]\n    <   %.0 = phi double [ %6, %0 ], [ %14, %13 ]\n    <   %12 = icmp sle i32 %.05, 156250000\n    <   br i1 %12, label %13, label %17"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function main:\n  in block %15 / %15:\n    <   %.lcssa1 = phi double [ %10, %9 ]\n    <   %.0.lcssa = phi double [ %.0, %9 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function main:\n  in block %9 / %9:\n    >   %10 = phi double [ %8, %0 ], [ %14, %12 ]\n    >   %.05 = phi i32 [ 1, %0 ], [ %15, %12 ]\n    >   %11 = icmp samesign ule i32 %.05, 156250000\n    >   br i1 %11, label %12, label %16\n    <   %10 = phi double [ %8, %0 ], [ %21, %20 ]\n    <   %.05 = phi i32 [ 1, %0 ], [ %22, %20 ]\n    <   %.0 = phi double [ %6, %0 ], [ %.0, %20 ]\n    <   %11 = icmp samesign ule i32 %.05, 156250000\n    <   br i1 %11, label %12, label %23"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\gvn__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__gvn.ll",
+      "details": "in function main:\n  in block %9 / %9:\n    >   %10 = phi double [ %8, %0 ], [ %14, %12 ]\n    >   %.05 = phi i32 [ 1, %0 ], [ %15, %12 ]\n    >   %.0 = phi double [ %6, %0 ], [ %13, %12 ]\n    <   %10 = phi double [ %8, %0 ], [ %14, %12 ]\n    <   %.05 = phi i32 [ 1, %0 ], [ %15, %12 ]\n    <   %.0 = phi double [ %6, %0 ], [ %13, %12 ]\n  in block %12 / %12:\n    >   %14 = fadd double %13, %10\n    >   store double %14, ptr @sa, align 8\n    <   %14 = fadd double %10, %13\n    <   store double %14, ptr @sa, align 8\n  in block %17 / %17:\n    >   %18 = phi double [ %10, %16 ], [ %22, %20 ]\n    >   %.16 = phi i32 [ 1, %16 ], [ %30, %20 ]\n    >   %.04 = phi double [ 0.000000e+00, %16 ], [ %26, %20 ]\n    >   %.03 = phi double [ 0.000000e+00, %16 ], [ %29, %20 ]\n    >   %.02 = phi double [ 0.000000e+00, %16 ], [ %27, %20 ]\n    >   %.01 = phi double [ %10, %16 ], [ %24, %20 ]\n    >   %.1 = phi double [ %.0, %16 ], [ %21, %20 ]\n    <   %18 = phi double [ %10, %16 ], [ %22, %20 ]\n    <   %.16 = phi i32 [ 1, %16 ], [ %30, %20 ]\n    <   %.04 = phi double [ 0.000000e+00, %16 ], [ %26, %20 ]\n    <   %.03 = phi double [ 0.000000e+00, %16 ], [ %29, %20 ]\n    <   %.02 = phi double [ 0.000000e+00, %16 ], [ %27, %20 ]\n    <   %.01 = phi double [ %10, %16 ], [ %24, %20 ]\n    <   %.1 = phi double [ %.0, %16 ], [ %21, %20 ]\n  in block %20 / %20:\n    >   %22 = fadd double %21, %18\n    >   store double %22, ptr @sa, align 8\n    <   %22 = fadd double %18, %21\n    <   store double %22, ptr @sa, align 8\n  in block %31 / %31:\n    >   %32 = fmul double %.04, %18\n    <   %32 = fmul double %18, %.04\n        %33 = load double, ptr @four, align 8\n        %34 = fmul double %.03, %33\n        %35 = fdiv double %34, %5\n        store double %35, ptr @sa, align 8\n        %36 = fdiv double %5, %.02\n    >   %37 = fadd double %35, %36\n    >   store double %37, ptr @sb, align 8\n    <   %37 = fadd double %36, %35\n    <   store double %37, ptr @sb, align 8\n        store double 3.125000e+01, ptr @sc, align 8\n        %38 = fmul double %.02, %.02\n        %39 = fmul double %.02, %38\n        %40 = fdiv double 3.125000e+01, %39\n    >   %41 = fsub double %37, %40\n    >   store double %41, ptr @piprg, align 8\n    <   %41 = fsub double %37, %40\n    <   store double %41, ptr @piprg, align 8\n        %42 = load double, ptr @piref, align 8\n    >   %43 = fsub double %41, %42\n    >   store double %43, ptr @pierr, align 8\n    >   %44 = fmul double %43, 1.000000e-30\n    <   %43 = fsub double %41, %42\n    <   store double %43, ptr @pierr, align 8\n    <   %44 = fmul double %43, 1.000000e-30"
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__adce.ll",
+      "details": "in function main:\n  in block %24 / %24:\n    >   %.16 = phi i32 [ 1, %22 ], [ %36, %35 ]\n    >   %.03 = phi double [ 0.000000e+00, %22 ], [ %34, %35 ]\n    >   %.02 = phi double [ 0.000000e+00, %22 ], [ %32, %35 ]\n    >   %.01 = phi double [ %23, %22 ], [ %31, %35 ]\n    >   %.1 = phi double [ %.0.lcssa, %22 ], [ %27, %35 ]\n    >   %25 = icmp sle i32 %.16, 156250000\n    >   br i1 %25, label %26, label %37\n    <   %.16 = phi i32 [ 1, %22 ], [ %44, %43 ]\n    <   %.03 = phi double [ 0.000000e+00, %22 ], [ %42, %43 ]\n    <   %.02 = phi double [ 0.000000e+00, %22 ], [ %40, %43 ]\n    <   %.01 = phi double [ %23, %22 ], [ %39, %43 ]\n    <   %.1 = phi double [ %.0.lcssa, %22 ], [ %.1, %43 ]\n    <   %25 = icmp samesign ule i32 %.16, 156250000\n    <   br i1 %25, label %26, label %45"
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\adce__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__loop-simplify.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %.05 = phi i32 [ 1, %0 ], [ %21, %20 ]\n    >   %11 = icmp samesign ule i32 %.05, 156250000\n    >   br i1 %11, label %12, label %22\n    <   %.05 = phi i32 [ 1, %0 ], [ %21, %20 ]\n    <   %.0 = phi double [ %7, %0 ], [ %.0, %20 ]\n    <   %11 = icmp samesign ule i32 %.05, 156250000\n    <   br i1 %11, label %12, label %22"
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-simplify__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__loop-rotate.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %.06 = phi double [ %7, %0 ], [ %12, %14 ]\n    >   %.053 = phi i32 [ 1, %0 ], [ %15, %14 ]\n    >   %11 = phi double [ %sa.promoted, %0 ], [ %13, %14 ]\n    >   %12 = fneg double %.06\n    >   %13 = fadd double %11, %12\n    <   %11 = phi double [ %sa.promoted, %0 ], [ %13, %14 ]\n    <   %.06 = phi double [ %7, %0 ], [ %12, %14 ]\n    <   %.051 = phi i32 [ 1, %0 ], [ %15, %14 ]\n    <   %12 = fneg double %.06\n    <   %13 = fadd double %11, %12"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %.051 = phi i32 [ 1, %0 ], [ %19, %18 ]\n    >   %11 = fneg double %7\n    <   %.06 = phi double [ %7, %0 ], [ %.06, %24 ]\n    <   %.051 = phi i32 [ 1, %0 ], [ %25, %24 ]\n    <   %11 = fneg double %.06\n        %12 = load double, ptr @sa, align 8\n    >   %13 = fadd double %12, %11\n    >   store double %13, ptr @sa, align 8\n    <   %13 = fadd double %12, %11\n    <   store double %13, ptr @sa, align 8"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-rotate__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__licm.ll",
+      "details": "in function main:\n  in block %0 / %0:\n    >   %10 = fneg double %7"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\licm__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__licm.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %11 = phi double [ %sa.promoted, %0 ], [ %15, %16 ]\n    <   %11 = phi double [ %sa.promoted, %0 ], [ %15, %16 ]\n        %.05 = phi i32 [ 1, %0 ], [ %17, %16 ]\n    >   %.0 = phi double [ %7, %0 ], [ %14, %16 ]\n    <   %.0 = phi double [ %7, %0 ], [ %14, %16 ]\n  in block %13 / %13:\n    >   %15 = fadd double %14, %11\n    <   %15 = fadd double %11, %14\n  in block %21 / %21:\n    >   %22 = phi double [ %sa.promoted1, %18 ], [ %26, %33 ]\n    <   %22 = phi double [ %sa.promoted1, %18 ], [ %26, %33 ]\n        %.16 = phi i32 [ 1, %18 ], [ %34, %33 ]\n    >   %.04 = phi double [ 0.000000e+00, %18 ], [ %29, %33 ]\n    >   %.03 = phi double [ 0.000000e+00, %18 ], [ %32, %33 ]\n    >   %.02 = phi double [ 0.000000e+00, %18 ], [ %30, %33 ]\n    >   %.01 = phi double [ %19, %18 ], [ %27, %33 ]\n    >   %.1 = phi double [ %.0.lcssa, %18 ], [ %25, %33 ]\n    <   %.04 = phi double [ 0.000000e+00, %18 ], [ %29, %33 ]\n    <   %.03 = phi double [ 0.000000e+00, %18 ], [ %32, %33 ]\n    <   %.02 = phi double [ 0.000000e+00, %18 ], [ %30, %33 ]\n    <   %.01 = phi double [ %19, %18 ], [ %27, %33 ]\n    <   %.1 = phi double [ %.0.lcssa, %18 ], [ %25, %33 ]\n  in block %24 / %24:\n    >   %26 = fadd double %25, %22\n    >   %27 = fadd double %.01, %20\n    >   %28 = fsub double %25, %27\n    >   %29 = fadd double %.04, %28\n    <   %26 = fadd double %22, %25\n    <   %27 = fadd double %20, %.01\n    <   %28 = fsub double %25, %27\n    <   %29 = fadd double %.04, %28\n        %30 = call double @llvm.fmuladd.f64(double %.1, double %27, double %.02)\n    >   %31 = fdiv double %25, %27\n    >   %32 = fadd double %.03, %31\n    <   %31 = fdiv double %25, %27\n    <   %32 = fadd double %.03, %31"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": "in function main:\n  in block %10 / %10:\n    >   %.05 = phi i32 [ 1, %0 ], [ %21, %20 ]\n    >   %11 = icmp samesign ule i32 %.05, 156250000\n    >   br i1 %11, label %12, label %22\n    <   %.05 = phi i32 [ 1, %0 ], [ %20, %19 ]\n    <   %.0 = phi double [ %7, %0 ], [ %.0, %19 ]\n    <   %exitcond = icmp ne i32 %.05, 156250001\n    <   br i1 %exitcond, label %11, label %21"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\indvars__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\loop-unroll__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_2\\round_001\\analysis\\Misc_flops_2\\commutativity\\reassociate__then__loop-unroll.ll",
+      "details": ""
+    }
+  ]
+}

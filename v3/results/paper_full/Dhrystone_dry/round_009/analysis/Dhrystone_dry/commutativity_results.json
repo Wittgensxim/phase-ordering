@@ -1,0 +1,297 @@
+{
+  "summary": {
+    "total_pairs": 36,
+    "commuting_pairs": 21,
+    "non_commuting_pairs": 15
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %22 / %22:\n    >   %23 = phi i32 [ %.pre, %.lr.ph ], [ %28, %22 ]\n    >   %24 = mul nsw i32 %23, 5\n    >   %25 = add nsw i32 %24, -3\n    >   store i32 %25, ptr %2, align 4\n    <   %23 = phi i32 [ %.pre, %.lr.ph ], [ %28, %22 ]\n    <   %24 = mul nsw i32 %23, 5\n    <   %25 = add nsw i32 %24, -3\n    <   store i32 %25, ptr %2, align 4\n        %26 = call i32 @Proc7(i32 noundef %23, i32 noundef 3, ptr noundef nonnull %2)\n        %27 = load i32, ptr %1, align 4\n        %28 = add nsw i32 %27, 1\n        store i32 %28, ptr %1, align 4\n    >   %29 = icmp slt i32 %27, 2\n    >   br i1 %29, label %22, label %._crit_edge, !llvm.loop !7\n    <   %29 = icmp slt i32 %28, 3\n    <   br i1 %29, label %22, label %._crit_edge, !llvm.loop !7\n  in block %30 / %30:\n    >   %.lcssa = phi i32 [ %28, %._crit_edge ], [ %.pre, %16 ]\n    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %.pre, %16 ]\n        %31 = load i32, ptr %2, align 4\n        %32 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %.lcssa, i32 noundef %31)\n        %33 = load ptr, ptr @PtrGlb, align 8\n        %34 = call i32 @Proc1(ptr noundef %33)\n        %35 = load i8, ptr @Char2Glob, align 1\n    >   %.not11 = icmp slt i8 %35, 65\n    >   br i1 %.not11, label %46, label %.lr.ph4\n    <   %.not11 = icmp sgt i8 65, %35\n    <   br i1 %.not11, label %46, label %.lr.ph4\n\nin function Func2:\n  in block %5 / %5:\n    >   br i1 %11, label %12, label %5, !llvm.loop !7\n    <   %spec.select = select i1 %11, i32 2, i32 1\n    <   %12 = icmp samesign ult i32 %spec.select, 2\n    <   br i1 %12, label %5, label %13, !llvm.loop !7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__instcombine.ll",
+      "details": "in function Proc2:\n  in block %3 / %3:\n    >   %7 = sub i32 %5, %6\n    >   store i32 %7, ptr %0, align 4\n    <   %.neg = sub i32 0, %6\n    <   %7 = add i32 %5, %.neg\n    <   store i32 %7, ptr %0, align 4"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function Proc0:\n  in block %.lr.ph:\n    >   %22 = phi i32 [ %27, %.lr.ph ], [ %.pre, %16 ]\n    >   %23 = mul nsw i32 %22, 5\n    >   %24 = add nsw i32 %23, -3\n    >   store i32 %24, ptr %2, align 4\n    >   %25 = call i32 @Proc7(i32 noundef %22, i32 noundef 3, ptr noundef nonnull %2)\n    >   %26 = load i32, ptr %1, align 4\n    >   %27 = add nsw i32 %26, 1\n    >   store i32 %27, ptr %1, align 4\n    >   %28 = icmp slt i32 %27, 3\n    >   br i1 %28, label %.lr.ph, label %._crit_edge, !llvm.loop !7\n    <   br label %22\n  in block %30 / %._crit_edge:\n    >   %.lcssa = phi i32 [ %.pre, %16 ], [ %27, %.lr.ph ]\n    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %.pre, %16 ]\n\nin function Proc8:\n  in block %.lr.ph:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ %12, %4 ]\n    >   %15 = getelementptr inbounds [4 x i8], ptr %14, i64 %indvars.iv2\n    >   store i32 %5, ptr %15, align 4\n    >   %indvars.iv.next = add nsw i64 %indvars.iv2, 1\n    >   %exitcond = icmp eq i64 %indvars.iv.next, %wide.trip.count\n    >   br i1 %exitcond, label %._crit_edge, label %.lr.ph, !llvm.loop !7\n    <   br label %15"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %._crit_edge:\n    <   %split = phi i32 [ %28, %22 ]\n  in block %30 / %30:\n    >   %.lcssa = phi i32 [ %28, %._crit_edge ], [ %.pre, %16 ]\n    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %.pre, %16 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %._crit_edge:\n    <   %split = phi i32 [ %28, %22 ]\n  in block %30 / %30:\n    >   %.lcssa = phi i32 [ %28, %._crit_edge ], [ %.pre, %16 ]\n    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %.pre, %16 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %31 / %31:\n    <   %.lcssa = phi i32 [ %23, %22 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": "in function Proc8:\n  in block %.lr.ph:\n    >   br label %15\n    <   %15 = add i64 %wide.trip.count, -5\n    <   %16 = sub i64 %15, %8\n    <   %17 = add i64 %wide.trip.count, -6\n    <   %18 = sub i64 %17, %8\n    <   %xtraiter = and i64 %16, 7\n    <   %lcmp.mod = icmp ne i64 %xtraiter, 0\n    <   br i1 %lcmp.mod, label %.prol.preheader, label %.prol.loopexit"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\licm__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_009\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__loop-unroll.ll",
+      "details": ""
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+benchmark,status,rounds,final_score,final_instructions,baseline_score,improvement
+Misc_flops_5,ok,7,180.29,83,208.25,27.960000000000008
+Stanford_Towers,ok,7,243.15,127,249.32,6.1699999999999875
+Stanford_Puzzle,ok,11,750.92,413,838.15,87.23000000000002
+Stanford_Perm,ok,9,128.28,69,135.21,6.930000000000007
+Stanford_Queens,ok,9,337.35,150,192.45,-144.90000000000003

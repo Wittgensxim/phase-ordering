@@ -1,0 +1,7 @@
+{
+  "baseline_score": 61.23,
+  "scheduler_score": 87.48,
+  "improvement": -26.250000000000007,
+  "baseline_instruction_count": 64,
+  "scheduler_instruction_count": 106
+}

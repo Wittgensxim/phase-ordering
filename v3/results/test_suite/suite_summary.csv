@@ -1,0 +1,2 @@
+benchmark,input_ir,candidate_passes,inactive_passes,enable_edges,dependency_pairs,independent_pairs,dependent_pairs,uncertain_pairs,validation_pairs,agree_dependent,agree_independent,false_positive,false_negative,uncertain_commuting,uncertain_non_commuting,confirmed_independent_pairs,likely_independent_pairs,needs_attribution_pairs,order_sensitive_pairs
+Misc_flops_1,results\test_suite\Misc_flops_1\Misc_flops_1.ll,instcombine;simplifycfg;sroa;early-cse;gvn;sccp;dce;adce;loop-rotate;loop-unroll,1,51,45,14,31,0,45,15,14,16,0,0,0,14,6,10,15

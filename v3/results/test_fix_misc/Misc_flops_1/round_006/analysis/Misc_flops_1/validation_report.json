@@ -1,0 +1,308 @@
+{
+  "summary": {
+    "total_pairs": 10,
+    "agree_dependent": 6,
+    "agree_independent": 2,
+    "false_positive": 2,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 0,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->early-cse"
+      ],
+      "commutativity_details": "in function main:\n  in block %23 / %23:\n    >   %24 = fadd double %9, %10\n    >   %25 = fadd double %24, %11\n    >   %26 = fadd double %1, %9\n    >   %27 = fadd double %26, %14\n    >   %28 = fadd double %27, %15\n    >   %29 = fdiv double %25, %28\n    >   store double %29, ptr @sa, align 8\n    >   store double %9, ptr @sb, align 8\n    >   %30 = fadd double %29, %9\n    <   %.lcssa5 = phi double [ %9, %3 ]\n    <   %.lcssa4 = phi double [ %10, %3 ]\n    <   %.lcssa3 = phi double [ %11, %3 ]\n    <   %.lcssa2 = phi double [ %14, %3 ]\n    <   %.lcssa1 = phi double [ %15, %3 ]\n    <   %.lcssa = phi double [ %20, %3 ]\n    <   %24 = fadd double %.lcssa5, %.lcssa4\n    <   %25 = fadd double %24, %.lcssa3\n    <   %26 = fadd double %1, %.lcssa5\n    <   %27 = fadd double %26, %.lcssa2\n    <   %28 = fadd double %27, %.lcssa1\n    <   %29 = fdiv double %25, %28\n    <   store double %29, ptr @sa, align 8\n    <   store double %.lcssa5, ptr @sb, align 8\n    <   %30 = fadd double %29, %.lcssa5\n        %31 = load double, ptr @two, align 8\n    >   %32 = call double @llvm.fmuladd.f64(double %31, double %20, double %30)\n    >   %33 = fmul double %2, %32\n    >   %34 = fdiv double %33, %31\n    >   store double %34, ptr @sa, align 8\n    >   %35 = fdiv double %1, %34\n    >   store double %35, ptr @sb, align 8\n    >   %36 = fadd double %35, -2.520000e+01\n    >   store double %36, ptr @sc, align 8\n    >   %37 = fmul double %36, 1.000000e-30\n    <   %32 = call double @llvm.fmuladd.f64(double %31, double %.lcssa, double %30)\n    <   %33 = fmul double %2, %32\n    <   %34 = fdiv double %33, %31\n    <   store double %34, ptr @sa, align 8\n    <   %35 = fdiv double %1, %34\n    <   store double %35, ptr @sb, align 8\n    <   %36 = fadd double %35, -2.520000e+01\n    <   store double %36, ptr @sc, align 8\n    <   %37 = fmul double %36, 1.000000e-30"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->early-cse"
+      ],
+      "commutativity_details": "in function main:\n  in block %23 / %23:\n    >   %24 = fadd double %9, %10\n    >   %25 = fadd double %24, %11\n    >   %26 = fadd double %1, %9\n    >   %27 = fadd double %26, %14\n    >   %28 = fadd double %27, %15\n    >   %29 = fdiv double %25, %28\n    >   store double %29, ptr @sa, align 8\n    >   store double %9, ptr @sb, align 8\n    >   %30 = fadd double %29, %9\n    <   %.lcssa5 = phi double [ %9, %3 ]\n    <   %.lcssa4 = phi double [ %10, %3 ]\n    <   %.lcssa3 = phi double [ %11, %3 ]\n    <   %.lcssa2 = phi double [ %14, %3 ]\n    <   %.lcssa1 = phi double [ %15, %3 ]\n    <   %.lcssa = phi double [ %20, %3 ]\n    <   %24 = fadd double %.lcssa5, %.lcssa4\n    <   %25 = fadd double %24, %.lcssa3\n    <   %26 = fadd double %1, %.lcssa5\n    <   %27 = fadd double %26, %.lcssa2\n    <   %28 = fadd double %27, %.lcssa1\n    <   %29 = fdiv double %25, %28\n    <   store double %29, ptr @sa, align 8\n    <   store double %.lcssa5, ptr @sb, align 8\n    <   %30 = fadd double %29, %.lcssa5\n        %31 = load double, ptr @two, align 8\n    >   %32 = call double @llvm.fmuladd.f64(double %31, double %20, double %30)\n    >   %33 = fmul double %2, %32\n    >   %34 = fdiv double %33, %31\n    >   store double %34, ptr @sa, align 8\n    >   %35 = fdiv double %1, %34\n    >   store double %35, ptr @sb, align 8\n    >   %36 = fadd double %35, -2.520000e+01\n    >   store double %36, ptr @sc, align 8\n    >   %37 = fmul double %36, 1.000000e-30\n    <   %32 = call double @llvm.fmuladd.f64(double %31, double %.lcssa, double %30)\n    <   %33 = fmul double %2, %32\n    <   %34 = fdiv double %33, %31\n    <   store double %34, ptr @sa, align 8\n    <   %35 = fdiv double %1, %34\n    <   store double %35, ptr @sb, align 8\n    <   %36 = fadd double %35, -2.520000e+01\n    <   store double %36, ptr @sc, align 8\n    <   %37 = fmul double %36, 1.000000e-30"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%22"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%22"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%22"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%22"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion",
+        "mutation"
+      ],
+      "enablement_edges": [
+        "instcombine->gvn",
+        "gvn->instcombine"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->gvn"
+      ],
+      "commutativity_details": "in function main:\n  in block %18 / %18:\n    <   %.lcssa = phi double [ %15, %3 ]\n        %19 = fadd double %.pre, %.pre1\n        %20 = fadd double %19, %.pre2\n        %21 = fadd double %1, %.pre\n        %22 = fadd double %21, %.pre3\n        %23 = fadd double %22, %.pre4\n        %24 = fdiv double %20, %23\n        store double %24, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %25 = fadd double %24, %.pre\n        %26 = load double, ptr @two, align 8\n    >   %27 = call double @llvm.fmuladd.f64(double %26, double %15, double %25)\n    >   %28 = fmul double %2, %27\n    >   %29 = fdiv double %28, %26\n    >   store double %29, ptr @sa, align 8\n    >   %30 = fdiv double %1, %29\n    >   store double %30, ptr @sb, align 8\n    >   %31 = fadd double %30, -2.520000e+01\n    >   store double %31, ptr @sc, align 8\n    >   %32 = fmul double %31, 1.000000e-30\n    <   %27 = call double @llvm.fmuladd.f64(double %26, double %.lcssa, double %25)\n    <   %28 = fmul double %2, %27\n    <   %29 = fdiv double %28, %26\n    <   store double %29, ptr @sa, align 8\n    <   %30 = fdiv double %1, %29\n    <   store double %30, ptr @sb, align 8\n    <   %31 = fadd double %30, -2.520000e+01\n    <   store double %31, ptr @sc, align 8\n    <   %32 = fmul double %31, 1.000000e-30"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "commutativity_details": "in function main:\n  in block %18 / %18:\n    <   %.lcssa = phi double [ %15, %3 ]\n        %19 = fadd double %.pre, %.pre1\n        %20 = fadd double %19, %.pre2\n        %21 = fadd double %1, %.pre\n        %22 = fadd double %21, %.pre3\n        %23 = fadd double %22, %.pre4\n        %24 = fdiv double %20, %23\n        store double %24, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %25 = fadd double %24, %.pre\n        %26 = load double, ptr @two, align 8\n    >   %27 = call double @llvm.fmuladd.f64(double %26, double %15, double %25)\n    >   %28 = fmul double %2, %27\n    >   %29 = fdiv double %28, %26\n    >   store double %29, ptr @sa, align 8\n    >   %30 = fdiv double %1, %29\n    >   store double %30, ptr @sb, align 8\n    >   %31 = fadd double %30, -2.520000e+01\n    >   store double %31, ptr @sc, align 8\n    >   %32 = fmul double %31, 1.000000e-30\n    <   %27 = call double @llvm.fmuladd.f64(double %26, double %.lcssa, double %25)\n    <   %28 = fmul double %2, %27\n    <   %29 = fdiv double %28, %26\n    <   store double %29, ptr @sa, align 8\n    <   %30 = fdiv double %1, %29\n    <   store double %30, ptr @sb, align 8\n    <   %31 = fadd double %30, -2.520000e+01\n    <   store double %31, ptr @sc, align 8\n    <   %32 = fmul double %31, 1.000000e-30"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->instcombine"
+      ],
+      "commutativity_details": "in function main:\n  in block %23 / %23:\n    >   %24 = fadd double %9, %10\n    >   %25 = fadd double %24, %11\n    >   %26 = fadd double %1, %9\n    >   %27 = fadd double %26, %14\n    >   %28 = fadd double %27, %15\n    >   %29 = fdiv double %25, %28\n    >   store double %29, ptr @sa, align 8\n    >   store double %9, ptr @sb, align 8\n    >   %30 = fadd double %29, %9\n    <   %.lcssa5 = phi double [ %9, %3 ]\n    <   %.lcssa4 = phi double [ %10, %3 ]\n    <   %.lcssa3 = phi double [ %11, %3 ]\n    <   %.lcssa2 = phi double [ %14, %3 ]\n    <   %.lcssa1 = phi double [ %15, %3 ]\n    <   %.lcssa = phi double [ %20, %3 ]\n    <   %24 = fadd double %.lcssa5, %.lcssa4\n    <   %25 = fadd double %24, %.lcssa3\n    <   %26 = fadd double %1, %.lcssa5\n    <   %27 = fadd double %26, %.lcssa2\n    <   %28 = fadd double %27, %.lcssa1\n    <   %29 = fdiv double %25, %28\n    <   store double %29, ptr @sa, align 8\n    <   store double %.lcssa5, ptr @sb, align 8\n    <   %30 = fadd double %29, %.lcssa5\n        %31 = load double, ptr @two, align 8\n    >   %32 = call double @llvm.fmuladd.f64(double %31, double %20, double %30)\n    >   %33 = fmul double %2, %32\n    >   %34 = fdiv double %33, %31\n    >   store double %34, ptr @sa, align 8\n    >   %35 = fdiv double %1, %34\n    >   store double %35, ptr @sb, align 8\n    >   %36 = fadd double %35, -2.520000e+01\n    >   store double %36, ptr @sc, align 8\n    >   %37 = fmul double %36, 1.000000e-30\n    <   %32 = call double @llvm.fmuladd.f64(double %31, double %.lcssa, double %30)\n    <   %33 = fmul double %2, %32\n    <   %34 = fdiv double %33, %31\n    <   store double %34, ptr @sa, align 8\n    <   %35 = fdiv double %1, %34\n    <   store double %35, ptr @sb, align 8\n    <   %36 = fadd double %35, -2.520000e+01\n    <   store double %36, ptr @sc, align 8\n    <   %37 = fmul double %36, 1.000000e-30"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-unroll->instcombine"
+      ],
+      "commutativity_details": "in function main:\n  in block %23 / %23:\n    >   %24 = fadd double %9, %10\n    >   %25 = fadd double %24, %11\n    >   %26 = fadd double %1, %9\n    >   %27 = fadd double %26, %14\n    >   %28 = fadd double %27, %15\n    >   %29 = fdiv double %25, %28\n    >   store double %29, ptr @sa, align 8\n    >   store double %9, ptr @sb, align 8\n    >   %30 = fadd double %29, %9\n    <   %.lcssa5 = phi double [ %9, %3 ]\n    <   %.lcssa4 = phi double [ %10, %3 ]\n    <   %.lcssa3 = phi double [ %11, %3 ]\n    <   %.lcssa2 = phi double [ %14, %3 ]\n    <   %.lcssa1 = phi double [ %15, %3 ]\n    <   %.lcssa = phi double [ %20, %3 ]\n    <   %24 = fadd double %.lcssa5, %.lcssa4\n    <   %25 = fadd double %24, %.lcssa3\n    <   %26 = fadd double %1, %.lcssa5\n    <   %27 = fadd double %26, %.lcssa2\n    <   %28 = fadd double %27, %.lcssa1\n    <   %29 = fdiv double %25, %28\n    <   store double %29, ptr @sa, align 8\n    <   store double %.lcssa5, ptr @sb, align 8\n    <   %30 = fadd double %29, %.lcssa5\n        %31 = load double, ptr @two, align 8\n    >   %32 = call double @llvm.fmuladd.f64(double %31, double %20, double %30)\n    >   %33 = fmul double %2, %32\n    >   %34 = fdiv double %33, %31\n    >   store double %34, ptr @sa, align 8\n    >   %35 = fdiv double %1, %34\n    >   store double %35, ptr @sb, align 8\n    >   %36 = fadd double %35, -2.520000e+01\n    >   store double %36, ptr @sc, align 8\n    >   %37 = fmul double %36, 1.000000e-30\n    <   %32 = call double @llvm.fmuladd.f64(double %31, double %.lcssa, double %30)\n    <   %33 = fmul double %2, %32\n    <   %34 = fdiv double %33, %31\n    <   store double %34, ptr @sa, align 8\n    <   %35 = fdiv double %1, %34\n    <   store double %35, ptr @sb, align 8\n    <   %36 = fadd double %35, -2.520000e+01\n    <   store double %36, ptr @sc, align 8\n    <   %37 = fmul double %36, 1.000000e-30"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "inst:main:%.lcssa",
+        "inst:main:%.lcssa1",
+        "inst:main:%.lcssa2",
+        "inst:main:%.lcssa3",
+        "inst:main:%.lcssa4",
+        "inst:main:%.lcssa5"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.lcssa",
+        "inst:main:%.lcssa1",
+        "inst:main:%.lcssa2",
+        "inst:main:%.lcssa3",
+        "inst:main:%.lcssa4",
+        "inst:main:%.lcssa5"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    }
+  ]
+}

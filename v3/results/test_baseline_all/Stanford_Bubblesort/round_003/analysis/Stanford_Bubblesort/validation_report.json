@@ -1,0 +1,259 @@
+{
+  "summary": {
+    "total_pairs": 10,
+    "agree_dependent": 4,
+    "agree_independent": 6,
+    "false_positive": 0,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 0,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->early-cse"
+      ],
+      "commutativity_details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %27, %.unr-lcssa ]\n    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]\n    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.unr, %.unr-lcssa ]\n    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.unr1, %.unr-lcssa ]\n  in block %25 / %25:\n    >   store i32 %23, ptr %12, align 4\n    <   %26 = zext nneg i32 %10 to i64\n    <   %27 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %26\n    <   store i32 %23, ptr %27, align 4\n  in block %.unr-lcssa:\n    <   %.unr = phi i32 [ %29, %28 ]\n    <   %.unr1 = phi i32 [ %20, %28 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "commutativity_details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %27, %.unr-lcssa ]\n    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]\n    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.unr, %.unr-lcssa ]\n    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.unr1, %.unr-lcssa ]\n        %lcmp.mod3 = icmp ne i32 %xtraiter, 0\n        call void @llvm.assume(i1 %lcmp.mod3)\n    >   %28 = add nuw nsw i32 %.epil.init2, 1\n    >   %29 = zext nneg i32 %28 to i64\n    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29\n    >   %31 = load i32, ptr %30, align 4\n    >   %32 = icmp sgt i32 %.epil.init, %31\n    >   br i1 %32, label %33, label %.epilog-lcssa\n    <   br label %30\n  in block %25 / %25:\n    >   store i32 %23, ptr %12, align 4\n    <   %26 = zext nneg i32 %10 to i64\n    <   %27 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %26\n    <   store i32 %23, ptr %27, align 4\n  in block %.unr-lcssa:\n    <   %.unr = phi i32 [ %29, %28 ]\n    <   %.unr1 = phi i32 [ %20, %28 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->instcombine"
+      ],
+      "commutativity_details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i32 [ %indvar.next, %37 ], [ 0, %1 ]\n    >   %storemerge1 = phi i32 [ %38, %37 ], [ 500, %1 ]\n    >   %3 = sub i32 499, %indvar\n    <   %indvar = phi i32 [ %indvar.next, %39 ], [ 0, %1 ]\n    <   %storemerge1 = phi i32 [ 500, %1 ], [ %40, %39 ]\n    <   %3 = mul nsw i32 %indvar, -1\n    <   %4 = add i32 %3, 499\n    <   %5 = add i32 %3, 498\n        %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4\n    >   %xtraiter = and i32 %3, 1\n    >   %4 = icmp eq i32 %indvar, 498\n    >   br i1 %4, label %.epil.preheader, label %.new\n    <   %xtraiter = and i32 %4, 1\n    <   %6 = icmp ult i32 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.new"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-unroll->simplifycfg"
+      ],
+      "commutativity_details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %30 = add nuw nsw i32 %.epil.init2, 1\n    >   %31 = zext nneg i32 %30 to i64\n    >   %32 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %31\n    >   %33 = load i32, ptr %32, align 4\n    >   %34 = icmp sgt i32 %.epil.init, %33\n    >   br i1 %34, label %35, label %.epilog-lcssa\n    <   br label %30"
+    }
+  ]
+}

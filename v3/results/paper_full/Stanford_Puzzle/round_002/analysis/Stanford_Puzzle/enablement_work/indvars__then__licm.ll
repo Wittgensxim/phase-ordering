@@ -1,0 +1,889 @@
+; ModuleID = 'results\paper_full\Stanford_Puzzle\round_001\output.ll'
+source_filename = "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Puzzle.c"
+target datalayout = "e-m:w-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-w64-windows-gnu"
+
+%struct.element = type { i32, i32 }
+%struct.complex = type { float, float }
+
+@seed = dso_local global i32 0, align 4
+@piecemax = dso_local global [13 x i32] zeroinitializer, align 16
+@p = dso_local global [13 x [512 x i32]] zeroinitializer, align 16
+@puzzl = dso_local global [512 x i32] zeroinitializer, align 16
+@piececount = dso_local global [4 x i32] zeroinitializer, align 16
+@class = dso_local global [13 x i32] zeroinitializer, align 16
+@kount = dso_local global i32 0, align 4
+@n = dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [18 x i8] c"Error1 in Puzzle\0A\00", align 1
+@.str.1 = private unnamed_addr constant [19 x i8] c"Error2 in Puzzle.\0A\00", align 1
+@.str.2 = private unnamed_addr constant [19 x i8] c"Error3 in Puzzle.\0A\00", align 1
+@.str.3 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
+@value = dso_local global float 0.000000e+00, align 4
+@fixed = dso_local global float 0.000000e+00, align 4
+@floated = dso_local global float 0.000000e+00, align 4
+@permarray = dso_local global [11 x i32] zeroinitializer, align 16
+@pctr = dso_local global i32 0, align 4
+@tree = dso_local global ptr null, align 8
+@stack = dso_local global [4 x i32] zeroinitializer, align 16
+@cellspace = dso_local global [19 x %struct.element] zeroinitializer, align 16
+@freelist = dso_local global i32 0, align 4
+@movesdone = dso_local global i32 0, align 4
+@ima = dso_local global [41 x [41 x i32]] zeroinitializer, align 16
+@imb = dso_local global [41 x [41 x i32]] zeroinitializer, align 16
+@imr = dso_local global [41 x [41 x i32]] zeroinitializer, align 16
+@rma = dso_local global [41 x [41 x float]] zeroinitializer, align 16
+@rmb = dso_local global [41 x [41 x float]] zeroinitializer, align 16
+@rmr = dso_local global [41 x [41 x float]] zeroinitializer, align 16
+@sortlist = dso_local global [5001 x i32] zeroinitializer, align 16
+@biggest = dso_local global i32 0, align 4
+@littlest = dso_local global i32 0, align 4
+@top = dso_local global i32 0, align 4
+@z = dso_local global [257 x %struct.complex] zeroinitializer, align 16
+@w = dso_local global [257 x %struct.complex] zeroinitializer, align 16
+@e = dso_local global [130 x %struct.complex] zeroinitializer, align 16
+@zr = dso_local global float 0.000000e+00, align 4
+@zi = dso_local global float 0.000000e+00, align 4
+@str = private unnamed_addr constant [17 x i8] c"Error1 in Puzzle\00", align 1
+@str.1 = private unnamed_addr constant [18 x i8] c"Error2 in Puzzle.\00", align 1
+@str.2 = private unnamed_addr constant [18 x i8] c"Error3 in Puzzle.\00", align 1
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @Initrand() #0 {
+  store i32 74755, ptr @seed, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @Rand() #0 {
+  %1 = load i32, ptr @seed, align 4
+  %2 = mul nsw i32 %1, 1309
+  %3 = add nsw i32 %2, 13849
+  %4 = and i32 %3, 65535
+  store i32 %4, ptr @seed, align 4
+  ret i32 %4
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @Fit(i32 noundef %0, i32 noundef %1) #0 {
+  %.phi.trans.insert = sext i32 %0 to i64
+  %.phi.trans.insert1 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %.phi.trans.insert
+  %.pre = load i32, ptr %.phi.trans.insert1, align 4
+  %.not1 = icmp sgt i32 0, %.pre
+  br i1 %.not1, label %16, label %.lr.ph
+
+.lr.ph:                                           ; preds = %2
+  %3 = sext i32 %1 to i64
+  %4 = sext i32 %.pre to i64
+  %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+  br label %6
+
+6:                                                ; preds = %15, %.lr.ph
+  %indvars.iv = phi i64 [ %indvars.iv.next, %15 ], [ 0, %.lr.ph ]
+  %7 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %indvars.iv
+  %8 = load i32, ptr %7, align 4
+  %.not2 = icmp eq i32 %8, 0
+  br i1 %.not2, label %15, label %9
+
+9:                                                ; preds = %6
+  %10 = add nsw i64 %3, %indvars.iv
+  %11 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %10
+  %12 = load i32, ptr %11, align 4
+  %.not3 = icmp eq i32 %12, 0
+  br i1 %.not3, label %14, label %13
+
+13:                                               ; preds = %9
+  br label %17
+
+14:                                               ; preds = %9
+  br label %15
+
+15:                                               ; preds = %14, %6
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %.not = icmp sgt i64 %indvars.iv.next, %4
+  br i1 %.not, label %._crit_edge, label %6, !llvm.loop !7
+
+._crit_edge:                                      ; preds = %15
+  br label %16
+
+16:                                               ; preds = %._crit_edge, %2
+  br label %17
+
+17:                                               ; preds = %16, %13
+  %18 = phi i32 [ 1, %16 ], [ 0, %13 ]
+  ret i32 %18
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @Place(i32 noundef %0, i32 noundef %1) #0 {
+  %.phi.trans.insert = sext i32 %0 to i64
+  %.phi.trans.insert1 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %.phi.trans.insert
+  %.pre = load i32, ptr %.phi.trans.insert1, align 4
+  %.not4 = icmp sgt i32 0, %.pre
+  br i1 %.not4, label %13, label %.lr.ph
+
+.lr.ph:                                           ; preds = %2
+  %3 = sext i32 %1 to i64
+  %4 = add i32 %.pre, 1
+  %wide.trip.count = zext i32 %4 to i64
+  %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+  br label %6
+
+6:                                                ; preds = %12, %.lr.ph
+  %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+  %7 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %indvars.iv
+  %8 = load i32, ptr %7, align 4
+  %.not3 = icmp eq i32 %8, 0
+  br i1 %.not3, label %12, label %9
+
+9:                                                ; preds = %6
+  %10 = add nsw i64 %3, %indvars.iv
+  %11 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %10
+  store i32 1, ptr %11, align 4
+  br label %12
+
+12:                                               ; preds = %9, %6
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond = icmp eq i64 %indvars.iv.next, %wide.trip.count
+  br i1 %exitcond, label %._crit_edge, label %6, !llvm.loop !9
+
+._crit_edge:                                      ; preds = %12
+  br label %13
+
+13:                                               ; preds = %._crit_edge, %2
+  %14 = getelementptr inbounds [4 x i8], ptr @class, i64 %.phi.trans.insert
+  %15 = load i32, ptr %14, align 4
+  %16 = sext i32 %15 to i64
+  %17 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %16
+  %18 = load i32, ptr %17, align 4
+  %19 = add nsw i32 %18, -1
+  store i32 %19, ptr %17, align 4
+  %20 = icmp slt i32 %1, 512
+  br i1 %20, label %.lr.ph6, label %28
+
+.lr.ph6:                                          ; preds = %13
+  %21 = sext i32 %1 to i64
+  br label %22
+
+22:                                               ; preds = %27, %.lr.ph6
+  %indvars.iv3 = phi i64 [ %indvars.iv.next4, %27 ], [ %21, %.lr.ph6 ]
+  %23 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %indvars.iv3
+  %24 = load i32, ptr %23, align 4
+  %.not2 = icmp eq i32 %24, 0
+  br i1 %.not2, label %25, label %27
+
+25:                                               ; preds = %22
+  %.lcssa.wide = phi i64 [ %indvars.iv3, %22 ]
+  %26 = trunc nsw i64 %.lcssa.wide to i32
+  br label %29
+
+27:                                               ; preds = %22
+  %indvars.iv.next4 = add nsw i64 %indvars.iv3, 1
+  %lftr.wideiv = trunc i64 %indvars.iv.next4 to i32
+  %exitcond6 = icmp ne i32 %lftr.wideiv, 512
+  br i1 %exitcond6, label %22, label %._crit_edge7, !llvm.loop !10
+
+._crit_edge7:                                     ; preds = %27
+  br label %28
+
+28:                                               ; preds = %._crit_edge7, %13
+  br label %29
+
+29:                                               ; preds = %28, %25
+  %30 = phi i32 [ 0, %28 ], [ %26, %25 ]
+  ret i32 %30
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @Remove(i32 noundef %0, i32 noundef %1) #0 {
+  %.phi.trans.insert = sext i32 %0 to i64
+  %.phi.trans.insert1 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %.phi.trans.insert
+  %.pre = load i32, ptr %.phi.trans.insert1, align 4
+  %.not1 = icmp sgt i32 0, %.pre
+  br i1 %.not1, label %13, label %.lr.ph
+
+.lr.ph:                                           ; preds = %2
+  %3 = sext i32 %1 to i64
+  %4 = add i32 %.pre, 1
+  %wide.trip.count = zext i32 %4 to i64
+  %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+  br label %6
+
+6:                                                ; preds = %12, %.lr.ph
+  %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+  %7 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %indvars.iv
+  %8 = load i32, ptr %7, align 4
+  %.not2 = icmp eq i32 %8, 0
+  br i1 %.not2, label %12, label %9
+
+9:                                                ; preds = %6
+  %10 = add nsw i64 %3, %indvars.iv
+  %11 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %10
+  store i32 0, ptr %11, align 4
+  br label %12
+
+12:                                               ; preds = %9, %6
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond = icmp eq i64 %indvars.iv.next, %wide.trip.count
+  br i1 %exitcond, label %._crit_edge, label %6, !llvm.loop !11
+
+._crit_edge:                                      ; preds = %12
+  br label %13
+
+13:                                               ; preds = %._crit_edge, %2
+  %14 = getelementptr inbounds [4 x i8], ptr @class, i64 %.phi.trans.insert
+  %15 = load i32, ptr %14, align 4
+  %16 = sext i32 %15 to i64
+  %17 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %16
+  %18 = load i32, ptr %17, align 4
+  %19 = add nsw i32 %18, 1
+  store i32 %19, ptr %17, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @Trial(i32 noundef %0) #0 {
+  %2 = load i32, ptr @kount, align 4
+  %3 = add nsw i32 %2, 1
+  store i32 %3, ptr @kount, align 4
+  br label %4
+
+4:                                                ; preds = %23, %1
+  %indvars.iv = phi i64 [ %indvars.iv.next, %23 ], [ 0, %1 ]
+  %5 = getelementptr inbounds nuw [4 x i8], ptr @class, i64 %indvars.iv
+  %6 = load i32, ptr %5, align 4
+  %7 = sext i32 %6 to i64
+  %8 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %7
+  %9 = load i32, ptr %8, align 4
+  %.not = icmp eq i32 %9, 0
+  br i1 %.not, label %23, label %10
+
+10:                                               ; preds = %4
+  %11 = trunc nuw nsw i64 %indvars.iv to i32
+  %12 = call i32 @Fit(i32 noundef %11, i32 noundef %0)
+  %.not1 = icmp eq i32 %12, 0
+  br i1 %.not1, label %22, label %13
+
+13:                                               ; preds = %10
+  %14 = trunc nuw nsw i64 %indvars.iv to i32
+  %15 = call i32 @Place(i32 noundef %14, i32 noundef %0)
+  %16 = call i32 @Trial(i32 noundef %15)
+  %.not2 = icmp eq i32 %16, 0
+  br i1 %.not2, label %17, label %19
+
+17:                                               ; preds = %13
+  %18 = icmp eq i32 %15, 0
+  br i1 %18, label %19, label %20
+
+19:                                               ; preds = %17, %13
+  br label %25
+
+20:                                               ; preds = %17
+  %21 = trunc nuw nsw i64 %indvars.iv to i32
+  call void @Remove(i32 noundef %21, i32 noundef %0)
+  br label %22
+
+22:                                               ; preds = %20, %10
+  br label %23
+
+23:                                               ; preds = %22, %4
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond = icmp ne i64 %indvars.iv.next, 13
+  br i1 %exitcond, label %4, label %24, !llvm.loop !12
+
+24:                                               ; preds = %23
+  br label %25
+
+25:                                               ; preds = %24, %19
+  %26 = phi i32 [ 0, %24 ], [ 1, %19 ]
+  ret i32 %26
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @Puzzle() #0 {
+  br label %1
+
+1:                                                ; preds = %1, %0
+  %indvars.iv = phi i64 [ %indvars.iv.next, %1 ], [ 0, %0 ]
+  %2 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv
+  store i32 1, ptr %2, align 4
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond = icmp ne i64 %indvars.iv.next, 512
+  br i1 %exitcond, label %1, label %3, !llvm.loop !13
+
+3:                                                ; preds = %1
+  br label %4
+
+4:                                                ; preds = %11, %3
+  %indvars.iv10 = phi i64 [ %indvars.iv.next11, %11 ], [ 1, %3 ]
+  br label %5
+
+5:                                                ; preds = %10, %4
+  %indvars.iv6 = phi i64 [ %indvars.iv.next7, %10 ], [ 1, %4 ]
+  %6 = shl nuw nsw i64 %indvars.iv6, 3
+  %invariant.op = or disjoint i64 %6, %indvars.iv10
+  br label %7
+
+7:                                                ; preds = %7, %5
+  %indvars.iv2 = phi i64 [ %indvars.iv.next3, %7 ], [ 1, %5 ]
+  %8 = shl nuw nsw i64 %indvars.iv2, 6
+  %.reass = or disjoint i64 %8, %invariant.op
+  %9 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %.reass
+  store i32 0, ptr %9, align 4
+  %indvars.iv.next3 = add nuw nsw i64 %indvars.iv2, 1
+  %exitcond5 = icmp ne i64 %indvars.iv.next3, 6
+  br i1 %exitcond5, label %7, label %10, !llvm.loop !14
+
+10:                                               ; preds = %7
+  %indvars.iv.next7 = add nuw nsw i64 %indvars.iv6, 1
+  %exitcond9 = icmp ne i64 %indvars.iv.next7, 6
+  br i1 %exitcond9, label %5, label %11, !llvm.loop !15
+
+11:                                               ; preds = %10
+  %indvars.iv.next11 = add nuw nsw i64 %indvars.iv10, 1
+  %exitcond13 = icmp ne i64 %indvars.iv.next11, 6
+  br i1 %exitcond13, label %4, label %12, !llvm.loop !16
+
+12:                                               ; preds = %11
+  br label %13
+
+13:                                               ; preds = %17, %12
+  %indvars.iv18 = phi i64 [ %indvars.iv.next19, %17 ], [ 0, %12 ]
+  %14 = getelementptr inbounds nuw [2048 x i8], ptr @p, i64 %indvars.iv18
+  br label %15
+
+15:                                               ; preds = %15, %13
+  %indvars.iv14 = phi i64 [ %indvars.iv.next15, %15 ], [ 0, %13 ]
+  %16 = getelementptr inbounds nuw [4 x i8], ptr %14, i64 %indvars.iv14
+  store i32 0, ptr %16, align 4
+  %indvars.iv.next15 = add nuw nsw i64 %indvars.iv14, 1
+  %exitcond17 = icmp ne i64 %indvars.iv.next15, 512
+  br i1 %exitcond17, label %15, label %17, !llvm.loop !17
+
+17:                                               ; preds = %15
+  %indvars.iv.next19 = add nuw nsw i64 %indvars.iv18, 1
+  %exitcond21 = icmp ne i64 %indvars.iv.next19, 13
+  br i1 %exitcond21, label %13, label %18, !llvm.loop !18
+
+18:                                               ; preds = %17
+  br label %19
+
+19:                                               ; preds = %26, %18
+  %indvars.iv26 = phi i64 [ %indvars.iv.next27, %26 ], [ 0, %18 ]
+  br label %20
+
+20:                                               ; preds = %25, %19
+  %indvars.iv22 = phi i64 [ %indvars.iv.next23, %25 ], [ 0, %19 ]
+  %21 = shl nuw nsw i64 %indvars.iv22, 3
+  %22 = or disjoint i64 %indvars.iv26, %21
+  %23 = getelementptr inbounds nuw [4 x i8], ptr @p, i64 %22
+  store i32 1, ptr %23, align 4
+  br label %24
+
+24:                                               ; preds = %24, %20
+  br i1 false, label %24, label %25, !llvm.loop !19
+
+25:                                               ; preds = %24
+  %indvars.iv.next23 = add nuw nsw i64 %indvars.iv22, 1
+  %exitcond25 = icmp ne i64 %indvars.iv.next23, 2
+  br i1 %exitcond25, label %20, label %26, !llvm.loop !20
+
+26:                                               ; preds = %25
+  %indvars.iv.next27 = add nuw nsw i64 %indvars.iv26, 1
+  %exitcond29 = icmp ne i64 %indvars.iv.next27, 4
+  br i1 %exitcond29, label %19, label %27, !llvm.loop !21
+
+27:                                               ; preds = %26
+  store i32 0, ptr @class, align 16
+  store i32 11, ptr @piecemax, align 16
+  br label %28
+
+28:                                               ; preds = %35, %27
+  %indvars.iv34 = phi i64 [ %indvars.iv.next35, %35 ], [ 0, %27 ]
+  br label %29
+
+29:                                               ; preds = %34, %28
+  br label %30
+
+30:                                               ; preds = %30, %29
+  %indvars.iv30 = phi i64 [ %indvars.iv.next31, %30 ], [ 0, %29 ]
+  %31 = shl nuw nsw i64 %indvars.iv30, 6
+  %32 = or disjoint i64 %indvars.iv34, %31
+  %33 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %32
+  store i32 1, ptr %33, align 4
+  %indvars.iv.next31 = add nuw nsw i64 %indvars.iv30, 1
+  %exitcond33 = icmp ne i64 %indvars.iv.next31, 4
+  br i1 %exitcond33, label %30, label %34, !llvm.loop !22
+
+34:                                               ; preds = %30
+  br i1 false, label %29, label %35, !llvm.loop !23
+
+35:                                               ; preds = %34
+  %indvars.iv.next35 = add nuw nsw i64 %indvars.iv34, 1
+  %exitcond37 = icmp ne i64 %indvars.iv.next35, 2
+  br i1 %exitcond37, label %28, label %36, !llvm.loop !24
+
+36:                                               ; preds = %35
+  store i32 0, ptr getelementptr inbounds nuw (i8, ptr @class, i64 4), align 4
+  store i32 193, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 4), align 4
+  br label %37
+
+37:                                               ; preds = %45, %36
+  br label %38
+
+38:                                               ; preds = %44, %37
+  %indvars.iv42 = phi i64 [ %indvars.iv.next43, %44 ], [ 0, %37 ]
+  %39 = shl nuw nsw i64 %indvars.iv42, 3
+  br label %40
+
+40:                                               ; preds = %40, %38
+  %indvars.iv38 = phi i64 [ %indvars.iv.next39, %40 ], [ 0, %38 ]
+  %41 = shl nuw nsw i64 %indvars.iv38, 6
+  %42 = or disjoint i64 %41, %39
+  %43 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %42
+  store i32 1, ptr %43, align 4
+  %indvars.iv.next39 = add nuw nsw i64 %indvars.iv38, 1
+  %exitcond41 = icmp ne i64 %indvars.iv.next39, 2
+  br i1 %exitcond41, label %40, label %44, !llvm.loop !25
+
+44:                                               ; preds = %40
+  %indvars.iv.next43 = add nuw nsw i64 %indvars.iv42, 1
+  %exitcond45 = icmp ne i64 %indvars.iv.next43, 4
+  br i1 %exitcond45, label %38, label %45, !llvm.loop !26
+
+45:                                               ; preds = %44
+  br i1 false, label %37, label %46, !llvm.loop !27
+
+46:                                               ; preds = %45
+  store i32 0, ptr getelementptr inbounds nuw (i8, ptr @class, i64 8), align 8
+  store i32 88, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 8), align 8
+  br label %47
+
+47:                                               ; preds = %54, %46
+  %indvars.iv50 = phi i64 [ %indvars.iv.next51, %54 ], [ 0, %46 ]
+  br label %48
+
+48:                                               ; preds = %53, %47
+  %indvars.iv46 = phi i64 [ %indvars.iv.next47, %53 ], [ 0, %47 ]
+  %49 = shl nuw nsw i64 %indvars.iv46, 3
+  %50 = or disjoint i64 %indvars.iv50, %49
+  %51 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %50
+  store i32 1, ptr %51, align 4
+  br label %52
+
+52:                                               ; preds = %52, %48
+  br i1 false, label %52, label %53, !llvm.loop !28
+
+53:                                               ; preds = %52
+  %indvars.iv.next47 = add nuw nsw i64 %indvars.iv46, 1
+  %exitcond49 = icmp ne i64 %indvars.iv.next47, 4
+  br i1 %exitcond49, label %48, label %54, !llvm.loop !29
+
+54:                                               ; preds = %53
+  %indvars.iv.next51 = add nuw nsw i64 %indvars.iv50, 1
+  %exitcond53 = icmp ne i64 %indvars.iv.next51, 2
+  br i1 %exitcond53, label %47, label %55, !llvm.loop !30
+
+55:                                               ; preds = %54
+  store i32 0, ptr getelementptr inbounds nuw (i8, ptr @class, i64 12), align 4
+  store i32 25, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 12), align 4
+  br label %56
+
+56:                                               ; preds = %63, %55
+  %indvars.iv58 = phi i64 [ %indvars.iv.next59, %63 ], [ 0, %55 ]
+  br label %57
+
+57:                                               ; preds = %62, %56
+  br label %58
+
+58:                                               ; preds = %58, %57
+  %indvars.iv54 = phi i64 [ %indvars.iv.next55, %58 ], [ 0, %57 ]
+  %59 = shl nuw nsw i64 %indvars.iv54, 6
+  %60 = or disjoint i64 %indvars.iv58, %59
+  %61 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %60
+  store i32 1, ptr %61, align 4
+  %indvars.iv.next55 = add nuw nsw i64 %indvars.iv54, 1
+  %exitcond57 = icmp ne i64 %indvars.iv.next55, 2
+  br i1 %exitcond57, label %58, label %62, !llvm.loop !31
+
+62:                                               ; preds = %58
+  br i1 false, label %57, label %63, !llvm.loop !32
+
+63:                                               ; preds = %62
+  %indvars.iv.next59 = add nuw nsw i64 %indvars.iv58, 1
+  %exitcond61 = icmp ne i64 %indvars.iv.next59, 4
+  br i1 %exitcond61, label %56, label %64, !llvm.loop !33
+
+64:                                               ; preds = %63
+  store i32 0, ptr getelementptr inbounds nuw (i8, ptr @class, i64 16), align 16
+  store i32 67, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 16), align 16
+  br label %65
+
+65:                                               ; preds = %73, %64
+  br label %66
+
+66:                                               ; preds = %72, %65
+  %indvars.iv66 = phi i64 [ %indvars.iv.next67, %72 ], [ 0, %65 ]
+  %67 = shl nuw nsw i64 %indvars.iv66, 3
+  br label %68
+
+68:                                               ; preds = %68, %66
+  %indvars.iv62 = phi i64 [ %indvars.iv.next63, %68 ], [ 0, %66 ]
+  %69 = shl nuw nsw i64 %indvars.iv62, 6
+  %70 = or disjoint i64 %69, %67
+  %71 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %70
+  store i32 1, ptr %71, align 4
+  %indvars.iv.next63 = add nuw nsw i64 %indvars.iv62, 1
+  %exitcond65 = icmp ne i64 %indvars.iv.next63, 4
+  br i1 %exitcond65, label %68, label %72, !llvm.loop !34
+
+72:                                               ; preds = %68
+  %indvars.iv.next67 = add nuw nsw i64 %indvars.iv66, 1
+  %exitcond69 = icmp ne i64 %indvars.iv.next67, 2
+  br i1 %exitcond69, label %66, label %73, !llvm.loop !35
+
+73:                                               ; preds = %72
+  br i1 false, label %65, label %74, !llvm.loop !36
+
+74:                                               ; preds = %73
+  store i32 0, ptr getelementptr inbounds nuw (i8, ptr @class, i64 20), align 4
+  store i32 200, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 20), align 4
+  br label %75
+
+75:                                               ; preds = %80, %74
+  %indvars.iv70 = phi i64 [ %indvars.iv.next71, %80 ], [ 0, %74 ]
+  %76 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %indvars.iv70
+  store i32 1, ptr %76, align 4
+  br label %77
+
+77:                                               ; preds = %79, %75
+  br label %78
+
+78:                                               ; preds = %78, %77
+  br i1 false, label %78, label %79, !llvm.loop !37
+
+79:                                               ; preds = %78
+  br i1 false, label %77, label %80, !llvm.loop !38
+
+80:                                               ; preds = %79
+  %indvars.iv.next71 = add nuw nsw i64 %indvars.iv70, 1
+  %exitcond73 = icmp ne i64 %indvars.iv.next71, 3
+  br i1 %exitcond73, label %75, label %81, !llvm.loop !39
+
+81:                                               ; preds = %80
+  store i32 1, ptr getelementptr inbounds nuw (i8, ptr @class, i64 24), align 8
+  store i32 2, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 24), align 8
+  br label %82
+
+82:                                               ; preds = %88, %81
+  br label %83
+
+83:                                               ; preds = %87, %82
+  %indvars.iv74 = phi i64 [ %indvars.iv.next75, %87 ], [ 0, %82 ]
+  %84 = shl nuw nsw i64 %indvars.iv74, 3
+  %85 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %84
+  store i32 1, ptr %85, align 4
+  br label %86
+
+86:                                               ; preds = %86, %83
+  br i1 false, label %86, label %87, !llvm.loop !40
+
+87:                                               ; preds = %86
+  %indvars.iv.next75 = add nuw nsw i64 %indvars.iv74, 1
+  %exitcond77 = icmp ne i64 %indvars.iv.next75, 3
+  br i1 %exitcond77, label %83, label %88, !llvm.loop !41
+
+88:                                               ; preds = %87
+  br i1 false, label %82, label %89, !llvm.loop !42
+
+89:                                               ; preds = %88
+  store i32 1, ptr getelementptr inbounds nuw (i8, ptr @class, i64 28), align 4
+  store i32 16, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 28), align 4
+  br label %90
+
+90:                                               ; preds = %96, %89
+  br label %91
+
+91:                                               ; preds = %95, %90
+  br label %92
+
+92:                                               ; preds = %92, %91
+  %indvars.iv78 = phi i64 [ %indvars.iv.next79, %92 ], [ 0, %91 ]
+  %93 = shl nuw nsw i64 %indvars.iv78, 6
+  %94 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %93
+  store i32 1, ptr %94, align 4
+  %indvars.iv.next79 = add nuw nsw i64 %indvars.iv78, 1
+  %exitcond81 = icmp ne i64 %indvars.iv.next79, 3
+  br i1 %exitcond81, label %92, label %95, !llvm.loop !43
+
+95:                                               ; preds = %92
+  br i1 false, label %91, label %96, !llvm.loop !44
+
+96:                                               ; preds = %95
+  br i1 false, label %90, label %97, !llvm.loop !45
+
+97:                                               ; preds = %96
+  store i32 1, ptr getelementptr inbounds nuw (i8, ptr @class, i64 32), align 16
+  store i32 128, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 32), align 16
+  br label %98
+
+98:                                               ; preds = %105, %97
+  %indvars.iv86 = phi i64 [ %indvars.iv.next87, %105 ], [ 0, %97 ]
+  br label %99
+
+99:                                               ; preds = %104, %98
+  %indvars.iv82 = phi i64 [ %indvars.iv.next83, %104 ], [ 0, %98 ]
+  %100 = shl nuw nsw i64 %indvars.iv82, 3
+  %101 = or disjoint i64 %indvars.iv86, %100
+  %102 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %101
+  store i32 1, ptr %102, align 4
+  br label %103
+
+103:                                              ; preds = %103, %99
+  br i1 false, label %103, label %104, !llvm.loop !46
+
+104:                                              ; preds = %103
+  %indvars.iv.next83 = add nuw nsw i64 %indvars.iv82, 1
+  %exitcond85 = icmp ne i64 %indvars.iv.next83, 2
+  br i1 %exitcond85, label %99, label %105, !llvm.loop !47
+
+105:                                              ; preds = %104
+  %indvars.iv.next87 = add nuw nsw i64 %indvars.iv86, 1
+  %exitcond89 = icmp ne i64 %indvars.iv.next87, 2
+  br i1 %exitcond89, label %98, label %106, !llvm.loop !48
+
+106:                                              ; preds = %105
+  store i32 2, ptr getelementptr inbounds nuw (i8, ptr @class, i64 36), align 4
+  store i32 9, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 36), align 4
+  br label %107
+
+107:                                              ; preds = %114, %106
+  %indvars.iv94 = phi i64 [ %indvars.iv.next95, %114 ], [ 0, %106 ]
+  br label %108
+
+108:                                              ; preds = %113, %107
+  br label %109
+
+109:                                              ; preds = %109, %108
+  %indvars.iv90 = phi i64 [ %indvars.iv.next91, %109 ], [ 0, %108 ]
+  %110 = shl nuw nsw i64 %indvars.iv90, 6
+  %111 = or disjoint i64 %indvars.iv94, %110
+  %112 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %111
+  store i32 1, ptr %112, align 4
+  %indvars.iv.next91 = add nuw nsw i64 %indvars.iv90, 1
+  %exitcond93 = icmp ne i64 %indvars.iv.next91, 2
+  br i1 %exitcond93, label %109, label %113, !llvm.loop !49
+
+113:                                              ; preds = %109
+  br i1 false, label %108, label %114, !llvm.loop !50
+
+114:                                              ; preds = %113
+  %indvars.iv.next95 = add nuw nsw i64 %indvars.iv94, 1
+  %exitcond97 = icmp ne i64 %indvars.iv.next95, 2
+  br i1 %exitcond97, label %107, label %115, !llvm.loop !51
+
+115:                                              ; preds = %114
+  store i32 2, ptr getelementptr inbounds nuw (i8, ptr @class, i64 40), align 8
+  store i32 65, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 40), align 8
+  br label %116
+
+116:                                              ; preds = %124, %115
+  br label %117
+
+117:                                              ; preds = %123, %116
+  %indvars.iv102 = phi i64 [ %indvars.iv.next103, %123 ], [ 0, %116 ]
+  %118 = shl nuw nsw i64 %indvars.iv102, 3
+  br label %119
+
+119:                                              ; preds = %119, %117
+  %indvars.iv98 = phi i64 [ %indvars.iv.next99, %119 ], [ 0, %117 ]
+  %120 = shl nuw nsw i64 %indvars.iv98, 6
+  %121 = or disjoint i64 %120, %118
+  %122 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %121
+  store i32 1, ptr %122, align 4
+  %indvars.iv.next99 = add nuw nsw i64 %indvars.iv98, 1
+  %exitcond101 = icmp ne i64 %indvars.iv.next99, 2
+  br i1 %exitcond101, label %119, label %123, !llvm.loop !52
+
+123:                                              ; preds = %119
+  %indvars.iv.next103 = add nuw nsw i64 %indvars.iv102, 1
+  %exitcond105 = icmp ne i64 %indvars.iv.next103, 2
+  br i1 %exitcond105, label %117, label %124, !llvm.loop !53
+
+124:                                              ; preds = %123
+  br i1 false, label %116, label %125, !llvm.loop !54
+
+125:                                              ; preds = %124
+  store i32 2, ptr getelementptr inbounds nuw (i8, ptr @class, i64 44), align 4
+  store i32 72, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 44), align 4
+  br label %126
+
+126:                                              ; preds = %133, %125
+  %indvars.iv114 = phi i64 [ %indvars.iv.next115, %133 ], [ 0, %125 ]
+  br label %127
+
+127:                                              ; preds = %132, %126
+  %indvars.iv110 = phi i64 [ %indvars.iv.next111, %132 ], [ 0, %126 ]
+  %128 = shl nuw nsw i64 %indvars.iv110, 3
+  %invariant.op118 = or disjoint i64 %128, %indvars.iv114
+  br label %129
+
+129:                                              ; preds = %129, %127
+  %indvars.iv106 = phi i64 [ %indvars.iv.next107, %129 ], [ 0, %127 ]
+  %130 = shl nuw nsw i64 %indvars.iv106, 6
+  %.reass119 = or disjoint i64 %130, %invariant.op118
+  %131 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %.reass119
+  store i32 1, ptr %131, align 4
+  %indvars.iv.next107 = add nuw nsw i64 %indvars.iv106, 1
+  %exitcond109 = icmp ne i64 %indvars.iv.next107, 2
+  br i1 %exitcond109, label %129, label %132, !llvm.loop !55
+
+132:                                              ; preds = %129
+  %indvars.iv.next111 = add nuw nsw i64 %indvars.iv110, 1
+  %exitcond113 = icmp ne i64 %indvars.iv.next111, 2
+  br i1 %exitcond113, label %127, label %133, !llvm.loop !56
+
+133:                                              ; preds = %132
+  %indvars.iv.next115 = add nuw nsw i64 %indvars.iv114, 1
+  %exitcond117 = icmp ne i64 %indvars.iv.next115, 2
+  br i1 %exitcond117, label %126, label %134, !llvm.loop !57
+
+134:                                              ; preds = %133
+  store i32 3, ptr getelementptr inbounds nuw (i8, ptr @class, i64 48), align 16
+  store i32 73, ptr getelementptr inbounds nuw (i8, ptr @piecemax, i64 48), align 16
+  store i32 13, ptr @piececount, align 16
+  store i32 3, ptr getelementptr inbounds nuw (i8, ptr @piececount, i64 4), align 4
+  store i32 1, ptr getelementptr inbounds nuw (i8, ptr @piececount, i64 8), align 8
+  store i32 1, ptr getelementptr inbounds nuw (i8, ptr @piececount, i64 12), align 4
+  store i32 0, ptr @kount, align 4
+  %135 = call i32 @Fit(i32 noundef 0, i32 noundef 73)
+  %.not = icmp eq i32 %135, 0
+  br i1 %.not, label %138, label %136
+
+136:                                              ; preds = %134
+  %137 = call i32 @Place(i32 noundef 0, i32 noundef 73)
+  store i32 %137, ptr @n, align 4
+  br label %139
+
+138:                                              ; preds = %134
+  %puts = call i32 @puts(ptr nonnull dereferenceable(1) @str)
+  %.pre = load i32, ptr @n, align 4
+  br label %139
+
+139:                                              ; preds = %138, %136
+  %140 = phi i32 [ %.pre, %138 ], [ %137, %136 ]
+  %141 = call i32 @Trial(i32 noundef %140)
+  %.not1 = icmp eq i32 %141, 0
+  br i1 %.not1, label %142, label %143
+
+142:                                              ; preds = %139
+  %puts2 = call i32 @puts(ptr nonnull dereferenceable(1) @str.1)
+  br label %147
+
+143:                                              ; preds = %139
+  %144 = load i32, ptr @kount, align 4
+  %.not3 = icmp eq i32 %144, 2005
+  br i1 %.not3, label %146, label %145
+
+145:                                              ; preds = %143
+  %puts4 = call i32 @puts(ptr nonnull dereferenceable(1) @str.2)
+  br label %146
+
+146:                                              ; preds = %145, %143
+  br label %147
+
+147:                                              ; preds = %146, %142
+  %148 = load i32, ptr @n, align 4
+  %149 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.3, i32 noundef %148) #3
+  %150 = load i32, ptr @kount, align 4
+  %151 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.3, i32 noundef %150) #3
+  ret void
+}
+
+declare dso_local i32 @printf(ptr noundef, ...) #1
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @main() #0 {
+  br label %1
+
+1:                                                ; preds = %1, %0
+  %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+  call void @Puzzle()
+  %3 = add nuw nsw i32 %2, 1
+  %exitcond = icmp ne i32 %3, 100
+  br i1 %exitcond, label %1, label %4, !llvm.loop !58
+
+4:                                                ; preds = %1
+  ret i32 0
+}
+
+; Function Attrs: nofree nounwind
+declare noundef i32 @puts(ptr noundef readonly captures(none)) #2
+
+attributes #0 = { noinline nounwind uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #1 = { "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #2 = { nofree nounwind }
+attributes #3 = { nounwind }
+
+!llvm.dbg.cu = !{!0}
+!llvm.module.flags = !{!2, !3, !4, !5}
+!llvm.ident = !{!6}
+
+!0 = distinct !DICompileUnit(language: DW_LANG_C11, file: !1, producer: "clang version 23.0.0git (https://github.com/llvm/llvm-project.git aac212f0bc9acbc40a8a2e9638f4b7496c25d0b2)", isOptimized: false, runtimeVersion: 0, emissionKind: NoDebug, splitDebugInlining: false, nameTableKind: None)
+!1 = !DIFile(filename: "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Puzzle.c", directory: "E:/Phase Ordering/v3")
+!2 = !{i32 2, !"Debug Info Version", i32 3}
+!3 = !{i32 8, !"PIC Level", i32 2}
+!4 = !{i32 7, !"uwtable", i32 2}
+!5 = !{i32 1, !"MaxTLSAlign", i32 65536}
+!6 = !{!"clang version 23.0.0git (https://github.com/llvm/llvm-project.git aac212f0bc9acbc40a8a2e9638f4b7496c25d0b2)"}
+!7 = distinct !{!7, !8}
+!8 = !{!"llvm.loop.mustprogress"}
+!9 = distinct !{!9, !8}
+!10 = distinct !{!10, !8}
+!11 = distinct !{!11, !8}
+!12 = distinct !{!12, !8}
+!13 = distinct !{!13, !8}
+!14 = distinct !{!14, !8}
+!15 = distinct !{!15, !8}
+!16 = distinct !{!16, !8}
+!17 = distinct !{!17, !8}
+!18 = distinct !{!18, !8}
+!19 = distinct !{!19, !8}
+!20 = distinct !{!20, !8}
+!21 = distinct !{!21, !8}
+!22 = distinct !{!22, !8}
+!23 = distinct !{!23, !8}
+!24 = distinct !{!24, !8}
+!25 = distinct !{!25, !8}
+!26 = distinct !{!26, !8}
+!27 = distinct !{!27, !8}
+!28 = distinct !{!28, !8}
+!29 = distinct !{!29, !8}
+!30 = distinct !{!30, !8}
+!31 = distinct !{!31, !8}
+!32 = distinct !{!32, !8}
+!33 = distinct !{!33, !8}
+!34 = distinct !{!34, !8}
+!35 = distinct !{!35, !8}
+!36 = distinct !{!36, !8}
+!37 = distinct !{!37, !8}
+!38 = distinct !{!38, !8}
+!39 = distinct !{!39, !8}
+!40 = distinct !{!40, !8}
+!41 = distinct !{!41, !8}
+!42 = distinct !{!42, !8}
+!43 = distinct !{!43, !8}
+!44 = distinct !{!44, !8}
+!45 = distinct !{!45, !8}
+!46 = distinct !{!46, !8}
+!47 = distinct !{!47, !8}
+!48 = distinct !{!48, !8}
+!49 = distinct !{!49, !8}
+!50 = distinct !{!50, !8}
+!51 = distinct !{!51, !8}
+!52 = distinct !{!52, !8}
+!53 = distinct !{!53, !8}
+!54 = distinct !{!54, !8}
+!55 = distinct !{!55, !8}
+!56 = distinct !{!56, !8}
+!57 = distinct !{!57, !8}
+!58 = distinct !{!58, !8}

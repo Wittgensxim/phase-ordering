@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "mem2reg",
+    "early-cse"
+  ],
+  "winner": "B->A",
+  "score_improvement": 177.67000000000002,
+  "details": "oracle chose mem2reg->early-cse (improvement: 177.67)",
+  "changed": true
+}

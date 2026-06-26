@@ -1,0 +1,277 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %47 / %42:
+    >   %.lcssa9 = phi i32 [ %.lcssa8, %._crit_edge18 ], [ 0, %8 ]
+    <   %.lcssa9 = phi i32 [ %split19, %._crit_edge18 ], [ 0, %8 ]
+  in block %.preheader4:
+    >   %11 = phi i32 [ 0, %.preheader4.lr.ph ], [ %40, %39 ]
+    >   %12 = phi i32 [ 0, %.preheader4.lr.ph ], [ %.lcssa8, %39 ]
+    >   br i1 true, label %.preheader3.lr.ph, label %39
+    <   %11 = phi i32 [ 0, %.preheader4.lr.ph ], [ %45, %44 ]
+    <   %12 = phi i32 [ 0, %.preheader4.lr.ph ], [ %.lcssa8, %44 ]
+    <   %13 = icmp slt i32 0, %9
+    <   br i1 %13, label %.preheader3.lr.ph, label %44
+  in block %._crit_edge18:
+    <   %split19 = phi i32 [ %.lcssa8, %44 ]"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %16, %45 ], [ 0, %8 ]
+    >   %12 = phi i32 [ %46, %45 ], [ 0, %8 ]
+    <   %11 = phi i32 [ %.lcssa8, %45 ], [ 0, %8 ]
+    <   %12 = phi i32 [ %46, %45 ], [ 0, %8 ]
+  in block %47 / %47:
+    <   %.lcssa9 = phi i32 [ %11, %10 ]
+  in block %45 / %45:
+    <   %.lcssa8 = phi i32 [ %16, %14 ]
+  in block %14 / %14:
+    >   %15 = phi i32 [ %44, %43 ], [ 0, %.preheader4 ]
+    >   %16 = phi i32 [ %20, %43 ], [ %11, %.preheader4 ]
+    <   %15 = phi i32 [ %44, %43 ], [ 0, %.preheader4 ]
+    <   %16 = phi i32 [ %.lcssa7, %43 ], [ %11, %.preheader4 ]
+  in block %43 / %43:
+    <   %.lcssa7 = phi i32 [ %20, %18 ]
+  in block %18 / %18:
+    >   %19 = phi i32 [ %42, %41 ], [ 0, %.preheader3 ]
+    >   %20 = phi i32 [ %24, %41 ], [ %16, %.preheader3 ]
+    <   %19 = phi i32 [ %42, %41 ], [ 0, %.preheader3 ]
+    <   %20 = phi i32 [ %.lcssa6, %41 ], [ %16, %.preheader3 ]
+  in block %41 / %41:
+    <   %.lcssa6 = phi i32 [ %24, %22 ]
+  in block %22 / %22:
+    >   %23 = phi i32 [ %40, %39 ], [ 0, %.preheader2 ]
+    >   %24 = phi i32 [ %28, %39 ], [ %20, %.preheader2 ]
+    <   %23 = phi i32 [ %40, %39 ], [ 0, %.preheader2 ]
+    <   %24 = phi i32 [ %.lcssa5, %39 ], [ %20, %.preheader2 ]
+  in block %39 / %39:
+    <   %.lcssa5 = phi i32 [ %28, %26 ]
+  in block %26 / %26:
+    >   %27 = phi i32 [ %38, %37 ], [ 0, %.preheader1 ]
+    >   %28 = phi i32 [ %32, %37 ], [ %24, %.preheader1 ]
+    <   %27 = phi i32 [ %38, %37 ], [ 0, %.preheader1 ]
+    <   %28 = phi i32 [ %.lcssa, %37 ], [ %24, %.preheader1 ]
+  in block %37 / %37:
+    <   %.lcssa = phi i32 [ %32, %30 ]"
+early-cse,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function main:
+  in block %47 / %42:
+    >   %.lcssa9 = phi i32 [ %.lcssa8, %._crit_edge18 ], [ 0, %8 ]
+    <   %.lcssa9 = phi i32 [ %split19, %._crit_edge18 ], [ 0, %8 ]
+  in block %.preheader4:
+    >   %11 = phi i32 [ 0, %.preheader4.lr.ph ], [ %40, %39 ]
+    >   %12 = phi i32 [ 0, %.preheader4.lr.ph ], [ %.lcssa8, %39 ]
+    >   br i1 true, label %.preheader3.lr.ph, label %.preheader4._crit_edge
+    <   %11 = phi i32 [ 0, %.preheader4.lr.ph ], [ %45, %44 ]
+    <   %12 = phi i32 [ 0, %.preheader4.lr.ph ], [ %.lcssa8, %44 ]
+    <   %13 = icmp slt i32 0, %9
+    <   br i1 %13, label %.preheader3.lr.ph, label %44
+  in block %._crit_edge18:
+    <   %split19 = phi i32 [ %.lcssa8, %44 ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %16, %45 ], [ 0, %8 ]
+    >   %12 = phi i32 [ %46, %45 ], [ 0, %8 ]
+    <   %11 = phi i32 [ %.lcssa8, %45 ], [ 0, %8 ]
+    <   %12 = phi i32 [ %46, %45 ], [ 0, %8 ]
+  in block %47 / %47:
+    <   %.lcssa9 = phi i32 [ %11, %10 ]
+  in block %45 / %45:
+    <   %.lcssa8 = phi i32 [ %16, %14 ]
+  in block %14 / %14:
+    >   %15 = phi i32 [ %44, %43 ], [ 0, %.preheader4 ]
+    >   %16 = phi i32 [ %20, %43 ], [ %11, %.preheader4 ]
+    <   %15 = phi i32 [ %44, %43 ], [ 0, %.preheader4 ]
+    <   %16 = phi i32 [ %.lcssa7, %43 ], [ %11, %.preheader4 ]
+  in block %43 / %43:
+    <   %.lcssa7 = phi i32 [ %20, %18 ]
+  in block %18 / %18:
+    >   %19 = phi i32 [ %42, %41 ], [ 0, %.preheader3 ]
+    >   %20 = phi i32 [ %24, %41 ], [ %16, %.preheader3 ]
+    <   %19 = phi i32 [ %42, %41 ], [ 0, %.preheader3 ]
+    <   %20 = phi i32 [ %.lcssa6, %41 ], [ %16, %.preheader3 ]
+  in block %41 / %41:
+    <   %.lcssa6 = phi i32 [ %24, %22 ]
+  in block %22 / %22:
+    >   %23 = phi i32 [ %40, %39 ], [ 0, %.preheader2 ]
+    >   %24 = phi i32 [ %28, %39 ], [ %20, %.preheader2 ]
+    <   %23 = phi i32 [ %40, %39 ], [ 0, %.preheader2 ]
+    <   %24 = phi i32 [ %.lcssa5, %39 ], [ %20, %.preheader2 ]
+  in block %39 / %39:
+    <   %.lcssa5 = phi i32 [ %28, %26 ]
+  in block %26 / %26:
+    >   %27 = phi i32 [ %38, %37 ], [ 0, %.preheader1 ]
+    >   %28 = phi i32 [ %32, %37 ], [ %24, %.preheader1 ]
+    <   %27 = phi i32 [ %38, %37 ], [ 0, %.preheader1 ]
+    <   %28 = phi i32 [ %.lcssa, %37 ], [ %24, %.preheader1 ]
+  in block %37 / %37:
+    <   %.lcssa = phi i32 [ %32, %30 ]"
+gvn,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function main:
+  in block %8 / %8:
+    >   %10 = icmp sgt i32 %9, 0
+    >   br i1 %10, label %.preheader4.lr.ph, label %42
+    <   %10 = icmp slt i32 0, %9
+    <   br i1 %10, label %.preheader4.lr.ph, label %47"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->instcombine,"in function main:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %16, %45 ], [ 0, %8 ]
+    >   %12 = phi i32 [ %46, %45 ], [ 0, %8 ]
+    <   %11 = phi i32 [ %.lcssa8, %45 ], [ 0, %8 ]
+    <   %12 = phi i32 [ %46, %45 ], [ 0, %8 ]
+  in block %47 / %47:
+    <   %.lcssa9 = phi i32 [ %11, %10 ]
+  in block %45 / %45:
+    <   %.lcssa8 = phi i32 [ %16, %14 ]
+  in block %14 / %14:
+    >   %15 = phi i32 [ %44, %43 ], [ 0, %.preheader4 ]
+    >   %16 = phi i32 [ %20, %43 ], [ %11, %.preheader4 ]
+    <   %15 = phi i32 [ %44, %43 ], [ 0, %.preheader4 ]
+    <   %16 = phi i32 [ %.lcssa7, %43 ], [ %11, %.preheader4 ]
+  in block %43 / %43:
+    <   %.lcssa7 = phi i32 [ %20, %18 ]
+  in block %18 / %18:
+    >   %19 = phi i32 [ %42, %41 ], [ 0, %.preheader3 ]
+    >   %20 = phi i32 [ %24, %41 ], [ %16, %.preheader3 ]
+    <   %19 = phi i32 [ %42, %41 ], [ 0, %.preheader3 ]
+    <   %20 = phi i32 [ %.lcssa6, %41 ], [ %16, %.preheader3 ]
+  in block %41 / %41:
+    <   %.lcssa6 = phi i32 [ %24, %22 ]
+  in block %22 / %22:
+    >   %23 = phi i32 [ %40, %39 ], [ 0, %.preheader2 ]
+    >   %24 = phi i32 [ %28, %39 ], [ %20, %.preheader2 ]
+    <   %23 = phi i32 [ %40, %39 ], [ 0, %.preheader2 ]
+    <   %24 = phi i32 [ %.lcssa5, %39 ], [ %20, %.preheader2 ]
+  in block %39 / %39:
+    <   %.lcssa5 = phi i32 [ %28, %26 ]
+  in block %26 / %26:
+    >   %27 = phi i32 [ %38, %37 ], [ 0, %.preheader1 ]
+    >   %28 = phi i32 [ %32, %37 ], [ %24, %.preheader1 ]
+    <   %27 = phi i32 [ %38, %37 ], [ 0, %.preheader1 ]
+    <   %28 = phi i32 [ %.lcssa, %37 ], [ %24, %.preheader1 ]
+  in block %37 / %37:
+    <   %.lcssa = phi i32 [ %32, %30 ]"
+instcombine,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-simplify,dependent,true,false_positive,inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb9,inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb9,bb:main:.preheader;bb:main:.preheader1;bb:main:.preheader2;bb:main:.preheader3;bb:main:.preheader4;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb8;loop:main:bb9,read_write;enablement,strong,strong,strong,none,loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb8;loop:main:bb9,bb:main:.preheader;bb:main:.preheader1;bb:main:.preheader2;bb:main:.preheader3;bb:main:.preheader4;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br,bb;inst;loop,mixed,expansion,loop-simplify->loop-rotate,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb9,inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb9,bb:main:.preheader;bb:main:.preheader1;bb:main:.preheader2;bb:main:.preheader3;bb:main:.preheader4;inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb8;loop:main:bb9,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb8;loop:main:bb9,bb:main:.preheader;bb:main:.preheader1;bb:main:.preheader2;bb:main:.preheader3;bb:main:.preheader4;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br,bb;inst;loop,mixed,expansion,loop-rotate->loop-unroll;loop-unroll->loop-rotate,"function @llvm.assume exists only in left module
+in function main:
+  in block %.preheader4.lr.ph:
+    <   %11 = add i32 %9, -1
+  in block %.lr.ph:
+    >   br label %26
+    <   %xtraiter = and i32 %9, 7
+    <   %27 = icmp ult i32 %11, 7
+    <   br i1 %27, label %.epil.preheader, label %.lr.ph.new
+  in block %39 / %32:
+    >   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %23, %.preheader ]
+    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %24, %.preheader ]
+  in block %._crit_edge:
+    >   %split = phi i32 [ %29, %26 ]
+    <   %split = phi i32 [ %split.ph, %._crit_edge.unr-lcssa ], [ %split.ph22, %._crit_edge.epilog-lcssa ]"
+loop-rotate,sccp,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->sccp,"in function main:
+  in block %.preheader4:
+    >   %11 = phi i32 [ 0, %.preheader4.lr.ph ], [ %40, %39 ]
+    >   %12 = phi i32 [ 0, %.preheader4.lr.ph ], [ %split17, %39 ]
+    >   br label %.preheader3.lr.ph
+    <   %11 = phi i32 [ 0, %.preheader4.lr.ph ], [ %45, %44 ]
+    <   %12 = phi i32 [ 0, %.preheader4.lr.ph ], [ %.lcssa8, %44 ]
+    <   %13 = icmp slt i32 0, %9
+    <   br i1 %13, label %.preheader3.lr.ph, label %44
+  in block %._crit_edge18:
+    >   %split19 = phi i32 [ %split17, %39 ]
+    <   %split19 = phi i32 [ %.lcssa8, %44 ]
+  in block %44 / %39:
+    >   %40 = add nuw nsw i32 %11, 1
+    >   %41 = icmp slt i32 %40, %9
+    >   br i1 %41, label %.preheader4, label %._crit_edge18, !llvm.loop !13
+    <   %.lcssa8 = phi i32 [ %split17, %._crit_edge16 ], [ %12, %.preheader4 ]
+    <   %45 = add nuw nsw i32 %11, 1
+    <   %46 = icmp slt i32 %45, %9
+    <   br i1 %46, label %.preheader4, label %._crit_edge18, !llvm.loop !13"
+loop-rotate,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->simplifycfg,"in function main:
+  in block %.preheader4.lr.ph / %.preheader4:
+    >   %11 = phi i32 [ %39, %._crit_edge16 ], [ 0, %8 ]
+    >   %12 = phi i32 [ %.lcssa8, %._crit_edge16 ], [ 0, %8 ]
+    >   %13 = icmp slt i32 0, %9
+    >   br i1 %13, label %.preheader3, label %._crit_edge16
+    <   br label %.preheader4
+  in block %47 / %._crit_edge18:
+    >   %.lcssa9 = phi i32 [ 0, %8 ], [ %.lcssa8, %._crit_edge16 ]
+    <   %.lcssa9 = phi i32 [ %split19, %._crit_edge18 ], [ 0, %8 ]"
+loop-simplify,loop-unroll,dependent,true,false_positive,inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb9,inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb2;loop:main:bb3;loop:main:bb5;loop:main:bb7;loop:main:bb9,bb:main:.preheader;bb:main:.preheader1;bb:main:.preheader2;bb:main:.preheader3;bb:main:.preheader4;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb3:1:ret;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:bb10;loop:main:bb11;loop:main:bb12;loop:main:bb2;loop:main:bb3;loop:main:bb4;loop:main:bb5;loop:main:bb6;loop:main:bb7;loop:main:bb8;loop:main:bb9,read_write,strong,strong,none,none,loop:main:bb10;loop:main:bb11;loop:main:bb12;loop:main:bb2;loop:main:bb3;loop:main:bb4;loop:main:bb5;loop:main:bb6;loop:main:bb7;loop:main:bb8;loop:main:bb9,bb:main:.preheader;bb:main:.preheader1;bb:main:.preheader2;bb:main:.preheader3;bb:main:.preheader4;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb3:1:br;inst:main:bb3:1:ret;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br,bb;inst;loop,mixed,,,
+loop-simplify,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-simplify->simplifycfg,"in function main:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %15, %40 ], [ 0, %8 ]
+    <   %11 = phi i32 [ %16, %45 ], [ 0, %8 ]
+  in block %.preheader4:
+    >   %14 = phi i32 [ %39, %38 ], [ 0, %10 ]
+    >   %15 = phi i32 [ %18, %38 ], [ %11, %10 ]
+    >   %16 = icmp slt i32 %14, %9
+    >   br i1 %16, label %.preheader3, label %40
+    <   br label %14"
+loop-unroll,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function main:
+  in block %14 / %.preheader4:
+    in instruction %15 / %14:
+      successor %.preheader4 cannot be equivalent to %10; it's already equivalent to %.preheader4
+    in instruction %16 / %15:
+      successor %.preheader4 cannot be equivalent to %10; it's already equivalent to %.preheader4
+  in block %18 / %.preheader3:
+    in instruction %19 / %17:
+      successor %.preheader3 cannot be equivalent to %.preheader4; it's already equivalent to %.preheader3
+    in instruction %20 / %18:
+      successor %.preheader3 cannot be equivalent to %.preheader4; it's already equivalent to %.preheader3
+  in block %22 / %.preheader2:
+    in instruction %23 / %20:
+      successor %.preheader2 cannot be equivalent to %.preheader3; it's already equivalent to %.preheader2
+    in instruction %24 / %21:
+      successor %.preheader2 cannot be equivalent to %.preheader3; it's already equivalent to %.preheader2
+  in block %26 / %.preheader1:
+    in instruction %27 / %23:
+      successor %.preheader1 cannot be equivalent to %.preheader2; it's already equivalent to %.preheader1
+    in instruction %28 / %24:
+      successor %.preheader1 cannot be equivalent to %.preheader2; it's already equivalent to %.preheader1
+  in block %30 / %.preheader:
+    in instruction %31 / %26:
+      successor %.preheader cannot be equivalent to %.preheader1; it's already equivalent to %.preheader
+    in instruction %32 / %27:
+      successor %.preheader cannot be equivalent to %.preheader1; it's already equivalent to %.preheader
+  in block %.preheader4:
+    >   %14 = phi i32 [ %39, %38 ], [ 0, %10 ]
+    >   %15 = phi i32 [ %.lcssa7, %38 ], [ %11, %10 ]
+    >   %16 = icmp slt i32 %14, %9
+    >   br i1 %16, label %.preheader3, label %40
+    <   br label %14
+  in block %.preheader3:
+    >   %17 = phi i32 [ %37, %36 ], [ 0, %.preheader4 ]
+    >   %18 = phi i32 [ %.lcssa6, %36 ], [ %15, %.preheader4 ]
+    >   %19 = icmp slt i32 %17, %9
+    >   br i1 %19, label %.preheader2, label %38
+    <   br label %18
+  in block %.preheader2:
+    >   %20 = phi i32 [ %35, %34 ], [ 0, %.preheader3 ]
+    >   %21 = phi i32 [ %.lcssa5, %34 ], [ %18, %.preheader3 ]
+    >   %22 = icmp slt i32 %20, %9
+    >   br i1 %22, label %.preheader1, label %36
+    <   br label %22
+  in block %.preheader1:
+    >   %23 = phi i32 [ %33, %32 ], [ 0, %.preheader2 ]
+    >   %24 = phi i32 [ %.lcssa, %32 ], [ %21, %.preheader2 ]
+    >   %25 = icmp slt i32 %23, %9
+    >   br i1 %25, label %.preheader, label %34
+    <   br label %26
+  in block %.preheader:
+    >   %26 = phi i32 [ %31, %29 ], [ 0, %.preheader1 ]
+    >   %27 = phi i32 [ %30, %29 ], [ %24, %.preheader1 ]
+    >   %28 = icmp slt i32 %26, %9
+    >   br i1 %28, label %29, label %32
+    <   br label %30"
+sccp,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,

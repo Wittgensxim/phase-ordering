@@ -1,0 +1,11 @@
+{
+  "kind": "random_ordered_pair",
+  "passes": [
+    "loop-rotate",
+    "early-cse"
+  ],
+  "winner": "random",
+  "score_improvement": 0,
+  "details": "random chose loop-rotate->early-cse",
+  "changed": true
+}

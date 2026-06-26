@@ -1,0 +1,11 @@
+{
+  "kind": "rule_ordered_pair",
+  "passes": [
+    "licm",
+    "indvars"
+  ],
+  "winner": 13,
+  "score_improvement": 0,
+  "details": "rule chose licm->indvars (rule_score=13)",
+  "changed": true
+}

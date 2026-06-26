@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "early-cse",
+    "indvars"
+  ],
+  "details": "perturbation: early-cse->indvars",
+  "changed": true
+}

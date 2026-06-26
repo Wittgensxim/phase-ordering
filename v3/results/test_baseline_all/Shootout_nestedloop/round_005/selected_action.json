@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "loop-unroll",
+    "instcombine"
+  ],
+  "winner": "B->A",
+  "score_improvement": 0.0,
+  "details": "oracle chose loop-unroll->instcombine (improvement: 0.00)",
+  "changed": true
+}

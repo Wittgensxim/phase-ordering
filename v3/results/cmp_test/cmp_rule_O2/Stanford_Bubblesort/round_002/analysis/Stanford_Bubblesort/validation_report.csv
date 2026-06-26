@@ -1,0 +1,691 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,dependent,true,false_positive,inst:Bubble:%.lcssa,inst:Bubble:%.lcssa,inst:Bubble:%.lcssa,read_write,strong,strong,none,none,inst:Bubble:%.lcssa,,inst,symmetric_rewrite,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,early-cse->indvars,"in function Bubble:
+  in block %38 / %38:
+    >   %39 = sub nsw i32 %11, 1
+    >   store i32 %39, ptr @top, align 4
+    <   %.lcssa = phi i32 [ %11, %9 ]
+    <   %39 = sub nsw i32 %.lcssa, 1
+    <   store i32 %39, ptr @top, align 4"
+early-cse,instcombine,dependent,false,agree_dependent,inst:Bubble:%.lcssa,inst:Bubble:%.lcssa,inst:Bubble:%.lcssa,read_write;enablement,strong,strong,strong,none,inst:Bubble:%.lcssa,,inst,symmetric_rewrite,expansion,instcombine->early-cse,"in function bInitarr:
+  in block %4 / %4:
+    >   %11 = sext i32 %8 to i64
+    >   %12 = getelementptr inbounds [4 x i8], ptr @sortlist, i64 %11
+    >   %13 = load i32, ptr %12, align 4
+        %11 = load i32, ptr @biggest, align 4
+    >   %15 = icmp sgt i32 %13, %14
+    >   br i1 %15, label %16, label %17
+    <   %12 = icmp sgt i32 %7, %11
+    <   br i1 %12, label %13, label %14
+
+in function Bubble:
+  in block %11 / %11:
+    in instruction %15 / %17:
+      operands %13 and %16 differ
+    >   %15 = sext i32 %storemerge2 to i64
+    >   %16 = getelementptr [4 x i8], ptr @sortlist, i64 %15"
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,early-cse->licm;licm->early-cse,"in function bInitarr:
+  in block %0 / %0:
+    <   %.promoted = load i32, ptr %1, align 4
+
+in function Bubble:
+  in block %1 / %1:
+    <   %top.promoted = load i32, ptr @top, align 4
+
+in function main:
+  in block %0 / %0:
+    <   %.promoted = load i32, ptr %2, align 4"
+early-cse,loop-rotate,dependent,false,agree_dependent,inst:Bubble:%.lcssa,inst:Bubble:%.lcssa,inst:Bubble:%.lcssa,read_write;enablement,strong,strong,strong,none,inst:Bubble:%.lcssa,,inst,symmetric_rewrite,expansion,loop-rotate->early-cse,"in function bInitarr:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %29
+    <   %3 = load i32, ptr %1, align 4
+    <   %4 = icmp sle i32 %3, 500
+    <   br i1 %4, label %.lr.ph, label %32
+
+in function Bubble:
+  in block %1 / %1:
+    >   br i1 true, label %.lr.ph2, label %39
+    <   %5 = load i32, ptr @top, align 4
+    <   %6 = icmp sgt i32 %5, 1
+    <   br i1 %6, label %.lr.ph2, label %44
+
+in function main:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %9
+    <   %3 = load i32, ptr %2, align 4
+    <   %4 = icmp slt i32 %3, 100
+    <   br i1 %4, label %.lr.ph, label %12"
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,early-cse->loop-unroll,"in function Bubble:
+  in block %38 / %38:
+    >   %39 = sub nsw i32 %11, 1
+    >   store i32 %39, ptr @top, align 4
+    <   %.lcssa = phi i32 [ %11, %9 ]
+    <   %39 = sub nsw i32 %.lcssa, 1
+    <   store i32 %39, ptr @top, align 4"
+early-cse,mem2reg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,mem2reg->early-cse,"in function bInitarr:
+  in block %3 / %3:
+    >   %11 = sext i32 %.0 to i64
+    >   %12 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %11
+    >   %13 = load i32, ptr %12, align 4
+        %11 = load i32, ptr @biggest, align 4
+    >   %15 = icmp sgt i32 %13, %14
+    >   br i1 %15, label %16, label %17
+    <   %12 = icmp sgt i32 %8, %11
+    <   br i1 %12, label %13, label %14
+
+in function Bubble:
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 1, %5 ], [ %29, %28 ]
+    <   %.0 = phi i32 [ 1, %5 ], [ %13, %19 ]
+  in block %19 / %28:
+    >   %29 = add nsw i32 %.0, 1
+  in block %18 / %18:
+    >   %19 = add nsw i32 %.0, 1
+    >   %20 = sext i32 %19 to i64
+    >   %21 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %20
+    >   %22 = load i32, ptr %21, align 4
+    >   %23 = sext i32 %.0 to i64
+    >   %24 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %23
+    >   store i32 %22, ptr %24, align 4
+    >   %25 = add nsw i32 %.0, 1
+    >   %26 = sext i32 %25 to i64
+    >   %27 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %26
+    >   store i32 %12, ptr %27, align 4
+    <   store i32 %16, ptr %11, align 4
+    <   store i32 %12, ptr %15, align 4"
+early-cse,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,expansion,early-cse->sccp;sccp->early-cse,
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,sroa,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,sroa->early-cse,"in function bInitarr:
+  in block %3 / %3:
+    >   %11 = sext i32 %.0 to i64
+    >   %12 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %11
+    >   %13 = load i32, ptr %12, align 4
+        %11 = load i32, ptr @biggest, align 4
+    >   %15 = icmp sgt i32 %13, %14
+    >   br i1 %15, label %16, label %17
+    <   %12 = icmp sgt i32 %8, %11
+    <   br i1 %12, label %13, label %14
+
+in function Bubble:
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 1, %5 ], [ %29, %28 ]
+    <   %.0 = phi i32 [ 1, %5 ], [ %13, %19 ]
+  in block %19 / %28:
+    >   %29 = add nsw i32 %.0, 1
+  in block %18 / %18:
+    >   %19 = add nsw i32 %.0, 1
+    >   %20 = sext i32 %19 to i64
+    >   %21 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %20
+    >   %22 = load i32, ptr %21, align 4
+    >   %23 = sext i32 %.0 to i64
+    >   %24 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %23
+    >   store i32 %22, ptr %24, align 4
+    >   %25 = add nsw i32 %.0, 1
+    >   %26 = sext i32 %25 to i64
+    >   %27 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %26
+    >   store i32 %12, ptr %27, align 4
+    <   store i32 %16, ptr %11, align 4
+    <   store i32 %12, ptr %15, align 4"
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,gvn->indvars,"in function bInitarr:
+  in block %3 / %3:
+    >   %4 = phi i32 [ %23, %22 ], [ 1, %0 ]
+    >   %5 = icmp sle i32 %4, 500
+    >   br i1 %5, label %6, label %24
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %19 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 501
+    <   br i1 %exitcond, label %4, label %21
+
+in function Bubble:
+  in block %5 / %5:
+    >   %6 = phi i32 [ %24, %23 ], [ 500, %1 ]
+    >   %7 = icmp sgt i32 %6, 1
+    >   br i1 %7, label %8, label %25
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %18 ], [ 500, %1 ]
+    <   %6 = icmp samesign ugt i64 %indvars.iv2, 1
+    <   br i1 %6, label %7, label %20
+
+in function main:
+  in block %3 / %3:
+    >   %4 = phi i32 [ %7, %6 ], [ 0, %0 ]
+    >   %5 = icmp slt i32 %4, 100
+    >   br i1 %5, label %6, label %8
+    <   %4 = phi i32 [ %6, %5 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i32 %4, 100
+    <   br i1 %exitcond, label %5, label %7"
+gvn,instcombine,dependent,false,agree_dependent,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%40;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%40;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,mixed,expansion,instcombine->gvn;gvn->instcombine,"in function bInitarr:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4
+
+in function Bubble:
+  in block %1 / %1:
+    <   %2 = alloca i32, align 4
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   store i32 %0, ptr %2, align 4
+
+in function main:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4"
+gvn,licm,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%40;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%40;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,mixed,expansion,gvn->licm;licm->gvn,"in function bInitarr:
+  in block %0 / %0:
+    <   %.promoted = load i32, ptr %2, align 1
+    <   %.promoted1 = load i32, ptr %1, align 1
+
+in function Bubble:
+  in block %1 / %1:
+    <   %.promoted3 = load i32, ptr %3, align 4
+    <   %.promoted5 = load i32, ptr %4, align 1
+
+in function main:
+  in block %0 / %0:
+    <   %.promoted = load i32, ptr %2, align 1"
+gvn,loop-rotate,dependent,false,agree_dependent,bb:bInitarr:bb8;bb:main:bb3;inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb5:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb5:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb5:1:br;inst:bInitarr:bb5:1:store;inst:bInitarr:bb5:2:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb5:1:store;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:bb3:1:store;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:bb5:1:br;inst:bInitarr:bb5:2:br;inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,bb;inst;loop,mixed,expansion,gvn->loop-rotate;loop-rotate->gvn,"in function bInitarr:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %._crit_edge1
+    <   br label %3
+
+in function Bubble:
+  in block %1 / %1:
+    >   br i1 true, label %.lr.ph2, label %._crit_edge4
+    <   br label %5
+
+in function main:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %._crit_edge1
+    <   br label %3"
+gvn,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,mem2reg,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,mixed,expansion,mem2reg->gvn;gvn->mem2reg,"in function bInitarr:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %21, %20 ], [ 1, %0 ]
+    >   %3 = icmp sle i32 %2, 500
+    >   br i1 %3, label %4, label %22
+    <   %.0 = phi i32 [ 1, %0 ], [ %20, %19 ]
+    <   %2 = icmp sle i32 %.0, 500
+    <   br i1 %2, label %3, label %21
+
+in function Bubble:
+  in block %6 / %6:
+    >   %7 = phi i32 [ %13, %19 ], [ 1, %5 ]
+    >   %8 = icmp slt i32 %7, %3
+    >   br i1 %8, label %9, label %20
+    <   %.0 = phi i32 [ 1, %5 ], [ %12, %18 ]
+    <   %7 = icmp slt i32 %.0, %3
+    <   br i1 %7, label %8, label %19
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %5, %4 ], [ 0, %0 ]
+    >   %3 = icmp slt i32 %2, 100
+    >   br i1 %3, label %4, label %6
+    <   %.0 = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %2 = icmp slt i32 %.0, 100
+    <   br i1 %2, label %3, label %5"
+gvn,reassociate,dependent,false,agree_dependent,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,,inst,symmetric_rewrite,expansion;mutation,gvn->reassociate;reassociate->gvn,"in function bInitarr:
+  in block %6 / %6:
+    >   %.neg = mul i32 %8, -100000
+    >   %9 = add i32 %7, -50000
+    >   %10 = add i32 %9, %.neg
+    <   %9 = mul nsw i32 %8, 100000
+    <   %10 = sub nsw i32 %7, %9
+    <   %11 = add i32 %10, -50000
+        %12 = sext i32 %4 to i64
+        %13 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %12
+    >   store i32 %10, ptr %12, align 4
+    <   store i32 %11, ptr %13, align 4
+        %14 = load i32, ptr @biggest, align 4
+    >   %14 = icmp sgt i32 %10, %13
+    >   br i1 %14, label %15, label %16
+    <   %15 = icmp sgt i32 %11, %14
+    <   br i1 %15, label %16, label %17"
+gvn,sccp,dependent,true,false_positive,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30,,inst,symmetric_rewrite,expansion,gvn->sccp;sccp->gvn,
+gvn,simplifycfg,dependent,true,false_positive,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb1:2:br;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb1:2:br;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:br;inst:bInitarr:bb5:1:store;inst:bInitarr:bb5:2:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb1:2:br;inst:main:bb1:2:store;inst:main:bb1:3:br;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:store;inst:bInitarr:bb8:1:store;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb1:2:store;inst:main:bb3:1:store;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:bb5:1:br;inst:bInitarr:bb5:2:br;inst:bInitarr:bb8:2:br;inst:main:bb1:2:br;inst:main:bb1:3:br;inst:main:bb3:2:br,bb;inst;loop,mixed,expansion,simplifycfg->gvn;gvn->simplifycfg,
+gvn,sroa,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,mixed,expansion,sroa->gvn;gvn->sroa,"in function bInitarr:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %21, %20 ], [ 1, %0 ]
+    >   %3 = icmp sle i32 %2, 500
+    >   br i1 %3, label %4, label %22
+    <   %.0 = phi i32 [ 1, %0 ], [ %20, %19 ]
+    <   %2 = icmp sle i32 %.0, 500
+    <   br i1 %2, label %3, label %21
+
+in function Bubble:
+  in block %6 / %6:
+    >   %7 = phi i32 [ %13, %19 ], [ 1, %5 ]
+    >   %8 = icmp slt i32 %7, %3
+    >   br i1 %8, label %9, label %20
+    <   %.0 = phi i32 [ 1, %5 ], [ %12, %18 ]
+    <   %7 = icmp slt i32 %.0, %3
+    <   br i1 %7, label %8, label %19
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %5, %4 ], [ 0, %0 ]
+    >   %3 = icmp slt i32 %2, 100
+    >   br i1 %3, label %4, label %6
+    <   %.0 = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %2 = icmp slt i32 %.0, 100
+    <   br i1 %2, label %3, label %5"
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,instcombine->indvars,"in function Bubble:
+  in block %5 / %5:
+    >   %storemerge = phi i32 [ 500, %1 ], [ %37, %36 ]
+    <   %storemerge = phi i32 [ 500, %1 ], [ %37, %36 ]
+  in block %36 / %36:
+    >   %37 = add nsw i32 %9, -1
+    <   %.lcssa = phi i32 [ %9, %8 ]
+    <   %37 = add nsw i32 %.lcssa, -1"
+indvars,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->indvars,"function @llvm.smax.i32 exists only in left module
+in function bInitarr:
+  in block %0 / %0:
+    <   %3 = sext i32 %.promoted to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 501)
+    <   %wide.trip.count = sext i32 %smax to i64
+
+in function Bubble:
+  in block %1 / %1:
+    <   %5 = zext i32 %top.promoted to i64
+
+in function main:
+  in block %0 / %0:
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 100)"
+indvars,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,mem2reg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,mem2reg->indvars,"in function bInitarr:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 1, %0 ], [ %24, %23 ]
+    >   %2 = icmp sle i32 %.0, 500
+    >   br i1 %2, label %3, label %25
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %20 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 501
+    <   br i1 %exitcond, label %2, label %21
+
+in function Bubble:
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 1, %5 ], [ %29, %28 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %21 ], [ 1, %5 ]
+        %7 = load i32, ptr @top, align 4
+    >   %8 = icmp slt i32 %.0, %7
+    >   br i1 %8, label %9, label %30
+    <   %8 = sext i32 %7 to i64
+    <   %9 = icmp slt i64 %indvars.iv, %8
+    <   br i1 %9, label %10, label %22
+
+in function main:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp slt i32 %.0, 100
+    >   br i1 %2, label %3, label %6
+    <   %.0 = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %exitcond = icmp ne i32 %.0, 100
+    <   br i1 %exitcond, label %2, label %5"
+indvars,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,sroa,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,sroa->indvars,"in function bInitarr:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 1, %0 ], [ %24, %23 ]
+    >   %2 = icmp sle i32 %.0, 500
+    >   br i1 %2, label %3, label %25
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %20 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 501
+    <   br i1 %exitcond, label %2, label %21
+
+in function Bubble:
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 1, %5 ], [ %29, %28 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %21 ], [ 1, %5 ]
+        %7 = load i32, ptr @top, align 4
+    >   %8 = icmp slt i32 %.0, %7
+    >   br i1 %8, label %9, label %30
+    <   %8 = sext i32 %7 to i64
+    <   %9 = icmp slt i64 %indvars.iv, %8
+    <   br i1 %9, label %10, label %22
+
+in function main:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp slt i32 %.0, 100
+    >   br i1 %2, label %3, label %6
+    <   %.0 = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %exitcond = icmp ne i32 %.0, 100
+    <   br i1 %exitcond, label %2, label %5"
+instcombine,licm,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%40;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%48;inst:Bubble:%49;inst:Bubble:%50;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%40;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%48;inst:Bubble:%49;inst:Bubble:%50;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:Bubble:bb1:1:br;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:2:br;inst:main:bb3:1:br;inst:main:bb3:2:br,inst,mixed,expansion,instcombine->licm;licm->instcombine,"in function bInitarr:
+  in block %0 / %0:
+    >   %.promoted1 = load i32, ptr %1, align 1
+
+in function Bubble:
+  in block %1 / %1:
+    >   store i32 500, ptr @top, align 4
+    >   %.promoted4 = load i32, ptr %3, align 4
+
+in function main:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4"
+instcombine,loop-rotate,dependent,false,agree_dependent,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:2:br;inst:Bubble:bb5:1:store;inst:Bubble:bb5:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb0:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb0:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:2:br;inst:Bubble:bb5:1:store;inst:Bubble:bb5:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb0:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb0:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%50;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%9;inst:Bubble:bb1:2:br;inst:Bubble:bb5:1:store;inst:Bubble:bb5:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%3;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb0:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%3;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:bb0:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%.lcssa;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%50;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%9;inst:Bubble:bb5:1:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%3;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:main:%3;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:bb3:1:store,inst:Bubble:bb1:2:br;inst:Bubble:bb5:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:Bubble:entry:4:br;inst:bInitarr:bb0:1:br;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:bb0:1:br;inst:main:bb3:2:br;inst:main:entry:3:br,inst,mixed,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function bInitarr:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %25
+    <   br label %2
+
+in function Bubble:
+  in block %1 / %1:
+    >   br i1 true, label %.lr.ph2, label %39
+    <   br label %5
+
+in function main:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %8
+    <   br label %2"
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,instcombine->loop-unroll,"in function Bubble:
+  in block %5 / %5:
+    >   %storemerge = phi i32 [ 500, %1 ], [ %37, %36 ]
+    <   %storemerge = phi i32 [ 500, %1 ], [ %37, %36 ]
+  in block %36 / %36:
+    >   %37 = add nsw i32 %9, -1
+    <   %.lcssa = phi i32 [ %9, %8 ]
+    <   %37 = add nsw i32 %.lcssa, -1"
+instcombine,mem2reg,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb7:1:store;inst:Bubble:entry:3:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb8:1:store;inst:bInitarr:entry:4:store;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:entry:1:store;inst:main:entry:2:store,inst:Bubble:bb1:1:br;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:br;inst:Bubble:entry:4:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:br;inst:bInitarr:entry:5:br;inst:main:bb3:1:br;inst:main:bb3:2:br;inst:main:entry:1:br;inst:main:entry:3:br,inst,mixed,expansion,mem2reg->instcombine;instcombine->mem2reg,"in function bInitarr:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    >   %2 = icmp slt i32 %storemerge, 501
+    >   br i1 %2, label %3, label %23
+    <   %.0 = phi i32 [ 1, %0 ], [ %22, %21 ]
+    <   %2 = icmp samesign ult i32 %.0, 501
+    <   br i1 %2, label %3, label %23
+
+in function Bubble:
+  in block %8 / %8:
+    >   %9 = sext i32 %storemerge2 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr @sortlist, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %12 = sext i32 %storemerge2 to i64
+    >   %13 = getelementptr [4 x i8], ptr @sortlist, i64 %12
+    >   %14 = getelementptr i8, ptr %13, i64 4
+    >   %15 = load i32, ptr %14, align 4
+    >   %16 = icmp sgt i32 %11, %15
+    >   br i1 %16, label %17, label %27
+    <   %9 = zext nneg i32 %.0 to i64
+    <   %10 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %12 = zext nneg i32 %.0 to i64
+    <   %13 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %12
+    <   %14 = getelementptr inbounds nuw i8, ptr %13, i64 4
+    <   %15 = load i32, ptr %14, align 4
+    <   %16 = icmp sgt i32 %11, %15
+    <   br i1 %16, label %17, label %27
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %6
+    <   %.0 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %2 = icmp samesign ult i32 %.0, 100
+    <   br i1 %2, label %3, label %6"
+instcombine,reassociate,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,,inst,symmetric_rewrite,expansion,reassociate->instcombine,
+instcombine,sccp,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,,inst,symmetric_rewrite,expansion,instcombine->sccp;sccp->instcombine,
+instcombine,simplifycfg,dependent,false,agree_dependent,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,mixed,expansion,instcombine->simplifycfg;simplifycfg->instcombine,"in function Bubble:
+  in block %35 / %36:
+    >   %37 = add nsw i32 %9, -1
+    <   %36 = add nsw i32 %8, -1
+  in block %7 / %7:
+    >   br label %8
+    <   %storemerge2 = phi i32 [ %34, %32 ], [ 1, %5 ]
+    <   store i32 %storemerge2, ptr %3, align 4
+    <   %8 = load i32, ptr @top, align 4
+    <   %9 = icmp slt i32 %storemerge2, %8
+    <   br i1 %9, label %10, label %35"
+instcombine,sroa,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb7:1:store;inst:Bubble:entry:3:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb8:1:store;inst:bInitarr:entry:4:store;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:entry:1:store;inst:main:entry:2:store,inst:Bubble:bb1:1:br;inst:Bubble:bb1:2:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:br;inst:Bubble:entry:4:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:br;inst:bInitarr:entry:5:br;inst:main:bb3:1:br;inst:main:bb3:2:br;inst:main:entry:1:br;inst:main:entry:3:br,inst,mixed,expansion,instcombine->sroa;sroa->instcombine,"in function bInitarr:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 1, %0 ], [ %22, %21 ]
+    >   %2 = icmp samesign ult i32 %.0, 501
+    >   br i1 %2, label %3, label %23
+    <   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    <   %2 = icmp slt i32 %storemerge, 501
+    <   br i1 %2, label %3, label %23
+
+in function Bubble:
+  in block %8 / %8:
+    >   %9 = zext nneg i32 %.0 to i64
+    >   %10 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %12 = zext nneg i32 %.0 to i64
+    >   %13 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %12
+    >   %14 = getelementptr inbounds nuw i8, ptr %13, i64 4
+    >   %15 = load i32, ptr %14, align 4
+    >   %16 = icmp sgt i32 %11, %15
+    >   br i1 %16, label %17, label %27
+    <   %9 = sext i32 %storemerge2 to i64
+    <   %10 = getelementptr inbounds [4 x i8], ptr @sortlist, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %12 = sext i32 %storemerge2 to i64
+    <   %13 = getelementptr [4 x i8], ptr @sortlist, i64 %12
+    <   %14 = getelementptr i8, ptr %13, i64 4
+    <   %15 = load i32, ptr %14, align 4
+    <   %16 = icmp sgt i32 %11, %15
+    <   br i1 %16, label %17, label %27
+
+in function main:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp samesign ult i32 %.0, 100
+    >   br i1 %2, label %3, label %6
+    <   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %2 = icmp slt i32 %storemerge, 100
+    <   br i1 %2, label %3, label %6"
+licm,loop-rotate,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:2:br;inst:Bubble:bb2:1:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb2:1:ret;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:bb2:1:ret;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:2:br;inst:Bubble:bb2:1:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb2:1:ret;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:bb2:1:ret;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%50;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:2:br;inst:Bubble:bb2:1:br;inst:Bubble:bb2:1:store;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb2:1:ret;inst:bInitarr:bb2:1:store;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:bb2:1:ret;inst:main:bb2:1:store;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%50;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb2:1:store;inst:Bubble:bb6:3:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb2:1:store;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:bb2:1:store;inst:main:bb3:1:store,inst:Bubble:bb1:2:br;inst:Bubble:bb2:1:br;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:bInitarr:bb2:1:ret;inst:bInitarr:bb8:2:br;inst:main:bb2:1:ret;inst:main:bb3:2:br,inst,mixed,expansion,loop-rotate->licm;licm->loop-rotate,"in function bInitarr:
+  in block %0 / %0:
+    in instruction %3 / %.promoted1:
+      operands %1 and %2 differ
+    in instruction %4 / %3:
+      operands %3 and %.promoted differ
+    >   %.promoted = load i32, ptr %1, align 4
+
+in function Bubble:
+  in block %1 / %1:
+    >   %.promoted4 = load i32, ptr %3, align 4
+    >   %.promoted = load i32, ptr %4, align 4
+
+in function main:
+  in block %.lr.ph:
+    <   %.promoted = load i32, ptr %2, align 4
+  in block %11 / %9:
+    >   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %.promoted, %0 ]
+    >   store i32 %.lcssa, ptr %2, align 4"
+licm,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,mem2reg,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%44;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%44;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb6:3:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:Bubble:bb1:1:br;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:br;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:2:br;inst:main:bb3:1:br;inst:main:bb3:2:br,inst,mixed,expansion,mem2reg->licm;licm->mem2reg,"in function bInitarr:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %6, %25 ], [ undef, %0 ]
+    >   %3 = phi i32 [ %26, %25 ], [ 1, %0 ]
+    >   %4 = icmp sle i32 %3, 500
+    >   br i1 %4, label %5, label %27
+    <   %.0 = phi i32 [ 1, %0 ], [ %24, %23 ]
+    <   %2 = icmp sle i32 %.0, 500
+    <   br i1 %2, label %3, label %25
+
+in function Bubble:
+  in block %2 / %2:
+    >   %.lcssa36 = phi i32 [ %.lcssa3, %32 ], [ undef, %1 ]
+    >   %.lcssa15 = phi i32 [ %.lcssa1, %32 ], [ undef, %1 ]
+    >   %3 = phi i32 [ %33, %32 ], [ %top.promoted, %1 ]
+    >   %4 = icmp sgt i32 %3, 1
+    >   br i1 %4, label %5, label %34
+    <   %3 = phi i32 [ %30, %29 ], [ %top.promoted, %1 ]
+    <   %4 = icmp sgt i32 %3, 1
+    <   br i1 %4, label %5, label %31
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %6, %5 ], [ 0, %0 ]
+    >   %3 = icmp slt i32 %2, 100
+    >   br i1 %3, label %4, label %7
+    <   %.0 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %2 = icmp slt i32 %.0, 100
+    <   br i1 %2, label %3, label %6"
+licm,reassociate,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,,inst,mixed,expansion,licm->reassociate;reassociate->licm,
+licm,sccp,dependent,false,agree_dependent,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,,inst,mixed,expansion,sccp->licm;licm->sccp,"in function bInitarr:
+  in block %3 / %3:
+    >   %4 = phi i32 [ %8, %25 ], [ %.promoted1, %0 ]
+    <   %4 = phi i32 [ %8, %23 ], [ %.promoted1, %0 ]
+  in block %7 / %7:
+    >   %9 = sub nuw nsw i32 %8, 0
+    >   %10 = sub nsw i32 %9, 50000
+    <   %.reass = sub i32 %8, 50000
+        %9 = sext i32 %5 to i64
+        %10 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %9
+    >   store i32 %10, ptr %12, align 4
+    <   store i32 %.reass, ptr %10, align 4"
+licm,simplifycfg,dependent,false,agree_dependent,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,mixed,expansion,simplifycfg->licm;licm->simplifycfg,"in function Bubble:
+  in block %9 / %8:
+    in instruction %10 / %9:
+      successor %8 cannot be equivalent to %5; it's already equivalent to %8
+    in instruction %11 / %10:
+      successor %8 cannot be equivalent to %5; it's already equivalent to %8
+  in block %8 / %8:
+    >   %9 = phi i32 [ %32, %31 ], [ %.lcssa36, %5 ]
+    >   %10 = phi i32 [ %33, %31 ], [ 1, %5 ]
+    >   %11 = icmp slt i32 %10, %6
+    >   br i1 %11, label %12, label %34
+    <   br label %9"
+licm,sroa,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%44;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%44;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:bb1:1:store;inst:Bubble:bb6:3:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:Bubble:bb1:1:br;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:br;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:2:br;inst:main:bb3:1:br;inst:main:bb3:2:br,inst,mixed,expansion,sroa->licm;licm->sroa,"in function bInitarr:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %6, %25 ], [ undef, %0 ]
+    >   %3 = phi i32 [ %26, %25 ], [ 1, %0 ]
+    >   %4 = icmp sle i32 %3, 500
+    >   br i1 %4, label %5, label %27
+    <   %.0 = phi i32 [ 1, %0 ], [ %24, %23 ]
+    <   %2 = icmp sle i32 %.0, 500
+    <   br i1 %2, label %3, label %25
+
+in function Bubble:
+  in block %2 / %2:
+    >   %.lcssa36 = phi i32 [ %.lcssa3, %32 ], [ undef, %1 ]
+    >   %.lcssa15 = phi i32 [ %.lcssa1, %32 ], [ undef, %1 ]
+    >   %3 = phi i32 [ %33, %32 ], [ %top.promoted, %1 ]
+    >   %4 = icmp sgt i32 %3, 1
+    >   br i1 %4, label %5, label %34
+    <   %3 = phi i32 [ %30, %29 ], [ %top.promoted, %1 ]
+    <   %4 = icmp sgt i32 %3, 1
+    <   br i1 %4, label %5, label %31
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %6, %5 ], [ 0, %0 ]
+    >   %3 = icmp slt i32 %2, 100
+    >   br i1 %3, label %4, label %7
+    <   %.0 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %2 = icmp slt i32 %.0, 100
+    <   br i1 %2, label %3, label %6"
+loop-rotate,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,mem2reg,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb6:3:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%5;inst:main:bb3:1:store,inst:Bubble:bb1:2:br;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:bb3:2:br;inst:main:entry:3:br,inst,mixed,expansion,mem2reg->loop-rotate;loop-rotate->mem2reg,"in function bInitarr:
+  in block %0 / %0:
+    >   %1 = icmp sle i32 1, 500
+    >   br i1 %1, label %.lr.ph, label %25
+    <   br label %1
+
+in function Bubble:
+  in block %7 / %7:
+    >   %.0 = phi i32 [ 1, %.lr.ph ], [ %28, %27 ]
+  in block %26 / %27:
+    >   %28 = add nsw i32 %.0, 1
+    <   %27 = add nsw i32 %.01, 1
+
+in function main:
+  in block %0 / %0:
+    >   %1 = icmp slt i32 0, 100
+    >   br i1 %1, label %.lr.ph, label %7
+    <   br label %1"
+loop-rotate,reassociate,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,,inst,mixed,expansion,loop-rotate->reassociate;reassociate->loop-rotate,
+loop-rotate,sccp,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,,inst,mixed,expansion,sccp->loop-rotate;loop-rotate->sccp,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:br;inst:bInitarr:bb7:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:br;inst:bInitarr:bb7:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:br;inst:bInitarr:bb5:1:store;inst:bInitarr:bb5:2:br;inst:bInitarr:bb7:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:bb3:1:store;inst:main:bb3:2:br;loop:bInitarr:bb0;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb5:1:store;inst:bInitarr:bb8:1:store;inst:main:bb3:1:store;loop:bInitarr:bb0;loop:main:bb0,bb:bInitarr:bb8;bb:main:bb3;inst:bInitarr:bb5:1:br;inst:bInitarr:bb5:2:br;inst:bInitarr:bb7:1:br;inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,bb;inst;loop,mixed,expansion,simplifycfg->loop-rotate;loop-rotate->simplifycfg,"in function bInitarr:
+  in block %.lr.ph:
+    >   %5 = call i32 @Rand()
+    >   store i32 %5, ptr %2, align 4
+    >   %6 = sdiv i32 %5, 100000
+    >   %7 = mul nsw i32 %6, 100000
+    >   %8 = sub nsw i32 %5, %7
+    >   %9 = sub nsw i32 %8, 50000
+    >   %10 = load i32, ptr %1, align 4
+    >   %11 = sext i32 %10 to i64
+    >   %12 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %11
+    >   store i32 %9, ptr %12, align 4
+    >   %13 = load i32, ptr %1, align 4
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %14
+    >   %16 = load i32, ptr %15, align 4
+    >   %17 = load i32, ptr @biggest, align 4
+    >   %18 = icmp sgt i32 %16, %17
+    >   br i1 %18, label %19, label %20
+    <   br label %5
+
+in function Bubble:
+  in block %.lr.ph2:
+    >   store i32 1, ptr %3, align 4
+    >   %7 = load i32, ptr %3, align 4
+    >   %8 = load i32, ptr @top, align 4
+    >   %9 = icmp slt i32 %7, %8
+    >   br i1 %9, label %.lr.ph, label %._crit_edge
+    <   br label %7
+
+in function main:
+  in block %.lr.ph:
+    >   %5 = phi i32 [ %8, %.lr.ph ], [ %3, %0 ]
+    >   call void @Bubble(i32 noundef %5)
+    >   %6 = load i32, ptr %2, align 4
+    >   %7 = add nsw i32 %6, 1
+    >   store i32 %7, ptr %2, align 4
+    >   %8 = load i32, ptr %2, align 4
+    >   %9 = icmp slt i32 %8, 100
+    >   br i1 %9, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %5"
+loop-rotate,sroa,dependent,false,agree_dependent,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:%4;inst:main:%5;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:3:br,read_write;enablement,strong,strong,strong,none,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb6:3:store;inst:Bubble:bb7:1:store;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb8:1:store;inst:main:%4;inst:main:%5;inst:main:bb3:1:store,inst:Bubble:bb1:2:br;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:Bubble:entry:4:br;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:5:br;inst:main:bb3:2:br;inst:main:entry:3:br,inst,mixed,expansion,sroa->loop-rotate;loop-rotate->sroa,"in function bInitarr:
+  in block %0 / %0:
+    >   %1 = icmp sle i32 1, 500
+    >   br i1 %1, label %.lr.ph, label %25
+    <   br label %1
+
+in function Bubble:
+  in block %7 / %7:
+    >   %.0 = phi i32 [ 1, %.lr.ph ], [ %28, %27 ]
+  in block %26 / %27:
+    >   %28 = add nsw i32 %.0, 1
+    <   %27 = add nsw i32 %.06, 1
+
+in function main:
+  in block %0 / %0:
+    >   %1 = icmp slt i32 0, 100
+    >   br i1 %1, label %.lr.ph, label %7
+    <   br label %1"
+loop-unroll,mem2reg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,sroa,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+mem2reg,reassociate,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,,inst,symmetric_rewrite,expansion,mem2reg->reassociate;reassociate->mem2reg,
+mem2reg,sccp,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,,inst,symmetric_rewrite,expansion,mem2reg->sccp;sccp->mem2reg,
+mem2reg,simplifycfg,dependent,false,agree_dependent,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,symmetric_rewrite,expansion,mem2reg->simplifycfg;simplifycfg->mem2reg,"in function Bubble:
+  in block %5 / %5:
+    >   br label %6
+    <   %.0 = phi i32 [ %28, %27 ], [ 1, %2 ]
+    <   %6 = load i32, ptr @top, align 4
+    <   %7 = icmp slt i32 %.0, %6
+    <   br i1 %7, label %8, label %29"
+mem2reg,sroa,dependent,true,false_positive,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%2;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%3;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%4;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:1:store;inst:Bubble:entry:2:call;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%1;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%1;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%2;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%3;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%39;inst:Bubble:%4;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:1:store;inst:Bubble:entry:2:call;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%1;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%1;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,inst:Bubble:%.0;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%2;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%3;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%4;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%44;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:br;inst:Bubble:bb6:3:store;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:1:store;inst:Bubble:bb7:2:br;inst:Bubble:entry:1:call;inst:Bubble:entry:1:store;inst:Bubble:entry:2:call;inst:Bubble:entry:2:store;inst:Bubble:entry:3:br;inst:Bubble:entry:3:store;inst:Bubble:entry:4:br;inst:bInitarr:%.0;inst:bInitarr:%1;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:2:store;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:br;inst:bInitarr:entry:4:store;inst:bInitarr:entry:5:br;inst:main:%.0;inst:main:%1;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:entry:1:br;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:br,read_write,strong,strong,none,none,inst:Bubble:%.0;inst:Bubble:%10;inst:Bubble:%11;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%17;inst:Bubble:%18;inst:Bubble:%19;inst:Bubble:%2;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%27;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%3;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%34;inst:Bubble:%35;inst:Bubble:%36;inst:Bubble:%37;inst:Bubble:%38;inst:Bubble:%39;inst:Bubble:%4;inst:Bubble:%41;inst:Bubble:%42;inst:Bubble:%43;inst:Bubble:%44;inst:Bubble:%45;inst:Bubble:%46;inst:Bubble:%47;inst:Bubble:%49;inst:Bubble:%51;inst:Bubble:%52;inst:Bubble:%53;inst:Bubble:%54;inst:Bubble:%55;inst:Bubble:%56;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb1:1:store;inst:Bubble:bb6:3:store;inst:Bubble:bb7:1:store;inst:Bubble:entry:1:call;inst:Bubble:entry:1:store;inst:Bubble:entry:2:call;inst:Bubble:entry:2:store;inst:Bubble:entry:3:store;inst:bInitarr:%.0;inst:bInitarr:%1;inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%2;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%4;inst:bInitarr:%5;inst:bInitarr:%6;inst:bInitarr:%7;inst:bInitarr:%8;inst:bInitarr:%9;inst:bInitarr:bb1:2:store;inst:bInitarr:bb8:1:store;inst:bInitarr:entry:4:store;inst:main:%.0;inst:main:%1;inst:main:%2;inst:main:%4;inst:main:%5;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:entry:1:store;inst:main:entry:2:store,inst:Bubble:bb1:1:br;inst:Bubble:bb1:2:br;inst:Bubble:bb6:3:br;inst:Bubble:bb6:4:br;inst:Bubble:bb7:1:br;inst:Bubble:bb7:2:br;inst:Bubble:entry:3:br;inst:Bubble:entry:4:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb1:3:br;inst:bInitarr:bb8:1:br;inst:bInitarr:bb8:2:br;inst:bInitarr:entry:4:br;inst:bInitarr:entry:5:br;inst:main:bb3:1:br;inst:main:bb3:2:br;inst:main:entry:1:br;inst:main:entry:3:br,inst,mixed,,,
+reassociate,sccp,dependent,false,agree_dependent,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%22;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,,inst,mixed,expansion,sccp->reassociate;reassociate->sccp,"in function bInitarr:
+  in block %6 / %6:
+    >   %9 = add nuw nsw i32 %8, 0
+        %9 = load i32, ptr %1, align 4
+        %10 = sext i32 %9 to i64
+        %11 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %10
+    >   store i32 %9, ptr %12, align 4
+    <   store i32 %8, ptr %11, align 4"
+reassociate,simplifycfg,dependent,true,false_positive,inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30,,inst,mixed,expansion,simplifycfg->reassociate;reassociate->simplifycfg,
+reassociate,sroa,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%9,,inst,symmetric_rewrite,expansion,sroa->reassociate;reassociate->sroa,
+sccp,simplifycfg,dependent,true,false_positive,inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%29;inst:bInitarr:%30,inst:bInitarr:%27;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%27;inst:bInitarr:%28;inst:bInitarr:%29;inst:bInitarr:%30,,inst,mixed,expansion,simplifycfg->sccp;sccp->simplifycfg,
+sccp,sroa,dependent,true,false_positive,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%10;inst:bInitarr:%11;inst:bInitarr:%12;inst:bInitarr:%13;inst:bInitarr:%14;inst:bInitarr:%15;inst:bInitarr:%16;inst:bInitarr:%17;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:%20;inst:bInitarr:%23;inst:bInitarr:%24;inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:%8;inst:bInitarr:%9,,inst,symmetric_rewrite,expansion,sroa->sccp;sccp->sroa,
+simplifycfg,sroa,dependent,false,agree_dependent,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:bInitarr:bb8:2:br;inst:main:%8;inst:main:%9;inst:main:bb3:1:store;inst:main:bb3:2:br,read_write;enablement,strong,strong,strong,none,inst:bInitarr:%29;inst:bInitarr:%30;inst:bInitarr:bb8:1:store;inst:main:%8;inst:main:%9;inst:main:bb3:1:store,inst:bInitarr:bb8:2:br;inst:main:bb3:2:br,inst,symmetric_rewrite,expansion,simplifycfg->sroa;sroa->simplifycfg,"in function Bubble:
+  in block %5 / %5:
+    >   %.0 = phi i32 [ %28, %27 ], [ 1, %2 ]
+    >   %6 = load i32, ptr @top, align 4
+    >   %7 = icmp slt i32 %.0, %6
+    >   br i1 %7, label %8, label %29
+    <   br label %6"

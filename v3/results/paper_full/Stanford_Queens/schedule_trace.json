@@ -1,0 +1,1459 @@
+{
+  "benchmark": "Stanford_Queens",
+  "rounds": 9,
+  "final_metrics": {
+    "function_count": 6,
+    "basic_block_count": 22,
+    "instruction_count": 151,
+    "load_count": 7,
+    "store_count": 15,
+    "call_count": 55,
+    "branch_count": 22,
+    "phi_count": 4,
+    "ret_count": 6,
+    "ir_file_size": 10981,
+    "score_ir": 294.0,
+    "score": 294.0
+  },
+  "trace": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_000\\input.ll",
+      "input_hash": "6a0d86ef3b376666a5aff849138f0a94abf153a2db290bd486912d3b7f2fe14e",
+      "metric_score": 347.0,
+      "instruction_count": 223,
+      "candidate_pass_count": 11,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "mem2reg",
+        "reassociate",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,mem2reg",
+        "early-cse,reassociate",
+        "early-cse,sccp",
+        "early-cse,simplifycfg",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,mem2reg",
+        "gvn,reassociate",
+        "gvn,sccp",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,mem2reg",
+        "instcombine,reassociate",
+        "instcombine,simplifycfg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,reassociate",
+        "licm,sccp",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "mem2reg,reassociate",
+        "mem2reg,sccp",
+        "mem2reg,simplifycfg",
+        "reassociate,sroa",
+        "sccp,sroa",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "mem2reg,early-cse",
+      "action_details": "oracle chose mem2reg->early-cse (improvement: 176.00)",
+      "output_hash": "65be53841c95339bef8569f48fd3bcafa0ad11abd0919f131cea1e9007ab643a",
+      "metric_after": 171.0,
+      "metric_delta": -176.0,
+      "changed": "true"
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_001\\input.ll",
+      "input_hash": "65be53841c95339bef8569f48fd3bcafa0ad11abd0919f131cea1e9007ab643a",
+      "metric_score": 171.0,
+      "instruction_count": 120,
+      "candidate_pass_count": 9,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "reassociate",
+        "sccp",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "gvn,indvars",
+        "gvn,simplifycfg",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,reassociate",
+        "instcombine,loop-rotate",
+        "instcombine,reassociate",
+        "instcombine,simplifycfg",
+        "licm,reassociate",
+        "loop-rotate,simplifycfg",
+        "sccp,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "simplifycfg,instcombine",
+      "action_details": "oracle chose simplifycfg->instcombine (improvement: 10.50)",
+      "output_hash": "3768601d1045c14871172fc7b5f867385239169b9c6fdd1ba96220dcec854d50",
+      "metric_after": 160.5,
+      "metric_delta": -10.5,
+      "changed": "true"
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_002\\input.ll",
+      "input_hash": "3768601d1045c14871172fc7b5f867385239169b9c6fdd1ba96220dcec854d50",
+      "metric_score": 160.5,
+      "instruction_count": 113,
+      "candidate_pass_count": 8,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,loop-rotate",
+        "gvn,indvars",
+        "gvn,loop-rotate",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,loop-rotate",
+        "instcombine,loop-rotate",
+        "licm,loop-rotate",
+        "loop-rotate,loop-unroll",
+        "loop-rotate,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "gvn,loop-rotate",
+      "action_details": "oracle chose gvn->loop-rotate (improvement: 5.00)",
+      "output_hash": "8a63a0099823990d57c90a6e63ad2345b87aecac91619b6150c39f4c672fbc9c",
+      "metric_after": 155.5,
+      "metric_delta": -5.0,
+      "changed": "true"
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_003\\input.ll",
+      "input_hash": "8a63a0099823990d57c90a6e63ad2345b87aecac91619b6150c39f4c672fbc9c",
+      "metric_score": 155.5,
+      "instruction_count": 110,
+      "candidate_pass_count": 7,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "gvn,indvars",
+        "gvn,loop-unroll",
+        "indvars,instcombine",
+        "indvars,licm",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "indvars,early-cse",
+      "action_details": "oracle chose indvars->early-cse (improvement: 4.00)",
+      "output_hash": "aa2e93fb2717319def864032c7329bd0d672024f4383bad2ad42fc851972078d",
+      "metric_after": 151.5,
+      "metric_delta": -4.0,
+      "changed": "true"
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_004\\input.ll",
+      "input_hash": "aa2e93fb2717319def864032c7329bd0d672024f4383bad2ad42fc851972078d",
+      "metric_score": 151.5,
+      "instruction_count": 106,
+      "candidate_pass_count": 5,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "gvn",
+        "instcombine",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "instcombine,licm",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "instcombine,licm",
+      "action_details": "oracle chose instcombine->licm (improvement: 0.00)",
+      "output_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_after": 151.5,
+      "metric_delta": 0.0,
+      "changed": "true"
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_005\\input.ll",
+      "input_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_score": 151.5,
+      "instruction_count": 106,
+      "candidate_pass_count": 3,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "gvn",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,gvn",
+      "action_details": "oracle chose loop-unroll->gvn (improvement: -141.00)",
+      "output_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_after": 151.5,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_006\\input.ll",
+      "input_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_score": 151.5,
+      "instruction_count": 106,
+      "candidate_pass_count": 3,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "gvn",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,simplifycfg",
+      "action_details": "oracle chose loop-unroll->simplifycfg (improvement: -141.00)",
+      "output_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_after": 151.5,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 7,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_007\\input.ll",
+      "input_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_score": 151.5,
+      "instruction_count": 106,
+      "candidate_pass_count": 3,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "gvn",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,gvn",
+      "action_details": "oracle chose loop-unroll->gvn (improvement: -141.00)",
+      "output_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_after": 151.5,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 8,
+      "benchmark": "Stanford_Queens",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Queens\\round_008\\input.ll",
+      "input_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_score": 151.5,
+      "instruction_count": 106,
+      "candidate_pass_count": 3,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "gvn",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,gvn",
+      "action_details": "oracle chose loop-unroll->gvn (improvement: -141.00)",
+      "output_hash": "4fc76f1c76a25b5d9506909f2f70e0a97e3414197cd98dc35c76c743f70ba01b",
+      "metric_after": 151.5,
+      "metric_delta": 0.0,
+      "changed": "false"
+    }
+  ],
+  "policy_reports": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,reassociate:order_sensitive",
+        "early-cse,sccp:order_sensitive",
+        "early-cse,simplifycfg:order_sensitive",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:order_sensitive",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:order_sensitive",
+        "licm,sccp:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "mem2reg,reassociate:order_sensitive",
+        "mem2reg,sccp:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:likely_independent"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:order_sensitive",
+        "loop-rotate,reassociate:confirmed_independent",
+        "mem2reg,reassociate:order_sensitive",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:needs_attribution",
+        "reassociate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:order_sensitive",
+        "loop-rotate,sccp:needs_attribution",
+        "mem2reg,sccp:order_sensitive",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:needs_attribution",
+        "sccp,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:order_sensitive",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:needs_attribution",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Queens",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "mem2reg,sroa:likely_independent",
+        "reassociate,sroa:order_sensitive",
+        "sccp,sroa:order_sensitive",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-rotate:confirmed_independent",
+        "early-cse,reassociate:confirmed_independent",
+        "early-cse,sccp:confirmed_independent",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.875
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:needs_attribution",
+        "gvn,licm:needs_attribution",
+        "gvn,loop-rotate:needs_attribution",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:needs_attribution",
+        "indvars,reassociate:order_sensitive",
+        "indvars,sccp:needs_attribution",
+        "indvars,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:needs_attribution",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:needs_attribution",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.125
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:needs_attribution",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:needs_attribution",
+        "licm,loop-rotate:confirmed_independent",
+        "licm,reassociate:order_sensitive",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:confirmed_independent",
+        "gvn,loop-rotate:needs_attribution",
+        "indvars,loop-rotate:needs_attribution",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:confirmed_independent",
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:order_sensitive",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:order_sensitive",
+        "loop-rotate,reassociate:confirmed_independent",
+        "reassociate,sccp:needs_attribution",
+        "reassociate,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:needs_attribution",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:needs_attribution",
+        "reassociate,sccp:needs_attribution",
+        "sccp,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:needs_attribution",
+        "instcombine,simplifycfg:order_sensitive",
+        "licm,simplifycfg:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.125
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-unroll:confirmed_independent",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.7143
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:needs_attribution",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-unroll:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.5714
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.2857
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.7143
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:needs_attribution",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.5714
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:confirmed_independent",
+        "gvn,loop-unroll:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.8571
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.8571
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-unroll:confirmed_independent",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.8333
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-unroll:needs_attribution",
+        "indvars,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.8333
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:needs_attribution",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.8333
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 4,
+      "safe_edge_ratio": 0.75
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Queens",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 4,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Queens",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,licm:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 4,
+      "safe_edge_ratio": 0.75
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 4,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 4,
+      "safe_edge_ratio": 0.75
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 7,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 7,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 7,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 8,
+      "benchmark": "Stanford_Queens",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 8,
+      "benchmark": "Stanford_Queens",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 8,
+      "benchmark": "Stanford_Queens",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 2,
+      "safe_edge_ratio": 0.5
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_score": 156.5,
+    "scheduler_score": 294.0,
+    "improvement": -137.5,
+    "baseline_instruction_count": 111,
+    "scheduler_instruction_count": 151
+  }
+}

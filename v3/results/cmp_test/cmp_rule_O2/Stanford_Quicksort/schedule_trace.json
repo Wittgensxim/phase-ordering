@@ -1,0 +1,1991 @@
+{
+  "benchmark": "Stanford_Quicksort",
+  "rounds": 5,
+  "final_metrics": {
+    "function_count": 6,
+    "basic_block_count": 27,
+    "instruction_count": 167,
+    "load_count": 40,
+    "store_count": 23,
+    "call_count": 9,
+    "branch_count": 27,
+    "phi_count": 5,
+    "ret_count": 6,
+    "ir_file_size": 12218,
+    "ir_cost": 323.58,
+    "score_ir": 323.58,
+    "score": 323.58
+  },
+  "trace": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_rule_O2\\Stanford_Quicksort\\round_000\\input.ll",
+      "input_hash": "295c8ef91d75a69e7739e60a39dd872a1d930dfa8f90c3c3068993b97c7edbf4",
+      "metric_score": 100.0,
+      "instruction_count": 208,
+      "candidate_pass_count": 13,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "mem2reg",
+        "reassociate",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "early-cse,mem2reg",
+        "early-cse,sccp",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,reassociate",
+        "gvn,sccp",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,simplifycfg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,mem2reg",
+        "instcombine,sccp",
+        "instcombine,simplifycfg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,mem2reg",
+        "loop-unroll,simplifycfg",
+        "loop-unroll,sroa",
+        "mem2reg,simplifycfg",
+        "mem2reg,sroa",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "rule_ordered_pair",
+      "selected_action": "early-cse,indvars",
+      "action_details": "rule chose early-cse->indvars (rule_score=14)",
+      "output_hash": "24ef01556cc8375ffa538421af412e088d46a62b1c5e4c9b11f2ae317d658810",
+      "metric_after": 90.92,
+      "metric_delta": -9.08,
+      "changed": "true"
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_rule_O2\\Stanford_Quicksort\\round_001\\input.ll",
+      "input_hash": "24ef01556cc8375ffa538421af412e088d46a62b1c5e4c9b11f2ae317d658810",
+      "metric_score": 90.92,
+      "instruction_count": 184,
+      "candidate_pass_count": 13,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "mem2reg",
+        "reassociate",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "early-cse,mem2reg",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,reassociate",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,simplifycfg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "instcombine,mem2reg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,sccp",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,mem2reg",
+        "loop-unroll,simplifycfg",
+        "loop-unroll,sroa",
+        "mem2reg,simplifycfg",
+        "mem2reg,sroa",
+        "reassociate,sccp",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "rule_ordered_pair",
+      "selected_action": "early-cse,loop-unroll",
+      "action_details": "rule chose early-cse->loop-unroll (rule_score=14)",
+      "output_hash": "d092cc1097c8d2d2c0b8a7f5b0e93fc4e1a4d86bb0e2942467b751379b071e6d",
+      "metric_after": 90.91,
+      "metric_delta": -0.01,
+      "changed": "true"
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_rule_O2\\Stanford_Quicksort\\round_002\\input.ll",
+      "input_hash": "d092cc1097c8d2d2c0b8a7f5b0e93fc4e1a4d86bb0e2942467b751379b071e6d",
+      "metric_score": 90.91,
+      "instruction_count": 184,
+      "candidate_pass_count": 13,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "mem2reg",
+        "reassociate",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "early-cse,mem2reg",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,reassociate",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,simplifycfg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "instcombine,mem2reg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,sccp",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,mem2reg",
+        "loop-unroll,simplifycfg",
+        "loop-unroll,sroa",
+        "mem2reg,simplifycfg",
+        "mem2reg,sroa",
+        "reassociate,sccp",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "rule_ordered_pair",
+      "selected_action": "instcombine,indvars",
+      "action_details": "rule chose instcombine->indvars (rule_score=14)",
+      "output_hash": "757fdf07085f5c4fdc50b644e9c15050d3cdf705c8fa61801e77f5827b8cd891",
+      "metric_after": 87.16,
+      "metric_delta": -3.75,
+      "changed": "true"
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_rule_O2\\Stanford_Quicksort\\round_003\\input.ll",
+      "input_hash": "757fdf07085f5c4fdc50b644e9c15050d3cdf705c8fa61801e77f5827b8cd891",
+      "metric_score": 87.16,
+      "instruction_count": 171,
+      "candidate_pass_count": 11,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "mem2reg",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "early-cse,mem2reg",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,simplifycfg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "instcombine,mem2reg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,mem2reg",
+        "loop-unroll,simplifycfg",
+        "loop-unroll,sroa",
+        "mem2reg,simplifycfg",
+        "mem2reg,sroa",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "rule_ordered_pair",
+      "selected_action": "simplifycfg,indvars",
+      "action_details": "rule chose simplifycfg->indvars (rule_score=14)",
+      "output_hash": "f88bebae26ea3eff41a5ec8dc62c8cd022ed79f0259ed715a6b494b7bb459306",
+      "metric_after": 84.02,
+      "metric_delta": -3.14,
+      "changed": "true"
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_rule_O2\\Stanford_Quicksort\\round_004\\input.ll",
+      "input_hash": "f88bebae26ea3eff41a5ec8dc62c8cd022ed79f0259ed715a6b494b7bb459306",
+      "metric_score": 84.02,
+      "instruction_count": 167,
+      "candidate_pass_count": 11,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "mem2reg",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "early-cse,mem2reg",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,simplifycfg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "instcombine,mem2reg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,mem2reg",
+        "loop-unroll,simplifycfg",
+        "loop-unroll,sroa",
+        "mem2reg,simplifycfg",
+        "mem2reg,sroa",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "rule_ordered_pair",
+      "selected_action": "instcombine,loop-unroll",
+      "action_details": "rule chose instcombine->loop-unroll (rule_score=14)",
+      "output_hash": "1c9056ccbb9ef5b298d93879767e5cb54dcc6b4e28282b8c134545db59aa878c",
+      "metric_after": 84.02,
+      "metric_delta": 0.0,
+      "changed": "true"
+    }
+  ],
+  "policy_reports": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,reassociate:needs_attribution",
+        "early-cse,sccp:order_sensitive",
+        "early-cse,simplifycfg:needs_attribution",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:needs_attribution",
+        "instcombine,sccp:order_sensitive",
+        "instcombine,simplifycfg:order_sensitive",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 11,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.9167
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.5833
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,reassociate:needs_attribution",
+        "mem2reg,sccp:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:needs_attribution",
+        "gvn,reassociate:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:needs_attribution",
+        "licm,reassociate:needs_attribution",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "mem2reg,reassociate:needs_attribution",
+        "reassociate,sccp:needs_attribution",
+        "reassociate,simplifycfg:needs_attribution",
+        "reassociate,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:order_sensitive",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "mem2reg,sccp:confirmed_independent",
+        "reassociate,sccp:needs_attribution",
+        "sccp,simplifycfg:confirmed_independent",
+        "sccp,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:needs_attribution",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:order_sensitive",
+        "reassociate,sroa:needs_attribution",
+        "sccp,sroa:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,reassociate:confirmed_independent",
+        "early-cse,sccp:needs_attribution",
+        "early-cse,simplifycfg:confirmed_independent",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "gvn,sccp:needs_attribution",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.4167
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:needs_attribution",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:needs_attribution",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:needs_attribution",
+        "licm,sccp:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-rotate,sccp:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 11,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.9167
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,reassociate:needs_attribution",
+        "mem2reg,sccp:needs_attribution",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:confirmed_independent",
+        "gvn,reassociate:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:needs_attribution",
+        "licm,reassociate:needs_attribution",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "mem2reg,reassociate:needs_attribution",
+        "reassociate,sccp:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "reassociate,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:needs_attribution",
+        "gvn,sccp:needs_attribution",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:order_sensitive",
+        "loop-rotate,sccp:needs_attribution",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "mem2reg,sccp:needs_attribution",
+        "reassociate,sccp:order_sensitive",
+        "sccp,simplifycfg:needs_attribution",
+        "sccp,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:needs_attribution",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:needs_attribution",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:order_sensitive",
+        "reassociate,sroa:needs_attribution",
+        "sccp,sroa:needs_attribution",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,reassociate:confirmed_independent",
+        "early-cse,sccp:needs_attribution",
+        "early-cse,simplifycfg:confirmed_independent",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "gvn,sccp:needs_attribution",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.4167
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:needs_attribution",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:needs_attribution",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:needs_attribution",
+        "licm,sccp:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.1667
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-rotate,sccp:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 11,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.9167
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,reassociate:needs_attribution",
+        "mem2reg,sccp:needs_attribution",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:confirmed_independent",
+        "gvn,reassociate:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:needs_attribution",
+        "licm,reassociate:needs_attribution",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "mem2reg,reassociate:needs_attribution",
+        "reassociate,sccp:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "reassociate,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:needs_attribution",
+        "gvn,sccp:needs_attribution",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:order_sensitive",
+        "loop-rotate,sccp:needs_attribution",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "mem2reg,sccp:needs_attribution",
+        "reassociate,sccp:order_sensitive",
+        "sccp,simplifycfg:needs_attribution",
+        "sccp,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:needs_attribution",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:needs_attribution",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:order_sensitive",
+        "reassociate,sroa:needs_attribution",
+        "sccp,sroa:needs_attribution",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 12,
+      "safe_edge_ratio": 0.0833
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:likely_independent",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,simplifycfg:needs_attribution",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:likely_independent",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 9,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.9
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.4
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:needs_attribution",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:order_sensitive",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:likely_independent",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.4
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:likely_independent",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.3
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 9,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.9
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.4
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-simplify,mem2reg:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "mem2reg,simplifycfg:order_sensitive",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Quicksort",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-simplify,sroa:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:order_sensitive",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.1
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_score": 61.75,
+    "scheduler_score": 84.02,
+    "improvement": -22.269999999999996,
+    "baseline_instruction_count": 109,
+    "scheduler_instruction_count": 167
+  }
+}

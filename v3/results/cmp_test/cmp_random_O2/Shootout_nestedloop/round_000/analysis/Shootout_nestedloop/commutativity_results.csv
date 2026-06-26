@@ -1,0 +1,502 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+mem2reg,instcombine,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__instcombine.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__mem2reg.ll,"in function main:
+  in block %11 / %11:
+    >   %.0 = phi i32 [ 0, %9 ], [ %.1, %45 ]
+    >   %storemerge = phi i32 [ 0, %9 ], [ %46, %45 ]
+    >   %12 = icmp slt i32 %storemerge, %10
+    >   br i1 %12, label %13, label %47
+    <   %.04 = phi i32 [ 0, %9 ], [ %46, %45 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1, %45 ]
+    <   %12 = icmp slt i32 %.04, %10
+    <   br i1 %12, label %13, label %47"
+mem2reg,simplifycfg,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__simplifycfg.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__mem2reg.ll,"in function main:
+  in block %10 / %10:
+    >   %.0 = phi i32 [ 0, %8 ], [ %.1, %38 ]
+    <   %.0 = phi i32 [ 0, %8 ], [ %.1, %33 ]
+  in block %12 / %12:
+    >   br label %13
+    <   %.05 = phi i32 [ %32, %31 ], [ 0, %10 ]
+    <   %.1 = phi i32 [ %.2, %31 ], [ %.0, %10 ]
+    <   %13 = icmp slt i32 %.05, %9
+    <   br i1 %13, label %14, label %33"
+mem2reg,sroa,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__sroa.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__mem2reg.ll,
+mem2reg,early-cse,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__early-cse.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__mem2reg.ll,
+mem2reg,gvn,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__gvn.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__mem2reg.ll,"in function main:
+  in block %11 / %11:
+    >   %12 = phi i32 [ %21, %65 ], [ %10, %9 ]
+    >   %13 = phi i32 [ %22, %65 ], [ %10, %9 ]
+    >   %14 = phi i32 [ %23, %65 ], [ %10, %9 ]
+    >   %15 = phi i32 [ %24, %65 ], [ %10, %9 ]
+    >   %16 = phi i32 [ %26, %65 ], [ 0, %9 ]
+    >   %17 = phi i32 [ %66, %65 ], [ 0, %9 ]
+    >   %18 = icmp slt i32 %17, %15
+    >   br i1 %18, label %19, label %67
+    <   %.04 = phi i32 [ 0, %9 ], [ %40, %39 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1, %39 ]
+    <   %12 = icmp slt i32 %.04, %10
+    <   br i1 %12, label %13, label %41"
+mem2reg,sccp,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__sccp.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__mem2reg.ll,
+mem2reg,loop-rotate,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__mem2reg.ll,"in function main:
+  in block %47 / %47:
+    >   %.1 = phi i32 [ %.3, %._crit_edge15 ], [ 0, %9 ]
+    <   %.0.lcssa = phi i32 [ %split38, %._crit_edge37 ], [ 0, %9 ]
+  in block %12 / %12:
+    >   %.019 = phi i32 [ 0, %.lr.ph14 ], [ %45, %44 ]
+    >   %.0 = phi i32 [ 0, %.lr.ph14 ], [ %.3, %44 ]
+    <   %.034 = phi i32 [ 0, %.lr.ph36 ], [ %.1.lcssa, %44 ]
+    <   %.0433 = phi i32 [ 0, %.lr.ph36 ], [ %45, %44 ]
+  in block %._crit_edge37 / %._crit_edge15:
+    <   %split38 = phi i32 [ %.1.lcssa, %44 ]"
+mem2reg,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__mem2reg.ll,"in function main:
+  in block %11 / %11:
+    >   %.lcssa27.lcssa15.lcssa24.lcssa35.lcssa48 = phi i32 [ %.lcssa27.lcssa15.lcssa24.lcssa35.lcssa, %52 ], [ 0, %9 ]
+    >   %.lcssa6.lcssa13.lcssa22.lcssa33.lcssa46 = phi i32 [ %.lcssa6.lcssa13.lcssa22.lcssa33.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa411.lcssa20.lcssa31.lcssa44 = phi i32 [ %.lcssa411.lcssa20.lcssa31.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa918.lcssa29.lcssa43 = phi i32 [ %.lcssa918.lcssa29.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa1628.lcssa41 = phi i32 [ %.lcssa1628.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa2639 = phi i32 [ %.lcssa26, %52 ], [ undef, %9 ]
+    >   %12 = phi i32 [ %53, %52 ], [ 0, %9 ]
+    >   %13 = icmp slt i32 %12, %10
+    >   br i1 %13, label %14, label %54
+    <   %.04 = phi i32 [ 0, %9 ], [ %46, %45 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1.lcssa, %45 ]
+    <   %12 = icmp slt i32 %.04, %10
+    <   br i1 %12, label %13, label %47"
+mem2reg,indvars,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__mem2reg.ll,"function @llvm.smax.i32 exists only in left module
+in function main:
+  in block %9 / %9:
+    <   %11 = mul i32 %10, %10
+    <   %12 = mul i32 %11, %11
+    <   %13 = mul i32 %10, %12"
+mem2reg,loop-unroll,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\mem2reg__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__mem2reg.ll,"in function main:
+  in block %11 / %11:
+    >   %.0 = phi i32 [ 0, %9 ], [ %.1, %45 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1.lcssa, %45 ]
+  in block %47 / %47:
+    <   %.0.lcssa = phi i32 [ %.0, %11 ]
+  in block %14 / %14:
+    >   %.1 = phi i32 [ %.0, %13 ], [ %.2, %42 ]
+    <   %.1 = phi i32 [ %.0, %13 ], [ %.2.lcssa, %42 ]
+  in block %44 / %44:
+    <   %.1.lcssa = phi i32 [ %.1, %14 ]
+  in block %17 / %17:
+    >   %.2 = phi i32 [ %.1, %16 ], [ %.3, %39 ]
+    <   %.2 = phi i32 [ %.1, %16 ], [ %.3.lcssa, %39 ]
+  in block %41 / %41:
+    <   %.2.lcssa = phi i32 [ %.2, %17 ]
+  in block %20 / %20:
+    >   %.3 = phi i32 [ %.2, %19 ], [ %.4, %36 ]
+    <   %.3 = phi i32 [ %.2, %19 ], [ %.4.lcssa, %36 ]
+  in block %38 / %38:
+    <   %.3.lcssa = phi i32 [ %.3, %20 ]
+  in block %23 / %23:
+    >   %.4 = phi i32 [ %.3, %22 ], [ %.5, %33 ]
+    <   %.4 = phi i32 [ %.3, %22 ], [ %.5.lcssa, %33 ]
+  in block %35 / %35:
+    <   %.4.lcssa = phi i32 [ %.4, %23 ]
+  in block %32 / %32:
+    <   %.5.lcssa = phi i32 [ %.5, %26 ]"
+instcombine,simplifycfg,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__simplifycfg.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__instcombine.ll,"in function main:
+  in block %23 / %23:
+    >   br label %24
+    <   %storemerge1 = phi i32 [ %54, %52 ], [ 0, %20 ]
+    <   store i32 %storemerge1, ptr %6, align 4
+    <   %24 = load i32, ptr %4, align 4
+    <   %25 = icmp slt i32 %storemerge1, %24
+    <   br i1 %25, label %26, label %55"
+instcombine,sroa,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__sroa.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__instcombine.ll,"in function main:
+  in block %11 / %11:
+    >   %.026 = phi i32 [ 0, %9 ], [ %46, %45 ]
+    >   %.0 = phi i32 [ 0, %9 ], [ %.1, %45 ]
+    >   %12 = icmp slt i32 %.026, %10
+    >   br i1 %12, label %13, label %47
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1, %45 ]
+    <   %storemerge = phi i32 [ 0, %9 ], [ %46, %45 ]
+    <   %12 = icmp slt i32 %storemerge, %10
+    <   br i1 %12, label %13, label %47"
+instcombine,early-cse,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__early-cse.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    <   %3 = alloca ptr, align 8
+        %4 = alloca i32, align 4
+        %5 = alloca i32, align 4
+        %6 = alloca i32, align 4
+        %7 = alloca i32, align 4
+        %8 = alloca i32, align 4
+        %9 = alloca i32, align 4
+        %10 = alloca i32, align 4
+        %11 = alloca i32, align 4
+    <   store ptr %1, ptr %3, align 8"
+instcombine,gvn,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__gvn.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    <   %3 = alloca ptr, align 8
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca i32, align 4
+    <   %7 = alloca i32, align 4
+    <   %8 = alloca i32, align 4
+    <   %9 = alloca i32, align 4
+    <   %10 = alloca i32, align 4
+    <   %11 = alloca i32, align 4
+    <   store ptr %1, ptr %3, align 8"
+instcombine,sccp,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__sccp.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__instcombine.ll,
+instcombine,loop-rotate,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %19 / %19:
+    >   %21 = icmp sgt i32 %20, 0
+    >   br i1 %21, label %.lr.ph14, label %75
+    <   %21 = load i32, ptr %4, align 4
+    <   %22 = icmp slt i32 0, %21
+    <   br i1 %22, label %.lr.ph19, label %76"
+instcombine,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    <   %3 = alloca ptr, align 8
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4"
+instcombine,indvars,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__instcombine.ll,
+instcombine,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\instcombine__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__instcombine.ll,
+simplifycfg,sroa,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__sroa.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__simplifycfg.ll,"in function main:
+  in block %10 / %10:
+    >   %.0 = phi i32 [ 0, %8 ], [ %.1, %33 ]
+    <   %.0 = phi i32 [ 0, %8 ], [ %.1, %38 ]
+  in block %12 / %12:
+    >   %.025 = phi i32 [ %32, %31 ], [ 0, %10 ]
+    >   %.1 = phi i32 [ %.2, %31 ], [ %.0, %10 ]
+    >   %13 = icmp slt i32 %.025, %9
+    >   br i1 %13, label %14, label %33
+    <   br label %13"
+simplifycfg,early-cse,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__early-cse.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__gvn.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__sccp.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,loop-rotate,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph14:
+    >   store i32 0, ptr %8, align 4
+    >   %26 = load i32, ptr %8, align 4
+    >   %27 = load i32, ptr %6, align 4
+    >   %28 = icmp slt i32 %26, %27
+    >   br i1 %28, label %.lr.ph11, label %._crit_edge12
+    <   br label %26"
+simplifycfg,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__simplifycfg.ll,"in function main:
+  in block %33 / %32:
+    in instruction %.lcssa27.lcssa15.lcssa24.lcssa35 / %.lcssa27.lcssa15.lcssa24.lcssa35:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %32
+    in instruction %.lcssa6.lcssa13.lcssa22.lcssa33 / %.lcssa6.lcssa13.lcssa22.lcssa33:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %32
+    in instruction %.lcssa411.lcssa20.lcssa31 / %.lcssa411.lcssa20.lcssa31:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %32
+    in instruction %.lcssa918.lcssa29 / %.lcssa918.lcssa29:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %32
+    in instruction %.lcssa1628 / %.lcssa1628:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %32
+    in instruction %34 / %33:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %32
+  in block %37 / %35:
+    in instruction %.lcssa27.lcssa15.lcssa24 / %.lcssa27.lcssa15.lcssa24:
+      successor %36 cannot be equivalent to %32; it's already equivalent to %35
+    in instruction %.lcssa6.lcssa13.lcssa22 / %.lcssa6.lcssa13.lcssa22:
+      successor %36 cannot be equivalent to %32; it's already equivalent to %35
+    in instruction %.lcssa411.lcssa20 / %.lcssa411.lcssa20:
+      successor %36 cannot be equivalent to %32; it's already equivalent to %35
+    in instruction %.lcssa918 / %.lcssa918:
+      successor %36 cannot be equivalent to %32; it's already equivalent to %35
+    in instruction %38 / %36:
+      successor %36 cannot be equivalent to %32; it's already equivalent to %35
+  in block %41 / %38:
+    in instruction %.lcssa27.lcssa15 / %.lcssa27.lcssa15:
+      successor %40 cannot be equivalent to %35; it's already equivalent to %38
+    in instruction %.lcssa6.lcssa13 / %.lcssa6.lcssa13:
+      successor %40 cannot be equivalent to %35; it's already equivalent to %38
+    in instruction %.lcssa411 / %.lcssa411:
+      successor %40 cannot be equivalent to %35; it's already equivalent to %38
+    in instruction %42 / %39:
+      successor %40 cannot be equivalent to %35; it's already equivalent to %38
+  in block %45 / %41:
+    in instruction %.lcssa27 / %.lcssa27:
+      successor %44 cannot be equivalent to %38; it's already equivalent to %41
+    in instruction %.lcssa6 / %.lcssa6:
+      successor %44 cannot be equivalent to %38; it's already equivalent to %41
+    in instruction %46 / %42:
+      successor %44 cannot be equivalent to %38; it's already equivalent to %41
+  in block %49 / %44:
+    in instruction %50 / %45:
+      successor %48 cannot be equivalent to %41; it's already equivalent to %44
+    in instruction %51 / %46:
+      successor %48 cannot be equivalent to %41; it's already equivalent to %44
+  in block %32 / %32:
+    >   %.lcssa27.lcssa15.lcssa24.lcssa35 = phi i32 [ %.lcssa27.lcssa15.lcssa24.lcssa, %57 ], [ %.lcssa27.lcssa15.lcssa24.lcssa35.lcssa48, %29 ]
+    >   %.lcssa6.lcssa13.lcssa22.lcssa33 = phi i32 [ %.lcssa6.lcssa13.lcssa22.lcssa, %57 ], [ %.lcssa6.lcssa13.lcssa22.lcssa33.lcssa46, %29 ]
+    >   %.lcssa411.lcssa20.lcssa31 = phi i32 [ %.lcssa411.lcssa20.lcssa, %57 ], [ %.lcssa411.lcssa20.lcssa31.lcssa44, %29 ]
+    >   %.lcssa918.lcssa29 = phi i32 [ %.lcssa918.lcssa, %57 ], [ %.lcssa918.lcssa29.lcssa43, %29 ]
+    >   %.lcssa1628 = phi i32 [ %.lcssa16, %57 ], [ %.lcssa1628.lcssa41, %29 ]
+    >   %33 = phi i32 [ %58, %57 ], [ 0, %29 ]
+    >   %34 = icmp slt i32 %33, %24
+    >   br i1 %34, label %35, label %59
+    <   br label %33
+  in block %36 / %35:
+    >   %.lcssa27.lcssa15.lcssa24 = phi i32 [ %.lcssa27.lcssa15.lcssa, %55 ], [ %.lcssa27.lcssa15.lcssa24.lcssa35, %32 ]
+    >   %.lcssa6.lcssa13.lcssa22 = phi i32 [ %.lcssa6.lcssa13.lcssa, %55 ], [ %.lcssa6.lcssa13.lcssa22.lcssa33, %32 ]
+    >   %.lcssa411.lcssa20 = phi i32 [ %.lcssa411.lcssa, %55 ], [ %.lcssa411.lcssa20.lcssa31, %32 ]
+    >   %.lcssa918 = phi i32 [ %.lcssa9, %55 ], [ %.lcssa918.lcssa29, %32 ]
+    >   %36 = phi i32 [ %56, %55 ], [ 0, %32 ]
+    >   %37 = icmp slt i32 %36, %25
+    >   br i1 %37, label %38, label %57
+    <   br label %37
+  in block %40 / %38:
+    >   %.lcssa27.lcssa15 = phi i32 [ %.lcssa27.lcssa, %53 ], [ %.lcssa27.lcssa15.lcssa24, %35 ]
+    >   %.lcssa6.lcssa13 = phi i32 [ %.lcssa6.lcssa, %53 ], [ %.lcssa6.lcssa13.lcssa22, %35 ]
+    >   %.lcssa411 = phi i32 [ %.lcssa4, %53 ], [ %.lcssa411.lcssa20, %35 ]
+    >   %39 = phi i32 [ %54, %53 ], [ 0, %35 ]
+    >   %40 = icmp slt i32 %39, %26
+    >   br i1 %40, label %41, label %55
+    <   br label %41
+  in block %44 / %41:
+    >   %.lcssa27 = phi i32 [ %.lcssa2, %51 ], [ %.lcssa27.lcssa15, %38 ]
+    >   %.lcssa6 = phi i32 [ %.lcssa, %51 ], [ %.lcssa6.lcssa13, %38 ]
+    >   %42 = phi i32 [ %52, %51 ], [ 0, %38 ]
+    >   %43 = icmp slt i32 %42, %27
+    >   br i1 %43, label %44, label %53
+    <   br label %45
+  in block %48 / %44:
+    >   %45 = phi i32 [ %49, %48 ], [ %.lcssa27, %41 ]
+    >   %46 = phi i32 [ %50, %48 ], [ 0, %41 ]
+    >   %47 = icmp slt i32 %46, %28
+    >   br i1 %47, label %48, label %51
+    <   br label %49"
+simplifycfg,indvars,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__simplifycfg.ll,
+simplifycfg,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\simplifycfg__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__simplifycfg.ll,
+sroa,early-cse,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__early-cse.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__sroa.ll,
+sroa,gvn,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__gvn.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__sroa.ll,"in function main:
+  in block %11 / %11:
+    >   %12 = phi i32 [ %21, %65 ], [ %10, %9 ]
+    >   %13 = phi i32 [ %22, %65 ], [ %10, %9 ]
+    >   %14 = phi i32 [ %23, %65 ], [ %10, %9 ]
+    >   %15 = phi i32 [ %24, %65 ], [ %10, %9 ]
+    >   %16 = phi i32 [ %26, %65 ], [ 0, %9 ]
+    >   %17 = phi i32 [ %66, %65 ], [ 0, %9 ]
+    >   %18 = icmp slt i32 %17, %15
+    >   br i1 %18, label %19, label %67
+    <   %.026 = phi i32 [ 0, %9 ], [ %40, %39 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1, %39 ]
+    <   %12 = icmp slt i32 %.026, %10
+    <   br i1 %12, label %13, label %41"
+sroa,sccp,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__sccp.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__sroa.ll,
+sroa,loop-rotate,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__sroa.ll,"in function main:
+  in block %47 / %47:
+    >   %.1 = phi i32 [ %.3, %._crit_edge15 ], [ 0, %9 ]
+    <   %.0.lcssa = phi i32 [ %split58, %._crit_edge57 ], [ 0, %9 ]
+  in block %12 / %12:
+    >   %.053 = phi i32 [ 0, %.lr.ph14 ], [ %45, %44 ]
+    >   %.0 = phi i32 [ 0, %.lr.ph14 ], [ %.3, %44 ]
+    <   %.054 = phi i32 [ 0, %.lr.ph56 ], [ %.1.lcssa, %44 ]
+    <   %.02653 = phi i32 [ 0, %.lr.ph56 ], [ %45, %44 ]
+  in block %._crit_edge57 / %._crit_edge15:
+    <   %split58 = phi i32 [ %.1.lcssa, %44 ]"
+sroa,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__sroa.ll,"in function main:
+  in block %11 / %11:
+    >   %.lcssa27.lcssa15.lcssa24.lcssa35.lcssa48 = phi i32 [ %.lcssa27.lcssa15.lcssa24.lcssa35.lcssa, %52 ], [ 0, %9 ]
+    >   %.lcssa6.lcssa13.lcssa22.lcssa33.lcssa46 = phi i32 [ %.lcssa6.lcssa13.lcssa22.lcssa33.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa411.lcssa20.lcssa31.lcssa44 = phi i32 [ %.lcssa411.lcssa20.lcssa31.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa918.lcssa29.lcssa43 = phi i32 [ %.lcssa918.lcssa29.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa1628.lcssa41 = phi i32 [ %.lcssa1628.lcssa, %52 ], [ undef, %9 ]
+    >   %.lcssa2639 = phi i32 [ %.lcssa26, %52 ], [ undef, %9 ]
+    >   %12 = phi i32 [ %53, %52 ], [ 0, %9 ]
+    >   %13 = icmp slt i32 %12, %10
+    >   br i1 %13, label %14, label %54
+    <   %.026 = phi i32 [ 0, %9 ], [ %46, %45 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1.lcssa, %45 ]
+    <   %12 = icmp slt i32 %.026, %10
+    <   br i1 %12, label %13, label %47"
+sroa,indvars,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__sroa.ll,"function @llvm.smax.i32 exists only in left module
+in function main:
+  in block %9 / %9:
+    <   %11 = mul i32 %10, %10
+    <   %12 = mul i32 %11, %11
+    <   %13 = mul i32 %10, %12"
+sroa,loop-unroll,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sroa__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__sroa.ll,"in function main:
+  in block %11 / %11:
+    >   %.0 = phi i32 [ 0, %9 ], [ %.1, %45 ]
+    <   %.0 = phi i32 [ 0, %9 ], [ %.1.lcssa, %45 ]
+  in block %47 / %47:
+    <   %.0.lcssa = phi i32 [ %.0, %11 ]
+  in block %14 / %14:
+    >   %.1 = phi i32 [ %.0, %13 ], [ %.2, %42 ]
+    <   %.1 = phi i32 [ %.0, %13 ], [ %.2.lcssa, %42 ]
+  in block %44 / %44:
+    <   %.1.lcssa = phi i32 [ %.1, %14 ]
+  in block %17 / %17:
+    >   %.2 = phi i32 [ %.1, %16 ], [ %.3, %39 ]
+    <   %.2 = phi i32 [ %.1, %16 ], [ %.3.lcssa, %39 ]
+  in block %41 / %41:
+    <   %.2.lcssa = phi i32 [ %.2, %17 ]
+  in block %20 / %20:
+    >   %.3 = phi i32 [ %.2, %19 ], [ %.4, %36 ]
+    <   %.3 = phi i32 [ %.2, %19 ], [ %.4.lcssa, %36 ]
+  in block %38 / %38:
+    <   %.3.lcssa = phi i32 [ %.3, %20 ]
+  in block %23 / %23:
+    >   %.4 = phi i32 [ %.3, %22 ], [ %.5, %33 ]
+    <   %.4 = phi i32 [ %.3, %22 ], [ %.5.lcssa, %33 ]
+  in block %35 / %35:
+    <   %.4.lcssa = phi i32 [ %.4, %23 ]
+  in block %32 / %32:
+    <   %.5.lcssa = phi i32 [ %.5, %26 ]"
+early-cse,gvn,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__gvn.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__sccp.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__early-cse.ll,
+early-cse,loop-rotate,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %21 / %21:
+    <   %23 = load i32, ptr %7, align 4
+        %24 = load i32, ptr %6, align 4
+    >   %24 = icmp slt i32 0, %23
+    >   br i1 %24, label %.lr.ph14, label %78
+    <   %25 = icmp slt i32 %23, %24
+    <   br i1 %25, label %.lr.ph14, label %90"
+early-cse,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %21 / %21:
+    <   %23 = load i32, ptr %6, align 4
+    <   %24 = load i32, ptr %6, align 4
+    <   %25 = load i32, ptr %6, align 4
+    <   %26 = load i32, ptr %6, align 4
+    <   %27 = load i32, ptr %6, align 4
+        %28 = load i32, ptr %6, align 4
+    <   %.promoted36 = load i32, ptr %7, align 4"
+early-cse,indvars,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__early-cse.ll,
+early-cse,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\early-cse__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__early-cse.ll,
+gvn,sccp,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__sccp.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__gvn.ll,
+gvn,loop-rotate,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %74 / %64:
+    >   %65 = phi i32 [ %61, %._crit_edge15 ], [ 0, %20 ]
+    <   %.lcssa15 = phi i32 [ %split45, %._crit_edge44 ], [ 0, %20 ]
+  in block %23 / %23:
+    >   %24 = phi i32 [ 0, %.lr.ph14 ], [ %62, %60 ]
+    >   %25 = phi i32 [ 0, %.lr.ph14 ], [ %61, %60 ]
+    <   %24 = phi i32 [ 0, %.lr.ph43 ], [ %72, %71 ]
+    <   %25 = phi i32 [ 0, %.lr.ph43 ], [ %.lcssa10, %71 ]
+    <   %26 = phi i32 [ %21, %.lr.ph43 ], [ %.lcssa11, %71 ]
+    <   %27 = phi i32 [ %21, %.lr.ph43 ], [ %.lcssa12, %71 ]
+    <   %28 = phi i32 [ %21, %.lr.ph43 ], [ %.lcssa13, %71 ]
+    <   %29 = phi i32 [ %21, %.lr.ph43 ], [ %.lcssa14, %71 ]
+        store i32 0, ptr %8, align 4
+    >   br i1 true, label %.lr.ph11, label %._crit_edge16
+    <   %30 = icmp slt i32 0, %26
+    <   br i1 %30, label %.lr.ph35, label %71
+  in block %._crit_edge44 / %._crit_edge15:
+    <   %split45 = phi i32 [ %.lcssa10, %71 ]"
+gvn,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__gvn.ll,"in function main:
+  in block %20 / %20:
+    <   %.promoted51 = load i32, ptr %8, align 1
+    <   %.promoted = load i32, ptr %9, align 1
+    <   %.promoted54 = load i32, ptr %10, align 1
+    <   %.promoted56 = load i32, ptr %11, align 1
+    <   %.promoted58 = load i32, ptr %12, align 1
+    <   %.promoted60 = load i32, ptr %13, align 1
+    <   %.promoted62 = load i32, ptr %7, align 1"
+gvn,indvars,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__gvn.ll,"function @llvm.smax.i32 exists only in left module
+in function main:
+  in block %20 / %20:
+    <   %smax = call i32 @llvm.smax.i32(i32 %21, i32 0)"
+gvn,loop-unroll,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\gvn__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %22 / %22:
+    >   %23 = phi i32 [ %32, %76 ], [ %21, %20 ]
+    >   %24 = phi i32 [ %33, %76 ], [ %21, %20 ]
+    >   %25 = phi i32 [ %34, %76 ], [ %21, %20 ]
+    >   %26 = phi i32 [ %35, %76 ], [ %21, %20 ]
+    >   %27 = phi i32 [ %37, %76 ], [ 0, %20 ]
+    >   %28 = phi i32 [ %77, %76 ], [ 0, %20 ]
+    <   %23 = phi i32 [ %.lcssa14, %76 ], [ %21, %20 ]
+    <   %24 = phi i32 [ %.lcssa13, %76 ], [ %21, %20 ]
+    <   %25 = phi i32 [ %.lcssa12, %76 ], [ %21, %20 ]
+    <   %26 = phi i32 [ %.lcssa11, %76 ], [ %21, %20 ]
+    <   %27 = phi i32 [ %.lcssa10, %76 ], [ 0, %20 ]
+    <   %28 = phi i32 [ %77, %76 ], [ 0, %20 ]
+  in block %78 / %78:
+    <   %.lcssa15 = phi i32 [ %27, %22 ]
+  in block %76 / %76:
+    <   %.lcssa14 = phi i32 [ %32, %31 ]
+    <   %.lcssa13 = phi i32 [ %33, %31 ]
+    <   %.lcssa12 = phi i32 [ %34, %31 ]
+    <   %.lcssa11 = phi i32 [ %35, %31 ]
+    <   %.lcssa10 = phi i32 [ %37, %31 ]
+  in block %31 / %31:
+    >   %32 = phi i32 [ %41, %74 ], [ %23, %30 ]
+    >   %33 = phi i32 [ %42, %74 ], [ %24, %30 ]
+    >   %34 = phi i32 [ %43, %74 ], [ %25, %30 ]
+    >   %35 = phi i32 [ %43, %74 ], [ %26, %30 ]
+    >   %36 = phi i32 [ %75, %74 ], [ 0, %30 ]
+    >   %37 = phi i32 [ %45, %74 ], [ %27, %30 ]
+    <   %32 = phi i32 [ %.lcssa9, %74 ], [ %23, %30 ]
+    <   %33 = phi i32 [ %.lcssa8, %74 ], [ %24, %30 ]
+    <   %34 = phi i32 [ %.lcssa7, %74 ], [ %25, %30 ]
+    <   %35 = phi i32 [ %.lcssa7, %74 ], [ %26, %30 ]
+    <   %36 = phi i32 [ %75, %74 ], [ 0, %30 ]
+    <   %37 = phi i32 [ %.lcssa6, %74 ], [ %27, %30 ]
+  in block %74 / %74:
+    <   %.lcssa9 = phi i32 [ %41, %40 ]
+    <   %.lcssa8 = phi i32 [ %42, %40 ]
+    <   %.lcssa7 = phi i32 [ %43, %40 ]
+    <   %.lcssa6 = phi i32 [ %45, %40 ]
+  in block %40 / %40:
+    >   %41 = phi i32 [ %49, %72 ], [ %32, %39 ]
+    >   %42 = phi i32 [ %50, %72 ], [ %33, %39 ]
+    >   %43 = phi i32 [ %50, %72 ], [ %34, %39 ]
+    >   %44 = phi i32 [ %73, %72 ], [ 0, %39 ]
+    >   %45 = phi i32 [ %52, %72 ], [ %37, %39 ]
+    <   %41 = phi i32 [ %.lcssa5, %72 ], [ %32, %39 ]
+    <   %42 = phi i32 [ %.lcssa4, %72 ], [ %33, %39 ]
+    <   %43 = phi i32 [ %.lcssa4, %72 ], [ %34, %39 ]
+    <   %44 = phi i32 [ %73, %72 ], [ 0, %39 ]
+    <   %45 = phi i32 [ %.lcssa3, %72 ], [ %37, %39 ]
+  in block %72 / %72:
+    <   %.lcssa5 = phi i32 [ %49, %48 ]
+    <   %.lcssa4 = phi i32 [ %50, %48 ]
+    <   %.lcssa3 = phi i32 [ %52, %48 ]
+  in block %48 / %48:
+    >   %49 = phi i32 [ %56, %70 ], [ %41, %47 ]
+    >   %50 = phi i32 [ %56, %70 ], [ %42, %47 ]
+    >   %51 = phi i32 [ %71, %70 ], [ 0, %47 ]
+    >   %52 = phi i32 [ %58, %70 ], [ %45, %47 ]
+    <   %49 = phi i32 [ %.lcssa2, %70 ], [ %41, %47 ]
+    <   %50 = phi i32 [ %.lcssa2, %70 ], [ %42, %47 ]
+    <   %51 = phi i32 [ %71, %70 ], [ 0, %47 ]
+    <   %52 = phi i32 [ %.lcssa1, %70 ], [ %45, %47 ]
+  in block %70 / %70:
+    <   %.lcssa2 = phi i32 [ %56, %55 ]
+    <   %.lcssa1 = phi i32 [ %58, %55 ]
+  in block %55 / %55:
+    >   %57 = phi i32 [ %69, %68 ], [ 0, %54 ]
+    >   %58 = phi i32 [ %63, %68 ], [ %52, %54 ]
+    <   %57 = phi i32 [ %69, %68 ], [ 0, %54 ]
+    <   %58 = phi i32 [ %.lcssa, %68 ], [ %52, %54 ]
+  in block %68 / %68:
+    <   %.lcssa = phi i32 [ %63, %61 ]"
+sccp,loop-rotate,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\sccp__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__sccp.ll,
+loop-rotate,licm,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__licm.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__loop-rotate.ll,"in function main:
+  in block %22 / %22:
+    >   %24 = load i32, ptr %6, align 4
+    >   %25 = load i32, ptr %6, align 4
+    >   %26 = load i32, ptr %6, align 4
+    >   %27 = load i32, ptr %6, align 4
+    >   %28 = load i32, ptr %6, align 4
+    >   %29 = load i32, ptr %6, align 4
+        %24 = load i32, ptr %7, align 4
+    >   %.promoted38 = load i32, ptr %8, align 4
+    >   %.promoted40 = load i32, ptr %9, align 4
+    >   %.promoted42 = load i32, ptr %10, align 4
+    >   %.promoted = load i32, ptr %11, align 4
+    >   %.promoted45 = load i32, ptr %12, align 4
+    >   %.promoted47 = load i32, ptr %13, align 4
+    <   %25 = load i32, ptr %6, align 4"
+loop-rotate,indvars,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-rotate__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__loop-rotate.ll,
+licm,indvars,false,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__indvars.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__licm.ll,"function @llvm.smax.i32 exists only in left module
+in function main:
+  in block %22 / %22:
+    <   %smax = call i32 @llvm.smax.i32(i32 %29, i32 0)
+    <   %smax49 = call i32 @llvm.smax.i32(i32 %28, i32 0)
+    <   %30 = mul i32 %smax49, %smax
+    <   %smax50 = call i32 @llvm.smax.i32(i32 %27, i32 0)
+    <   %smax52 = call i32 @llvm.smax.i32(i32 %26, i32 0)
+    <   %smax54 = call i32 @llvm.smax.i32(i32 %25, i32 0)
+    <   %smax56 = call i32 @llvm.smax.i32(i32 %.promoted36, i32 %24)"
+licm,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\licm__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,true,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\indvars__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Shootout_nestedloop\round_000\analysis\Shootout_nestedloop\commutativity\loop-unroll__then__indvars.ll,

@@ -1,0 +1,29 @@
+pass_a,pass_b,classification,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,enablement_evidence
+early-cse,gvn,independent,,none,none,none,none,,,,,,,none,,,
+early-cse,indvars,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,indvars->early-cse,kind=activation round=1 prefix=indvars writes=inst:Proc0:%.lcssa
+early-cse,instcombine,independent,,none,none,none,none,,,,,,,none,,,
+early-cse,licm,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,licm->early-cse,kind=activation round=1 prefix=licm writes=inst:Proc0:%.lcssa
+early-cse,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->early-cse,kind=activation round=1 prefix=loop-rotate writes=inst:Proc0:%split
+early-cse,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->early-cse,kind=activation round=1 prefix=loop-unroll writes=inst:Proc0:%.lcssa
+early-cse,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+gvn,indvars,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,indvars->gvn,kind=activation round=1 prefix=indvars writes=inst:Proc0:%.lcssa
+gvn,instcombine,independent,,none,none,none,none,,,,,,,none,,,
+gvn,licm,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,licm->gvn,kind=activation round=1 prefix=licm writes=inst:Proc0:%.lcssa
+gvn,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->gvn,kind=activation round=1 prefix=loop-rotate writes=inst:Proc0:%split
+gvn,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->gvn,kind=activation round=1 prefix=loop-unroll writes=inst:Proc0:%.lcssa
+gvn,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+indvars,instcombine,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,indvars->instcombine,kind=activation round=1 prefix=indvars writes=inst:Proc0:%.lcssa
+indvars,licm,dependent,read_write,strong,strong,none,none,,,inst:Proc0:%.lcssa,inst:Proc0:%.lcssa,,inst,write_write_only,,,
+indvars,loop-rotate,dependent,read_write,strong,strong,none,none,,,inst:Proc0:%.lcssa,inst:Proc0:%.lcssa,,inst,write_write_only,,,
+indvars,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:Proc0:%.lcssa,inst:Proc0:%.lcssa,,inst,write_write_only,,,
+indvars,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+instcombine,licm,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,licm->instcombine,kind=activation round=1 prefix=licm writes=inst:Proc0:%.lcssa
+instcombine,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->instcombine,kind=activation round=1 prefix=loop-rotate writes=inst:Proc0:%.not11;inst:Proc0:%split
+instcombine,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->instcombine,kind=activation round=1 prefix=loop-unroll writes=inst:Proc0:%.lcssa
+instcombine,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+licm,loop-rotate,dependent,read_write,strong,strong,none,none,,,inst:Proc0:%.lcssa,inst:Proc0:%.lcssa,,inst,write_write_only,,,
+licm,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:Proc0:%.lcssa,inst:Proc0:%.lcssa,,inst,write_write_only,,,
+licm,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+loop-rotate,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:Proc0:%.lcssa,inst:Proc0:%.lcssa,,inst,write_write_only,,,
+loop-rotate,simplifycfg,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->simplifycfg,kind=activation round=1 prefix=loop-rotate writes=bb:Proc0:bb4;bb:Proc0:bb5;bb:Proc0:bb6;bb:Proc0:bb7;bb:Proc8:bb0;bb:Proc8:bb1;inst:Proc0:%.012;inst:Proc0:%22;inst:Proc0:%23;inst:Proc0:%24;inst:Proc0:%25;inst:Proc0:%26;inst:Proc0:%27;inst:Proc0:%28;inst:Proc0:%29;inst:Proc0:%30;inst:Proc0:%31;inst:Proc0:%32;inst:Proc0:%33;inst:Proc0:%34;inst:Proc0:%35;inst:Proc0:%36;inst:Proc0:%37;inst:Proc0:%38;inst:Proc0:%39;inst:Proc0:%40;inst:Proc0:%41;inst:Proc0:%42;inst:Proc0:%43;inst:Proc0:%44;inst:Proc0:%45;inst:Proc0:%46;inst:Proc0:%47;inst:Proc0:%48;inst:Proc0:%49;inst:Proc0:%split;inst:Proc0:._crit_edge5:1:br;inst:Proc0:._crit_edge5:1:store;inst:Proc0:._crit_edge5:2:br;inst:Proc0:._crit_edge:1:br;inst:Proc0:.lr.ph4:1:br;inst:Proc0:.lr.ph:1:br;inst:Proc0:.lr.ph:1:store;inst:Proc0:.lr.ph:2:store;inst:Proc0:.lr.ph:3:br;inst:Proc0:bb1:1:br;inst:Proc0:bb2:1:br;inst:Proc0:bb2:1:store;inst:Proc0:bb2:2:store;inst:Proc0:bb2:3:br;inst:Proc0:bb3:1:ret;inst:Proc0:bb3:1:store;inst:Proc0:bb3:2:br;inst:Proc0:bb4:1:br;inst:Proc0:bb5:1:br;inst:Proc0:bb6:1:br;inst:Proc0:bb7:1:ret;inst:Proc8:%14;inst:Proc8:%15;inst:Proc8:%16;inst:Proc8:%17;inst:Proc8:%18;inst:Proc8:%19;inst:Proc8:%20;inst:Proc8:%21;inst:Proc8:%22;inst:Proc8:%24;inst:Proc8:%25;inst:Proc8:%26;inst:Proc8:%27;inst:Proc8:._crit_edge:1:br;inst:Proc8:._crit_edge:1:store;inst:Proc8:._crit_edge:2:store;inst:Proc8:._crit_edge:3:store;inst:Proc8:._crit_edge:4:ret;inst:Proc8:.lr.ph:1:br;inst:Proc8:.lr.ph:1:store;inst:Proc8:.lr.ph:2:br;inst:Proc8:bb0:1:store;inst:Proc8:bb0:2:store;inst:Proc8:bb0:3:store;inst:Proc8:bb0:4:ret;inst:Proc8:bb1:1:store;inst:Proc8:bb1:2:br;loop:Proc0:._crit_edge5;loop:Proc0:.lr.ph;loop:Proc0:bb2;loop:Proc0:bb3;loop:Proc0:bb7;loop:Proc8:._crit_edge
+loop-unroll,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,

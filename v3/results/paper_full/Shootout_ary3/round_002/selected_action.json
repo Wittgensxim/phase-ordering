@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "indvars",
+    "simplifycfg"
+  ],
+  "winner": "A->B",
+  "score_improvement": -1.0,
+  "details": "oracle chose indvars->simplifycfg (improvement: -1.00)",
+  "changed": true
+}

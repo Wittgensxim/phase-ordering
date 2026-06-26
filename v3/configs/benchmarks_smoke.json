@@ -1,0 +1,142 @@
+{
+    "description": "Smoke test benchmarks from llvm-test-suite SingleSource",
+    "test_suite_root": "E:/llvm-test-suite",
+    "benchmarks": [
+        {
+            "name": "Misc_flops_1",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-1.c"
+        },
+        {
+            "name": "Misc_flops_2",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-2.c"
+        },
+        {
+            "name": "Misc_flops_3",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-3.c"
+        },
+        {
+            "name": "Misc_flops_4",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-4.c"
+        },
+        {
+            "name": "Misc_flops_5",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-5.c"
+        },
+        {
+            "name": "Misc_flops_6",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-6.c"
+        },
+        {
+            "name": "Misc_flops_7",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-7.c"
+        },
+        {
+            "name": "Misc_flops_8",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-8.c"
+        },
+        {
+            "name": "Misc_flops",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops.c"
+        },
+        {
+            "name": "Stanford_Quicksort",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Quicksort.c"
+        },
+        {
+            "name": "Stanford_Bubblesort",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Bubblesort.c"
+        },
+        {
+            "name": "Stanford_Towers",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Towers.c"
+        },
+        {
+            "name": "Stanford_Puzzle",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Puzzle.c"
+        },
+        {
+            "name": "Stanford_Perm",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Perm.c"
+        },
+        {
+            "name": "Stanford_Queens",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Queens.c"
+        },
+        {
+            "name": "Stanford_IntMM",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/IntMM.c"
+        },
+        {
+            "name": "Stanford_RealMM",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/RealMM.c"
+        },
+        {
+            "name": "Stanford_Oscar",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Oscar.c"
+        },
+        {
+            "name": "Shootout_nestedloop",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/nestedloop.c"
+        },
+        {
+            "name": "Shootout_ary3",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/ary3.c"
+        },
+        {
+            "name": "Dhrystone_dry",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Dhrystone/dry.c"
+        },
+        {
+            "name": "Dhrystone_fldry",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Dhrystone/fldry.c"
+        },
+        {
+            "name": "BenchmarkGame_partialsums",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/partialsums.c"
+        },
+        {
+            "name": "BenchmarkGame_nsieve-bits",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/nsieve-bits.c"
+        },
+        {
+            "name": "BenchmarkGame_recursive",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/recursive.c"
+        },
+        {
+            "name": "McGill_exptree",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/McGill/exptree.c"
+        },
+        {
+            "name": "McGill_chomp",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/McGill/chomp.c"
+        },
+        {
+            "name": "CoyoteBench_almabench",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/CoyoteBench/almabench.c"
+        },
+        {
+            "name": "CoyoteBench_huffbench",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/CoyoteBench/huffbench.c"
+        },
+        {
+            "name": "CoyoteBench_lpbench",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/CoyoteBench/lpbench.c"
+        },
+        {
+            "name": "Adobe-C++_functionobjects",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Adobe-C++/functionobjects.cpp"
+        },
+        {
+            "name": "Adobe-C++_simple_types_constant_folding",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Adobe-C++/simple_types_constant_folding.cpp"
+        },
+        {
+            "name": "Adobe-C++_stepanov_abstraction",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Adobe-C++/stepanov_abstraction.cpp"
+        },
+        {
+            "name": "Adobe-C++_stepanov_vector",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Adobe-C++/stepanov_vector.cpp"
+        }
+    ]
+}

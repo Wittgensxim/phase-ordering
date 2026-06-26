@@ -1,0 +1,475 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+  in block %15 / %15:
+    <   %.12.lcssa.wide = phi i64 [ %indvars.iv, %11 ]
+    <   %.lcssa2 = phi ptr [ %12, %11 ]
+    <   %.lcssa1 = phi i32 [ %13, %11 ]
+    <   %.lcssa.wide = phi i64 [ %indvars.iv.next, %11 ]
+  in block %27 / %27:
+    >   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]
+    >   %.2 = phi i32 [ %21, %26 ], [ %.1, %22 ]
+    >   %28 = icmp sle i32 %.23, %.2
+    >   br i1 %28, label %9, label %29, !llvm.loop !10
+    <   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]
+    <   %.2 = phi i32 [ %.lcssa3, %26 ], [ %.1.lcssa, %22 ]
+    <   %28 = icmp sle i32 %.23, %.2
+    <   br i1 %28, label %9, label %29, !llvm.loop !10"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %28 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %28 ]
+  in block %16 / %16:
+    <   %.lcssa6 = phi i64 [ %11, %10 ]
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+    <   %17 = getelementptr inbounds i32, ptr %0, i64 %.lcssa6
+  in block %28 / %26:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]
+    >   %27 = icmp sle i32 %.23, %.2
+    >   br i1 %27, label %9, label %28, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %27 ], [ %.12.lcssa, %24 ]
+    <   %.2 = phi i32 [ %.lcssa3, %27 ], [ %.1.lcssa, %24 ]
+    <   %29 = icmp sle i32 %.23, %.2
+    <   br i1 %29, label %9, label %30, !llvm.loop !10"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+  in block %16 / %16:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %26 / %26:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]
+    >   %27 = icmp sle i32 %.23, %.2
+    >   br i1 %27, label %9, label %28, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]
+    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]
+    <   %27 = icmp sle i32 %.23, %.2
+    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+  in block %16 / %16:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %26 / %26:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]
+    >   %27 = icmp sle i32 %.23, %.2
+    >   br i1 %27, label %9, label %28, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]
+    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]
+    <   %27 = icmp sle i32 %.23, %.2
+    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+early-cse,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,activation,sccp->early-cse,
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->gvn,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+  in block %15 / %15:
+    <   %.12.lcssa.wide = phi i64 [ %indvars.iv, %11 ]
+    <   %.lcssa2 = phi ptr [ %12, %11 ]
+    <   %.lcssa1 = phi i32 [ %13, %11 ]
+    <   %.lcssa.wide = phi i64 [ %indvars.iv.next, %11 ]
+  in block %27 / %27:
+    >   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]
+    >   %.2 = phi i32 [ %21, %26 ], [ %.1, %22 ]
+    >   %28 = icmp sle i32 %.23, %.2
+    >   br i1 %28, label %9, label %29, !llvm.loop !10
+    <   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]
+    <   %.2 = phi i32 [ %.lcssa3, %26 ], [ %.1.lcssa, %22 ]
+    <   %28 = icmp sle i32 %.23, %.2
+    <   br i1 %28, label %9, label %29, !llvm.loop !10"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %28 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %28 ]
+  in block %16 / %16:
+    <   %.lcssa6 = phi i64 [ %11, %10 ]
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+    <   %17 = getelementptr inbounds i32, ptr %0, i64 %.lcssa6
+  in block %28 / %26:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]
+    >   %27 = icmp sle i32 %.23, %.2
+    >   br i1 %27, label %9, label %28, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %27 ], [ %.12.lcssa, %24 ]
+    <   %.2 = phi i32 [ %.lcssa3, %27 ], [ %.1.lcssa, %24 ]
+    <   %29 = icmp sle i32 %.23, %.2
+    <   br i1 %29, label %9, label %30, !llvm.loop !10"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+  in block %16 / %16:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %26 / %26:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]
+    >   %27 = icmp sle i32 %.23, %.2
+    >   br i1 %27, label %9, label %28, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]
+    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]
+    <   %27 = icmp sle i32 %.23, %.2
+    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+  in block %16 / %16:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %26 / %26:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]
+    >   %27 = icmp sle i32 %.23, %.2
+    >   br i1 %27, label %9, label %28, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]
+    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]
+    <   %27 = icmp sle i32 %.23, %.2
+    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+gvn,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,activation,sccp->gvn,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,false,agree_dependent,inst:Initarr:%10;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32;inst:main:%2;inst:main:%3,inst:Initarr:%10;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32;inst:main:%2;inst:main:%3,inst:Initarr:%10;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:main:%2;inst:main:%3,read_write;enablement,strong,strong,strong,none,inst:Initarr:%10;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:main:%2;inst:main:%3,,inst,mixed,expansion,instcombine->indvars;indvars->instcombine,"in function Initarr:
+  in block %1 / %1:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %0 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %0 ]
+  in block %14 / %14:
+    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 5001
+    >   br i1 %exitcond.not, label %15, label %1, !llvm.loop !7
+    <   %exitcond = icmp ne i64 %indvars.iv.next, 5001
+    <   br i1 %exitcond, label %1, label %15, !llvm.loop !7
+
+in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+  in block %15 / %15:
+    <   %.12.lcssa.wide = phi i64 [ %indvars.iv, %11 ]
+    <   %.lcssa3 = phi ptr [ %12, %11 ]
+    <   %.lcssa2 = phi i32 [ %13, %11 ]
+    <   %.lcssa.wide = phi i64 [ %indvars.iv.next, %11 ]
+    <   %16 = sext i32 %.0 to i64
+  in block %27 / %26:
+    >   %.23 = phi i32 [ %25, %24 ], [ %23, %22 ]
+    >   %.2 = phi i32 [ %21, %24 ], [ %.1, %22 ]
+    >   %.not7 = icmp sgt i32 %.23, %.2
+    >   br i1 %.not7, label %27, label %9, !llvm.loop !10
+    <   %.23 = phi i32 [ %23, %26 ], [ %22, %21 ]
+    <   %.2 = phi i32 [ %25, %26 ], [ %24, %21 ]
+    <   %.not1 = icmp sgt i32 %.23, %.2
+    <   br i1 %.not1, label %28, label %9, !llvm.loop !10
+
+in function main:
+  in block %1 / %1:
+    >   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]
+    <   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]
+        call void @Quick(i32 noundef %.01)
+    >   %2 = add nuw nsw i32 %.01, 1
+    >   %exitcond.not = icmp eq i32 %2, 100
+    >   br i1 %exitcond.not, label %3, label %1, !llvm.loop !7
+    <   %2 = add nuw nsw i32 %.01, 1
+    <   %exitcond = icmp ne i32 %2, 100
+    <   br i1 %exitcond, label %1, label %3, !llvm.loop !7"
+indvars,licm,dependent,false,agree_dependent,inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,,inst,mixed,expansion,licm->indvars;indvars->licm,"in function Quicksort:
+  in block %15 / %15:
+    >   %16 = getelementptr inbounds i32, ptr %0, i64 %indvars.iv.lcssa
+  in block %29 / %29:
+    >   %.23 = phi i32 [ %26, %28 ], [ %25, %23 ]
+    >   %.2 = phi i32 [ %.lcssa3, %28 ], [ %.1.lcssa, %23 ]
+    <   %.23 = phi i32 [ %24, %28 ], [ %23, %22 ]
+    <   %.2 = phi i32 [ %.lcssa3, %28 ], [ %.1.lcssa, %22 ]
+  in block %28 / %28:
+    >   store i32 %.lcssa4, ptr %16, align 4
+    >   store i32 %.lcssa1, ptr %24, align 4
+    <   store i32 %.lcssa4, ptr %25, align 4
+    <   store i32 %.lcssa1, ptr %26, align 4
+  in block %22 / %23:
+    >   %.lcssa = phi i64 [ %18, %17 ]
+    >   %.1.lcssa = phi i32 [ %.1, %17 ]
+    >   %.lcssa4 = phi i32 [ %20, %17 ]
+    >   %.lcssa3 = phi i32 [ %22, %17 ]
+    >   %24 = getelementptr inbounds i32, ptr %0, i64 %.lcssa
+    <   %.lcssa7 = phi i64 [ %17, %16 ]
+    <   %.1.lcssa = phi i32 [ %.1, %16 ]
+    <   %.lcssa4 = phi i32 [ %19, %16 ]
+    <   %.lcssa3 = phi i32 [ %21, %16 ]
+        %23 = trunc nsw i64 %.12.lcssa.wide to i32
+        %24 = trunc nsw i64 %.lcssa.wide to i32
+    >   %27 = icmp sle i32 %25, %.1.lcssa
+    >   br i1 %27, label %28, label %29
+    <   %25 = getelementptr inbounds i32, ptr %0, i64 %.lcssa6
+    <   %26 = getelementptr inbounds i32, ptr %0, i64 %.lcssa7
+    <   %27 = icmp sle i32 %23, %.1.lcssa
+    <   br i1 %27, label %28, label %29"
+indvars,loop-rotate,dependent,true,false_positive,,,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%.lcssa5,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%.lcssa5,,inst,write_write_only,expansion,loop-rotate->indvars,
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,dependent,true,false_positive,,,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%.lcssa5,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%.lcssa5,,inst,write_write_only,expansion,loop-unroll->indvars,
+indvars,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,sccp,dependent,true,false_positive,inst:Initarr:%10;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,inst:Initarr:%10;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,inst:Initarr:%10;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,read_write;enablement,strong,strong,strong,none,inst:Initarr:%10;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,,inst,mixed,expansion;mutation,sccp->indvars;indvars->sccp,
+indvars,simplifycfg,dependent,false,agree_dependent,inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%32,read_write;enablement,strong,strong,strong,none,inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%32,,inst,mixed,expansion,simplifycfg->indvars,"in function Quicksort:
+  in block %15 / %16:
+    >   %.1 = phi i32 [ %.0, %15 ], [ %21, %16 ]
+    >   %17 = sext i32 %.1 to i64
+    >   %18 = getelementptr inbounds i32, ptr %0, i64 %17
+    >   %19 = load i32, ptr %18, align 4
+    >   %20 = icmp slt i32 %8, %19
+    >   %21 = sub nsw i32 %.1, 1
+    >   br i1 %20, label %16, label %22, !llvm.loop !9
+    <   %.1 = phi i32 [ %20, %15 ], [ %.0, %.preheader ]
+    <   %16 = sext i32 %.1 to i64
+    <   %17 = getelementptr inbounds i32, ptr %0, i64 %16
+    <   %18 = load i32, ptr %17, align 4
+    <   %19 = icmp slt i32 %8, %18
+    <   %20 = sub nsw i32 %.1, 1
+    <   br i1 %19, label %15, label %21, !llvm.loop !9
+  in block %21 / %22:
+    >   %.1.lcssa = phi i32 [ %.1, %16 ]
+    >   %.lcssa5 = phi ptr [ %18, %16 ]
+    >   %.lcssa4 = phi i32 [ %19, %16 ]
+    >   %.lcssa3 = phi i32 [ %21, %16 ]
+    <   %.1.lcssa = phi i32 [ %.1, %15 ]
+    <   %.lcssa5 = phi ptr [ %17, %15 ]
+    <   %.lcssa4 = phi i32 [ %18, %15 ]
+    <   %.lcssa3 = phi i32 [ %20, %15 ]"
+instcombine,licm,dependent,false,agree_dependent,inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,,inst,symmetric_rewrite,expansion,instcombine->licm;licm->instcombine,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]
+  in block %16 / %16:
+    >   %17 = getelementptr inbounds [4 x i8], ptr %0, i64 %11
+    <   %.lcssa7 = phi i64 [ %11, %10 ]
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa2 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+    <   %17 = getelementptr inbounds [4 x i8], ptr %0, i64 %.lcssa7
+  in block %27 / %27:
+    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %24 ]
+    >   %.2 = phi i32 [ %23, %25 ], [ %.1, %24 ]
+    >   %.not8 = icmp sgt i32 %.23, %.2
+    >   br i1 %.not8, label %28, label %9, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %26 ], [ %.12.lcssa, %24 ]
+    <   %.2 = phi i32 [ %.lcssa4, %26 ], [ %.1.lcssa, %24 ]
+    <   %.not1 = icmp sgt i32 %.23, %.2
+    <   br i1 %.not1, label %28, label %9, !llvm.loop !10"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]
+  in block %16 / %16:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa3 = phi ptr [ %12, %10 ]
+    <   %.lcssa2 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %25 / %25:
+    >   %.23 = phi i32 [ %15, %24 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %24 ], [ %.1, %23 ]
+    >   %.not6 = icmp sgt i32 %.23, %.2
+    >   br i1 %.not6, label %26, label %9, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %24 ], [ %.12.lcssa, %23 ]
+    <   %.2 = phi i32 [ %.lcssa4, %24 ], [ %.1.lcssa, %23 ]
+    <   %.not1 = icmp sgt i32 %.23, %.2
+    <   br i1 %.not1, label %26, label %9, !llvm.loop !10"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,instcombine->loop-unroll;loop-unroll->instcombine,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]
+  in block %16 / %16:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]
+    <   %.lcssa3 = phi ptr [ %12, %10 ]
+    <   %.lcssa2 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %25 / %25:
+    >   %.23 = phi i32 [ %15, %24 ], [ %.12, %23 ]
+    >   %.2 = phi i32 [ %22, %24 ], [ %.1, %23 ]
+    >   %.not6 = icmp sgt i32 %.23, %.2
+    >   br i1 %.not6, label %26, label %9, !llvm.loop !10
+    <   %.23 = phi i32 [ %.lcssa, %24 ], [ %.12.lcssa, %23 ]
+    <   %.2 = phi i32 [ %.lcssa4, %24 ], [ %.1.lcssa, %23 ]
+    <   %.not1 = icmp sgt i32 %.23, %.2
+    <   br i1 %.not1, label %26, label %9, !llvm.loop !10"
+instcombine,reassociate,dependent,true,false_positive,inst:Initarr:%6,inst:Initarr:%6,inst:Initarr:%6,read_write,strong,strong,none,none,inst:Initarr:%6,,inst,symmetric_rewrite,,,
+instcombine,sccp,dependent,true,false_positive,inst:Initarr:%10;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,inst:Initarr:%10;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,inst:Initarr:%10;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,read_write;enablement,strong,strong,strong,none,inst:Initarr:%10;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%9,,inst,mixed,expansion,instcombine->sccp;sccp->instcombine,
+instcombine,simplifycfg,dependent,true,false_positive,inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:store;inst:Quicksort:bb5:3:br;inst:Quicksort:bb6:1:br;loop:Quicksort:bb0,inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:store;inst:Quicksort:bb5:3:br;inst:Quicksort:bb6:1:br;loop:Quicksort:bb0,inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:store;inst:Quicksort:bb5:3:br;inst:Quicksort:bb6:1:br;loop:Quicksort:bb0,read_write;enablement,strong,strong,strong,none,inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Quicksort:%19;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:store;loop:Quicksort:bb0,inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:3:br;inst:Quicksort:bb6:1:br,inst;loop,mixed,expansion,instcombine->simplifycfg;simplifycfg->instcombine,
+licm,loop-rotate,dependent,true,false_positive,,,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.12.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.12.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4,,inst,write_write_only,expansion,loop-rotate->licm,
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,true,false_positive,,,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.12.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.12.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4,,inst,write_write_only,expansion,loop-unroll->licm,
+licm,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,sccp,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,sccp->licm,"in function Initarr:
+  in block %1 / %1:
+    >   %.01 = phi i32 [ 1, %0 ], [ %16, %15 ]
+    <   %.01 = phi i32 [ 1, %0 ], [ %14, %13 ]
+        %2 = call i32 @Rand()
+    >   %3 = sub nuw nsw i32 %2, 0
+    >   %4 = sub nsw i32 %3, 50000
+    >   %5 = sext i32 %.01 to i64
+    >   %6 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %5
+    >   store i32 %4, ptr %6, align 4
+    <   %.reass = sub i32 %2, 50000
+    <   %3 = sext i32 %.01 to i64
+    <   %4 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %3
+    <   store i32 %.reass, ptr %4, align 4
+        %5 = load i32, ptr @biggest, align 4
+    >   %8 = icmp sgt i32 %4, %7
+    >   br i1 %8, label %9, label %10
+    <   %6 = icmp sgt i32 %.reass, %5
+    <   br i1 %6, label %7, label %8"
+licm,simplifycfg,dependent,false,agree_dependent,inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%32,inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%31;inst:Quicksort:%32,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%31;inst:Quicksort:%32,,inst,mixed,expansion,simplifycfg->licm,"in function Quicksort:
+  in block %17 / %18:
+    >   %.1 = phi i32 [ %.0, %16 ], [ %23, %18 ]
+    >   %19 = sext i32 %.1 to i64
+    >   %20 = getelementptr inbounds i32, ptr %0, i64 %19
+    >   %21 = load i32, ptr %20, align 4
+    >   %22 = icmp slt i32 %8, %21
+    >   %23 = sub nsw i32 %.1, 1
+    >   br i1 %22, label %18, label %24, !llvm.loop !9
+    <   %.1 = phi i32 [ %22, %17 ], [ %.0, %.preheader ]
+    <   %18 = sext i32 %.1 to i64
+    <   %19 = getelementptr inbounds i32, ptr %0, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %21 = icmp slt i32 %8, %20
+    <   %22 = sub nsw i32 %.1, 1
+    <   br i1 %21, label %17, label %23, !llvm.loop !9
+  in block %23 / %24:
+    >   %.lcssa7 = phi i64 [ %19, %18 ]
+    >   %.1.lcssa = phi i32 [ %.1, %18 ]
+    >   %.lcssa4 = phi i32 [ %21, %18 ]
+    >   %.lcssa3 = phi i32 [ %23, %18 ]
+    <   %.lcssa7 = phi i64 [ %18, %17 ]
+    <   %.1.lcssa = phi i32 [ %.1, %17 ]
+    <   %.lcssa4 = phi i32 [ %20, %17 ]
+    <   %.lcssa3 = phi i32 [ %22, %17 ]"
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,true,false_positive,,,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.12.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%.lcssa5,read_write,strong,strong,none,none,inst:Quicksort:%.1.lcssa;inst:Quicksort:%.12.lcssa;inst:Quicksort:%.2.lcssa;inst:Quicksort:%.23.lcssa;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa1;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3;inst:Quicksort:%.lcssa4;inst:Quicksort:%.lcssa5,,inst,write_write_only,,,
+loop-rotate,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,expansion,sccp->loop-rotate,
+loop-rotate,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->loop-rotate,"in function Quicksort:
+  in block %16 / %17:
+    >   %.1 = phi i32 [ %.0, %16 ], [ %22, %17 ]
+    >   %18 = sext i32 %.1 to i64
+    >   %19 = getelementptr inbounds i32, ptr %0, i64 %18
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = icmp slt i32 %8, %20
+    >   %22 = sub nsw i32 %.1, 1
+    >   br i1 %21, label %17, label %23, !llvm.loop !9
+    <   %.1 = phi i32 [ %21, %16 ], [ %.0, %.preheader ]
+    <   %17 = sext i32 %.1 to i64
+    <   %18 = getelementptr inbounds i32, ptr %0, i64 %17
+    <   %19 = load i32, ptr %18, align 4
+    <   %20 = icmp slt i32 %8, %19
+    <   %21 = sub nsw i32 %.1, 1
+    <   br i1 %20, label %16, label %22, !llvm.loop !9
+  in block %22 / %23:
+    >   %.1.lcssa = phi i32 [ %.1, %17 ]
+    >   %.lcssa5 = phi ptr [ %19, %17 ]
+    >   %.lcssa4 = phi i32 [ %20, %17 ]
+    >   %.lcssa3 = phi i32 [ %22, %17 ]
+    <   %.1.lcssa = phi i32 [ %.1, %16 ]
+    <   %.lcssa5 = phi ptr [ %18, %16 ]
+    <   %.lcssa4 = phi i32 [ %19, %16 ]
+    <   %.lcssa3 = phi i32 [ %21, %16 ]"
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function Quicksort:
+  in block %.preheader / %16:
+    >   %.1 = phi i32 [ %21, %16 ], [ %.0, %10 ]
+    >   %17 = sext i32 %.1 to i64
+    >   %18 = getelementptr inbounds i32, ptr %0, i64 %17
+    >   %19 = load i32, ptr %18, align 4
+    >   %20 = icmp slt i32 %8, %19
+    >   %21 = sub nsw i32 %.1, 1
+    >   br i1 %20, label %16, label %22, !llvm.loop !9
+    <   br label %16
+  in block %25 / %25:
+    >   %.2 = phi i32 [ %21, %24 ], [ %.1, %22 ]
+    <   %.2 = phi i32 [ %21, %24 ], [ %.1, %22 ]
+  in block %24 / %24:
+    >   store i32 %19, ptr %12, align 4
+    >   store i32 %13, ptr %18, align 4
+    <   store i32 %19, ptr %12, align 4
+    <   store i32 %13, ptr %18, align 4
+  in block %22 / %22:
+    >   %23 = icmp sle i32 %.12, %.1
+    <   %23 = icmp sle i32 %.12, %.1"
+loop-unroll,reassociate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,expansion,sccp->loop-unroll,
+loop-unroll,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->loop-unroll,"in function Quicksort:
+  in block %16 / %17:
+    >   %.1 = phi i32 [ %.0, %16 ], [ %22, %17 ]
+    >   %18 = sext i32 %.1 to i64
+    >   %19 = getelementptr inbounds i32, ptr %0, i64 %18
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = icmp slt i32 %8, %20
+    >   %22 = sub nsw i32 %.1, 1
+    >   br i1 %21, label %17, label %23, !llvm.loop !9
+    <   %.1 = phi i32 [ %21, %16 ], [ %.0, %.preheader ]
+    <   %17 = sext i32 %.1 to i64
+    <   %18 = getelementptr inbounds i32, ptr %0, i64 %17
+    <   %19 = load i32, ptr %18, align 4
+    <   %20 = icmp slt i32 %8, %19
+    <   %21 = sub nsw i32 %.1, 1
+    <   br i1 %20, label %16, label %22, !llvm.loop !9
+  in block %22 / %23:
+    >   %.1.lcssa = phi i32 [ %.1, %17 ]
+    >   %.lcssa5 = phi ptr [ %19, %17 ]
+    >   %.lcssa4 = phi i32 [ %20, %17 ]
+    >   %.lcssa3 = phi i32 [ %22, %17 ]
+    <   %.1.lcssa = phi i32 [ %.1, %16 ]
+    <   %.lcssa5 = phi ptr [ %18, %16 ]
+    <   %.lcssa4 = phi i32 [ %19, %16 ]
+    <   %.lcssa3 = phi i32 [ %21, %16 ]"
+reassociate,sccp,dependent,true,false_positive,inst:Initarr:%6,inst:Initarr:%6,inst:Initarr:%6,read_write;enablement,strong,strong,strong,none,inst:Initarr:%6,,inst,symmetric_rewrite,expansion;mutation,sccp->reassociate;reassociate->sccp,
+reassociate,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+sccp,simplifycfg,dependent,true,false_positive,inst:Initarr:%18;inst:Initarr:%19,inst:Initarr:%18;inst:Initarr:%19,inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19,read_write;enablement,strong,strong,strong,none,inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19,,inst,mixed,expansion,simplifycfg->sccp;sccp->simplifycfg,

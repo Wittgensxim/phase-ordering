@@ -1,0 +1,985 @@
+{
+  "summary": {
+    "total_pairs": 28,
+    "independent_pairs": 15,
+    "dependent_pairs": 13,
+    "uncertain_pairs": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "instcombine",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->early-cse"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-rotate writes=inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%45;inst:main:%46;inst:main:%48;inst:main:%split;inst:main:%split11;inst:main:%split13;inst:main:%split15;inst:main:%split17;inst:main:%split19;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->early-cse"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-unroll writes=inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9"
+      ]
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->gvn"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-rotate writes=bb:main:.preheader._crit_edge;bb:main:.preheader1._crit_edge;bb:main:.preheader2._crit_edge;bb:main:.preheader3._crit_edge;bb:main:.preheader4._crit_edge;inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%45;inst:main:%46;inst:main:%48;inst:main:%split;inst:main:%split11;inst:main:%split13;inst:main:%split15;inst:main:%split17;inst:main:%split19;inst:main:.preheader._crit_edge:1:br;inst:main:.preheader1._crit_edge:1:br;inst:main:.preheader1:1:br;inst:main:.preheader2._crit_edge:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3._crit_edge:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4._crit_edge:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-unroll writes=inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9"
+      ]
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->instcombine"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-rotate writes=inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%10;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%45;inst:main:%46;inst:main:%48;inst:main:%split;inst:main:%split11;inst:main:%split13;inst:main:%split15;inst:main:%split17;inst:main:%split19;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->instcombine"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-unroll writes=inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-simplify",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb9"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb9"
+      ],
+      "wa_intersect_wb": [
+        "bb:main:.preheader",
+        "bb:main:.preheader1",
+        "bb:main:.preheader2",
+        "bb:main:.preheader3",
+        "bb:main:.preheader4",
+        "inst:main:.preheader1:1:br",
+        "inst:main:.preheader2:1:br",
+        "inst:main:.preheader3:1:br",
+        "inst:main:.preheader4:1:br",
+        "inst:main:.preheader:1:br",
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb8",
+        "loop:main:bb9"
+      ],
+      "strong_intersections": [
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb8",
+        "loop:main:bb9"
+      ],
+      "weak_intersections": [
+        "bb:main:.preheader",
+        "bb:main:.preheader1",
+        "bb:main:.preheader2",
+        "bb:main:.preheader3",
+        "bb:main:.preheader4",
+        "inst:main:.preheader1:1:br",
+        "inst:main:.preheader2:1:br",
+        "inst:main:.preheader3:1:br",
+        "inst:main:.preheader4:1:br",
+        "inst:main:.preheader:1:br",
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-simplify->loop-rotate"
+      ],
+      "enablement_evidence": [
+        "kind=expansion round=1 prefix=loop-simplify writes=bb:main:._crit_edge;bb:main:._crit_edge10;bb:main:._crit_edge12;bb:main:._crit_edge14;bb:main:._crit_edge16;bb:main:._crit_edge18;bb:main:.lr.ph;bb:main:.preheader.lr.ph;bb:main:.preheader1.lr.ph;bb:main:.preheader2.lr.ph;bb:main:.preheader3.lr.ph;bb:main:.preheader4.lr.ph;bb:main:bb10;bb:main:bb11;bb:main:bb12;bb:main:bb13;bb:main:bb14;bb:main:bb9;inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%split;inst:main:%split11;inst:main:%split13;inst:main:%split15;inst:main:%split17;inst:main:%split19;inst:main:._crit_edge10:1:br;inst:main:._crit_edge12:1:br;inst:main:._crit_edge14:1:br;inst:main:._crit_edge16:1:br;inst:main:._crit_edge18:1:br;inst:main:._crit_edge:1:br;inst:main:.lr.ph:1:br;inst:main:.preheader.lr.ph:1:br;inst:main:.preheader1.lr.ph:1:br;inst:main:.preheader1:1:br;inst:main:.preheader2.lr.ph:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3.lr.ph:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4.lr.ph:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb1:1:br;inst:main:bb2:1:br;inst:main:bb2:1:ret;inst:main:bb3:1:br;inst:main:bb3:1:ret;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb10;loop:main:bb12;loop:main:bb2;loop:main:bb4;loop:main:bb6;loop:main:bb8"
+      ]
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb9"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb9"
+      ],
+      "wa_intersect_wb": [
+        "bb:main:.preheader",
+        "bb:main:.preheader1",
+        "bb:main:.preheader2",
+        "bb:main:.preheader3",
+        "bb:main:.preheader4",
+        "inst:main:%.lcssa",
+        "inst:main:%.lcssa5",
+        "inst:main:%.lcssa6",
+        "inst:main:%.lcssa7",
+        "inst:main:%.lcssa8",
+        "inst:main:%.lcssa9",
+        "inst:main:.preheader1:1:br",
+        "inst:main:.preheader2:1:br",
+        "inst:main:.preheader3:1:br",
+        "inst:main:.preheader4:1:br",
+        "inst:main:.preheader:1:br",
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb8",
+        "loop:main:bb9"
+      ],
+      "strong_intersections": [
+        "inst:main:%.lcssa",
+        "inst:main:%.lcssa5",
+        "inst:main:%.lcssa6",
+        "inst:main:%.lcssa7",
+        "inst:main:%.lcssa8",
+        "inst:main:%.lcssa9",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb8",
+        "loop:main:bb9"
+      ],
+      "weak_intersections": [
+        "bb:main:.preheader",
+        "bb:main:.preheader1",
+        "bb:main:.preheader2",
+        "bb:main:.preheader3",
+        "bb:main:.preheader4",
+        "inst:main:.preheader1:1:br",
+        "inst:main:.preheader2:1:br",
+        "inst:main:.preheader3:1:br",
+        "inst:main:.preheader4:1:br",
+        "inst:main:.preheader:1:br",
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->loop-unroll",
+        "loop-unroll->loop-rotate"
+      ],
+      "enablement_evidence": [
+        "kind=expansion round=1 prefix=loop-rotate writes=bb:main:._crit_edge.epilog-lcssa;bb:main:._crit_edge.unr-lcssa;bb:main:.epil.preheader;bb:main:.lr.ph.new;bb:main:bb9;inst:main:%.epil.init;inst:main:%.epil.init21;inst:main:%.unr;inst:main:%.unr20;inst:main:%11;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%49;inst:main:%50;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%7;inst:main:%epil.iter;inst:main:%epil.iter.cmp;inst:main:%epil.iter.next;inst:main:%lcmp.mod;inst:main:%lcmp.mod23;inst:main:%niter;inst:main:%niter.ncmp.7;inst:main:%niter.next.7;inst:main:%split;inst:main:%split.ph;inst:main:%split.ph22;inst:main:%unroll_iter;inst:main:%xtraiter;inst:main:._crit_edge.epilog-lcssa:1:br;inst:main:._crit_edge.unr-lcssa:1:br;inst:main:.epil.preheader:1:call;inst:main:.epil.preheader:2:br;inst:main:.lr.ph.new:1:br;inst:main:.lr.ph:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb9:1:br;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb9",
+        "kind=expansion round=1 prefix=loop-unroll writes=bb:main:._crit_edge;bb:main:._crit_edge10;bb:main:._crit_edge12;bb:main:._crit_edge14;bb:main:._crit_edge16;bb:main:._crit_edge18;bb:main:.lr.ph;bb:main:.preheader.lr.ph;bb:main:.preheader1.lr.ph;bb:main:.preheader2.lr.ph;bb:main:.preheader3.lr.ph;bb:main:.preheader4.lr.ph;bb:main:bb10;bb:main:bb11;bb:main:bb12;bb:main:bb13;bb:main:bb14;bb:main:bb9;inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%.lcssa9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%split;inst:main:%split11;inst:main:%split13;inst:main:%split15;inst:main:%split17;inst:main:%split19;inst:main:._crit_edge10:1:br;inst:main:._crit_edge12:1:br;inst:main:._crit_edge14:1:br;inst:main:._crit_edge16:1:br;inst:main:._crit_edge18:1:br;inst:main:._crit_edge:1:br;inst:main:.lr.ph:1:br;inst:main:.preheader.lr.ph:1:br;inst:main:.preheader1.lr.ph:1:br;inst:main:.preheader1:1:br;inst:main:.preheader2.lr.ph:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3.lr.ph:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4.lr.ph:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb1:1:br;inst:main:bb2:1:br;inst:main:bb2:1:ret;inst:main:bb3:1:br;inst:main:bb3:1:ret;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb10;loop:main:bb12;loop:main:bb2;loop:main:bb4;loop:main:bb6;loop:main:bb8"
+      ]
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "sccp",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->sccp"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-rotate writes=inst:main:%.lcssa;inst:main:%.lcssa5;inst:main:%.lcssa6;inst:main:%.lcssa7;inst:main:%.lcssa8;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%45;inst:main:%46;inst:main:%48;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb3;loop:main:bb8"
+      ]
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-rotate writes=bb:main:.preheader.lr.ph;bb:main:.preheader1.lr.ph;bb:main:.preheader2.lr.ph;bb:main:.preheader3.lr.ph;bb:main:.preheader4.lr.ph;bb:main:bb2;bb:main:bb3;bb:main:bb4;bb:main:bb5;bb:main:bb6;bb:main:bb7;bb:main:bb8;inst:main:%.lcssa9;inst:main:%11;inst:main:%12;inst:main:%15;inst:main:%18;inst:main:%21;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%45;inst:main:%46;inst:main:%48;inst:main:%split;inst:main:%split11;inst:main:%split13;inst:main:%split15;inst:main:%split17;inst:main:%split19;inst:main:._crit_edge10:1:br;inst:main:._crit_edge12:1:br;inst:main:._crit_edge14:1:br;inst:main:._crit_edge16:1:br;inst:main:._crit_edge18:1:br;inst:main:._crit_edge18:1:ret;inst:main:._crit_edge:1:br;inst:main:.lr.ph:1:br;inst:main:.preheader.lr.ph:1:br;inst:main:.preheader1.lr.ph:1:br;inst:main:.preheader2.lr.ph:1:br;inst:main:.preheader3.lr.ph:1:br;inst:main:.preheader4.lr.ph:1:br;inst:main:bb2:1:ret;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;loop:main:.lr.ph;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb8"
+      ]
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb9"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb11",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb5",
+        "loop:main:bb7",
+        "loop:main:bb9"
+      ],
+      "wa_intersect_wb": [
+        "bb:main:.preheader",
+        "bb:main:.preheader1",
+        "bb:main:.preheader2",
+        "bb:main:.preheader3",
+        "bb:main:.preheader4",
+        "inst:main:.preheader1:1:br",
+        "inst:main:.preheader2:1:br",
+        "inst:main:.preheader3:1:br",
+        "inst:main:.preheader4:1:br",
+        "inst:main:.preheader:1:br",
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb3:1:ret",
+        "inst:main:bb4:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br",
+        "loop:main:bb10",
+        "loop:main:bb11",
+        "loop:main:bb12",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb4",
+        "loop:main:bb5",
+        "loop:main:bb6",
+        "loop:main:bb7",
+        "loop:main:bb8",
+        "loop:main:bb9"
+      ],
+      "strong_intersections": [
+        "loop:main:bb10",
+        "loop:main:bb11",
+        "loop:main:bb12",
+        "loop:main:bb2",
+        "loop:main:bb3",
+        "loop:main:bb4",
+        "loop:main:bb5",
+        "loop:main:bb6",
+        "loop:main:bb7",
+        "loop:main:bb8",
+        "loop:main:bb9"
+      ],
+      "weak_intersections": [
+        "bb:main:.preheader",
+        "bb:main:.preheader1",
+        "bb:main:.preheader2",
+        "bb:main:.preheader3",
+        "bb:main:.preheader4",
+        "inst:main:.preheader1:1:br",
+        "inst:main:.preheader2:1:br",
+        "inst:main:.preheader3:1:br",
+        "inst:main:.preheader4:1:br",
+        "inst:main:.preheader:1:br",
+        "inst:main:bb10:1:br",
+        "inst:main:bb11:1:br",
+        "inst:main:bb12:1:br",
+        "inst:main:bb3:1:br",
+        "inst:main:bb3:1:ret",
+        "inst:main:bb4:1:br",
+        "inst:main:bb4:1:ret",
+        "inst:main:bb5:1:br",
+        "inst:main:bb6:1:br",
+        "inst:main:bb7:1:br",
+        "inst:main:bb8:1:br",
+        "inst:main:bb9:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-simplify->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-simplify writes=bb:main:bb10;bb:main:bb11;bb:main:bb12;bb:main:bb13;bb:main:bb14;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%46;inst:main:%48;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb10;loop:main:bb12;loop:main:bb2;loop:main:bb4;loop:main:bb6;loop:main:bb8"
+      ]
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-unroll writes=bb:main:bb10;bb:main:bb11;bb:main:bb12;bb:main:bb13;bb:main:bb14;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%46;inst:main:%48;inst:main:.preheader1:1:br;inst:main:.preheader2:1:br;inst:main:.preheader3:1:br;inst:main:.preheader4:1:br;inst:main:.preheader:1:br;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:br;inst:main:bb7:1:br;inst:main:bb8:1:br;inst:main:bb9:1:br;loop:main:.preheader;loop:main:.preheader1;loop:main:.preheader2;loop:main:.preheader3;loop:main:.preheader4;loop:main:bb10;loop:main:bb12;loop:main:bb2;loop:main:bb4;loop:main:bb6;loop:main:bb8"
+      ]
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    }
+  ]
+}

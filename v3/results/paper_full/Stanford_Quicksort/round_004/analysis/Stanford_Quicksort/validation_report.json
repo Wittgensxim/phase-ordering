@@ -1,0 +1,2023 @@
+{
+  "summary": {
+    "total_pairs": 55,
+    "agree_dependent": 17,
+    "agree_independent": 21,
+    "false_positive": 15,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 2,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "indvars->early-cse"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n  in block %15 / %15:\n    <   %.12.lcssa.wide = phi i64 [ %indvars.iv, %11 ]\n    <   %.lcssa2 = phi ptr [ %12, %11 ]\n    <   %.lcssa1 = phi i32 [ %13, %11 ]\n    <   %.lcssa.wide = phi i64 [ %indvars.iv.next, %11 ]\n  in block %27 / %27:\n    >   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]\n    >   %.2 = phi i32 [ %21, %26 ], [ %.1, %22 ]\n    >   %28 = icmp sle i32 %.23, %.2\n    >   br i1 %28, label %9, label %29, !llvm.loop !10\n    <   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]\n    <   %.2 = phi i32 [ %.lcssa3, %26 ], [ %.1.lcssa, %22 ]\n    <   %28 = icmp sle i32 %.23, %.2\n    <   br i1 %28, label %9, label %29, !llvm.loop !10"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "licm->early-cse"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %28 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %28 ]\n  in block %16 / %16:\n    <   %.lcssa6 = phi i64 [ %11, %10 ]\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa1 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n    <   %17 = getelementptr inbounds i32, ptr %0, i64 %.lcssa6\n  in block %28 / %26:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]\n    >   %27 = icmp sle i32 %.23, %.2\n    >   br i1 %27, label %9, label %28, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %27 ], [ %.12.lcssa, %24 ]\n    <   %.2 = phi i32 [ %.lcssa3, %27 ], [ %.1.lcssa, %24 ]\n    <   %29 = icmp sle i32 %.23, %.2\n    <   br i1 %29, label %9, label %30, !llvm.loop !10"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->early-cse"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n  in block %16 / %16:\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa2 = phi ptr [ %12, %10 ]\n    <   %.lcssa1 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n  in block %26 / %26:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]\n    >   %27 = icmp sle i32 %.23, %.2\n    >   br i1 %27, label %9, label %28, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]\n    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]\n    <   %27 = icmp sle i32 %.23, %.2\n    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->early-cse"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n  in block %16 / %16:\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa2 = phi ptr [ %12, %10 ]\n    <   %.lcssa1 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n  in block %26 / %26:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]\n    >   %27 = icmp sle i32 %.23, %.2\n    >   br i1 %27, label %9, label %28, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]\n    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]\n    <   %27 = icmp sle i32 %.23, %.2\n    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "sccp->early-cse"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "indvars->gvn"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n  in block %15 / %15:\n    <   %.12.lcssa.wide = phi i64 [ %indvars.iv, %11 ]\n    <   %.lcssa2 = phi ptr [ %12, %11 ]\n    <   %.lcssa1 = phi i32 [ %13, %11 ]\n    <   %.lcssa.wide = phi i64 [ %indvars.iv.next, %11 ]\n  in block %27 / %27:\n    >   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]\n    >   %.2 = phi i32 [ %21, %26 ], [ %.1, %22 ]\n    >   %28 = icmp sle i32 %.23, %.2\n    >   br i1 %28, label %9, label %29, !llvm.loop !10\n    <   %.23 = phi i32 [ %24, %26 ], [ %23, %22 ]\n    <   %.2 = phi i32 [ %.lcssa3, %26 ], [ %.1.lcssa, %22 ]\n    <   %28 = icmp sle i32 %.23, %.2\n    <   br i1 %28, label %9, label %29, !llvm.loop !10"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "licm->gvn"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %28 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %28 ]\n  in block %16 / %16:\n    <   %.lcssa6 = phi i64 [ %11, %10 ]\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa1 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n    <   %17 = getelementptr inbounds i32, ptr %0, i64 %.lcssa6\n  in block %28 / %26:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]\n    >   %27 = icmp sle i32 %.23, %.2\n    >   br i1 %27, label %9, label %28, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %27 ], [ %.12.lcssa, %24 ]\n    <   %.2 = phi i32 [ %.lcssa3, %27 ], [ %.1.lcssa, %24 ]\n    <   %29 = icmp sle i32 %.23, %.2\n    <   br i1 %29, label %9, label %30, !llvm.loop !10"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->gvn"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n  in block %16 / %16:\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa2 = phi ptr [ %12, %10 ]\n    <   %.lcssa1 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n  in block %26 / %26:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]\n    >   %27 = icmp sle i32 %.23, %.2\n    >   br i1 %27, label %9, label %28, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]\n    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]\n    <   %27 = icmp sle i32 %.23, %.2\n    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n  in block %16 / %16:\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa2 = phi ptr [ %12, %10 ]\n    <   %.lcssa1 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n  in block %26 / %26:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %25 ], [ %.1, %23 ]\n    >   %27 = icmp sle i32 %.23, %.2\n    >   br i1 %27, label %9, label %28, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %25 ], [ %.12.lcssa, %23 ]\n    <   %.2 = phi i32 [ %.lcssa3, %25 ], [ %.1.lcssa, %23 ]\n    <   %27 = icmp sle i32 %.23, %.2\n    <   br i1 %27, label %9, label %28, !llvm.loop !10"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "sccp->gvn"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "instcombine",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32",
+        "inst:main:%2",
+        "inst:main:%3"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32",
+        "inst:main:%2",
+        "inst:main:%3"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%12",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%30",
+        "inst:Quicksort:%32",
+        "inst:main:%2",
+        "inst:main:%3"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%12",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%30",
+        "inst:Quicksort:%32",
+        "inst:main:%2",
+        "inst:main:%3"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->indvars",
+        "indvars->instcombine"
+      ],
+      "commutativity_details": "in function Initarr:\n  in block %1 / %1:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %0 ]\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %0 ]\n  in block %14 / %14:\n    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 5001\n    >   br i1 %exitcond.not, label %15, label %1, !llvm.loop !7\n    <   %exitcond = icmp ne i64 %indvars.iv.next, 5001\n    <   br i1 %exitcond, label %1, label %15, !llvm.loop !7\n\nin function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %26 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %26 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n  in block %15 / %15:\n    <   %.12.lcssa.wide = phi i64 [ %indvars.iv, %11 ]\n    <   %.lcssa3 = phi ptr [ %12, %11 ]\n    <   %.lcssa2 = phi i32 [ %13, %11 ]\n    <   %.lcssa.wide = phi i64 [ %indvars.iv.next, %11 ]\n    <   %16 = sext i32 %.0 to i64\n  in block %27 / %26:\n    >   %.23 = phi i32 [ %25, %24 ], [ %23, %22 ]\n    >   %.2 = phi i32 [ %21, %24 ], [ %.1, %22 ]\n    >   %.not7 = icmp sgt i32 %.23, %.2\n    >   br i1 %.not7, label %27, label %9, !llvm.loop !10\n    <   %.23 = phi i32 [ %23, %26 ], [ %22, %21 ]\n    <   %.2 = phi i32 [ %25, %26 ], [ %24, %21 ]\n    <   %.not1 = icmp sgt i32 %.23, %.2\n    <   br i1 %.not1, label %28, label %9, !llvm.loop !10\n\nin function main:\n  in block %1 / %1:\n    >   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]\n    <   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]\n        call void @Quick(i32 noundef %.01)\n    >   %2 = add nuw nsw i32 %.01, 1\n    >   %exitcond.not = icmp eq i32 %2, 100\n    >   br i1 %exitcond.not, label %3, label %1, !llvm.loop !7\n    <   %2 = add nuw nsw i32 %.01, 1\n    <   %exitcond = icmp ne i32 %2, 100\n    <   br i1 %exitcond, label %1, label %3, !llvm.loop !7"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wb_intersect_ra": [
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%17",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%23",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%25",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%17",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%23",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%25",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "licm->indvars",
+        "indvars->licm"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %15 / %15:\n    >   %16 = getelementptr inbounds i32, ptr %0, i64 %indvars.iv.lcssa\n  in block %29 / %29:\n    >   %.23 = phi i32 [ %26, %28 ], [ %25, %23 ]\n    >   %.2 = phi i32 [ %.lcssa3, %28 ], [ %.1.lcssa, %23 ]\n    <   %.23 = phi i32 [ %24, %28 ], [ %23, %22 ]\n    <   %.2 = phi i32 [ %.lcssa3, %28 ], [ %.1.lcssa, %22 ]\n  in block %28 / %28:\n    >   store i32 %.lcssa4, ptr %16, align 4\n    >   store i32 %.lcssa1, ptr %24, align 4\n    <   store i32 %.lcssa4, ptr %25, align 4\n    <   store i32 %.lcssa1, ptr %26, align 4\n  in block %22 / %23:\n    >   %.lcssa = phi i64 [ %18, %17 ]\n    >   %.1.lcssa = phi i32 [ %.1, %17 ]\n    >   %.lcssa4 = phi i32 [ %20, %17 ]\n    >   %.lcssa3 = phi i32 [ %22, %17 ]\n    >   %24 = getelementptr inbounds i32, ptr %0, i64 %.lcssa\n    <   %.lcssa7 = phi i64 [ %17, %16 ]\n    <   %.1.lcssa = phi i32 [ %.1, %16 ]\n    <   %.lcssa4 = phi i32 [ %19, %16 ]\n    <   %.lcssa3 = phi i32 [ %21, %16 ]\n        %23 = trunc nsw i64 %.12.lcssa.wide to i32\n        %24 = trunc nsw i64 %.lcssa.wide to i32\n    >   %27 = icmp sle i32 %25, %.1.lcssa\n    >   br i1 %27, label %28, label %29\n    <   %25 = getelementptr inbounds i32, ptr %0, i64 %.lcssa6\n    <   %26 = getelementptr inbounds i32, ptr %0, i64 %.lcssa7\n    <   %27 = icmp sle i32 %23, %.1.lcssa\n    <   br i1 %27, label %28, label %29"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa2",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%.lcssa5"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa2",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%.lcssa5"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->indvars"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa2",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%.lcssa5"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa2",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%.lcssa5"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-unroll->indvars"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%12",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%12",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion",
+        "mutation"
+      ],
+      "enablement_edges": [
+        "sccp->indvars",
+        "indvars->sccp"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%17",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%23",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%28",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%17",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%23",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%28",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->indvars"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %15 / %16:\n    >   %.1 = phi i32 [ %.0, %15 ], [ %21, %16 ]\n    >   %17 = sext i32 %.1 to i64\n    >   %18 = getelementptr inbounds i32, ptr %0, i64 %17\n    >   %19 = load i32, ptr %18, align 4\n    >   %20 = icmp slt i32 %8, %19\n    >   %21 = sub nsw i32 %.1, 1\n    >   br i1 %20, label %16, label %22, !llvm.loop !9\n    <   %.1 = phi i32 [ %20, %15 ], [ %.0, %.preheader ]\n    <   %16 = sext i32 %.1 to i64\n    <   %17 = getelementptr inbounds i32, ptr %0, i64 %16\n    <   %18 = load i32, ptr %17, align 4\n    <   %19 = icmp slt i32 %8, %18\n    <   %20 = sub nsw i32 %.1, 1\n    <   br i1 %19, label %15, label %21, !llvm.loop !9\n  in block %21 / %22:\n    >   %.1.lcssa = phi i32 [ %.1, %16 ]\n    >   %.lcssa5 = phi ptr [ %18, %16 ]\n    >   %.lcssa4 = phi i32 [ %19, %16 ]\n    >   %.lcssa3 = phi i32 [ %21, %16 ]\n    <   %.1.lcssa = phi i32 [ %.1, %15 ]\n    <   %.lcssa5 = phi ptr [ %17, %15 ]\n    <   %.lcssa4 = phi i32 [ %18, %15 ]\n    <   %.lcssa3 = phi i32 [ %20, %15 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wb_intersect_ra": [
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->licm",
+        "licm->instcombine"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %27 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %27 ]\n  in block %16 / %16:\n    >   %17 = getelementptr inbounds [4 x i8], ptr %0, i64 %11\n    <   %.lcssa7 = phi i64 [ %11, %10 ]\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa2 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n    <   %17 = getelementptr inbounds [4 x i8], ptr %0, i64 %.lcssa7\n  in block %27 / %27:\n    >   %.23 = phi i32 [ %15, %25 ], [ %.12, %24 ]\n    >   %.2 = phi i32 [ %23, %25 ], [ %.1, %24 ]\n    >   %.not8 = icmp sgt i32 %.23, %.2\n    >   br i1 %.not8, label %28, label %9, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %26 ], [ %.12.lcssa, %24 ]\n    <   %.2 = phi i32 [ %.lcssa4, %26 ], [ %.1.lcssa, %24 ]\n    <   %.not1 = icmp sgt i32 %.23, %.2\n    <   br i1 %.not1, label %28, label %9, !llvm.loop !10"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->loop-rotate",
+        "loop-rotate->instcombine"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]\n  in block %16 / %16:\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa3 = phi ptr [ %12, %10 ]\n    <   %.lcssa2 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n  in block %25 / %25:\n    >   %.23 = phi i32 [ %15, %24 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %24 ], [ %.1, %23 ]\n    >   %.not6 = icmp sgt i32 %.23, %.2\n    >   br i1 %.not6, label %26, label %9, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %24 ], [ %.12.lcssa, %23 ]\n    <   %.2 = phi i32 [ %.lcssa4, %24 ], [ %.1.lcssa, %23 ]\n    <   %.not1 = icmp sgt i32 %.23, %.2\n    <   br i1 %.not1, label %26, label %9, !llvm.loop !10"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->loop-unroll",
+        "loop-unroll->instcombine"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]\n    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]\n    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %25 ]\n    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %25 ]\n  in block %16 / %16:\n    <   %.12.lcssa = phi i32 [ %.12, %10 ]\n    <   %.lcssa3 = phi ptr [ %12, %10 ]\n    <   %.lcssa2 = phi i32 [ %13, %10 ]\n    <   %.lcssa = phi i32 [ %15, %10 ]\n  in block %25 / %25:\n    >   %.23 = phi i32 [ %15, %24 ], [ %.12, %23 ]\n    >   %.2 = phi i32 [ %22, %24 ], [ %.1, %23 ]\n    >   %.not6 = icmp sgt i32 %.23, %.2\n    >   br i1 %.not6, label %26, label %9, !llvm.loop !10\n    <   %.23 = phi i32 [ %.lcssa, %24 ], [ %.12.lcssa, %23 ]\n    <   %.2 = phi i32 [ %.lcssa4, %24 ], [ %.1.lcssa, %23 ]\n    <   %.not1 = icmp sgt i32 %.23, %.2\n    <   br i1 %.not1, label %26, label %9, !llvm.loop !10"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:Initarr:%6"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%6"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%6"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%6"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%3",
+        "inst:Initarr:%4",
+        "inst:Initarr:%5",
+        "inst:Initarr:%6",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%3",
+        "inst:Initarr:%4",
+        "inst:Initarr:%5",
+        "inst:Initarr:%6",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%11",
+        "inst:Initarr:%12",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%16",
+        "inst:Initarr:%17",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%3",
+        "inst:Initarr:%4",
+        "inst:Initarr:%5",
+        "inst:Initarr:%6",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%10",
+        "inst:Initarr:%11",
+        "inst:Initarr:%12",
+        "inst:Initarr:%13",
+        "inst:Initarr:%14",
+        "inst:Initarr:%16",
+        "inst:Initarr:%17",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Initarr:%3",
+        "inst:Initarr:%4",
+        "inst:Initarr:%5",
+        "inst:Initarr:%6",
+        "inst:Initarr:%7",
+        "inst:Initarr:%8",
+        "inst:Initarr:%9"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->sccp",
+        "sccp->instcombine"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32",
+        "inst:Quicksort:bb5:1:store",
+        "inst:Quicksort:bb5:2:store",
+        "inst:Quicksort:bb5:3:br",
+        "inst:Quicksort:bb6:1:br",
+        "loop:Quicksort:bb0"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32",
+        "inst:Quicksort:bb5:1:store",
+        "inst:Quicksort:bb5:2:store",
+        "inst:Quicksort:bb5:3:br",
+        "inst:Quicksort:bb6:1:br",
+        "loop:Quicksort:bb0"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%17",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32",
+        "inst:Quicksort:bb5:1:br",
+        "inst:Quicksort:bb5:1:store",
+        "inst:Quicksort:bb5:2:store",
+        "inst:Quicksort:bb5:3:br",
+        "inst:Quicksort:bb6:1:br",
+        "loop:Quicksort:bb0"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%17",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32",
+        "inst:Quicksort:bb5:1:store",
+        "inst:Quicksort:bb5:2:store",
+        "loop:Quicksort:bb0"
+      ],
+      "weak_intersections": [
+        "inst:Quicksort:bb5:1:br",
+        "inst:Quicksort:bb5:3:br",
+        "inst:Quicksort:bb6:1:br"
+      ],
+      "intersection_token_kinds": [
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->simplifycfg",
+        "simplifycfg->instcombine"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.12.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.12.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->licm"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.12.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.12.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-unroll->licm"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->licm"
+      ],
+      "commutativity_details": "in function Initarr:\n  in block %1 / %1:\n    >   %.01 = phi i32 [ 1, %0 ], [ %16, %15 ]\n    <   %.01 = phi i32 [ 1, %0 ], [ %14, %13 ]\n        %2 = call i32 @Rand()\n    >   %3 = sub nuw nsw i32 %2, 0\n    >   %4 = sub nsw i32 %3, 50000\n    >   %5 = sext i32 %.01 to i64\n    >   %6 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %5\n    >   store i32 %4, ptr %6, align 4\n    <   %.reass = sub i32 %2, 50000\n    <   %3 = sext i32 %.01 to i64\n    <   %4 = getelementptr inbounds [5001 x i32], ptr @sortlist, i64 0, i64 %3\n    <   store i32 %.reass, ptr %4, align 4\n        %5 = load i32, ptr @biggest, align 4\n    >   %8 = icmp sgt i32 %4, %7\n    >   br i1 %8, label %9, label %10\n    <   %6 = icmp sgt i32 %.reass, %5\n    <   br i1 %6, label %7, label %8"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wb_intersect_ra": [
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%32"
+      ],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%17",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%23",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%26",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%31",
+        "inst:Quicksort:%32"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%17",
+        "inst:Quicksort:%18",
+        "inst:Quicksort:%19",
+        "inst:Quicksort:%20",
+        "inst:Quicksort:%21",
+        "inst:Quicksort:%22",
+        "inst:Quicksort:%23",
+        "inst:Quicksort:%24",
+        "inst:Quicksort:%26",
+        "inst:Quicksort:%27",
+        "inst:Quicksort:%29",
+        "inst:Quicksort:%31",
+        "inst:Quicksort:%32"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->licm"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %17 / %18:\n    >   %.1 = phi i32 [ %.0, %16 ], [ %23, %18 ]\n    >   %19 = sext i32 %.1 to i64\n    >   %20 = getelementptr inbounds i32, ptr %0, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   %22 = icmp slt i32 %8, %21\n    >   %23 = sub nsw i32 %.1, 1\n    >   br i1 %22, label %18, label %24, !llvm.loop !9\n    <   %.1 = phi i32 [ %22, %17 ], [ %.0, %.preheader ]\n    <   %18 = sext i32 %.1 to i64\n    <   %19 = getelementptr inbounds i32, ptr %0, i64 %18\n    <   %20 = load i32, ptr %19, align 4\n    <   %21 = icmp slt i32 %8, %20\n    <   %22 = sub nsw i32 %.1, 1\n    <   br i1 %21, label %17, label %23, !llvm.loop !9\n  in block %23 / %24:\n    >   %.lcssa7 = phi i64 [ %19, %18 ]\n    >   %.1.lcssa = phi i32 [ %.1, %18 ]\n    >   %.lcssa4 = phi i32 [ %21, %18 ]\n    >   %.lcssa3 = phi i32 [ %23, %18 ]\n    <   %.lcssa7 = phi i64 [ %18, %17 ]\n    <   %.1.lcssa = phi i32 [ %.1, %17 ]\n    <   %.lcssa4 = phi i32 [ %20, %17 ]\n    <   %.lcssa3 = phi i32 [ %22, %17 ]"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.12.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa2",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%.lcssa5"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Quicksort:%.1.lcssa",
+        "inst:Quicksort:%.12.lcssa",
+        "inst:Quicksort:%.2.lcssa",
+        "inst:Quicksort:%.23.lcssa",
+        "inst:Quicksort:%.lcssa",
+        "inst:Quicksort:%.lcssa1",
+        "inst:Quicksort:%.lcssa2",
+        "inst:Quicksort:%.lcssa3",
+        "inst:Quicksort:%.lcssa4",
+        "inst:Quicksort:%.lcssa5"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->loop-rotate"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "uncertain",
+      "commute": false,
+      "agreement": "uncertain_non_commuting",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "none",
+      "enablement_strength": "weak",
+      "uncertainty_risk": "high",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->loop-rotate"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %16 / %17:\n    >   %.1 = phi i32 [ %.0, %16 ], [ %22, %17 ]\n    >   %18 = sext i32 %.1 to i64\n    >   %19 = getelementptr inbounds i32, ptr %0, i64 %18\n    >   %20 = load i32, ptr %19, align 4\n    >   %21 = icmp slt i32 %8, %20\n    >   %22 = sub nsw i32 %.1, 1\n    >   br i1 %21, label %17, label %23, !llvm.loop !9\n    <   %.1 = phi i32 [ %21, %16 ], [ %.0, %.preheader ]\n    <   %17 = sext i32 %.1 to i64\n    <   %18 = getelementptr inbounds i32, ptr %0, i64 %17\n    <   %19 = load i32, ptr %18, align 4\n    <   %20 = icmp slt i32 %8, %19\n    <   %21 = sub nsw i32 %.1, 1\n    <   br i1 %20, label %16, label %22, !llvm.loop !9\n  in block %22 / %23:\n    >   %.1.lcssa = phi i32 [ %.1, %17 ]\n    >   %.lcssa5 = phi ptr [ %19, %17 ]\n    >   %.lcssa4 = phi i32 [ %20, %17 ]\n    >   %.lcssa3 = phi i32 [ %22, %17 ]\n    <   %.1.lcssa = phi i32 [ %.1, %16 ]\n    <   %.lcssa5 = phi ptr [ %18, %16 ]\n    <   %.lcssa4 = phi i32 [ %19, %16 ]\n    <   %.lcssa3 = phi i32 [ %21, %16 ]"
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "sccp",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "simplifycfg->loop-simplify"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %.preheader / %16:\n    >   %.1 = phi i32 [ %21, %16 ], [ %.0, %10 ]\n    >   %17 = sext i32 %.1 to i64\n    >   %18 = getelementptr inbounds i32, ptr %0, i64 %17\n    >   %19 = load i32, ptr %18, align 4\n    >   %20 = icmp slt i32 %8, %19\n    >   %21 = sub nsw i32 %.1, 1\n    >   br i1 %20, label %16, label %22, !llvm.loop !9\n    <   br label %16\n  in block %25 / %25:\n    >   %.2 = phi i32 [ %21, %24 ], [ %.1, %22 ]\n    <   %.2 = phi i32 [ %21, %24 ], [ %.1, %22 ]\n  in block %24 / %24:\n    >   store i32 %19, ptr %12, align 4\n    >   store i32 %13, ptr %18, align 4\n    <   store i32 %19, ptr %12, align 4\n    <   store i32 %13, ptr %18, align 4\n  in block %22 / %22:\n    >   %23 = icmp sle i32 %.12, %.1\n    <   %23 = icmp sle i32 %.12, %.1"
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->loop-unroll"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "uncertain",
+      "commute": false,
+      "agreement": "uncertain_non_commuting",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "none",
+      "enablement_strength": "weak",
+      "uncertainty_risk": "high",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->loop-unroll"
+      ],
+      "commutativity_details": "in function Quicksort:\n  in block %16 / %17:\n    >   %.1 = phi i32 [ %.0, %16 ], [ %22, %17 ]\n    >   %18 = sext i32 %.1 to i64\n    >   %19 = getelementptr inbounds i32, ptr %0, i64 %18\n    >   %20 = load i32, ptr %19, align 4\n    >   %21 = icmp slt i32 %8, %20\n    >   %22 = sub nsw i32 %.1, 1\n    >   br i1 %21, label %17, label %23, !llvm.loop !9\n    <   %.1 = phi i32 [ %21, %16 ], [ %.0, %.preheader ]\n    <   %17 = sext i32 %.1 to i64\n    <   %18 = getelementptr inbounds i32, ptr %0, i64 %17\n    <   %19 = load i32, ptr %18, align 4\n    <   %20 = icmp slt i32 %8, %19\n    <   %21 = sub nsw i32 %.1, 1\n    <   br i1 %20, label %16, label %22, !llvm.loop !9\n  in block %22 / %23:\n    >   %.1.lcssa = phi i32 [ %.1, %17 ]\n    >   %.lcssa5 = phi ptr [ %19, %17 ]\n    >   %.lcssa4 = phi i32 [ %20, %17 ]\n    >   %.lcssa3 = phi i32 [ %22, %17 ]\n    <   %.1.lcssa = phi i32 [ %.1, %16 ]\n    <   %.lcssa5 = phi ptr [ %18, %16 ]\n    <   %.lcssa4 = phi i32 [ %19, %16 ]\n    <   %.lcssa3 = phi i32 [ %21, %16 ]"
+    },
+    {
+      "pass_a": "reassociate",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:Initarr:%6"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%6"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%6"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%6"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion",
+        "mutation"
+      ],
+      "enablement_edges": [
+        "sccp->reassociate",
+        "reassociate->sccp"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "reassociate",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19"
+      ],
+      "wb_intersect_ra": [
+        "inst:Initarr:%18",
+        "inst:Initarr:%19"
+      ],
+      "wa_intersect_wb": [
+        "inst:Initarr:%17",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:Initarr:%17",
+        "inst:Initarr:%18",
+        "inst:Initarr:%19"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "simplifycfg->sccp",
+        "sccp->simplifycfg"
+      ],
+      "commutativity_details": ""
+    }
+  ]
+}

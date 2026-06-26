@@ -1,0 +1,369 @@
+{
+  "summary": {
+    "total_pairs": 45,
+    "commuting_pairs": 25,
+    "non_commuting_pairs": 20
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__sccp.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__loop-simplify.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 %20, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %20, %19 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 %20, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %20, %19 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function bInitarr:\n  in block %1 / %1:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %.lr.ph ]\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %.lr.ph ]\n  in block %14 / %14:\n    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 501\n    >   br i1 %exitcond.not, label %._crit_edge, label %1, !llvm.loop !7\n    <   %exitcond = icmp ne i64 %indvars.iv.next, 501\n    <   br i1 %exitcond, label %1, label %._crit_edge, !llvm.loop !7\n\nin function Bubble:\n  in block %._crit_edge3:\n    >   store i32 1, ptr @top, align 4\n    <   %14 = trunc nuw nsw i64 1 to i32\n    <   store i32 %14, ptr @top, align 4\n  in block %3 / %3:\n    >   %4 = phi i32 [ %11, %10 ], [ %.pre, %.lr.ph ]\n    <   %4 = phi i32 [ %11, %10 ], [ %.pre, %.lr.ph ]\n  in block %10 / %10:\n    >   %exitcond.not = icmp eq i64 %indvars.iv.next, %indvars.iv2\n    >   br i1 %exitcond.not, label %._crit_edge, label %3, !llvm.loop !7\n    <   %exitcond = icmp ne i64 %indvars.iv.next, %indvars.iv2\n    <   br i1 %exitcond, label %3, label %._crit_edge, !llvm.loop !7\n\nin function main:\n  in block %1 / %1:\n    >   %2 = phi i32 [ %3, %1 ], [ 0, %.lr.ph ]\n    <   %2 = phi i32 [ %3, %1 ], [ 0, %.lr.ph ]\n        call void @Bubble(i32 noundef %2)\n    >   %3 = add nuw nsw i32 %2, 1\n    >   %exitcond.not = icmp eq i32 %3, 100\n    >   br i1 %exitcond.not, label %._crit_edge, label %1, !llvm.loop !7\n    <   %3 = add nuw nsw i32 %2, 1\n    <   %exitcond = icmp ne i32 %3, 100\n    <   br i1 %exitcond, label %1, label %._crit_edge, !llvm.loop !7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i32 [ %indvar.next, %39 ], [ 0, %.lr.ph2 ]\n    >   %3 = phi i32 [ %40, %39 ], [ 500, %.lr.ph2 ]\n    >   %4 = sub i32 499, %indvar\n    >   %5 = icmp samesign ugt i32 %3, 1\n    >   br i1 %5, label %.lr.ph, label %39\n    <   %indvar = phi i32 [ %indvar.next, %41 ], [ 0, %.lr.ph2 ]\n    <   %3 = phi i32 [ %42, %41 ], [ 500, %.lr.ph2 ]\n    <   %4 = mul nsw i32 %indvar, -1\n    <   %5 = add i32 %4, 499\n    <   %6 = add i32 %4, 498\n    <   %7 = icmp samesign ugt i32 %3, 1\n    <   br i1 %7, label %.lr.ph, label %41"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__sccp.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-simplify",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__loop-simplify.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   %18 = add nsw i32 %2, -1\n    >   %19 = icmp sgt i32 %2, 2\n    >   br i1 %19, label %1, label %._crit_edge3, !llvm.loop !9\n    <   br label %._crit_edge"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   %18 = add nsw i32 %2, -1\n    >   %19 = icmp sgt i32 %2, 2\n    >   br i1 %19, label %1, label %._crit_edge3, !llvm.loop !9\n    <   br label %._crit_edge"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   %18 = add nsw i32 %2, -1\n    >   %19 = icmp sgt i32 %2, 2\n    >   br i1 %19, label %1, label %._crit_edge3, !llvm.loop !9\n    <   br label %._crit_edge"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %1 / %.lr.ph:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %._crit_edge ], [ 500, %.lr.ph2 ]\n    >   %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4\n    >   br label %1\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %._crit_edge ], [ 500, %.lr.ph2 ]\n    <   br i1 true, label %.lr.ph, label %._crit_edge"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %31 = add nuw nsw i32 %.epil.init2, 1\n    >   %32 = zext nneg i32 %31 to i64\n    >   %33 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %32\n    >   %34 = load i32, ptr %33, align 4\n    >   %35 = icmp sgt i32 %.epil.init, %34\n    >   br i1 %35, label %36, label %._crit_edge\n    <   br label %31\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   %39 = add nsw i32 %2, -1\n    >   %40 = icmp sgt i32 %2, 2\n    >   %indvar.next = add i32 %indvar, 1\n    >   br i1 %40, label %1, label %._crit_edge3, !llvm.loop !9\n    <   br label %._crit_edge"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__sccp.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__loop-simplify.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 %20, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %20, %19 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 %20, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %20, %19 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 1, ptr @top, align 4\n    <   %14 = trunc nuw nsw i64 1 to i32\n    <   store i32 %14, ptr @top, align 4"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %.epil.init = phi i32 [ %.pre, %.lr.ph ], [ %29, %._crit_edge.unr-lcssa ]\n    >   %.epil.init2 = phi i32 [ 1, %.lr.ph ], [ %22, %._crit_edge.unr-lcssa ]\n    <   %.epil.init = phi i32 [ %.pre, %.lr.ph ], [ %.unr, %._crit_edge.unr-lcssa ]\n    <   %.epil.init2 = phi i32 [ 1, %.lr.ph ], [ %.unr1, %._crit_edge.unr-lcssa ]\n  in block %27 / %27:\n    >   store i32 %25, ptr %14, align 4\n    <   %28 = zext nneg i32 %12 to i64\n    <   %29 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %28\n    <   store i32 %25, ptr %29, align 4\n  in block %._crit_edge.unr-lcssa:\n    <   %.unr = phi i32 [ %31, %30 ]\n    <   %.unr1 = phi i32 [ %22, %30 ]\n  in block %._crit_edge3:\n    >   store i32 %40, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %42, %41 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__sccp.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__gvn.ll",
+      "details": "in function bInitarr:\n  in block %.lr.ph / %0:\n    >   %1 = phi i32 [ %16, %15 ], [ 1, %.lr.ph ]\n    >   %2 = call i32 @Rand()\n    >   %.fr = freeze i32 %2\n    >   %3 = srem i32 %.fr, 100000\n    >   %4 = add nsw i32 %3, -50000\n    >   %5 = zext nneg i32 %1 to i64\n    >   %6 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %5\n    >   store i32 %4, ptr %6, align 4\n    >   %7 = load i32, ptr @biggest, align 4\n    >   %8 = icmp sgt i32 %4, %7\n    >   br i1 %8, label %9, label %10\n    <   br label %1\n\nin function Bubble:\n  in block %.lr.ph2 / %1:\n    >   %2 = phi i32 [ %19, %18 ], [ 500, %.lr.ph2 ]\n    >   %3 = icmp samesign ugt i32 %2, 1\n    >   br i1 %3, label %.lr.ph, label %18\n    <   br label %2\n\nin function main:\n  in block %.lr.ph / %0:\n    >   %1 = phi i32 [ %2, %0 ], [ 0, %.lr.ph ]\n    >   call void @Bubble(i32 noundef %1)\n    >   %2 = add nuw nsw i32 %1, 1\n    >   %3 = icmp samesign ult i32 %1, 99\n    >   br i1 %3, label %0, label %._crit_edge, !llvm.loop !7\n    <   br label %1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__loop-simplify.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 %20, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %20, %19 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__gvn.ll",
+      "details": "in function Bubble:\n  in block %._crit_edge3:\n    >   store i32 %20, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %20, %19 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    in instruction   br i1 true, label %.lr.ph, label %12 /   br i1 true, label %.lr.ph, label %._crit_edge5:\n      successor %12 cannot be equivalent to %._crit_edge5; it's already equivalent to %12\n  in block %._crit_edge3:\n    >   store i32 1, ptr @top, align 4\n    <   %14 = trunc nuw nsw i64 1 to i32\n    <   store i32 %14, ptr @top, align 4"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %.epil.init = phi i32 [ %.pre, %.lr.ph ], [ %29, %._crit_edge.unr-lcssa ]\n    >   %.epil.init2 = phi i32 [ 1, %.lr.ph ], [ %22, %._crit_edge.unr-lcssa ]\n    <   %.epil.init = phi i32 [ %.pre, %.lr.ph ], [ %.unr, %._crit_edge.unr-lcssa ]\n    <   %.epil.init2 = phi i32 [ 1, %.lr.ph ], [ %.unr1, %._crit_edge.unr-lcssa ]\n        %lcmp.mod3 = icmp ne i32 %xtraiter, 0\n        call void @llvm.assume(i1 %lcmp.mod3)\n    >   %30 = add nuw nsw i32 %.epil.init2, 1\n    >   %31 = zext nneg i32 %30 to i64\n    >   %32 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %31\n    >   %33 = load i32, ptr %32, align 4\n    >   %34 = icmp sgt i32 %.epil.init, %33\n    >   br i1 %34, label %35, label %._crit_edge.epilog-lcssa\n    <   br label %32\n  in block %27 / %27:\n    >   store i32 %25, ptr %14, align 4\n    <   %28 = zext nneg i32 %12 to i64\n    <   %29 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %28\n    <   store i32 %25, ptr %29, align 4\n  in block %._crit_edge.unr-lcssa:\n    <   %.unr = phi i32 [ %31, %30 ]\n    <   %.unr1 = phi i32 [ %22, %30 ]\n  in block %._crit_edge3:\n    >   store i32 %39, ptr @top, align 4\n    <   %.lcssa = phi i32 [ %42, %41 ]\n    <   store i32 %.lcssa, ptr @top, align 4"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__loop-simplify.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__loop-rotate.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__sccp.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %12 ], [ 500, %.lr.ph2 ]\n    >   br label %.lr.ph\n    <   %indvars.iv5 = phi i64 [ %indvars.iv.next6, %12 ], [ 500, %.lr.ph2 ]\n    <   br i1 true, label %.lr.ph, label %12"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\sccp__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__loop-rotate.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-simplify__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_random_O2\\Stanford_Bubblesort\\round_004\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i32 [ %indvar.next, %34 ], [ 0, %.lr.ph2 ]\n    >   %3 = mul nsw i32 %indvar, -1\n    >   %4 = add nsw i32 %3, 499\n    >   %5 = add nsw i32 %3, 498\n    <   %indvar = phi i32 [ %indvar.next, %29 ], [ 0, %.lr.ph2 ]\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ 500, %.lr.ph2 ]\n    <   %3 = mul nsw i32 %indvar, -1\n    <   %4 = add i32 %3, 499\n    <   %5 = add i32 %3, 498"
+    }
+  ]
+}

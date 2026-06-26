@@ -1,0 +1,149 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function main:
+  in block %30 / %30:
+    <   %.lcssa = phi double [ %7, %5 ]"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function main:
+  in block %31 / %31:
+    <   %.lcssa = phi double [ %16, %14 ]"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %30 / %30:
+    in instruction %36 / %33:
+      arguments %33 and %13 differ
+    <   %.lcssa = phi double [ %27, %5 ]
+        %31 = fdiv double %1, %2
+        %32 = fmul double %31, %31
+    <   %33 = load double, ptr @A6, align 8
+    <   %34 = load double, ptr @A5, align 8
+    <   %35 = fneg double %34
+        %36 = call double @llvm.fmuladd.f64(double %33, double %32, double %35)
+    <   %37 = load double, ptr @A4, align 8
+        %38 = call double @llvm.fmuladd.f64(double %36, double %32, double %37)
+    <   %39 = load double, ptr @A3, align 8
+    <   %40 = fneg double %39
+        %41 = call double @llvm.fmuladd.f64(double %38, double %32, double %40)
+    <   %42 = load double, ptr @A2, align 8
+        %43 = call double @llvm.fmuladd.f64(double %41, double %32, double %42)
+    <   %44 = load double, ptr @A1, align 8
+        %45 = call double @llvm.fmuladd.f64(double %43, double %32, double %44)
+    <   %46 = load double, ptr @one, align 8
+        %47 = call double @llvm.fmuladd.f64(double %45, double %32, double %46)
+        %48 = fmul double %31, %47
+        store double %48, ptr @sa, align 8
+        %49 = load double, ptr @two, align 8
+    >   %41 = call double @llvm.fmuladd.f64(double %40, double %27, double %39)
+    >   %42 = fmul double %4, %41
+    >   %43 = fdiv double %42, %40
+    >   store double %43, ptr @sa, align 8
+    <   %50 = call double @llvm.fmuladd.f64(double %49, double %.lcssa, double %48)
+    <   %51 = fmul double %4, %50
+    <   %52 = fdiv double %51, %49
+    <   store double %52, ptr @sa, align 8
+        store double 5.000000e-01, ptr @sb, align 8
+    >   %44 = fadd double %43, -5.000000e-01
+    >   store double %44, ptr @sc, align 8
+    >   %45 = fmul double %44, 1.000000e-30
+    <   %53 = fadd double %52, -5.000000e-01
+    <   store double %53, ptr @sc, align 8
+    <   %54 = fmul double %53, 1.000000e-30"
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %31 / %31:
+    <   %.lcssa = phi double [ %7, %5 ]"
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->gvn,"in function main:
+  in block %30 / %30:
+    <   %.lcssa = phi double [ %7, %5 ]"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function main:
+  in block %31 / %31:
+    in instruction %37 / %34:
+      arguments %34 and %6 differ
+    <   %.lcssa = phi double [ %16, %14 ]
+        %32 = fdiv double %1, %2
+        %33 = fmul double %32, %32
+    <   %34 = load double, ptr @A6, align 8
+    <   %35 = load double, ptr @A5, align 8
+    <   %36 = fneg double %35
+        %37 = call double @llvm.fmuladd.f64(double %34, double %33, double %36)
+    <   %38 = load double, ptr @A4, align 8
+        %39 = call double @llvm.fmuladd.f64(double %37, double %33, double %38)
+    <   %40 = load double, ptr @A3, align 8
+    <   %41 = fneg double %40
+        %42 = call double @llvm.fmuladd.f64(double %39, double %33, double %41)
+    <   %43 = load double, ptr @A2, align 8
+        %44 = call double @llvm.fmuladd.f64(double %42, double %33, double %43)
+    <   %45 = load double, ptr @A1, align 8
+        %46 = call double @llvm.fmuladd.f64(double %44, double %33, double %45)
+    <   %47 = load double, ptr @one, align 8"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function main:
+  in block %0 / %0:
+    >   %.pre = load double, ptr @one, align 8
+    >   %.pre1 = load double, ptr @A6, align 8
+    >   %.pre2 = load double, ptr @A5, align 8
+    >   %.pre3 = load double, ptr @A4, align 8
+    >   %.pre4 = load double, ptr @A3, align 8
+    >   %.pre5 = load double, ptr @A2, align 8
+    >   %.pre6 = load double, ptr @A1, align 8"
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %31 / %31:
+    <   %.lcssa = phi double [ %7, %5 ]"
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->instcombine,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %11, %9 ], [ 0.000000e+00, %0 ]
+    >   %7 = phi double [ %28, %9 ], [ 0.000000e+00, %0 ]
+    >   %8 = phi i32 [ %29, %9 ], [ 1, %0 ]
+    >   %exitcond.not = icmp eq i32 %8, 312500000
+    >   br i1 %exitcond.not, label %30, label %9
+    <   %6 = phi double [ %11, %9 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %28, %9 ], [ 0.000000e+00, %0 ]
+    <   %8 = phi i32 [ %29, %9 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %8, 312500000
+    <   br i1 %exitcond, label %9, label %30"
+indvars,licm,dependent,true,false_positive,inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%9,inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%9,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%9,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%9,,inst,mixed,expansion;mutation,licm->indvars;indvars->licm,
+indvars,loop-rotate,dependent,true,false_positive,inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%29;inst:main:%30;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%49;inst:main:%50;inst:main:%51;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%9,inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%29;inst:main:%30;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%49;inst:main:%50;inst:main:%51;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%9,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%49;inst:main:%50;inst:main:%51;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%9,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%49;inst:main:%50;inst:main:%51;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%9,,inst,mixed,expansion;mutation,loop-rotate->indvars;indvars->loop-rotate,
+indvars,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->instcombine,"in function main:
+  in block %31 / %31:
+    <   %.lcssa = phi double [ %16, %14 ]"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function main:
+  in block %5 / %5:
+    >   %6 = phi i32 [ 1, %0 ], [ %28, %5 ]
+    >   %7 = phi double [ 0.000000e+00, %0 ], [ %27, %5 ]
+    >   %8 = phi double [ 0.000000e+00, %0 ], [ %10, %5 ]
+    <   %6 = phi i32 [ 1, %0 ], [ %28, %5 ]
+    <   %7 = phi double [ 0.000000e+00, %0 ], [ %27, %5 ]
+    <   %8 = phi double [ 0.000000e+00, %0 ], [ %10, %5 ]
+        %9 = load double, ptr @one, align 8
+    >   %10 = fadd double %8, %9
+    >   %11 = fmul double %10, %4
+    >   %12 = fmul double %11, %11
+    <   %10 = fadd double %8, %9
+    <   %11 = fmul double %10, %4
+    <   %12 = fmul double %11, %11
+        %13 = load double, ptr @A6, align 8
+        %14 = load double, ptr @A5, align 8
+        %15 = fneg double %14
+        %16 = call double @llvm.fmuladd.f64(double %13, double %12, double %15)
+        %17 = load double, ptr @A4, align 8
+        %18 = call double @llvm.fmuladd.f64(double %16, double %12, double %17)
+        %19 = load double, ptr @A3, align 8
+        %20 = fneg double %19
+        %21 = call double @llvm.fmuladd.f64(double %18, double %12, double %20)
+        %22 = load double, ptr @A2, align 8
+        %23 = call double @llvm.fmuladd.f64(double %21, double %12, double %22)
+        %24 = load double, ptr @A1, align 8
+        %25 = call double @llvm.fmuladd.f64(double %23, double %12, double %24)
+        %26 = call double @llvm.fmuladd.f64(double %25, double %12, double %9)
+        %27 = call double @llvm.fmuladd.f64(double %11, double %26, double %7)
+    >   %28 = add nuw nsw i32 %6, 1
+    >   %29 = icmp samesign ult i32 %6, 312499999
+    >   br i1 %29, label %5, label %30, !llvm.loop !7
+    <   %28 = add nuw nsw i32 %6, 1
+    <   %29 = icmp samesign ult i32 %28, 312500000
+    <   br i1 %29, label %5, label %30, !llvm.loop !7"
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->instcombine,"in function main:
+  in block %31 / %31:
+    <   %.lcssa = phi double [ %7, %5 ]"
+licm,loop-rotate,dependent,true,false_positive,inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9,inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%24;inst:main:%26;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9,,inst,mixed,expansion;mutation,loop-rotate->licm;licm->loop-rotate,
+licm,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+loop-rotate,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,

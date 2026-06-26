@@ -1,0 +1,15 @@
+{
+  "function_count": 1,
+  "basic_block_count": 4,
+  "instruction_count": 106,
+  "load_count": 24,
+  "store_count": 25,
+  "call_count": 12,
+  "branch_count": 4,
+  "phi_count": 7,
+  "ret_count": 1,
+  "ir_file_size": 10359,
+  "ir_cost": 195.95,
+  "score_ir": 195.95,
+  "score": 195.95
+}

@@ -1,0 +1,77 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function Bubble:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 500, %1 ], [ %18, %17 ]
+    >   %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4
+    <   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function bInitarr:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 1, %0 ], [ %17, %16 ]
+    <   %2 = phi i32 [ 1, %0 ], [ %17, %16 ]
+  in block %16 / %16:
+    >   %18 = icmp samesign ult i32 %2, 500
+    >   br i1 %18, label %1, label %19, !llvm.loop !7
+    <   %18 = icmp samesign ult i32 %17, 501
+    <   br i1 %18, label %1, label %19, !llvm.loop !7
+
+in function Bubble:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]
+    <   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]
+  in block %16 / %16:
+    >   %18 = icmp sgt i32 %storemerge1, 2
+    >   br i1 %18, label %2, label %19, !llvm.loop !9
+    <   %18 = icmp sgt i32 %17, 1
+    <   br i1 %18, label %2, label %19, !llvm.loop !9
+  in block %14 / %14:
+    >   %15 = icmp samesign ult i32 %8, %storemerge1
+    >   br i1 %15, label %3, label %16, !llvm.loop !7
+    <   %15 = icmp slt i32 %8, %storemerge1
+    <   br i1 %15, label %3, label %16, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+    <   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+        call void @Bubble(i32 noundef %2)
+    >   %3 = add nuw nsw i32 %2, 1
+    >   %4 = icmp samesign ult i32 %2, 99
+    >   br i1 %4, label %1, label %5, !llvm.loop !7
+    <   %3 = add nuw nsw i32 %2, 1
+    <   %4 = icmp samesign ult i32 %3, 100
+    <   br i1 %4, label %1, label %5, !llvm.loop !7"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->loop-unroll,"function @llvm.assume exists only in left module
+in function Bubble:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]
+    >   br label %3
+    <   %indvar = phi i32 [ 0, %1 ], [ %indvar.next, %39 ]
+    <   %storemerge1 = phi i32 [ 500, %1 ], [ %40, %39 ]
+    <   %3 = mul nsw i32 %indvar, -1
+    <   %4 = add i32 %3, 499
+    <   %5 = add i32 %3, 498
+    <   %xtraiter = and i32 %4, 1
+    <   %6 = icmp ult i32 %5, 1
+    <   br i1 %6, label %.epil.preheader, label %.new"
+loop-rotate,simplifycfg,dependent,true,false_positive,bb:Bubble:bb10;bb:bInitarr:bb7;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%20;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb10:1:ret;inst:Bubble:bb1:1:br;inst:Bubble:bb4:1:br;inst:Bubble:bb5:1:br;inst:Bubble:bb6:1:store;inst:Bubble:bb6:2:store;inst:Bubble:bb6:3:br;inst:Bubble:bb7:1:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:bInitarr:%19;inst:bInitarr:bb7:1:br;loop:Bubble:bb0;loop:Bubble:bb3,bb:Bubble:bb10;bb:bInitarr:bb7;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%20;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:bb10:1:ret;inst:Bubble:bb1:1:br;inst:Bubble:bb4:1:br;inst:Bubble:bb5:1:br;inst:Bubble:bb6:1:store;inst:Bubble:bb6:2:store;inst:Bubble:bb6:3:br;inst:Bubble:bb7:1:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:bInitarr:%19;inst:bInitarr:bb7:1:br;loop:Bubble:bb0;loop:Bubble:bb3,bb:Bubble:bb10;bb:bInitarr:bb7;inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%5;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb10:1:ret;inst:Bubble:bb1:1:br;inst:Bubble:bb4:1:br;inst:Bubble:bb5:1:br;inst:Bubble:bb6:1:br;inst:Bubble:bb6:1:store;inst:Bubble:bb6:2:store;inst:Bubble:bb6:3:br;inst:Bubble:bb7:1:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:bInitarr:%18;inst:bInitarr:%19;inst:bInitarr:bb7:1:br;loop:Bubble:bb0;loop:Bubble:bb1;loop:Bubble:bb3,read_write;enablement,strong,strong,strong,none,inst:Bubble:%12;inst:Bubble:%13;inst:Bubble:%14;inst:Bubble:%15;inst:Bubble:%16;inst:Bubble:%20;inst:Bubble:%21;inst:Bubble:%22;inst:Bubble:%23;inst:Bubble:%24;inst:Bubble:%25;inst:Bubble:%26;inst:Bubble:%28;inst:Bubble:%29;inst:Bubble:%30;inst:Bubble:%31;inst:Bubble:%32;inst:Bubble:%33;inst:Bubble:%5;inst:Bubble:%6;inst:Bubble:%7;inst:Bubble:%8;inst:Bubble:bb6:1:store;inst:Bubble:bb6:2:store;inst:bInitarr:%18;inst:bInitarr:%19;loop:Bubble:bb0;loop:Bubble:bb1;loop:Bubble:bb3,bb:Bubble:bb10;bb:bInitarr:bb7;inst:Bubble:bb10:1:ret;inst:Bubble:bb1:1:br;inst:Bubble:bb4:1:br;inst:Bubble:bb5:1:br;inst:Bubble:bb6:1:br;inst:Bubble:bb6:3:br;inst:Bubble:bb7:1:br;inst:Bubble:bb8:1:br;inst:Bubble:bb9:1:br;inst:bInitarr:bb7:1:br,bb;inst;loop,mixed,expansion,simplifycfg->loop-rotate;loop-rotate->simplifycfg,
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function Bubble:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %11, %17 ], [ 1, %2 ]
+    >   %6 = icmp slt i32 %5, %storemerge
+    >   br i1 %6, label %7, label %18
+    <   br label %4"
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-unroll,"in function Bubble:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %11, %17 ], [ 1, %2 ]
+    >   %6 = icmp slt i32 %5, %storemerge
+    >   br i1 %6, label %7, label %18
+    <   br label %4"

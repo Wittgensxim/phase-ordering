@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "licm",
+    "sccp"
+  ],
+  "details": "perturbation: licm->sccp",
+  "changed": true
+}

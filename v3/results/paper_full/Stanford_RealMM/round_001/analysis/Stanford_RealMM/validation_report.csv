@@ -1,0 +1,461 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %29, %22 ]
+    >   %8 = phi i32 [ 1, %5 ], [ %30, %22 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %32, %22 ]
+    <   %8 = phi i32 [ 1, %5 ], [ %33, %22 ]
+  in block %22 / %22:
+    <   %23 = sext i32 %3 to i64
+    <   %24 = getelementptr inbounds [328 x i8], ptr %1, i64 %23
+        %25 = zext nneg i32 %21 to i64
+    >   %24 = getelementptr inbounds nuw [8 x i8], ptr %12, i64 %23
+    >   %25 = load double, ptr %24, align 8
+    <   %26 = getelementptr inbounds nuw [8 x i8], ptr %24, i64 %25
+    <   %27 = load double, ptr %26, align 8
+        %28 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %25
+    >   %27 = getelementptr inbounds [8 x i8], ptr %26, i64 %17
+    >   %28 = load double, ptr %27, align 8
+    <   %29 = sext i32 %4 to i64
+    <   %30 = getelementptr inbounds [8 x i8], ptr %28, i64 %29
+    <   %31 = load double, ptr %30, align 8"
+early-cse,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %28, %10 ]
+    >   %8 = phi i32 [ 1, %5 ], [ %29, %10 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %32, %22 ]
+    <   %8 = phi i32 [ 1, %5 ], [ %33, %22 ]
+  in block %10 / %10:
+    in instruction   br label %22 /   br label %6, !llvm.loop !7:
+      successor %22 cannot be equivalent to %6; it's already equivalent to %10
+    >   %22 = zext nneg i32 %21 to i64
+    >   %23 = getelementptr inbounds nuw [8 x i8], ptr %12, i64 %22
+    >   %24 = load double, ptr %23, align 8
+    >   %25 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %22
+    >   %26 = getelementptr inbounds [8 x i8], ptr %25, i64 %17
+    >   %27 = load double, ptr %26, align 8
+    >   %28 = call double @llvm.fmuladd.f64(double %24, double %27, double %20)
+    >   store double %28, ptr %0, align 8
+    >   %29 = add nuw nsw i32 %8, 2
+  in block %22 / %10:
+    >   %13 = zext nneg i32 %8 to i64
+    >   %14 = getelementptr inbounds nuw [8 x i8], ptr %12, i64 %13
+    >   %15 = load double, ptr %14, align 8
+    >   %16 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %13
+    >   %17 = sext i32 %4 to i64
+    >   %18 = getelementptr inbounds [8 x i8], ptr %16, i64 %17
+    >   %19 = load double, ptr %18, align 8
+    >   %20 = call double @llvm.fmuladd.f64(double %15, double %19, double %7)
+    >   store double %20, ptr %0, align 8
+    >   %21 = add nuw nsw i32 %8, 1
+        %25 = zext nneg i32 %21 to i64
+        %26 = getelementptr inbounds nuw [8 x i8], ptr %24, i64 %25
+        %27 = load double, ptr %26, align 8
+        %28 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %25
+    <   %29 = sext i32 %4 to i64
+
+in function main:
+  in block %0 / %0:
+    >   call void @Mm(i32 noundef 0)
+    >   call void @Mm(i32 noundef 1)
+    >   call void @Mm(i32 noundef 2)
+    >   call void @Mm(i32 noundef 3)
+    >   call void @Mm(i32 noundef 4)
+    >   call void @Mm(i32 noundef 5)
+    >   call void @Mm(i32 noundef 6)
+    >   call void @Mm(i32 noundef 7)
+    >   call void @Mm(i32 noundef 8)
+    >   call void @Mm(i32 noundef 9)
+    >   br i1 false, label %1, label %2
+    <   br label %1"
+gvn,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->instcombine,"in function rInitmatrix:
+  in block %2 / %2:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %13 ], [ 1, %1 ]
+    >   %exitcond5.not = icmp eq i64 %indvars.iv2, 41
+    >   br i1 %exitcond5.not, label %14, label %3
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %13 ], [ 1, %1 ]
+    <   %exitcond5 = icmp ne i64 %indvars.iv2, 41
+    <   br i1 %exitcond5, label %3, label %14
+
+in function rInnerproduct:
+  in block %6 / %6:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ 1, %5 ]
+    >   %7 = phi double [ %17, %8 ], [ 0.000000e+00, %5 ]
+    >   %exitcond.not = icmp eq i64 %indvars.iv, 41
+    >   br i1 %exitcond.not, label %18, label %8
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ 1, %5 ]
+    <   %7 = phi double [ %17, %8 ], [ 0.000000e+00, %5 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 41
+    <   br i1 %exitcond, label %8, label %18
+
+in function Mm:
+  in block %2 / %2:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %10 ], [ 1, %1 ]
+    >   %exitcond5.not = icmp eq i64 %indvars.iv2, 41
+    >   br i1 %exitcond5.not, label %11, label %3
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %10 ], [ 1, %1 ]
+    <   %exitcond5 = icmp ne i64 %indvars.iv2, 41
+    <   br i1 %exitcond5, label %3, label %11
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %4, %3 ], [ 0, %0 ]
+    >   %exitcond.not = icmp eq i32 %2, 10
+    >   br i1 %exitcond.not, label %5, label %3
+    <   %2 = phi i32 [ %4, %3 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i32 %2, 10
+    <   br i1 %exitcond, label %3, label %5"
+indvars,licm,dependent,false,agree_dependent,inst:Mm:%10;inst:Mm:%11;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,inst:Mm:%10;inst:Mm:%11;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,inst:Mm:%10;inst:Mm:%11;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInnerproduct:%10;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,read_write;enablement,strong,strong,strong,none,inst:Mm:%10;inst:Mm:%11;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInnerproduct:%10;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,,inst,mixed,expansion;mutation,licm->indvars;indvars->licm,"in function Mm:
+  in block %3 / %3:
+    >   %5 = trunc nuw nsw i64 %indvars.iv2 to i32"
+indvars,loop-rotate,dependent,false,agree_dependent,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%3;inst:Mm:%4;inst:Mm:%7;inst:Mm:%8;inst:main:%3;inst:main:%5;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%3;inst:rInitmatrix:%4;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%3;inst:Mm:%4;inst:Mm:%7;inst:Mm:%8;inst:main:%3;inst:main:%5;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%3;inst:rInitmatrix:%4;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%17;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%3;inst:Mm:%4;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:main:%3;inst:main:%4;inst:main:%5;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%3;inst:rInitmatrix:%4;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInnerproduct:%10;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,read_write;enablement,strong,strong,strong,none,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%17;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%3;inst:Mm:%4;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:main:%3;inst:main:%4;inst:main:%5;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%3;inst:rInitmatrix:%4;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInnerproduct:%10;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%8;inst:rInnerproduct:%9,,inst,mixed,expansion,loop-rotate->indvars;indvars->loop-rotate,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %16, %6 ]
+    >   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next, %6 ]
+    <   %indvars.iv = phi i64 [ 1, %5 ], [ %indvars.iv.next, %6 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %16, %6 ]
+        %8 = sext i32 %3 to i64
+        %9 = getelementptr inbounds [328 x i8], ptr %1, i64 %8
+    >   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2
+    >   %11 = load double, ptr %10, align 8
+    >   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2
+    <   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv
+    <   %11 = load double, ptr %10, align 8
+    <   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv
+        %13 = sext i32 %4 to i64
+    >   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13
+    >   %15 = load double, ptr %14, align 8
+    <   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13
+    <   %15 = load double, ptr %14, align 8
+        %16 = call double @llvm.fmuladd.f64(double %11, double %15, double %7)
+        store double %16, ptr %0, align 8
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1
+    >   %exitcond = icmp ne i64 %indvars.iv.next, 41
+    >   br i1 %exitcond, label %6, label %17, !llvm.loop !7
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    <   %exitcond = icmp ne i64 %indvars.iv.next, 41
+    <   br i1 %exitcond, label %6, label %17, !llvm.loop !7"
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,dependent,false,agree_dependent,inst:main:%3;inst:main:%5;inst:rInnerproduct:%8,inst:main:%3;inst:main:%5;inst:rInnerproduct:%8,inst:main:%3;inst:main:%5;inst:rInnerproduct:%8,read_write;enablement,strong,strong,strong,none,inst:main:%3;inst:main:%5;inst:rInnerproduct:%8,,inst,symmetric_rewrite,expansion,indvars->loop-unroll;loop-unroll->indvars,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %20 ], [ 1, %5 ]
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %29, %20 ]
+    >   %8 = icmp samesign ult i64 %indvars.iv, 41
+    >   br i1 %8, label %9, label %30
+    <   %indvars.iv = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %18 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %27, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 41
+    <   br i1 %exitcond, label %8, label %28"
+indvars,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,simplifycfg,dependent,false,agree_dependent,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%7;inst:rInitmatrix:%8,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%7;inst:rInitmatrix:%8,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%15;inst:Mm:%16;inst:Mm:%17;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9,read_write;enablement,strong,strong,strong,none,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%15;inst:Mm:%16;inst:Mm:%17;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9,,inst,mixed,expansion,simplifycfg->indvars;indvars->simplifycfg,"in function rInitmatrix:
+  in block %.preheader / %3:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, 41
+    >   br i1 %exitcond, label %4, label %12
+    <   br label %3
+
+in function Mm:
+  in block %.preheader / %3:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, 41
+    >   br i1 %exitcond, label %4, label %9
+    <   br label %3"
+instcombine,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function rInitmatrix:
+  in block %2 / %2:
+    >   %3 = phi i32 [ 1, %1 ], [ %18, %17 ]
+    <   %3 = phi i32 [ 1, %1 ], [ %18, %17 ]
+  in block %17 / %17:
+    >   %19 = icmp samesign ult i32 %3, 40
+    >   br i1 %19, label %2, label %20, !llvm.loop !9
+    <   %19 = icmp samesign ult i32 %18, 41
+    <   br i1 %19, label %2, label %20, !llvm.loop !9
+  in block %4 / %4:
+    >   %5 = phi i32 [ 1, %2 ], [ %15, %4 ]
+    <   %5 = phi i32 [ 1, %2 ], [ %15, %4 ]
+        %6 = call i32 @Rand()
+        %.fr = freeze i32 %6
+        %7 = srem i32 %.fr, 120
+        %8 = add nsw i32 %7, -60
+        %9 = sitofp i32 %8 to double
+        %10 = fdiv double %9, 3.000000e+00
+        %11 = zext nneg i32 %3 to i64
+        %12 = getelementptr inbounds nuw [328 x i8], ptr %0, i64 %11
+    >   %13 = zext nneg i32 %5 to i64
+    >   %14 = getelementptr inbounds nuw [8 x i8], ptr %12, i64 %13
+    >   store double %10, ptr %14, align 8
+    >   %15 = add nuw nsw i32 %5, 1
+    >   %16 = icmp samesign ult i32 %5, 40
+    >   br i1 %16, label %4, label %17, !llvm.loop !7
+    <   %13 = zext nneg i32 %5 to i64
+    <   %14 = getelementptr inbounds nuw [8 x i8], ptr %12, i64 %13
+    <   store double %10, ptr %14, align 8
+    <   %15 = add nuw nsw i32 %5, 1
+    <   %16 = icmp samesign ult i32 %15, 41
+    <   br i1 %16, label %4, label %17, !llvm.loop !7
+
+in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 1, %5 ], [ %19, %6 ]
+    >   %8 = phi double [ 0.000000e+00, %5 ], [ %18, %6 ]
+    <   %7 = phi i32 [ 1, %5 ], [ %19, %6 ]
+    <   %8 = phi double [ 0.000000e+00, %5 ], [ %18, %6 ]
+        %9 = sext i32 %3 to i64
+        %10 = getelementptr inbounds [328 x i8], ptr %1, i64 %9
+    >   %11 = zext nneg i32 %7 to i64
+    >   %12 = getelementptr inbounds nuw [8 x i8], ptr %10, i64 %11
+    >   %13 = load double, ptr %12, align 8
+    >   %14 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %11
+    <   %11 = zext nneg i32 %7 to i64
+    <   %12 = getelementptr inbounds nuw [8 x i8], ptr %10, i64 %11
+    <   %13 = load double, ptr %12, align 8
+    <   %14 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %11
+        %15 = sext i32 %4 to i64
+    >   %16 = getelementptr inbounds [8 x i8], ptr %14, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    <   %16 = getelementptr inbounds [8 x i8], ptr %14, i64 %15
+    <   %17 = load double, ptr %16, align 8
+        %18 = call double @llvm.fmuladd.f64(double %13, double %17, double %8)
+        store double %18, ptr %0, align 8
+    >   %19 = add nuw nsw i32 %7, 1
+    >   %20 = icmp samesign ult i32 %7, 40
+    >   br i1 %20, label %6, label %21, !llvm.loop !7
+    <   %19 = add nuw nsw i32 %7, 1
+    <   %20 = icmp samesign ult i32 %19, 41
+    <   br i1 %20, label %6, label %21, !llvm.loop !7
+
+in function Mm:
+  in block %2 / %2:
+    >   %3 = phi i32 [ 1, %1 ], [ %13, %12 ]
+    <   %3 = phi i32 [ 1, %1 ], [ %13, %12 ]
+  in block %12 / %12:
+    >   %14 = icmp samesign ult i32 %3, 40
+    >   br i1 %14, label %2, label %15, !llvm.loop !9
+    <   %14 = icmp samesign ult i32 %13, 41
+    <   br i1 %14, label %2, label %15, !llvm.loop !9
+  in block %4 / %4:
+    >   %5 = phi i32 [ 1, %2 ], [ %10, %4 ]
+    <   %5 = phi i32 [ 1, %2 ], [ %10, %4 ]
+        %6 = zext nneg i32 %3 to i64
+        %7 = getelementptr inbounds nuw [328 x i8], ptr @rmr, i64 %6
+    >   %8 = zext nneg i32 %5 to i64
+    >   %9 = getelementptr inbounds nuw [8 x i8], ptr %7, i64 %8
+    <   %8 = zext nneg i32 %5 to i64
+    <   %9 = getelementptr inbounds nuw [8 x i8], ptr %7, i64 %8
+        call void @rInnerproduct(ptr noundef nonnull %9, ptr noundef nonnull @rma, ptr noundef nonnull @rmb, i32 noundef %3, i32 noundef %5)
+    >   %10 = add nuw nsw i32 %5, 1
+    >   %11 = icmp samesign ult i32 %5, 40
+    >   br i1 %11, label %4, label %12, !llvm.loop !7
+    <   %10 = add nuw nsw i32 %5, 1
+    <   %11 = icmp samesign ult i32 %10, 41
+    <   br i1 %11, label %4, label %12, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+    <   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+        call void @Mm(i32 noundef %2)
+    >   %3 = add nuw nsw i32 %2, 1
+    >   %4 = icmp samesign ult i32 %2, 9
+    >   br i1 %4, label %1, label %5, !llvm.loop !7
+    <   %3 = add nuw nsw i32 %2, 1
+    <   %4 = icmp samesign ult i32 %3, 10
+    <   br i1 %4, label %1, label %5, !llvm.loop !7"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->instcombine,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %32, %21 ]
+    >   %8 = phi i32 [ 1, %5 ], [ %33, %21 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %32, %22 ]
+    <   %8 = phi i32 [ 1, %5 ], [ %33, %22 ]
+  in block %10 / %10:
+    <   %21 = add nuw nsw i32 %8, 1
+  in block %22 / %21:
+    >   %22 = add nuw nsw i32 %8, 1
+        %23 = sext i32 %3 to i64
+        %24 = getelementptr inbounds [328 x i8], ptr %1, i64 %23
+    >   %25 = zext nneg i32 %22 to i64
+    >   %26 = getelementptr inbounds nuw [8 x i8], ptr %24, i64 %25
+    >   %27 = load double, ptr %26, align 8
+    >   %28 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %25
+    <   %25 = zext nneg i32 %21 to i64
+    <   %26 = getelementptr inbounds nuw [8 x i8], ptr %24, i64 %25
+    <   %27 = load double, ptr %26, align 8
+    <   %28 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %25
+        %29 = sext i32 %4 to i64
+    >   %30 = getelementptr inbounds [8 x i8], ptr %28, i64 %29
+    >   %31 = load double, ptr %30, align 8
+    <   %30 = getelementptr inbounds [8 x i8], ptr %28, i64 %29
+    <   %31 = load double, ptr %30, align 8
+
+in function main:
+  in block %12 / %12:
+    <   call void @Mm(i32 noundef 10)"
+instcombine,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,dependent,true,false_positive,inst:Mm:%10;inst:Mm:%11;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:%9,inst:Mm:%10;inst:Mm:%11;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:%9,inst:Mm:%10;inst:Mm:%11;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInnerproduct:%10;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:%9,read_write;enablement,strong,strong,strong,none,inst:Mm:%10;inst:Mm:%11;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInnerproduct:%10;inst:rInnerproduct:%11;inst:rInnerproduct:%12;inst:rInnerproduct:%13;inst:rInnerproduct:%14;inst:rInnerproduct:%15;inst:rInnerproduct:%16;inst:rInnerproduct:%17;inst:rInnerproduct:%18;inst:rInnerproduct:%19;inst:rInnerproduct:%20;inst:rInnerproduct:%21;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:%9,,inst,mixed,expansion;mutation,loop-rotate->licm;licm->loop-rotate,
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,false,agree_dependent,inst:rInnerproduct:%7;inst:rInnerproduct:%8,inst:rInnerproduct:%7;inst:rInnerproduct:%8,inst:rInnerproduct:%7;inst:rInnerproduct:%8,read_write;enablement,strong,strong,strong,none,inst:rInnerproduct:%7;inst:rInnerproduct:%8,,inst,symmetric_rewrite,expansion,licm->loop-unroll;loop-unroll->licm,"in function rInnerproduct:
+  in block %5 / %5:
+    >   %6 = sext i32 %3 to i64
+    >   %7 = getelementptr inbounds [328 x i8], ptr %1, i64 %6
+    >   %8 = sext i32 %4 to i64
+    >   %invariant.gep = getelementptr [8 x i8], ptr %2, i64 %8"
+licm,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,simplifycfg,dependent,true,false_positive,inst:Mm:%10;inst:Mm:%11;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%7;inst:rInitmatrix:%8,inst:Mm:%10;inst:Mm:%11;inst:Mm:%7;inst:Mm:%8;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%7;inst:rInitmatrix:%8,inst:Mm:%10;inst:Mm:%11;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9,read_write;enablement,strong,strong,strong,none,inst:Mm:%10;inst:Mm:%11;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9,,inst,mixed,expansion,simplifycfg->licm,
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,inst:main:%2;inst:main:%3;inst:main:%5;inst:main:bb0:1:br;inst:main:bb1:1:call;inst:main:bb1:2:br;inst:main:bb2:1:ret;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:bb1:2:br;loop:main:bb0;loop:rInnerproduct:bb0,inst:main:%2;inst:main:%3;inst:main:%5;inst:main:bb0:1:br;inst:main:bb1:1:call;inst:main:bb1:2:br;inst:main:bb2:1:ret;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:bb1:2:br;loop:main:bb0;loop:rInnerproduct:bb0,inst:main:%2;inst:main:%3;inst:main:%5;inst:main:bb0:1:br;inst:main:bb1:1:call;inst:main:bb1:2:br;inst:main:bb2:1:ret;inst:rInnerproduct:%7;inst:rInnerproduct:%8;inst:rInnerproduct:bb1:2:br;loop:main:bb0;loop:rInnerproduct:bb0,read_write;enablement,strong,strong,strong,none,inst:main:%2;inst:main:%3;inst:main:%5;inst:main:bb1:1:call;inst:rInnerproduct:%7;inst:rInnerproduct:%8;loop:main:bb0;loop:rInnerproduct:bb0,inst:main:bb0:1:br;inst:main:bb1:2:br;inst:main:bb2:1:ret;inst:rInnerproduct:bb1:2:br,inst;loop,symmetric_rewrite,expansion,loop-rotate->loop-unroll;loop-unroll->loop-rotate,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 1, %5 ], [ %31, %20 ]
+    >   %8 = phi double [ 0.000000e+00, %5 ], [ %30, %20 ]
+    <   %7 = phi i32 [ 1, %5 ], [ %30, %6 ]
+    <   %8 = phi double [ 0.000000e+00, %5 ], [ %29, %6 ]
+        %9 = sext i32 %3 to i64
+        %10 = getelementptr inbounds [328 x i8], ptr %1, i64 %9
+    >   %11 = zext nneg i32 %7 to i64
+    >   %12 = getelementptr inbounds nuw [8 x i8], ptr %10, i64 %11
+    >   %13 = load double, ptr %12, align 8
+    >   %14 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %11
+    <   %11 = zext nneg i32 %7 to i64
+    <   %12 = getelementptr inbounds nuw [8 x i8], ptr %10, i64 %11
+    <   %13 = load double, ptr %12, align 8
+    <   %14 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %11
+        %15 = sext i32 %4 to i64
+    >   %16 = getelementptr inbounds [8 x i8], ptr %14, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    <   %16 = getelementptr inbounds [8 x i8], ptr %14, i64 %15
+    <   %17 = load double, ptr %16, align 8
+        %18 = call double @llvm.fmuladd.f64(double %13, double %17, double %8)
+        store double %18, ptr %0, align 8
+    >   %19 = add nuw nsw i32 %7, 1
+    >   br label %20
+    <   %19 = add nuw nsw i32 %7, 1
+    <   %20 = sext i32 %3 to i64
+    <   %21 = getelementptr inbounds [328 x i8], ptr %1, i64 %20
+    <   %22 = zext nneg i32 %19 to i64
+    <   %23 = getelementptr inbounds nuw [8 x i8], ptr %21, i64 %22
+    <   %24 = load double, ptr %23, align 8
+    <   %25 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %22
+    <   %26 = sext i32 %4 to i64
+    <   %27 = getelementptr inbounds [8 x i8], ptr %25, i64 %26
+    <   %28 = load double, ptr %27, align 8
+    <   %29 = call double @llvm.fmuladd.f64(double %24, double %28, double %18)
+    <   store double %29, ptr %0, align 8
+    <   %30 = add nuw nsw i32 %7, 2
+    <   %31 = icmp samesign ult i32 %30, 41
+    <   br i1 %31, label %6, label %32, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   br label %2
+    <   call void @Mm(i32 noundef 0)
+    <   call void @Mm(i32 noundef 1)
+    <   call void @Mm(i32 noundef 2)
+    <   call void @Mm(i32 noundef 3)
+    <   call void @Mm(i32 noundef 4)
+    <   call void @Mm(i32 noundef 5)
+    <   call void @Mm(i32 noundef 6)
+    <   call void @Mm(i32 noundef 7)
+    <   call void @Mm(i32 noundef 8)
+    <   call void @Mm(i32 noundef 9)
+    <   ret i32 0"
+loop-rotate,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,simplifycfg,dependent,true,false_positive,bb:Mm:bb5;bb:rInitmatrix:bb5;inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%7;inst:Mm:%8;inst:Mm:bb1:1:br;inst:Mm:bb3:1:br;inst:Mm:bb4:1:call;inst:Mm:bb4:2:br;inst:Mm:bb5:1:br;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:bb1:1:br;inst:rInitmatrix:bb3:1:br;inst:rInitmatrix:bb4:1:store;inst:rInitmatrix:bb4:2:br;inst:rInitmatrix:bb5:1:br;loop:Mm:bb0;loop:Mm:bb3;loop:rInitmatrix:bb0;loop:rInitmatrix:bb3,bb:Mm:bb5;bb:rInitmatrix:bb5;inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%7;inst:Mm:%8;inst:Mm:bb1:1:br;inst:Mm:bb3:1:br;inst:Mm:bb4:1:call;inst:Mm:bb4:2:br;inst:Mm:bb5:1:br;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:bb1:1:br;inst:rInitmatrix:bb3:1:br;inst:rInitmatrix:bb4:1:store;inst:rInitmatrix:bb4:2:br;inst:rInitmatrix:bb5:1:br;loop:Mm:bb0;loop:Mm:bb3;loop:rInitmatrix:bb0;loop:rInitmatrix:bb3,bb:Mm:bb5;bb:rInitmatrix:bb5;inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%17;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:Mm:bb1:1:br;inst:Mm:bb3:1:br;inst:Mm:bb4:1:call;inst:Mm:bb4:2:br;inst:Mm:bb5:1:br;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInitmatrix:bb1:1:br;inst:rInitmatrix:bb3:1:br;inst:rInitmatrix:bb4:1:store;inst:rInitmatrix:bb4:2:br;inst:rInitmatrix:bb5:1:br;loop:Mm:bb0;loop:Mm:bb1;loop:Mm:bb3;loop:rInitmatrix:bb0;loop:rInitmatrix:bb1;loop:rInitmatrix:bb3,read_write;enablement,strong,strong,strong,none,inst:Mm:%10;inst:Mm:%11;inst:Mm:%12;inst:Mm:%13;inst:Mm:%14;inst:Mm:%16;inst:Mm:%17;inst:Mm:%18;inst:Mm:%19;inst:Mm:%20;inst:Mm:%21;inst:Mm:%22;inst:Mm:%23;inst:Mm:%6;inst:Mm:%7;inst:Mm:%8;inst:Mm:%9;inst:Mm:bb4:1:call;inst:rInitmatrix:%10;inst:rInitmatrix:%11;inst:rInitmatrix:%12;inst:rInitmatrix:%13;inst:rInitmatrix:%14;inst:rInitmatrix:%15;inst:rInitmatrix:%16;inst:rInitmatrix:%17;inst:rInitmatrix:%18;inst:rInitmatrix:%19;inst:rInitmatrix:%21;inst:rInitmatrix:%6;inst:rInitmatrix:%7;inst:rInitmatrix:%8;inst:rInitmatrix:%9;inst:rInitmatrix:bb4:1:store;loop:Mm:bb0;loop:Mm:bb1;loop:Mm:bb3;loop:rInitmatrix:bb0;loop:rInitmatrix:bb1;loop:rInitmatrix:bb3,bb:Mm:bb5;bb:rInitmatrix:bb5;inst:Mm:bb1:1:br;inst:Mm:bb3:1:br;inst:Mm:bb4:2:br;inst:Mm:bb5:1:br;inst:rInitmatrix:bb1:1:br;inst:rInitmatrix:bb3:1:br;inst:rInitmatrix:bb4:2:br;inst:rInitmatrix:bb5:1:br,bb;inst;loop,mixed,expansion,simplifycfg->loop-rotate,
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function rInitmatrix:
+  in block %.preheader / %5:
+    >   %6 = phi i32 [ %18, %8 ], [ 1, %2 ]
+    >   %7 = icmp samesign ult i32 %6, 41
+    >   br i1 %7, label %8, label %19
+    <   br label %5
+
+in function Mm:
+  in block %.preheader / %5:
+    >   %6 = phi i32 [ %13, %8 ], [ 1, %2 ]
+    >   %7 = icmp samesign ult i32 %6, 41
+    >   br i1 %7, label %8, label %14
+    <   br label %5"
+loop-unroll,sccp,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->sccp,"in function main:
+  in block %11 / %11:
+    >   br label %12
+    <   br i1 false, label %12, label %13"
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,simplifycfg->loop-unroll;loop-unroll->simplifycfg,"in function rInitmatrix:
+  in block %.preheader / %5:
+    >   %6 = phi i32 [ %18, %8 ], [ 1, %2 ]
+    >   %7 = icmp samesign ult i32 %6, 41
+    >   br i1 %7, label %8, label %19
+    <   br label %5
+
+in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %31, %10 ]
+    >   %8 = phi i32 [ 1, %5 ], [ %32, %10 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %32, %22 ]
+    <   %8 = phi i32 [ 1, %5 ], [ %33, %22 ]
+  in block %10 / %10:
+    in instruction   br label %22 /   br label %6, !llvm.loop !7:
+      successor %22 cannot be equivalent to %6; it's already equivalent to %10
+    >   %22 = sext i32 %3 to i64
+    >   %23 = getelementptr inbounds [328 x i8], ptr %1, i64 %22
+    >   %24 = zext nneg i32 %21 to i64
+    >   %25 = getelementptr inbounds nuw [8 x i8], ptr %23, i64 %24
+    >   %26 = load double, ptr %25, align 8
+    >   %27 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %24
+    >   %28 = sext i32 %4 to i64
+    >   %29 = getelementptr inbounds [8 x i8], ptr %27, i64 %28
+    >   %30 = load double, ptr %29, align 8
+    >   %31 = call double @llvm.fmuladd.f64(double %26, double %30, double %20)
+    >   store double %31, ptr %0, align 8
+    >   %32 = add nuw nsw i32 %8, 2
+  in block %22 / %10:
+    >   %11 = sext i32 %3 to i64
+    >   %12 = getelementptr inbounds [328 x i8], ptr %1, i64 %11
+    >   %13 = zext nneg i32 %8 to i64
+    >   %14 = getelementptr inbounds nuw [8 x i8], ptr %12, i64 %13
+    >   %15 = load double, ptr %14, align 8
+    >   %16 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %13
+    >   %17 = sext i32 %4 to i64
+    >   %18 = getelementptr inbounds [8 x i8], ptr %16, i64 %17
+    >   %19 = load double, ptr %18, align 8
+    >   %20 = call double @llvm.fmuladd.f64(double %15, double %19, double %7)
+    >   store double %20, ptr %0, align 8
+    >   %21 = add nuw nsw i32 %8, 1
+
+in function Mm:
+  in block %.preheader / %5:
+    >   %6 = phi i32 [ %13, %8 ], [ 1, %2 ]
+    >   %7 = icmp samesign ult i32 %6, 41
+    >   br i1 %7, label %8, label %14
+    <   br label %5
+
+in function main:
+  in block %0 / %0:
+    >   call void @Mm(i32 noundef 0)
+    >   call void @Mm(i32 noundef 1)
+    >   call void @Mm(i32 noundef 2)
+    >   call void @Mm(i32 noundef 3)
+    >   call void @Mm(i32 noundef 4)
+    >   call void @Mm(i32 noundef 5)
+    >   call void @Mm(i32 noundef 6)
+    >   call void @Mm(i32 noundef 7)
+    >   call void @Mm(i32 noundef 8)
+    >   call void @Mm(i32 noundef 9)
+    >   ret i32 0
+    <   br label %1"
+sccp,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,

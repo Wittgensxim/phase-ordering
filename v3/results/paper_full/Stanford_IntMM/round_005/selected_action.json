@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "loop-unroll",
+    "simplifycfg"
+  ],
+  "winner": "A->B",
+  "score_improvement": -36.0,
+  "details": "oracle chose loop-unroll->simplifycfg (improvement: -36.00)",
+  "changed": true
+}

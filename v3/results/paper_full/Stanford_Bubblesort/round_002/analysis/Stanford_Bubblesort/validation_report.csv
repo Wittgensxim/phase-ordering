@@ -1,0 +1,107 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function Bubble:
+  in block %15 / %15:
+    >   store i32 %3, ptr @top, align 4
+    <   %.lcssa = phi i32 [ %3, %2 ]
+    <   store i32 %.lcssa, ptr @top, align 4"
+early-cse,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function Bubble:
+  in block %15 / %15:
+    >   store i32 %3, ptr @top, align 4
+    <   %.lcssa = phi i32 [ %3, %2 ]
+    <   store i32 %.lcssa, ptr @top, align 4"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv22 = phi i64 [ 500, %1 ], [ %indvars.iv.next3, %11 ]
+    >   %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4
+    <   %indvars.iv22 = phi i64 [ 500, %1 ], [ %indvars.iv.next3, %10 ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,licm,dependent,false,agree_dependent,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1;loop:Bubble:bb2,read_write;enablement,strong,strong,strong,none,loop:Bubble:bb1;loop:Bubble:bb2,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,expansion,licm->indvars,"in function Bubble:
+  in block %2 / %2:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %14 ], [ 500, %1 ]
+    >   %3 = trunc nuw nsw i64 %indvars.iv2 to i32
+    >   %4 = icmp samesign ugt i64 %indvars.iv2, 1
+    >   br i1 %4, label %.preheader, label %15
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %13 ], [ 500, %1 ]
+    <   %3 = icmp samesign ugt i64 %indvars.iv2, 1
+    <   br i1 %3, label %.preheader, label %14"
+indvars,loop-rotate,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1,read_write;enablement,strong,strong,strong,none,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,expansion,indvars->loop-rotate,
+indvars,loop-simplify,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1;loop:Bubble:bb2,read_write,strong,strong,none,none,loop:Bubble:bb1;loop:Bubble:bb2,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,,,
+indvars,loop-unroll,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1;loop:Bubble:bb2,read_write,strong,strong,none,none,loop:Bubble:bb1;loop:Bubble:bb2,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,,,
+indvars,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->simplifycfg,"in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, %indvars.iv2
+    >   br i1 %exitcond, label %5, label %13
+    <   br label %5"
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,licm->instcombine,"in function Bubble:
+  in block %2 / %2:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %13 ], [ 500, %1 ]
+    >   %3 = icmp samesign ugt i64 %indvars.iv2, 1
+    >   br i1 %3, label %.preheader, label %14
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %14 ], [ 500, %1 ]
+    <   %3 = trunc nuw nsw i64 %indvars.iv2 to i32
+    <   %4 = icmp samesign ugt i64 %indvars.iv2, 1
+    <   br i1 %4, label %.preheader, label %15"
+instcombine,loop-rotate,dependent,false,agree_dependent,inst:Bubble:bb3:1:br;inst:Bubble:bb4:1:br;inst:bInitarr:bb1:1:store;inst:bInitarr:bb1:2:br;inst:bInitarr:bb2:1:ret;inst:main:bb1:1:call;inst:main:bb1:2:br;inst:main:bb2:1:ret;loop:Bubble:bb0;loop:main:bb0,inst:Bubble:bb3:1:br;inst:Bubble:bb4:1:br;inst:bInitarr:bb1:1:store;inst:bInitarr:bb1:2:br;inst:bInitarr:bb2:1:ret;inst:main:bb1:1:call;inst:main:bb1:2:br;inst:main:bb2:1:ret;loop:Bubble:bb0;loop:main:bb0,inst:Bubble:bb3:1:br;inst:Bubble:bb4:1:br;inst:bInitarr:bb1:1:store;inst:bInitarr:bb1:2:br;inst:bInitarr:bb2:1:ret;inst:main:bb1:1:call;inst:main:bb1:1:ret;inst:main:bb1:2:br;inst:main:bb2:1:ret;loop:Bubble:bb0;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:bInitarr:bb1:1:store;inst:main:bb1:1:call;loop:Bubble:bb0;loop:main:bb0,inst:Bubble:bb3:1:br;inst:Bubble:bb4:1:br;inst:bInitarr:bb1:2:br;inst:bInitarr:bb2:1:ret;inst:main:bb1:1:ret;inst:main:bb1:2:br;inst:main:bb2:1:ret,inst;loop,mixed,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv22 = phi i64 [ 500, %1 ], [ %indvars.iv.next3, %10 ]
+    <   %indvars.iv22 = phi i64 [ 500, %1 ], [ %indvars.iv.next3, %10 ]
+  in block %10 / %10:
+    >   %12 = icmp sgt i64 %indvars.iv22, 2
+    >   br i1 %12, label %.preheader, label %13, !llvm.loop !9
+    <   %12 = icmp samesign ugt i64 %indvars.iv.next3, 1
+    <   br i1 %12, label %.preheader, label %13, !llvm.loop !9"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,dependent,false,agree_dependent,inst:Bubble:bb0:1:store;inst:Bubble:bb0:2:br;inst:Bubble:bb1:1:br;loop:Bubble:bb1,inst:Bubble:bb0:1:store;inst:Bubble:bb0:2:br;inst:Bubble:bb1:1:br;loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;inst:Bubble:bb0:1:br;inst:Bubble:bb0:1:store;inst:Bubble:bb0:2:br;inst:Bubble:bb1:1:br;inst:Bubble:bb1:1:store;loop:Bubble:bb1,read_write;enablement,strong,strong,strong,none,inst:Bubble:bb0:1:store;inst:Bubble:bb1:1:store;loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;inst:Bubble:bb0:1:br;inst:Bubble:bb0:2:br;inst:Bubble:bb1:1:br,bb;inst;loop,mixed,expansion,loop-rotate->licm;licm->loop-rotate,"in function Bubble:
+  in block %1 / %1:
+    <   store i32 500, ptr @top, align 4"
+licm,loop-simplify,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1;loop:Bubble:bb2,read_write,strong,strong,none,none,loop:Bubble:bb1;loop:Bubble:bb2,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,,,
+licm,loop-unroll,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1;loop:Bubble:bb2,read_write,strong,strong,none,none,loop:Bubble:bb1;loop:Bubble:bb2,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,,,
+licm,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->simplifycfg,"in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, %indvars.iv2
+    >   br i1 %exitcond, label %5, label %13
+    <   br label %5"
+loop-rotate,loop-simplify,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1,read_write;enablement,strong,strong,strong,none,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,expansion,loop-simplify->loop-rotate,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1,read_write;enablement,strong,strong,strong,none,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,expansion,loop-rotate->loop-unroll;loop-unroll->loop-rotate,"function @llvm.assume exists only in left module
+in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv22 = phi i64 [ 500, %1 ], [ %indvars.iv.next3, %10 ]
+    >   br label %2
+    <   %indvar = phi i64 [ 0, %1 ], [ %indvar.next, %28 ]
+    <   %indvars.iv22 = phi i64 [ 500, %1 ], [ %indvars.iv.next3, %28 ]
+    <   %2 = mul nsw i64 %indvar, -1
+    <   %3 = add i64 %2, 499
+    <   %4 = add i64 %2, 498
+    <   %xtraiter = and i64 %3, 1
+    <   %5 = icmp ult i64 %4, 1
+    <   br i1 %5, label %.epil.preheader, label %.preheader.new"
+loop-rotate,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,loop-unroll,dependent,true,false_positive,loop:Bubble:bb1,loop:Bubble:bb1,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br;loop:Bubble:bb1;loop:Bubble:bb2,read_write,strong,strong,none,none,loop:Bubble:bb1;loop:Bubble:bb2,bb:Bubble:.preheader;inst:Bubble:.preheader:1:br,bb;inst;loop,mixed,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-simplify->simplifycfg,"in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, %indvars.iv2
+    >   br i1 %exitcond, label %5, label %13
+    <   br label %5"
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function Bubble:
+  in block %.preheader:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, %indvars.iv2
+    >   br i1 %exitcond, label %5, label %13
+    <   br label %5"

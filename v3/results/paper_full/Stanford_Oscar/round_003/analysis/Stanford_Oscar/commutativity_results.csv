@@ -1,0 +1,1029 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__instcombine.ll,"function @llvm.smin.i32 exists only in right module
+in function Min0:
+  in block %2 / %2:
+    >   %. = call i32 @llvm.smin.i32(i32 %0, i32 %1)
+    >   ret i32 %.
+    <   %3 = icmp slt i32 %0, %1
+    <   %. = select i1 %3, i32 %0, i32 %1
+    <   ret i32 %."
+instcombine,dce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__dce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__instcombine.ll,
+instcombine,early-cse,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__early-cse.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__gvn.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__instcombine.ll,
+instcombine,sccp,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__sccp.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__adce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__instcombine.ll,"in function Cos:
+  in block %22 / %22:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Fft:
+  in block %8 / %8:
+    >   %.04 = phi i32 [ 1, %7 ], [ %56, %57 ]
+    >   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]
+    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]
+    >   %9 = sext i32 %.02 to i64
+    >   %10 = getelementptr [8 x i8], ptr %3, i64 %9
+    >   %11 = getelementptr i8, ptr %10, i64 8
+    >   %12 = getelementptr i8, ptr %10, i64 12
+    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %57 ]
+    <   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]
+    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]
+    <   %9 = sext i32 %.02 to i64
+    <   %10 = getelementptr [8 x i8], ptr %3, i64 %9
+    <   %11 = getelementptr i8, ptr %10, i64 8
+    <   %12 = getelementptr i8, ptr %10, i64 12"
+instcombine,licm,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__instcombine.ll,"in function Cos:
+  in block %22 / %22:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Exptab:
+  in block %27 / %27:
+    >   %.02 = phi i32 [ 1, %14 ], [ %51, %49 ]
+    >   %.0 = phi i32 [ %16, %14 ], [ %28, %49 ]
+    >   %28 = sdiv i32 %.0, 2
+    >   %.phi.trans.insert = sext i32 %.02 to i64
+    >   %.phi.trans.insert3 = getelementptr inbounds [4 x i8], ptr %3, i64 %.phi.trans.insert
+    >   %.pre = load float, ptr %.phi.trans.insert3, align 4
+    >   %invariant.op = add nsw i32 %28, 1
+    <   %.02 = phi i32 [ 1, %14 ], [ %51, %49 ]
+    <   %.0 = phi i32 [ %16, %14 ], [ %28, %49 ]
+    <   %28 = sdiv i32 %.0, 2
+    <   %.phi.trans.insert = sext i32 %.02 to i64
+    <   %.phi.trans.insert3 = getelementptr inbounds [4 x i8], ptr %3, i64 %.phi.trans.insert
+    <   %.pre = load float, ptr %.phi.trans.insert3, align 4
+    <   %invariant.op = add nsw i32 %28, 1
+    <   %invariant.op1 = sub i32 1, %28
+
+in function Fft:
+  in block %8 / %8:
+    >   %.04 = phi i32 [ 1, %7 ], [ %56, %57 ]
+    >   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]
+    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]
+    >   %9 = sext i32 %.02 to i64
+    >   %10 = getelementptr [8 x i8], ptr %3, i64 %9
+    >   %11 = getelementptr i8, ptr %10, i64 8
+    >   %12 = getelementptr i8, ptr %10, i64 12
+    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %57 ]
+    <   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]
+    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]
+    <   %9 = sext i32 %.02 to i64
+    <   %10 = getelementptr [8 x i8], ptr %3, i64 %9
+    <   %11 = getelementptr i8, ptr %10, i64 8
+    <   %12 = getelementptr i8, ptr %10, i64 12"
+instcombine,indvars,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__instcombine.ll,"in function Cos:
+  in block %2 / %2:
+    >   %.013 = phi i32 [ 2, %1 ], [ %20, %19 ]
+    <   %.013 = phi i32 [ 2, %1 ], [ %20, %19 ]
+        %.022 = phi i32 [ 1, %1 ], [ %3, %19 ]
+    >   %.031 = phi float [ 1.000000e+00, %1 ], [ %.1, %19 ]
+    <   %.031 = phi float [ 1.000000e+00, %1 ], [ %.1, %19 ]
+  in block %19 / %19:
+    >   %exitcond.not = icmp eq i32 %20, 11
+    >   br i1 %exitcond.not, label %21, label %2, !llvm.loop !7
+    <   %exitcond = icmp ne i32 %20, 11
+    <   br i1 %exitcond, label %2, label %21, !llvm.loop !7
+
+in function Exptab:
+  in block %4 / %4:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 1, %2 ]
+    >   %.032 = phi float [ %10, %4 ], [ 4.000000e+00, %2 ]
+    >   %5 = fdiv float f0x40490FDB, %.032
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 1, %2 ]
+    <   %.032 = phi float [ 4.000000e+00, %2 ], [ %10, %4 ]
+    <   %5 = fdiv float f0x40490FDB, %.032
+        %6 = call float @Cos(float noundef %5)
+        %7 = fmul float %6, 2.000000e+00
+        %8 = fdiv float 1.000000e+00, %7
+    >   %9 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %indvars.iv
+    >   store float %8, ptr %9, align 4
+    >   %10 = fadd float %.032, %.032
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 26
+    >   br i1 %exitcond.not, label %11, label %4, !llvm.loop !7
+    <   %9 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %indvars.iv
+    <   store float %8, ptr %9, align 4
+    <   %10 = fadd float %.032, %.032
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    <   %exitcond = icmp ne i64 %indvars.iv.next, 26
+    <   br i1 %exitcond, label %4, label %11, !llvm.loop !7
+
+in function Fft:
+  in block %73 / %71:
+    >   %indvars.iv10 = phi i64 [ %indvars.iv.next11, %71 ], [ 1, %.lr.ph ]
+    >   %72 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %indvars.iv10
+    >   %73 = load float, ptr %72, align 4
+    >   %74 = fmul float %4, %73
+    >   store float %74, ptr %72, align 4
+    >   %75 = getelementptr inbounds nuw i8, ptr %72, i64 4
+    >   %76 = load float, ptr %75, align 4
+    >   %77 = fmul float %76, %69
+    >   store float %77, ptr %75, align 4
+    >   %indvars.iv.next11 = add nuw nsw i64 %indvars.iv10, 1
+    >   %exitcond14.not = icmp eq i64 %indvars.iv.next11, %wide.trip.count13
+    >   br i1 %exitcond14.not, label %._crit_edge, label %71, !llvm.loop !12
+    <   %indvars.iv13 = phi i64 [ %indvars.iv.next14, %73 ], [ 1, %.lr.ph ]
+    <   %74 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %indvars.iv13
+    <   %75 = load float, ptr %74, align 4
+    <   %76 = fmul float %4, %75
+    <   store float %76, ptr %74, align 4
+    <   %77 = getelementptr inbounds nuw i8, ptr %74, i64 4
+    <   %78 = load float, ptr %77, align 4
+    <   %79 = fmul float %78, %71
+    <   store float %79, ptr %77, align 4
+    <   %indvars.iv.next14 = add nuw nsw i64 %indvars.iv13, 1
+    <   %exitcond17 = icmp ne i64 %indvars.iv.next14, %wide.trip.count16
+    <   br i1 %exitcond17, label %73, label %._crit_edge, !llvm.loop !12
+  in block %12 / %12:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %58 ], [ %11, %10 ]
+    >   %.04 = phi i64 [ %indvars.iv.next, %58 ], [ 1, %10 ]
+    >   %.02 = phi i32 [ %59, %58 ], [ 0, %10 ]
+    >   %13 = sext i32 %.02 to i64
+    >   %14 = getelementptr [8 x i8], ptr %3, i64 %13
+    >   %15 = getelementptr i8, ptr %14, i64 8
+    >   %16 = getelementptr i8, ptr %14, i64 12
+    >   %sext = shl i64 %.04, 32
+    >   %17 = ashr exact i64 %sext, 32
+    >   %18 = sext i32 %.02 to i64
+    >   %smax = call i64 @llvm.smax.i64(i64 %indvars.iv2, i64 %17)
+    <   %indvars.iv5 = phi i64 [ %indvars.iv.next6, %59 ], [ %11, %10 ]
+    <   %.04 = phi i32 [ 1, %10 ], [ %60, %59 ]
+    <   %.02 = phi i32 [ 0, %10 ], [ %61, %59 ]
+    <   %13 = sext i32 %.02 to i64
+    <   %14 = getelementptr [8 x i8], ptr %3, i64 %13
+    <   %15 = getelementptr i8, ptr %14, i64 8
+    <   %16 = getelementptr i8, ptr %14, i64 12
+    <   %17 = sext i32 %.04 to i64
+    <   %18 = sext i32 %.02 to i64
+    <   %smax = call i64 @llvm.smax.i64(i64 %indvars.iv5, i64 %17)
+    <   %19 = add i64 %smax, 1
+
+in function Oscar:
+  in block %2 / %2:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 1, %0 ]
+    >   %3 = phi i32 [ %5, %2 ], [ 5767, %0 ]
+    >   store i32 %3, ptr %1, align 4
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 1, %0 ]
+    <   %3 = phi i32 [ 5767, %0 ], [ %5, %2 ]
+    <   store i32 %3, ptr %1, align 4
+        call void @Uniform11(ptr noundef nonnull %1, ptr noundef nonnull @zr)
+        %4 = load i32, ptr %1, align 4
+        store i32 %4, ptr @seed, align 4
+        call void @Uniform11(ptr noundef nonnull %1, ptr noundef nonnull @zi)
+        %5 = load i32, ptr %1, align 4
+        store i32 %5, ptr @seed, align 4
+        %6 = load float, ptr @zr, align 4
+        %7 = call float @llvm.fmuladd.f32(float %6, float 2.000000e+01, float -1.000000e+01)
+    >   %8 = getelementptr inbounds nuw [8 x i8], ptr @z, i64 %indvars.iv
+    >   store float %7, ptr %8, align 8
+    <   %8 = getelementptr inbounds nuw [8 x i8], ptr @z, i64 %indvars.iv
+    <   store float %7, ptr %8, align 8
+        %9 = load float, ptr @zi, align 4
+        %10 = call float @llvm.fmuladd.f32(float %9, float 2.000000e+01, float -1.000000e+01)
+    >   %11 = getelementptr inbounds nuw i8, ptr %8, i64 4
+    >   store float %10, ptr %11, align 4
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 257
+    >   br i1 %exitcond.not, label %12, label %2, !llvm.loop !7
+    <   %11 = getelementptr inbounds nuw i8, ptr %8, i64 4
+    <   store float %10, ptr %11, align 4
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    <   %exitcond = icmp ne i64 %indvars.iv.next, 257
+    <   br i1 %exitcond, label %2, label %12, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]
+    <   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]
+        call void @Oscar()
+    >   %2 = add nuw nsw i32 %.01, 1
+    >   %exitcond.not = icmp eq i32 %2, 10
+    >   br i1 %exitcond.not, label %3, label %1, !llvm.loop !7
+    <   %2 = add nuw nsw i32 %.01, 1
+    <   %exitcond = icmp ne i32 %2, 10
+    <   br i1 %exitcond, label %1, label %3, !llvm.loop !7"
+instcombine,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__instcombine.ll,"in function Cos:
+  in block %8 / %6:
+    >   %7 = fmul float %3, 5.000000e-01
+    >   %8 = fsub float 1.000000e+00, %7
+    <   %9 = fdiv float %3, 2.000000e+00
+    <   %10 = fsub float 1.000000e+00, %9
+  in block %5 / %5:
+    <   %6 = fdiv float %3, 2.000000e+00
+    <   %7 = fadd float 1.000000e+00, %6
+  in block %12 / %10:
+    >   %.1 = phi float [ %.2, %9 ], [ poison, %2 ]
+    <   %.1 = phi float [ %.2, %11 ], [ 1.000000e+00, %2 ]
+
+in function Fft:
+  in block %5 / %5:
+    <   %7 = add nsw i32 %smax, -1"
+instcombine,reassociate,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\instcombine__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__instcombine.ll,"in function Exptab:
+  in block %29 / %29:
+    >   %.01 = phi i32 [ %28, %27 ], [ %48, %29 ]
+    >   %.reass = add i32 %invariant.op, %.01
+    >   %30 = sext i32 %.reass to i64
+    >   %31 = getelementptr inbounds [8 x i8], ptr %1, i64 %30
+    >   %32 = load float, ptr %31, align 4
+    >   %reass.sub = sub i32 %.01, %28
+    >   %.reass2 = add i32 %reass.sub, 1
+    >   %33 = sext i32 %.reass2 to i64
+    >   %34 = getelementptr inbounds [8 x i8], ptr %1, i64 %33
+    >   %35 = load float, ptr %34, align 4
+    >   %36 = fadd float %32, %35
+    >   %37 = fmul float %.pre, %36
+    >   %38 = sext i32 %.01 to i64
+    >   %39 = getelementptr [8 x i8], ptr %1, i64 %38
+    >   %40 = getelementptr i8, ptr %39, i64 8
+    >   store float %37, ptr %40, align 4
+    >   %41 = getelementptr inbounds nuw i8, ptr %31, i64 4
+    >   %42 = load float, ptr %41, align 4
+    >   %43 = getelementptr inbounds nuw i8, ptr %34, i64 4
+    >   %44 = load float, ptr %43, align 4
+    >   %45 = fadd float %42, %44
+    >   %46 = fmul float %.pre, %45
+    >   %47 = getelementptr i8, ptr %39, i64 12
+    >   store float %46, ptr %47, align 4
+    >   %48 = add nsw i32 %.01, %.0
+    >   %.not = icmp sgt i32 %48, %15
+    >   br i1 %.not, label %49, label %29, !llvm.loop !9
+    <   %.01 = phi i32 [ %28, %27 ], [ %48, %29 ]
+    <   %.reass = add i32 %invariant.op, %.01
+    <   %30 = sext i32 %.reass to i64
+    <   %31 = getelementptr inbounds [8 x i8], ptr %1, i64 %30
+    <   %32 = load float, ptr %31, align 4
+    <   %.neg = sub i32 0, %28
+    <   %reass.sub = add i32 %.neg, 1
+    <   %.reass2 = add i32 %reass.sub, %.01
+    <   %33 = sext i32 %.reass2 to i64
+    <   %34 = getelementptr inbounds [8 x i8], ptr %1, i64 %33
+    <   %35 = load float, ptr %34, align 4
+    <   %36 = fadd float %32, %35
+    <   %37 = fmul float %.pre, %36
+    <   %38 = sext i32 %.01 to i64
+    <   %39 = getelementptr [8 x i8], ptr %1, i64 %38
+    <   %40 = getelementptr i8, ptr %39, i64 8
+    <   store float %37, ptr %40, align 4
+    <   %41 = getelementptr inbounds nuw i8, ptr %31, i64 4
+    <   %42 = load float, ptr %41, align 4
+    <   %43 = getelementptr inbounds nuw i8, ptr %34, i64 4
+    <   %44 = load float, ptr %43, align 4
+    <   %45 = fadd float %42, %44
+    <   %46 = fmul float %.pre, %45
+    <   %47 = getelementptr i8, ptr %39, i64 12
+    <   store float %46, ptr %47, align 4
+    <   %48 = add nsw i32 %.01, %.0
+    <   %.not = icmp sgt i32 %48, %15
+    <   br i1 %.not, label %49, label %29, !llvm.loop !9
+
+in function Fft:
+  in block %71 / %70:
+    >   %.21 = phi i32 [ 1, %.lr.ph ], [ %78, %70 ]
+    >   %71 = zext nneg i32 %.21 to i64
+    >   %72 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %71
+    >   %73 = load float, ptr %72, align 4
+    >   %74 = fmul float %4, %73
+    >   store float %74, ptr %72, align 4
+    >   %75 = getelementptr inbounds nuw i8, ptr %72, i64 4
+    >   %76 = load float, ptr %75, align 4
+    >   %77 = fmul float %76, %69
+    >   store float %77, ptr %75, align 4
+    >   %78 = add nuw nsw i32 %.21, 1
+    >   %.not3.not = icmp slt i32 %.21, %0
+    >   br i1 %.not3.not, label %70, label %._crit_edge, !llvm.loop !12
+    <   %.21 = phi i32 [ 1, %.lr.ph ], [ %79, %71 ]
+    <   %72 = zext nneg i32 %.21 to i64
+    <   %73 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %72
+    <   %74 = load float, ptr %73, align 4
+    <   %75 = fmul float %4, %74
+    <   store float %75, ptr %73, align 4
+    <   %76 = getelementptr inbounds nuw i8, ptr %73, i64 4
+    <   %77 = load float, ptr %76, align 4
+    <   %78 = fmul float %70, %77
+    <   store float %78, ptr %76, align 4
+    <   %79 = add nuw nsw i32 %.21, 1
+    <   %.not3.not = icmp slt i32 %.21, %0
+    <   br i1 %.not3.not, label %71, label %._crit_edge, !llvm.loop !12"
+simplifycfg,dce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__dce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,early-cse,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__gvn.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__sccp.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__adce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__simplifycfg.ll,"in function Fft:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge
+  in block %.preheader / %61:
+    >   %.0 = phi i32 [ %65, %61 ], [ 1, %58 ]
+    >   %62 = sext i32 %.0 to i64
+    >   %63 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %62
+    >   %64 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %62
+    >   call void @llvm.memcpy.p0.p0.i64(ptr align 4 %63, ptr align 4 %64, i64 8, i1 false)
+    >   %65 = add nsw i32 %.0, 1
+    >   %66 = icmp sle i32 %65, %0
+    >   br i1 %66, label %61, label %67, !llvm.loop !10
+    <   br label %61
+
+in function Oscar:
+  in block %.preheader / %15:
+    >   %.12 = phi i32 [ %16, %15 ], [ 1, %2 ]
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   %16 = add nsw i32 %.12, 1
+    >   %17 = icmp sle i32 %16, 20
+    >   br i1 %17, label %15, label %18, !llvm.loop !9
+    <   br label %15"
+simplifycfg,loop-rotate,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__simplifycfg.ll,"in function Fft:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge
+  in block %.preheader / %61:
+    >   %.0 = phi i32 [ %65, %61 ], [ 1, %58 ]
+    >   %62 = sext i32 %.0 to i64
+    >   %63 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %62
+    >   %64 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %62
+    >   call void @llvm.memcpy.p0.p0.i64(ptr align 4 %63, ptr align 4 %64, i64 8, i1 false)
+    >   %65 = add nsw i32 %.0, 1
+    >   %66 = icmp sle i32 %65, %0
+    >   br i1 %66, label %61, label %67, !llvm.loop !10
+    <   br label %61
+
+in function Oscar:
+  in block %.preheader / %15:
+    >   %.12 = phi i32 [ %16, %15 ], [ 1, %2 ]
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   %16 = add nsw i32 %.12, 1
+    >   %17 = icmp sle i32 %16, 20
+    >   br i1 %17, label %15, label %18, !llvm.loop !9
+    <   br label %15"
+simplifycfg,licm,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__simplifycfg.ll,"in function Fft:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge
+  in block %.preheader / %61:
+    >   %.0 = phi i32 [ %65, %61 ], [ 1, %58 ]
+    >   %62 = sext i32 %.0 to i64
+    >   %63 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %62
+    >   %64 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %62
+    >   call void @llvm.memcpy.p0.p0.i64(ptr align 4 %63, ptr align 4 %64, i64 8, i1 false)
+    >   %65 = add nsw i32 %.0, 1
+    >   %66 = icmp sle i32 %65, %0
+    >   br i1 %66, label %61, label %67, !llvm.loop !10
+    <   br label %61
+
+in function Oscar:
+  in block %.preheader / %15:
+    >   %.12 = phi i32 [ %16, %15 ], [ 1, %2 ]
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   %16 = add nsw i32 %.12, 1
+    >   %17 = icmp sle i32 %16, 20
+    >   br i1 %17, label %15, label %18, !llvm.loop !9
+    <   br label %15"
+simplifycfg,indvars,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__simplifycfg.ll,"in function Fft:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge
+  in block %63 / %64:
+    >   %indvars.iv5 = phi i64 [ %indvars.iv.next6, %64 ], [ 1, %63 ]
+    >   %65 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %indvars.iv5
+    >   %66 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %indvars.iv5
+    <   %indvars.iv5 = phi i64 [ 1, %.preheader ], [ %indvars.iv.next6, %63 ]
+    <   %64 = getelementptr inbounds %struct.complex, ptr %1, i64 %indvars.iv5
+    <   %65 = getelementptr inbounds %struct.complex, ptr %2, i64 %indvars.iv5
+        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %64, ptr align 4 %65, i64 8, i1 false)
+    >   %indvars.iv.next6 = add nuw nsw i64 %indvars.iv5, 1
+    >   %exitcond9 = icmp ne i64 %indvars.iv.next6, %wide.trip.count
+    >   br i1 %exitcond9, label %64, label %67, !llvm.loop !10
+    <   %indvars.iv.next6 = add nuw nsw i64 %indvars.iv5, 1
+    <   %exitcond9 = icmp ne i64 %indvars.iv.next6, %wide.trip.count
+    <   br i1 %exitcond9, label %63, label %66, !llvm.loop !10
+
+in function Oscar:
+  in block %.preheader / %12:
+    >   %.12 = phi i32 [ %13, %12 ], [ 1, %2 ]
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   %13 = add nuw nsw i32 %.12, 1
+    >   %exitcond2 = icmp ne i32 %13, 21
+    >   br i1 %exitcond2, label %12, label %14, !llvm.loop !9
+    <   br label %12"
+simplifycfg,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__simplifycfg.ll,"in function Cos:
+  in block %1 / %1:
+    >   %2 = fmul float %0, %0
+    >   %3 = fdiv float %2, 2.000000e+00
+    >   %4 = fsub float 1.000000e+00, %3
+    >   %5 = fmul float %2, %0
+    >   %6 = fmul float %5, %0
+    >   %7 = fdiv float %6, 2.400000e+01
+    >   %8 = fadd float %4, %7
+    >   %9 = fmul float %6, %0
+    >   %10 = fmul float %9, %0
+    >   %11 = fdiv float %10, 7.200000e+02
+    >   %12 = fsub float %8, %11
+    >   %13 = fmul float %10, %0
+    >   %14 = fmul float %13, %0
+    >   %15 = fdiv float %14, 4.032000e+04
+    >   %16 = fadd float %12, %15
+    >   %17 = fmul float %14, %0
+    >   %18 = fmul float %17, %0
+    >   %19 = fdiv float %18, 3.628800e+06
+    >   %20 = fsub float %16, %19
+    >   ret float %20
+    <   br label %2
+
+in function Fft:
+  in block %80 / %81:
+    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    >   %82 = sext i32 %.0.epil to i64
+    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82
+    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82
+    <   %.0.epil = phi i32 [ %84, %80 ], [ %.0.epil.init, %.epil.preheader ]
+    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %80 ]
+    <   %81 = sext i32 %.0.epil to i64
+    <   %82 = getelementptr inbounds %struct.complex, ptr %1, i64 %81
+    <   %83 = getelementptr inbounds %struct.complex, ptr %2, i64 %81
+        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %82, ptr align 4 %83, i64 8, i1 false)
+    >   %85 = add nsw i32 %.0.epil, 1
+    >   %86 = icmp sle i32 %85, %0
+    >   %epil.iter.next = add i32 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11
+    <   %84 = add nsw i32 %.0.epil, 1
+    <   %85 = icmp sle i32 %84, %0
+    <   %epil.iter.next = add i32 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %80, label %.epilog-lcssa, !llvm.loop !11
+  in block %.epil.preheader2:
+    >   %111 = sext i32 %.21.epil.init to i64
+    >   %112 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %111
+    >   %113 = load float, ptr %112, align 4
+    >   %114 = fmul float %4, %113
+    >   store float %114, ptr %112, align 4
+    >   %115 = getelementptr inbounds nuw %struct.complex.0, ptr %112, i32 0, i32 1
+    >   %116 = load float, ptr %115, align 4
+    >   %117 = fmul float %91, %116
+    >   store float %117, ptr %115, align 4
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge
+
+in function Oscar:
+  in block %.preheader / %15:
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Printcomplex(ptr noundef @z, i32 noundef 1, i32 noundef 256, i32 noundef 17)
+    >   ret void
+    <   br label %15
+
+in function main:
+  in block %0 / %0:
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   ret i32 0
+    <   br label %1"
+simplifycfg,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\simplifycfg__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__simplifycfg.ll,
+dce,early-cse,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__early-cse.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__dce.ll,
+dce,gvn,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__gvn.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__dce.ll,
+dce,sccp,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__sccp.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__dce.ll,
+dce,adce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__adce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__dce.ll,
+dce,loop-simplify,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__dce.ll,
+dce,loop-rotate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__dce.ll,"in function Fft:
+  in block %81 / %81:
+    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    >   %82 = sext i32 %.0.epil to i64
+    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82
+    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82
+    <   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    <   %82 = sext i32 %.0.epil to i64
+    <   %83 = getelementptr inbounds %struct.complex, ptr %1, i64 %82
+    <   %84 = getelementptr inbounds %struct.complex, ptr %2, i64 %82
+        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %83, ptr align 4 %84, i64 8, i1 false)
+    >   %85 = add nsw i32 %.0.epil, 1
+    >   %epil.iter.next = add i32 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11
+    <   %85 = add nsw i32 %.0.epil, 1
+    <   %86 = icmp sle i32 %85, %0
+    <   %epil.iter.next = add i32 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11"
+dce,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\dce__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__dce.ll,
+early-cse,gvn,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__gvn.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__sccp.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__early-cse.ll,
+early-cse,adce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__adce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__early-cse.ll,
+early-cse,loop-simplify,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__early-cse.ll,"in function Cos:
+  in block %22 / %22:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Fft:
+  in block %8 / %8:
+    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]
+    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    >   %9 = add nsw i32 %.02, 1
+    >   %10 = sext i32 %9 to i64
+    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10
+    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1
+    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]
+    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    <   %9 = add nsw i32 %.02, 1
+    <   %10 = sext i32 %9 to i64
+    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10
+    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+early-cse,licm,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__early-cse.ll,"in function Cos:
+  in block %22 / %22:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Fft:
+  in block %8 / %8:
+    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]
+    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    >   %9 = add nsw i32 %.02, 1
+    >   %10 = sext i32 %9 to i64
+    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10
+    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1
+    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]
+    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    <   %9 = add nsw i32 %.02, 1
+    <   %10 = sext i32 %9 to i64
+    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10
+    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+early-cse,indvars,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__early-cse.ll,"in function Cos:
+  in block %21 / %21:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Exptab:
+  in block %29 / %29:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]
+    >   %30 = trunc nsw i64 %indvars.iv2 to i32
+    >   %.reass = add i32 %30, %invariant.op
+    >   %31 = sext i32 %.reass to i64
+    >   %32 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %31
+    >   %33 = load float, ptr %32, align 4
+    >   %.reass2 = add i32 %30, %invariant.op1
+    >   %34 = sext i32 %.reass2 to i64
+    >   %35 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %34
+    >   %36 = load float, ptr %35, align 4
+    >   %37 = fadd float %33, %36
+    >   %38 = fmul float %.pre, %37
+    >   %39 = add nsw i64 %indvars.iv2, 1
+    >   %40 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %39
+    >   store float %38, ptr %40, align 4
+    >   %41 = getelementptr inbounds nuw %struct.complex.0, ptr %32, i32 0, i32 1
+    >   %42 = load float, ptr %41, align 4
+    >   %43 = getelementptr inbounds nuw %struct.complex.0, ptr %35, i32 0, i32 1
+    >   %44 = load float, ptr %43, align 4
+    >   %45 = fadd float %42, %44
+    >   %46 = fmul float %.pre, %45
+    >   %47 = getelementptr inbounds nuw %struct.complex.0, ptr %40, i32 0, i32 1
+    >   store float %46, ptr %47, align 4
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28
+    >   %48 = icmp sle i64 %indvars.iv.next3, %24
+    >   br i1 %48, label %29, label %49, !llvm.loop !9
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]
+    <   %30 = trunc nsw i64 %indvars.iv2 to i32
+    <   %.reass = add i32 %30, %invariant.op
+    <   %31 = sext i32 %.reass to i64
+    <   %32 = getelementptr inbounds %struct.complex, ptr %1, i64 %31
+    <   %33 = load float, ptr %32, align 4
+    <   %34 = trunc nsw i64 %indvars.iv2 to i32
+    <   %.reass2 = add i32 %34, %invariant.op1
+    <   %35 = sext i32 %.reass2 to i64
+    <   %36 = getelementptr inbounds %struct.complex, ptr %1, i64 %35
+    <   %37 = load float, ptr %36, align 4
+    <   %38 = fadd float %33, %37
+    <   %39 = fmul float %.pre, %38
+    <   %40 = add nsw i64 %indvars.iv2, 1
+    <   %41 = getelementptr inbounds %struct.complex, ptr %1, i64 %40
+    <   store float %39, ptr %41, align 4
+    <   %42 = getelementptr inbounds nuw %struct.complex, ptr %32, i32 0, i32 1
+    <   %43 = load float, ptr %42, align 4
+    <   %44 = getelementptr inbounds nuw %struct.complex, ptr %36, i32 0, i32 1
+    <   %45 = load float, ptr %44, align 4
+    <   %46 = fadd float %43, %45
+    <   %47 = fmul float %.pre, %46
+    <   %48 = getelementptr inbounds nuw %struct.complex, ptr %41, i32 0, i32 1
+    <   store float %47, ptr %48, align 4
+    <   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28
+    <   %49 = icmp sle i64 %indvars.iv.next3, %24
+    <   br i1 %49, label %29, label %50, !llvm.loop !9
+
+in function Fft:
+  in block %5 / %5:
+    <   %7 = sext i32 %6 to i64"
+early-cse,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__early-cse.ll,"in function Fft:
+  in block %9 / %9:
+    >   %.04 = phi i32 [ 1, %8 ], [ %57, %59 ]
+    >   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]
+    >   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]
+    >   %10 = add nsw i32 %.02, 1
+    >   %11 = sext i32 %10 to i64
+    >   %12 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %11
+    >   %13 = getelementptr inbounds nuw %struct.complex.0, ptr %12, i32 0, i32 1
+    <   %.04 = phi i32 [ 1, %8 ], [ %.lcssa, %59 ]
+    <   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]
+    <   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]
+    <   %10 = add nsw i32 %.02, 1
+    <   %11 = sext i32 %10 to i64
+    <   %12 = getelementptr inbounds %struct.complex, ptr %3, i64 %11
+    <   %13 = getelementptr inbounds nuw %struct.complex, ptr %12, i32 0, i32 1
+  in block %.epil.preheader2:
+    >   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %110, %._crit_edge.unr-lcssa ]
+    <   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %.21.unr, %._crit_edge.unr-lcssa ]
+  in block %._crit_edge.unr-lcssa:
+    <   %.21.unr = phi i32 [ %111, %95 ]"
+early-cse,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\early-cse__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__early-cse.ll,
+gvn,sccp,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__sccp.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__gvn.ll,
+gvn,adce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__adce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__gvn.ll,
+gvn,loop-simplify,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__gvn.ll,"in function Cos:
+  in block %22 / %22:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Fft:
+  in block %8 / %8:
+    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]
+    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    >   %9 = add nsw i32 %.02, 1
+    >   %10 = sext i32 %9 to i64
+    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10
+    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1
+    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]
+    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    <   %9 = add nsw i32 %.02, 1
+    <   %10 = sext i32 %9 to i64
+    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10
+    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+gvn,licm,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__gvn.ll,"in function Cos:
+  in block %22 / %22:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Fft:
+  in block %8 / %8:
+    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]
+    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    >   %9 = add nsw i32 %.02, 1
+    >   %10 = sext i32 %9 to i64
+    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10
+    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1
+    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]
+    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]
+    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]
+    <   %9 = add nsw i32 %.02, 1
+    <   %10 = sext i32 %9 to i64
+    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10
+    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+gvn,indvars,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__gvn.ll,"in function Cos:
+  in block %21 / %21:
+    >   ret float %.1
+    <   %.1.lcssa = phi float [ %.1, %19 ]
+    <   ret float %.1.lcssa
+
+in function Exptab:
+  in block %29 / %29:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]
+    >   %30 = trunc nsw i64 %indvars.iv2 to i32
+    >   %.reass = add i32 %30, %invariant.op
+    >   %31 = sext i32 %.reass to i64
+    >   %32 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %31
+    >   %33 = load float, ptr %32, align 4
+    >   %.reass2 = add i32 %30, %invariant.op1
+    >   %34 = sext i32 %.reass2 to i64
+    >   %35 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %34
+    >   %36 = load float, ptr %35, align 4
+    >   %37 = fadd float %33, %36
+    >   %38 = fmul float %.pre, %37
+    >   %39 = add nsw i64 %indvars.iv2, 1
+    >   %40 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %39
+    >   store float %38, ptr %40, align 4
+    >   %41 = getelementptr inbounds nuw %struct.complex.0, ptr %32, i32 0, i32 1
+    >   %42 = load float, ptr %41, align 4
+    >   %43 = getelementptr inbounds nuw %struct.complex.0, ptr %35, i32 0, i32 1
+    >   %44 = load float, ptr %43, align 4
+    >   %45 = fadd float %42, %44
+    >   %46 = fmul float %.pre, %45
+    >   %47 = getelementptr inbounds nuw %struct.complex.0, ptr %40, i32 0, i32 1
+    >   store float %46, ptr %47, align 4
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28
+    >   %48 = icmp sle i64 %indvars.iv.next3, %24
+    >   br i1 %48, label %29, label %49, !llvm.loop !9
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]
+    <   %30 = trunc nsw i64 %indvars.iv2 to i32
+    <   %.reass = add i32 %30, %invariant.op
+    <   %31 = sext i32 %.reass to i64
+    <   %32 = getelementptr inbounds %struct.complex, ptr %1, i64 %31
+    <   %33 = load float, ptr %32, align 4
+    <   %34 = trunc nsw i64 %indvars.iv2 to i32
+    <   %.reass2 = add i32 %34, %invariant.op1
+    <   %35 = sext i32 %.reass2 to i64
+    <   %36 = getelementptr inbounds %struct.complex, ptr %1, i64 %35
+    <   %37 = load float, ptr %36, align 4
+    <   %38 = fadd float %33, %37
+    <   %39 = fmul float %.pre, %38
+    <   %40 = add nsw i64 %indvars.iv2, 1
+    <   %41 = getelementptr inbounds %struct.complex, ptr %1, i64 %40
+    <   store float %39, ptr %41, align 4
+    <   %42 = getelementptr inbounds nuw %struct.complex, ptr %32, i32 0, i32 1
+    <   %43 = load float, ptr %42, align 4
+    <   %44 = getelementptr inbounds nuw %struct.complex, ptr %36, i32 0, i32 1
+    <   %45 = load float, ptr %44, align 4
+    <   %46 = fadd float %43, %45
+    <   %47 = fmul float %.pre, %46
+    <   %48 = getelementptr inbounds nuw %struct.complex, ptr %41, i32 0, i32 1
+    <   store float %47, ptr %48, align 4
+    <   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28
+    <   %49 = icmp sle i64 %indvars.iv.next3, %24
+    <   br i1 %49, label %29, label %50, !llvm.loop !9
+
+in function Fft:
+  in block %5 / %5:
+    <   %7 = sext i32 %6 to i64"
+gvn,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__gvn.ll,"in function Cos:
+  in block %1 / %1:
+    >   %2 = fmul float %0, %0
+    >   br i1 true, label %3, label %._crit_edge
+    <   br label %2
+
+in function Fft:
+  in block %9 / %9:
+    >   %.04 = phi i32 [ 1, %8 ], [ %57, %59 ]
+    >   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]
+    >   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]
+    >   %10 = add nsw i32 %.02, 1
+    >   %11 = sext i32 %10 to i64
+    >   %12 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %11
+    >   %13 = getelementptr inbounds nuw %struct.complex.0, ptr %12, i32 0, i32 1
+    <   %.04 = phi i32 [ 1, %8 ], [ %.lcssa, %59 ]
+    <   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]
+    <   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]
+    <   %10 = add nsw i32 %.02, 1
+    <   %11 = sext i32 %10 to i64
+    <   %12 = getelementptr inbounds %struct.complex, ptr %3, i64 %11
+    <   %13 = getelementptr inbounds nuw %struct.complex, ptr %12, i32 0, i32 1
+  in block %.epil.preheader2:
+    >   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %111, %._crit_edge.unr-lcssa ]
+    <   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %.21.unr, %._crit_edge.unr-lcssa ]
+        %lcmp.mod6 = icmp ne i32 %xtraiter3, 0
+        call void @llvm.assume(i1 %lcmp.mod6)
+    >   %112 = sext i32 %.21.epil.init to i64
+    >   %113 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %112
+    >   %114 = load float, ptr %113, align 4
+    >   %115 = fmul float %4, %114
+    >   store float %115, ptr %113, align 4
+    >   %116 = getelementptr inbounds nuw %struct.complex.0, ptr %113, i32 0, i32 1
+    >   %117 = load float, ptr %116, align 4
+    >   %118 = fmul float %92, %117
+    >   store float %118, ptr %116, align 4
+  in block %._crit_edge.unr-lcssa:
+    <   %.21.unr = phi i32 [ %111, %95 ]
+
+in function Oscar:
+  in block %15 / %15:
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)
+    >   call void @Printcomplex(ptr noundef @z, i32 noundef 1, i32 noundef 256, i32 noundef 17)
+    >   ret void
+    <   br label %16
+
+in function main:
+  in block %0 / %0:
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   call void @Oscar()
+    >   ret i32 0
+    <   br label %1"
+gvn,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\gvn__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__gvn.ll,
+sccp,adce,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__adce.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__sccp.ll,
+sccp,loop-simplify,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__sccp.ll,"in function Cos:
+  in block %2 / %2:
+    >   br label %4
+    <   br i1 true, label %4, label %12
+
+in function Fft:
+  in block %62 / %62:
+    >   %63 = icmp slt i32 %smax, 4
+    >   br i1 %63, label %.epil.preheader, label %.new
+    <   %63 = icmp ult i32 %7, 3
+    <   br i1 %63, label %.epil.preheader, label %.new
+  in block %.lr.ph:
+    >   %94 = icmp eq i32 %0, 1
+    >   br i1 %94, label %.epil.preheader2, label %.lr.ph.new
+    <   %94 = icmp ult i32 %93, 1
+    <   br i1 %94, label %.epil.preheader11, label %.lr.ph.new"
+sccp,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\sccp__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__sccp.ll,
+adce,loop-simplify,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__loop-simplify.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__adce.ll,
+adce,loop-rotate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__adce.ll,"in function Fft:
+  in block %81 / %81:
+    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    >   %82 = sext i32 %.0.epil to i64
+    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82
+    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82
+    <   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    <   %82 = sext i32 %.0.epil to i64
+    <   %83 = getelementptr inbounds %struct.complex, ptr %1, i64 %82
+    <   %84 = getelementptr inbounds %struct.complex, ptr %2, i64 %82
+        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %83, ptr align 4 %84, i64 8, i1 false)
+    >   %85 = add nsw i32 %.0.epil, 1
+    >   %epil.iter.next = add i32 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11
+    <   %85 = add nsw i32 %.0.epil, 1
+    <   %86 = icmp sle i32 %85, %0
+    <   %epil.iter.next = add i32 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11"
+adce,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\adce__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__adce.ll,
+loop-simplify,loop-rotate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-simplify,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-simplify__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__loop-simplify.ll,
+loop-rotate,licm,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__licm.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__loop-rotate.ll,
+loop-rotate,indvars,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-rotate__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__indvars.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__licm.ll,"in function Fft:
+  in block %5 / %5:
+    >   %wide.trip.count = zext i32 %9 to i64"
+licm,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__licm.ll,"in function Fft:
+  in block %5 / %5:
+    >   %xtraiter = and i32 %smax, 3
+    >   %8 = icmp ult i32 %7, 3
+    >   %unroll_iter = sub i32 %smax, %xtraiter
+    >   %lcmp.mod = icmp ne i32 %xtraiter, 0
+    >   %lcmp.mod1 = icmp ne i32 %xtraiter, 0"
+licm,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\licm__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__licm.ll,
+indvars,loop-unroll,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__loop-unroll.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__indvars.ll,"function @llvm.smax.i64 exists only in left module
+in function Fft:
+  in block %5 / %5:
+    >   %smax = call i32 @llvm.smax.i32(i32 %0, i32 1)
+    >   %7 = add nsw i32 %smax, -1
+        %7 = sext i32 %6 to i64
+        %8 = sext i32 %6 to i64
+    <   %smax8 = call i32 @llvm.smax.i32(i32 %0, i32 1)
+    <   %9 = add nuw i32 %smax8, 1
+    <   %10 = add nsw i32 %smax8, -1"
+indvars,reassociate,true,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\indvars__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,false,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\loop-unroll__then__reassociate.ll,results\paper_full\Stanford_Oscar\round_003\analysis\Stanford_Oscar\commutativity\reassociate__then__loop-unroll.ll,"in function Cos:
+  in block %5 / %5:
+    >   %7 = fadd float 1.000000e+00, %6
+    <   %7 = fadd float %6, 1.000000e+00
+  in block %11 / %11:
+    >   %.2 = phi float [ %7, %5 ], [ %10, %8 ]
+    <   %.2 = phi float [ %7, %5 ], [ %10, %8 ]
+  in block %18 / %18:
+    >   %20 = fadd float %.1, %19
+    <   %20 = fadd float %19, %.1
+  in block %21 / %21:
+    >   %.2.1 = phi float [ %20, %18 ], [ %17, %15 ]
+    <   %.2.1 = phi float [ %20, %18 ], [ %17, %15 ]
+  in block %28 / %28:
+    >   %30 = fadd float %.1.1, %29
+    <   %30 = fadd float %29, %.1.1
+  in block %31 / %31:
+    >   %.2.2 = phi float [ %30, %28 ], [ %27, %25 ]
+    <   %.2.2 = phi float [ %30, %28 ], [ %27, %25 ]
+  in block %38 / %38:
+    >   %40 = fadd float %.1.2, %39
+    <   %40 = fadd float %39, %.1.2
+  in block %41 / %41:
+    >   %.2.3 = phi float [ %40, %38 ], [ %37, %35 ]
+    <   %.2.3 = phi float [ %40, %38 ], [ %37, %35 ]
+  in block %48 / %48:
+    >   %50 = fadd float %.1.3, %49
+    <   %50 = fadd float %49, %.1.3
+  in block %51 / %51:
+    >   %.2.4 = phi float [ %50, %48 ], [ %47, %45 ]
+    <   %.2.4 = phi float [ %50, %48 ], [ %47, %45 ]
+  in block %58 / %58:
+    >   %60 = fadd float %.1.4, %59
+    <   %60 = fadd float %59, %.1.4
+  in block %61 / %61:
+    >   %.2.5 = phi float [ %60, %58 ], [ %57, %55 ]
+    <   %.2.5 = phi float [ %60, %58 ], [ %57, %55 ]
+  in block %68 / %68:
+    >   %70 = fadd float %.1.5, %69
+    <   %70 = fadd float %69, %.1.5
+  in block %71 / %71:
+    >   %.2.6 = phi float [ %70, %68 ], [ %67, %65 ]
+    <   %.2.6 = phi float [ %70, %68 ], [ %67, %65 ]
+  in block %78 / %78:
+    >   %80 = fadd float %.1.6, %79
+    <   %80 = fadd float %79, %.1.6
+  in block %81 / %81:
+    >   %.2.7 = phi float [ %80, %78 ], [ %77, %75 ]
+    <   %.2.7 = phi float [ %80, %78 ], [ %77, %75 ]
+  in block %88 / %88:
+    >   %90 = fadd float %.1.7, %89
+    <   %90 = fadd float %89, %.1.7
+  in block %91 / %91:
+    >   %.2.8 = phi float [ %90, %88 ], [ %87, %85 ]
+    <   %.2.8 = phi float [ %90, %88 ], [ %87, %85 ]
+
+in function Fft:
+  in block %81 / %81:
+    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    >   %82 = sext i32 %.0.epil to i64
+    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82
+    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82
+    <   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]
+    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]
+    <   %82 = sext i32 %.0.epil to i64
+    <   %83 = getelementptr inbounds %struct.complex, ptr %1, i64 %82
+    <   %84 = getelementptr inbounds %struct.complex, ptr %2, i64 %82
+        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %83, ptr align 4 %84, i64 8, i1 false)
+    >   %85 = add nsw i32 %.0.epil, 1
+    >   %86 = icmp sle i32 %85, %0
+    >   %epil.iter.next = add i32 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11
+    <   %85 = add nsw i32 %.0.epil, 1
+    <   %epil.iter.next = add i32 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11"

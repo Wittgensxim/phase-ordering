@@ -1,0 +1,1997 @@
+{
+  "benchmark": "Stanford_Towers",
+  "rounds": 7,
+  "final_metrics": {
+    "function_count": 12,
+    "basic_block_count": 21,
+    "instruction_count": 127,
+    "load_count": 13,
+    "store_count": 14,
+    "call_count": 20,
+    "branch_count": 21,
+    "phi_count": 6,
+    "ret_count": 12,
+    "ir_file_size": 11554,
+    "score_ir": 204.5,
+    "score": 204.5
+  },
+  "trace": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_000\\input.ll",
+      "input_hash": "9d35821c316f1e843e018261957d12b949f6b8b00aeb127425cdb1d6a2a3f3d4",
+      "metric_score": 434.0,
+      "instruction_count": 266,
+      "candidate_pass_count": 12,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-unroll",
+        "mem2reg",
+        "reassociate",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,mem2reg",
+        "early-cse,reassociate",
+        "early-cse,sccp",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,reassociate",
+        "gvn,sccp",
+        "gvn,simplifycfg",
+        "gvn,sroa",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,mem2reg",
+        "instcombine,reassociate",
+        "instcombine,simplifycfg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-unroll,mem2reg",
+        "loop-unroll,sroa",
+        "mem2reg,reassociate",
+        "mem2reg,simplifycfg",
+        "reassociate,sroa",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "gvn,instcombine",
+      "action_details": "oracle chose gvn->instcombine (improvement: 222.00)",
+      "output_hash": "fc77977d40577ee50ebdaf3dfdfa8fea09cd4cce998dd3263c940be7321ced57",
+      "metric_after": 212.0,
+      "metric_delta": -222.0,
+      "changed": "true"
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_001\\input.ll",
+      "input_hash": "fc77977d40577ee50ebdaf3dfdfa8fea09cd4cce998dd3263c940be7321ced57",
+      "metric_score": 212.0,
+      "instruction_count": 132,
+      "candidate_pass_count": 8,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "gvn",
+        "indvars",
+        "instcombine",
+        "loop-rotate",
+        "loop-unroll",
+        "reassociate",
+        "sccp",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "indvars,instcombine",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "instcombine,reassociate",
+        "loop-rotate,loop-unroll",
+        "loop-rotate,simplifycfg",
+        "loop-unroll,sccp",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-rotate,simplifycfg",
+      "action_details": "oracle chose loop-rotate->simplifycfg (improvement: 7.50)",
+      "output_hash": "9bff621eb35ad4cdc5ebc04c7a2fd1ee44fa164f344678ae1d6a7b24cb5e5be5",
+      "metric_after": 204.5,
+      "metric_delta": -7.5,
+      "changed": "true"
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_002\\input.ll",
+      "input_hash": "9bff621eb35ad4cdc5ebc04c7a2fd1ee44fa164f344678ae1d6a7b24cb5e5be5",
+      "metric_score": 204.5,
+      "instruction_count": 127,
+      "candidate_pass_count": 10,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "sccp"
+      ],
+      "decision_required_passes": [
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "reassociate",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "indvars,instcombine",
+        "indvars,simplifycfg",
+        "instcombine,reassociate",
+        "licm,simplifycfg",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "indvars,simplifycfg",
+      "action_details": "oracle chose indvars->simplifycfg (improvement: 0.00)",
+      "output_hash": "9ee4081c55efca01bf8bcf9864b824088ab344bb8af36b3a14e76357fb9fb69b",
+      "metric_after": 204.5,
+      "metric_delta": 0.0,
+      "changed": "true"
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_003\\input.ll",
+      "input_hash": "9ee4081c55efca01bf8bcf9864b824088ab344bb8af36b3a14e76357fb9fb69b",
+      "metric_score": 204.5,
+      "instruction_count": 127,
+      "candidate_pass_count": 10,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "sccp"
+      ],
+      "decision_required_passes": [
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "reassociate",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "indvars,simplifycfg",
+        "instcombine,reassociate",
+        "licm,simplifycfg",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "reassociate,instcombine",
+      "action_details": "oracle chose reassociate->instcombine (improvement: 0.00)",
+      "output_hash": "ec1b016e2b4de827cf6360495d29228c80ef4e88031af9e3e873adc6f465c9bd",
+      "metric_after": 204.5,
+      "metric_delta": 0.0,
+      "changed": "true"
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_004\\input.ll",
+      "input_hash": "ec1b016e2b4de827cf6360495d29228c80ef4e88031af9e3e873adc6f465c9bd",
+      "metric_score": 204.5,
+      "instruction_count": 127,
+      "candidate_pass_count": 10,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "sccp"
+      ],
+      "decision_required_passes": [
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "reassociate",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "indvars,simplifycfg",
+        "instcombine,reassociate",
+        "licm,simplifycfg",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "licm,simplifycfg",
+      "action_details": "oracle chose licm->simplifycfg (improvement: 0.00)",
+      "output_hash": "f518be54476f4c466fe88e8d37689b3897a1e40f3f987dbb53f5fa9a72997083",
+      "metric_after": 204.5,
+      "metric_delta": 0.0,
+      "changed": "true"
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_005\\input.ll",
+      "input_hash": "f518be54476f4c466fe88e8d37689b3897a1e40f3f987dbb53f5fa9a72997083",
+      "metric_score": 204.5,
+      "instruction_count": 127,
+      "candidate_pass_count": 10,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "sccp"
+      ],
+      "decision_required_passes": [
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "reassociate",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "indvars,simplifycfg",
+        "instcombine,reassociate",
+        "licm,simplifycfg",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-rotate,simplifycfg",
+      "action_details": "oracle chose loop-rotate->simplifycfg (improvement: 0.00)",
+      "output_hash": "627603e2369156c3d678fa8bc04588c7ad1776198b1d1aa45c369bf6ad532e62",
+      "metric_after": 204.5,
+      "metric_delta": 0.0,
+      "changed": "true"
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_Towers\\round_006\\input.ll",
+      "input_hash": "627603e2369156c3d678fa8bc04588c7ad1776198b1d1aa45c369bf6ad532e62",
+      "metric_score": 204.5,
+      "instruction_count": 127,
+      "candidate_pass_count": 10,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "sccp"
+      ],
+      "decision_required_passes": [
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "reassociate",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "gvn,loop-unroll",
+        "indvars,simplifycfg",
+        "instcombine,reassociate",
+        "licm,simplifycfg",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "indvars,simplifycfg",
+      "action_details": "oracle chose indvars->simplifycfg (improvement: 0.00)",
+      "output_hash": "095e3553be2d6f5dcfd1971472d5169d3c912f0293ae79598237acee47b7617a",
+      "metric_after": 204.5,
+      "metric_delta": 0.0,
+      "changed": "true"
+    }
+  ],
+  "policy_reports": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-unroll:confirmed_independent",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,reassociate:order_sensitive",
+        "early-cse,sccp:order_sensitive",
+        "early-cse,simplifycfg:needs_attribution",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "gvn,simplifycfg:order_sensitive",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.0909
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.6364
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:confirmed_independent",
+        "instcombine,simplifycfg:order_sensitive",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:needs_attribution",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.3636
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.7273
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,reassociate:order_sensitive",
+        "mem2reg,sccp:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:likely_independent"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "mem2reg,reassociate:order_sensitive",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent",
+        "reassociate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.5455
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "mem2reg,sccp:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent",
+        "sccp,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 9,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.8182
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:needs_attribution",
+        "gvn,simplifycfg:order_sensitive",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:order_sensitive",
+        "licm,simplifycfg:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.3636
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Towers",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:likely_independent",
+        "reassociate,sroa:order_sensitive",
+        "sccp,sroa:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.8571
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "indvars,loop-rotate:needs_attribution",
+        "indvars,loop-unroll:needs_attribution",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.5714
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.2857
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:needs_attribution",
+        "instcombine,loop-rotate:order_sensitive",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.4286
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:needs_attribution",
+        "instcombine,loop-unroll:order_sensitive",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.1429
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.8571
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-unroll,sccp:order_sensitive",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.5714
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 7,
+      "safe_edge_ratio": 0.5714
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:likely_independent",
+        "indvars,loop-rotate:likely_independent",
+        "indvars,loop-simplify:likely_independent",
+        "indvars,loop-unroll:needs_attribution",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.5556
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "licm,loop-simplify:likely_independent",
+        "licm,loop-unroll:likely_independent",
+        "licm,reassociate:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:likely_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:likely_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:needs_attribution",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.5556
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "indvars,loop-rotate:likely_independent",
+        "indvars,loop-simplify:likely_independent",
+        "indvars,loop-unroll:likely_independent",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "licm,loop-simplify:likely_independent",
+        "licm,loop-unroll:likely_independent",
+        "licm,reassociate:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:likely_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:likely_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:likely_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "indvars,loop-rotate:likely_independent",
+        "indvars,loop-simplify:likely_independent",
+        "indvars,loop-unroll:likely_independent",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.7778
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "licm,loop-simplify:likely_independent",
+        "licm,loop-unroll:likely_independent",
+        "licm,reassociate:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:likely_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:likely_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:likely_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.7778
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "indvars,loop-rotate:likely_independent",
+        "indvars,loop-simplify:likely_independent",
+        "indvars,loop-unroll:likely_independent",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.7778
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "licm,loop-simplify:likely_independent",
+        "licm,loop-unroll:likely_independent",
+        "licm,reassociate:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:likely_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:likely_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:likely_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.7778
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,reassociate:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "indvars,loop-rotate:likely_independent",
+        "indvars,loop-simplify:likely_independent",
+        "indvars,loop-unroll:likely_independent",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "instcombine,sccp:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.7778
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:likely_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "licm,loop-simplify:likely_independent",
+        "licm,loop-unroll:likely_independent",
+        "licm,reassociate:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:likely_independent",
+        "instcombine,loop-rotate:confirmed_independent",
+        "licm,loop-rotate:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:likely_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:likely_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:likely_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.7778
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,reassociate:confirmed_independent",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:order_sensitive",
+        "licm,reassociate:confirmed_independent",
+        "loop-rotate,reassociate:confirmed_independent",
+        "loop-simplify,reassociate:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "reassociate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "sccp",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "reassociate,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_Towers",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_score": 207.5,
+    "scheduler_score": 204.5,
+    "improvement": 3.0,
+    "baseline_instruction_count": 129,
+    "scheduler_instruction_count": 127
+  }
+}

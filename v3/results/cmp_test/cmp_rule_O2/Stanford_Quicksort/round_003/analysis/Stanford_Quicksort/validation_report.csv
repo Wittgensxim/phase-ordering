@@ -1,0 +1,890 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,dependent,true,false_positive,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,,inst,mixed,expansion,early-cse->gvn,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,early-cse->indvars,"in function Quicksort:
+  in block %38 / %38:
+    <   %.lcssa1 = phi ptr [ %30, %28 ]
+    <   %.lcssa = phi i32 [ %31, %28 ]
+        %39 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %39, %31
+    >   br i1 %.not, label %61, label %40
+    <   %.not = icmp sgt i32 %39, %.lcssa
+    <   br i1 %.not, label %61, label %40"
+early-cse,instcombine,dependent,true,false_positive,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,read_write,strong,strong,none,none,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,,inst,symmetric_rewrite,,,
+early-cse,licm,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,,inst,symmetric_rewrite,expansion,early-cse->licm;licm->early-cse,"in function Initarr:
+  in block %21 / %21:
+    >   store i32 %storemerge, ptr %1, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %2 ]
+    <   store i32 %storemerge.lcssa, ptr %1, align 4
+
+in function Quicksort:
+  in block %3 / %3:
+    <   %16 = load ptr, ptr %4, align 8
+    <   %17 = load i32, ptr %9, align 4
+    <   %18 = load i32, ptr %9, align 4
+    <   %19 = load ptr, ptr %4, align 8
+    <   %20 = load ptr, ptr %4, align 8
+
+in function main:
+  in block %7 / %7:
+    >   store i32 %storemerge, ptr %1, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %2 ]
+    <   store i32 %storemerge.lcssa, ptr %1, align 4"
+early-cse,loop-rotate,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,,inst,mixed,expansion,early-cse->loop-rotate;loop-rotate->early-cse,"in function Quicksort:
+  in block %24 / %24:
+    >   %25 = phi i32 [ %18, %.lr.ph ], [ %26, %24 ]
+    >   %26 = add nsw i32 %25, 1
+    >   store i32 %26, ptr %7, align 4
+    <   %25 = phi i32 [ %18, %.lr.ph ], [ %28, %24 ]
+    <   %26 = add nsw i32 %25, 1
+    <   store i32 %26, ptr %7, align 4
+        %27 = load ptr, ptr %4, align 8
+    >   %28 = sext i32 %26 to i64
+    >   %29 = getelementptr inbounds [4 x i8], ptr %27, i64 %28
+    >   %30 = load i32, ptr %29, align 4
+    <   %28 = load i32, ptr %7, align 4
+    <   %29 = sext i32 %28 to i64
+    <   %30 = getelementptr inbounds [4 x i8], ptr %27, i64 %29
+    <   %31 = load i32, ptr %30, align 4
+        %32 = load i32, ptr %9, align 4
+    >   %32 = icmp slt i32 %30, %31
+    >   br i1 %32, label %24, label %._crit_edge, !llvm.loop !7
+    <   %33 = icmp slt i32 %31, %32
+    <   br i1 %33, label %24, label %._crit_edge, !llvm.loop !7
+  in block %42 / %41:
+    >   %42 = phi i32 [ %36, %.lr.ph2 ], [ %43, %41 ]
+    >   %43 = add nsw i32 %42, -1
+    >   store i32 %43, ptr %8, align 4
+    <   %43 = phi i32 [ %37, %.lr.ph4 ], [ %47, %42 ]
+    <   %44 = add nsw i32 %43, -1
+    <   store i32 %44, ptr %8, align 4
+        %45 = load i32, ptr %9, align 4
+        %46 = load ptr, ptr %4, align 8
+    >   %46 = sext i32 %43 to i64
+    >   %47 = getelementptr inbounds [4 x i8], ptr %45, i64 %46
+    >   %48 = load i32, ptr %47, align 4
+    >   %49 = icmp slt i32 %44, %48
+    >   br i1 %49, label %41, label %._crit_edge3, !llvm.loop !9
+    <   %47 = load i32, ptr %8, align 4
+    <   %48 = sext i32 %47 to i64
+    <   %49 = getelementptr inbounds [4 x i8], ptr %46, i64 %48
+    <   %50 = load i32, ptr %49, align 4
+    <   %51 = icmp slt i32 %45, %50
+    <   br i1 %51, label %42, label %._crit_edge5, !llvm.loop !9
+  in block %52 / %50:
+    >   %.lcssa2 = phi ptr [ %45, %._crit_edge3 ], [ %35, %33 ]
+    >   %.lcssa = phi i32 [ %43, %._crit_edge3 ], [ %36, %33 ]
+    <   %.lcssa1 = phi ptr [ %split, %._crit_edge5 ], [ %36, %34 ]
+    <   %.lcssa = phi i32 [ %split6, %._crit_edge5 ], [ %37, %34 ]
+        %53 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %51, %.lcssa
+    >   br i1 %.not, label %73, label %52
+    <   %.not = icmp sgt i32 %53, %.lcssa
+    <   br i1 %.not, label %75, label %54"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,early-cse->loop-unroll,"in function Quicksort:
+  in block %38 / %38:
+    <   %.lcssa1 = phi ptr [ %30, %28 ]
+    <   %.lcssa = phi i32 [ %31, %28 ]
+        %39 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %39, %31
+    >   br i1 %.not, label %61, label %40
+    <   %.not = icmp sgt i32 %39, %.lcssa
+    <   br i1 %.not, label %61, label %40"
+early-cse,mem2reg,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25,,inst,mixed,expansion,mem2reg->early-cse;early-cse->mem2reg,"in function Quicksort:
+  in block %26 / %26:
+    >   %27 = sext i32 %.12 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr %0, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = sext i32 %.1 to i64
+    >   %31 = getelementptr inbounds [4 x i8], ptr %0, i64 %30
+    >   %32 = load i32, ptr %31, align 4
+    >   %33 = sext i32 %.12 to i64
+    >   %34 = getelementptr inbounds [4 x i8], ptr %0, i64 %33
+    >   store i32 %32, ptr %34, align 4
+    >   %35 = sext i32 %.1 to i64
+    >   %36 = getelementptr inbounds [4 x i8], ptr %0, i64 %35
+    >   store i32 %29, ptr %36, align 4
+    <   %27 = load i32, ptr %12, align 4
+    <   store i32 %21, ptr %12, align 4
+    <   store i32 %27, ptr %20, align 4"
+early-cse,simplifycfg,dependent,true,false_positive,inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25,read_write;enablement,strong,strong,strong,none,inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25,,inst,mixed,expansion,simplifycfg->early-cse;early-cse->simplifycfg,
+early-cse,sroa,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25,,inst,mixed,expansion,sroa->early-cse;early-cse->sroa,"in function Quicksort:
+  in block %26 / %26:
+    >   %27 = sext i32 %.1 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr %0, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = sext i32 %.122 to i64
+    >   %31 = getelementptr inbounds [4 x i8], ptr %0, i64 %30
+    >   %32 = load i32, ptr %31, align 4
+    >   %33 = sext i32 %.1 to i64
+    >   %34 = getelementptr inbounds [4 x i8], ptr %0, i64 %33
+    >   store i32 %32, ptr %34, align 4
+    >   %35 = sext i32 %.122 to i64
+    >   %36 = getelementptr inbounds [4 x i8], ptr %0, i64 %35
+    >   store i32 %29, ptr %36, align 4
+    <   %27 = load i32, ptr %12, align 4
+    <   store i32 %21, ptr %12, align 4
+    <   store i32 %27, ptr %20, align 4"
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,gvn->indvars,"in function Initarr:
+  in block %2 / %2:
+    >   %3 = phi i32 [ 1, %0 ], [ %20, %19 ]
+    >   store i32 %3, ptr %1, align 4
+    >   %4 = icmp slt i32 %3, 5001
+    >   br i1 %4, label %5, label %21
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %17 ], [ 1, %0 ]
+    <   %3 = trunc nuw nsw i64 %indvars.iv to i32
+    <   store i32 %3, ptr %1, align 4
+    <   %exitcond = icmp ne i64 %indvars.iv, 5001
+    <   br i1 %exitcond, label %4, label %18
+
+in function Quicksort:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %50, %49 ], [ %2, %3 ]
+    >   %18 = phi i32 [ %51, %49 ], [ %1, %3 ]
+    >   %19 = phi ptr [ %52, %49 ], [ %0, %3 ]
+    <   %17 = phi i32 [ %50, %49 ], [ %2, %3 ]
+    <   %18 = phi i32 [ %51, %49 ], [ %1, %3 ]
+    <   %19 = phi ptr [ %52, %49 ], [ %0, %3 ]
+    <   %20 = sext i32 %18 to i64
+
+in function main:
+  in block %2 / %2:
+    >   %3 = phi i32 [ 0, %0 ], [ %6, %5 ]
+    >   store i32 %3, ptr %1, align 4
+    >   %4 = icmp slt i32 %3, 100
+    >   br i1 %4, label %5, label %7
+    <   %3 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   store i32 %3, ptr %1, align 4
+    <   %exitcond = icmp ne i32 %3, 100
+    <   br i1 %exitcond, label %4, label %6"
+gvn,instcombine,dependent,false,agree_dependent,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%.lcssa3,,inst,symmetric_rewrite,expansion,gvn->instcombine,"in function Initarr:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4
+
+in function Quicksort:
+  in block %3 / %3:
+    in instruction store to %5 / store to %5:
+      operands %5 and %5 differ
+    in instruction store to %6 / store to %6:
+      operands %6 and %6 differ
+    in instruction store to %7 / store to %7:
+      operands %7 and %7 differ
+    in instruction store to %8 / store to %8:
+      operands %8 and %8 differ
+    <   %4 = alloca ptr, align 8
+        %5 = alloca i32, align 4
+        %6 = alloca i32, align 4
+        %7 = alloca i32, align 4
+        %8 = alloca i32, align 4
+        %9 = alloca i32, align 4
+        %10 = alloca i32, align 4
+        store ptr %0, ptr %4, align 8
+        store i32 %1, ptr %5, align 4
+        store i32 %2, ptr %6, align 4
+        store i32 %1, ptr %7, align 4
+        store i32 %2, ptr %8, align 4
+        %11 = add nsw i32 %1, %2
+        %12 = sdiv i32 %11, 2
+        %13 = sext i32 %12 to i64
+        %14 = getelementptr inbounds [4 x i8], ptr %0, i64 %13
+        %15 = load i32, ptr %14, align 4
+    <   store i32 %15, ptr %9, align 4
+
+in function Quick:
+  in block %1 / %1:
+    <   %2 = alloca i32, align 4
+    <   store i32 %0, ptr %2, align 4
+
+in function main:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4"
+gvn,licm,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb10:1:br;inst:main:%6;inst:main:%7,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb10:1:br;inst:main:%6;inst:main:%7,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb10:1:br;inst:main:%6;inst:main:%7,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%6;inst:main:%7,inst:Quicksort:bb10:1:br,inst,mixed,expansion,gvn->licm;licm->gvn,"in function Initarr:
+  in block %21 / %20:
+    >   store i32 %storemerge, ptr %1, align 4
+    <   %.lcssa = phi i32 [ %3, %2 ]
+    <   store i32 %.lcssa, ptr %1, align 4
+
+in function Quicksort:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %40, %39 ], [ undef, %3 ]
+    >   %.lcssa48 = phi i32 [ %.lcssa49, %39 ], [ %2, %3 ]
+    >   %.lcssa16 = phi i32 [ %41, %39 ], [ %1, %3 ]
+    <   %17 = phi i32 [ %52, %51 ], [ %2, %3 ]
+    <   %18 = phi i32 [ %53, %51 ], [ %1, %3 ]
+    <   %19 = phi ptr [ %54, %51 ], [ %0, %3 ]
+
+in function main:
+  in block %7 / %6:
+    >   store i32 %storemerge, ptr %1, align 4
+    <   %.lcssa = phi i32 [ %3, %2 ]
+    <   store i32 %.lcssa, ptr %1, align 4"
+gvn,loop-rotate,dependent,false,agree_dependent,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%storemerge;inst:Initarr:bb8:1:br;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:%storemerge;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%storemerge;inst:Initarr:bb8:1:br;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:%storemerge;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%storemerge;inst:Initarr:bb8:1:br;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:%3;inst:main:%4;inst:main:%6;inst:main:%7;inst:main:%storemerge;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:%storemerge;inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%27;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb13:1:call;inst:main:%3;inst:main:%4;inst:main:%6;inst:main:%7;inst:main:%storemerge;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:bb8:1:br;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:bb1:2:br;inst:main:bb3:1:br,bb;inst;loop,mixed,expansion,gvn->loop-rotate;loop-rotate->gvn,"in function Quicksort:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %67, %66 ], [ %2, %3 ]
+    >   %18 = phi i32 [ %68, %66 ], [ %1, %3 ]
+    >   %19 = phi ptr [ %69, %66 ], [ %0, %3 ]
+    >   %20 = phi ptr [ %70, %66 ], [ %0, %3 ]
+    >   %21 = phi i32 [ %49, %66 ], [ %15, %3 ]
+    >   %22 = sext i32 %18 to i64
+    >   %23 = getelementptr inbounds [4 x i8], ptr %20, i64 %22
+    >   %24 = load i32, ptr %23, align 4
+    >   %25 = icmp slt i32 %24, %21
+    >   br i1 %25, label %.lr.ph, label %33
+    <   %17 = phi i32 [ %56, %55 ], [ %2, %3 ]
+    <   %18 = phi i32 [ %57, %55 ], [ %1, %3 ]
+    <   %19 = phi ptr [ %58, %55 ], [ %0, %3 ]
+    <   %20 = sext i32 %18 to i64
+    <   %21 = getelementptr inbounds [4 x i8], ptr %19, i64 %20
+    <   %22 = load i32, ptr %21, align 4
+    <   %23 = icmp slt i32 %22, %15
+    <   br i1 %23, label %.lr.ph, label %31"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,gvn->loop-unroll,"in function Quicksort:
+  in block %28 / %28:
+    <   %.lcssa1 = phi i32 [ %21, %20 ]
+    <   %.lcssa = phi ptr [ %23, %20 ]
+  in block %49 / %49:
+    >   %50 = phi i32 [ %48, %38 ], [ %30, %37 ]
+    >   %51 = phi i32 [ %47, %38 ], [ %21, %37 ]
+    >   %52 = phi ptr [ %42, %38 ], [ %19, %37 ]
+    <   %50 = phi i32 [ %48, %38 ], [ %.lcssa3, %37 ]
+    <   %51 = phi i32 [ %47, %38 ], [ %.lcssa1, %37 ]
+    <   %52 = phi ptr [ %42, %38 ], [ %19, %37 ]
+  in block %38 / %38:
+    >   %39 = load i32, ptr %23, align 4
+    >   store i32 %39, ptr %10, align 4
+    >   %40 = load i32, ptr %32, align 4
+    >   store i32 %40, ptr %23, align 4
+    <   %39 = load i32, ptr %.lcssa, align 4
+    <   store i32 %39, ptr %10, align 4
+    <   %40 = load i32, ptr %.lcssa2, align 4
+    <   store i32 %40, ptr %.lcssa, align 4
+  in block %53 / %53:
+    <   %.lcssa6 = phi i32 [ %50, %49 ]
+    <   %.lcssa5 = phi i32 [ %51, %49 ]
+    <   %.lcssa4 = phi ptr [ %52, %49 ]
+        %54 = load i32, ptr %5, align 4
+    >   %55 = icmp slt i32 %54, %50
+    >   br i1 %55, label %56, label %57
+    <   %55 = icmp slt i32 %54, %.lcssa6
+    <   br i1 %55, label %56, label %57
+  in block %37 / %37:
+    >   %.not = icmp sgt i32 %21, %30
+    >   br i1 %.not, label %49, label %38
+    <   %.lcssa3 = phi i32 [ %30, %29 ]
+    <   %.lcssa2 = phi ptr [ %32, %29 ]
+    <   %.not = icmp sgt i32 %.lcssa1, %.lcssa3
+    <   br i1 %.not, label %49, label %38"
+gvn,mem2reg,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,,inst,mixed,expansion,mem2reg->gvn;gvn->mem2reg,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %38 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %38 ]
+    >   %10 = phi i32 [ %39, %38 ], [ %2, %3 ]
+    >   %11 = phi i32 [ %40, %38 ], [ %1, %3 ]
+    >   %12 = phi ptr [ %41, %38 ], [ %0, %3 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %29 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %29 ]"
+gvn,simplifycfg,dependent,false,agree_dependent,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:bb5:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:%6;inst:main:%7;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:bb5:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:%6;inst:main:%7;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:bb5:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:%6;inst:main:%7;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb13:1:call;inst:main:%6;inst:main:%7;loop:Initarr:bb0;loop:Quicksort:bb10;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:bb5:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb7:1:br;inst:Quicksort:bb9:1:br;inst:main:bb1:2:br;inst:main:bb3:1:br,bb;inst;loop,mixed,expansion,simplifycfg->gvn;gvn->simplifycfg,"in function Quicksort:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %49, %48 ], [ %2, %3 ]
+    >   %18 = phi i32 [ %50, %48 ], [ %1, %3 ]
+    >   %19 = phi ptr [ %51, %48 ], [ %0, %3 ]
+    <   %17 = phi i32 [ %49, %48 ], [ %2, %3 ]
+    <   %18 = phi i32 [ %50, %48 ], [ %1, %3 ]
+    <   %19 = phi ptr [ %51, %48 ], [ %0, %3 ]
+  in block %28 / %28:
+    >   %29 = phi i32 [ %35, %34 ], [ %17, %20 ]
+    >   %30 = sext i32 %29 to i64
+    >   %31 = getelementptr inbounds [4 x i8], ptr %19, i64 %30
+    >   %32 = load i32, ptr %31, align 4
+    >   %33 = icmp slt i32 %15, %32
+    >   br i1 %33, label %34, label %36
+    <   %29 = phi i32 [ %17, %20 ], [ %35, %34 ]
+    <   %30 = sext i32 %29 to i64
+    <   %31 = getelementptr inbounds [4 x i8], ptr %19, i64 %30
+    <   %32 = load i32, ptr %31, align 4
+    <   %33 = icmp slt i32 %15, %32
+    <   br i1 %33, label %34, label %36
+  in block %48 / %48:
+    >   %49 = phi i32 [ %47, %37 ], [ %29, %36 ]
+    >   %50 = phi i32 [ %46, %37 ], [ %21, %36 ]
+    >   %51 = phi ptr [ %41, %37 ], [ %19, %36 ]
+    >   %.not1 = icmp sgt i32 %50, %49
+    >   br i1 %.not1, label %52, label %16, !llvm.loop !10
+    <   %49 = phi i32 [ %29, %36 ], [ %47, %37 ]
+    <   %50 = phi i32 [ %21, %36 ], [ %46, %37 ]
+    <   %51 = phi ptr [ %19, %36 ], [ %41, %37 ]
+    <   %.not1 = icmp sgt i32 %50, %49
+    <   br i1 %.not1, label %52, label %16, !llvm.loop !10"
+gvn,sroa,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:main:%3;inst:main:%6;inst:main:%7,,inst,mixed,expansion,sroa->gvn;gvn->sroa,"in function Quicksort:
+  in block %9 / %9:
+    >   %.07 = phi i32 [ %2, %3 ], [ %.29, %38 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %38 ]
+    >   %10 = phi i32 [ %39, %38 ], [ %2, %3 ]
+    >   %11 = phi i32 [ %40, %38 ], [ %1, %3 ]
+    >   %12 = phi ptr [ %41, %38 ], [ %0, %3 ]
+    <   %.021 = phi i32 [ %2, %3 ], [ %.223, %29 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %29 ]"
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,instcombine->indvars,"in function Quicksort:
+  in block %38 / %38:
+    <   %.lcssa1 = phi ptr [ %30, %28 ]
+    <   %.lcssa = phi i32 [ %31, %28 ]
+        %39 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %39, %31
+    >   br i1 %.not, label %61, label %40
+    <   %.not = icmp sgt i32 %39, %.lcssa
+    <   br i1 %.not, label %61, label %40"
+indvars,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->indvars,"in function Initarr:
+  in block %2 / %2:
+    >   %storemerge = phi i32 [ 1, %0 ], [ %23, %22 ]
+    >   %3 = icmp slt i32 %storemerge, 5001
+    >   br i1 %3, label %4, label %24
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %19 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 5001
+    <   br i1 %exitcond, label %3, label %20
+
+in function Quicksort:
+  in block %22 / %22:
+    >   %23 = phi i32 [ %56, %57 ], [ %.promoted10, %3 ]
+    >   %.lcssa48 = phi i32 [ %.lcssa49, %57 ], [ %.promoted, %3 ]
+    >   %.lcssa16 = phi i32 [ %.lcssa17, %57 ], [ %.promoted5, %3 ]
+    <   %23 = phi i32 [ %55, %56 ], [ %.promoted10, %3 ]
+    <   %.lcssa48 = phi i32 [ %.lcssa49, %56 ], [ %.promoted, %3 ]
+    <   %.lcssa16 = phi i32 [ %.lcssa17, %56 ], [ %.promoted5, %3 ]
+    <   %24 = sext i32 %.lcssa16 to i64
+
+in function main:
+  in block %2 / %2:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %5 ]
+    >   %3 = icmp slt i32 %storemerge, 100
+    >   br i1 %3, label %4, label %7
+    <   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %exitcond = icmp ne i32 %storemerge, 100
+    <   br i1 %exitcond, label %3, label %6"
+indvars,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,mem2reg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,mem2reg->indvars,"in function Initarr:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    >   %2 = icmp slt i32 %storemerge, 5001
+    >   br i1 %2, label %3, label %23
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %18 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 5001
+    <   br i1 %exitcond, label %2, label %19
+
+in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %40 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %40 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %41 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %41 ]
+    <   %10 = sext i32 %.01 to i64
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %6
+    <   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %exitcond = icmp ne i32 %storemerge, 100
+    <   br i1 %exitcond, label %2, label %5"
+indvars,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->indvars,"in function Quicksort:
+  in block %.preheader / %27:
+    >   %28 = load i32, ptr %9, align 4
+    >   %29 = load ptr, ptr %4, align 8
+    >   %30 = load i32, ptr %8, align 4
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds [4 x i8], ptr %29, i64 %31
+    >   %33 = load i32, ptr %32, align 4
+    >   %34 = icmp slt i32 %28, %33
+    >   br i1 %34, label %35, label %37
+    <   br label %27"
+indvars,sroa,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,sroa->indvars,"in function Initarr:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    >   %2 = icmp slt i32 %storemerge, 5001
+    >   br i1 %2, label %3, label %23
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %18 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 5001
+    <   br i1 %exitcond, label %2, label %19
+
+in function Quicksort:
+  in block %9 / %9:
+    >   %.021 = phi i32 [ %2, %3 ], [ %.223, %40 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %40 ]
+    <   %.021 = phi i32 [ %2, %3 ], [ %.223, %41 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %41 ]
+    <   %10 = sext i32 %.0 to i64
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %6
+    <   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %exitcond = icmp ne i32 %storemerge, 100
+    <   br i1 %exitcond, label %2, label %5"
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,instcombine->licm;licm->instcombine,"in function Initarr:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4
+
+in function Quicksort:
+  in block %3 / %3:
+    in instruction store to %5 / store to %5:
+      operands %5 and %5 differ
+    in instruction store to %6 / store to %6:
+      operands %6 and %6 differ
+    in instruction store to %7 / store to %7:
+      operands %7 and %7 differ
+    in instruction store to %8 / store to %8:
+      operands %8 and %8 differ
+    in instruction %.promoted6 / %.promoted5:
+      operands %7 and %7 differ
+    in instruction %.promoted / %.promoted:
+      operands %8 and %8 differ
+    <   %4 = alloca ptr, align 8
+        %5 = alloca i32, align 4
+        %6 = alloca i32, align 4
+        %7 = alloca i32, align 4
+        %8 = alloca i32, align 4
+        %9 = alloca i32, align 4
+        %10 = alloca i32, align 4
+        store ptr %0, ptr %4, align 8
+        store i32 %1, ptr %5, align 4
+        store i32 %2, ptr %6, align 4
+        store i32 %1, ptr %7, align 4
+        store i32 %2, ptr %8, align 4
+        %11 = add nsw i32 %1, %2
+        %12 = sdiv i32 %11, 2
+        %13 = sext i32 %12 to i64
+        %14 = getelementptr inbounds [4 x i8], ptr %0, i64 %13
+        %15 = load i32, ptr %14, align 4
+    <   store i32 %15, ptr %9, align 4
+    <   %16 = load ptr, ptr %4, align 8
+    <   %17 = load i32, ptr %9, align 4
+    <   %18 = load i32, ptr %9, align 4
+    <   %19 = load ptr, ptr %4, align 8
+    <   %20 = load ptr, ptr %4, align 8
+
+in function main:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4"
+instcombine,loop-rotate,dependent,false,agree_dependent,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,read_write;enablement,strong,strong,strong,none,inst:Quicksort:%.lcssa;inst:Quicksort:%.lcssa2,,inst,symmetric_rewrite,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function Initarr:
+  in block %21 / %21:
+    >   %24 = icmp slt i32 %22, 5000
+    >   br i1 %24, label %2, label %25, !llvm.loop !7
+    <   %24 = icmp slt i32 %23, 5001
+    <   br i1 %24, label %2, label %25, !llvm.loop !7
+
+in function Quicksort:
+  in block %24 / %24:
+    >   %25 = phi i32 [ %18, %.lr.ph ], [ %26, %24 ]
+    >   %26 = add nsw i32 %25, 1
+    >   store i32 %26, ptr %7, align 4
+    <   %25 = phi i32 [ %18, %.lr.ph ], [ %28, %24 ]
+    <   %26 = add nsw i32 %25, 1
+    <   store i32 %26, ptr %7, align 4
+        %27 = load ptr, ptr %4, align 8
+    >   %28 = sext i32 %26 to i64
+    >   %29 = getelementptr inbounds [4 x i8], ptr %27, i64 %28
+    >   %30 = load i32, ptr %29, align 4
+    <   %28 = load i32, ptr %7, align 4
+    <   %29 = sext i32 %28 to i64
+    <   %30 = getelementptr inbounds [4 x i8], ptr %27, i64 %29
+    <   %31 = load i32, ptr %30, align 4
+        %32 = load i32, ptr %9, align 4
+    >   %32 = icmp slt i32 %30, %31
+    >   br i1 %32, label %24, label %._crit_edge, !llvm.loop !7
+    <   %33 = icmp slt i32 %31, %32
+    <   br i1 %33, label %24, label %._crit_edge, !llvm.loop !7
+  in block %42 / %41:
+    >   %42 = phi i32 [ %36, %.lr.ph2 ], [ %43, %41 ]
+    >   %43 = add nsw i32 %42, -1
+    >   store i32 %43, ptr %8, align 4
+    <   %43 = phi i32 [ %37, %.lr.ph4 ], [ %47, %42 ]
+    <   %44 = add nsw i32 %43, -1
+    <   store i32 %44, ptr %8, align 4
+        %45 = load i32, ptr %9, align 4
+        %46 = load ptr, ptr %4, align 8
+    >   %46 = sext i32 %43 to i64
+    >   %47 = getelementptr inbounds [4 x i8], ptr %45, i64 %46
+    >   %48 = load i32, ptr %47, align 4
+    >   %49 = icmp slt i32 %44, %48
+    >   br i1 %49, label %41, label %._crit_edge3, !llvm.loop !9
+    <   %47 = load i32, ptr %8, align 4
+    <   %48 = sext i32 %47 to i64
+    <   %49 = getelementptr inbounds [4 x i8], ptr %46, i64 %48
+    <   %50 = load i32, ptr %49, align 4
+    <   %51 = icmp slt i32 %45, %50
+    <   br i1 %51, label %42, label %._crit_edge5, !llvm.loop !9
+  in block %52 / %50:
+    >   %.lcssa2 = phi ptr [ %45, %._crit_edge3 ], [ %35, %33 ]
+    >   %.lcssa = phi i32 [ %43, %._crit_edge3 ], [ %36, %33 ]
+    <   %.lcssa1 = phi ptr [ %split, %._crit_edge5 ], [ %36, %34 ]
+    <   %.lcssa = phi i32 [ %split6, %._crit_edge5 ], [ %37, %34 ]
+        %53 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %51, %.lcssa
+    >   br i1 %.not, label %73, label %52
+    <   %.not = icmp sgt i32 %53, %.lcssa
+    <   br i1 %.not, label %75, label %54
+
+in function main:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 0, %0 ], [ %5, %3 ]
+    <   %storemerge1 = phi i32 [ 0, %0 ], [ %5, %3 ]
+  in block %3 / %3:
+    >   %6 = icmp slt i32 %4, 99
+    >   br i1 %6, label %2, label %7, !llvm.loop !7
+    <   %6 = icmp slt i32 %5, 100
+    <   br i1 %6, label %2, label %7, !llvm.loop !7"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,instcombine->loop-unroll,"in function Quicksort:
+  in block %38 / %38:
+    <   %.lcssa1 = phi ptr [ %30, %28 ]
+    <   %.lcssa = phi i32 [ %31, %28 ]
+        %39 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %39, %31
+    >   br i1 %.not, label %61, label %40
+    <   %.not = icmp sgt i32 %39, %.lcssa
+    <   br i1 %.not, label %61, label %40"
+instcombine,mem2reg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,mem2reg->instcombine,"in function Initarr:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    >   %2 = icmp slt i32 %storemerge, 5001
+    >   br i1 %2, label %3, label %23
+    <   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    <   %2 = icmp samesign ult i32 %storemerge, 5001
+    <   br i1 %2, label %3, label %23
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %6
+    <   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %2 = icmp samesign ult i32 %storemerge, 100
+    <   br i1 %2, label %3, label %6"
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,sroa,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,sroa->instcombine,"in function Initarr:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    >   %2 = icmp samesign ult i32 %storemerge, 5001
+    >   br i1 %2, label %3, label %23
+    <   %storemerge = phi i32 [ 1, %0 ], [ %22, %21 ]
+    <   %2 = icmp slt i32 %storemerge, 5001
+    <   br i1 %2, label %3, label %23
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %2 = icmp samesign ult i32 %storemerge, 100
+    >   br i1 %2, label %3, label %6
+    <   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   %2 = icmp slt i32 %storemerge, 100
+    <   br i1 %2, label %3, label %6"
+licm,loop-rotate,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb2:1:ret;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb2:1:ret;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%23;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb2:1:ret;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%65;inst:Quicksort:%67;inst:Quicksort:%68;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%23;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Quicksort:%17;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%25;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%65;inst:Quicksort:%67;inst:Quicksort:%68;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%6;inst:main:%7;inst:main:bb0:1:store,inst:Initarr:bb2:1:ret;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:6:br;inst:main:bb0:2:br,inst,mixed,expansion,loop-rotate->licm;licm->loop-rotate,"in function Initarr:
+  in block %0 / %0:
+    <   store i32 1, ptr %1, align 4
+    <   %.promoted = load i32, ptr %1, align 4
+
+in function Quicksort:
+  in block %3 / %3:
+    in instruction %19 / %16:
+      operands %9 and %4 differ
+    in instruction %21 / %18:
+      operands %4 and %9 differ
+    in instruction %22 / %19:
+      operands %9 and %4 differ
+    in instruction %25 / %.promoted5:
+      operands %4 and %7 differ
+    in instruction %.promoted / %.promoted:
+      operands %7 and %8 differ
+    in instruction %.promoted10 / %.promoted10:
+      operands %8 and %10 differ
+    <   %16 = load ptr, ptr %4, align 8
+    <   %17 = load i32, ptr %9, align 4
+    <   %18 = load ptr, ptr %4, align 8
+
+in function main:
+  in block %0 / %0:
+    <   store i32 0, ptr %1, align 4
+    <   %.promoted = load i32, ptr %1, align 4"
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,mem2reg,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:br;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quicksort:%16;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:br;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:br;inst:main:bb0:1:store;inst:main:bb0:2:br,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Quicksort:%16;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:store;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%6;inst:main:%7;inst:main:bb0:1:store,inst:Initarr:bb0:1:br;inst:Initarr:bb0:2:br;inst:Quicksort:bb2:1:br;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:br;inst:Quicksort:bb8:6:br;inst:main:bb0:1:br;inst:main:bb0:2:br,inst,mixed,expansion,mem2reg->licm;licm->mem2reg,"in function Initarr:
+  in block %23 / %23:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]
+
+in function Quicksort:
+  in block %9 / %9:
+    >   %10 = phi i32 [ %43, %44 ], [ undef, %3 ]
+    >   %.lcssa48 = phi i32 [ %.lcssa49, %44 ], [ %2, %3 ]
+    >   %.lcssa16 = phi i32 [ %.lcssa17, %44 ], [ %1, %3 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %40 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %40 ]
+
+in function main:
+  in block %6 / %6:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]"
+licm,simplifycfg,dependent,false,agree_dependent,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,inst:Initarr:%23;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%63;inst:Quicksort:%65;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,read_write;enablement,strong,strong,strong,none,inst:Initarr:%23;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%62;inst:Quicksort:%63;inst:Quicksort:%65;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%6;inst:main:%7,inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:6:br,inst,mixed,expansion,simplifycfg->licm;licm->simplifycfg,"in function Quicksort:
+  in block %22 / %22:
+    >   %23 = phi i32 [ %56, %55 ], [ %.promoted10, %3 ]
+    >   %.lcssa48 = phi i32 [ %.lcssa49, %55 ], [ %.promoted, %3 ]
+    >   %.lcssa16 = phi i32 [ %.lcssa17, %55 ], [ %.promoted5, %3 ]
+    <   %23 = phi i32 [ %55, %54 ], [ %.promoted10, %3 ]
+    <   %.lcssa48 = phi i32 [ %.lcssa49, %54 ], [ %.promoted, %3 ]
+    <   %.lcssa16 = phi i32 [ %.lcssa17, %54 ], [ %.promoted5, %3 ]
+  in block %32 / %33:
+    >   %34 = phi i32 [ %40, %39 ], [ %.lcssa48, %32 ]
+    >   %35 = sext i32 %34 to i64
+    >   %36 = getelementptr inbounds [4 x i8], ptr %19, i64 %35
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = icmp slt i32 %18, %37
+    >   br i1 %38, label %39, label %41
+    <   %33 = phi i32 [ %.lcssa48, %.preheader ], [ %39, %38 ]
+    <   %34 = sext i32 %33 to i64
+    <   %35 = getelementptr inbounds [4 x i8], ptr %19, i64 %34
+    <   %36 = load i32, ptr %35, align 4
+    <   %37 = icmp slt i32 %18, %36
+    <   br i1 %37, label %38, label %40
+  in block %54 / %55:
+    >   %56 = phi i32 [ %45, %42 ], [ %23, %41 ]
+    >   %.lcssa49 = phi i32 [ %54, %42 ], [ %.lcssa4, %41 ]
+    >   %.lcssa17 = phi i32 [ %53, %42 ], [ %.lcssa1, %41 ]
+    >   %.not1 = icmp sgt i32 %.lcssa17, %.lcssa49
+    >   br i1 %.not1, label %57, label %22, !llvm.loop !10
+    <   %55 = phi i32 [ %23, %40 ], [ %44, %41 ]
+    <   %.lcssa49 = phi i32 [ %.lcssa4, %40 ], [ %53, %41 ]
+    <   %.lcssa17 = phi i32 [ %.lcssa1, %40 ], [ %52, %41 ]
+    <   %.not1 = icmp sgt i32 %.lcssa17, %.lcssa49
+    <   br i1 %.not1, label %56, label %22, !llvm.loop !10"
+licm,sroa,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:br;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quicksort:%16;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:br;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7;inst:main:bb0:1:br;inst:main:bb0:1:store;inst:main:bb0:2:br,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Quicksort:%16;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:1:store;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%6;inst:main:%7;inst:main:bb0:1:store,inst:Initarr:bb0:1:br;inst:Initarr:bb0:2:br;inst:Quicksort:bb2:1:br;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:br;inst:Quicksort:bb8:6:br;inst:main:bb0:1:br;inst:main:bb0:2:br,inst,mixed,expansion,sroa->licm;licm->sroa,"in function Initarr:
+  in block %23 / %23:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]
+
+in function Quicksort:
+  in block %9 / %9:
+    >   %10 = phi i32 [ %43, %44 ], [ undef, %3 ]
+    >   %.lcssa48 = phi i32 [ %.lcssa49, %44 ], [ %2, %3 ]
+    >   %.lcssa16 = phi i32 [ %.lcssa17, %44 ], [ %1, %3 ]
+    <   %.021 = phi i32 [ %2, %3 ], [ %.223, %40 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %40 ]
+
+in function main:
+  in block %6 / %6:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]"
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,mem2reg,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%3;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%3;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb0:1:store,inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:6:br;inst:main:bb0:2:br,inst,mixed,expansion,mem2reg->loop-rotate;loop-rotate->mem2reg,"in function Quicksort:
+  in block %9 / %9:
+    >   %.05 = phi i32 [ %1, %3 ], [ %.27, %48 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %48 ]
+    >   %10 = sext i32 %.05 to i64
+    >   %11 = getelementptr inbounds [4 x i8], ptr %0, i64 %10
+    >   %12 = load i32, ptr %11, align 4
+    >   %13 = icmp slt i32 %12, %8
+    >   br i1 %13, label %.lr.ph, label %21
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %38 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %38 ]
+    <   br label %10
+
+in function main:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 0, %0 ], [ %3, %2 ]
+    >   %storemerge1 = phi i32 [ 0, %0 ], [ %3, %2 ]
+    <   %storemerge1 = phi i32 [ 0, %0 ], [ %3, %2 ]"
+loop-rotate,simplifycfg,dependent,false,agree_dependent,bb:Initarr:bb8;bb:Quicksort:bb13;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:bb7:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb3:1:br;inst:Quicksort:bb4:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb6:1:br;inst:Quicksort:bb7:1:br;inst:Quicksort:bb8:1:store;inst:Quicksort:bb8:2:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:Quicksort:bb9:1:br;inst:main:%6;inst:main:%7;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:Quicksort:bb4;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb13;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:bb7:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb3:1:br;inst:Quicksort:bb4:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb6:1:br;inst:Quicksort:bb7:1:br;inst:Quicksort:bb8:1:store;inst:Quicksort:bb8:2:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:Quicksort:bb9:1:br;inst:main:%6;inst:main:%7;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:Quicksort:bb4;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb13;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:%22;inst:Initarr:%23;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:bb7:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%61;inst:Quicksort:%62;inst:Quicksort:%65;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%70;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb12:1:br;inst:Quicksort:bb12:1:ret;inst:Quicksort:bb13:1:call;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb3:1:br;inst:Quicksort:bb4:1:br;inst:Quicksort:bb4:1:store;inst:Quicksort:bb4:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb6:1:br;inst:Quicksort:bb7:1:br;inst:Quicksort:bb8:1:br;inst:Quicksort:bb8:1:store;inst:Quicksort:bb8:2:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:Quicksort:bb9:1:br;inst:Quicksort:bb9:1:call;inst:Quicksort:bb9:2:br;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb1:2:br;inst:main:bb3:1:br;loop:Initarr:bb0;loop:Quicksort:bb10;loop:Quicksort:bb4;loop:Quicksort:bb8;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:Initarr:%22;inst:Initarr:%23;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%29;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%40;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%61;inst:Quicksort:%62;inst:Quicksort:%65;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%70;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb13:1:call;inst:Quicksort:bb4:1:store;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:1:store;inst:Quicksort:bb8:2:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb9:1:call;inst:main:%5;inst:main:%6;inst:main:%7;loop:Initarr:bb0;loop:Quicksort:bb10;loop:Quicksort:bb4;loop:Quicksort:bb8;loop:main:bb0,bb:Initarr:bb8;bb:Quicksort:bb13;bb:Quicksort:bb14;bb:main:bb3;inst:Initarr:bb7:1:br;inst:Initarr:bb8:1:br;inst:Quicksort:bb12:1:br;inst:Quicksort:bb12:1:ret;inst:Quicksort:bb13:2:br;inst:Quicksort:bb14:1:ret;inst:Quicksort:bb3:1:br;inst:Quicksort:bb4:1:br;inst:Quicksort:bb4:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb6:1:br;inst:Quicksort:bb7:1:br;inst:Quicksort:bb8:1:br;inst:Quicksort:bb8:6:br;inst:Quicksort:bb9:1:br;inst:Quicksort:bb9:2:br;inst:main:bb1:2:br;inst:main:bb3:1:br,bb;inst;loop,mixed,expansion,simplifycfg->loop-rotate;loop-rotate->simplifycfg,"in function Quicksort:
+  in block %.lr.ph:
+    >   %24 = phi i32 [ %27, %.lr.ph ], [ %18, %16 ]
+    >   %25 = add nsw i32 %24, 1
+    >   store i32 %25, ptr %7, align 4
+    >   %26 = load ptr, ptr %4, align 8
+    >   %27 = load i32, ptr %7, align 4
+    >   %28 = sext i32 %27 to i64
+    >   %29 = getelementptr inbounds [4 x i8], ptr %26, i64 %28
+    >   %30 = load i32, ptr %29, align 4
+    >   %31 = load i32, ptr %9, align 4
+    >   %32 = icmp slt i32 %30, %31
+    >   br i1 %32, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %31
+  in block %.lr.ph1 / %.lr.ph2:
+    >   %40 = phi i32 [ %44, %.lr.ph2 ], [ %35, %._crit_edge ]
+    >   %41 = add nsw i32 %40, -1
+    >   store i32 %41, ptr %8, align 4
+    >   %42 = load i32, ptr %9, align 4
+    >   %43 = load ptr, ptr %4, align 8
+    >   %44 = load i32, ptr %8, align 4
+    >   %45 = sext i32 %44 to i64
+    >   %46 = getelementptr inbounds [4 x i8], ptr %43, i64 %45
+    >   %47 = load i32, ptr %46, align 4
+    >   %48 = icmp slt i32 %42, %47
+    >   br i1 %48, label %.lr.ph2, label %._crit_edge3, !llvm.loop !9
+    <   br label %41
+  in block %51 / %._crit_edge3:
+    >   %.lcssa2 = phi ptr [ %34, %._crit_edge ], [ %43, %.lr.ph2 ]
+    >   %.lcssa = phi i32 [ %35, %._crit_edge ], [ %44, %.lr.ph2 ]
+    <   %.lcssa2 = phi ptr [ %split, %._crit_edge ], [ %25, %.preheader ]
+    <   %.lcssa = phi i32 [ %split2, %._crit_edge ], [ %26, %.preheader ]
+        %52 = load i32, ptr %7, align 4
+    >   %.not = icmp sgt i32 %49, %.lcssa
+    >   br i1 %.not, label %71, label %50
+    <   %.not = icmp sgt i32 %52, %.lcssa
+    <   br i1 %.not, label %74, label %53"
+loop-rotate,sroa,dependent,false,agree_dependent,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%3;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,read_write;enablement,strong,strong,strong,none,inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%58;inst:Quicksort:%60;inst:Quicksort:%64;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%3;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb0:1:store,inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:6:br;inst:main:bb0:2:br,inst,mixed,expansion,sroa->loop-rotate;loop-rotate->sroa,"in function Quicksort:
+  in block %9 / %9:
+    >   %.031 = phi i32 [ %2, %3 ], [ %.233, %48 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %48 ]
+    >   %10 = sext i32 %.0 to i64
+    >   %11 = getelementptr inbounds [4 x i8], ptr %0, i64 %10
+    >   %12 = load i32, ptr %11, align 4
+    >   %13 = icmp slt i32 %12, %8
+    >   br i1 %13, label %.lr.ph, label %21
+    <   %.021 = phi i32 [ %2, %3 ], [ %.223, %38 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %38 ]
+    <   br label %10
+
+in function main:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 0, %0 ], [ %3, %2 ]
+    >   %storemerge1 = phi i32 [ 0, %0 ], [ %3, %2 ]
+    <   %storemerge1 = phi i32 [ 0, %0 ], [ %3, %2 ]"
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,mem2reg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function Quicksort:
+  in block %.preheader / %27:
+    >   %28 = load i32, ptr %9, align 4
+    >   %29 = load ptr, ptr %4, align 8
+    >   %30 = load i32, ptr %8, align 4
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds [4 x i8], ptr %29, i64 %31
+    >   %33 = load i32, ptr %32, align 4
+    >   %34 = icmp slt i32 %28, %33
+    >   br i1 %34, label %35, label %37
+    <   br label %27"
+loop-simplify,sroa,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,mem2reg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,mem2reg->loop-unroll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.01 = phi i32 [ %1, %3 ], [ %.23, %40 ]
+    >   %.0 = phi i32 [ %2, %3 ], [ %.2, %40 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %40 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %40 ]
+  in block %40 / %40:
+    >   %.not1 = icmp sgt i32 %.23, %.2
+    <   %.not1 = icmp sgt i32 %.23, %.2
+  in block %41 / %41:
+    >   %.lcssa3 = phi i32 [ %.2, %40 ]
+    >   %42 = icmp slt i32 %1, %.lcssa3
+    >   br i1 %42, label %43, label %44
+    <   %.23.lcssa = phi i32 [ %.23, %40 ]
+    <   %.lcssa3 = phi i32 [ %.2, %40 ]
+    <   %42 = icmp slt i32 %1, %.lcssa3
+    <   br i1 %42, label %43, label %44
+  in block %17 / %17:
+    <   %.12.lcssa = phi i32 [ %.12, %10 ]"
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-unroll,"in function Quicksort:
+  in block %.preheader / %27:
+    >   %28 = load i32, ptr %9, align 4
+    >   %29 = load ptr, ptr %4, align 8
+    >   %30 = load i32, ptr %8, align 4
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds [4 x i8], ptr %29, i64 %31
+    >   %33 = load i32, ptr %32, align 4
+    >   %34 = icmp slt i32 %28, %33
+    >   br i1 %34, label %35, label %37
+    <   br label %27"
+loop-unroll,sroa,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,sroa->loop-unroll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.021 = phi i32 [ %2, %3 ], [ %.223, %40 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %40 ]
+    <   %.021 = phi i32 [ %2, %3 ], [ %.223, %40 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %40 ]
+  in block %40 / %40:
+    >   %.not1 = icmp sgt i32 %.2, %.223
+    <   %.not1 = icmp sgt i32 %.2, %.223
+  in block %41 / %41:
+    >   %.lcssa3 = phi i32 [ %.223, %40 ]
+    >   %42 = icmp slt i32 %1, %.lcssa3
+    >   br i1 %42, label %43, label %44
+    <   %.2.lcssa = phi i32 [ %.2, %40 ]
+    <   %.lcssa3 = phi i32 [ %.223, %40 ]
+    <   %42 = icmp slt i32 %1, %.lcssa3
+    <   br i1 %42, label %43, label %44
+  in block %17 / %17:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]"
+mem2reg,simplifycfg,dependent,false,agree_dependent,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%5;inst:main:%6;inst:main:%7,read_write;enablement,strong,strong,strong,none,inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%5;inst:main:%6;inst:main:%7,inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:6:br,inst,mixed,expansion,mem2reg->simplifycfg;simplifycfg->mem2reg,"in function Quicksort:
+  in block %17 / %17:
+    >   %.1 = phi i32 [ %.0, %10 ], [ %23, %22 ]
+    >   %18 = sext i32 %.1 to i64
+    >   %19 = getelementptr inbounds [4 x i8], ptr %0, i64 %18
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = icmp slt i32 %8, %20
+    >   br i1 %21, label %22, label %24
+    <   %.1 = phi i32 [ %23, %22 ], [ %.0, %10 ]
+    <   %18 = sext i32 %.1 to i64
+    <   %19 = getelementptr inbounds [4 x i8], ptr %0, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %21 = icmp slt i32 %8, %20
+    <   br i1 %21, label %22, label %24
+  in block %38 / %38:
+    >   %.2 = phi i32 [ %.1, %24 ], [ %37, %25 ]
+    <   %.2 = phi i32 [ %.1, %24 ], [ %37, %25 ]
+  in block %24 / %24:
+    >   %.lcssa = phi i32 [ %.1, %17 ]
+    <   %.lcssa = phi i32 [ %.1, %17 ]
+  in block %25 / %25:
+    >   %29 = sext i32 %.1 to i64
+    <   %29 = sext i32 %.1 to i64
+        %30 = getelementptr inbounds [4 x i8], ptr %0, i64 %29
+        %31 = load i32, ptr %30, align 4
+        %32 = sext i32 %.12 to i64
+        %33 = getelementptr inbounds [4 x i8], ptr %0, i64 %32
+        store i32 %31, ptr %33, align 4
+    >   %34 = sext i32 %.1 to i64
+    <   %34 = sext i32 %.1 to i64
+        %35 = getelementptr inbounds [4 x i8], ptr %0, i64 %34
+        store i32 %28, ptr %35, align 4
+        %36 = add nsw i32 %.12, 1
+    >   %37 = add nsw i32 %.1, -1
+    <   %37 = add nsw i32 %.1, -1"
+mem2reg,sroa,dependent,false,agree_dependent,inst:Initarr:%1;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quick:%2;inst:Quick:%3;inst:Quick:%4;inst:Quick:%6;inst:Quick:%7;inst:Quick:entry:1:store;inst:Quick:entry:2:call;inst:Quick:entry:3:call;inst:Quick:entry:4:br;inst:Quicksort:%10;inst:Quicksort:%11;inst:Quicksort:%12;inst:Quicksort:%13;inst:Quicksort:%14;inst:Quicksort:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%4;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%5;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%6;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%7;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:%8;inst:Quicksort:%9;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:Quicksort:entry:1:store;inst:Quicksort:entry:2:store;inst:Quicksort:entry:3:store;inst:Quicksort:entry:4:store;inst:Quicksort:entry:5:store;inst:Quicksort:entry:6:store;inst:Quicksort:entry:7:br;inst:main:%1;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%1;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quick:%2;inst:Quick:%3;inst:Quick:%4;inst:Quick:%6;inst:Quick:%7;inst:Quick:entry:1:store;inst:Quick:entry:2:call;inst:Quick:entry:3:call;inst:Quick:entry:4:br;inst:Quicksort:%10;inst:Quicksort:%11;inst:Quicksort:%12;inst:Quicksort:%13;inst:Quicksort:%14;inst:Quicksort:%15;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%4;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%5;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%6;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%7;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:%8;inst:Quicksort:%9;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:Quicksort:entry:1:store;inst:Quicksort:entry:2:store;inst:Quicksort:entry:3:store;inst:Quicksort:entry:4:store;inst:Quicksort:entry:5:store;inst:Quicksort:entry:6:store;inst:Quicksort:entry:7:br;inst:main:%1;inst:main:%3;inst:main:%6;inst:main:%7;inst:main:bb0:1:store;inst:main:bb0:2:br,inst:Initarr:%1;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%2;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:bb0:1:br;inst:Initarr:bb0:1:store;inst:Initarr:bb0:2:br;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quick:%2;inst:Quick:%3;inst:Quick:%4;inst:Quick:%5;inst:Quick:%6;inst:Quick:%7;inst:Quick:%9;inst:Quick:entry:1:call;inst:Quick:entry:1:store;inst:Quick:entry:2:call;inst:Quick:entry:3:br;inst:Quick:entry:3:call;inst:Quick:entry:4:br;inst:Quicksort:%.0;inst:Quicksort:%.1;inst:Quicksort:%.2;inst:Quicksort:%10;inst:Quicksort:%11;inst:Quicksort:%12;inst:Quicksort:%13;inst:Quicksort:%14;inst:Quicksort:%15;inst:Quicksort:%16;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%4;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%5;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%6;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%7;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:%8;inst:Quicksort:%9;inst:Quicksort:bb2:1:br;inst:Quicksort:bb2:1:store;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:Quicksort:entry:1:br;inst:Quicksort:entry:1:store;inst:Quicksort:entry:2:store;inst:Quicksort:entry:3:store;inst:Quicksort:entry:4:store;inst:Quicksort:entry:5:store;inst:Quicksort:entry:6:store;inst:Quicksort:entry:7:br;inst:main:%1;inst:main:%2;inst:main:%3;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb0:1:br;inst:main:bb0:1:store;inst:main:bb0:2:br,read_write,strong,strong,none,none,inst:Initarr:%1;inst:Initarr:%11;inst:Initarr:%12;inst:Initarr:%13;inst:Initarr:%14;inst:Initarr:%15;inst:Initarr:%16;inst:Initarr:%17;inst:Initarr:%18;inst:Initarr:%19;inst:Initarr:%2;inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Initarr:%3;inst:Initarr:%4;inst:Initarr:%5;inst:Initarr:%6;inst:Initarr:%7;inst:Initarr:%8;inst:Initarr:bb0:1:store;inst:Quick:%10;inst:Quick:%11;inst:Quick:%12;inst:Quick:%13;inst:Quick:%14;inst:Quick:%15;inst:Quick:%2;inst:Quick:%3;inst:Quick:%4;inst:Quick:%5;inst:Quick:%6;inst:Quick:%7;inst:Quick:%9;inst:Quick:entry:1:call;inst:Quick:entry:1:store;inst:Quick:entry:2:call;inst:Quick:entry:3:call;inst:Quicksort:%.0;inst:Quicksort:%.1;inst:Quicksort:%.2;inst:Quicksort:%10;inst:Quicksort:%11;inst:Quicksort:%12;inst:Quicksort:%13;inst:Quicksort:%14;inst:Quicksort:%15;inst:Quicksort:%16;inst:Quicksort:%18;inst:Quicksort:%19;inst:Quicksort:%20;inst:Quicksort:%21;inst:Quicksort:%22;inst:Quicksort:%23;inst:Quicksort:%24;inst:Quicksort:%26;inst:Quicksort:%27;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%4;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%48;inst:Quicksort:%49;inst:Quicksort:%5;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%6;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%64;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%7;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:%8;inst:Quicksort:%9;inst:Quicksort:bb2:1:store;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:entry:1:store;inst:Quicksort:entry:2:store;inst:Quicksort:entry:3:store;inst:Quicksort:entry:4:store;inst:Quicksort:entry:5:store;inst:Quicksort:entry:6:store;inst:main:%1;inst:main:%2;inst:main:%3;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:bb0:1:store,inst:Initarr:bb0:1:br;inst:Initarr:bb0:2:br;inst:Quick:entry:3:br;inst:Quick:entry:4:br;inst:Quicksort:bb2:1:br;inst:Quicksort:bb2:2:br;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:br;inst:Quicksort:bb8:6:br;inst:Quicksort:entry:1:br;inst:Quicksort:entry:7:br;inst:main:bb0:1:br;inst:main:bb0:2:br,inst,mixed,,,"in function Quicksort:
+  in block %9 / %9:
+    >   %.021 = phi i32 [ %2, %3 ], [ %.223, %40 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %40 ]
+    <   %.01 = phi i32 [ %1, %3 ], [ %.23, %40 ]
+    <   %.0 = phi i32 [ %2, %3 ], [ %.2, %40 ]"
+simplifycfg,sroa,dependent,false,agree_dependent,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%37;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%6;inst:main:%7,inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:1:store;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:Quicksort:bb8:6:br;inst:main:%5;inst:main:%6;inst:main:%7,read_write;enablement,strong,strong,strong,none,inst:Initarr:%22;inst:Initarr:%24;inst:Initarr:%25;inst:Quicksort:%28;inst:Quicksort:%30;inst:Quicksort:%31;inst:Quicksort:%32;inst:Quicksort:%33;inst:Quicksort:%34;inst:Quicksort:%35;inst:Quicksort:%36;inst:Quicksort:%37;inst:Quicksort:%38;inst:Quicksort:%39;inst:Quicksort:%41;inst:Quicksort:%42;inst:Quicksort:%43;inst:Quicksort:%44;inst:Quicksort:%45;inst:Quicksort:%46;inst:Quicksort:%47;inst:Quicksort:%49;inst:Quicksort:%50;inst:Quicksort:%51;inst:Quicksort:%52;inst:Quicksort:%53;inst:Quicksort:%54;inst:Quicksort:%55;inst:Quicksort:%56;inst:Quicksort:%57;inst:Quicksort:%58;inst:Quicksort:%59;inst:Quicksort:%60;inst:Quicksort:%63;inst:Quicksort:%66;inst:Quicksort:%67;inst:Quicksort:%69;inst:Quicksort:%71;inst:Quicksort:%72;inst:Quicksort:%73;inst:Quicksort:%75;inst:Quicksort:bb5:1:store;inst:Quicksort:bb8:3:store;inst:Quicksort:bb8:4:store;inst:Quicksort:bb8:5:store;inst:main:%5;inst:main:%6;inst:main:%7,inst:Quicksort:bb5:1:br;inst:Quicksort:bb5:2:br;inst:Quicksort:bb8:6:br,inst,mixed,expansion,simplifycfg->sroa;sroa->simplifycfg,"in function Quicksort:
+  in block %17 / %17:
+    >   %.122 = phi i32 [ %23, %22 ], [ %.021, %10 ]
+    >   %18 = sext i32 %.122 to i64
+    >   %19 = getelementptr inbounds [4 x i8], ptr %0, i64 %18
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = icmp slt i32 %8, %20
+    >   br i1 %21, label %22, label %24
+    <   %.122 = phi i32 [ %.021, %10 ], [ %23, %22 ]
+    <   %18 = sext i32 %.122 to i64
+    <   %19 = getelementptr inbounds [4 x i8], ptr %0, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %21 = icmp slt i32 %8, %20
+    <   br i1 %21, label %22, label %24
+  in block %38 / %38:
+    >   %.223 = phi i32 [ %.122, %24 ], [ %37, %25 ]
+    <   %.223 = phi i32 [ %.122, %24 ], [ %37, %25 ]
+  in block %24 / %24:
+    >   %.lcssa = phi i32 [ %.122, %17 ]
+    <   %.lcssa = phi i32 [ %.122, %17 ]
+  in block %25 / %25:
+    >   %29 = sext i32 %.122 to i64
+    <   %29 = sext i32 %.122 to i64
+        %30 = getelementptr inbounds [4 x i8], ptr %0, i64 %29
+        %31 = load i32, ptr %30, align 4
+        %32 = sext i32 %.1 to i64
+        %33 = getelementptr inbounds [4 x i8], ptr %0, i64 %32
+        store i32 %31, ptr %33, align 4
+    >   %34 = sext i32 %.122 to i64
+    <   %34 = sext i32 %.122 to i64
+        %35 = getelementptr inbounds [4 x i8], ptr %0, i64 %34
+        store i32 %28, ptr %35, align 4
+        %36 = add nsw i32 %.1, 1
+    >   %37 = add nsw i32 %.122, -1
+    <   %37 = add nsw i32 %.122, -1"

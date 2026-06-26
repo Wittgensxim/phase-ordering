@@ -1,0 +1,340 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function main:
+  in block %10 / %10:
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function main:
+  in block %10 / %10:
+    >   store double %8, ptr @sa, align 8
+    <   %.lcssa4 = phi double [ %8, %5 ]
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]
+    <   store double %.lcssa4, ptr @sa, align 8"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %10 / %10:
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %5 / %5:
+    >   %.04 = phi double [ %2, %0 ], [ %7, %5 ]
+    >   %.051 = phi i32 [ 1, %0 ], [ %13, %5 ]
+    >   %6 = phi double [ %4, %0 ], [ %12, %5 ]
+    >   %7 = fneg double %.04
+    >   %8 = fsub double %6, %.04
+    >   %9 = fsub double %8, %7
+    >   %10 = fsub double %9, %.04
+    >   %11 = fsub double %10, %7
+    >   %12 = fsub double %11, %.04
+    >   store double %12, ptr @sa, align 8
+    >   %13 = add nuw nsw i32 %.051, 5
+    >   %exitcond.4 = icmp ne i32 %13, 156250001
+    >   br i1 %exitcond.4, label %5, label %14, !llvm.loop !7
+    <   %.04 = phi double [ %2, %0 ], [ %13, %5 ]
+    <   %.051 = phi i32 [ 1, %0 ], [ %15, %5 ]
+    <   %6 = phi double [ %4, %0 ], [ %14, %5 ]
+    <   %7 = fneg double %.04
+    <   %8 = fsub double %6, %.04
+    <   store double %8, ptr @sa, align 8
+    <   %9 = fsub double %8, %7
+    <   store double %9, ptr @sa, align 8
+    <   %10 = fneg double %.04
+    <   %11 = fsub double %9, %.04
+    <   store double %11, ptr @sa, align 8
+    <   %12 = fsub double %11, %10
+    <   store double %12, ptr @sa, align 8
+    <   %13 = fneg double %.04
+    <   %14 = fsub double %12, %.04
+    <   store double %14, ptr @sa, align 8
+    <   %15 = add nuw nsw i32 %.051, 5
+    <   %exitcond.4 = icmp ne i32 %15, 156250001
+    <   br i1 %exitcond.4, label %5, label %16, !llvm.loop !7"
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,indvars->gvn,"in function main:
+  in block %10 / %10:
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,inst:main:%15,inst:main:%15,inst:main:%15,read_write;enablement,strong,strong,strong,none,inst:main:%15,,inst,symmetric_rewrite,expansion,licm->gvn,"in function main:
+  in block %10 / %10:
+    >   store double %8, ptr @sa, align 8
+    <   %.lcssa4 = phi double [ %8, %5 ]
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]
+    <   store double %.lcssa4, ptr @sa, align 8"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-rotate->gvn,"in function main:
+  in block %10 / %10:
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%22;inst:main:%23;inst:main:%25;inst:main:%26;inst:main:%28;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34,inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%22;inst:main:%23;inst:main:%25;inst:main:%26;inst:main:%28;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34,inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%25;inst:main:%26;inst:main:%28;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34,read_write;enablement,strong,strong,strong,none,inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%25;inst:main:%26;inst:main:%28;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34,,inst,mixed,expansion,gvn->loop-unroll;loop-unroll->gvn,"in function main:
+  in block %5 / %5:
+    >   %.04 = phi double [ %2, %0 ], [ %7, %5 ]
+    >   %.051 = phi i32 [ 1, %0 ], [ %13, %5 ]
+    >   %6 = phi double [ %4, %0 ], [ %12, %5 ]
+    >   %7 = fneg double %.04
+    >   %8 = fsub double %6, %.04
+    >   store double %8, ptr @sa, align 8
+    >   %9 = fsub double %8, %7
+    >   store double %9, ptr @sa, align 8
+    >   %10 = fsub double %9, %.04
+    >   store double %10, ptr @sa, align 8
+    >   %11 = fsub double %10, %7
+    >   store double %11, ptr @sa, align 8
+    >   %12 = fsub double %11, %.04
+    >   store double %12, ptr @sa, align 8
+    >   %13 = add nuw nsw i32 %.051, 5
+    >   %exitcond.4 = icmp ne i32 %13, 156250001
+    >   br i1 %exitcond.4, label %5, label %14, !llvm.loop !7
+    <   %.04 = phi double [ %2, %0 ], [ %13, %5 ]
+    <   %.051 = phi i32 [ 1, %0 ], [ %15, %5 ]
+    <   %6 = phi double [ %4, %0 ], [ %14, %5 ]
+    <   %7 = fneg double %.04
+    <   %8 = fsub double %6, %.04
+    <   store double %8, ptr @sa, align 8
+    <   %9 = fsub double %8, %7
+    <   store double %9, ptr @sa, align 8
+    <   %10 = fneg double %.04
+    <   %11 = fsub double %9, %.04
+    <   store double %11, ptr @sa, align 8
+    <   %12 = fsub double %11, %10
+    <   store double %12, ptr @sa, align 8
+    <   %13 = fneg double %.04
+    <   %14 = fsub double %12, %.04
+    <   store double %14, ptr @sa, align 8
+    <   %15 = add nuw nsw i32 %.051, 5
+    <   %exitcond.4 = icmp ne i32 %15, 156250001
+    <   br i1 %exitcond.4, label %5, label %16, !llvm.loop !7"
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,indvars->instcombine,"in function main:
+  in block %10 / %10:
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+indvars,licm,dependent,true,false_positive,,,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,read_write,strong,strong,none,none,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,,inst,write_write_only,,,
+indvars,loop-rotate,dependent,true,false_positive,,,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,read_write,strong,strong,none,none,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,,inst,write_write_only,,,
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,dependent,false,agree_dependent,,,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,,inst,write_write_only,expansion,loop-unroll->indvars,"in function main:
+  in block %17 / %17:
+    >   %.018 = phi double [ %.lcssa2, %16 ], [ %27, %17 ]
+    >   %.027 = phi double [ 0.000000e+00, %16 ], [ %28, %17 ]
+    >   %.036 = phi double [ 0.000000e+00, %16 ], [ %30, %17 ]
+    >   %.165 = phi i32 [ 1, %16 ], [ %31, %17 ]
+    >   %18 = phi double [ %.lcssa2, %16 ], [ %26, %17 ]
+    >   %19 = fneg double %.lcssa3
+    >   %20 = fsub double %18, %.lcssa3
+    >   store double %20, ptr @sa, align 8
+    <   %.19 = phi double [ %.lcssa3, %16 ], [ %.19, %17 ]
+    <   %.018 = phi double [ %.lcssa2, %16 ], [ %27, %17 ]
+    <   %.027 = phi double [ 0.000000e+00, %16 ], [ %28, %17 ]
+    <   %.036 = phi double [ 0.000000e+00, %16 ], [ %30, %17 ]
+    <   %.165 = phi i32 [ 1, %16 ], [ %31, %17 ]
+    <   %18 = phi double [ %.lcssa2, %16 ], [ %26, %17 ]
+    <   %19 = fneg double %.19
+    <   %20 = fsub double %18, %.19
+    <   store double %20, ptr @sa, align 8
+        %21 = load double, ptr @two, align 8
+    >   %22 = fadd double %.018, %21
+    <   %22 = fadd double %.018, %21
+        %23 = call double @llvm.fmuladd.f64(double %.19, double %22, double %.027)
+    >   %24 = fdiv double %.lcssa3, %22
+    >   %25 = fsub double %.036, %24
+    >   %26 = fsub double %20, %19
+    >   store double %26, ptr @sa, align 8
+    >   %27 = fadd double %22, %21
+    <   %24 = fdiv double %.19, %22
+    <   %25 = fsub double %.036, %24
+    <   %26 = fsub double %20, %19
+    <   store double %26, ptr @sa, align 8
+    <   %27 = fadd double %22, %21
+        %28 = call double @llvm.fmuladd.f64(double %19, double %27, double %23)
+    >   %29 = fdiv double %19, %27
+    >   %30 = fsub double %25, %29
+    >   %31 = add nuw nsw i32 %.165, 2
+    >   %exitcond4.1 = icmp ne i32 %31, 156250001
+    >   br i1 %exitcond4.1, label %17, label %32, !llvm.loop !9
+    <   %29 = fdiv double %19, %27
+    <   %30 = fsub double %25, %29
+    <   %31 = add nuw nsw i32 %.165, 2
+    <   %exitcond4.1 = icmp ne i32 %31, 156250001
+    <   br i1 %exitcond4.1, label %17, label %32, !llvm.loop !9"
+indvars,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,licm->instcombine,"in function main:
+  in block %10 / %10:
+    >   store double %8, ptr @sa, align 8
+    <   %.lcssa4 = phi double [ %8, %5 ]
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]
+    <   store double %.lcssa4, ptr @sa, align 8"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-rotate->instcombine,"in function main:
+  in block %10 / %10:
+    <   %.lcssa3 = phi double [ %7, %5 ]
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,inst:main:%exitcond;inst:main:%exitcond4,inst:main:%exitcond;inst:main:%exitcond4,inst:main:%exitcond;inst:main:%exitcond4,read_write;enablement,strong,strong,strong,none,inst:main:%exitcond;inst:main:%exitcond4,,inst,symmetric_rewrite,expansion,instcombine->loop-unroll;loop-unroll->instcombine,"in function main:
+  in block %5 / %5:
+    >   %.04 = phi double [ %2, %0 ], [ %11, %5 ]
+    >   %.051 = phi i32 [ 1, %0 ], [ %13, %5 ]
+    >   %6 = phi double [ %4, %0 ], [ %12, %5 ]
+    >   %7 = fsub double %6, %.04
+    >   %8 = fadd double %7, %.04
+    >   %9 = fsub double %8, %.04
+    >   %10 = fadd double %9, %.04
+    >   %11 = fneg double %.04
+    >   %12 = fsub double %10, %.04
+    >   store double %12, ptr @sa, align 8
+    >   %13 = add nuw nsw i32 %.051, 5
+    >   %exitcond.4.not = icmp eq i32 %13, 156250001
+    >   br i1 %exitcond.4.not, label %14, label %5, !llvm.loop !7
+    <   %.04 = phi double [ %2, %0 ], [ %13, %5 ]
+    <   %.051 = phi i32 [ 1, %0 ], [ %15, %5 ]
+    <   %6 = phi double [ %4, %0 ], [ %14, %5 ]
+    <   %7 = fneg double %.04
+    <   %8 = fsub double %6, %.04
+    <   store double %8, ptr @sa, align 8
+    <   %9 = fsub double %8, %7
+    <   store double %9, ptr @sa, align 8
+    <   %10 = fneg double %.04
+    <   %11 = fsub double %9, %.04
+    <   store double %11, ptr @sa, align 8
+    <   %12 = fsub double %11, %10
+    <   store double %12, ptr @sa, align 8
+    <   %13 = fneg double %.04
+    <   %14 = fsub double %12, %.04
+    <   store double %14, ptr @sa, align 8
+    <   %15 = add nuw nsw i32 %.051, 5
+    <   %exitcond.not.4 = icmp eq i32 %15, 156250001
+    <   br i1 %exitcond.not.4, label %16, label %5, !llvm.loop !7"
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,dependent,true,false_positive,,,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,read_write,strong,strong,none,none,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,,inst,write_write_only,,,
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,false,agree_dependent,inst:main:%12;inst:main:%15;inst:main:bb0:2:br;inst:main:bb2:2:br,inst:main:%12;inst:main:%15;inst:main:bb0:2:br;inst:main:bb2:2:br,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3;inst:main:%11;inst:main:%12;inst:main:%15;inst:main:bb0:2:br;inst:main:bb2:2:br,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3;inst:main:%11;inst:main:%12;inst:main:%15,inst:main:bb0:2:br;inst:main:bb2:2:br,inst,mixed,expansion,licm->loop-unroll;loop-unroll->licm,"in function main:
+  in block %5 / %5:
+    >   %.04 = phi double [ %2, %0 ], [ %13, %5 ]
+    >   %.051 = phi i32 [ 1, %0 ], [ %15, %5 ]
+    >   %6 = phi double [ %4, %0 ], [ %14, %5 ]
+    >   %7 = fneg double %.04
+    >   %8 = fsub double %6, %.04
+    >   %9 = fsub double %8, %7
+    >   %10 = fneg double %.04
+    >   %11 = fsub double %9, %.04
+    >   %12 = fsub double %11, %10
+    >   %13 = fneg double %.04
+    >   %14 = fsub double %12, %.04
+    >   %15 = add nuw nsw i32 %.051, 5
+    >   %exitcond.4 = icmp ne i32 %15, 156250001
+    >   br i1 %exitcond.4, label %5, label %16, !llvm.loop !7
+    <   %.04 = phi double [ %2, %0 ], [ %.04, %5 ]
+    <   %.051 = phi i32 [ 1, %0 ], [ %19, %5 ]
+    <   %6 = phi double [ %4, %0 ], [ %18, %5 ]
+    <   %7 = fneg double %.04
+    <   %8 = fsub double %6, %.04
+    <   %9 = fsub double %8, %7
+    <   %10 = fneg double %.04
+    <   %11 = fsub double %9, %.04
+    <   %12 = fsub double %11, %10
+    <   %13 = fneg double %.04
+    <   %14 = fsub double %12, %.04
+    <   %15 = fsub double %14, %13
+    <   %16 = fneg double %.04
+    <   %17 = fsub double %15, %.04
+    <   %18 = fsub double %17, %16
+    <   %19 = add nuw nsw i32 %.051, 8
+    <   %exitcond.7 = icmp ne i32 %19, 156250001
+    <   br i1 %exitcond.7, label %5, label %20, !llvm.loop !7"
+licm,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->simplifycfg,"in function main:
+  in block %10 / %10:
+    <   %.lcssa2 = phi double [ %8, %5 ]"
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,,,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%.lcssa1;inst:main:%.lcssa2;inst:main:%.lcssa3,,inst,write_write_only,expansion,loop-unroll->loop-rotate,"in function main:
+  in block %17 / %17:
+    >   %.018 = phi double [ %.lcssa2, %16 ], [ %27, %17 ]
+    >   %.027 = phi double [ 0.000000e+00, %16 ], [ %28, %17 ]
+    >   %.036 = phi double [ 0.000000e+00, %16 ], [ %30, %17 ]
+    >   %.165 = phi i32 [ 1, %16 ], [ %31, %17 ]
+    >   %18 = phi double [ %.lcssa2, %16 ], [ %26, %17 ]
+    >   %19 = fneg double %.lcssa3
+    >   %20 = fsub double %18, %.lcssa3
+    >   store double %20, ptr @sa, align 8
+    <   %.19 = phi double [ %.lcssa3, %16 ], [ %.19, %17 ]
+    <   %.018 = phi double [ %.lcssa2, %16 ], [ %27, %17 ]
+    <   %.027 = phi double [ 0.000000e+00, %16 ], [ %28, %17 ]
+    <   %.036 = phi double [ 0.000000e+00, %16 ], [ %30, %17 ]
+    <   %.165 = phi i32 [ 1, %16 ], [ %31, %17 ]
+    <   %18 = phi double [ %.lcssa2, %16 ], [ %26, %17 ]
+    <   %19 = fneg double %.19
+    <   %20 = fsub double %18, %.19
+    <   store double %20, ptr @sa, align 8
+        %21 = load double, ptr @two, align 8
+    >   %22 = fadd double %.018, %21
+    <   %22 = fadd double %.018, %21
+        %23 = call double @llvm.fmuladd.f64(double %.19, double %22, double %.027)
+    >   %24 = fdiv double %.lcssa3, %22
+    >   %25 = fsub double %.036, %24
+    >   %26 = fsub double %20, %19
+    >   store double %26, ptr @sa, align 8
+    >   %27 = fadd double %22, %21
+    <   %24 = fdiv double %.19, %22
+    <   %25 = fsub double %.036, %24
+    <   %26 = fsub double %20, %19
+    <   store double %26, ptr @sa, align 8
+    <   %27 = fadd double %22, %21
+        %28 = call double @llvm.fmuladd.f64(double %19, double %27, double %23)
+    >   %29 = fdiv double %19, %27
+    >   %30 = fsub double %25, %29
+    >   %31 = add nuw nsw i32 %.165, 2
+    >   %exitcond4.1 = icmp ne i32 %31, 156250001
+    >   br i1 %exitcond4.1, label %17, label %32, !llvm.loop !9
+    <   %29 = fdiv double %19, %27
+    <   %30 = fsub double %25, %29
+    <   %31 = add nuw nsw i32 %.165, 2
+    <   %exitcond4.1 = icmp ne i32 %31, 156250001
+    <   br i1 %exitcond4.1, label %17, label %32, !llvm.loop !9"
+loop-rotate,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->loop-simplify,"in function main:
+  in block %17 / %17:
+    >   %.018 = phi double [ %.lcssa2, %16 ], [ %27, %17 ]
+    >   %.027 = phi double [ 0.000000e+00, %16 ], [ %28, %17 ]
+    >   %.036 = phi double [ 0.000000e+00, %16 ], [ %30, %17 ]
+    >   %.165 = phi i32 [ 1, %16 ], [ %31, %17 ]
+    >   %18 = phi double [ %.lcssa2, %16 ], [ %26, %17 ]
+    >   %19 = fneg double %.lcssa3
+    >   %20 = fsub double %18, %.lcssa3
+    >   store double %20, ptr @sa, align 8
+    <   %.19 = phi double [ %.lcssa3, %16 ], [ %.19, %17 ]
+    <   %.018 = phi double [ %.lcssa2, %16 ], [ %27, %17 ]
+    <   %.027 = phi double [ 0.000000e+00, %16 ], [ %28, %17 ]
+    <   %.036 = phi double [ 0.000000e+00, %16 ], [ %30, %17 ]
+    <   %.165 = phi i32 [ 1, %16 ], [ %31, %17 ]
+    <   %18 = phi double [ %.lcssa2, %16 ], [ %26, %17 ]
+    <   %19 = fneg double %.19
+    <   %20 = fsub double %18, %.19
+    <   store double %20, ptr @sa, align 8
+        %21 = load double, ptr @two, align 8
+    >   %22 = fadd double %.018, %21
+    <   %22 = fadd double %.018, %21
+        %23 = call double @llvm.fmuladd.f64(double %.19, double %22, double %.027)
+    >   %24 = fdiv double %.lcssa3, %22
+    >   %25 = fsub double %.036, %24
+    >   %26 = fsub double %20, %19
+    >   store double %26, ptr @sa, align 8
+    >   %27 = fadd double %22, %21
+    <   %24 = fdiv double %.19, %22
+    <   %25 = fsub double %.036, %24
+    <   %26 = fsub double %20, %19
+    <   store double %26, ptr @sa, align 8
+    <   %27 = fadd double %22, %21
+        %28 = call double @llvm.fmuladd.f64(double %19, double %27, double %23)
+    >   %29 = fdiv double %19, %27
+    >   %30 = fsub double %25, %29
+    >   %31 = add nuw nsw i32 %.165, 2
+    >   %exitcond4.1 = icmp ne i32 %31, 156250001
+    >   br i1 %exitcond4.1, label %17, label %32, !llvm.loop !9
+    <   %29 = fdiv double %19, %27
+    <   %30 = fsub double %25, %29
+    <   %31 = add nuw nsw i32 %.165, 2
+    <   %exitcond4.1 = icmp ne i32 %31, 156250001
+    <   br i1 %exitcond4.1, label %17, label %32, !llvm.loop !9"
+loop-simplify,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,

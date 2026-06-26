@@ -1,0 +1,2090 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,dependent,true,false_positive,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,read_write,strong,strong,none,none,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,,inst,symmetric_rewrite,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,indvars->early-cse,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function valid_data:
+  in block %13 / %13:
+    <   %.0.lcssa = phi i32 [ %7, %8 ], [ %7, %3 ]
+        %14 = load i32, ptr @ncol, align 4
+    >   %15 = icmp eq i32 %7, %14
+    >   %16 = zext i1 %15 to i32
+    >   ret i32 %16
+    <   %15 = icmp eq i32 %.0.lcssa, %14
+    <   %16 = zext i1 %15 to i32
+    <   ret i32 %16
+
+in function get_value:
+  in block %12 / %12:
+    >   %13 = load i32, ptr %.0, align 8
+    >   ret i32 %13
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %13
+
+in function make_data:
+  in block %.preheader:
+    <   %indvars.iv.lcssa = phi i64 [ %indvars.iv, %8 ]
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %50 ]
+  in block %50 / %50:
+    >   %51 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %9 ]
+    <   %.1.lcssa = phi ptr [ %.1, %9 ]
+    <   %51 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %30 ]
+  in block %30 / %30:
+    >   %31 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %7 ]
+    <   %.1.lcssa = phi ptr [ %.1, %7 ]
+    <   %31 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %13 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %7 ], [ %.01, %3 ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %13 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+
+in function get_real_move:
+  in block %15 / %15:
+    >   store i32 %9, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %9, %5 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %25 / %25:
+    <   %.01.lcssa = phi i32 [ %.01, %13 ]
+        call void @dump_play(ptr noundef %9)
+    >   %26 = sub nsw i32 1, %.01
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+early-cse,instcombine,dependent,true,false_positive,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,read_write,strong,strong,none,none,inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select,,inst,symmetric_rewrite,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,licm->early-cse,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %.critedge:
+    >   %14 = icmp slt i32 %5, 0
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.lcssa = phi i32 [ %5, %7 ], [ %5, %4 ]
+    <   %14 = icmp slt i32 %.lcssa, 0
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function valid_data:
+  in block %13 / %13:
+    <   %.0.lcssa = phi i32 [ %.0, %6 ], [ %.0, %4 ]
+        %14 = load i32, ptr @ncol, align 4
+    >   %15 = icmp eq i32 %.0, %14
+    >   %16 = zext i1 %15 to i32
+    >   ret i32 %16
+    <   %15 = icmp eq i32 %.0.lcssa, %14
+    <   %16 = zext i1 %15 to i32
+    <   ret i32 %16
+
+in function get_value:
+  in block %12 / %12:
+    >   %13 = load i32, ptr %.0, align 8
+    >   ret i32 %13
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %13
+
+in function make_data:
+  in block %.preheader:
+    <   %.0.lcssa = phi i32 [ %.0, %7 ]
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %50 ]
+  in block %50 / %50:
+    >   %51 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %9 ]
+    <   %.1.lcssa = phi ptr [ %.1, %9 ]
+    <   %51 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %30 ]
+  in block %30 / %30:
+    >   %31 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %7 ]
+    <   %.1.lcssa = phi ptr [ %.1, %7 ]
+    <   %31 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %13 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %7 ], [ %.01, %3 ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %13 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+
+in function get_real_move:
+  in block %4 / %4:
+    <   %.promoted = load i32, ptr %3, align 4
+
+in function main:
+  in block %25 / %25:
+    <   %.01.lcssa = phi i32 [ %.01, %13 ]
+        call void @dump_play(ptr noundef %9)
+    >   %26 = sub nsw i32 1, %.01
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+early-cse,loop-rotate,dependent,false,agree_dependent,inst:in_wanted:%12,inst:in_wanted:%12,inst:in_wanted:%12,read_write;enablement,strong,strong,strong,none,inst:in_wanted:%12,,inst,symmetric_rewrite,expansion,early-cse->loop-rotate;loop-rotate->early-cse,"in function next_data:
+  in block %.critedge:
+    >   %.0.lcssa = phi i32 [ %.1, %..critedge_crit_edge ], [ 0, %1 ]
+    <   %.0.lcssa = phi i32 [ %split, %..critedge_crit_edge ], [ 0, %1 ]
+  in block %..critedge_crit_edge:
+    <   %split = phi i32 [ %.1, %14 ]
+
+in function equal_data:
+  in block %.critedge:
+    >   %14 = icmp slt i32 %5, 0
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.lcssa = phi i32 [ %5, %7 ], [ %5, %4 ]
+    <   %14 = icmp slt i32 %.lcssa, 0
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function valid_data:
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.02, %5 ]
+  in block %._crit_edge3:
+    <   %split4 = phi i32 [ %11, %10 ]
+  in block %14 / %14:
+    >   %.0.lcssa = phi i32 [ %.02, %._crit_edge ], [ %11, %._crit_edge3 ], [ 0, %1 ]
+    <   %.0.lcssa = phi i32 [ %split, %._crit_edge ], [ %split4, %._crit_edge3 ], [ 0, %1 ]
+        %15 = load i32, ptr @ncol, align 4
+    >   %16 = icmp eq i32 %.0.lcssa, %15
+    >   %17 = zext i1 %16 to i32
+    >   ret i32 %17
+    <   %16 = icmp eq i32 %.0.lcssa, %15
+    <   %17 = zext i1 %16 to i32
+    <   ret i32 %17
+
+in function get_value:
+  in block %16 / %16:
+    >   %.0.lcssa = phi ptr [ %10, %._crit_edge ], [ %2, %1 ]
+    >   %17 = load i32, ptr %.0.lcssa, align 8
+    >   ret i32 %17
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %2, %1 ]
+    <   %17 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %17
+  in block %._crit_edge:
+    <   %split = phi ptr [ %10, %8 ]
+
+in function make_data:
+  in block %.preheader:
+    >   %.0.lcssa = phi i32 [ %14, %..preheader_crit_edge ], [ 0, %2 ]
+    <   %.0.lcssa = phi i32 [ %split, %..preheader_crit_edge ], [ 0, %2 ]
+        %8 = load i32, ptr @ncol, align 4
+    >   %9 = icmp ne i32 %.0.lcssa, %8
+    >   br i1 %9, label %.lr.ph3, label %22
+    <   %9 = icmp ne i32 %.0.lcssa, %8
+    <   br i1 %9, label %.lr.ph3, label %22
+  in block %..preheader_crit_edge:
+    <   %split = phi i32 [ %14, %10 ]
+
+in function make_list:
+  in block %50 / %50:
+    >   %.15.lcssa = phi i32 [ %.3, %._crit_edge ], [ %.045, %.preheader ]
+    >   %.1.lcssa = phi ptr [ %.2, %._crit_edge ], [ %.06, %.preheader ]
+    <   %.15.lcssa = phi i32 [ %split, %._crit_edge ], [ %.045, %.preheader ]
+    <   %.1.lcssa = phi ptr [ %split4, %._crit_edge ], [ %.06, %.preheader ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.3, %46 ]
+    <   %split4 = phi ptr [ %.2, %46 ]
+
+in function make_wanted:
+  in block %30 / %30:
+    >   %.12.lcssa = phi i32 [ %.23, %._crit_edge ], [ %.015, %.preheader ]
+    >   %.1.lcssa = phi ptr [ %.2, %._crit_edge ], [ %.06, %.preheader ]
+    <   %.12.lcssa = phi i32 [ %split, %._crit_edge ], [ %.015, %.preheader ]
+    <   %.1.lcssa = phi ptr [ %split4, %._crit_edge ], [ %.06, %.preheader ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.23, %26 ]
+    <   %split4 = phi ptr [ %.2, %26 ]
+
+in function get_good_move:
+  in block %18 / %18:
+    >   %.0 = phi ptr [ %17, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %17, %.critedge ], [ null, %1 ]
+  in block %..critedge_crit_edge:
+    <   %split = phi ptr [ %.011, %6 ]
+  in block %..critedge_crit_edge2:
+    <   %split3 = phi ptr [ %12, %11 ]
+  in block %.critedge:
+    >   %.01.lcssa = phi ptr [ %.011, %..critedge_crit_edge ], [ %12, %..critedge_crit_edge2 ], [ %0, %.preheader ]
+    >   %16 = load ptr, ptr %.01.lcssa, align 8
+    <   %.01.lcssa = phi ptr [ %split, %..critedge_crit_edge ], [ %split3, %..critedge_crit_edge2 ], [ %0, %.preheader ]
+    <   %16 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %16 / %16:
+    >   %.0.lcssa = phi ptr [ %10, %._crit_edge ], [ %1, %2 ]
+    >   %17 = getelementptr inbounds nuw %struct._play.1, ptr %.0.lcssa, i32 0, i32 2
+    >   %18 = load ptr, ptr %17, align 8
+    >   ret ptr %18
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %1, %2 ]
+    <   %17 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %18 = load ptr, ptr %17, align 8
+    <   ret ptr %18
+  in block %._crit_edge:
+    <   %split = phi ptr [ %10, %8 ]
+
+in function get_real_move:
+  in block %4 / %4:
+    >   %5 = load i32, ptr %0, align 4
+    >   %6 = load i32, ptr %1, align 4
+    >   %7 = icmp eq i32 %5, %6
+    >   br i1 %7, label %.lr.ph, label %17
+    <   %5 = load i32, ptr %3, align 4
+    <   %6 = sext i32 %5 to i64
+    <   %7 = getelementptr inbounds i32, ptr %0, i64 %6
+    <   %8 = load i32, ptr %7, align 4
+    <   %9 = getelementptr inbounds i32, ptr %1, i64 %6
+    <   %10 = load i32, ptr %9, align 4
+    <   %11 = icmp eq i32 %8, %10
+    <   br i1 %11, label %.lr.ph, label %22
+
+in function main:
+  in block %25 / %24:
+    >   %.01.lcssa = phi i32 [ %.1, %._crit_edge ], [ 0, %0 ]
+    <   %.01.lcssa = phi i32 [ %split, %._crit_edge ], [ 0, %0 ]
+  in block %14 / %14:
+    >   %.012 = phi i32 [ 0, %.lr.ph ], [ %.1, %23 ]
+    <   %.012 = phi i32 [ 0, %.lr.ph ], [ %.1, %23 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.1, %23 ]
+  in block %23 / %23:
+    >   br i1 %17, label %14, label %._crit_edge, !llvm.loop !7
+    <   %24 = icmp ne ptr %16, null
+    <   br i1 %24, label %14, label %._crit_edge, !llvm.loop !7"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-unroll->early-cse,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %.critedge:
+    >   %14 = icmp slt i32 %5, 0
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.lcssa = phi i32 [ %5, %7 ], [ %5, %4 ]
+    <   %14 = icmp slt i32 %.lcssa, 0
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function valid_data:
+  in block %13 / %13:
+    <   %.0.lcssa = phi i32 [ %.0, %6 ], [ %.0, %3 ]
+        %14 = load i32, ptr @ncol, align 4
+    >   %15 = icmp eq i32 %.0, %14
+    >   %16 = zext i1 %15 to i32
+    >   ret i32 %16
+    <   %15 = icmp eq i32 %.0.lcssa, %14
+    <   %16 = zext i1 %15 to i32
+    <   ret i32 %16
+
+in function get_value:
+  in block %12 / %12:
+    >   %13 = load i32, ptr %.0, align 8
+    >   ret i32 %13
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %13
+
+in function make_data:
+  in block %.preheader:
+    <   %.0.lcssa = phi i32 [ %.0, %7 ]
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %50 ]
+  in block %50 / %50:
+    >   %51 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %9 ]
+    <   %.1.lcssa = phi ptr [ %.1, %9 ]
+    <   %51 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %30 ]
+  in block %30 / %30:
+    >   %31 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %7 ]
+    <   %.1.lcssa = phi ptr [ %.1, %7 ]
+    <   %31 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %13 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %7 ], [ %.01, %3 ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %13 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+
+in function get_real_move:
+  in block %15 / %15:
+    >   store i32 %9, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %9, %5 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %25 / %25:
+    <   %.01.lcssa = phi i32 [ %.01, %13 ]
+        call void @dump_play(ptr noundef %9)
+    >   %26 = sub nsw i32 1, %.01
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+early-cse,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,early-cse->simplifycfg,"in function in_wanted:
+  in block %12 / %11:
+    >   %.0 = phi i32 [ 0, %3 ], [ 1, %4 ]
+    >   ret i32 %.0
+    <   %.0 = phi i32 [ 1, %11 ], [ 0, %3 ]
+    <   ret i32 %.0
+  in block %11 / %11:
+    >   %.0 = phi i32 [ 0, %3 ], [ 1, %4 ]
+    >   ret i32 %.0
+    <   br label %12"
+gvn,indvars,dependent,false,agree_dependent,inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,read_write;enablement,strong,strong,strong,none,inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,,inst,mixed,expansion,gvn->indvars;indvars->gvn,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function valid_data:
+  in block %1 / %1:
+    <   %3 = zext i32 %.pre to i64
+
+in function get_value:
+  in block %12 / %12:
+    >   %13 = load i32, ptr %.0, align 8
+    >   ret i32 %13
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %13
+
+in function show_data:
+  in block %2 / %2:
+    >   %3 = phi i32 [ %16, %15 ], [ %.pre2, %1 ]
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %15 ], [ 0, %1 ]
+    >   %4 = zext i32 %3 to i64
+    >   %5 = icmp ne i64 %indvars.iv, %4
+    >   br i1 %5, label %6, label %17
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %16 ], [ 0, %1 ]
+    <   %3 = phi i32 [ %.pre1, %1 ], [ %17, %16 ]
+    <   %4 = zext i32 %3 to i64
+    <   %5 = icmp ne i64 %indvars.iv, %4
+    <   br i1 %5, label %6, label %18
+
+in function make_data:
+  in block %.preheader:
+    <   %10 = sext i32 %1 to i64
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %50 ]
+  in block %50 / %50:
+    >   %51 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %9 ]
+    <   %.1.lcssa = phi ptr [ %.1, %9 ]
+    <   %51 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %30 ]
+  in block %30 / %30:
+    >   %31 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %7 ]
+    <   %.1.lcssa = phi ptr [ %.1, %7 ]
+    <   %31 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %13 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %7 ], [ %.01, %3 ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %13 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+
+in function get_real_move:
+  in block %5 / %5:
+    >   %6 = phi i32 [ %14, %13 ], [ 0, %4 ]
+    >   %7 = sext i32 %6 to i64
+    >   %8 = getelementptr inbounds i32, ptr %0, i64 %7
+    >   %9 = load i32, ptr %8, align 4
+    >   %10 = getelementptr inbounds i32, ptr %1, i64 %7
+    >   %11 = load i32, ptr %10, align 4
+    >   %12 = icmp eq i32 %9, %11
+    >   br i1 %12, label %13, label %15
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %11 ], [ 0, %4 ]
+    <   %6 = getelementptr inbounds i32, ptr %0, i64 %indvars.iv
+    <   %7 = load i32, ptr %6, align 4
+    <   %8 = getelementptr inbounds i32, ptr %1, i64 %indvars.iv
+    <   %9 = load i32, ptr %8, align 4
+    <   %10 = icmp eq i32 %7, %9
+    <   br i1 %10, label %11, label %13
+
+in function main:
+  in block %25 / %25:
+    <   %.01.lcssa = phi i32 [ %.01, %13 ]
+        call void @dump_play(ptr noundef %9)
+    >   %26 = sub nsw i32 1, %.01
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+gvn,instcombine,dependent,false,agree_dependent,inst:get_real_move:%6;inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select;inst:make_list:%29;inst:make_list:%30;inst:make_list:%32;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,inst:get_real_move:%6;inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select;inst:make_list:%29;inst:make_list:%30;inst:make_list:%32;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,inst:get_real_move:%6;inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select;inst:make_list:%29;inst:make_list:%30;inst:make_list:%31;inst:make_list:%32;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%13;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,read_write;enablement,strong,strong,strong,none,inst:get_real_move:%6;inst:in_wanted:%.0;inst:in_wanted:%12;inst:in_wanted:%spec.select;inst:make_list:%29;inst:make_list:%30;inst:make_list:%31;inst:make_list:%32;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%13;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,,inst,mixed,expansion,instcombine->gvn;gvn->instcombine,"in function next_data:
+  in block %2 / %2:
+    >   %.01 = phi i32 [ 0, %1 ], [ %.12, %15 ]
+    >   %.0 = phi i32 [ 0, %1 ], [ %.1, %15 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %.12, %15 ]
+    <   %.0 = phi i32 [ 0, %1 ], [ %.1, %15 ]
+        %3 = load i32, ptr @ncol, align 4
+    >   %4 = icmp ne i32 %.01, %3
+    >   %.not = icmp eq i32 %.0, 0
+    >   %or.cond = and i1 %4, %.not
+    >   br i1 %or.cond, label %5, label %.critedge
+    <   %4 = icmp ne i32 %.01, %3
+    <   %.not = icmp eq i32 %.0, 0
+    <   %or.cond = select i1 %4, i1 %.not, i1 false
+    <   br i1 %or.cond, label %5, label %.critedge
+
+in function valid_data:
+  in block %11 / %11:
+    >   %12 = icmp eq i32 %.0, %.pre
+    >   %13 = zext i1 %12 to i32
+    >   ret i32 %13
+    <   %12 = zext i1 %.not to i32
+    <   ret i32 %12
+
+in function make_data:
+  in block %13 / %13:
+    >   %.1 = phi i32 [ %18, %15 ], [ %1, %7 ]
+    <   %.1 = phi i32 [ %18, %15 ], [ %1, %7 ]
+  in block %15 / %15:
+    >   %16 = sext i32 %.1 to i64
+    >   %17 = getelementptr inbounds [4 x i8], ptr %6, i64 %16
+    >   store i32 %0, ptr %17, align 4
+    <   %16 = zext nneg i32 %.1 to i64
+    <   %17 = getelementptr inbounds nuw [4 x i8], ptr %6, i64 %16
+    <   store i32 %0, ptr %17, align 4"
+gvn,licm,dependent,false,agree_dependent,inst:get_real_move:%6;inst:valid_data:%4,inst:get_real_move:%6;inst:valid_data:%4,inst:get_real_move:%6;inst:valid_data:%4,read_write;enablement,strong,strong,strong,none,inst:get_real_move:%6;inst:valid_data:%4,,inst,symmetric_rewrite,expansion,licm->gvn,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %.critedge:
+    >   %14 = icmp slt i32 %5, 0
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.lcssa = phi i32 [ %5, %7 ], [ %5, %4 ]
+    <   %14 = icmp slt i32 %.lcssa, 0
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function valid_data:
+  in block %12 / %13:
+    >   %.0.lcssa = phi i32 [ %.0, %6 ], [ %3, %4 ]
+    >   %14 = icmp eq i32 %.0.lcssa, %3
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %3 ]
+    <   %13 = icmp eq i32 %.0.lcssa, %.pre
+    <   %14 = zext i1 %13 to i32
+    <   ret i32 %14
+
+in function get_value:
+  in block %12 / %12:
+    >   %13 = load i32, ptr %.0, align 8
+    >   ret i32 %13
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %13
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %50 ]
+  in block %50 / %50:
+    >   %51 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %9 ]
+    <   %.1.lcssa = phi ptr [ %.1, %9 ]
+    <   %51 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %30 ]
+  in block %30 / %30:
+    >   %31 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %7 ]
+    <   %.1.lcssa = phi ptr [ %.1, %7 ]
+    <   %31 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %13 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %7 ], [ %.01, %3 ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %13 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+
+in function get_real_move:
+  in block %15 / %15:
+    >   store i32 %9, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %9, %5 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %25 / %25:
+    <   %.01.lcssa = phi i32 [ %.01, %13 ]
+        call void @dump_play(ptr noundef %9)
+    >   %26 = sub nsw i32 1, %.01
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+gvn,loop-rotate,dependent,false,agree_dependent,inst:get_real_move:%6;inst:in_wanted:%12;inst:make_list:%29;inst:make_list:%30;inst:make_list:%32;inst:show_data:%3;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%4;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,inst:get_real_move:%6;inst:in_wanted:%12;inst:make_list:%29;inst:make_list:%30;inst:make_list:%32;inst:show_data:%3;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%4;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,inst:get_real_move:%6;inst:in_wanted:%12;inst:make_list:%29;inst:make_list:%30;inst:make_list:%31;inst:make_list:%32;inst:show_data:%16;inst:show_data:%3;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%13;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%4;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,read_write;enablement,strong,strong,strong,none,inst:get_real_move:%6;inst:in_wanted:%12;inst:make_list:%29;inst:make_list:%30;inst:make_list:%31;inst:make_list:%32;inst:show_data:%16;inst:show_data:%3;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%13;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%4;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9,,inst,mixed,expansion,gvn->loop-rotate;loop-rotate->gvn,"in function next_data:
+  in block %.critedge:
+    >   %.0.lcssa = phi i32 [ %.1, %..critedge_crit_edge ], [ 0, %1 ]
+    <   %.0.lcssa = phi i32 [ %split, %..critedge_crit_edge ], [ 0, %1 ]
+  in block %..critedge_crit_edge:
+    <   %split = phi i32 [ %.1, %14 ]
+
+in function equal_data:
+  in block %.critedge:
+    >   %14 = icmp slt i32 %5, 0
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.lcssa = phi i32 [ %5, %7 ], [ %5, %4 ]
+    <   %14 = icmp slt i32 %.lcssa, 0
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function valid_data:
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.02, %4 ]
+  in block %._crit_edge3:
+    <   %split4 = phi i32 [ %10, %9 ]
+  in block %12 / %13:
+    >   %.0.lcssa = phi i32 [ %.02, %._crit_edge ], [ %3, %._crit_edge3 ], [ 0, %1 ]
+    >   %14 = icmp eq i32 %.0.lcssa, %3
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.0.lcssa = phi i32 [ %split, %._crit_edge ], [ %split4, %._crit_edge3 ], [ 0, %1 ]
+    <   %13 = icmp eq i32 %.0.lcssa, %.pre
+    <   %14 = zext i1 %13 to i32
+    <   ret i32 %14
+
+in function get_value:
+  in block %16 / %16:
+    >   %.0.lcssa = phi ptr [ %10, %._crit_edge ], [ %2, %1 ]
+    >   %17 = load i32, ptr %.0.lcssa, align 8
+    >   ret i32 %17
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %2, %1 ]
+    <   %17 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %17
+  in block %._crit_edge:
+    <   %split = phi ptr [ %10, %8 ]
+
+in function make_data:
+  in block %.lr.ph:
+    >   %.pre = load i32, ptr @nrow, align 4
+  in block %.preheader:
+    >   %.0.lcssa = phi i32 [ %1, %..preheader_crit_edge ], [ 0, %2 ]
+        %8 = load i32, ptr @ncol, align 4
+    >   %9 = icmp ne i32 %.0.lcssa, %8
+    >   br i1 %9, label %.lr.ph3, label %21
+    <   %9 = icmp ne i32 %1, %8
+    <   br i1 %9, label %.lr.ph3, label %22
+
+in function make_list:
+  in block %.preheader.lr.ph:
+    >   %.pre = load i32, ptr @ncol, align 4
+  in block %54 / %56:
+    >   %57 = phi ptr [ %.pre9, %._crit_edge7 ], [ null, %3 ]
+    <   %55 = load ptr, ptr %5, align 8
+        call void @free(ptr noundef %4)
+    >   %58 = icmp ne ptr %57, null
+    >   br i1 %58, label %59, label %62
+    <   %56 = icmp ne ptr %55, null
+    <   br i1 %56, label %57, label %60
+
+in function make_wanted:
+  in block %.preheader.lr.ph:
+    >   %.pre = load i32, ptr @ncol, align 4
+  in block %34 / %36:
+    >   %37 = phi ptr [ %.pre9, %._crit_edge7 ], [ null, %1 ]
+    <   %35 = load ptr, ptr %3, align 8
+        call void @free(ptr noundef %2)
+    >   store ptr %37, ptr @wanted, align 8
+    <   store ptr %35, ptr @wanted, align 8
+
+in function get_good_move:
+  in block %18 / %18:
+    >   %.0 = phi ptr [ %17, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %17, %.critedge ], [ null, %1 ]
+  in block %..critedge_crit_edge:
+    <   %split = phi ptr [ %.011, %6 ]
+  in block %..critedge_crit_edge2:
+    <   %split3 = phi ptr [ %12, %11 ]
+  in block %.critedge:
+    >   %.01.lcssa = phi ptr [ %.011, %..critedge_crit_edge ], [ %12, %..critedge_crit_edge2 ], [ %0, %.preheader ]
+    >   %16 = load ptr, ptr %.01.lcssa, align 8
+    <   %.01.lcssa = phi ptr [ %split, %..critedge_crit_edge ], [ %split3, %..critedge_crit_edge2 ], [ %0, %.preheader ]
+    <   %16 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %16 / %16:
+    >   %.0.lcssa = phi ptr [ %10, %._crit_edge ], [ %1, %2 ]
+    >   %17 = getelementptr inbounds nuw %struct._play.1, ptr %.0.lcssa, i32 0, i32 2
+    >   %18 = load ptr, ptr %17, align 8
+    >   ret ptr %18
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %1, %2 ]
+    <   %17 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %18 = load ptr, ptr %17, align 8
+    <   ret ptr %18
+  in block %._crit_edge:
+    <   %split = phi ptr [ %10, %8 ]
+
+in function get_real_move:
+  in block %17 / %17:
+    >   %.lcssa = phi i32 [ %13, %._crit_edge ], [ %5, %4 ]
+    >   store i32 %.lcssa, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %5, %4 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+  in block %._crit_edge:
+    <   %split = phi i32 [ %13, %8 ]
+
+in function main:
+  in block %25 / %24:
+    >   %.01.lcssa = phi i32 [ %.1, %._crit_edge ], [ 0, %0 ]
+    <   %.01.lcssa = phi i32 [ %split, %._crit_edge ], [ 0, %0 ]
+  in block %14 / %14:
+    >   %.012 = phi i32 [ 0, %.lr.ph ], [ %.1, %23 ]
+    <   %.012 = phi i32 [ 0, %.lr.ph ], [ %.1, %23 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.1, %23 ]
+  in block %23 / %23:
+    >   br i1 %17, label %14, label %._crit_edge, !llvm.loop !7
+    <   %24 = icmp ne ptr %16, null
+    <   br i1 %24, label %14, label %._crit_edge, !llvm.loop !7"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-unroll->gvn,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %.critedge:
+    >   %14 = icmp slt i32 %5, 0
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %.lcssa = phi i32 [ %5, %7 ], [ %5, %4 ]
+    <   %14 = icmp slt i32 %.lcssa, 0
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function valid_data:
+  in block %12 / %12:
+    >   %13 = icmp eq i32 %.0, %.pre
+    >   %14 = zext i1 %13 to i32
+    >   ret i32 %14
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %3 ]
+    <   %13 = icmp eq i32 %.0.lcssa, %.pre
+    <   %14 = zext i1 %13 to i32
+    <   ret i32 %14
+
+in function get_value:
+  in block %12 / %12:
+    >   %13 = load i32, ptr %.0, align 8
+    >   ret i32 %13
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %13
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %51, %50 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %50 ]
+  in block %50 / %50:
+    >   %51 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %9 ]
+    <   %.1.lcssa = phi ptr [ %.1, %9 ]
+    <   %51 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %31, %30 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %30 ]
+  in block %30 / %30:
+    >   %31 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %7 ]
+    <   %.1.lcssa = phi ptr [ %.1, %7 ]
+    <   %31 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %13 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %7 ], [ %.01, %3 ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %6 / %6:
+    >   %7 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %8 = load ptr, ptr %7, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %7 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %8 = load ptr, ptr %7, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %13 = getelementptr inbounds nuw %struct._play.1, ptr %.0, i32 0, i32 2
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %13 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+
+in function get_real_move:
+  in block %15 / %15:
+    >   store i32 %9, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %9, %5 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %25 / %25:
+    <   %.01.lcssa = phi i32 [ %.01, %13 ]
+        call void @dump_play(ptr noundef %9)
+    >   %26 = sub nsw i32 1, %.01
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+gvn,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,gvn->simplifycfg,"in function in_wanted:
+  in block %12 / %11:
+    >   %.0 = phi i32 [ 0, %3 ], [ 1, %4 ]
+    >   ret i32 %.0
+    <   %.0 = phi i32 [ 1, %11 ], [ 0, %3 ]
+    <   ret i32 %.0
+  in block %11 / %11:
+    >   %.0 = phi i32 [ 0, %3 ], [ 1, %4 ]
+    >   ret i32 %.0
+    <   br label %12
+
+in function make_list:
+  in block %9 / %9:
+    >   %.15 = phi i32 [ %.3, %47 ], [ %.04, %6 ]
+    >   %.01 = phi i32 [ %48, %47 ], [ 0, %6 ]
+    >   %.1 = phi ptr [ %.2, %47 ], [ %.0, %6 ]
+    <   %.15 = phi i32 [ %.3, %48 ], [ %.04, %6 ]
+    <   %.01 = phi i32 [ %49, %48 ], [ 0, %6 ]
+    <   %.1 = phi ptr [ %.2, %48 ], [ %.0, %6 ]
+  in block %28 / %28:
+    >   %31 = icmp eq i32 %30, 0
+    >   %32 = icmp eq i32 %29, 0
+    >   %or.cond = select i1 %31, i1 %32, i1 false
+    >   br i1 %or.cond, label %33, label %47
+    <   %31 = icmp ne i32 %30, 0
+    <   br i1 %31, label %48, label %32
+  in block %48 / %47:
+    >   %.3 = phi i32 [ %.4, %41 ], [ %.15, %28 ], [ %37, %33 ], [ %37, %40 ]
+    >   %.23 = phi i32 [ %46, %41 ], [ %.01, %28 ], [ %35, %33 ], [ %35, %40 ]
+    >   %.2 = phi ptr [ %.1, %41 ], [ %23, %33 ], [ %23, %40 ], [ %23, %28 ]
+    <   %.3 = phi i32 [ %.4, %42 ], [ %.15, %28 ], [ %.15, %32 ], [ %38, %41 ], [ %38, %34 ]
+    <   %.23 = phi i32 [ %47, %42 ], [ %.01, %28 ], [ %.01, %32 ], [ %36, %41 ], [ %36, %34 ]
+    <   %.2 = phi ptr [ %.1, %42 ], [ %23, %34 ], [ %23, %41 ], [ %23, %32 ], [ %23, %28 ]
+        call void @free(ptr noundef %13)
+    >   %48 = add nsw i32 %.23, 1
+    <   %49 = add nsw i32 %.23, 1"
+indvars,instcombine,dependent,false,agree_dependent,inst:copy_data:%11;inst:copy_data:%12;inst:copy_data:%13;inst:copy_data:%14;inst:copy_data:%8;inst:copy_data:%9;inst:equal_data:%5;inst:equal_data:%6;inst:equal_data:%8;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:melt_data:%10;inst:melt_data:%11;inst:melt_data:%12;inst:melt_data:%13;inst:melt_data:%6;inst:melt_data:%8;inst:melt_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:copy_data:%11;inst:copy_data:%12;inst:copy_data:%13;inst:copy_data:%14;inst:copy_data:%8;inst:copy_data:%9;inst:equal_data:%5;inst:equal_data:%6;inst:equal_data:%8;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:melt_data:%10;inst:melt_data:%11;inst:melt_data:%12;inst:melt_data:%13;inst:melt_data:%6;inst:melt_data:%8;inst:melt_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:copy_data:%11;inst:copy_data:%12;inst:copy_data:%13;inst:copy_data:%14;inst:copy_data:%8;inst:copy_data:%9;inst:equal_data:%5;inst:equal_data:%6;inst:equal_data:%7;inst:equal_data:%8;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%14;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_data:%9;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:melt_data:%10;inst:melt_data:%11;inst:melt_data:%12;inst:melt_data:%13;inst:melt_data:%6;inst:melt_data:%8;inst:melt_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%5;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:copy_data:%11;inst:copy_data:%12;inst:copy_data:%13;inst:copy_data:%14;inst:copy_data:%8;inst:copy_data:%9;inst:equal_data:%5;inst:equal_data:%6;inst:equal_data:%7;inst:equal_data:%8;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%14;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_data:%9;inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:melt_data:%10;inst:melt_data:%11;inst:melt_data:%12;inst:melt_data:%13;inst:melt_data:%6;inst:melt_data:%8;inst:melt_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%5;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,inst;loop,mixed,expansion,instcombine->indvars;indvars->instcombine,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %5 / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %6 ], [ %4, %2 ]
+    >   %.not = icmp eq i64 %indvars.iv, 0
+    >   br i1 %.not, label %.critedge, label %6
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ %4, %2 ]
+    <   %6 = icmp eq i64 %indvars.iv, 0
+    <   %7 = trunc nsw i64 %indvars.iv to i32
+    <   br i1 %6, label %.critedge, label %8
+
+in function valid_data:
+  in block %3 / %3:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %10 ], [ 0, %1 ]
+    >   %.01 = phi i32 [ %8, %10 ], [ %2, %1 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %11 ], [ 0, %1 ]
+    <   %.01 = phi i32 [ %2, %1 ], [ %9, %11 ]
+        %4 = load i32, ptr @ncol, align 4
+        %5 = zext i32 %4 to i64
+    >   %.not = icmp eq i64 %indvars.iv, %5
+    >   br i1 %.not, label %11, label %6
+    <   %.not = icmp eq i64 %indvars.iv, %5
+    <   %6 = trunc nuw nsw i64 %indvars.iv to i32
+    <   br i1 %.not, label %12, label %7
+
+in function get_value:
+  in block %8 / %8:
+    >   %9 = load i32, ptr %.0, align 8
+    >   ret i32 %9
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %9 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %9
+
+in function show_data:
+  in block %2 / %2:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %13 ], [ 0, %1 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %13 ], [ 0, %1 ]
+  in block %5 / %5:
+    >   %10 = trunc nsw i64 %indvars.iv.next to i32
+    >   %.not2 = icmp eq i32 %9, %10
+    >   br i1 %.not2, label %13, label %11
+    <   %10 = zext i32 %9 to i64
+    <   %.not1 = icmp eq i64 %indvars.iv.next, %10
+    <   br i1 %.not1, label %13, label %11
+
+in function make_data:
+  in block %.preheader:
+    <   %indvars.iv.lcssa = phi i64 [ %indvars.iv, %8 ]
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %46, %45 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %45 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %46, %45 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %45 ]
+  in block %45 / %45:
+    >   %46 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %8 ]
+    <   %.1.lcssa = phi ptr [ %.1, %8 ]
+    <   %46 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %27, %26 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %26 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %27, %26 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %26 ]
+  in block %26 / %26:
+    >   %27 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %6 ]
+    <   %.1.lcssa = phi ptr [ %.1, %6 ]
+    <   %27 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %13 / %13:
+    >   %.0 = phi ptr [ %12, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %12, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %11 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %6 ], [ %.01, %3 ]
+    <   %11 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %5 / %5:
+    >   %6 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %7 = load ptr, ptr %6, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %6 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %7 = load ptr, ptr %6, align 8
+
+in function where:
+  in block %10 / %10:
+    >   %11 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %12 = load ptr, ptr %11, align 8
+    >   ret ptr %12
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %11 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %12 = load ptr, ptr %11, align 8
+    <   ret ptr %12
+
+in function get_real_move:
+  in block %5 / %5:
+    >   %storemerge = phi i32 [ 0, %4 ], [ %13, %12 ]
+    >   store i32 %storemerge, ptr %3, align 4
+    >   %6 = zext nneg i32 %storemerge to i64
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %0, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %9 = getelementptr inbounds nuw [4 x i8], ptr %1, i64 %6
+    >   %10 = load i32, ptr %9, align 4
+    >   %11 = icmp eq i32 %8, %10
+    >   br i1 %11, label %12, label %14
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %4 ]
+    <   %6 = trunc nuw nsw i64 %indvars.iv to i32
+    <   store i32 %6, ptr %3, align 4
+    <   %7 = getelementptr inbounds nuw [4 x i8], ptr %0, i64 %indvars.iv
+    <   %8 = load i32, ptr %7, align 4
+    <   %9 = getelementptr inbounds nuw [4 x i8], ptr %1, i64 %indvars.iv
+    <   %10 = load i32, ptr %9, align 4
+    <   %11 = icmp eq i32 %8, %10
+    <   br i1 %11, label %12, label %13
+
+in function main:
+  in block %20 / %20:
+    <   %.01.lcssa = phi i32 [ %.01, %10 ]
+        call void @dump_play(ptr noundef %6)
+    >   %21 = sub nsw i32 1, %.01
+    <   %21 = sub nsw i32 1, %.01.lcssa"
+indvars,licm,dependent,false,agree_dependent,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_good_move:.preheader:1:br;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:main:%.01.lcssa;inst:make_data:.preheader:1:br;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:main:%.01.lcssa;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,expansion,licm->indvars;indvars->licm,"in function equal_data:
+  in block %5 / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %7 ], [ %4, %2 ]
+    >   %indvars.iv.next = add nsw i64 %indvars.iv, -1
+    >   %6 = icmp ne i64 %indvars.iv, 0
+    >   br i1 %6, label %7, label %.critedge.split.loop.exit2
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ %4, %2 ]
+    <   %indvars.iv.next = add nsw i64 %indvars.iv, -1
+    <   %6 = icmp ne i64 %indvars.iv, 0
+    <   %7 = trunc nsw i64 %indvars.iv.next to i32
+    <   br i1 %6, label %8, label %.critedge
+
+in function valid_data:
+  in block %5 / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %11 ], [ 0, %1 ]
+    >   %.01 = phi i32 [ %2, %1 ], [ %9, %11 ]
+    >   %6 = icmp ne i64 %indvars.iv, %4
+    >   br i1 %6, label %7, label %12
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %1 ]
+    <   %.01 = phi i32 [ %2, %1 ], [ %10, %12 ]
+    <   %6 = icmp ne i64 %indvars.iv, %4
+    <   %7 = trunc nuw nsw i64 %indvars.iv to i32
+    <   br i1 %6, label %8, label %13
+
+in function get_real_move:
+  in block %4 / %4:
+    <   %5 = sext i32 %.promoted to i64"
+indvars,loop-rotate,dependent,false,agree_dependent,inst:copy_data:%.0;inst:copy_data:%8;inst:copy_data:%9;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:%.0;inst:make_data:%.1;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:melt_data:%.0;inst:melt_data:%5;inst:melt_data:%6;inst:show_data:%.0;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%.0;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:copy_data:%.0;inst:copy_data:%8;inst:copy_data:%9;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:%.0;inst:make_data:%.1;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:melt_data:%.0;inst:melt_data:%5;inst:melt_data:%6;inst:show_data:%.0;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%.0;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:copy_data:%.0;inst:copy_data:%7;inst:copy_data:%8;inst:copy_data:%9;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_good_move:.preheader:1:br;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:%.01.lcssa;inst:make_data:%.0;inst:make_data:%.1;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%14;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%7;inst:make_data:%8;inst:make_data:%9;inst:make_data:.preheader:1:br;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:melt_data:%.0;inst:melt_data:%4;inst:melt_data:%5;inst:melt_data:%6;inst:next_data:%.0.lcssa;inst:show_data:%.0;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%5;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%.0;inst:valid_data:%.0.lcssa;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:copy_data:%.0;inst:copy_data:%7;inst:copy_data:%8;inst:copy_data:%9;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:main:%.01.lcssa;inst:make_data:%.0;inst:make_data:%.1;inst:make_data:%10;inst:make_data:%11;inst:make_data:%13;inst:make_data:%14;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%7;inst:make_data:%8;inst:make_data:%9;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:melt_data:%.0;inst:melt_data:%4;inst:melt_data:%5;inst:melt_data:%6;inst:next_data:%.0.lcssa;inst:show_data:%.0;inst:show_data:%10;inst:show_data:%11;inst:show_data:%4;inst:show_data:%5;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:valid_data:%.0;inst:valid_data:%.0.lcssa;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,expansion,loop-rotate->indvars;indvars->loop-rotate,"in function copy_data:
+  in block %1 / %1:
+    >   %7 = sext i32 %6 to i64
+    >   %indvars.iv.next2 = add nsw i64 %7, -1
+    >   %8 = icmp ne i64 %7, 0
+    >   br i1 %8, label %.lr.ph, label %14
+    <   %7 = add i32 %6, -1
+    <   %8 = icmp ne i32 %6, 0
+    <   br i1 %8, label %.lr.ph, label %15
+
+in function melt_data:
+  in block %2 / %2:
+    >   %4 = sext i32 %3 to i64
+    >   %indvars.iv.next2 = add nsw i64 %4, -1
+    >   %5 = icmp ne i64 %4, 0
+    >   br i1 %5, label %.lr.ph, label %15
+    <   %4 = add i32 %3, -1
+    <   %5 = icmp ne i32 %3, 0
+    <   br i1 %5, label %.lr.ph, label %16
+
+in function valid_data:
+  in block %1 / %1:
+    >   %4 = zext i32 %3 to i64
+    >   %5 = icmp ne i64 0, %4
+    >   br i1 %5, label %.lr.ph, label %16
+    <   %4 = icmp ne i32 0, %3
+    <   br i1 %4, label %.lr.ph, label %15
+
+in function show_data:
+  in block %1 / %1:
+    >   %3 = zext i32 %2 to i64
+    >   %4 = icmp ne i64 0, %3
+    >   br i1 %4, label %.lr.ph, label %18
+    <   %3 = icmp ne i32 0, %2
+    <   br i1 %3, label %.lr.ph, label %17
+
+in function make_data:
+  in block %2 / %2:
+    >   %7 = zext i32 %1 to i64
+    >   %8 = icmp ne i64 0, %7
+    >   br i1 %8, label %.lr.ph, label %.preheader
+    <   %7 = icmp ne i32 0, %1
+    <   br i1 %7, label %.lr.ph, label %.preheader"
+indvars,loop-simplify,dependent,true,false_positive,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write,strong,strong,none,none,inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,,,
+indvars,loop-unroll,dependent,true,false_positive,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_good_move:.preheader:1:br;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:main:%.01.lcssa;inst:make_data:.preheader:1:br;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:main:%.01.lcssa;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,expansion,loop-unroll->indvars,
+indvars,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->simplifycfg,"in function in_wanted:
+  in block %13 / %.loopexit:
+    in instruction %.0 / %.0:
+      successor %.loopexit cannot be equivalent to %3; it's already equivalent to %.loopexit
+  in block %.loopexit:
+    >   %.0 = phi i32 [ %spec.select, %11 ], [ 0, %3 ]
+    >   ret i32 %.0
+    <   br label %13
+
+in function make_data:
+  in block %.preheader:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %16 ], [ %indvars.iv, %8 ]
+    >   %13 = load i32, ptr @ncol, align 4
+    >   %14 = zext i32 %13 to i64
+    >   %15 = icmp ne i64 %indvars.iv2, %14
+    >   br i1 %15, label %16, label %18
+    <   %indvars.iv.lcssa = phi i64 [ %indvars.iv, %8 ]
+    <   br label %13
+
+in function make_list:
+  in block %9 / %.preheader:
+    in instruction %.15 / %.15:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+    in instruction %.01 / %.01:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+    in instruction %.1 / %.1:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.15 = phi i32 [ %.3, %47 ], [ %.04, %6 ]
+    >   %.01 = phi i32 [ %48, %47 ], [ 0, %6 ]
+    >   %.1 = phi ptr [ %.2, %47 ], [ %.0, %6 ]
+    >   %9 = load i32, ptr @ncol, align 4
+    >   %10 = icmp ne i32 %.01, %9
+    >   br i1 %10, label %11, label %49
+    <   br label %9
+
+in function make_wanted:
+  in block %7 / %.preheader:
+    in instruction %.04 / %.04:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+    in instruction %.12 / %.12:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+    in instruction %.1 / %.1:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.04 = phi i32 [ %28, %27 ], [ 0, %4 ]
+    >   %.12 = phi i32 [ %.23, %27 ], [ %.01, %4 ]
+    >   %.1 = phi ptr [ %.2, %27 ], [ %.0, %4 ]
+    >   %7 = load i32, ptr @ncol, align 4
+    >   %8 = icmp ne i32 %.04, %7
+    >   br i1 %8, label %9, label %29
+    <   br label %7
+
+in function get_good_move:
+  in block %3 / %.preheader:
+    in instruction %.01 / %.01:
+      successor %.preheader cannot be equivalent to %1; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.01 = phi ptr [ %11, %10 ], [ %0, %1 ]
+    >   %3 = getelementptr inbounds nuw %struct._list.0, ptr %.01, i32 0, i32 1
+    >   %4 = load ptr, ptr %3, align 8
+    >   %5 = icmp ne ptr %4, null
+    >   br i1 %5, label %6, label %.critedge
+    <   br label %3"
+instcombine,licm,dependent,false,agree_dependent,inst:get_real_move:%6;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:get_real_move:%6;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:get_real_move:%6;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:get_real_move:%6;inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,inst;loop,mixed,expansion,instcombine->licm;licm->instcombine,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %.critedge:
+    >   %13 = icmp slt i32 %.0, 1
+    >   %14 = zext i1 %13 to i32
+    >   ret i32 %14
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %4 ]
+    <   %13 = icmp slt i32 %.0.lcssa, 1
+    <   %14 = zext i1 %13 to i32
+    <   ret i32 %14
+
+in function valid_data:
+  in block %12 / %12:
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %4 ]
+        %13 = load i32, ptr @ncol, align 4
+    >   %14 = icmp eq i32 %.0, %13
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %14 = icmp eq i32 %.0.lcssa, %13
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function get_value:
+  in block %8 / %8:
+    >   %9 = load i32, ptr %.0, align 8
+    >   ret i32 %9
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %9 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %9
+
+in function make_data:
+  in block %.preheader:
+    <   %.0.lcssa = phi i32 [ %.0, %7 ]
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %46, %45 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %45 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %46, %45 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %45 ]
+  in block %45 / %45:
+    >   %46 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %8 ]
+    <   %.1.lcssa = phi ptr [ %.1, %8 ]
+    <   %46 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %27, %26 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %26 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %27, %26 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %26 ]
+  in block %26 / %26:
+    >   %27 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %6 ]
+    <   %.1.lcssa = phi ptr [ %.1, %6 ]
+    <   %27 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %13 / %13:
+    >   %.0 = phi ptr [ %12, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %12, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %11 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %6 ], [ %.01, %3 ]
+    <   %11 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %5 / %5:
+    >   %6 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %7 = load ptr, ptr %6, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %6 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %7 = load ptr, ptr %6, align 8
+
+in function where:
+  in block %10 / %10:
+    >   %11 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %12 = load ptr, ptr %11, align 8
+    >   ret ptr %12
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %11 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %12 = load ptr, ptr %11, align 8
+    <   ret ptr %12
+
+in function get_real_move:
+  in block %14 / %14:
+    >   store i32 %8, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %8, %5 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %20 / %20:
+    <   %.01.lcssa = phi i32 [ %.01, %10 ]
+        call void @dump_play(ptr noundef %6)
+    >   %21 = sub nsw i32 1, %.01
+    <   %21 = sub nsw i32 1, %.01.lcssa"
+instcombine,loop-rotate,dependent,false,agree_dependent,inst:copy_data:%8;inst:copy_data:%9;inst:copy_data:bb1:2:br;inst:copy_data:bb2:1:ret;inst:get_good_move:%13;inst:get_good_move:%14;inst:get_good_move:%4;inst:get_good_move:%6;inst:get_real_move:%10;inst:get_real_move:%11;inst:get_real_move:%12;inst:get_real_move:%6;inst:get_real_move:%7;inst:get_real_move:%8;inst:get_real_move:%9;inst:get_real_move:bb0:1:br;inst:get_real_move:bb1:2:br;inst:get_real_move:entry:2:br;inst:get_value:%.0;inst:get_value:%10;inst:get_value:%11;inst:get_value:%13;inst:get_value:%4;inst:get_value:%5;inst:get_value:%6;inst:get_value:%7;inst:get_value:%8;inst:in_wanted:%.01;inst:in_wanted:%10;inst:in_wanted:%12;inst:in_wanted:%5;inst:in_wanted:%6;inst:in_wanted:%7;inst:in_wanted:%9;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:%14;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:bb2:1:call;inst:main:bb2:2:ret;inst:main:bb3:1:call;inst:main:bb3:2:call;inst:main:bb3:3:br;inst:main:bb4:1:br;inst:make_data:%10;inst:make_data:%11;inst:make_data:%12;inst:make_data:%13;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_data:bb1:1:store;inst:make_data:bb1:2:br;inst:make_data:bb2:1:br;inst:make_data:bb3:1:store;inst:make_data:bb3:2:br;inst:make_data:bb4:1:ret;inst:make_list:%10;inst:make_list:%11;inst:make_list:%13;inst:make_list:%14;inst:make_list:%15;inst:make_list:%17;inst:make_list:%18;inst:make_list:%19;inst:make_list:%22;inst:make_list:%23;inst:make_list:%24;inst:make_list:%25;inst:make_list:%27;inst:make_list:%29;inst:make_list:%30;inst:make_list:%32;inst:make_list:%33;inst:make_list:%35;inst:make_list:%37;inst:make_list:%38;inst:make_list:%39;inst:make_list:%40;inst:make_list:%43;inst:make_list:%44;inst:make_list:%46;inst:make_list:%47;inst:make_list:%49;inst:make_list:%53;inst:make_list:%54;inst:make_list:%56;inst:make_list:%57;inst:make_list:%8;inst:make_list:bb10:1:br;inst:make_list:bb13:1:store;inst:make_list:bb13:2:br;inst:make_list:bb14:1:ret;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb3:1:call;inst:make_list:bb3:2:br;inst:make_list:bb4:1:br;inst:make_list:bb5:1:br;inst:make_list:bb6:1:store;inst:make_list:bb6:2:store;inst:make_list:bb6:3:store;inst:make_list:bb6:4:br;inst:make_list:bb9:1:call;inst:make_list:bb9:2:br;inst:make_play:%10;inst:make_play:%12;inst:make_play:%13;inst:make_play:%15;inst:make_play:%16;inst:make_play:%17;inst:make_play:%18;inst:make_play:%21;inst:make_play:%22;inst:make_play:%23;inst:make_play:%24;inst:make_play:%25;inst:make_play:%26;inst:make_play:%27;inst:make_play:%30;inst:make_play:%31;inst:make_play:%32;inst:make_play:%33;inst:make_play:%35;inst:make_play:%36;inst:make_play:%37;inst:make_play:%40;inst:make_play:%41;inst:make_play:bb2:1:call;inst:make_play:bb2:2:ret;inst:make_play:bb3:1:store;inst:make_play:bb3:2:br;inst:make_play:bb4:1:br;inst:make_play:bb7:1:call;inst:make_wanted:%11;inst:make_wanted:%12;inst:make_wanted:%13;inst:make_wanted:%15;inst:make_wanted:%16;inst:make_wanted:%17;inst:make_wanted:%20;inst:make_wanted:%21;inst:make_wanted:%23;inst:make_wanted:%24;inst:make_wanted:%26;inst:make_wanted:%27;inst:make_wanted:%29;inst:make_wanted:%33;inst:make_wanted:%6;inst:make_wanted:%8;inst:make_wanted:%9;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:make_wanted:bb3:1:call;inst:make_wanted:bb3:2:br;inst:make_wanted:bb4:1:br;inst:make_wanted:bb5:1:br;inst:make_wanted:bb6:1:store;inst:make_wanted:bb6:2:store;inst:make_wanted:bb6:3:store;inst:make_wanted:bb6:4:br;inst:make_wanted:bb7:1:call;inst:melt_data:%6;inst:melt_data:bb2:1:ret;inst:next_data:%10;inst:next_data:%11;inst:next_data:%12;inst:next_data:%16;inst:next_data:%5;inst:next_data:%6;inst:next_data:%8;inst:next_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%12;inst:show_data:%14;inst:show_data:%4;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:show_data:bb2:1:ret;inst:show_data:bb3:1:br;inst:show_data:bb4:1:br;inst:show_list:%3;inst:show_list:%5;inst:show_list:%6;inst:show_list:%7;inst:show_list:bb1:2:br;inst:show_list:bb2:1:ret;inst:show_play:%10;inst:show_play:%11;inst:show_play:%12;inst:show_play:%13;inst:show_play:%14;inst:show_play:%3;inst:show_play:%5;inst:show_play:%6;inst:show_play:%7;inst:show_play:%8;inst:show_play:%9;inst:show_play:bb1:3:br;inst:show_play:bb2:1:ret;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;inst:valid_data:bb2:1:ret;inst:where:%10;inst:where:%11;inst:where:%13;inst:where:%14;inst:where:%4;inst:where:%7;inst:where:%8;loop:copy_data:bb0;loop:in_wanted:bb0;loop:main:bb0;loop:make_data:bb0;loop:make_data:bb2;loop:make_list:bb0;loop:make_list:bb1;loop:make_play:bb0;loop:make_wanted:bb0;loop:make_wanted:bb1;loop:show_data:bb0;loop:show_list:bb0;loop:show_play:bb0,inst:copy_data:%8;inst:copy_data:%9;inst:copy_data:bb1:2:br;inst:copy_data:bb2:1:ret;inst:get_good_move:%13;inst:get_good_move:%14;inst:get_good_move:%4;inst:get_good_move:%6;inst:get_real_move:%10;inst:get_real_move:%11;inst:get_real_move:%12;inst:get_real_move:%6;inst:get_real_move:%7;inst:get_real_move:%8;inst:get_real_move:%9;inst:get_real_move:bb0:1:br;inst:get_real_move:bb1:2:br;inst:get_real_move:entry:2:br;inst:get_value:%.0;inst:get_value:%10;inst:get_value:%11;inst:get_value:%13;inst:get_value:%4;inst:get_value:%5;inst:get_value:%6;inst:get_value:%7;inst:get_value:%8;inst:in_wanted:%.01;inst:in_wanted:%10;inst:in_wanted:%12;inst:in_wanted:%5;inst:in_wanted:%6;inst:in_wanted:%7;inst:in_wanted:%9;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:%14;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:bb2:1:call;inst:main:bb2:2:ret;inst:main:bb3:1:call;inst:main:bb3:2:call;inst:main:bb3:3:br;inst:main:bb4:1:br;inst:make_data:%10;inst:make_data:%11;inst:make_data:%12;inst:make_data:%13;inst:make_data:%15;inst:make_data:%16;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_data:bb1:1:store;inst:make_data:bb1:2:br;inst:make_data:bb2:1:br;inst:make_data:bb3:1:store;inst:make_data:bb3:2:br;inst:make_data:bb4:1:ret;inst:make_list:%10;inst:make_list:%11;inst:make_list:%13;inst:make_list:%14;inst:make_list:%15;inst:make_list:%17;inst:make_list:%18;inst:make_list:%19;inst:make_list:%22;inst:make_list:%23;inst:make_list:%24;inst:make_list:%25;inst:make_list:%27;inst:make_list:%29;inst:make_list:%30;inst:make_list:%32;inst:make_list:%33;inst:make_list:%35;inst:make_list:%37;inst:make_list:%38;inst:make_list:%39;inst:make_list:%40;inst:make_list:%43;inst:make_list:%44;inst:make_list:%46;inst:make_list:%47;inst:make_list:%49;inst:make_list:%53;inst:make_list:%54;inst:make_list:%56;inst:make_list:%57;inst:make_list:%8;inst:make_list:bb10:1:br;inst:make_list:bb13:1:store;inst:make_list:bb13:2:br;inst:make_list:bb14:1:ret;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb3:1:call;inst:make_list:bb3:2:br;inst:make_list:bb4:1:br;inst:make_list:bb5:1:br;inst:make_list:bb6:1:store;inst:make_list:bb6:2:store;inst:make_list:bb6:3:store;inst:make_list:bb6:4:br;inst:make_list:bb9:1:call;inst:make_list:bb9:2:br;inst:make_play:%10;inst:make_play:%12;inst:make_play:%13;inst:make_play:%15;inst:make_play:%16;inst:make_play:%17;inst:make_play:%18;inst:make_play:%21;inst:make_play:%22;inst:make_play:%23;inst:make_play:%24;inst:make_play:%25;inst:make_play:%26;inst:make_play:%27;inst:make_play:%30;inst:make_play:%31;inst:make_play:%32;inst:make_play:%33;inst:make_play:%35;inst:make_play:%36;inst:make_play:%37;inst:make_play:%40;inst:make_play:%41;inst:make_play:bb2:1:call;inst:make_play:bb2:2:ret;inst:make_play:bb3:1:store;inst:make_play:bb3:2:br;inst:make_play:bb4:1:br;inst:make_play:bb7:1:call;inst:make_wanted:%11;inst:make_wanted:%12;inst:make_wanted:%13;inst:make_wanted:%15;inst:make_wanted:%16;inst:make_wanted:%17;inst:make_wanted:%20;inst:make_wanted:%21;inst:make_wanted:%23;inst:make_wanted:%24;inst:make_wanted:%26;inst:make_wanted:%27;inst:make_wanted:%29;inst:make_wanted:%33;inst:make_wanted:%6;inst:make_wanted:%8;inst:make_wanted:%9;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:make_wanted:bb3:1:call;inst:make_wanted:bb3:2:br;inst:make_wanted:bb4:1:br;inst:make_wanted:bb5:1:br;inst:make_wanted:bb6:1:store;inst:make_wanted:bb6:2:store;inst:make_wanted:bb6:3:store;inst:make_wanted:bb6:4:br;inst:make_wanted:bb7:1:call;inst:melt_data:%6;inst:melt_data:bb2:1:ret;inst:next_data:%10;inst:next_data:%11;inst:next_data:%12;inst:next_data:%16;inst:next_data:%5;inst:next_data:%6;inst:next_data:%8;inst:next_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%12;inst:show_data:%14;inst:show_data:%4;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:show_data:bb2:1:ret;inst:show_data:bb3:1:br;inst:show_data:bb4:1:br;inst:show_list:%3;inst:show_list:%5;inst:show_list:%6;inst:show_list:%7;inst:show_list:bb1:2:br;inst:show_list:bb2:1:ret;inst:show_play:%10;inst:show_play:%11;inst:show_play:%12;inst:show_play:%13;inst:show_play:%14;inst:show_play:%3;inst:show_play:%5;inst:show_play:%6;inst:show_play:%7;inst:show_play:%8;inst:show_play:%9;inst:show_play:bb1:3:br;inst:show_play:bb2:1:ret;inst:valid_data:%10;inst:valid_data:%12;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;inst:valid_data:bb2:1:ret;inst:where:%10;inst:where:%11;inst:where:%13;inst:where:%14;inst:where:%4;inst:where:%7;inst:where:%8;loop:copy_data:bb0;loop:in_wanted:bb0;loop:main:bb0;loop:make_data:bb0;loop:make_data:bb2;loop:make_list:bb0;loop:make_list:bb1;loop:make_play:bb0;loop:make_wanted:bb0;loop:make_wanted:bb1;loop:show_data:bb0;loop:show_list:bb0;loop:show_play:bb0,inst:copy_data:%10;inst:copy_data:%8;inst:copy_data:%9;inst:copy_data:bb1:2:br;inst:copy_data:bb2:1:ret;inst:get_good_move:%13;inst:get_good_move:%14;inst:get_good_move:%4;inst:get_good_move:%6;inst:get_good_move:%7;inst:get_real_move:%10;inst:get_real_move:%11;inst:get_real_move:%12;inst:get_real_move:%13;inst:get_real_move:%6;inst:get_real_move:%7;inst:get_real_move:%8;inst:get_real_move:%9;inst:get_real_move:bb0:1:br;inst:get_real_move:bb0:1:store;inst:get_real_move:bb1:2:br;inst:get_real_move:entry:2:br;inst:get_value:%.0;inst:get_value:%10;inst:get_value:%11;inst:get_value:%13;inst:get_value:%3;inst:get_value:%4;inst:get_value:%5;inst:get_value:%6;inst:get_value:%7;inst:get_value:%8;inst:get_value:%9;inst:in_wanted:%.01;inst:in_wanted:%10;inst:in_wanted:%12;inst:in_wanted:%4;inst:in_wanted:%5;inst:in_wanted:%6;inst:in_wanted:%7;inst:in_wanted:%9;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:bb2:1:call;inst:main:bb2:2:ret;inst:main:bb3:1:br;inst:main:bb3:1:call;inst:main:bb3:2:call;inst:main:bb3:3:br;inst:main:bb4:1:br;inst:make_data:%10;inst:make_data:%11;inst:make_data:%12;inst:make_data:%13;inst:make_data:%14;inst:make_data:%15;inst:make_data:%16;inst:make_data:%17;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_data:%9;inst:make_data:bb1:1:store;inst:make_data:bb1:2:br;inst:make_data:bb2:1:br;inst:make_data:bb2:1:store;inst:make_data:bb2:2:br;inst:make_data:bb3:1:store;inst:make_data:bb3:2:br;inst:make_data:bb4:1:ret;inst:make_list:%10;inst:make_list:%11;inst:make_list:%12;inst:make_list:%13;inst:make_list:%14;inst:make_list:%15;inst:make_list:%16;inst:make_list:%17;inst:make_list:%18;inst:make_list:%19;inst:make_list:%22;inst:make_list:%23;inst:make_list:%24;inst:make_list:%25;inst:make_list:%27;inst:make_list:%28;inst:make_list:%29;inst:make_list:%30;inst:make_list:%31;inst:make_list:%32;inst:make_list:%33;inst:make_list:%34;inst:make_list:%35;inst:make_list:%37;inst:make_list:%38;inst:make_list:%39;inst:make_list:%40;inst:make_list:%41;inst:make_list:%42;inst:make_list:%43;inst:make_list:%44;inst:make_list:%46;inst:make_list:%47;inst:make_list:%48;inst:make_list:%49;inst:make_list:%53;inst:make_list:%54;inst:make_list:%56;inst:make_list:%57;inst:make_list:%8;inst:make_list:%9;inst:make_list:bb10:1:br;inst:make_list:bb10:2:br;inst:make_list:bb13:1:store;inst:make_list:bb13:2:br;inst:make_list:bb14:1:ret;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb3:1:br;inst:make_list:bb3:1:call;inst:make_list:bb3:2:br;inst:make_list:bb4:1:br;inst:make_list:bb5:1:br;inst:make_list:bb5:1:store;inst:make_list:bb6:1:br;inst:make_list:bb6:1:store;inst:make_list:bb6:2:store;inst:make_list:bb6:3:store;inst:make_list:bb6:4:br;inst:make_list:bb9:1:br;inst:make_list:bb9:1:call;inst:make_list:bb9:2:br;inst:make_play:%10;inst:make_play:%11;inst:make_play:%12;inst:make_play:%13;inst:make_play:%14;inst:make_play:%15;inst:make_play:%16;inst:make_play:%17;inst:make_play:%18;inst:make_play:%20;inst:make_play:%21;inst:make_play:%22;inst:make_play:%23;inst:make_play:%24;inst:make_play:%25;inst:make_play:%26;inst:make_play:%27;inst:make_play:%30;inst:make_play:%31;inst:make_play:%32;inst:make_play:%33;inst:make_play:%34;inst:make_play:%35;inst:make_play:%36;inst:make_play:%37;inst:make_play:%38;inst:make_play:%39;inst:make_play:%40;inst:make_play:%41;inst:make_play:bb2:1:call;inst:make_play:bb2:2:ret;inst:make_play:bb3:1:br;inst:make_play:bb3:1:store;inst:make_play:bb3:2:br;inst:make_play:bb4:1:br;inst:make_play:bb4:1:store;inst:make_play:bb4:2:br;inst:make_play:bb7:1:call;inst:make_wanted:%10;inst:make_wanted:%11;inst:make_wanted:%12;inst:make_wanted:%13;inst:make_wanted:%14;inst:make_wanted:%15;inst:make_wanted:%16;inst:make_wanted:%17;inst:make_wanted:%20;inst:make_wanted:%21;inst:make_wanted:%22;inst:make_wanted:%23;inst:make_wanted:%24;inst:make_wanted:%26;inst:make_wanted:%27;inst:make_wanted:%29;inst:make_wanted:%33;inst:make_wanted:%6;inst:make_wanted:%7;inst:make_wanted:%8;inst:make_wanted:%9;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:make_wanted:bb3:1:br;inst:make_wanted:bb3:1:call;inst:make_wanted:bb3:2:br;inst:make_wanted:bb4:1:br;inst:make_wanted:bb5:1:br;inst:make_wanted:bb6:1:store;inst:make_wanted:bb6:2:store;inst:make_wanted:bb6:3:store;inst:make_wanted:bb6:4:br;inst:make_wanted:bb7:1:call;inst:melt_data:%6;inst:melt_data:%7;inst:melt_data:bb2:1:ret;inst:next_data:%10;inst:next_data:%11;inst:next_data:%12;inst:next_data:%16;inst:next_data:%5;inst:next_data:%6;inst:next_data:%7;inst:next_data:%8;inst:next_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%12;inst:show_data:%14;inst:show_data:%4;inst:show_data:%5;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:show_data:bb2:1:br;inst:show_data:bb2:1:ret;inst:show_data:bb3:1:br;inst:show_data:bb4:1:br;inst:show_list:%3;inst:show_list:%4;inst:show_list:%5;inst:show_list:%6;inst:show_list:%7;inst:show_list:bb1:2:br;inst:show_list:bb2:1:ret;inst:show_play:%10;inst:show_play:%11;inst:show_play:%12;inst:show_play:%13;inst:show_play:%14;inst:show_play:%3;inst:show_play:%4;inst:show_play:%5;inst:show_play:%6;inst:show_play:%7;inst:show_play:%8;inst:show_play:%9;inst:show_play:bb1:3:br;inst:show_play:bb2:1:ret;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%13;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;inst:valid_data:bb2:1:br;inst:valid_data:bb2:1:ret;inst:where:%10;inst:where:%11;inst:where:%12;inst:where:%13;inst:where:%14;inst:where:%4;inst:where:%7;inst:where:%8;inst:where:%9;loop:copy_data:bb0;loop:in_wanted:bb0;loop:main:bb0;loop:make_data:bb0;loop:make_data:bb2;loop:make_list:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_play:bb0;loop:make_wanted:bb0;loop:make_wanted:bb1;loop:make_wanted:bb2;loop:show_data:bb0;loop:show_list:bb0;loop:show_play:bb0,read_write;enablement,strong,strong,strong,none,inst:copy_data:%10;inst:copy_data:%8;inst:copy_data:%9;inst:get_good_move:%13;inst:get_good_move:%14;inst:get_good_move:%4;inst:get_good_move:%6;inst:get_good_move:%7;inst:get_real_move:%10;inst:get_real_move:%11;inst:get_real_move:%12;inst:get_real_move:%13;inst:get_real_move:%6;inst:get_real_move:%7;inst:get_real_move:%8;inst:get_real_move:%9;inst:get_real_move:bb0:1:store;inst:get_value:%.0;inst:get_value:%10;inst:get_value:%11;inst:get_value:%13;inst:get_value:%3;inst:get_value:%4;inst:get_value:%5;inst:get_value:%6;inst:get_value:%7;inst:get_value:%8;inst:get_value:%9;inst:in_wanted:%.01;inst:in_wanted:%10;inst:in_wanted:%12;inst:in_wanted:%4;inst:in_wanted:%5;inst:in_wanted:%6;inst:in_wanted:%7;inst:in_wanted:%9;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:bb2:1:call;inst:main:bb3:1:call;inst:main:bb3:2:call;inst:make_data:%10;inst:make_data:%11;inst:make_data:%12;inst:make_data:%13;inst:make_data:%14;inst:make_data:%15;inst:make_data:%16;inst:make_data:%17;inst:make_data:%18;inst:make_data:%19;inst:make_data:%20;inst:make_data:%8;inst:make_data:%9;inst:make_data:bb1:1:store;inst:make_data:bb2:1:store;inst:make_data:bb3:1:store;inst:make_list:%10;inst:make_list:%11;inst:make_list:%12;inst:make_list:%13;inst:make_list:%14;inst:make_list:%15;inst:make_list:%16;inst:make_list:%17;inst:make_list:%18;inst:make_list:%19;inst:make_list:%22;inst:make_list:%23;inst:make_list:%24;inst:make_list:%25;inst:make_list:%27;inst:make_list:%28;inst:make_list:%29;inst:make_list:%30;inst:make_list:%31;inst:make_list:%32;inst:make_list:%33;inst:make_list:%34;inst:make_list:%35;inst:make_list:%37;inst:make_list:%38;inst:make_list:%39;inst:make_list:%40;inst:make_list:%41;inst:make_list:%42;inst:make_list:%43;inst:make_list:%44;inst:make_list:%46;inst:make_list:%47;inst:make_list:%48;inst:make_list:%49;inst:make_list:%53;inst:make_list:%54;inst:make_list:%56;inst:make_list:%57;inst:make_list:%8;inst:make_list:%9;inst:make_list:bb13:1:store;inst:make_list:bb2:1:call;inst:make_list:bb3:1:call;inst:make_list:bb5:1:store;inst:make_list:bb6:1:store;inst:make_list:bb6:2:store;inst:make_list:bb6:3:store;inst:make_list:bb9:1:call;inst:make_play:%10;inst:make_play:%11;inst:make_play:%12;inst:make_play:%13;inst:make_play:%14;inst:make_play:%15;inst:make_play:%16;inst:make_play:%17;inst:make_play:%18;inst:make_play:%20;inst:make_play:%21;inst:make_play:%22;inst:make_play:%23;inst:make_play:%24;inst:make_play:%25;inst:make_play:%26;inst:make_play:%27;inst:make_play:%30;inst:make_play:%31;inst:make_play:%32;inst:make_play:%33;inst:make_play:%34;inst:make_play:%35;inst:make_play:%36;inst:make_play:%37;inst:make_play:%38;inst:make_play:%39;inst:make_play:%40;inst:make_play:%41;inst:make_play:bb2:1:call;inst:make_play:bb3:1:store;inst:make_play:bb4:1:store;inst:make_play:bb7:1:call;inst:make_wanted:%10;inst:make_wanted:%11;inst:make_wanted:%12;inst:make_wanted:%13;inst:make_wanted:%14;inst:make_wanted:%15;inst:make_wanted:%16;inst:make_wanted:%17;inst:make_wanted:%20;inst:make_wanted:%21;inst:make_wanted:%22;inst:make_wanted:%23;inst:make_wanted:%24;inst:make_wanted:%26;inst:make_wanted:%27;inst:make_wanted:%29;inst:make_wanted:%33;inst:make_wanted:%6;inst:make_wanted:%7;inst:make_wanted:%8;inst:make_wanted:%9;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb3:1:call;inst:make_wanted:bb6:1:store;inst:make_wanted:bb6:2:store;inst:make_wanted:bb6:3:store;inst:make_wanted:bb7:1:call;inst:melt_data:%6;inst:melt_data:%7;inst:next_data:%10;inst:next_data:%11;inst:next_data:%12;inst:next_data:%16;inst:next_data:%5;inst:next_data:%6;inst:next_data:%7;inst:next_data:%8;inst:next_data:%9;inst:show_data:%10;inst:show_data:%11;inst:show_data:%12;inst:show_data:%14;inst:show_data:%4;inst:show_data:%5;inst:show_data:%6;inst:show_data:%7;inst:show_data:%8;inst:show_data:%9;inst:show_list:%3;inst:show_list:%4;inst:show_list:%5;inst:show_list:%6;inst:show_list:%7;inst:show_play:%10;inst:show_play:%11;inst:show_play:%12;inst:show_play:%13;inst:show_play:%14;inst:show_play:%3;inst:show_play:%4;inst:show_play:%5;inst:show_play:%6;inst:show_play:%7;inst:show_play:%8;inst:show_play:%9;inst:valid_data:%10;inst:valid_data:%11;inst:valid_data:%12;inst:valid_data:%13;inst:valid_data:%14;inst:valid_data:%15;inst:valid_data:%16;inst:valid_data:%5;inst:valid_data:%6;inst:valid_data:%7;inst:valid_data:%8;inst:valid_data:%9;inst:where:%10;inst:where:%11;inst:where:%12;inst:where:%13;inst:where:%14;inst:where:%4;inst:where:%7;inst:where:%8;inst:where:%9;loop:copy_data:bb0;loop:in_wanted:bb0;loop:main:bb0;loop:make_data:bb0;loop:make_data:bb2;loop:make_list:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_play:bb0;loop:make_wanted:bb0;loop:make_wanted:bb1;loop:make_wanted:bb2;loop:show_data:bb0;loop:show_list:bb0;loop:show_play:bb0,inst:copy_data:bb1:2:br;inst:copy_data:bb2:1:ret;inst:get_real_move:bb0:1:br;inst:get_real_move:bb1:2:br;inst:get_real_move:entry:2:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:bb2:2:ret;inst:main:bb3:1:br;inst:main:bb3:3:br;inst:main:bb4:1:br;inst:make_data:bb1:2:br;inst:make_data:bb2:1:br;inst:make_data:bb2:2:br;inst:make_data:bb3:2:br;inst:make_data:bb4:1:ret;inst:make_list:bb10:1:br;inst:make_list:bb10:2:br;inst:make_list:bb13:2:br;inst:make_list:bb14:1:ret;inst:make_list:bb1:1:br;inst:make_list:bb3:1:br;inst:make_list:bb3:2:br;inst:make_list:bb4:1:br;inst:make_list:bb5:1:br;inst:make_list:bb6:1:br;inst:make_list:bb6:4:br;inst:make_list:bb9:1:br;inst:make_list:bb9:2:br;inst:make_play:bb2:2:ret;inst:make_play:bb3:1:br;inst:make_play:bb3:2:br;inst:make_play:bb4:1:br;inst:make_play:bb4:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:3:ret;inst:make_wanted:bb3:1:br;inst:make_wanted:bb3:2:br;inst:make_wanted:bb4:1:br;inst:make_wanted:bb5:1:br;inst:make_wanted:bb6:4:br;inst:melt_data:bb2:1:ret;inst:show_data:bb2:1:br;inst:show_data:bb2:1:ret;inst:show_data:bb3:1:br;inst:show_data:bb4:1:br;inst:show_list:bb1:2:br;inst:show_list:bb2:1:ret;inst:show_play:bb1:3:br;inst:show_play:bb2:1:ret;inst:valid_data:bb2:1:br;inst:valid_data:bb2:1:ret,inst;loop,mixed,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function next_data:
+  in block %1 / %1:
+    >   %.not = icmp eq i32 %2, 0
+    >   br i1 %.not, label %.critedge, label %.lr.ph
+    <   %3 = icmp ne i32 0, %2
+    <   br i1 %3, label %.lr.ph, label %.critedge
+
+in function melt_data:
+  in block %2 / %2:
+    <   %4 = add nsw i32 %3, -1
+
+in function equal_data:
+  in block %.critedge:
+    >   %13 = icmp slt i32 %.0, 1
+    >   %14 = zext i1 %13 to i32
+    >   ret i32 %14
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %4 ]
+    <   %13 = icmp slt i32 %.0.lcssa, 1
+    <   %14 = zext i1 %13 to i32
+    <   ret i32 %14
+
+in function valid_data:
+  in block %1 / %1:
+    <   %2 = load i32, ptr @nrow, align 4
+        %3 = load i32, ptr @ncol, align 4
+    >   %.not = icmp eq i32 %2, 0
+    >   br i1 %.not, label %12, label %.lr.ph
+    <   %.not1 = icmp eq i32 0, %3
+    <   br i1 %.not1, label %12, label %.lr.ph
+
+in function get_value:
+  in block %1 / %1:
+    >   %2 = load ptr, ptr @game_tree, align 8
+    >   %3 = getelementptr inbounds nuw i8, ptr %2, i64 8
+    >   %4 = load ptr, ptr %3, align 8
+    >   %5 = call i32 @equal_data(ptr noundef %4, ptr noundef %0)
+    >   %.not = icmp eq i32 %5, 0
+    >   br i1 %.not, label %.lr.ph, label %12
+    <   br label %2
+
+in function show_data:
+  in block %1 / %1:
+    >   %.not = icmp eq i32 %2, 0
+    >   br i1 %.not, label %14, label %.lr.ph
+    <   %.not2 = icmp eq i32 0, %2
+    <   br i1 %.not2, label %14, label %.lr.ph
+
+in function in_wanted:
+  in block %3 / %3:
+    >   %.014 = phi ptr [ %2, %.lr.ph ], [ %8, %6 ]
+    >   %4 = load ptr, ptr %.014, align 8
+    <   %.013 = phi ptr [ %.011, %.lr.ph ], [ %.01, %2 ]
+    <   %4 = load ptr, ptr %.013, align 8
+        %5 = call i32 @equal_data(ptr noundef %4, ptr noundef %0)
+        %.not = icmp eq i32 %5, 0
+    <   %6 = getelementptr inbounds nuw i8, ptr %.013, i64 8
+
+in function make_data:
+  in block %2 / %2:
+    >   %.not = icmp eq i32 %1, 0
+    >   br i1 %.not, label %.preheader, label %.lr.ph
+    <   %.not2 = icmp eq i32 0, %1
+    <   br i1 %.not2, label %.preheader, label %.lr.ph
+
+in function make_list:
+  in block %3 / %3:
+    >   %.not = icmp eq i32 %6, 0
+    >   br i1 %.not, label %47, label %.preheader.lr.ph
+    <   %.not11 = icmp eq i32 0, %6
+    <   br i1 %.not11, label %47, label %.preheader.lr.ph
+
+in function make_wanted:
+  in block %1 / %1:
+    >   %.not = icmp eq i32 %4, 0
+    >   br i1 %.not, label %28, label %.preheader.lr.ph
+    <   %.not8 = icmp eq i32 0, %4
+    <   br i1 %.not8, label %28, label %.preheader.lr.ph
+
+in function get_good_move:
+  in block %15 / %15:
+    >   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %14, %.critedge ], [ null, %1 ]
+  in block %..critedge_crit_edge:
+    <   %split = phi ptr [ %.013, %5 ]
+  in block %..critedge_crit_edge4 / %..critedge_crit_edge2:
+    <   %split5 = phi ptr [ %10, %9 ]
+  in block %.critedge:
+    >   %.01.lcssa = phi ptr [ %.011, %..critedge_crit_edge ], [ %10, %..critedge_crit_edge2 ], [ %0, %.preheader ]
+    >   %13 = load ptr, ptr %.01.lcssa, align 8
+    <   %.01.lcssa = phi ptr [ %split, %..critedge_crit_edge ], [ %split5, %..critedge_crit_edge4 ], [ %0, %.preheader ]
+    <   %13 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %5 / %5:
+    >   %6 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %7 = load ptr, ptr %6, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %6 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %7 = load ptr, ptr %6, align 8
+
+in function where:
+  in block %12 / %12:
+    >   %.0.lcssa = phi ptr [ %8, %._crit_edge ], [ %1, %2 ]
+    >   %13 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    >   %14 = load ptr, ptr %13, align 8
+    >   ret ptr %14
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %1, %2 ]
+    <   %13 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %14 = load ptr, ptr %13, align 8
+    <   ret ptr %14
+  in block %._crit_edge:
+    <   %split = phi ptr [ %8, %6 ]
+
+in function get_real_move:
+  in block %4 / %4:
+    >   store i32 0, ptr %3, align 4
+    >   %5 = load i32, ptr %0, align 4
+    >   %6 = load i32, ptr %1, align 4
+    >   %7 = icmp eq i32 %5, %6
+    >   br i1 %7, label %.lr.ph, label %17
+    <   br label %5
+
+in function main:
+  in block %19 / %20:
+    >   %.01.lcssa = phi i32 [ %19, %._crit_edge ], [ 1, %0 ]
+    <   %.01.lcssa = phi i32 [ %split, %._crit_edge ], [ 0, %0 ]
+        call void @dump_play(ptr noundef %6)
+    >   %21 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.16, i32 noundef %.01.lcssa) #4
+    <   %20 = sub nsw i32 1, %.01.lcssa
+    <   %21 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.16, i32 noundef %20) #4
+  in block %._crit_edge:
+    >   %19 = sub nsw i32 1, %.1
+    <   %split = phi i32 [ %.1, %18 ]"
+instcombine,loop-simplify,dependent,true,false_positive,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,inst;loop,mixed,expansion,instcombine->loop-simplify;loop-simplify->instcombine,
+instcombine,loop-unroll,dependent,false,agree_dependent,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,inst;loop,mixed,expansion,instcombine->loop-unroll;loop-unroll->instcombine,"in function next_data:
+  in block %.critedge:
+    >   ret i32 %.0
+    <   %.0.lcssa = phi i32 [ %.0, %2 ]
+    <   ret i32 %.0.lcssa
+
+in function equal_data:
+  in block %.critedge:
+    >   %13 = icmp slt i32 %.0, 1
+    >   %14 = zext i1 %13 to i32
+    >   ret i32 %14
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %4 ]
+    <   %13 = icmp slt i32 %.0.lcssa, 1
+    <   %14 = zext i1 %13 to i32
+    <   ret i32 %14
+
+in function valid_data:
+  in block %12 / %12:
+    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %3 ]
+        %13 = load i32, ptr @ncol, align 4
+    >   %14 = icmp eq i32 %.0, %13
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %14 = icmp eq i32 %.0.lcssa, %13
+    <   %15 = zext i1 %14 to i32
+    <   ret i32 %15
+
+in function get_value:
+  in block %8 / %8:
+    >   %9 = load i32, ptr %.0, align 8
+    >   ret i32 %9
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %9 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %9
+
+in function make_data:
+  in block %.preheader:
+    <   %.0.lcssa = phi i32 [ %.0, %7 ]
+
+in function make_list:
+  in block %6 / %6:
+    >   %.04 = phi i32 [ 0, %3 ], [ %46, %45 ]
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %45 ]
+    <   %.04 = phi i32 [ 0, %3 ], [ %46, %45 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1.lcssa, %45 ]
+  in block %45 / %45:
+    >   %46 = add nsw i32 %.15, 1
+    <   %.15.lcssa = phi i32 [ %.15, %8 ]
+    <   %.1.lcssa = phi ptr [ %.1, %8 ]
+    <   %46 = add nsw i32 %.15.lcssa, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %1 ], [ %27, %26 ]
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %26 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %27, %26 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1.lcssa, %26 ]
+  in block %26 / %26:
+    >   %27 = add nsw i32 %.12, 1
+    <   %.12.lcssa = phi i32 [ %.12, %6 ]
+    <   %.1.lcssa = phi ptr [ %.1, %6 ]
+    <   %27 = add nsw i32 %.12.lcssa, 1
+
+in function get_good_move:
+  in block %13 / %13:
+    >   %.0 = phi ptr [ %12, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %12, %.critedge ], [ null, %1 ]
+  in block %.critedge:
+    >   %11 = load ptr, ptr %.01, align 8
+    <   %.01.lcssa = phi ptr [ %.01, %6 ], [ %.01, %3 ]
+    <   %11 = load ptr, ptr %.01.lcssa, align 8
+
+in function get_winning_move:
+  in block %5 / %5:
+    >   %6 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %7 = load ptr, ptr %6, align 8
+    <   %.0.lcssa = phi ptr [ %.0, %2 ]
+    <   %6 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %7 = load ptr, ptr %6, align 8
+
+in function where:
+  in block %10 / %10:
+    >   %11 = getelementptr inbounds nuw i8, ptr %.0, i64 16
+    >   %12 = load ptr, ptr %11, align 8
+    >   ret ptr %12
+    <   %.0.lcssa = phi ptr [ %.0, %3 ]
+    <   %11 = getelementptr inbounds nuw i8, ptr %.0.lcssa, i64 16
+    <   %12 = load ptr, ptr %11, align 8
+    <   ret ptr %12
+
+in function get_real_move:
+  in block %14 / %14:
+    >   store i32 %8, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %8, %5 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %20 / %20:
+    <   %.01.lcssa = phi i32 [ %.01, %10 ]
+        call void @dump_play(ptr noundef %6)
+    >   %21 = sub nsw i32 1, %.01
+    <   %21 = sub nsw i32 1, %.01.lcssa"
+instcombine,sccp,dependent,false,agree_dependent,inst:copy_data:%4;inst:main:%23;inst:main:%26;inst:make_data:%5,inst:copy_data:%4;inst:main:%23;inst:main:%26;inst:make_data:%5,inst:copy_data:%4;inst:main:%23;inst:main:%26;inst:make_data:%5,read_write;enablement,strong,strong,strong,none,inst:copy_data:%4;inst:main:%23;inst:main:%26;inst:make_data:%5,,inst,symmetric_rewrite,expansion,instcombine->sccp;sccp->instcombine,"in function next_data:
+  in block %2 / %2:
+    >   %.01 = phi i32 [ 0, %1 ], [ %.12, %15 ]
+    >   %.0 = phi i32 [ 0, %1 ], [ %.1, %15 ]
+    <   %.01 = phi i32 [ 0, %1 ], [ %.12, %15 ]
+    <   %.0 = phi i32 [ 0, %1 ], [ %.1, %15 ]
+  in block %15 / %15:
+    >   %.1 = phi i32 [ %.0, %11 ], [ 1, %13 ]
+    <   %.1 = phi i32 [ 0, %11 ], [ 1, %13 ]
+
+in function main:
+  in block %10 / %10:
+    >   %.01 = phi i32 [ 0, %0 ], [ %.1, %19 ]
+    <   %.01 = phi i32 [ 0, %0 ], [ %.1, %19 ]
+  in block %20 / %20:
+    >   %21 = xor i32 %.01, 1
+    >   %22 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.16, i32 noundef %21) #4
+    <   %21 = sub nuw nsw i32 1, %.01
+    <   %22 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.16, i32 noundef %21) #4
+  in block %14 / %14:
+    >   %18 = xor i32 %.01, 1
+    <   %18 = sub nuw nsw i32 1, %.01
+  in block %19 / %19:
+    >   %.1 = phi i32 [ %18, %14 ], [ %.01, %11 ]
+    <   %.1 = phi i32 [ %18, %14 ], [ %.01, %11 ]"
+instcombine,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,instcombine->simplifycfg,"in function in_wanted:
+  in block %3 / %3:
+    in instruction   br i1 %.not, label %6, label %8 /   br i1 %.not, label %6, label %8:
+      successor %8 cannot be equivalent to %8; it's already equivalent to %9
+  in block %8 / %9:
+    >   %.0 = phi i32 [ 1, %8 ], [ 0, %2 ]
+    >   ret i32 %.0
+    <   %.0 = phi i32 [ 0, %2 ], [ 1, %3 ]
+    <   ret i32 %.0"
+licm,loop-rotate,dependent,false,agree_dependent,inst:get_real_move:%6;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:valid_data:%4;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:get_real_move:%6;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:valid_data:%4;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_good_move:.preheader:1:br;inst:get_real_move:%.lcssa;inst:get_real_move:%6;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:%.01.lcssa;inst:make_data:%.0.lcssa;inst:make_data:.preheader:1:br;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:valid_data:%3;inst:valid_data:%4;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_real_move:%.lcssa;inst:get_real_move:%6;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:main:%.01.lcssa;inst:make_data:%.0.lcssa;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:valid_data:%3;inst:valid_data:%4;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,expansion,loop-rotate->licm;licm->loop-rotate,"in function valid_data:
+  in block %.lr.ph:
+    <   %5 = load i32, ptr @ncol, align 4
+  in block %11 / %10:
+    >   %12 = icmp ne i32 %11, %3
+    <   %13 = icmp ne i32 %12, %5"
+licm,loop-simplify,dependent,true,false_positive,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write,strong,strong,none,none,inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,,,
+licm,loop-unroll,dependent,true,false_positive,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_good_move:.preheader:1:br;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:main:%.01.lcssa;inst:make_data:%.0.lcssa;inst:make_data:.preheader:1:br;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write,strong,strong,none,none,inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:main:%.01.lcssa;inst:make_data:%.0.lcssa;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,,,
+licm,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->simplifycfg,"in function in_wanted:
+  in block %13 / %.loopexit:
+    in instruction %.0 / %.0:
+      successor %.loopexit cannot be equivalent to %3; it's already equivalent to %.loopexit
+  in block %.loopexit:
+    >   %.0 = phi i32 [ %spec.select, %11 ], [ 0, %3 ]
+    >   ret i32 %.0
+    <   br label %13
+
+in function make_data:
+  in block %.preheader:
+    >   %.1 = phi i32 [ %19, %16 ], [ %.0, %7 ]
+    >   %14 = load i32, ptr @ncol, align 4
+    >   %15 = icmp ne i32 %.1, %14
+    >   br i1 %15, label %16, label %20
+    <   %.0.lcssa = phi i32 [ %.0, %7 ]
+    <   br label %14
+
+in function make_list:
+  in block %9 / %.preheader:
+    in instruction %.15 / %.15:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+    in instruction %.01 / %.01:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+    in instruction %.1 / %.1:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.15 = phi i32 [ %.3, %47 ], [ %.04, %6 ]
+    >   %.01 = phi i32 [ %48, %47 ], [ 0, %6 ]
+    >   %.1 = phi ptr [ %.2, %47 ], [ %.0, %6 ]
+    >   %9 = load i32, ptr @ncol, align 4
+    >   %10 = icmp ne i32 %.01, %9
+    >   br i1 %10, label %11, label %49
+    <   br label %9
+
+in function make_wanted:
+  in block %7 / %.preheader:
+    in instruction %.04 / %.04:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+    in instruction %.12 / %.12:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+    in instruction %.1 / %.1:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.04 = phi i32 [ %28, %27 ], [ 0, %4 ]
+    >   %.12 = phi i32 [ %.23, %27 ], [ %.01, %4 ]
+    >   %.1 = phi ptr [ %.2, %27 ], [ %.0, %4 ]
+    >   %7 = load i32, ptr @ncol, align 4
+    >   %8 = icmp ne i32 %.04, %7
+    >   br i1 %8, label %9, label %29
+    <   br label %7
+
+in function get_good_move:
+  in block %3 / %.preheader:
+    in instruction %.01 / %.01:
+      successor %.preheader cannot be equivalent to %1; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.01 = phi ptr [ %11, %10 ], [ %0, %1 ]
+    >   %3 = getelementptr inbounds nuw %struct._list.0, ptr %.01, i32 0, i32 1
+    >   %4 = load ptr, ptr %3, align 8
+    >   %5 = icmp ne ptr %4, null
+    >   br i1 %5, label %6, label %.critedge
+    <   br label %3"
+loop-rotate,loop-simplify,dependent,true,false_positive,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:make_list:bb2:1:call;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,expansion,loop-simplify->loop-rotate,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_good_move:.preheader:1:br;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:main:%.01.lcssa;inst:make_data:%.0.lcssa;inst:make_data:.preheader:1:br;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write;enablement,strong,strong,strong,none,inst:equal_data:%.lcssa;inst:get_good_move:%.01.lcssa;inst:get_real_move:%.lcssa;inst:get_value:%.0.lcssa;inst:get_winning_move:%.0.lcssa;inst:in_wanted:%.01.lcssa1;inst:main:%.01.lcssa;inst:make_data:%.0.lcssa;inst:make_list:%.1.lcssa;inst:make_list:%.15.lcssa;inst:make_list:bb2:1:call;inst:make_wanted:%.1.lcssa;inst:make_wanted:%.12.lcssa;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:next_data:%.0.lcssa;inst:valid_data:%.0.lcssa;inst:where:%.0.lcssa;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,expansion,loop-rotate->loop-unroll;loop-unroll->loop-rotate,"function @llvm.assume exists only in left module
+in function copy_data:
+  in block %.lr.ph:
+    >   br label %9
+    <   %xtraiter = and i32 %6, 3
+    <   %lcmp.mod = icmp ne i32 %xtraiter, 0
+    <   br i1 %lcmp.mod, label %.prol.preheader, label %.prol.loopexit
+
+in function melt_data:
+  in block %.lr.ph:
+    >   br label %6
+    <   %xtraiter = and i32 %3, 1
+    <   %lcmp.mod = icmp ne i32 %xtraiter, 0
+    <   br i1 %lcmp.mod, label %.prol.preheader, label %.prol.loopexit
+
+in function make_data:
+  in block %.lr.ph:
+    >   br label %10
+    <   %8 = add i32 %1, -1
+    <   %xtraiter = and i32 %1, 3
+    <   %9 = icmp ult i32 %8, 3
+    <   br i1 %9, label %.epil.preheader, label %.lr.ph.new
+  in block %.preheader:
+    >   %.0.lcssa = phi i32 [ %split, %..preheader_crit_edge ], [ 0, %2 ]
+    <   %.0.lcssa = phi i32 [ %split, %..preheader_crit_edge ], [ 0, %2 ]
+  in block %..preheader_crit_edge:
+    >   %split = phi i32 [ %14, %10 ]
+    <   %split = phi i32 [ %split.ph, %..preheader_crit_edge.unr-lcssa ], [ %split.ph4, %..preheader_crit_edge.epilog-lcssa ]"
+loop-rotate,sccp,dependent,true,false_positive,inst:main:%23,inst:main:%23,inst:main:%23,read_write;enablement,strong,strong,strong,none,inst:main:%23,,inst,symmetric_rewrite,expansion,sccp->loop-rotate;loop-rotate->sccp,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->simplifycfg,"in function copy_data:
+  in block %.lr.ph:
+    >   %9 = phi i32 [ %14, %.lr.ph ], [ %7, %1 ]
+    >   %10 = sext i32 %9 to i64
+    >   %11 = getelementptr inbounds i32, ptr %0, i64 %10
+    >   %12 = load i32, ptr %11, align 4
+    >   %13 = getelementptr inbounds i32, ptr %5, i64 %10
+    >   store i32 %12, ptr %13, align 4
+    >   %14 = add nsw i32 %9, -1
+    >   %15 = icmp ne i32 %9, 0
+    >   br i1 %15, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %9
+
+in function next_data:
+  in block %.lr.ph:
+    >   %.02 = phi i32 [ %.1, %13 ], [ 0, %1 ]
+    >   %.011 = phi i32 [ %.12, %13 ], [ 0, %1 ]
+    >   %4 = sext i32 %.011 to i64
+    >   %5 = getelementptr inbounds i32, ptr %0, i64 %4
+    >   %6 = load i32, ptr %5, align 4
+    >   %7 = load i32, ptr @nrow, align 4
+    >   %8 = icmp eq i32 %6, %7
+    >   br i1 %8, label %9, label %11
+    <   br label %4
+  in block %.critedge:
+    >   %.0.lcssa = phi i32 [ 0, %1 ], [ %.1, %13 ]
+    >   ret i32 %.0.lcssa
+    <   %.0.lcssa = phi i32 [ %split, %..critedge_crit_edge ], [ 0, %1 ]
+    <   ret i32 %.0.lcssa
+
+in function melt_data:
+  in block %.lr.ph:
+    >   %6 = phi i32 [ %15, %14 ], [ %4, %2 ]
+    >   %7 = sext i32 %6 to i64
+    >   %8 = getelementptr inbounds i32, ptr %0, i64 %7
+    >   %9 = load i32, ptr %8, align 4
+    >   %10 = getelementptr inbounds i32, ptr %1, i64 %7
+    >   %11 = load i32, ptr %10, align 4
+    >   %12 = icmp sgt i32 %9, %11
+    >   br i1 %12, label %13, label %14
+    <   br label %6
+
+in function valid_data:
+  in block %.lr.ph:
+    >   %.02 = phi i32 [ %10, %9 ], [ 0, %1 ]
+    >   %.011 = phi i32 [ %7, %9 ], [ %2, %1 ]
+    >   %5 = sext i32 %.02 to i64
+    >   %6 = getelementptr inbounds i32, ptr %0, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %8 = icmp sgt i32 %7, %.011
+    >   br i1 %8, label %._crit_edge, label %9
+    <   br label %5
+  in block %14 / %._crit_edge:
+    >   %.0.lcssa = phi i32 [ 0, %1 ], [ %.02, %.lr.ph ], [ %10, %9 ]
+    <   %.0.lcssa = phi i32 [ %split, %._crit_edge ], [ %split4, %._crit_edge3 ], [ 0, %1 ]
+        %15 = load i32, ptr @ncol, align 4
+    >   %14 = icmp eq i32 %.0.lcssa, %13
+    >   %15 = zext i1 %14 to i32
+    >   ret i32 %15
+    <   %16 = icmp eq i32 %.0.lcssa, %15
+    <   %17 = zext i1 %16 to i32
+    <   ret i32 %17
+
+in function get_value:
+  in block %.lr.ph:
+    >   %.01 = phi ptr [ %9, %.lr.ph ], [ %2, %1 ]
+    >   %8 = getelementptr inbounds nuw %struct._play.1, ptr %.01, i32 0, i32 3
+    >   %9 = load ptr, ptr %8, align 8
+    >   %10 = getelementptr inbounds nuw %struct._play.1, ptr %9, i32 0, i32 1
+    >   %11 = load ptr, ptr %10, align 8
+    >   %12 = call i32 @equal_data(ptr noundef %11, ptr noundef %0)
+    >   %13 = icmp ne i32 %12, 0
+    >   %14 = xor i1 %13, true
+    >   br i1 %14, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %8
+  in block %16 / %._crit_edge:
+    >   %.0.lcssa = phi ptr [ %2, %1 ], [ %9, %.lr.ph ]
+    >   %15 = load i32, ptr %.0.lcssa, align 8
+    >   ret i32 %15
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %2, %1 ]
+    <   %17 = load i32, ptr %.0.lcssa, align 8
+    <   ret i32 %17
+
+in function show_data:
+  in block %.lr.ph:
+    >   %.01 = phi i32 [ %4, %13 ], [ 0, %1 ]
+    >   %4 = add nsw i32 %.01, 1
+    >   %5 = sext i32 %.01 to i64
+    >   %6 = getelementptr inbounds i32, ptr %0, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %7)
+    >   %9 = load i32, ptr @ncol, align 4
+    >   %10 = icmp ne i32 %4, %9
+    >   br i1 %10, label %11, label %13
+    <   br label %4
+
+in function show_list:
+  in block %.lr.ph:
+    >   %.01 = phi ptr [ %5, %.lr.ph ], [ %0, %1 ]
+    >   %3 = load ptr, ptr %.01, align 8
+    >   call void @show_move(ptr noundef %3)
+    >   %4 = getelementptr inbounds nuw %struct._list.0, ptr %.01, i32 0, i32 1
+    >   %5 = load ptr, ptr %4, align 8
+    >   %6 = icmp ne ptr %5, null
+    >   br i1 %6, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %3
+
+in function show_play:
+  in block %.lr.ph:
+    >   %.01 = phi ptr [ %12, %.lr.ph ], [ %0, %1 ]
+    >   %3 = call i32 (ptr, ...) @printf(ptr noundef @.str.2)
+    >   %4 = getelementptr inbounds nuw %struct._play.1, ptr %.01, i32 0, i32 1
+    >   %5 = load ptr, ptr %4, align 8
+    >   call void @show_data(ptr noundef %5)
+    >   %6 = load i32, ptr %.01, align 8
+    >   %7 = call i32 (ptr, ...) @printf(ptr noundef @.str.3, i32 noundef %6)
+    >   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.4)
+    >   %9 = getelementptr inbounds nuw %struct._play.1, ptr %.01, i32 0, i32 2
+    >   %10 = load ptr, ptr %9, align 8
+    >   call void @show_list(ptr noundef %10)
+    >   %11 = getelementptr inbounds nuw %struct._play.1, ptr %.01, i32 0, i32 3
+    >   %12 = load ptr, ptr %11, align 8
+    >   %13 = icmp ne ptr %12, null
+    >   br i1 %13, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %3
+
+in function in_wanted:
+  in block %.lr.ph:
+    >   %.014 = phi ptr [ %8, %6 ], [ %2, %1 ]
+    >   %3 = load ptr, ptr %.014, align 8
+    >   %4 = call i32 @equal_data(ptr noundef %3, ptr noundef %0)
+    >   %5 = icmp ne i32 %4, 0
+    >   br i1 %5, label %9, label %6
+    <   br label %3
+  in block %.loopexit:
+    >   %.0 = phi i32 [ %spec.select, %9 ], [ 0, %6 ], [ 0, %1 ]
+    >   ret i32 %.0
+    <   br label %12
+
+in function make_data:
+  in block %.lr.ph:
+    >   %.01 = phi i32 [ %13, %.lr.ph ], [ 0, %2 ]
+    >   %10 = load i32, ptr @nrow, align 4
+    >   %11 = sext i32 %.01 to i64
+    >   %12 = getelementptr inbounds i32, ptr %6, i64 %11
+    >   store i32 %10, ptr %12, align 4
+    >   %13 = add nsw i32 %.01, 1
+    >   %14 = icmp ne i32 %13, %1
+    >   br i1 %14, label %.lr.ph, label %.preheader, !llvm.loop !7
+    <   br label %10
+  in block %.preheader:
+    >   %.0.lcssa = phi i32 [ 0, %2 ], [ %13, %.lr.ph ]
+    <   %.0.lcssa = phi i32 [ %split, %..preheader_crit_edge ], [ 0, %2 ]
+        %8 = load i32, ptr @ncol, align 4
+    >   %9 = icmp ne i32 %.0.lcssa, %8
+    >   br i1 %9, label %.lr.ph3, label %._crit_edge
+    <   %9 = icmp ne i32 %.0.lcssa, %8
+    <   br i1 %9, label %.lr.ph3, label %22
+
+in function make_list:
+  in block %.preheader.lr.ph / %.preheader:
+    >   %.06 = phi ptr [ %.1.lcssa, %._crit_edge ], [ %4, %3 ]
+    >   %.045 = phi i32 [ %49, %._crit_edge ], [ 0, %3 ]
+    >   %8 = load i32, ptr @ncol, align 4
+    >   %9 = icmp ne i32 0, %8
+    >   br i1 %9, label %.lr.ph, label %._crit_edge
+    <   br label %.preheader
+
+in function make_play:
+  in block %.lr.ph:
+    >   %.02 = phi ptr [ %.1, %36 ], [ %5, %1 ]
+    >   %.011 = phi ptr [ %.12, %36 ], [ %4, %1 ]
+    >   %10 = call i32 @valid_data(ptr noundef %.02)
+    >   %11 = icmp ne i32 %10, 0
+    >   br i1 %11, label %12, label %36
+    <   br label %10
+
+in function make_wanted:
+  in block %.preheader.lr.ph / %.preheader:
+    >   %.06 = phi ptr [ %.1.lcssa, %._crit_edge ], [ %2, %1 ]
+    >   %.015 = phi i32 [ %29, %._crit_edge ], [ 0, %1 ]
+    >   %6 = load i32, ptr @ncol, align 4
+    >   %7 = icmp ne i32 0, %6
+    >   br i1 %7, label %.lr.ph, label %._crit_edge
+    <   br label %.preheader
+
+in function get_good_move:
+  in block %18 / %17:
+    >   %.0 = phi ptr [ %16, %.critedge ], [ null, %1 ]
+    <   %.0 = phi ptr [ %17, %.critedge ], [ null, %1 ]
+  in block %.lr.ph:
+    >   %6 = phi ptr [ %12, %10 ], [ %3, %.preheader ]
+    >   %.011 = phi ptr [ %11, %10 ], [ %0, %.preheader ]
+    >   %7 = load ptr, ptr %.011, align 8
+    >   %8 = call i32 @get_value(ptr noundef %7)
+    >   %9 = icmp ne i32 %8, 0
+    >   br i1 %9, label %10, label %.critedge
+    <   br label %6
+  in block %.critedge:
+    >   %.01.lcssa = phi ptr [ %0, %.preheader ], [ %.011, %.lr.ph ], [ %11, %10 ]
+    >   %15 = load ptr, ptr %.01.lcssa, align 8
+    <   %.01.lcssa = phi ptr [ %split, %..critedge_crit_edge ], [ %split3, %..critedge_crit_edge2 ], [ %0, %.preheader ]
+    <   %16 = load ptr, ptr %.01.lcssa, align 8
+
+in function where:
+  in block %.lr.ph:
+    >   %.01 = phi ptr [ %9, %.lr.ph ], [ %1, %2 ]
+    >   %8 = getelementptr inbounds nuw %struct._play.1, ptr %.01, i32 0, i32 3
+    >   %9 = load ptr, ptr %8, align 8
+    >   %10 = getelementptr inbounds nuw %struct._play.1, ptr %9, i32 0, i32 1
+    >   %11 = load ptr, ptr %10, align 8
+    >   %12 = call i32 @equal_data(ptr noundef %11, ptr noundef %0)
+    >   %13 = icmp ne i32 %12, 0
+    >   %14 = xor i1 %13, true
+    >   br i1 %14, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %8
+  in block %16 / %._crit_edge:
+    >   %.0.lcssa = phi ptr [ %1, %2 ], [ %9, %.lr.ph ]
+    >   %15 = getelementptr inbounds nuw %struct._play.1, ptr %.0.lcssa, i32 0, i32 2
+    >   %16 = load ptr, ptr %15, align 8
+    >   ret ptr %16
+    <   %.0.lcssa = phi ptr [ %split, %._crit_edge ], [ %1, %2 ]
+    <   %17 = getelementptr inbounds nuw %struct._play, ptr %.0.lcssa, i32 0, i32 2
+    <   %18 = load ptr, ptr %17, align 8
+    <   ret ptr %18
+
+in function get_real_move:
+  in block %.lr.ph:
+    >   %12 = phi i32 [ %14, %.lr.ph ], [ %5, %4 ]
+    >   %13 = add nsw i32 %12, 1
+    >   store i32 %13, ptr %3, align 4
+    >   %14 = load i32, ptr %3, align 4
+    >   %15 = sext i32 %14 to i64
+    >   %16 = getelementptr inbounds i32, ptr %0, i64 %15
+    >   %17 = load i32, ptr %16, align 4
+    >   %18 = getelementptr inbounds i32, ptr %1, i64 %15
+    >   %19 = load i32, ptr %18, align 4
+    >   %20 = icmp eq i32 %17, %19
+    >   br i1 %20, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %12
+  in block %22 / %._crit_edge:
+    >   %.lcssa = phi i32 [ %8, %4 ], [ %17, %.lr.ph ]
+    >   store i32 %.lcssa, ptr %2, align 4
+    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %8, %4 ]
+    <   store i32 %.lcssa, ptr %2, align 4
+
+in function main:
+  in block %.lr.ph:
+    >   %.012 = phi i32 [ %.1, %22 ], [ 0, %0 ]
+    >   %.021 = phi ptr [ %15, %22 ], [ %12, %0 ]
+    >   %14 = call ptr @where(ptr noundef %.021, ptr noundef %9)
+    >   %15 = call ptr @get_good_move(ptr noundef %14)
+    >   %16 = icmp ne ptr %15, null
+    >   br i1 %16, label %17, label %22
+    <   br label %14
+  in block %25 / %._crit_edge:
+    >   %.01.lcssa = phi i32 [ 0, %0 ], [ %.1, %22 ]
+    <   %.01.lcssa = phi i32 [ %split, %._crit_edge ], [ 0, %0 ]
+        call void @dump_play(ptr noundef %9)
+    >   %24 = sub nsw i32 1, %.01.lcssa
+    <   %26 = sub nsw i32 1, %.01.lcssa"
+loop-simplify,loop-unroll,dependent,true,false_positive,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:make_list:bb1:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_wanted:bb1,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:1:call;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:1:call;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;inst:make_wanted:bb2:3:ret;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,read_write,strong,strong,none,none,inst:make_list:bb1:1:call;inst:make_list:bb2:1:call;inst:make_wanted:bb1:1:call;inst:make_wanted:bb1:2:store;inst:make_wanted:bb2:1:call;inst:make_wanted:bb2:2:store;loop:in_wanted:bb0;loop:make_list:bb1;loop:make_list:bb2;loop:make_wanted:bb1;loop:make_wanted:bb2,bb:get_good_move:.preheader;bb:in_wanted:.loopexit;bb:make_data:.preheader;bb:make_list:.preheader;bb:make_wanted:.preheader;inst:get_good_move:.preheader:1:br;inst:in_wanted:.loopexit:1:br;inst:in_wanted:bb1:1:br;inst:in_wanted:bb1:1:ret;inst:in_wanted:bb2:1:br;inst:in_wanted:bb3:1:br;inst:in_wanted:bb4:1:br;inst:in_wanted:bb4:1:ret;inst:make_data:.preheader:1:br;inst:make_list:.preheader:1:br;inst:make_list:bb1:1:br;inst:make_list:bb1:2:br;inst:make_list:bb2:1:br;inst:make_list:bb2:2:br;inst:make_wanted:.preheader:1:br;inst:make_wanted:bb1:1:br;inst:make_wanted:bb1:3:ret;inst:make_wanted:bb2:1:br;inst:make_wanted:bb2:3:ret,bb;inst;loop,mixed,,,
+loop-simplify,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-simplify->simplifycfg,"in function in_wanted:
+  in block %13 / %.loopexit:
+    in instruction %.0 / %.0:
+      successor %.loopexit cannot be equivalent to %3; it's already equivalent to %.loopexit
+  in block %.loopexit:
+    >   %.0 = phi i32 [ %spec.select, %11 ], [ 0, %3 ]
+    >   ret i32 %.0
+    <   br label %13
+
+in function make_data:
+  in block %.preheader:
+    >   %.1 = phi i32 [ %19, %16 ], [ %.0, %7 ]
+    >   %14 = load i32, ptr @ncol, align 4
+    >   %15 = icmp ne i32 %.1, %14
+    >   br i1 %15, label %16, label %20
+    <   br label %14
+
+in function make_list:
+  in block %6 / %6:
+    >   %.0 = phi ptr [ %4, %3 ], [ %.1, %49 ]
+    <   %.0 = phi ptr [ %4, %3 ], [ %.1, %50 ]
+  in block %.preheader:
+    >   %.15 = phi i32 [ %.3, %47 ], [ %.04, %6 ]
+    >   %.01 = phi i32 [ %48, %47 ], [ 0, %6 ]
+    >   %.1 = phi ptr [ %.2, %47 ], [ %.0, %6 ]
+    >   %9 = load i32, ptr @ncol, align 4
+    >   %10 = icmp ne i32 %.01, %9
+    >   br i1 %10, label %11, label %49
+    <   br label %9
+  in block %50 / %49:
+    >   %50 = add nsw i32 %.15, 1
+    <   %51 = add nsw i32 %.15, 1
+
+in function make_wanted:
+  in block %4 / %4:
+    >   %.0 = phi ptr [ %2, %1 ], [ %.1, %29 ]
+    <   %.0 = phi ptr [ %2, %1 ], [ %.1, %30 ]
+  in block %.preheader:
+    >   %.04 = phi i32 [ %28, %27 ], [ 0, %4 ]
+    >   %.12 = phi i32 [ %.23, %27 ], [ %.01, %4 ]
+    >   %.1 = phi ptr [ %.2, %27 ], [ %.0, %4 ]
+    >   %7 = load i32, ptr @ncol, align 4
+    >   %8 = icmp ne i32 %.04, %7
+    >   br i1 %8, label %9, label %29
+    <   br label %7
+  in block %30 / %29:
+    >   %30 = add nsw i32 %.12, 1
+    <   %31 = add nsw i32 %.12, 1
+
+in function get_good_move:
+  in block %.preheader:
+    >   %.01 = phi ptr [ %11, %10 ], [ %0, %1 ]
+    >   %3 = getelementptr inbounds nuw %struct._list.0, ptr %.01, i32 0, i32 1
+    >   %4 = load ptr, ptr %3, align 8
+    >   %5 = icmp ne ptr %4, null
+    >   br i1 %5, label %6, label %.critedge
+    <   br label %3
+  in block %.critedge:
+    >   %12 = load ptr, ptr %.01, align 8
+    <   %13 = load ptr, ptr %.01, align 8"
+loop-unroll,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function in_wanted:
+  in block %13 / %.loopexit:
+    in instruction %.0 / %.0:
+      successor %.loopexit cannot be equivalent to %3; it's already equivalent to %.loopexit
+  in block %.loopexit:
+    >   %.0 = phi i32 [ %spec.select, %11 ], [ 0, %3 ]
+    >   ret i32 %.0
+    <   br label %13
+
+in function make_data:
+  in block %.preheader:
+    >   %.1 = phi i32 [ %19, %16 ], [ %.0, %7 ]
+    >   %14 = load i32, ptr @ncol, align 4
+    >   %15 = icmp ne i32 %.1, %14
+    >   br i1 %15, label %16, label %20
+    <   %.0.lcssa = phi i32 [ %.0, %7 ]
+    <   br label %14
+
+in function make_list:
+  in block %9 / %.preheader:
+    in instruction %.15 / %.15:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+    in instruction %.01 / %.01:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+    in instruction %.1 / %.1:
+      successor %.preheader cannot be equivalent to %6; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.15 = phi i32 [ %.3, %47 ], [ %.04, %6 ]
+    >   %.01 = phi i32 [ %48, %47 ], [ 0, %6 ]
+    >   %.1 = phi ptr [ %.2, %47 ], [ %.0, %6 ]
+    >   %9 = load i32, ptr @ncol, align 4
+    >   %10 = icmp ne i32 %.01, %9
+    >   br i1 %10, label %11, label %49
+    <   br label %9
+
+in function make_wanted:
+  in block %7 / %.preheader:
+    in instruction %.04 / %.04:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+    in instruction %.12 / %.12:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+    in instruction %.1 / %.1:
+      successor %.preheader cannot be equivalent to %4; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.04 = phi i32 [ %28, %27 ], [ 0, %4 ]
+    >   %.12 = phi i32 [ %.23, %27 ], [ %.01, %4 ]
+    >   %.1 = phi ptr [ %.2, %27 ], [ %.0, %4 ]
+    >   %7 = load i32, ptr @ncol, align 4
+    >   %8 = icmp ne i32 %.04, %7
+    >   br i1 %8, label %9, label %29
+    <   br label %7
+
+in function get_good_move:
+  in block %3 / %.preheader:
+    in instruction %.01 / %.01:
+      successor %.preheader cannot be equivalent to %1; it's already equivalent to %.preheader
+  in block %.preheader:
+    >   %.01 = phi ptr [ %11, %10 ], [ %0, %1 ]
+    >   %3 = getelementptr inbounds nuw %struct._list.0, ptr %.01, i32 0, i32 1
+    >   %4 = load ptr, ptr %3, align 8
+    >   %5 = icmp ne ptr %4, null
+    >   br i1 %5, label %6, label %.critedge
+    <   br label %3"
+sccp,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,

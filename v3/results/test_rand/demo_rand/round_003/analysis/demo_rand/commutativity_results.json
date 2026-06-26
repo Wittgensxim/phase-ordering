@@ -1,0 +1,849 @@
+{
+  "summary": {
+    "total_pairs": 105,
+    "commuting_pairs": 88,
+    "non_commuting_pairs": 17
+  },
+  "pairs": [
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "instcombine",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__instcombine.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__simplifycfg.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__dce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "sroa",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__sroa.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__early-cse.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__gvn.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "mem2reg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\mem2reg__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__mem2reg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__dce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sroa",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__sroa.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function compute:\n  in block %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %loop.preheader ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %loop.preheader ]\n    >   %0 = zext nneg i32 %i to i64\n    >   %gep = getelementptr [4 x i8], ptr %arr, i64 %0\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = shl i32 %val, 1\n    >   %add = add i32 %sum, %mul\n    >   %next = add nuw nsw i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit.loopexit\n    <   %i = phi i32 [ %next, %loop ], [ 0, %loop.preheader ]\n    <   %sum = phi i32 [ %add, %loop ], [ 0, %loop.preheader ]\n    <   %0 = sext i32 %i to i64\n    <   %gep = getelementptr [4 x i8], ptr %arr, i64 %0\n    <   %val = load i32, ptr %gep, align 4\n    <   %mul = shl i32 %val, 1\n    <   %add = add i32 %sum, %mul\n    <   %next = add nuw nsw i32 %i, 1\n    <   %cond = icmp slt i32 %next, %n\n    <   br i1 %cond, label %loop, label %exit.loopexit\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\instcombine__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__dce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sroa",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__sroa.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-simplify",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__simplifycfg.ll",
+      "details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    <   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n  in block %exit.loopexit / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %exit"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__simplifycfg.ll",
+      "details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add nuw nsw i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\simplifycfg__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "sroa",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__sroa.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__early-cse.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__gvn.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\dce__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__early-cse.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__gvn.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sroa",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sroa__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__sroa.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\early-cse__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__sccp.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__gvn.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\gvn__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__adce.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\sccp__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__loop-simplify.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\adce__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__loop-rotate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-simplify__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-rotate__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\licm__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\indvars__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\loop-unroll__then__reassociate.ll",
+      "ba_path": "results\\test_rand\\demo_rand\\round_003\\analysis\\demo_rand\\commutativity\\reassociate__then__loop-unroll.ll",
+      "details": ""
+    }
+  ]
+}

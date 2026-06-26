@@ -1,0 +1,11 @@
+{
+  "kind": "random_ordered_pair",
+  "passes": [
+    "sccp",
+    "gvn"
+  ],
+  "winner": "random",
+  "score_improvement": 0,
+  "details": "random chose sccp->gvn",
+  "changed": true
+}

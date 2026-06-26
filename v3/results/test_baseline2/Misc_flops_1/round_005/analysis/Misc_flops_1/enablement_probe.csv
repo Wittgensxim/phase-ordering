@@ -1,0 +1,7 @@
+round,edge_kind,enabler,enabled,prefix,reads_after_prefix,writes_after_prefix,new_writes_after_prefix,changed_writes_after_prefix
+1,expansion,loop-rotate,instcombine,loop-rotate,inst:main:%.lcssa;inst:main:%17,inst:main:%.lcssa;inst:main:%17,inst:main:%.lcssa,
+1,activation,loop-rotate,early-cse,loop-rotate,inst:main:%.lcssa,inst:main:%.lcssa,inst:main:%.lcssa,
+1,activation,loop-rotate,gvn,loop-rotate,inst:main:%.lcssa,inst:main:%.lcssa,inst:main:%.lcssa,
+1,expansion,loop-unroll,instcombine,loop-unroll,inst:main:%.lcssa;inst:main:%17,inst:main:%.lcssa;inst:main:%17,inst:main:%.lcssa,
+1,activation,loop-unroll,early-cse,loop-unroll,inst:main:%.lcssa,inst:main:%.lcssa,inst:main:%.lcssa,
+1,activation,loop-unroll,gvn,loop-unroll,inst:main:%.lcssa,inst:main:%.lcssa,inst:main:%.lcssa,

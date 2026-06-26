@@ -1,0 +1,168 @@
+{
+  "summary": {
+    "total_pairs": 3,
+    "agree_dependent": 0,
+    "agree_independent": 0,
+    "false_positive": 3,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 0,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:ack:%10",
+        "inst:ack:%7",
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "wb_intersect_ra": [
+        "inst:ack:%10",
+        "inst:ack:%7",
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "wa_intersect_wb": [
+        "inst:ack:%10",
+        "inst:ack:%7",
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:ack:%10",
+        "inst:ack:%7",
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:ack:%14",
+        "inst:ack:%15",
+        "inst:fib:%5",
+        "inst:fib:%7",
+        "inst:fibFP:%5",
+        "inst:fibFP:%7"
+      ],
+      "wb_intersect_ra": [
+        "inst:ack:%14",
+        "inst:ack:%15",
+        "inst:fib:%5",
+        "inst:fib:%7",
+        "inst:fibFP:%5",
+        "inst:fibFP:%7"
+      ],
+      "wa_intersect_wb": [
+        "inst:ack:%13",
+        "inst:ack:%14",
+        "inst:ack:%15",
+        "inst:fib:%5",
+        "inst:fib:%7",
+        "inst:fibFP:%5",
+        "inst:fibFP:%7"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:ack:%13",
+        "inst:ack:%14",
+        "inst:ack:%15",
+        "inst:fib:%5",
+        "inst:fib:%7",
+        "inst:fibFP:%5",
+        "inst:fibFP:%7"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->simplifycfg",
+        "simplifycfg->instcombine"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "wb_intersect_ra": [
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "wa_intersect_wb": [
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:fib:%5",
+        "inst:fib:%7"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion",
+        "mutation"
+      ],
+      "enablement_edges": [
+        "simplifycfg->sccp",
+        "sccp->simplifycfg"
+      ],
+      "commutativity_details": ""
+    }
+  ]
+}

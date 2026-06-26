@@ -1,0 +1,177 @@
+{
+  "summary": {
+    "total_pairs": 21,
+    "commuting_pairs": 9,
+    "non_commuting_pairs": 12
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %6 = phi i32 [ 1, %0 ], [ %39, %5 ]\n    >   %7 = phi double [ 0.000000e+00, %0 ], [ %38, %5 ]\n    >   %8 = uitofp nneg i32 %6 to double\n    >   %9 = fmul double %4, %8\n    >   %10 = fmul double %9, %9\n    <   %6 = phi i32 [ 1, %0 ], [ %39, %5 ]\n    <   %7 = phi double [ 0.000000e+00, %0 ], [ %38, %5 ]\n    <   %8 = uitofp nneg i32 %6 to double\n    <   %9 = fmul double %4, %8\n    <   %10 = fmul double %9, %9\n        %11 = load double, ptr @A6, align 8\n        %12 = load double, ptr @A5, align 8\n        %13 = call double @llvm.fmuladd.f64(double %11, double %10, double %12)\n        %14 = load double, ptr @A4, align 8\n        %15 = call double @llvm.fmuladd.f64(double %13, double %10, double %14)\n        %16 = load double, ptr @A3, align 8\n        %17 = call double @llvm.fmuladd.f64(double %15, double %10, double %16)\n        %18 = load double, ptr @A2, align 8\n        %19 = call double @llvm.fmuladd.f64(double %17, double %10, double %18)\n        %20 = load double, ptr @A1, align 8\n        %21 = call double @llvm.fmuladd.f64(double %19, double %10, double %20)\n        %22 = load double, ptr @one, align 8\n        %23 = call double @llvm.fmuladd.f64(double %21, double %10, double %22)\n    >   %24 = fmul double %9, %23\n    <   %24 = fmul double %9, %23\n        %25 = load double, ptr @B6, align 8\n        %26 = load double, ptr @B5, align 8\n        %27 = call double @llvm.fmuladd.f64(double %25, double %10, double %26)\n        %28 = load double, ptr @B4, align 8\n        %29 = call double @llvm.fmuladd.f64(double %10, double %27, double %28)\n        %30 = load double, ptr @B3, align 8\n        %31 = call double @llvm.fmuladd.f64(double %10, double %29, double %30)\n        %32 = load double, ptr @B2, align 8\n        %33 = call double @llvm.fmuladd.f64(double %10, double %31, double %32)\n        %34 = load double, ptr @B1, align 8\n        %35 = call double @llvm.fmuladd.f64(double %10, double %33, double %34)\n        %36 = call double @llvm.fmuladd.f64(double %10, double %35, double %22)\n    >   %37 = fdiv double %24, %36\n    >   %38 = fadd double %7, %37\n    >   %39 = add nuw nsw i32 %6, 1\n    >   %40 = icmp samesign ult i32 %6, 156249999\n    >   br i1 %40, label %5, label %41, !llvm.loop !7\n    <   %37 = fdiv double %24, %36\n    <   %38 = fadd double %7, %37\n    <   %39 = add nuw nsw i32 %6, 1\n    <   %40 = icmp samesign ult i32 %39, 156250000\n    <   br i1 %40, label %5, label %41, !llvm.loop !7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function main:\n  in block %42 / %42:\n    <   %.lcssa = phi double [ %19, %18 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function main:\n  in block %5 / %5:\n    >   %6 = phi double [ %39, %8 ], [ 0.000000e+00, %0 ]\n    >   %7 = phi i32 [ %40, %8 ], [ 1, %0 ]\n    >   %exitcond.not = icmp eq i32 %7, 156250000\n    >   br i1 %exitcond.not, label %41, label %8\n    <   %6 = phi double [ %39, %8 ], [ 0.000000e+00, %0 ]\n    <   %7 = phi i32 [ %40, %8 ], [ 1, %0 ]\n    <   %exitcond = icmp ne i32 %7, 156250000\n    <   br i1 %exitcond, label %8, label %41"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function main:\n  in block %42 / %42:\n    <   %.lcssa = phi double [ %6, %5 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function main:\n  in block %41 / %41:\n    in instruction %46 / %44:\n      arguments %44 and %11 differ\n    <   %.lcssa = phi double [ %38, %5 ]\n        %42 = fdiv double %1, %2\n        %43 = fmul double %42, %42\n    <   %44 = load double, ptr @A6, align 8\n    <   %45 = load double, ptr @A5, align 8\n        %46 = call double @llvm.fmuladd.f64(double %44, double %43, double %45)\n    <   %47 = load double, ptr @A4, align 8\n        %48 = call double @llvm.fmuladd.f64(double %46, double %43, double %47)\n    <   %49 = load double, ptr @A3, align 8\n        %50 = call double @llvm.fmuladd.f64(double %48, double %43, double %49)\n    <   %51 = load double, ptr @A2, align 8\n        %52 = call double @llvm.fmuladd.f64(double %50, double %43, double %51)\n    <   %53 = load double, ptr @A1, align 8\n        %54 = call double @llvm.fmuladd.f64(double %52, double %43, double %53)\n    <   %55 = load double, ptr @one, align 8\n        %56 = call double @llvm.fmuladd.f64(double %54, double %43, double %55)\n        %57 = fmul double %42, %56\n        store double %57, ptr @sa, align 8\n        %58 = load double, ptr @B6, align 8\n        %59 = load double, ptr @B5, align 8\n        %60 = call double @llvm.fmuladd.f64(double %58, double %43, double %59)\n        %61 = load double, ptr @B4, align 8\n        %62 = call double @llvm.fmuladd.f64(double %43, double %60, double %61)\n        %63 = load double, ptr @B3, align 8\n        %64 = call double @llvm.fmuladd.f64(double %43, double %62, double %63)\n        %65 = load double, ptr @B2, align 8\n        %66 = call double @llvm.fmuladd.f64(double %43, double %64, double %65)\n        %67 = load double, ptr @B1, align 8\n        %68 = call double @llvm.fmuladd.f64(double %43, double %66, double %67)\n        %69 = call double @llvm.fmuladd.f64(double %43, double %68, double %55)\n        store double %69, ptr @sb, align 8\n        %70 = fdiv double %57, %69\n        store double %70, ptr @sa, align 8\n        %71 = load double, ptr @two, align 8\n    >   %65 = call double @llvm.fmuladd.f64(double %64, double %38, double %63)\n    >   %66 = fmul double %4, %65\n    >   %67 = fdiv double %66, %64\n    >   store double %67, ptr @sa, align 8\n    <   %72 = call double @llvm.fmuladd.f64(double %71, double %.lcssa, double %70)\n    <   %73 = fmul double %4, %72\n    <   %74 = fdiv double %73, %71\n    <   store double %74, ptr @sa, align 8\n        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8\n    >   %68 = fadd double %67, f0xBFE62E42FEFA39EF\n    >   store double %68, ptr @sc, align 8\n    >   %69 = fmul double %68, 1.000000e-30\n    <   %75 = fadd double %74, f0xBFE62E42FEFA39EF\n    <   store double %75, ptr @sc, align 8\n    <   %76 = fmul double %75, 1.000000e-30"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function main:\n  in block %42 / %42:\n    <   %.lcssa = phi double [ %19, %18 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function main:\n  in block %41 / %41:\n    <   %.lcssa = phi double [ %6, %5 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function main:\n  in block %42 / %42:\n    <   %.lcssa = phi double [ %6, %5 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function main:\n  in block %0 / %0:\n    >   %.pre = load double, ptr @A6, align 8\n    >   %.pre1 = load double, ptr @A5, align 8\n    >   %.pre2 = load double, ptr @A4, align 8\n    >   %.pre3 = load double, ptr @A3, align 8\n    >   %.pre4 = load double, ptr @A2, align 8\n    >   %.pre5 = load double, ptr @A1, align 8\n    >   %.pre6 = load double, ptr @one, align 8\n    >   %.pre7 = load double, ptr @B6, align 8\n    >   %.pre8 = load double, ptr @B5, align 8\n    >   %.pre9 = load double, ptr @B4, align 8\n    >   %.pre10 = load double, ptr @B3, align 8\n    >   %.pre11 = load double, ptr @B2, align 8\n    >   %.pre12 = load double, ptr @B1, align 8"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\licm__then__gvn.ll",
+      "details": "in function main:\n  in block %42 / %42:\n    in instruction %47 / %45:\n      arguments %45 and %5 differ\n    <   %.lcssa = phi double [ %19, %18 ]\n        %43 = fdiv double %1, %2\n        %44 = fmul double %43, %43\n    <   %45 = load double, ptr @A6, align 8\n    <   %46 = load double, ptr @A5, align 8\n        %47 = call double @llvm.fmuladd.f64(double %45, double %44, double %46)\n    <   %48 = load double, ptr @A4, align 8\n        %49 = call double @llvm.fmuladd.f64(double %47, double %44, double %48)\n    <   %50 = load double, ptr @A3, align 8\n        %51 = call double @llvm.fmuladd.f64(double %49, double %44, double %50)\n    <   %52 = load double, ptr @A2, align 8\n        %53 = call double @llvm.fmuladd.f64(double %51, double %44, double %52)\n    <   %54 = load double, ptr @A1, align 8\n        %55 = call double @llvm.fmuladd.f64(double %53, double %44, double %54)\n    <   %56 = load double, ptr @one, align 8\n        %57 = call double @llvm.fmuladd.f64(double %55, double %44, double %56)\n        %58 = fmul double %43, %57\n        store double %58, ptr @sa, align 8\n    <   %59 = load double, ptr @B6, align 8\n    <   %60 = load double, ptr @B5, align 8\n        %61 = call double @llvm.fmuladd.f64(double %59, double %44, double %60)\n    <   %62 = load double, ptr @B4, align 8\n        %63 = call double @llvm.fmuladd.f64(double %44, double %61, double %62)\n    <   %64 = load double, ptr @B3, align 8\n        %65 = call double @llvm.fmuladd.f64(double %44, double %63, double %64)\n    <   %66 = load double, ptr @B2, align 8\n        %67 = call double @llvm.fmuladd.f64(double %44, double %65, double %66)\n    <   %68 = load double, ptr @B1, align 8"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function main:\n  in block %41 / %41:\n    <   %.lcssa = phi double [ %6, %5 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function main:\n  in block %42 / %42:\n    <   %.lcssa = phi double [ %6, %5 ]"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\indvars__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Misc_flops_5\\round_001\\analysis\\Misc_flops_5\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": ""
+    }
+  ]
+}

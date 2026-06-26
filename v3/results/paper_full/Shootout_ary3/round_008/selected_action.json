@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "indvars",
+    "loop-unroll"
+  ],
+  "details": "perturbation: indvars->loop-unroll",
+  "changed": true
+}

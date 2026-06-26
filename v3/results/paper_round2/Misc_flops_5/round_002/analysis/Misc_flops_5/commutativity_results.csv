@@ -1,0 +1,464 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,early-cse,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\instcombine__then__early-cse.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\instcombine__then__gvn.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\gvn__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\instcombine__then__loop-rotate.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+instcombine,licm,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\instcombine__then__licm.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+instcombine,indvars,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\instcombine__then__indvars.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\indvars__then__instcombine.ll,"in function main:
+  in block %5 / %5:
+    >   %6 = phi i32 [ 1, %0 ], [ %26, %5 ]
+    >   %7 = phi double [ 0.000000e+00, %0 ], [ %25, %5 ]
+    >   %8 = uitofp nneg i32 %6 to double
+    >   %9 = fmul double %4, %8
+    >   %10 = fmul double %9, %9
+    <   %6 = phi i32 [ 1, %0 ], [ %26, %5 ]
+    <   %7 = phi double [ 0.000000e+00, %0 ], [ %25, %5 ]
+    <   %8 = uitofp nneg i32 %6 to double
+    <   %9 = fmul double %4, %8
+    <   %10 = fmul double %9, %9
+        %11 = call double @llvm.fmuladd.f64(double %.pre, double %10, double %.pre1)
+        %12 = call double @llvm.fmuladd.f64(double %11, double %10, double %.pre2)
+        %13 = call double @llvm.fmuladd.f64(double %12, double %10, double %.pre3)
+        %14 = call double @llvm.fmuladd.f64(double %13, double %10, double %.pre4)
+        %15 = call double @llvm.fmuladd.f64(double %14, double %10, double %.pre5)
+        %16 = call double @llvm.fmuladd.f64(double %15, double %10, double %.pre6)
+    >   %17 = fmul double %9, %16
+    <   %17 = fmul double %9, %16
+        %18 = call double @llvm.fmuladd.f64(double %.pre7, double %10, double %.pre8)
+        %19 = call double @llvm.fmuladd.f64(double %10, double %18, double %.pre9)
+        %20 = call double @llvm.fmuladd.f64(double %10, double %19, double %.pre10)
+        %21 = call double @llvm.fmuladd.f64(double %10, double %20, double %.pre11)
+        %22 = call double @llvm.fmuladd.f64(double %10, double %21, double %.pre12)
+        %23 = call double @llvm.fmuladd.f64(double %10, double %22, double %.pre6)
+    >   %24 = fdiv double %17, %23
+    >   %25 = fadd double %7, %24
+    >   %26 = add nuw nsw i32 %6, 1
+    >   %exitcond.not = icmp eq i32 %26, 156250000
+    >   br i1 %exitcond.not, label %27, label %5, !llvm.loop !7
+    <   %24 = fdiv double %17, %23
+    <   %25 = fadd double %7, %24
+    <   %26 = add nuw nsw i32 %6, 1
+    <   %exitcond = icmp ne i32 %26, 156250000
+    <   br i1 %exitcond, label %5, label %27, !llvm.loop !7"
+instcombine,loop-unroll,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\instcombine__then__loop-unroll.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-unroll__then__instcombine.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+early-cse,gvn,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\early-cse__then__gvn.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\gvn__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\early-cse__then__loop-rotate.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+early-cse,licm,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\early-cse__then__licm.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+early-cse,indvars,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\early-cse__then__indvars.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\indvars__then__early-cse.ll,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+early-cse,loop-unroll,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\early-cse__then__loop-unroll.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-unroll__then__early-cse.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+gvn,loop-rotate,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\gvn__then__loop-rotate.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+gvn,licm,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\gvn__then__licm.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\licm__then__gvn.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+gvn,indvars,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\gvn__then__indvars.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\indvars__then__gvn.ll,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+gvn,loop-unroll,false,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\gvn__then__loop-unroll.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %28 / %28:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %29 = fdiv double %1, %2
+        %30 = fmul double %29, %29
+        %31 = call double @llvm.fmuladd.f64(double %.pre, double %30, double %.pre1)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %30, double %.pre2)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %30, double %.pre3)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %30, double %.pre4)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %30, double %.pre5)
+        %36 = call double @llvm.fmuladd.f64(double %35, double %30, double %.pre6)
+        %37 = fmul double %29, %36
+        store double %37, ptr @sa, align 8
+        %38 = call double @llvm.fmuladd.f64(double %.pre7, double %30, double %.pre8)
+        %39 = call double @llvm.fmuladd.f64(double %30, double %38, double %.pre9)
+        %40 = call double @llvm.fmuladd.f64(double %30, double %39, double %.pre10)
+        %41 = call double @llvm.fmuladd.f64(double %30, double %40, double %.pre11)
+        %42 = call double @llvm.fmuladd.f64(double %30, double %41, double %.pre12)
+        %43 = call double @llvm.fmuladd.f64(double %30, double %42, double %.pre6)
+        store double %43, ptr @sb, align 8
+        %44 = fdiv double %37, %43
+        store double %44, ptr @sa, align 8
+        %45 = load double, ptr @two, align 8
+    >   %46 = call double @llvm.fmuladd.f64(double %45, double %25, double %44)
+    >   %47 = fmul double %4, %46
+    >   %48 = fdiv double %47, %45
+    >   store double %48, ptr @sa, align 8
+    <   %46 = call double @llvm.fmuladd.f64(double %45, double %.lcssa, double %44)
+    <   %47 = fmul double %4, %46
+    <   %48 = fdiv double %47, %45
+    <   store double %48, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    >   store double %49, ptr @sc, align 8
+    >   %50 = fmul double %49, 1.000000e-30
+    <   %49 = fadd double %48, f0xBFE62E42FEFA39EF
+    <   store double %49, ptr @sc, align 8
+    <   %50 = fmul double %49, 1.000000e-30"
+loop-rotate,licm,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-rotate__then__licm.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\licm__then__loop-rotate.ll,
+loop-rotate,indvars,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-rotate__then__indvars.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-unroll__then__loop-rotate.ll,
+licm,indvars,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\licm__then__indvars.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\indvars__then__licm.ll,
+licm,loop-unroll,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\licm__then__loop-unroll.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,true,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\indvars__then__loop-unroll.ll,results\paper_round2\Misc_flops_5\round_002\analysis\Misc_flops_5\commutativity\loop-unroll__then__indvars.ll,

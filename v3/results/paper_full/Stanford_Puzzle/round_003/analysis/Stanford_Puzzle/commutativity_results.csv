@@ -1,0 +1,1329 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,dce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__dce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__instcombine.ll,
+instcombine,early-cse,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__early-cse.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__gvn.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__instcombine.ll,
+instcombine,sccp,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__sccp.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__adce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__instcombine.ll,"in function Place:
+  in block %28 / %28:
+    <   %.lcssa = phi i32 [ %24, %23 ]
+  in block %33 / %33:
+    >   %34 = phi i32 [ 0, %32 ], [ %24, %28 ]
+    <   %34 = phi i32 [ 0, %32 ], [ %.lcssa, %28 ]"
+instcombine,licm,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__instcombine.ll,"in function Place:
+  in block %28 / %28:
+    <   %.lcssa = phi i32 [ %24, %23 ]
+  in block %33 / %33:
+    >   %34 = phi i32 [ 0, %32 ], [ %24, %28 ]
+    <   %34 = phi i32 [ 0, %32 ], [ %.lcssa, %28 ]
+
+in function Puzzle:
+  in block %10 / %10:
+    >   %11 = phi i32 [ 1, %8 ], [ %22, %21 ]
+    >   %12 = shl nuw nsw i32 %11, 3
+    <   %11 = phi i32 [ 1, %8 ], [ %21, %20 ]
+    <   %12 = shl nuw nsw i32 %11, 3
+    <   %invariant.op = or disjoint i32 %12, %9
+  in block %184 / %185:
+    <   %invariant.op1 = or disjoint i32 %186, %183"
+instcombine,indvars,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__instcombine.ll,"in function Fit:
+  in block %.lr.ph:
+    >   %4 = zext nneg i32 %.pre to i64
+    <   %4 = add i32 %.pre, 1
+    <   %wide.trip.count = zext i32 %4 to i64
+
+in function Place:
+  in block %5 / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+  in block %9 / %9:
+    >   %10 = getelementptr [4 x i8], ptr @puzzl, i64 %indvars.iv
+    >   %11 = getelementptr [4 x i8], ptr %10, i64 %3
+    >   store i32 1, ptr %11, align 4
+    <   %10 = add nsw i64 %3, %indvars.iv
+    <   %11 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %10
+    <   store i32 1, ptr %11, align 4
+  in block %12 / %12:
+    >   %exitcond = icmp eq i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %._crit_edge, label %5, !llvm.loop !7
+    <   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    <   br i1 %exitcond, label %5, label %._crit_edge, !llvm.loop !7
+  in block %22 / %22:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next4, %27 ], [ %21, %.lr.ph6 ]
+    <   %indvars.iv3 = phi i64 [ %indvars.iv.next4, %27 ], [ %21, %.lr.ph6 ]
+  in block %27 / %27:
+    >   %28 = and i64 %indvars.iv.next4, 4294967295
+    >   %exitcond6.not = icmp eq i64 %28, 512
+    >   br i1 %exitcond6.not, label %._crit_edge7, label %22, !llvm.loop !9
+    <   %lftr.wideiv = trunc i64 %indvars.iv.next4 to i32
+    <   %exitcond6 = icmp ne i32 %lftr.wideiv, 512
+    <   br i1 %exitcond6, label %22, label %._crit_edge7, !llvm.loop !9
+  in block %25 / %25:
+    >   %26 = trunc nsw i64 %indvars.iv3 to i32
+    <   %.lcssa.wide = phi i64 [ %indvars.iv3, %22 ]
+    <   %26 = trunc nsw i64 %.lcssa.wide to i32
+  in block %29 / %30:
+    >   %31 = phi i32 [ 0, %29 ], [ %26, %25 ]
+    <   %30 = phi i32 [ 0, %28 ], [ %26, %25 ]
+
+in function Remove:
+  in block %5 / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+  in block %12 / %12:
+    >   %exitcond = icmp eq i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %._crit_edge, label %5, !llvm.loop !7
+    <   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    <   br i1 %exitcond, label %5, label %._crit_edge, !llvm.loop !7
+  in block %9 / %9:
+    >   %10 = getelementptr [4 x i8], ptr @puzzl, i64 %indvars.iv
+    >   %11 = getelementptr [4 x i8], ptr %10, i64 %3
+    >   store i32 0, ptr %11, align 4
+    <   %10 = add nsw i64 %3, %indvars.iv
+    <   %11 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %10
+    <   store i32 0, ptr %11, align 4
+
+in function Trial:
+  in block %4 / %4:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %23 ], [ 0, %1 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %23 ], [ 0, %1 ]
+  in block %23 / %23:
+    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 13
+    >   br i1 %exitcond.not, label %24, label %4, !llvm.loop !7
+    <   %exitcond = icmp ne i64 %indvars.iv.next, 13
+    <   br i1 %exitcond, label %4, label %24, !llvm.loop !7
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %1 ], [ 0, %0 ]
+    >   %2 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv
+    >   store i32 1, ptr %2, align 4
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 512
+    >   br i1 %exitcond.not, label %3, label %1, !llvm.loop !7
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %1 ], [ 0, %0 ]
+    <   %2 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv
+    <   store i32 1, ptr %2, align 4
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    <   %exitcond = icmp ne i64 %indvars.iv.next, 512
+    <   br i1 %exitcond, label %1, label %3, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+    <   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+        call void @Puzzle()
+    >   %3 = add nuw nsw i32 %2, 1
+    >   %exitcond.not = icmp eq i32 %3, 100
+    >   br i1 %exitcond.not, label %4, label %1, !llvm.loop !7
+    <   %3 = add nuw nsw i32 %2, 1
+    <   %exitcond = icmp ne i32 %3, 100
+    <   br i1 %exitcond, label %1, label %4, !llvm.loop !7"
+instcombine,loop-unroll,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__instcombine.ll,"in function Place:
+  in block %.lr.ph:
+    >   %4 = icmp eq i32 %.pre, 0
+    >   br i1 %4, label %.epil.preheader, label %.lr.ph.new
+    <   %xtraiter = and i32 %3, 1
+    <   %4 = icmp ult i32 %.pre, 1
+    <   br i1 %4, label %.epil.preheader, label %.lr.ph.new
+  in block %49 / %50:
+    <   %.lcssa = phi i32 [ %45, %44 ]
+  in block %54 / %55:
+    >   %56 = phi i32 [ 0, %54 ], [ %46, %50 ]
+    <   %55 = phi i32 [ 0, %53 ], [ %.lcssa, %49 ]
+
+in function Remove:
+  in block %.lr.ph:
+    >   %4 = icmp eq i32 %.pre, 0
+    >   br i1 %4, label %.epil.preheader, label %.lr.ph.new
+    <   %xtraiter = and i32 %3, 1
+    <   %4 = icmp ult i32 %.pre, 1
+    <   br i1 %4, label %.epil.preheader, label %.lr.ph.new
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 0, %0 ], [ %14, %1 ]
+    >   %3 = zext nneg i32 %2 to i64
+    >   %4 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %3
+    >   store i32 1, ptr %4, align 4
+    >   %5 = zext nneg i32 %2 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %5
+    >   %7 = getelementptr inbounds nuw i8, ptr %6, i64 4
+    >   store i32 1, ptr %7, align 4
+    >   %8 = zext nneg i32 %2 to i64
+    >   %9 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %8
+    >   %10 = getelementptr inbounds nuw i8, ptr %9, i64 8
+    >   store i32 1, ptr %10, align 4
+    >   %11 = zext nneg i32 %2 to i64
+    >   %12 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %11
+    >   %13 = getelementptr inbounds nuw i8, ptr %12, i64 12
+    >   store i32 1, ptr %13, align 4
+    >   %14 = add nuw nsw i32 %2, 4
+    >   %15 = icmp samesign ult i32 %2, 508
+    >   br i1 %15, label %1, label %16, !llvm.loop !7
+    <   %2 = phi i32 [ 0, %0 ], [ %14, %1 ]
+    <   %3 = zext nneg i32 %2 to i64
+    <   %4 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %3
+    <   store i32 1, ptr %4, align 4
+    <   %5 = add nuw nsw i32 %2, 1
+    <   %6 = zext nneg i32 %5 to i64
+    <   %7 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %6
+    <   store i32 1, ptr %7, align 4
+    <   %8 = add nuw nsw i32 %2, 2
+    <   %9 = zext nneg i32 %8 to i64
+    <   %10 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %9
+    <   store i32 1, ptr %10, align 4
+    <   %11 = add nuw nsw i32 %2, 3
+    <   %12 = zext nneg i32 %11 to i64
+    <   %13 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %12
+    <   store i32 1, ptr %13, align 4
+    <   %14 = add nuw nsw i32 %2, 4
+    <   %15 = icmp samesign ult i32 %11, 511
+    <   br i1 %15, label %1, label %16, !llvm.loop !7"
+instcombine,reassociate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\instcombine__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__instcombine.ll,"in function Puzzle:
+  in block %45 / %45:
+    >   %48 = add nuw nsw i32 %47, %44
+    >   %49 = zext nneg i32 %48 to i64
+    >   %50 = getelementptr inbounds nuw [4 x i8], ptr @p, i64 %49
+    >   store i32 1, ptr %50, align 4
+    <   %48 = or disjoint i32 %47, %44
+    <   %49 = zext nneg i32 %48 to i64
+    <   %50 = getelementptr inbounds nuw [4 x i8], ptr @p, i64 %49
+    <   store i32 1, ptr %50, align 4
+  in block %58 / %58:
+    >   %59 = phi i32 [ 0, %55 ], [ %64, %58 ]
+    >   %60 = shl nuw nsw i32 %59, 6
+    >   %61 = or disjoint i32 %60, %57
+    >   %62 = zext nneg i32 %61 to i64
+    >   %63 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %62
+    >   store i32 1, ptr %63, align 4
+    >   %64 = add nuw nsw i32 %59, 1
+    >   %65 = icmp samesign ult i32 %59, 3
+    >   br i1 %65, label %58, label %66, !llvm.loop !16
+    <   %59 = phi i32 [ 0, %55 ], [ %64, %58 ]
+    <   %60 = shl nuw nsw i32 %59, 6
+    <   %61 = add nuw nsw i32 %60, %57
+    <   %62 = zext nneg i32 %61 to i64
+    <   %63 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %62
+    <   store i32 1, ptr %63, align 4
+    <   %64 = add nuw nsw i32 %59, 1
+    <   %65 = icmp samesign ult i32 %59, 3
+    <   br i1 %65, label %58, label %66, !llvm.loop !16
+  in block %86 / %86:
+    >   %87 = phi i32 [ 0, %83 ], [ %92, %86 ]
+    >   %88 = shl nuw nsw i32 %87, 3
+    >   %89 = or disjoint i32 %88, %85
+    >   %90 = zext nneg i32 %89 to i64
+    >   %91 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %90
+    >   store i32 1, ptr %91, align 4
+    >   %92 = add nuw nsw i32 %87, 1
+    >   %93 = icmp samesign ult i32 %87, 3
+    >   br i1 %93, label %86, label %94, !llvm.loop !20
+    <   %87 = phi i32 [ 0, %83 ], [ %92, %86 ]
+    <   %88 = shl nuw nsw i32 %87, 3
+    <   %89 = add nuw nsw i32 %88, %85
+    <   %90 = zext nneg i32 %89 to i64
+    <   %91 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %90
+    <   store i32 1, ptr %91, align 4
+    <   %92 = add nuw nsw i32 %87, 1
+    <   %93 = icmp samesign ult i32 %87, 3
+    <   br i1 %93, label %86, label %94, !llvm.loop !20
+  in block %113 / %113:
+    >   %114 = phi i32 [ 0, %110 ], [ %119, %113 ]
+    >   %115 = shl nuw nsw i32 %114, 6
+    >   %116 = or disjoint i32 %115, %112
+    >   %117 = zext nneg i32 %116 to i64
+    >   %118 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %117
+    >   store i32 1, ptr %118, align 4
+    >   %119 = add nuw nsw i32 %114, 1
+    >   %120 = icmp samesign ult i32 %114, 3
+    >   br i1 %120, label %113, label %121, !llvm.loop !24
+    <   %114 = phi i32 [ 0, %110 ], [ %119, %113 ]
+    <   %115 = shl nuw nsw i32 %114, 6
+    <   %116 = add nuw nsw i32 %115, %112
+    <   %117 = zext nneg i32 %116 to i64
+    <   %118 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %117
+    <   store i32 1, ptr %118, align 4
+    <   %119 = add nuw nsw i32 %114, 1
+    <   %120 = icmp samesign ult i32 %114, 3
+    <   br i1 %120, label %113, label %121, !llvm.loop !24
+  in block %160 / %160:
+    >   %161 = phi i32 [ 0, %157 ], [ %166, %160 ]
+    >   %162 = shl nuw nsw i32 %161, 6
+    >   %163 = or disjoint i32 %162, %159
+    >   %164 = zext nneg i32 %163 to i64
+    >   %165 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %164
+    >   store i32 1, ptr %165, align 4
+    >   %166 = add nuw nsw i32 %161, 1
+    >   %167 = icmp eq i32 %161, 0
+    >   br i1 %167, label %160, label %168, !llvm.loop !31
+    <   %161 = phi i32 [ 0, %157 ], [ %166, %160 ]
+    <   %162 = shl nuw nsw i32 %161, 6
+    <   %163 = add nuw nsw i32 %162, %159
+    <   %164 = zext nneg i32 %163 to i64
+    <   %165 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %164
+    <   store i32 1, ptr %165, align 4
+    <   %166 = add nuw nsw i32 %161, 1
+    <   %167 = icmp eq i32 %161, 0
+    <   br i1 %167, label %160, label %168, !llvm.loop !31
+  in block %173 / %173:
+    >   %174 = phi i32 [ 0, %170 ], [ %179, %173 ]
+    >   %175 = shl nuw nsw i32 %174, 6
+    >   %176 = or disjoint i32 %175, %172
+    >   %177 = zext nneg i32 %176 to i64
+    >   %178 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %177
+    >   store i32 1, ptr %178, align 4
+    >   %179 = add nuw nsw i32 %174, 1
+    >   %180 = icmp eq i32 %174, 0
+    >   br i1 %180, label %173, label %181, !llvm.loop !33
+    <   %174 = phi i32 [ 0, %170 ], [ %179, %173 ]
+    <   %175 = shl nuw nsw i32 %174, 6
+    <   %176 = add nuw nsw i32 %175, %172
+    <   %177 = zext nneg i32 %176 to i64
+    <   %178 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %177
+    <   store i32 1, ptr %178, align 4
+    <   %179 = add nuw nsw i32 %174, 1
+    <   %180 = icmp eq i32 %174, 0
+    <   br i1 %180, label %173, label %181, !llvm.loop !33
+  in block %189 / %189:
+    >   %190 = phi i32 [ 0, %186 ], [ %196, %189 ]
+    >   %191 = shl nuw nsw i32 %190, 6
+    >   %192 = or disjoint i32 %191, %188
+    >   %193 = or disjoint i32 %192, %185
+    >   %194 = zext nneg i32 %193 to i64
+    >   %195 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %194
+    >   store i32 1, ptr %195, align 4
+    >   %196 = add nuw nsw i32 %190, 1
+    >   %197 = icmp eq i32 %190, 0
+    >   br i1 %197, label %189, label %198, !llvm.loop !35
+    <   %190 = phi i32 [ 0, %186 ], [ %196, %189 ]
+    <   %191 = shl nuw nsw i32 %190, 6
+    <   %192 = add nuw nsw i32 %191, %188
+    <   %193 = add nuw nsw i32 %192, %185
+    <   %194 = zext nneg i32 %193 to i64
+    <   %195 = getelementptr inbounds nuw [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %194
+    <   store i32 1, ptr %195, align 4
+    <   %196 = add nuw nsw i32 %190, 1
+    <   %197 = icmp eq i32 %190, 0
+    <   br i1 %197, label %189, label %198, !llvm.loop !35"
+simplifycfg,dce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__dce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,early-cse,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__gvn.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__sccp.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__adce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__simplifycfg.ll,"in function Fit:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %14, %13 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not2 = icmp eq i32 %7, 0
+    >   br i1 %.not2, label %13, label %8
+    <   br label %.lr.ph
+  in block %._crit_edge:
+    >   %15 = phi i32 [ 0, %8 ], [ 1, %13 ], [ 1, %2 ]
+    >   ret i32 %15
+    <   %15 = phi i32 [ 1, %2 ], [ %.ph, %._crit_edge.loopexit ]
+    <   ret i32 %15
+
+in function Place:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %13, %12 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not3 = icmp eq i32 %7, 0
+    >   br i1 %.not3, label %12, label %8
+    <   br label %.lr.ph
+  in block %.lr.ph6.preheader / %.lr.ph6:
+    >   %21 = phi i32 [ %26, %25 ], [ %1, %._crit_edge ]
+    >   %22 = sext i32 %21 to i64
+    >   %23 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %22
+    >   %24 = load i32, ptr %23, align 4
+    >   %.not2 = icmp eq i32 %24, 0
+    >   br i1 %.not2, label %._crit_edge7, label %25
+    <   br label %.lr.ph6
+  in block %._crit_edge7:
+    >   %28 = phi i32 [ %21, %.lr.ph6 ], [ 0, %25 ], [ 0, %._crit_edge ]
+    >   ret i32 %28
+    <   %28 = phi i32 [ 0, %._crit_edge ], [ %.ph, %._crit_edge7.loopexit ]
+    <   ret i32 %28
+
+in function Remove:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %13, %12 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not2 = icmp eq i32 %7, 0
+    >   br i1 %.not2, label %12, label %8
+    <   br label %.lr.ph
+
+in function Puzzle:
+  in block %.preheader2 / %7:
+    >   %8 = phi i32 [ %25, %24 ], [ 1, %1 ]"
+simplifycfg,loop-rotate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__simplifycfg.ll,"in function Fit:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %14, %13 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not2 = icmp eq i32 %7, 0
+    >   br i1 %.not2, label %13, label %8
+    <   br label %.lr.ph
+  in block %._crit_edge:
+    >   %15 = phi i32 [ 0, %8 ], [ 1, %13 ], [ 1, %2 ]
+    >   ret i32 %15
+    <   %15 = phi i32 [ 1, %2 ], [ %.ph, %._crit_edge.loopexit ]
+    <   ret i32 %15
+
+in function Place:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %13, %12 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not3 = icmp eq i32 %7, 0
+    >   br i1 %.not3, label %12, label %8
+    <   br label %.lr.ph
+  in block %.lr.ph6.preheader / %.lr.ph6:
+    >   %21 = phi i32 [ %26, %25 ], [ %1, %._crit_edge ]
+    >   %22 = sext i32 %21 to i64
+    >   %23 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %22
+    >   %24 = load i32, ptr %23, align 4
+    >   %.not2 = icmp eq i32 %24, 0
+    >   br i1 %.not2, label %._crit_edge7, label %25
+    <   br label %.lr.ph6
+  in block %._crit_edge7:
+    >   %28 = phi i32 [ %21, %.lr.ph6 ], [ 0, %25 ], [ 0, %._crit_edge ]
+    >   ret i32 %28
+    <   %28 = phi i32 [ 0, %._crit_edge ], [ %.ph, %._crit_edge7.loopexit ]
+    <   ret i32 %28
+
+in function Remove:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %13, %12 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not2 = icmp eq i32 %7, 0
+    >   br i1 %.not2, label %12, label %8
+    <   br label %.lr.ph
+
+in function Puzzle:
+  in block %.preheader2 / %7:
+    >   %8 = phi i32 [ %25, %24 ], [ 1, %1 ]"
+simplifycfg,licm,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__simplifycfg.ll,"in function Fit:
+  in block %._crit_edge:
+    >   %16 = phi i32 [ 0, %9 ], [ 1, %14 ], [ 1, %2 ]
+    >   ret i32 %16
+    <   %15 = phi i32 [ 1, %2 ], [ %.ph, %._crit_edge.loopexit ]
+    <   ret i32 %15
+  in block %.lr.ph / %4:
+    >   %5 = phi i32 [ 0, %.lr.ph ], [ %15, %14 ]
+    >   %6 = zext nneg i32 %5 to i64
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not2 = icmp eq i32 %8, 0
+    >   br i1 %.not2, label %14, label %9
+    <   %4 = phi i32 [ %14, %13 ], [ 0, %.lr.ph.preheader ]
+    <   %5 = zext nneg i32 %4 to i64
+    <   %6 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %5
+    <   %7 = load i32, ptr %6, align 4
+    <   %.not2 = icmp eq i32 %7, 0
+    <   br i1 %.not2, label %13, label %8
+
+in function Place:
+  in block %.lr.ph6.preheader / %.lr.ph6:
+    >   %22 = phi i32 [ %27, %26 ], [ %1, %._crit_edge ]
+    >   %23 = sext i32 %22 to i64
+    >   %24 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %23
+    >   %25 = load i32, ptr %24, align 4
+    >   %.not2 = icmp eq i32 %25, 0
+    >   br i1 %.not2, label %._crit_edge7, label %26
+    <   br label %.lr.ph6
+  in block %.lr.ph / %4:
+    >   %5 = phi i32 [ 0, %.lr.ph ], [ %14, %13 ]
+    >   %6 = zext nneg i32 %5 to i64
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not3 = icmp eq i32 %8, 0
+    >   br i1 %.not3, label %13, label %9
+    <   %4 = phi i32 [ %13, %12 ], [ 0, %.lr.ph.preheader ]
+    <   %5 = zext nneg i32 %4 to i64
+    <   %6 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %5
+    <   %7 = load i32, ptr %6, align 4
+    <   %.not3 = icmp eq i32 %7, 0
+    <   br i1 %.not3, label %12, label %8
+  in block %._crit_edge7:
+    >   %29 = phi i32 [ %22, %.lr.ph6 ], [ 0, %26 ], [ 0, %._crit_edge ]
+    >   ret i32 %29
+    <   %28 = phi i32 [ 0, %._crit_edge ], [ %.ph, %._crit_edge7.loopexit ]
+    <   ret i32 %28
+
+in function Remove:
+  in block %.lr.ph / %4:
+    >   %5 = phi i32 [ 0, %.lr.ph ], [ %14, %13 ]
+    >   %6 = zext nneg i32 %5 to i64
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not2 = icmp eq i32 %8, 0
+    >   br i1 %.not2, label %13, label %9
+    <   %4 = phi i32 [ %13, %12 ], [ 0, %.lr.ph.preheader ]
+    <   %5 = zext nneg i32 %4 to i64
+    <   %6 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %5
+    <   %7 = load i32, ptr %6, align 4
+    <   %.not2 = icmp eq i32 %7, 0
+    <   br i1 %.not2, label %12, label %8
+
+in function Puzzle:
+  in block %.preheader2 / %7:
+    >   %8 = phi i32 [ %23, %22 ], [ 1, %1 ]"
+simplifycfg,indvars,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__simplifycfg.ll,"in function Fit:
+  in block %._crit_edge:
+    >   %14 = phi i32 [ 0, %9 ], [ 1, %13 ], [ 1, %2 ]
+    >   ret i32 %14
+    <   %13 = phi i32 [ 1, %2 ], [ %.ph, %._crit_edge.loopexit ]
+    <   ret i32 %13
+  in block %.lr.ph / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %13 ], [ 0, %.lr.ph ]
+    <   %indvars.iv = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv.next, %12 ]
+        %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %6, i64 %indvars.iv
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not2 = icmp eq i32 %8, 0
+    >   br i1 %.not2, label %13, label %9
+    <   %6 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %indvars.iv
+    <   %7 = load i32, ptr %6, align 4
+    <   %.not2 = icmp eq i32 %7, 0
+    <   br i1 %.not2, label %12, label %8
+
+in function Place:
+  in block %.lr.ph / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+    <   %indvars.iv = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv.next, %11 ]
+        %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %6, i64 %indvars.iv
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not3 = icmp eq i32 %8, 0
+    >   br i1 %.not3, label %12, label %9
+    <   %6 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %indvars.iv
+    <   %7 = load i32, ptr %6, align 4
+    <   %.not3 = icmp eq i32 %7, 0
+    <   br i1 %.not3, label %11, label %8
+  in block %.lr.ph6 / %21:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next4, %26 ], [ %20, %.lr.ph6 ]
+    >   %22 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %indvars.iv3
+    >   %23 = load i32, ptr %22, align 4
+    >   %.not2 = icmp eq i32 %23, 0
+    >   br i1 %.not2, label %24, label %26
+    <   %indvars.iv2 = phi i64 [ %19, %.lr.ph6.preheader ], [ %indvars.iv.next3, %23 ]
+    <   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %indvars.iv2
+    <   %21 = load i32, ptr %20, align 4
+    <   %.not2 = icmp eq i32 %21, 0
+    <   %22 = trunc nsw i64 %indvars.iv2 to i32
+    <   br i1 %.not2, label %._crit_edge7.loopexit, label %23
+  in block %._crit_edge7:
+    >   %27 = phi i32 [ %25, %24 ], [ 0, %26 ], [ 0, %._crit_edge ]
+    >   ret i32 %27
+    <   %24 = phi i32 [ 0, %._crit_edge ], [ %.ph, %._crit_edge7.loopexit ]
+    <   ret i32 %24
+
+in function Remove:
+  in block %.lr.ph / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %12 ], [ 0, %.lr.ph ]
+    <   %indvars.iv = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv.next, %11 ]
+        %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %7 = getelementptr inbounds nuw [4 x i8], ptr %6, i64 %indvars.iv
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not2 = icmp eq i32 %8, 0
+    >   br i1 %.not2, label %12, label %9
+    <   %6 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %indvars.iv
+    <   %7 = load i32, ptr %6, align 4
+    <   %.not2 = icmp eq i32 %7, 0
+    <   br i1 %.not2, label %11, label %8
+
+in function Puzzle:
+  in block %.preheader2 / %3:
+    >   %indvars.iv10 = phi i64 [ %indvars.iv.next11, %12 ], [ 1, %1 ]"
+simplifycfg,loop-unroll,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__simplifycfg.ll,"in function Fit:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %3 = phi i32 [ %14, %13 ], [ 0, %2 ]
+    >   %4 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %5 = zext nneg i32 %3 to i64
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %4, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %.not2 = icmp eq i32 %7, 0
+    >   br i1 %.not2, label %13, label %8
+    <   br label %.lr.ph
+  in block %._crit_edge:
+    >   %15 = phi i32 [ 0, %8 ], [ 1, %13 ], [ 1, %2 ]
+    >   ret i32 %15
+    <   %15 = phi i32 [ 1, %2 ], [ %.ph, %._crit_edge.loopexit ]
+    <   ret i32 %15
+
+in function Place:
+  in block %.lr.ph.epil.preheader / %.epil.preheader:
+    >   %27 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %28 = zext nneg i32 %.epil.init to i64
+    >   %29 = getelementptr inbounds nuw [4 x i8], ptr %27, i64 %28
+    >   %30 = load i32, ptr %29, align 4
+    >   %.not3.epil = icmp eq i32 %30, 0
+    >   br i1 %.not3.epil, label %._crit_edge, label %31
+    <   br label %.lr.ph.epil
+  in block %.lr.ph6.preheader / %.lr.ph6:
+    >   %42 = phi i32 [ %47, %46 ], [ %1, %._crit_edge ]
+    >   %43 = sext i32 %42 to i64
+    >   %44 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %43
+    >   %45 = load i32, ptr %44, align 4
+    >   %.not2 = icmp eq i32 %45, 0
+    >   br i1 %.not2, label %._crit_edge7, label %46
+    <   br label %.lr.ph6
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   %35 = getelementptr inbounds [4 x i8], ptr @class, i64 %.phi.trans.insert
+    >   %36 = load i32, ptr %35, align 4
+    >   %37 = sext i32 %36 to i64
+    >   %38 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %37
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, -1
+    >   store i32 %40, ptr %38, align 4
+    >   %41 = icmp slt i32 %1, 512
+    >   br i1 %41, label %.lr.ph6, label %._crit_edge7
+    <   br label %._crit_edge
+  in block %._crit_edge7:
+    >   %49 = phi i32 [ %42, %.lr.ph6 ], [ 0, %46 ], [ 0, %._crit_edge ]
+    >   ret i32 %49
+    <   %47 = phi i32 [ 0, %._crit_edge ], [ %.ph, %._crit_edge7.loopexit ]
+    <   ret i32 %47
+
+in function Remove:
+  in block %.lr.ph.epil.preheader / %.epil.preheader:
+    >   %27 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %28 = zext nneg i32 %.epil.init to i64
+    >   %29 = getelementptr inbounds nuw [4 x i8], ptr %27, i64 %28
+    >   %30 = load i32, ptr %29, align 4
+    >   %.not2.epil = icmp eq i32 %30, 0
+    >   br i1 %.not2.epil, label %._crit_edge, label %31
+    <   br label %.lr.ph.epil
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   %35 = getelementptr inbounds [4 x i8], ptr @class, i64 %.phi.trans.insert
+    >   %36 = load i32, ptr %35, align 4
+    >   %37 = sext i32 %36 to i64
+    >   %38 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %37
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, 1
+    >   store i32 %40, ptr %38, align 4
+    >   ret void
+    <   br label %._crit_edge
+
+in function Puzzle:
+  in block %.preheader2 / %16:
+    >   %17 = phi i32 [ %93, %16 ], [ 1, %1 ]
+    >   %18 = or disjoint i32 %17, 72
+    >   %19 = zext nneg i32 %18 to i64
+    >   %20 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %19
+    >   store i32 0, ptr %20, align 4
+    >   %21 = or disjoint i32 %17, 136
+    >   %22 = zext nneg i32 %21 to i64
+    >   %23 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %22
+    >   store i32 0, ptr %23, align 4
+    >   %24 = or disjoint i32 %17, 200
+    >   %25 = zext nneg i32 %24 to i64
+    >   %26 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %25
+    >   store i32 0, ptr %26, align 4
+    >   %27 = or disjoint i32 %17, 264
+    >   %28 = zext nneg i32 %27 to i64
+    >   %29 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %28
+    >   store i32 0, ptr %29, align 4
+    >   %30 = or disjoint i32 %17, 328
+    >   %31 = zext nneg i32 %30 to i64
+    >   %32 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %31
+    >   store i32 0, ptr %32, align 4
+    >   %33 = or disjoint i32 %17, 80
+    >   %34 = zext nneg i32 %33 to i64
+    >   %35 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %34
+    >   store i32 0, ptr %35, align 4
+    >   %36 = or disjoint i32 %17, 144
+    >   %37 = zext nneg i32 %36 to i64
+    >   %38 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %37
+    >   store i32 0, ptr %38, align 4
+    >   %39 = or disjoint i32 %17, 208
+    >   %40 = zext nneg i32 %39 to i64
+    >   %41 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %40
+    >   store i32 0, ptr %41, align 4
+    >   %42 = or disjoint i32 %17, 272
+    >   %43 = zext nneg i32 %42 to i64
+    >   %44 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %43
+    >   store i32 0, ptr %44, align 4
+    >   %45 = or disjoint i32 %17, 336
+    >   %46 = zext nneg i32 %45 to i64
+    >   %47 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %46
+    >   store i32 0, ptr %47, align 4
+    >   %48 = or disjoint i32 %17, 88
+    >   %49 = zext nneg i32 %48 to i64
+    >   %50 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %49
+    >   store i32 0, ptr %50, align 4
+    >   %51 = or disjoint i32 %17, 152
+    >   %52 = zext nneg i32 %51 to i64
+    >   %53 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %52
+    >   store i32 0, ptr %53, align 4
+    >   %54 = or disjoint i32 %17, 216
+    >   %55 = zext nneg i32 %54 to i64
+    >   %56 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %55
+    >   store i32 0, ptr %56, align 4
+    >   %57 = or disjoint i32 %17, 280
+    >   %58 = zext nneg i32 %57 to i64
+    >   %59 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %58
+    >   store i32 0, ptr %59, align 4
+    >   %60 = or disjoint i32 %17, 344
+    >   %61 = zext nneg i32 %60 to i64
+    >   %62 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %61
+    >   store i32 0, ptr %62, align 4
+    >   %63 = or disjoint i32 %17, 96
+    >   %64 = zext nneg i32 %63 to i64
+    >   %65 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %64
+    >   store i32 0, ptr %65, align 4
+    >   %66 = or disjoint i32 %17, 160
+    >   %67 = zext nneg i32 %66 to i64
+    >   %68 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %67
+    >   store i32 0, ptr %68, align 4
+    >   %69 = or disjoint i32 %17, 224
+    >   %70 = zext nneg i32 %69 to i64
+    >   %71 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %70
+    >   store i32 0, ptr %71, align 4
+    >   %72 = or disjoint i32 %17, 288
+    >   %73 = zext nneg i32 %72 to i64
+    >   %74 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %73
+    >   store i32 0, ptr %74, align 4
+    >   %75 = or disjoint i32 %17, 352
+    >   %76 = zext nneg i32 %75 to i64
+    >   %77 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %76
+    >   store i32 0, ptr %77, align 4
+    >   %78 = or disjoint i32 %17, 104
+    >   %79 = zext nneg i32 %78 to i64
+    >   %80 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %79
+    >   store i32 0, ptr %80, align 4
+    >   %81 = or disjoint i32 %17, 168
+    >   %82 = zext nneg i32 %81 to i64
+    >   %83 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %82
+    >   store i32 0, ptr %83, align 4
+    >   %84 = or disjoint i32 %17, 232
+    >   %85 = zext nneg i32 %84 to i64
+    >   %86 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %85
+    >   store i32 0, ptr %86, align 4
+    >   %87 = or disjoint i32 %17, 296
+    >   %88 = zext nneg i32 %87 to i64
+    >   %89 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %88
+    >   store i32 0, ptr %89, align 4
+    >   %90 = or disjoint i32 %17, 360
+    >   %91 = zext nneg i32 %90 to i64
+    >   %92 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %91
+    >   store i32 0, ptr %92, align 4
+    >   %93 = add nuw nsw i32 %17, 1
+    >   %94 = icmp samesign ult i32 %93, 6
+    >   br i1 %94, label %16, label %95, !llvm.loop !9
+    <   br label %16"
+simplifycfg,reassociate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__simplifycfg.ll,"in function Trial:
+  in block %14 / %14:
+    in instruction %or.cond / %or.cond:
+      operands %17 and %.not2 differ
+  in block %14 / %14:
+    >   %or.cond = or i1 %.not2, %17
+    <   %or.cond = or i1 %17, %.not2"
+dce,early-cse,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__early-cse.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__dce.ll,
+dce,gvn,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__gvn.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__dce.ll,
+dce,sccp,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__sccp.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__dce.ll,"in function Puzzle:
+  in block %45 / %45:
+    <   %51 = add nuw nsw i32 %46, 1
+  in block %67 / %66:
+    <   %68 = add nuw nsw i32 %58, 1"
+dce,adce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__adce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__dce.ll,
+dce,loop-simplify,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__dce.ll,
+dce,loop-rotate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__dce.ll,
+dce,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\dce__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__dce.ll,
+early-cse,gvn,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__gvn.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__sccp.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__early-cse.ll,"in function Puzzle:
+  in block %45 / %45:
+    <   %51 = add nuw nsw i32 %46, 1
+  in block %67 / %66:
+    <   %68 = add nuw nsw i32 %58, 1"
+early-cse,adce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__adce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__early-cse.ll,
+early-cse,loop-simplify,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__early-cse.ll,"in function Place:
+  in block %28 / %28:
+    <   %.lcssa = phi i32 [ %24, %23 ]
+  in block %33 / %33:
+    >   %34 = phi i32 [ 0, %32 ], [ %24, %28 ]
+    <   %34 = phi i32 [ 0, %32 ], [ %.lcssa, %28 ]"
+early-cse,licm,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__early-cse.ll,"in function Place:
+  in block %28 / %28:
+    <   %.lcssa = phi i32 [ %24, %23 ]
+  in block %33 / %33:
+    >   %34 = phi i32 [ 0, %32 ], [ %24, %28 ]
+    <   %34 = phi i32 [ 0, %32 ], [ %.lcssa, %28 ]"
+early-cse,indvars,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__early-cse.ll,"in function Place:
+  in block %25 / %25:
+    >   %26 = trunc nsw i64 %indvars.iv3 to i32
+    <   %.lcssa.wide = phi i64 [ %indvars.iv3, %22 ]
+    <   %26 = trunc nsw i64 %.lcssa.wide to i32
+  in block %29 / %29:
+    >   %30 = phi i32 [ 0, %28 ], [ %26, %25 ]
+    <   %30 = phi i32 [ 0, %28 ], [ %26, %25 ]
+
+in function Trial:
+  in block %13 / %13:
+    <   %14 = trunc nuw nsw i64 %indvars.iv to i32"
+early-cse,loop-unroll,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__early-cse.ll,"in function Place:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %25, %._crit_edge.unr-lcssa ]
+    <   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %.unr, %._crit_edge.unr-lcssa ]
+  in block %15 / %15:
+    <   %17 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %18 = zext nneg i32 %16 to i64
+    >   %18 = getelementptr inbounds nuw [4 x i8], ptr %7, i64 %17
+    >   %19 = load i32, ptr %18, align 4
+    >   %.not3.1 = icmp eq i32 %19, 0
+    >   br i1 %.not3.1, label %24, label %20
+    <   %19 = getelementptr inbounds nuw [4 x i8], ptr %17, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %.not3.1 = icmp eq i32 %20, 0
+    <   br i1 %.not3.1, label %25, label %21
+  in block %._crit_edge.unr-lcssa:
+    <   %.unr = phi i32 [ %26, %25 ]
+  in block %49 / %48:
+    <   %.lcssa = phi i32 [ %45, %44 ]
+  in block %54 / %53:
+    >   %54 = phi i32 [ 0, %52 ], [ %44, %48 ]
+    <   %55 = phi i32 [ 0, %53 ], [ %.lcssa, %49 ]
+
+in function Remove:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %25, %._crit_edge.unr-lcssa ]
+    <   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %.unr, %._crit_edge.unr-lcssa ]
+  in block %15 / %15:
+    <   %17 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %18 = zext nneg i32 %16 to i64
+    >   %18 = getelementptr inbounds nuw [4 x i8], ptr %7, i64 %17
+    >   %19 = load i32, ptr %18, align 4
+    >   %.not2.1 = icmp eq i32 %19, 0
+    >   br i1 %.not2.1, label %24, label %20
+    <   %19 = getelementptr inbounds nuw [4 x i8], ptr %17, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %.not2.1 = icmp eq i32 %20, 0
+    <   br i1 %.not2.1, label %25, label %21
+  in block %._crit_edge.unr-lcssa:
+    <   %.unr = phi i32 [ %26, %25 ]
+
+in function Puzzle:
+  in block %105 / %105:
+    >   %106 = phi i32 [ 0, %103 ], [ %120, %105 ]
+    <   %106 = phi i32 [ 0, %103 ], [ %126, %105 ]
+        %107 = zext nneg i32 %104 to i64
+        %108 = getelementptr inbounds nuw [2048 x i8], ptr @p, i64 %107
+    >   %109 = zext nneg i32 %106 to i64
+    >   %110 = getelementptr inbounds nuw [4 x i8], ptr %108, i64 %109
+    >   store i32 0, ptr %110, align 4
+    >   %111 = add nuw nsw i32 %106, 1
+    >   %112 = zext nneg i32 %111 to i64
+    >   %113 = getelementptr inbounds nuw [4 x i8], ptr %108, i64 %112
+    >   store i32 0, ptr %113, align 4
+    >   %114 = add nuw nsw i32 %106, 2
+    >   %115 = zext nneg i32 %114 to i64
+    >   %116 = getelementptr inbounds nuw [4 x i8], ptr %108, i64 %115
+    >   store i32 0, ptr %116, align 4
+    >   %117 = add nuw nsw i32 %106, 3
+    >   %118 = zext nneg i32 %117 to i64
+    >   %119 = getelementptr inbounds nuw [4 x i8], ptr %108, i64 %118
+    >   store i32 0, ptr %119, align 4
+    >   %120 = add nuw nsw i32 %106, 4
+    >   %121 = icmp samesign ult i32 %120, 512
+    >   br i1 %121, label %105, label %122, !llvm.loop !10
+    <   %109 = zext nneg i32 %106 to i64
+    <   %110 = getelementptr inbounds nuw [4 x i8], ptr %108, i64 %109
+    <   store i32 0, ptr %110, align 4
+    <   %111 = add nuw nsw i32 %106, 1
+    <   %112 = zext nneg i32 %104 to i64
+    <   %113 = getelementptr inbounds nuw [2048 x i8], ptr @p, i64 %112
+    <   %114 = zext nneg i32 %111 to i64
+    <   %115 = getelementptr inbounds nuw [4 x i8], ptr %113, i64 %114
+    <   store i32 0, ptr %115, align 4
+    <   %116 = add nuw nsw i32 %106, 2
+    <   %117 = zext nneg i32 %104 to i64
+    <   %118 = getelementptr inbounds nuw [2048 x i8], ptr @p, i64 %117
+    <   %119 = zext nneg i32 %116 to i64
+    <   %120 = getelementptr inbounds nuw [4 x i8], ptr %118, i64 %119
+    <   store i32 0, ptr %120, align 4
+    <   %121 = add nuw nsw i32 %106, 3
+    <   %122 = zext nneg i32 %104 to i64
+    <   %123 = getelementptr inbounds nuw [2048 x i8], ptr @p, i64 %122
+    <   %124 = zext nneg i32 %121 to i64
+    <   %125 = getelementptr inbounds nuw [4 x i8], ptr %123, i64 %124
+    <   store i32 0, ptr %125, align 4
+    <   %126 = add nuw nsw i32 %106, 4
+    <   %127 = icmp samesign ult i32 %126, 512
+    <   br i1 %127, label %105, label %128, !llvm.loop !10"
+early-cse,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\early-cse__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__early-cse.ll,
+gvn,sccp,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__sccp.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__gvn.ll,
+gvn,adce,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__adce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__gvn.ll,
+gvn,loop-simplify,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__gvn.ll,"in function Place:
+  in block %28 / %28:
+    <   %.lcssa = phi i32 [ %24, %23 ]
+  in block %33 / %33:
+    >   %34 = phi i32 [ 0, %32 ], [ %24, %28 ]
+    <   %34 = phi i32 [ 0, %32 ], [ %.lcssa, %28 ]"
+gvn,licm,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__gvn.ll,"in function Place:
+  in block %28 / %28:
+    <   %.lcssa = phi i32 [ %24, %23 ]
+  in block %33 / %33:
+    >   %34 = phi i32 [ 0, %32 ], [ %24, %28 ]
+    <   %34 = phi i32 [ 0, %32 ], [ %.lcssa, %28 ]"
+gvn,indvars,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__gvn.ll,"in function Place:
+  in block %25 / %25:
+    >   %26 = trunc nsw i64 %indvars.iv3 to i32
+    <   %.lcssa.wide = phi i64 [ %indvars.iv3, %22 ]
+    <   %26 = trunc nsw i64 %.lcssa.wide to i32
+  in block %29 / %29:
+    >   %30 = phi i32 [ 0, %28 ], [ %26, %25 ]
+    <   %30 = phi i32 [ 0, %28 ], [ %26, %25 ]
+
+in function Trial:
+  in block %13 / %13:
+    <   %14 = trunc nuw nsw i64 %indvars.iv to i32"
+gvn,loop-unroll,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__gvn.ll,"in function Place:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %25, %._crit_edge.unr-lcssa ]
+    <   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %.unr, %._crit_edge.unr-lcssa ]
+        %lcmp.mod2 = icmp ne i32 %xtraiter, 0
+        call void @llvm.assume(i1 %lcmp.mod2)
+    >   %26 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %27 = zext nneg i32 %.epil.init to i64
+    >   %28 = getelementptr inbounds nuw [4 x i8], ptr %26, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %.not3.epil = icmp eq i32 %29, 0
+    >   br i1 %.not3.epil, label %._crit_edge.epilog-lcssa, label %30
+    <   br label %27
+  in block %15 / %15:
+    <   %17 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %18 = zext nneg i32 %16 to i64
+    >   %18 = getelementptr inbounds nuw [4 x i8], ptr %7, i64 %17
+    >   %19 = load i32, ptr %18, align 4
+    >   %.not3.1 = icmp eq i32 %19, 0
+    >   br i1 %.not3.1, label %24, label %20
+    <   %19 = getelementptr inbounds nuw [4 x i8], ptr %17, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %.not3.1 = icmp eq i32 %20, 0
+    <   br i1 %.not3.1, label %25, label %21
+  in block %._crit_edge.unr-lcssa:
+    <   %.unr = phi i32 [ %26, %25 ]
+  in block %49 / %47:
+    <   %.lcssa = phi i32 [ %45, %44 ]
+  in block %54 / %52:
+    >   %53 = phi i32 [ 0, %51 ], [ %43, %47 ]
+    <   %55 = phi i32 [ 0, %53 ], [ %.lcssa, %49 ]
+
+in function Remove:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %25, %._crit_edge.unr-lcssa ]
+    <   %.epil.init = phi i32 [ 0, %.lr.ph ], [ %.unr, %._crit_edge.unr-lcssa ]
+        %lcmp.mod1 = icmp ne i32 %xtraiter, 0
+        call void @llvm.assume(i1 %lcmp.mod1)
+    >   %26 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+    >   %27 = zext nneg i32 %.epil.init to i64
+    >   %28 = getelementptr inbounds nuw [4 x i8], ptr %26, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %.not2.epil = icmp eq i32 %29, 0
+    >   br i1 %.not2.epil, label %._crit_edge.epilog-lcssa, label %30
+    <   br label %27
+  in block %15 / %15:
+    <   %17 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %18 = zext nneg i32 %16 to i64
+    >   %18 = getelementptr inbounds nuw [4 x i8], ptr %7, i64 %17
+    >   %19 = load i32, ptr %18, align 4
+    >   %.not2.1 = icmp eq i32 %19, 0
+    >   br i1 %.not2.1, label %24, label %20
+    <   %19 = getelementptr inbounds nuw [4 x i8], ptr %17, i64 %18
+    <   %20 = load i32, ptr %19, align 4
+    <   %.not2.1 = icmp eq i32 %20, 0
+    <   br i1 %.not2.1, label %25, label %21
+  in block %._crit_edge.unr-lcssa:
+    <   %.unr = phi i32 [ %26, %25 ]
+
+in function Puzzle:
+  in block %17 / %17:
+    >   %18 = phi i32 [ 1, %16 ], [ %94, %17 ]
+    >   %19 = or disjoint i32 %18, 72
+    >   %20 = zext nneg i32 %19 to i64
+    >   %21 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %20
+    >   store i32 0, ptr %21, align 4
+    >   %22 = or disjoint i32 %18, 136
+    >   %23 = zext nneg i32 %22 to i64
+    >   %24 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %23
+    >   store i32 0, ptr %24, align 4
+    >   %25 = or disjoint i32 %18, 200
+    >   %26 = zext nneg i32 %25 to i64
+    >   %27 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %26
+    >   store i32 0, ptr %27, align 4
+    >   %28 = or disjoint i32 %18, 264
+    >   %29 = zext nneg i32 %28 to i64
+    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %29
+    >   store i32 0, ptr %30, align 4
+    >   %31 = or disjoint i32 %18, 328
+    >   %32 = zext nneg i32 %31 to i64
+    >   %33 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %32
+    >   store i32 0, ptr %33, align 4
+    >   %34 = or disjoint i32 %18, 80
+    >   %35 = zext nneg i32 %34 to i64
+    >   %36 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %35
+    >   store i32 0, ptr %36, align 4
+    >   %37 = or disjoint i32 %18, 144
+    >   %38 = zext nneg i32 %37 to i64
+    >   %39 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %38
+    >   store i32 0, ptr %39, align 4
+    >   %40 = or disjoint i32 %18, 208
+    >   %41 = zext nneg i32 %40 to i64
+    >   %42 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %41
+    >   store i32 0, ptr %42, align 4
+    >   %43 = or disjoint i32 %18, 272
+    >   %44 = zext nneg i32 %43 to i64
+    >   %45 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %44
+    >   store i32 0, ptr %45, align 4
+    >   %46 = or disjoint i32 %18, 336
+    >   %47 = zext nneg i32 %46 to i64
+    >   %48 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %47
+    >   store i32 0, ptr %48, align 4
+    >   %49 = or disjoint i32 %18, 88
+    >   %50 = zext nneg i32 %49 to i64
+    >   %51 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %50
+    >   store i32 0, ptr %51, align 4
+    >   %52 = or disjoint i32 %18, 152
+    >   %53 = zext nneg i32 %52 to i64
+    >   %54 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %53
+    >   store i32 0, ptr %54, align 4
+    >   %55 = or disjoint i32 %18, 216
+    >   %56 = zext nneg i32 %55 to i64
+    >   %57 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %56
+    >   store i32 0, ptr %57, align 4
+    >   %58 = or disjoint i32 %18, 280
+    >   %59 = zext nneg i32 %58 to i64
+    >   %60 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %59
+    >   store i32 0, ptr %60, align 4
+    >   %61 = or disjoint i32 %18, 344
+    >   %62 = zext nneg i32 %61 to i64
+    >   %63 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %62
+    >   store i32 0, ptr %63, align 4
+    >   %64 = or disjoint i32 %18, 96
+    >   %65 = zext nneg i32 %64 to i64
+    >   %66 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %65
+    >   store i32 0, ptr %66, align 4
+    >   %67 = or disjoint i32 %18, 160
+    >   %68 = zext nneg i32 %67 to i64
+    >   %69 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %68
+    >   store i32 0, ptr %69, align 4
+    >   %70 = or disjoint i32 %18, 224
+    >   %71 = zext nneg i32 %70 to i64
+    >   %72 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %71
+    >   store i32 0, ptr %72, align 4
+    >   %73 = or disjoint i32 %18, 288
+    >   %74 = zext nneg i32 %73 to i64
+    >   %75 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %74
+    >   store i32 0, ptr %75, align 4
+    >   %76 = or disjoint i32 %18, 352
+    >   %77 = zext nneg i32 %76 to i64
+    >   %78 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %77
+    >   store i32 0, ptr %78, align 4
+    >   %79 = or disjoint i32 %18, 104
+    >   %80 = zext nneg i32 %79 to i64
+    >   %81 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %80
+    >   store i32 0, ptr %81, align 4
+    >   %82 = or disjoint i32 %18, 168
+    >   %83 = zext nneg i32 %82 to i64
+    >   %84 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %83
+    >   store i32 0, ptr %84, align 4
+    >   %85 = or disjoint i32 %18, 232
+    >   %86 = zext nneg i32 %85 to i64
+    >   %87 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %86
+    >   store i32 0, ptr %87, align 4
+    >   %88 = or disjoint i32 %18, 296
+    >   %89 = zext nneg i32 %88 to i64
+    >   %90 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %89
+    >   store i32 0, ptr %90, align 4
+    >   %91 = or disjoint i32 %18, 360
+    >   %92 = zext nneg i32 %91 to i64
+    >   %93 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %92
+    >   store i32 0, ptr %93, align 4
+    >   %94 = add nuw nsw i32 %18, 1
+    >   %95 = icmp samesign ult i32 %94, 6
+    >   br i1 %95, label %17, label %96, !llvm.loop !9
+    <   %18 = phi i32 [ 1, %16 ], [ %100, %84 ]
+    <   br label %19"
+gvn,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\gvn__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__gvn.ll,
+sccp,adce,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__adce.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__sccp.ll,"in function Puzzle:
+  in block %45 / %45:
+    >   %51 = add nuw nsw i32 %46, 1
+  in block %66 / %67:
+    >   %68 = add nuw nsw i32 %58, 1"
+sccp,loop-simplify,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__sccp.ll,"in function Puzzle:
+  in block %43 / %43:
+    >   %49 = icmp samesign ult i32 %44, 1
+    >   br i1 %49, label %43, label %50, !llvm.loop !14
+    <   %49 = icmp eq i32 %44, 0
+    <   br i1 %49, label %43, label %50, !llvm.loop !14
+  in block %64 / %64:
+    >   %65 = icmp samesign ult i32 %55, 1
+    >   br i1 %65, label %54, label %66, !llvm.loop !17
+    <   %65 = icmp eq i32 %55, 0
+    <   br i1 %65, label %54, label %66, !llvm.loop !17"
+sccp,indvars,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__sccp.ll,"in function Fit:
+  in block %.lr.ph:
+    >   %4 = zext nneg i32 %.pre to i64
+    <   %4 = sext i32 %.pre to i64
+
+in function Puzzle:
+  in block %23 / %23:
+    >   %29 = add nuw nsw i32 %24, 1
+  in block %40 / %41:
+    >   %42 = add nuw nsw i32 %35, 1"
+sccp,loop-unroll,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\sccp__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__sccp.ll,"in function Puzzle:
+  in block %45 / %45:
+    >   %51 = add nuw nsw i32 %46, 1
+  in block %66 / %67:
+    >   %68 = add nuw nsw i32 %58, 1"
+adce,loop-simplify,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__loop-simplify.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__adce.ll,
+adce,loop-rotate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__adce.ll,
+adce,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\adce__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__adce.ll,
+loop-simplify,loop-rotate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-simplify,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__loop-simplify.ll,
+loop-rotate,licm,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__licm.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__loop-rotate.ll,
+loop-rotate,indvars,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__indvars.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__licm.ll,"in function Fit:
+  in block %.lr.ph:
+    <   %3 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %4 = sext i32 %1 to i64
+        %5 = sext i32 %.pre to i64
+    >   %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+
+in function Place:
+  in block %.lr.ph:
+    <   %3 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %4 = sext i32 %1 to i64
+        %5 = add i32 %.pre, 1
+        %wide.trip.count = zext i32 %5 to i64
+    >   %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+
+in function Remove:
+  in block %.lr.ph:
+    <   %3 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+        %4 = sext i32 %1 to i64
+        %5 = add i32 %.pre, 1
+        %wide.trip.count = zext i32 %5 to i64
+    >   %5 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+
+in function Puzzle:
+  in block %123 / %121:
+    >   %123 = zext i32 %122 to i64"
+licm,loop-unroll,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__licm.ll,"in function Place:
+  in block %.lr.ph:
+    <   %3 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+
+in function Remove:
+  in block %.lr.ph:
+    <   %3 = getelementptr inbounds [2048 x i8], ptr @p, i64 %.phi.trans.insert
+
+in function Puzzle:
+  in block %17 / %17:
+    >   %18 = phi i32 [ 1, %16 ], [ %100, %84 ]
+    <   %18 = phi i32 [ 1, %16 ], [ %75, %64 ]
+  in block %19 / %19:
+    <   %invariant.op = or disjoint i32 8, %18
+  in block %64 / %84:
+    >   %85 = or disjoint i32 %18, 104
+    >   %86 = zext nneg i32 %85 to i64
+    >   %87 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %86
+    >   store i32 0, ptr %87, align 4
+    >   %88 = or disjoint i32 %18, 168
+    >   %89 = zext nneg i32 %88 to i64
+    >   %90 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %89
+    >   store i32 0, ptr %90, align 4
+    >   %91 = or disjoint i32 %18, 232
+    >   %92 = zext nneg i32 %91 to i64
+    >   %93 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %92
+    >   store i32 0, ptr %93, align 4
+    >   %94 = or disjoint i32 %18, 296
+    >   %95 = zext nneg i32 %94 to i64
+    >   %96 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %95
+    >   store i32 0, ptr %96, align 4
+    >   %97 = or disjoint i32 %18, 360
+    >   %98 = zext nneg i32 %97 to i64
+    >   %99 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %98
+    >   store i32 0, ptr %99, align 4
+    <   %.reass.46 = or disjoint i32 64, %invariant.op.4
+    <   %65 = zext nneg i32 %.reass.46 to i64
+    <   %66 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %65
+    <   store i32 0, ptr %66, align 4
+    <   %.reass.1.4 = or disjoint i32 128, %invariant.op.4
+    <   %67 = zext nneg i32 %.reass.1.4 to i64
+    <   %68 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %67
+    <   store i32 0, ptr %68, align 4
+    <   %.reass.2.4 = or disjoint i32 192, %invariant.op.4
+    <   %69 = zext nneg i32 %.reass.2.4 to i64
+    <   %70 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %69
+    <   store i32 0, ptr %70, align 4
+    <   %.reass.3.4 = or disjoint i32 256, %invariant.op.4
+    <   %71 = zext nneg i32 %.reass.3.4 to i64
+    <   %72 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %71
+    <   store i32 0, ptr %72, align 4
+    <   %.reass.4.4 = or disjoint i32 320, %invariant.op.4
+    <   %73 = zext nneg i32 %.reass.4.4 to i64
+    <   %74 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %73
+    <   store i32 0, ptr %74, align 4"
+licm,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\licm__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__licm.ll,
+indvars,loop-unroll,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__loop-unroll.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__indvars.ll,"in function Place:
+  in block %.lr.ph:
+    <   %3 = sext i32 %1 to i64
+
+in function Remove:
+  in block %.lr.ph:
+    <   %3 = sext i32 %1 to i64
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %1 ], [ 0, %0 ]
+    >   %2 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv
+    >   store i32 1, ptr %2, align 4
+    >   %3 = add nuw nsw i64 %indvars.iv, 1
+    >   %4 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %3
+    >   store i32 1, ptr %4, align 4
+    >   %5 = add nuw nsw i64 %indvars.iv, 2
+    >   %6 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %5
+    >   store i32 1, ptr %6, align 4
+    >   %7 = add nuw nsw i64 %indvars.iv, 3
+    >   %8 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %7
+    >   store i32 1, ptr %8, align 4
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 4
+    >   %9 = icmp samesign ult i64 %indvars.iv.next, 512
+    >   br i1 %9, label %1, label %10, !llvm.loop !7
+    <   %indvars.iv = phi i64 [ 0, %0 ], [ %indvars.iv.next.3, %1 ]
+    <   %2 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv
+    <   store i32 1, ptr %2, align 4
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+    <   %3 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv.next
+    <   store i32 1, ptr %3, align 4
+    <   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv, 2
+    <   %4 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv.next.1
+    <   store i32 1, ptr %4, align 4
+    <   %indvars.iv.next.2 = add nuw nsw i64 %indvars.iv, 3
+    <   %5 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %indvars.iv.next.2
+    <   store i32 1, ptr %5, align 4
+    <   %indvars.iv.next.3 = add nuw nsw i64 %indvars.iv, 4
+    <   %exitcond.3 = icmp ne i64 %indvars.iv.next.3, 512
+    <   br i1 %exitcond.3, label %1, label %6, !llvm.loop !7"
+indvars,reassociate,true,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\indvars__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,false,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__reassociate.ll,results\paper_full\Stanford_Puzzle\round_003\analysis\Stanford_Puzzle\commutativity\reassociate__then__loop-unroll.ll,"in function Puzzle:
+  in block %17 / %17:
+    >   %18 = phi i32 [ 1, %16 ], [ %100, %84 ]
+    <   %18 = phi i32 [ 1, %16 ], [ %100, %84 ]
+  in block %20 / %20:
+    >   %21 = add nuw nsw i32 72, %18
+    >   %22 = zext nneg i32 %21 to i64
+    >   %23 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %22
+    >   store i32 0, ptr %23, align 4
+    >   %24 = add nuw nsw i32 136, %18
+    >   %25 = zext nneg i32 %24 to i64
+    >   %26 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %25
+    >   store i32 0, ptr %26, align 4
+    >   %27 = add nuw nsw i32 200, %18
+    >   %28 = zext nneg i32 %27 to i64
+    >   %29 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %28
+    >   store i32 0, ptr %29, align 4
+    >   %30 = add nuw nsw i32 264, %18
+    >   %31 = zext nneg i32 %30 to i64
+    >   %32 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %31
+    >   store i32 0, ptr %32, align 4
+    >   %33 = add nuw nsw i32 328, %18
+    >   %34 = zext nneg i32 %33 to i64
+    >   %35 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %34
+    >   store i32 0, ptr %35, align 4
+    <   %21 = or disjoint i32 %18, 72
+    <   %22 = zext nneg i32 %21 to i64
+    <   %23 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %22
+    <   store i32 0, ptr %23, align 4
+    <   %24 = or disjoint i32 %18, 136
+    <   %25 = zext nneg i32 %24 to i64
+    <   %26 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %25
+    <   store i32 0, ptr %26, align 4
+    <   %27 = or disjoint i32 %18, 200
+    <   %28 = zext nneg i32 %27 to i64
+    <   %29 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %28
+    <   store i32 0, ptr %29, align 4
+    <   %30 = or disjoint i32 %18, 264
+    <   %31 = zext nneg i32 %30 to i64
+    <   %32 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %31
+    <   store i32 0, ptr %32, align 4
+    <   %33 = or disjoint i32 %18, 328
+    <   %34 = zext nneg i32 %33 to i64
+    <   %35 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %34
+    <   store i32 0, ptr %35, align 4
+  in block %84 / %84:
+    >   %85 = add nuw nsw i32 104, %18
+    >   %86 = zext nneg i32 %85 to i64
+    >   %87 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %86
+    >   store i32 0, ptr %87, align 4
+    >   %88 = add nuw nsw i32 168, %18
+    >   %89 = zext nneg i32 %88 to i64
+    >   %90 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %89
+    >   store i32 0, ptr %90, align 4
+    >   %91 = add nuw nsw i32 232, %18
+    >   %92 = zext nneg i32 %91 to i64
+    >   %93 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %92
+    >   store i32 0, ptr %93, align 4
+    >   %94 = add nuw nsw i32 296, %18
+    >   %95 = zext nneg i32 %94 to i64
+    >   %96 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %95
+    >   store i32 0, ptr %96, align 4
+    >   %97 = add nuw nsw i32 360, %18
+    >   %98 = zext nneg i32 %97 to i64
+    >   %99 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %98
+    >   store i32 0, ptr %99, align 4
+    <   %85 = or disjoint i32 %18, 104
+    <   %86 = zext nneg i32 %85 to i64
+    <   %87 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %86
+    <   store i32 0, ptr %87, align 4
+    <   %88 = or disjoint i32 %18, 168
+    <   %89 = zext nneg i32 %88 to i64
+    <   %90 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %89
+    <   store i32 0, ptr %90, align 4
+    <   %91 = or disjoint i32 %18, 232
+    <   %92 = zext nneg i32 %91 to i64
+    <   %93 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %92
+    <   store i32 0, ptr %93, align 4
+    <   %94 = or disjoint i32 %18, 296
+    <   %95 = zext nneg i32 %94 to i64
+    <   %96 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %95
+    <   store i32 0, ptr %96, align 4
+    <   %97 = or disjoint i32 %18, 360
+    <   %98 = zext nneg i32 %97 to i64
+    <   %99 = getelementptr inbounds nuw [4 x i8], ptr @puzzl, i64 %98
+    <   store i32 0, ptr %99, align 4"

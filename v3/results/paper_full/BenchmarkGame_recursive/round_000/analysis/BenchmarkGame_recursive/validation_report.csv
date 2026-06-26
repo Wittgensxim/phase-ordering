@@ -1,0 +1,477 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,dependent,true,false_positive,inst:ack:%10;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,,inst,mixed,expansion,early-cse->gvn,
+early-cse,instcombine,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%11;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,,inst,mixed,expansion,instcombine->early-cse;early-cse->instcombine,"in function ack:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+
+in function fib:
+  in block %5 / %5:
+    in instruction %7 / %10:
+      arguments %6 and %9 differ
+    >   %7 = call i32 @fib(i32 noundef %6)
+    >   %8 = load i32, ptr %2, align 4
+    >   %9 = add nsw i32 %8, -1
+        %7 = call i32 @fib(i32 noundef %6)
+    >   %11 = add nsw i32 %7, %10
+    <   %8 = add nsw i32 %0, -1
+    <   %9 = call i32 @fib(i32 noundef %8)
+    <   %10 = add nsw i32 %7, %9
+  in block %11 / %12:
+    >   %storemerge = phi i32 [ %11, %5 ], [ 1, %4 ]
+    <   %storemerge = phi i32 [ %10, %5 ], [ 1, %4 ]
+
+in function fibFP:
+  in block %5 / %5:
+    in instruction %7 / %10:
+      arguments %6 and %9 differ
+    >   %7 = call double @fibFP(double noundef %6)
+    >   %8 = load double, ptr %2, align 8
+    >   %9 = fadd double %8, -1.000000e+00
+        %7 = call double @fibFP(double noundef %6)
+    >   %11 = fadd double %7, %10
+    <   %8 = fadd double %0, -1.000000e+00
+    <   %9 = call double @fibFP(double noundef %8)
+    <   %10 = fadd double %7, %9
+  in block %11 / %12:
+    >   %storemerge = phi double [ %11, %5 ], [ 1.000000e+00, %4 ]
+    <   %storemerge = phi double [ %10, %5 ], [ 1.000000e+00, %4 ]
+
+in function tak:
+  in block %8 / %8:
+    in instruction %18 / %15:
+      arguments %16 and %13 differ
+    in instruction %19 / %18:
+      arguments %18 and %17 differ
+    >   %9 = add nsw i32 %0, -1
+    >   %10 = call i32 @tak(i32 noundef %9, i32 noundef %1, i32 noundef %2)
+    <   %9 = load i32, ptr %4, align 4
+    <   %10 = add nsw i32 %9, -1
+        %11 = load i32, ptr %5, align 4
+    <   %12 = call i32 @tak(i32 noundef %10, i32 noundef %11, i32 noundef %2)
+        %13 = add nsw i32 %11, -1
+    >   %13 = load i32, ptr %6, align 4
+    <   %14 = call i32 @tak(i32 noundef %13, i32 noundef %2, i32 noundef %9)
+    <   %15 = add nsw i32 %2, -1
+        %16 = load i32, ptr %4, align 4
+    <   %17 = load i32, ptr %5, align 4
+        %18 = call i32 @tak(i32 noundef %15, i32 noundef %16, i32 noundef %17)
+    >   %16 = add nsw i32 %13, -1
+    >   %17 = call i32 @tak(i32 noundef %16, i32 noundef %14, i32 noundef %11)
+
+in function takFP:
+  in block %8 / %8:
+    in instruction %18 / %15:
+      arguments %16 and %13 differ
+    in instruction %19 / %18:
+      arguments %18 and %17 differ
+    >   %9 = fadd double %0, -1.000000e+00
+    >   %10 = call double @takFP(double noundef %9, double noundef %1, double noundef %2)
+    <   %9 = load double, ptr %4, align 8
+    <   %10 = fadd double %9, -1.000000e+00
+        %11 = load double, ptr %5, align 8
+    <   %12 = call double @takFP(double noundef %10, double noundef %11, double noundef %2)
+        %13 = fadd double %11, -1.000000e+00
+    >   %13 = load double, ptr %6, align 8
+    <   %14 = call double @takFP(double noundef %13, double noundef %2, double noundef %9)
+    <   %15 = fadd double %2, -1.000000e+00
+        %16 = load double, ptr %4, align 8
+    <   %17 = load double, ptr %5, align 8
+        %18 = call double @takFP(double noundef %15, double noundef %16, double noundef %17)
+    >   %16 = fadd double %13, -1.000000e+00
+    >   %17 = call double @takFP(double noundef %16, double noundef %14, double noundef %11)"
+early-cse,mem2reg,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,,inst,mixed,expansion;mutation,mem2reg->early-cse;early-cse->mem2reg,"in function main:
+  in block %2 / %2:
+    >   %5 = sitofp i32 10 to double
+    >   %6 = fadd double 2.800000e+01, %5
+    >   %7 = call double @fibFP(double noundef %6)
+    >   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef %6, double noundef %7)
+    >   %9 = mul nsw i32 3, 10
+    >   %10 = mul nsw i32 2, 10
+    >   %11 = call i32 @tak(i32 noundef %9, i32 noundef %10, i32 noundef 10)
+    >   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef %9, i32 noundef %10, i32 noundef 10, i32 noundef %11)
+    <   %5 = call double @fibFP(double noundef 3.800000e+01)
+    <   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef 3.800000e+01, double noundef %5)
+    <   %7 = call i32 @tak(i32 noundef 30, i32 noundef 20, i32 noundef 10)
+    <   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef 30, i32 noundef 20, i32 noundef 10, i32 noundef %7)"
+early-cse,reassociate,dependent,true,false_positive,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,read_write;enablement,strong,strong,strong,none,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,,inst,symmetric_rewrite,expansion,early-cse->reassociate;reassociate->early-cse,
+early-cse,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,activation,early-cse->sccp,
+early-cse,simplifycfg,dependent,true,false_positive,inst:ack:%24;inst:ack:%25;inst:ack:%27,inst:ack:%24;inst:ack:%25;inst:ack:%27,inst:ack:%24;inst:ack:%25;inst:ack:%27,read_write;enablement,strong,strong,strong,none,inst:ack:%24;inst:ack:%25;inst:ack:%27,,inst,symmetric_rewrite,expansion,simplifycfg->early-cse;early-cse->simplifycfg,
+early-cse,sroa,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%9;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:tak:%12;inst:tak:%13;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:takFP:%12;inst:takFP:%13;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31,,inst,mixed,expansion;mutation,sroa->early-cse;early-cse->sroa,"in function main:
+  in block %2 / %2:
+    >   %5 = sitofp i32 10 to double
+    >   %6 = fadd double 2.800000e+01, %5
+    >   %7 = call double @fibFP(double noundef %6)
+    >   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef %6, double noundef %7)
+    >   %9 = mul nsw i32 3, 10
+    >   %10 = mul nsw i32 2, 10
+    >   %11 = call i32 @tak(i32 noundef %9, i32 noundef %10, i32 noundef 10)
+    >   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef %9, i32 noundef %10, i32 noundef 10, i32 noundef %11)
+    <   %5 = call double @fibFP(double noundef 3.800000e+01)
+    <   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef 3.800000e+01, double noundef %5)
+    <   %7 = call i32 @tak(i32 noundef 30, i32 noundef 20, i32 noundef 10)
+    <   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef 30, i32 noundef 20, i32 noundef 10, i32 noundef %7)"
+gvn,instcombine,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:takFP:%10;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8,inst:ack:%10;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:takFP:%10;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8,inst:ack:%10;inst:ack:%11;inst:ack:%15;inst:ack:%16;inst:ack:%17;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%11;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:takFP:%10;inst:takFP:%11;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%15;inst:ack:%16;inst:ack:%17;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%11;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:takFP:%10;inst:takFP:%11;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8,,inst,mixed,expansion,instcombine->gvn;gvn->instcombine,"in function ack:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+
+in function fib:
+  in block %1 / %1:
+    <   %2 = alloca i32, align 4
+    <   store i32 %0, ptr %2, align 4
+
+in function fibFP:
+  in block %1 / %1:
+    <   %2 = alloca double, align 8
+    <   store double %0, ptr %2, align 8
+
+in function tak:
+  in block %3 / %3:
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca i32, align 4
+    <   store i32 %0, ptr %4, align 4
+    <   store i32 %1, ptr %5, align 4
+    <   store i32 %2, ptr %6, align 4
+
+in function takFP:
+  in block %3 / %3:
+    <   %4 = alloca double, align 8
+    <   %5 = alloca double, align 8
+    <   %6 = alloca double, align 8
+    <   store double %0, ptr %4, align 8
+    <   store double %1, ptr %5, align 8
+    <   store double %2, ptr %6, align 8"
+gvn,mem2reg,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,inst:ack:%10;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%11;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%11;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%11;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%11;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,,inst,mixed,expansion,mem2reg->gvn;gvn->mem2reg,"in function ack:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %15, %13 ], [ %5, %4 ]
+    >   ret i32 %17
+    <   %.0 = phi i32 [ %5, %4 ], [ %15, %13 ]
+    <   ret i32 %.0
+
+in function fib:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %9, %4 ], [ 1, %3 ]
+    >   ret i32 %11
+    <   %.0 = phi i32 [ 1, %3 ], [ %9, %4 ]
+    <   ret i32 %.0
+
+in function fibFP:
+  in block %10 / %10:
+    >   %11 = phi double [ %9, %4 ], [ 1.000000e+00, %3 ]
+    >   ret double %11
+    <   %.0 = phi double [ 1.000000e+00, %3 ], [ %9, %4 ]
+    <   ret double %.0
+
+in function tak:
+  in block %14 / %14:
+    >   %15 = phi i32 [ %2, %13 ], [ %12, %5 ]
+    >   ret i32 %15
+    <   %.0 = phi i32 [ %12, %5 ], [ %2, %13 ]
+    <   ret i32 %.0
+
+in function takFP:
+  in block %14 / %14:
+    >   %15 = phi double [ %2, %13 ], [ %12, %5 ]
+    >   ret double %15
+    <   %.0 = phi double [ %12, %5 ], [ %2, %13 ]
+    <   ret double %.0"
+gvn,reassociate,dependent,true,false_positive,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%17;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,read_write;enablement,strong,strong,strong,none,inst:ack:%15;inst:ack:%16;inst:ack:%17;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,,inst,mixed,expansion,reassociate->gvn,
+gvn,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,activation,gvn->sccp,
+gvn,simplifycfg,dependent,true,false_positive,inst:ack:%24;inst:ack:%25;inst:ack:%27,inst:ack:%24;inst:ack:%25;inst:ack:%27,inst:ack:%24;inst:ack:%25;inst:ack:%27,read_write;enablement,strong,strong,strong,none,inst:ack:%24;inst:ack:%25;inst:ack:%27,,inst,symmetric_rewrite,expansion,simplifycfg->gvn;gvn->simplifycfg,
+gvn,sroa,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,inst:ack:%10;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%11;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%11;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%4;inst:fib:%5;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%7;inst:main:%8;inst:main:%9;inst:tak:%10;inst:tak:%11;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%8;inst:tak:%9;inst:takFP:%10;inst:takFP:%11;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%8;inst:takFP:%9,,inst,mixed,expansion,sroa->gvn;gvn->sroa,"in function ack:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %15, %13 ], [ %5, %4 ]
+    >   ret i32 %17
+    <   %.0 = phi i32 [ %5, %4 ], [ %15, %13 ]
+    <   ret i32 %.0
+
+in function fib:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %9, %4 ], [ 1, %3 ]
+    >   ret i32 %11
+    <   %.0 = phi i32 [ 1, %3 ], [ %9, %4 ]
+    <   ret i32 %.0
+
+in function fibFP:
+  in block %10 / %10:
+    >   %11 = phi double [ %9, %4 ], [ 1.000000e+00, %3 ]
+    >   ret double %11
+    <   %.0 = phi double [ 1.000000e+00, %3 ], [ %9, %4 ]
+    <   ret double %.0
+
+in function tak:
+  in block %14 / %14:
+    >   %15 = phi i32 [ %2, %13 ], [ %12, %5 ]
+    >   ret i32 %15
+    <   %.0 = phi i32 [ %12, %5 ], [ %2, %13 ]
+    <   ret i32 %.0
+
+in function takFP:
+  in block %14 / %14:
+    >   %15 = phi double [ %2, %13 ], [ %12, %5 ]
+    >   ret double %15
+    <   %.0 = phi double [ %12, %5 ], [ %2, %13 ]
+    <   ret double %.0"
+instcombine,mem2reg,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:takFP:%10;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br,inst:ack:%10;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:takFP:%10;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br,inst:ack:%10;inst:ack:%11;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:ack:bb0:1:br;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%6;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:br;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%6;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:br;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:ret;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%11;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:br;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:takFP:%10;inst:takFP:%11;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:br;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb5:1:store;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%6;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb1:1:store;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%6;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb1:1:store;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:tak:%10;inst:tak:%11;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:store;inst:tak:bb1:1:store;inst:takFP:%10;inst:takFP:%11;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:store;inst:takFP:bb1:1:store,inst:ack:bb0:1:br;inst:ack:bb0:2:br;inst:ack:bb5:1:br;inst:ack:bb5:2:br;inst:fib:bb0:1:br;inst:fib:bb0:2:br;inst:fib:bb1:1:br;inst:fib:bb1:2:br;inst:fibFP:bb0:1:br;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:br;inst:fibFP:bb1:2:br;inst:main:entry:1:ret;inst:main:entry:5:ret;inst:tak:bb0:1:br;inst:tak:bb0:2:br;inst:tak:bb1:1:br;inst:tak:bb1:2:br;inst:takFP:bb0:1:br;inst:takFP:bb0:2:br;inst:takFP:bb1:1:br;inst:takFP:bb1:2:br,inst,mixed,expansion,mem2reg->instcombine;instcombine->mem2reg,"in function ack:
+  in block %15 / %15:
+    >   %storemerge = phi i32 [ %14, %12 ], [ %5, %4 ]
+    >   ret i32 %storemerge
+    <   %.0 = phi i32 [ %5, %4 ], [ %14, %12 ]
+    <   ret i32 %.0
+
+in function fib:
+  in block %10 / %10:
+    >   %storemerge = phi i32 [ %9, %4 ], [ 1, %3 ]
+    >   ret i32 %storemerge
+    <   %.0 = phi i32 [ 1, %3 ], [ %9, %4 ]
+    <   ret i32 %.0
+
+in function fibFP:
+  in block %10 / %10:
+    >   %storemerge = phi double [ %9, %4 ], [ 1.000000e+00, %3 ]
+    >   ret double %storemerge
+    <   %.0 = phi double [ 1.000000e+00, %3 ], [ %9, %4 ]
+    <   ret double %.0
+
+in function tak:
+  in block %14 / %14:
+    >   %storemerge = phi i32 [ %2, %13 ], [ %12, %5 ]
+    >   ret i32 %storemerge
+    <   %.0 = phi i32 [ %12, %5 ], [ %2, %13 ]
+    <   ret i32 %.0
+
+in function takFP:
+  in block %14 / %14:
+    >   %storemerge = phi double [ %2, %13 ], [ %12, %5 ]
+    >   ret double %storemerge
+    <   %.0 = phi double [ %12, %5 ], [ %2, %13 ]
+    <   ret double %.0"
+instcombine,reassociate,dependent,true,false_positive,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%17;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,read_write;enablement,strong,strong,strong,none,inst:ack:%15;inst:ack:%16;inst:ack:%17;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,,inst,mixed,expansion,reassociate->instcombine,
+instcombine,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,simplifycfg,dependent,false,agree_dependent,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,read_write;enablement,strong,strong,strong,none,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store,inst:ack:bb5:2:br,inst,symmetric_rewrite,expansion,instcombine->simplifycfg;simplifycfg->instcombine,"in function fib:
+  in block %4 / %5:
+    in instruction   br label %11 /   br label %12:
+      successor %11 cannot be equivalent to %12; it's already equivalent to %4
+  in block %11 / %4:
+    >   br label %12
+    <   %storemerge = phi i32 [ %10, %4 ], [ 1, %1 ]
+    <   ret i32 %storemerge
+
+in function fibFP:
+  in block %4 / %5:
+    in instruction   br label %11 /   br label %12:
+      successor %11 cannot be equivalent to %12; it's already equivalent to %4
+  in block %11 / %4:
+    >   br label %12
+    <   %storemerge = phi double [ %10, %4 ], [ 1.000000e+00, %1 ]
+    <   ret double %storemerge"
+instcombine,sroa,dependent,false,agree_dependent,inst:ack:%10;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:takFP:%10;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br,inst:ack:%10;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:takFP:%10;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br,inst:ack:%10;inst:ack:%11;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:ack:bb0:1:br;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%6;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:br;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%6;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:br;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:ret;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%11;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:br;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:takFP:%10;inst:takFP:%11;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:br;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br,read_write;enablement,strong,strong,strong,none,inst:ack:%10;inst:ack:%11;inst:ack:%13;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb5:1:store;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%6;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb1:1:store;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%6;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb1:1:store;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:tak:%10;inst:tak:%11;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%7;inst:tak:%8;inst:tak:bb0:1:store;inst:tak:bb1:1:store;inst:takFP:%10;inst:takFP:%11;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%7;inst:takFP:%8;inst:takFP:bb0:1:store;inst:takFP:bb1:1:store,inst:ack:bb0:1:br;inst:ack:bb0:2:br;inst:ack:bb5:1:br;inst:ack:bb5:2:br;inst:fib:bb0:1:br;inst:fib:bb0:2:br;inst:fib:bb1:1:br;inst:fib:bb1:2:br;inst:fibFP:bb0:1:br;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:br;inst:fibFP:bb1:2:br;inst:main:entry:1:ret;inst:main:entry:5:ret;inst:tak:bb0:1:br;inst:tak:bb0:2:br;inst:tak:bb1:1:br;inst:tak:bb1:2:br;inst:takFP:bb0:1:br;inst:takFP:bb0:2:br;inst:takFP:bb1:1:br;inst:takFP:bb1:2:br,inst,mixed,expansion,instcombine->sroa;sroa->instcombine,"in function ack:
+  in block %15 / %15:
+    >   %.0 = phi i32 [ %5, %4 ], [ %14, %12 ]
+    >   ret i32 %.0
+    <   %storemerge = phi i32 [ %14, %12 ], [ %5, %4 ]
+    <   ret i32 %storemerge
+
+in function fib:
+  in block %10 / %10:
+    >   %.0 = phi i32 [ 1, %3 ], [ %9, %4 ]
+    >   ret i32 %.0
+    <   %storemerge = phi i32 [ %9, %4 ], [ 1, %3 ]
+    <   ret i32 %storemerge
+
+in function fibFP:
+  in block %10 / %10:
+    >   %.0 = phi double [ 1.000000e+00, %3 ], [ %9, %4 ]
+    >   ret double %.0
+    <   %storemerge = phi double [ %9, %4 ], [ 1.000000e+00, %3 ]
+    <   ret double %storemerge
+
+in function tak:
+  in block %14 / %14:
+    >   %.0 = phi i32 [ %12, %5 ], [ %2, %13 ]
+    >   ret i32 %.0
+    <   %storemerge = phi i32 [ %2, %13 ], [ %12, %5 ]
+    <   ret i32 %storemerge
+
+in function takFP:
+  in block %14 / %14:
+    >   %.0 = phi double [ %12, %5 ], [ %2, %13 ]
+    >   ret double %.0
+    <   %storemerge = phi double [ %2, %13 ], [ %12, %5 ]
+    <   ret double %storemerge"
+mem2reg,reassociate,dependent,false,agree_dependent,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,read_write;enablement,strong,strong,strong,none,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,,inst,symmetric_rewrite,expansion,mem2reg->reassociate;reassociate->mem2reg,"in function main:
+  in block %2 / %2:
+    >   %3 = add nsw i32 10, 1
+    >   %4 = add nsw i32 10, 1
+    >   %5 = call i32 @ack(i32 noundef 3, i32 noundef %4)
+    >   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %3, i32 noundef %5)
+    <   %3 = call i32 @ack(i32 noundef 3, i32 noundef 11)
+    <   %4 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef 11, i32 noundef %3)
+        %5 = sitofp i32 10 to double
+        %6 = fadd double %5, 2.800000e+01
+        %7 = sitofp i32 10 to double
+        %8 = fadd double %7, 2.800000e+01
+        %9 = call double @fibFP(double noundef %8)
+        %10 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef %6, double noundef %9)
+    >   %13 = mul nsw i32 10, 3
+    >   %14 = mul nsw i32 10, 2
+    >   %15 = mul nsw i32 10, 3
+    >   %16 = mul nsw i32 10, 2
+    >   %17 = call i32 @tak(i32 noundef %15, i32 noundef %16, i32 noundef 10)
+    >   %18 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef %13, i32 noundef %14, i32 noundef 10, i32 noundef %17)
+    <   %11 = call i32 @tak(i32 noundef 30, i32 noundef 20, i32 noundef 10)
+    <   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef 30, i32 noundef 20, i32 noundef 10, i32 noundef %11)"
+mem2reg,sccp,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,mem2reg->sccp,"in function main:
+  in block %2 / %2:
+    >   %3 = add nsw i32 10, 1
+    >   %4 = add nsw i32 10, 1
+    >   %5 = call i32 @ack(i32 noundef 3, i32 noundef %4)
+    >   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %3, i32 noundef %5)
+    >   %7 = sitofp i32 10 to double
+    >   %8 = fadd double 2.800000e+01, %7
+    >   %9 = sitofp i32 10 to double
+    >   %10 = fadd double 2.800000e+01, %9
+    >   %11 = call double @fibFP(double noundef %10)
+    >   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef %8, double noundef %11)
+    >   %13 = mul nsw i32 3, 10
+    >   %14 = mul nsw i32 2, 10
+    >   %15 = mul nsw i32 3, 10
+    >   %16 = mul nsw i32 2, 10
+    >   %17 = call i32 @tak(i32 noundef %15, i32 noundef %16, i32 noundef 10)
+    >   %18 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef %13, i32 noundef %14, i32 noundef 10, i32 noundef %17)
+    <   %3 = call i32 @ack(i32 noundef 3, i32 noundef 11)
+    <   %4 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef 11, i32 noundef %3)
+    <   %5 = call double @fibFP(double noundef 3.800000e+01)
+    <   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef 3.800000e+01, double noundef %5)
+    <   %7 = call i32 @tak(i32 noundef 30, i32 noundef 20, i32 noundef 10)
+    <   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef 30, i32 noundef 20, i32 noundef 10, i32 noundef %7)"
+mem2reg,simplifycfg,dependent,false,agree_dependent,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,read_write;enablement,strong,strong,strong,none,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store,inst:ack:bb5:2:br,inst,symmetric_rewrite,expansion,mem2reg->simplifycfg;simplifycfg->mem2reg,"in function fib:
+  in block %3 / %4:
+    in instruction   br label %9 /   br label %10:
+      successor %9 cannot be equivalent to %10; it's already equivalent to %3
+  in block %9 / %3:
+    >   br label %10
+    <   %.0 = phi i32 [ %8, %3 ], [ 1, %1 ]
+    <   ret i32 %.0
+
+in function fibFP:
+  in block %3 / %4:
+    in instruction   br label %9 /   br label %10:
+      successor %9 cannot be equivalent to %10; it's already equivalent to %3
+  in block %9 / %3:
+    >   br label %10
+    <   %.0 = phi double [ %8, %3 ], [ 1.000000e+00, %1 ]
+    <   ret double %.0
+
+in function tak:
+  in block %5 / %5:
+    in instruction   br label %13 /   br label %14:
+      successor %13 cannot be equivalent to %14; it's already equivalent to %13
+  in block %13 / %13:
+    >   br label %14
+    <   %.0 = phi i32 [ %12, %5 ], [ %2, %3 ]
+    <   ret i32 %.0
+
+in function takFP:
+  in block %5 / %5:
+    in instruction   br label %13 /   br label %14:
+      successor %13 cannot be equivalent to %14; it's already equivalent to %13
+  in block %13 / %13:
+    >   br label %14
+    <   %.0 = phi double [ %12, %5 ], [ %2, %3 ]
+    <   ret double %.0"
+mem2reg,sroa,dependent,true,false_positive,inst:ack:%10;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%3;inst:ack:%4;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:ack:entry:1:store;inst:ack:entry:2:store;inst:ack:entry:3:br;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%2;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fib:entry:1:store;inst:fib:entry:2:br;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%2;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:fibFP:entry:1:store;inst:fibFP:entry:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%4;inst:tak:%5;inst:tak:%6;inst:tak:%7;inst:tak:%8;inst:tak:%9;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:tak:entry:1:store;inst:tak:entry:2:store;inst:tak:entry:3:store;inst:tak:entry:4:br;inst:takFP:%10;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%4;inst:takFP:%5;inst:takFP:%6;inst:takFP:%7;inst:takFP:%8;inst:takFP:%9;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br;inst:takFP:entry:1:store;inst:takFP:entry:2:store;inst:takFP:entry:3:store;inst:takFP:entry:4:br,inst:ack:%10;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%3;inst:ack:%4;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:ack:entry:1:store;inst:ack:entry:2:store;inst:ack:entry:3:br;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%2;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fib:entry:1:store;inst:fib:entry:2:br;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%2;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:fibFP:entry:1:store;inst:fibFP:entry:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%10;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%4;inst:tak:%5;inst:tak:%6;inst:tak:%7;inst:tak:%8;inst:tak:%9;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:tak:entry:1:store;inst:tak:entry:2:store;inst:tak:entry:3:store;inst:tak:entry:4:br;inst:takFP:%10;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%4;inst:takFP:%5;inst:takFP:%6;inst:takFP:%7;inst:takFP:%8;inst:takFP:%9;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br;inst:takFP:entry:1:store;inst:takFP:entry:2:store;inst:takFP:entry:3:store;inst:takFP:entry:4:br,inst:ack:%.0;inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%3;inst:ack:%4;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:ack:bb0:1:br;inst:ack:bb0:1:store;inst:ack:bb0:2:br;inst:ack:bb5:1:br;inst:ack:bb5:1:store;inst:ack:bb5:2:br;inst:ack:entry:1:br;inst:ack:entry:1:store;inst:ack:entry:2:store;inst:ack:entry:3:br;inst:fib:%.0;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%2;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%6;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:br;inst:fib:bb0:1:store;inst:fib:bb0:2:br;inst:fib:bb1:1:br;inst:fib:bb1:1:store;inst:fib:bb1:2:br;inst:fib:entry:1:br;inst:fib:entry:1:store;inst:fib:entry:2:br;inst:fibFP:%.0;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%2;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%6;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:br;inst:fibFP:bb0:1:store;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:br;inst:fibFP:bb1:1:store;inst:fibFP:bb1:2:br;inst:fibFP:entry:1:br;inst:fibFP:entry:1:store;inst:fibFP:entry:2:br;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:ret;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:main:entry:5:ret;inst:tak:%.0;inst:tak:%10;inst:tak:%11;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%4;inst:tak:%5;inst:tak:%6;inst:tak:%7;inst:tak:%8;inst:tak:%9;inst:tak:bb0:1:br;inst:tak:bb0:1:store;inst:tak:bb0:2:br;inst:tak:bb1:1:br;inst:tak:bb1:1:store;inst:tak:bb1:2:br;inst:tak:entry:1:br;inst:tak:entry:1:store;inst:tak:entry:2:store;inst:tak:entry:3:store;inst:tak:entry:4:br;inst:takFP:%.0;inst:takFP:%10;inst:takFP:%11;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%4;inst:takFP:%5;inst:takFP:%6;inst:takFP:%7;inst:takFP:%8;inst:takFP:%9;inst:takFP:bb0:1:br;inst:takFP:bb0:1:store;inst:takFP:bb0:2:br;inst:takFP:bb1:1:br;inst:takFP:bb1:1:store;inst:takFP:bb1:2:br;inst:takFP:entry:1:br;inst:takFP:entry:1:store;inst:takFP:entry:2:store;inst:takFP:entry:3:store;inst:takFP:entry:4:br,read_write,strong,strong,none,none,inst:ack:%.0;inst:ack:%10;inst:ack:%11;inst:ack:%12;inst:ack:%13;inst:ack:%14;inst:ack:%15;inst:ack:%16;inst:ack:%18;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:%3;inst:ack:%4;inst:ack:%5;inst:ack:%6;inst:ack:%7;inst:ack:%8;inst:ack:%9;inst:ack:bb0:1:store;inst:ack:bb5:1:store;inst:ack:entry:1:store;inst:ack:entry:2:store;inst:fib:%.0;inst:fib:%10;inst:fib:%11;inst:fib:%12;inst:fib:%13;inst:fib:%14;inst:fib:%16;inst:fib:%2;inst:fib:%3;inst:fib:%4;inst:fib:%5;inst:fib:%6;inst:fib:%7;inst:fib:%8;inst:fib:%9;inst:fib:bb0:1:store;inst:fib:bb1:1:store;inst:fib:entry:1:store;inst:fibFP:%.0;inst:fibFP:%10;inst:fibFP:%11;inst:fibFP:%12;inst:fibFP:%13;inst:fibFP:%14;inst:fibFP:%16;inst:fibFP:%2;inst:fibFP:%3;inst:fibFP:%4;inst:fibFP:%5;inst:fibFP:%6;inst:fibFP:%7;inst:fibFP:%8;inst:fibFP:%9;inst:fibFP:bb0:1:store;inst:fibFP:bb1:1:store;inst:fibFP:entry:1:store;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%3;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%4;inst:main:%5;inst:main:%6;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:entry:1:store;inst:main:entry:2:store;inst:main:entry:3:store;inst:main:entry:4:store;inst:tak:%.0;inst:tak:%10;inst:tak:%11;inst:tak:%12;inst:tak:%13;inst:tak:%14;inst:tak:%15;inst:tak:%16;inst:tak:%17;inst:tak:%18;inst:tak:%19;inst:tak:%20;inst:tak:%21;inst:tak:%22;inst:tak:%23;inst:tak:%24;inst:tak:%25;inst:tak:%26;inst:tak:%27;inst:tak:%29;inst:tak:%31;inst:tak:%4;inst:tak:%5;inst:tak:%6;inst:tak:%7;inst:tak:%8;inst:tak:%9;inst:tak:bb0:1:store;inst:tak:bb1:1:store;inst:tak:entry:1:store;inst:tak:entry:2:store;inst:tak:entry:3:store;inst:takFP:%.0;inst:takFP:%10;inst:takFP:%11;inst:takFP:%12;inst:takFP:%13;inst:takFP:%14;inst:takFP:%15;inst:takFP:%16;inst:takFP:%17;inst:takFP:%18;inst:takFP:%19;inst:takFP:%20;inst:takFP:%21;inst:takFP:%22;inst:takFP:%23;inst:takFP:%24;inst:takFP:%25;inst:takFP:%26;inst:takFP:%27;inst:takFP:%29;inst:takFP:%31;inst:takFP:%4;inst:takFP:%5;inst:takFP:%6;inst:takFP:%7;inst:takFP:%8;inst:takFP:%9;inst:takFP:bb0:1:store;inst:takFP:bb1:1:store;inst:takFP:entry:1:store;inst:takFP:entry:2:store;inst:takFP:entry:3:store,inst:ack:bb0:1:br;inst:ack:bb0:2:br;inst:ack:bb5:1:br;inst:ack:bb5:2:br;inst:ack:entry:1:br;inst:ack:entry:3:br;inst:fib:bb0:1:br;inst:fib:bb0:2:br;inst:fib:bb1:1:br;inst:fib:bb1:2:br;inst:fib:entry:1:br;inst:fib:entry:2:br;inst:fibFP:bb0:1:br;inst:fibFP:bb0:2:br;inst:fibFP:bb1:1:br;inst:fibFP:bb1:2:br;inst:fibFP:entry:1:br;inst:fibFP:entry:2:br;inst:main:entry:1:ret;inst:main:entry:5:ret;inst:tak:bb0:1:br;inst:tak:bb0:2:br;inst:tak:bb1:1:br;inst:tak:bb1:2:br;inst:tak:entry:1:br;inst:tak:entry:4:br;inst:takFP:bb0:1:br;inst:takFP:bb0:2:br;inst:takFP:bb1:1:br;inst:takFP:bb1:2:br;inst:takFP:entry:1:br;inst:takFP:entry:4:br,inst,mixed,,,
+reassociate,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+reassociate,simplifycfg,dependent,true,false_positive,inst:ack:%24;inst:ack:%25;inst:ack:%27,inst:ack:%24;inst:ack:%25;inst:ack:%27,inst:ack:%23;inst:ack:%24;inst:ack:%25;inst:ack:%26;inst:ack:%27,read_write;enablement,strong,strong,strong,none,inst:ack:%23;inst:ack:%24;inst:ack:%25;inst:ack:%26;inst:ack:%27,,inst,mixed,expansion,simplifycfg->reassociate;reassociate->simplifycfg,
+reassociate,sroa,dependent,false,agree_dependent,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,read_write;enablement,strong,strong,strong,none,inst:ack:%15;inst:ack:%16;inst:ack:%19;inst:ack:%20;inst:ack:%21;inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:main:%15;inst:main:%18;inst:main:%22;inst:main:%24;inst:main:%27;inst:main:%29,,inst,symmetric_rewrite,expansion,sroa->reassociate;reassociate->sroa,"in function main:
+  in block %2 / %2:
+    >   %3 = add nsw i32 10, 1
+    >   %4 = add nsw i32 10, 1
+    >   %5 = call i32 @ack(i32 noundef 3, i32 noundef %4)
+    >   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %3, i32 noundef %5)
+    <   %3 = call i32 @ack(i32 noundef 3, i32 noundef 11)
+    <   %4 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef 11, i32 noundef %3)
+        %5 = sitofp i32 10 to double
+        %6 = fadd double %5, 2.800000e+01
+        %7 = sitofp i32 10 to double
+        %8 = fadd double %7, 2.800000e+01
+        %9 = call double @fibFP(double noundef %8)
+        %10 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef %6, double noundef %9)
+    >   %13 = mul nsw i32 10, 3
+    >   %14 = mul nsw i32 10, 2
+    >   %15 = mul nsw i32 10, 3
+    >   %16 = mul nsw i32 10, 2
+    >   %17 = call i32 @tak(i32 noundef %15, i32 noundef %16, i32 noundef 10)
+    >   %18 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef %13, i32 noundef %14, i32 noundef 10, i32 noundef %17)
+    <   %11 = call i32 @tak(i32 noundef 30, i32 noundef 20, i32 noundef 10)
+    <   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef 30, i32 noundef 20, i32 noundef 10, i32 noundef %11)"
+sccp,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+sccp,sroa,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,sroa->sccp,"in function main:
+  in block %2 / %2:
+    >   %3 = add nsw i32 10, 1
+    >   %4 = add nsw i32 10, 1
+    >   %5 = call i32 @ack(i32 noundef 3, i32 noundef %4)
+    >   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %3, i32 noundef %5)
+    >   %7 = sitofp i32 10 to double
+    >   %8 = fadd double 2.800000e+01, %7
+    >   %9 = sitofp i32 10 to double
+    >   %10 = fadd double 2.800000e+01, %9
+    >   %11 = call double @fibFP(double noundef %10)
+    >   %12 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef %8, double noundef %11)
+    >   %13 = mul nsw i32 3, 10
+    >   %14 = mul nsw i32 2, 10
+    >   %15 = mul nsw i32 3, 10
+    >   %16 = mul nsw i32 2, 10
+    >   %17 = call i32 @tak(i32 noundef %15, i32 noundef %16, i32 noundef 10)
+    >   %18 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef %13, i32 noundef %14, i32 noundef 10, i32 noundef %17)
+    <   %3 = call i32 @ack(i32 noundef 3, i32 noundef 11)
+    <   %4 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef 11, i32 noundef %3)
+    <   %5 = call double @fibFP(double noundef 3.800000e+01)
+    <   %6 = call i32 (ptr, ...) @printf(ptr noundef @.str.1, double noundef 3.800000e+01, double noundef %5)
+    <   %7 = call i32 @tak(i32 noundef 30, i32 noundef 20, i32 noundef 10)
+    <   %8 = call i32 (ptr, ...) @printf(ptr noundef @.str.2, i32 noundef 30, i32 noundef 20, i32 noundef 10, i32 noundef %7)"
+simplifycfg,sroa,dependent,false,agree_dependent,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store;inst:ack:bb5:2:br,read_write;enablement,strong,strong,strong,none,inst:ack:%24;inst:ack:%25;inst:ack:%27;inst:ack:bb5:1:store,inst:ack:bb5:2:br,inst,symmetric_rewrite,expansion,simplifycfg->sroa;sroa->simplifycfg,"in function fib:
+  in block %3 / %9:
+    >   %.0 = phi i32 [ %8, %3 ], [ 1, %1 ]
+    >   ret i32 %.0
+    <   br label %10
+  in block %10 / %9:
+    >   %.0 = phi i32 [ %8, %3 ], [ 1, %1 ]
+    >   ret i32 %.0
+    <   %.0 = phi i32 [ 1, %3 ], [ %9, %4 ]
+    <   ret i32 %.0
+
+in function fibFP:
+  in block %3 / %9:
+    >   %.0 = phi double [ %8, %3 ], [ 1.000000e+00, %1 ]
+    >   ret double %.0
+    <   br label %10
+  in block %10 / %9:
+    >   %.0 = phi double [ %8, %3 ], [ 1.000000e+00, %1 ]
+    >   ret double %.0
+    <   %.0 = phi double [ 1.000000e+00, %3 ], [ %9, %4 ]
+    <   ret double %.0
+
+in function tak:
+  in block %14 / %13:
+    in instruction %.0 / %.0:
+      successor %13 cannot be equivalent to %3; it's already equivalent to %13
+  in block %13 / %13:
+    >   %.0 = phi i32 [ %12, %5 ], [ %2, %3 ]
+    >   ret i32 %.0
+    <   br label %14
+
+in function takFP:
+  in block %14 / %13:
+    in instruction %.0 / %.0:
+      successor %13 cannot be equivalent to %3; it's already equivalent to %13
+  in block %13 / %13:
+    >   %.0 = phi double [ %12, %5 ], [ %2, %3 ]
+    >   ret double %.0
+    <   br label %14"

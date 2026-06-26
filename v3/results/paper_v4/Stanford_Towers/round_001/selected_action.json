@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "loop-rotate",
+    "simplifycfg"
+  ],
+  "winner": "A->B",
+  "score_improvement": 16.22999999999999,
+  "details": "oracle chose loop-rotate->simplifycfg (improvement: 16.23)",
+  "changed": true
+}

@@ -1,0 +1,121 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function compute:
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result
+  in block %exit.loopexit:
+    <   %add.lcssa = phi i32 [ %add, %loop ]"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function compute:
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result
+  in block %exit.loopexit:
+    <   %add.lcssa = phi i32 [ %add, %loop ]"
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function compute:
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result
+  in block %exit.loopexit:
+    <   %add.lcssa = phi i32 [ %add, %loop ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function compute:
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result
+  in block %exit.loopexit:
+    <   %add.lcssa = phi i32 [ %add, %loop ]"
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-rotate->instcombine,"in function compute:
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result
+  in block %exit.loopexit:
+    <   %add.lcssa = phi i32 [ %add, %loop ]"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-unroll->instcombine,"in function compute:
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result
+  in block %exit.loopexit:
+    <   %add.lcssa = phi i32 [ %add, %loop ]"
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-simplify,dependent,true,false_positive,inst:compute:%i;inst:compute:%sum,inst:compute:%i;inst:compute:%sum,bb:compute:exit.loopexit;bb:compute:loop.preheader;inst:compute:%i;inst:compute:%sum;inst:compute:exit.loopexit:1:br;inst:compute:loop.preheader:1:br,read_write,strong,strong,none,none,inst:compute:%i;inst:compute:%sum,bb:compute:exit.loopexit;bb:compute:loop.preheader;inst:compute:exit.loopexit:1:br;inst:compute:loop.preheader:1:br,bb;inst,mixed,,,
+loop-rotate,loop-unroll,dependent,true,false_positive,inst:compute:%i;inst:compute:%sum,inst:compute:%i;inst:compute:%sum,bb:compute:exit.loopexit;bb:compute:loop.preheader;inst:compute:%add.lcssa;inst:compute:%i;inst:compute:%sum;inst:compute:exit.loopexit:1:br;inst:compute:loop.preheader:1:br,read_write,strong,strong,none,none,inst:compute:%add.lcssa;inst:compute:%i;inst:compute:%sum,bb:compute:exit.loopexit;bb:compute:loop.preheader;inst:compute:exit.loopexit:1:br;inst:compute:loop.preheader:1:br,bb;inst,mixed,,,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->simplifycfg,"in function compute:
+  in block %loop.preheader / %loop:
+    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]
+    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]
+    >   %gep = getelementptr i32, ptr %arr, i32 %i
+    >   %val = load i32, ptr %gep, align 4
+    >   %mul = mul i32 %val, 2
+    >   %add = add i32 %sum, %mul
+    >   %next = add i32 %i, 1
+    >   %cond = icmp slt i32 %next, %n
+    >   br i1 %cond, label %loop, label %exit
+    <   br label %loop
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result"
+loop-simplify,loop-unroll,dependent,true,false_positive,inst:compute:%i;inst:compute:%sum,inst:compute:%i;inst:compute:%sum,bb:compute:exit.loopexit;bb:compute:loop.preheader;inst:compute:%i;inst:compute:%sum;inst:compute:exit.loopexit:1:br;inst:compute:loop.preheader:1:br,read_write,strong,strong,none,none,inst:compute:%i;inst:compute:%sum,bb:compute:exit.loopexit;bb:compute:loop.preheader;inst:compute:exit.loopexit:1:br;inst:compute:loop.preheader:1:br,bb;inst,mixed,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-simplify->simplifycfg,"in function compute:
+  in block %loop.preheader / %loop:
+    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]
+    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]
+    >   %gep = getelementptr i32, ptr %arr, i32 %i
+    >   %val = load i32, ptr %gep, align 4
+    >   %mul = mul i32 %val, 2
+    >   %add = add i32 %sum, %mul
+    >   %next = add i32 %i, 1
+    >   %cond = icmp slt i32 %next, %n
+    >   br i1 %cond, label %loop, label %exit
+    <   br label %loop
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]
+    <   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]
+  in block %exit.loopexit / %loop:
+    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]
+    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]
+    >   %gep = getelementptr i32, ptr %arr, i32 %i
+    >   %val = load i32, ptr %gep, align 4
+    >   %mul = mul i32 %val, 2
+    >   %add = add i32 %sum, %mul
+    >   %next = add i32 %i, 1
+    >   %cond = icmp slt i32 %next, %n
+    >   br i1 %cond, label %loop, label %exit
+    <   br label %exit"
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function compute:
+  in block %loop.preheader / %loop:
+    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]
+    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]
+    >   %gep = getelementptr i32, ptr %arr, i32 %i
+    >   %val = load i32, ptr %gep, align 4
+    >   %mul = mul i32 %val, 2
+    >   %add = add i32 %sum, %mul
+    >   %next = add i32 %i, 1
+    >   %cond = icmp slt i32 %next, %n
+    >   br i1 %cond, label %loop, label %exit
+    <   br label %loop
+  in block %exit:
+    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]
+    >   ret i32 %result
+    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]
+    <   ret i32 %result"

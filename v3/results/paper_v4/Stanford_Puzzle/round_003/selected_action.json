@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "sccp",
+    "adce"
+  ],
+  "winner": "B->A",
+  "score_improvement": 8.940000000000055,
+  "details": "oracle chose sccp->adce (improvement: 8.94)",
+  "changed": true
+}

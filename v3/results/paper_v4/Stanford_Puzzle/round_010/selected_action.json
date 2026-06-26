@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "loop-rotate",
+    "gvn"
+  ],
+  "details": "perturbation: loop-rotate->gvn",
+  "changed": true
+}

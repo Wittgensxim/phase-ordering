@@ -1,0 +1,258 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %30 / %30:
+    <   %.056.lcssa = phi double [ %27, %9 ]
+    <   %.055.lcssa = phi double [ %23, %9 ]
+    <   %.054.lcssa = phi double [ %15, %9 ]
+    <   %.0.lcssa = phi double [ %12, %9 ]"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->gvn,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function main:
+  in block %30 / %30:
+    <   %.056.lcssa = phi double [ %27, %9 ]
+    <   %.055.lcssa = phi double [ %23, %9 ]
+    <   %.054.lcssa = phi double [ %15, %9 ]
+    <   %.0.lcssa = phi double [ %12, %9 ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,indvars->instcombine,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+indvars,licm,dependent,true,false_positive,,,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,read_write,strong,strong,none,none,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,,inst,write_write_only,,,
+indvars,loop-rotate,dependent,false,agree_dependent,,,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,,inst,write_write_only,expansion,loop-rotate->indvars,"in function main:
+  in block %9 / %9:
+    >   %.05 = phi double [ 0.000000e+00, %2 ], [ %12, %9 ]
+    >   %.0544 = phi double [ 0.000000e+00, %2 ], [ %15, %9 ]
+    >   %.0553 = phi double [ 0.000000e+00, %2 ], [ %23, %9 ]
+    >   %.0562 = phi double [ 0.000000e+00, %2 ], [ %27, %9 ]
+    >   %.0571 = phi double [ 1.000000e+00, %2 ], [ %28, %9 ]
+    >   %10 = fsub double %.0571, 1.000000e+00
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %12, %9 ]
+    <   %.0544 = phi double [ 0.000000e+00, %2 ], [ %15, %9 ]
+    <   %.0553 = phi double [ 0.000000e+00, %2 ], [ %23, %9 ]
+    <   %.0562 = phi double [ 0.000000e+00, %2 ], [ %27, %9 ]
+    <   %.0571.int = phi i32 [ 1, %2 ], [ %.int, %9 ]
+    <   %indvar.conv = sitofp i32 %.0571.int to double
+    <   %10 = fsub double %indvar.conv, 1.000000e+00
+        %11 = call double @pow(double noundef f0x3FE5555555555555, double noundef %10) #4
+    >   %12 = fadd double %.05, %11
+    >   %13 = call double @sqrt(double noundef %.0571) #4
+    >   %14 = fdiv double 1.000000e+00, %13
+    >   %15 = fadd double %.0544, %14
+    >   %16 = fmul double %.0571, %.0571
+    >   %17 = fmul double %16, %.0571
+    >   %18 = call double @sin(double noundef %.0571) #4
+    >   %19 = call double @cos(double noundef %.0571) #4
+    >   %20 = fmul double %17, %18
+    >   %21 = fmul double %20, %18
+    >   %22 = fdiv double 1.000000e+00, %21
+    >   %23 = fadd double %.0553, %22
+    >   %24 = fmul double %17, %19
+    >   %25 = fmul double %24, %19
+    >   %26 = fdiv double 1.000000e+00, %25
+    >   %27 = fadd double %.0562, %26
+    >   %28 = fadd double %.0571, 1.000000e+00
+    >   %29 = fcmp ole double %28, 2.500000e+06
+    >   br i1 %29, label %9, label %30, !llvm.loop !7
+    <   %12 = fadd double %.05, %11
+    <   %13 = call double @sqrt(double noundef %indvar.conv) #4
+    <   %14 = fdiv double 1.000000e+00, %13
+    <   %15 = fadd double %.0544, %14
+    <   %16 = fmul double %indvar.conv, %indvar.conv
+    <   %17 = fmul double %16, %indvar.conv
+    <   %18 = call double @sin(double noundef %indvar.conv) #4
+    <   %19 = call double @cos(double noundef %indvar.conv) #4
+    <   %20 = fmul double %17, %18
+    <   %21 = fmul double %20, %18
+    <   %22 = fdiv double 1.000000e+00, %21
+    <   %23 = fadd double %.0553, %22
+    <   %24 = fmul double %17, %19
+    <   %25 = fmul double %24, %19
+    <   %26 = fdiv double 1.000000e+00, %25
+    <   %27 = fadd double %.0562, %26
+    <   %.int = add nuw nsw i32 %.0571.int, 1
+    <   %exitcond = icmp ne i32 %.int, 2500001
+    <   br i1 %exitcond, label %9, label %28, !llvm.loop !7"
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,dependent,true,false_positive,,,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,read_write,strong,strong,none,none,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,,inst,write_write_only,,,
+indvars,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->indvars,"in function main:
+  in block %31 / %32:
+    >   %.063 = phi <2 x double> [ %3, %31 ], [ %49, %34 ]
+    >   %.062 = phi <2 x double> [ %3, %31 ], [ %45, %34 ]
+    >   %.061 = phi <2 x double> [ %3, %31 ], [ %38, %34 ]
+    >   %.060 = phi <2 x double> [ %3, %31 ], [ %43, %34 ]
+    >   %.059 = phi <2 x double> [ %7, %31 ], [ %50, %34 ]
+    >   %.058 = phi <2 x double> [ %3, %31 ], [ %40, %34 ]
+    >   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    >   %33 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    >   br i1 %33, label %34, label %51
+    <   %.063 = phi <2 x double> [ %48, %33 ], [ %3, %.preheader ]
+    <   %.062 = phi <2 x double> [ %44, %33 ], [ %3, %.preheader ]
+    <   %.061 = phi <2 x double> [ %37, %33 ], [ %3, %.preheader ]
+    <   %.060 = phi <2 x double> [ %42, %33 ], [ %3, %.preheader ]
+    <   %.059 = phi <2 x double> [ %49, %33 ], [ %7, %.preheader ]
+    <   %.058 = phi <2 x double> [ %39, %33 ], [ %3, %.preheader ]
+    <   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    <   %32 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    <   br i1 %32, label %33, label %50"
+instcombine,licm,dependent,false,agree_dependent,inst:main:%33,inst:main:%33,inst:main:%33,read_write;enablement,strong,strong,strong,none,inst:main:%33,,inst,symmetric_rewrite,expansion;mutation,instcombine->licm;licm->instcombine,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+instcombine,loop-rotate,dependent,false,agree_dependent,inst:main:%10;inst:main:%12;inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;inst:main:bb1:1:br;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb0;loop:main:bb3,inst:main:%10;inst:main:%12;inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;inst:main:bb1:1:br;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb0;loop:main:bb3,inst:main:%10;inst:main:%12;inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;inst:main:bb1:1:br;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb0;loop:main:bb3,read_write;enablement,strong,strong,strong,none,inst:main:%10;inst:main:%12;inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;loop:main:bb0;loop:main:bb3,inst:main:bb1:1:br;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret,inst;loop,symmetric_rewrite,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function main:
+  in block %30 / %30:
+    <   %.056.lcssa = phi double [ %27, %9 ]
+    <   %.055.lcssa = phi double [ %23, %9 ]
+    <   %.054.lcssa = phi double [ %15, %9 ]
+    <   %.0.lcssa = phi double [ %12, %9 ]"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-unroll->instcombine,"in function main:
+  in block %31 / %31:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+instcombine,simplifycfg,dependent,true,false_positive,inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb3,inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb3,inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:ret;loop:main:bb3,read_write;enablement,strong,strong,strong,none,inst:main:%33;inst:main:%52;inst:main:%53;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%59;inst:main:%61;inst:main:%63;inst:main:%65;loop:main:bb3,inst:main:bb2:1:br;inst:main:bb4:1:br;inst:main:bb4:1:ret;inst:main:bb5:1:ret,inst;loop,mixed,expansion,instcombine->simplifycfg;simplifycfg->instcombine,
+licm,loop-rotate,dependent,false,agree_dependent,inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46,inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46,,inst,mixed,expansion;mutation,loop-rotate->licm;licm->loop-rotate,"in function main:
+  in block %30 / %30:
+    >   %31 = fneg <2 x double> %4"
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,true,false_positive,,,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,read_write,strong,strong,none,none,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,,inst,write_write_only,,,
+licm,simplifycfg,dependent,false,agree_dependent,inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46,inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46,inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46,read_write;enablement,strong,strong,strong,none,inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%42;inst:main:%43;inst:main:%44;inst:main:%45;inst:main:%46,,inst,mixed,expansion,simplifycfg->licm,"in function main:
+  in block %32 / %33:
+    >   %.063 = phi <2 x double> [ %3, %31 ], [ %49, %35 ]
+    >   %.062 = phi <2 x double> [ %3, %31 ], [ %46, %35 ]
+    >   %.061 = phi <2 x double> [ %3, %31 ], [ %39, %35 ]
+    >   %.060 = phi <2 x double> [ %3, %31 ], [ %44, %35 ]
+    >   %.059 = phi <2 x double> [ %7, %31 ], [ %50, %35 ]
+    >   %.058 = phi <2 x double> [ %3, %31 ], [ %41, %35 ]
+    >   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    >   %34 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    >   br i1 %34, label %35, label %51
+    <   %.063 = phi <2 x double> [ %48, %34 ], [ %3, %.preheader ]
+    <   %.062 = phi <2 x double> [ %45, %34 ], [ %3, %.preheader ]
+    <   %.061 = phi <2 x double> [ %38, %34 ], [ %3, %.preheader ]
+    <   %.060 = phi <2 x double> [ %43, %34 ], [ %3, %.preheader ]
+    <   %.059 = phi <2 x double> [ %49, %34 ], [ %7, %.preheader ]
+    <   %.058 = phi <2 x double> [ %40, %34 ], [ %3, %.preheader ]
+    <   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    <   %33 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    <   br i1 %33, label %34, label %50"
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,true,false_positive,,,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,read_write,strong,strong,none,none,inst:main:%.0.lcssa;inst:main:%.054.lcssa;inst:main:%.055.lcssa;inst:main:%.056.lcssa;inst:main:%.058.lcssa;inst:main:%.060.lcssa;inst:main:%.061.lcssa;inst:main:%.062.lcssa;inst:main:%.063.lcssa,,inst,write_write_only,,,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,bb:main:bb5;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%50;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%58;inst:main:%59;inst:main:%60;inst:main:%61;inst:main:%62;inst:main:%63;inst:main:%64;inst:main:%65;inst:main:bb2:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb3,bb:main:bb5;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%50;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%58;inst:main:%59;inst:main:%60;inst:main:%61;inst:main:%62;inst:main:%63;inst:main:%64;inst:main:%65;inst:main:bb2:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb3,bb:main:bb5;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%50;inst:main:%51;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%58;inst:main:%59;inst:main:%60;inst:main:%61;inst:main:%62;inst:main:%63;inst:main:%64;inst:main:%65;inst:main:bb2:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret;loop:main:bb3,read_write;enablement,strong,strong,strong,none,inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%46;inst:main:%47;inst:main:%48;inst:main:%50;inst:main:%51;inst:main:%52;inst:main:%53;inst:main:%54;inst:main:%55;inst:main:%56;inst:main:%57;inst:main:%58;inst:main:%59;inst:main:%60;inst:main:%61;inst:main:%62;inst:main:%63;inst:main:%64;inst:main:%65;loop:main:bb3,bb:main:bb5;inst:main:bb2:1:br;inst:main:bb3:1:br;inst:main:bb4:1:br;inst:main:bb5:1:ret,bb;inst;loop,mixed,expansion,simplifycfg->loop-rotate;loop-rotate->simplifycfg,"in function main:
+  in block %.lr.ph:
+    >   %.05812 = phi <2 x double> [ %37, %.lr.ph ], [ %3, %30 ]
+    >   %.05911 = phi <2 x double> [ %47, %.lr.ph ], [ %7, %30 ]
+    >   %.06010 = phi <2 x double> [ %40, %.lr.ph ], [ %3, %30 ]
+    >   %.0619 = phi <2 x double> [ %35, %.lr.ph ], [ %3, %30 ]
+    >   %.0628 = phi <2 x double> [ %42, %.lr.ph ], [ %3, %30 ]
+    >   %.0637 = phi <2 x double> [ %46, %.lr.ph ], [ %3, %30 ]
+    >   %32 = fadd <2 x double> %.05911, %4
+    >   %33 = fmul <2 x double> %.05911, %32
+    >   %34 = fdiv <2 x double> %4, %33
+    >   %35 = fadd <2 x double> %.0619, %34
+    >   %36 = fdiv <2 x double> %4, %.05911
+    >   %37 = fadd <2 x double> %.05812, %36
+    >   %38 = fmul <2 x double> %.05911, %.05911
+    >   %39 = fdiv <2 x double> %4, %38
+    >   %40 = fadd <2 x double> %.06010, %39
+    >   %41 = fdiv <2 x double> %8, %.05911
+    >   %42 = fadd <2 x double> %.0628, %41
+    >   %43 = fneg <2 x double> %4
+    >   %44 = call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %5, <2 x double> %.05911, <2 x double> %43)
+    >   %45 = fdiv <2 x double> %8, %44
+    >   %46 = fadd <2 x double> %.0637, %45
+    >   %47 = fadd <2 x double> %.05911, %5
+    >   %.0.vec.extract = extractelement <2 x double> %47, i32 0
+    >   %48 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    >   br i1 %48, label %.lr.ph, label %._crit_edge, !llvm.loop !9
+    <   br label %31
+  in block %49 / %._crit_edge:
+    >   %.063.lcssa = phi <2 x double> [ %3, %30 ], [ %46, %.lr.ph ]
+    >   %.062.lcssa = phi <2 x double> [ %3, %30 ], [ %42, %.lr.ph ]
+    >   %.061.lcssa = phi <2 x double> [ %3, %30 ], [ %35, %.lr.ph ]
+    >   %.060.lcssa = phi <2 x double> [ %3, %30 ], [ %40, %.lr.ph ]
+    >   %.058.lcssa = phi <2 x double> [ %3, %30 ], [ %37, %.lr.ph ]
+    <   %.063.lcssa = phi <2 x double> [ %split, %._crit_edge ], [ %3, %.preheader ]
+    <   %.062.lcssa = phi <2 x double> [ %split13, %._crit_edge ], [ %3, %.preheader ]
+    <   %.061.lcssa = phi <2 x double> [ %split14, %._crit_edge ], [ %3, %.preheader ]
+    <   %.060.lcssa = phi <2 x double> [ %split15, %._crit_edge ], [ %3, %.preheader ]
+    <   %.058.lcssa = phi <2 x double> [ %split16, %._crit_edge ], [ %3, %.preheader ]"
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function main:
+  in block %.preheader / %31:
+    >   %.063 = phi <2 x double> [ %48, %33 ], [ %3, %9 ]
+    >   %.062 = phi <2 x double> [ %44, %33 ], [ %3, %9 ]
+    >   %.061 = phi <2 x double> [ %37, %33 ], [ %3, %9 ]
+    >   %.060 = phi <2 x double> [ %42, %33 ], [ %3, %9 ]
+    >   %.059 = phi <2 x double> [ %49, %33 ], [ %7, %9 ]
+    >   %.058 = phi <2 x double> [ %39, %33 ], [ %3, %9 ]
+    >   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    >   %32 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    >   br i1 %32, label %33, label %50
+    <   br label %31"
+loop-unroll,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->loop-unroll,"in function main:
+  in block %31 / %32:
+    >   %.063 = phi <2 x double> [ %3, %31 ], [ %49, %34 ]
+    >   %.062 = phi <2 x double> [ %3, %31 ], [ %45, %34 ]
+    >   %.061 = phi <2 x double> [ %3, %31 ], [ %38, %34 ]
+    >   %.060 = phi <2 x double> [ %3, %31 ], [ %43, %34 ]
+    >   %.059 = phi <2 x double> [ %7, %31 ], [ %50, %34 ]
+    >   %.058 = phi <2 x double> [ %3, %31 ], [ %40, %34 ]
+    >   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    >   %33 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    >   br i1 %33, label %34, label %51
+    <   %.063 = phi <2 x double> [ %48, %33 ], [ %3, %.preheader ]
+    <   %.062 = phi <2 x double> [ %44, %33 ], [ %3, %.preheader ]
+    <   %.061 = phi <2 x double> [ %37, %33 ], [ %3, %.preheader ]
+    <   %.060 = phi <2 x double> [ %42, %33 ], [ %3, %.preheader ]
+    <   %.059 = phi <2 x double> [ %49, %33 ], [ %7, %.preheader ]
+    <   %.058 = phi <2 x double> [ %39, %33 ], [ %3, %.preheader ]
+    <   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    <   %32 = fcmp ole double %.0.vec.extract, 2.500000e+06
+    <   br i1 %32, label %33, label %50"

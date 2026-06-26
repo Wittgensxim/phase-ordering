@@ -1,0 +1,3933 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+mem2reg,instcombine,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__instcombine.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__mem2reg.ll,"in function matgen:
+  in block %3 / %3:
+    >   %storemerge = phi i32 [ 0, %2 ], [ %19, %18 ]
+    >   %4 = icmp slt i32 %storemerge, 2000
+    >   br i1 %4, label %5, label %20
+    <   %.01 = phi i32 [ 0, %2 ], [ %19, %18 ]
+    <   %4 = icmp samesign ult i32 %.01, 2000
+    <   br i1 %4, label %5, label %20
+
+in function idamax:
+  in block %17 / %17:
+    >   %.03 = phi double [ %15, %11 ], [ %.14, %29 ]
+    >   %.02 = phi i32 [ %16, %11 ], [ %28, %29 ]
+    >   %.2 = phi i32 [ 0, %11 ], [ %.3, %29 ]
+    >   %storemerge1 = phi i32 [ 1, %11 ], [ %30, %29 ]
+    >   %18 = icmp slt i32 %storemerge1, %0
+    >   br i1 %18, label %19, label %31
+    <   %.04 = phi double [ %15, %11 ], [ %.15, %28 ]
+    <   %.02 = phi i32 [ 1, %11 ], [ %30, %28 ]
+    <   %.01 = phi i32 [ %16, %11 ], [ %29, %28 ]
+    <   %.2 = phi i32 [ 0, %11 ], [ %.3, %28 ]
+    <   %18 = icmp slt i32 %.02, %0
+    <   br i1 %18, label %19, label %31
+  in block %37 / %37:
+    >   %.25 = phi double [ %36, %32 ], [ %.36, %48 ]
+    >   %.5 = phi i32 [ 0, %32 ], [ %.6, %48 ]
+    >   %storemerge = phi i32 [ 1, %32 ], [ %49, %48 ]
+    >   %38 = icmp slt i32 %storemerge, %0
+    >   br i1 %38, label %39, label %50
+    <   %.26 = phi double [ %36, %32 ], [ %.37, %48 ]
+    <   %.13 = phi i32 [ 1, %32 ], [ %49, %48 ]
+    <   %.5 = phi i32 [ 0, %32 ], [ %.6, %48 ]
+    <   %38 = icmp slt i32 %.13, %0
+    <   br i1 %38, label %39, label %50
+  in block %51 / %51:
+    >   %.4 = phi i32 [ %.5, %50 ], [ %.2, %31 ]
+    <   %.4 = phi i32 [ %.2, %31 ], [ %.5, %50 ]
+
+in function daxpy:
+  in block %25 / %25:
+    >   %.14 = phi i32 [ %.03, %24 ], [ %37, %39 ]
+    >   %.1 = phi i32 [ %.0, %24 ], [ %38, %39 ]
+    >   %storemerge2 = phi i32 [ 0, %24 ], [ %40, %39 ]
+    >   %26 = icmp slt i32 %storemerge2, %0
+    >   br i1 %26, label %27, label %41
+    <   %.03 = phi i32 [ 0, %24 ], [ %40, %37 ]
+    <   %.12 = phi i32 [ %.01, %24 ], [ %39, %37 ]
+    <   %.1 = phi i32 [ %.0, %24 ], [ %38, %37 ]
+    <   %26 = icmp slt i32 %.03, %0
+    <   br i1 %26, label %27, label %41
+
+in function dgefa:
+  in block %3 / %3:
+    >   %storemerge = phi i32 [ 0, %2 ], [ %61, %60 ]
+    >   %4 = icmp slt i32 %storemerge, 1999
+    >   br i1 %4, label %5, label %62
+    <   %.01 = phi i32 [ 0, %2 ], [ %61, %60 ]
+    <   %4 = icmp samesign ult i32 %.01, 1999
+    <   br i1 %4, label %5, label %62
+
+in function dgesl:
+  in block %4 / %4:
+    >   %storemerge = phi i32 [ 0, %3 ], [ %28, %27 ]
+    >   %5 = icmp slt i32 %storemerge, 1999
+    >   br i1 %5, label %6, label %29
+    <   %.01 = phi i32 [ 0, %3 ], [ %28, %27 ]
+    <   %5 = icmp samesign ult i32 %.01, 1999
+    <   br i1 %5, label %6, label %29
+
+in function main:
+  in block %16 / %16:
+    >   %.0 = phi i8 [ %.1, %15 ], [ 0, %2 ]
+    <   %.0 = phi i1 [ %6, %15 ], [ true, %2 ]
+  in block %5 / %5:
+    >   %storemerge = phi i32 [ 1, %4 ], [ %14, %13 ]
+    >   %6 = icmp slt i32 %storemerge, %0
+    >   br i1 %6, label %7, label %15
+    <   %.01 = phi i32 [ 1, %4 ], [ %14, %13 ]
+    <   %6 = icmp sge i32 %.01, %0
+    <   br i1 %6, label %15, label %7"
+mem2reg,simplifycfg,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__simplifycfg.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__mem2reg.ll,"in function matgen:
+  in block %5 / %5:
+    >   br label %6
+    <   %.0 = phi i32 [ %14, %7 ], [ 0, %3 ]
+    <   %6 = icmp slt i32 %.0, 2000
+    <   br i1 %6, label %7, label %15
+  in block %17 / %18:
+    >   br label %19
+    <   %.12 = phi i32 [ %22, %19 ], [ 0, %3 ]
+    <   %18 = icmp slt i32 %.12, 2000
+    <   br i1 %18, label %19, label %23
+
+in function idamax:
+  in block %6 / %7:
+    in instruction   br i1 %7, label %42, label %8 /   br i1 %8, label %9, label %10:
+      successor %42 cannot be equivalent to %9; it's already equivalent to %6
+  in block %32 / %36:
+    >   %.26 = phi double [ %35, %31 ], [ %.37, %46 ]
+    >   %.13 = phi i32 [ 1, %31 ], [ %47, %46 ]
+    >   %.2 = phi i32 [ 0, %31 ], [ %.3, %46 ]
+    >   %37 = icmp slt i32 %.13, %0
+    >   br i1 %37, label %38, label %48
+    <   %.26 = phi double [ %31, %27 ], [ %.37, %34 ]
+    <   %.13 = phi i32 [ 1, %27 ], [ %41, %34 ]
+    <   %.5 = phi i32 [ 0, %27 ], [ %.6, %34 ]
+    <   %33 = icmp slt i32 %.13, %0
+    <   br i1 %33, label %34, label %42
+  in block %42 / %6:
+    >   br label %48
+    <   %.0 = phi i32 [ -1, %4 ], [ 0, %6 ], [ %.2, %16 ], [ %.5, %32 ]
+    <   ret i32 %.0
+  in block %16 / %18:
+    >   %.04 = phi double [ %16, %12 ], [ %.15, %28 ]
+    >   %.02 = phi i32 [ 1, %12 ], [ %30, %28 ]
+    >   %.01 = phi i32 [ %17, %12 ], [ %29, %28 ]
+    >   %.0 = phi i32 [ 0, %12 ], [ %.1, %28 ]
+    >   %19 = icmp slt i32 %.02, %0
+    >   br i1 %19, label %20, label %48
+    <   %.04 = phi double [ %14, %10 ], [ %.15, %18 ]
+    <   %.02 = phi i32 [ 1, %10 ], [ %26, %18 ]
+    <   %.01 = phi i32 [ %15, %10 ], [ %25, %18 ]
+    <   %.2 = phi i32 [ 0, %10 ], [ %.3, %18 ]
+    <   %17 = icmp slt i32 %.02, %0
+    <   br i1 %17, label %18, label %42
+
+in function dscal:
+  in block %20 / %20:
+    >   br label %21
+    <   %.1 = phi i32 [ %28, %22 ], [ 0, %7 ]
+    <   %21 = icmp slt i32 %.1, %0
+    <   br i1 %21, label %22, label %29
+
+in function daxpy:
+  in block %8 / %8:
+    >   %or.cond = select i1 %9, i1 %10, i1 false
+    >   br i1 %or.cond, label %11, label %54
+    <   %or.cond = and i1 %9, %10
+    <   br i1 %or.cond, label %11, label %49
+
+in function dgesl:
+  in block %29 / %29:
+    >   br label %30
+    <   %.0 = phi i32 [ %51, %31 ], [ 0, %4 ]
+    <   %30 = icmp slt i32 %.0, 2000
+    <   br i1 %30, label %31, label %52
+
+in function main:
+  in block %13 / %15:
+    >   %.0 = phi i8 [ 1, %12 ], [ 0, %5 ], [ 0, %2 ]
+    <   %.0 = phi i8 [ 0, %2 ], [ 0, %4 ], [ 1, %6 ]
+  in block %4 / %4:
+    >   br label %5
+    <   %.01 = phi i32 [ %12, %11 ], [ 1, %2 ]
+    <   %5 = icmp slt i32 %.01, %0
+    <   br i1 %5, label %6, label %13"
+mem2reg,dce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__dce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__mem2reg.ll,
+mem2reg,sroa,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__sroa.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__mem2reg.ll,
+mem2reg,early-cse,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__early-cse.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__mem2reg.ll,"in function dgefa:
+  in block %3 / %3:
+    >   %.01 = phi i32 [ 0, %2 ], [ %60, %59 ]
+    <   %.01 = phi i32 [ 0, %2 ], [ %9, %44 ]
+  in block %5 / %5:
+    in instruction %13 / %14:
+      operands %6 and %13 differ
+    >   %13 = sext i32 %.01 to i64
+  in block %44 / %59:
+    >   %60 = add nsw i32 %.01, 1
+
+in function dgesl:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %3 ], [ %29, %28 ]
+    <   %.01 = phi i32 [ 0, %3 ], [ %18, %22 ]
+  in block %24 / %31:
+    >   %.0 = phi i32 [ 0, %30 ], [ %52, %51 ]
+    <   %.0 = phi i32 [ 0, %23 ], [ %27, %39 ]
+  in block %14 / %14:
+    >   %15 = sext i32 %.01 to i64
+    >   %16 = getelementptr inbounds double, ptr %2, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    >   %18 = sext i32 %9 to i64
+    >   %19 = getelementptr inbounds double, ptr %2, i64 %18
+    >   store double %17, ptr %19, align 8
+    >   %20 = sext i32 %.01 to i64
+    >   %21 = getelementptr inbounds double, ptr %2, i64 %20
+    >   store double %12, ptr %21, align 8
+    <   %15 = getelementptr inbounds double, ptr %2, i64 %7
+    <   %16 = load double, ptr %15, align 8
+    <   store double %16, ptr %11, align 8
+    <   store double %12, ptr %15, align 8
+  in block %26 / %33:
+    in instruction %38 / %50:
+      operands %30 and %49 differ
+    >   %44 = sext i32 %35 to i64
+    >   %45 = getelementptr inbounds double, ptr %2, i64 %44
+    >   %46 = load double, ptr %45, align 8
+    >   %47 = fneg double %46
+    >   %48 = sext i32 %35 to i64
+    >   %49 = getelementptr inbounds ptr, ptr %0, i64 %48
+    <   %37 = fneg double %36
+  in block %39 / %51:
+    >   %52 = add nsw i32 %.0, 1
+  in block %17 / %22:
+    >   %25 = sext i32 %.01 to i64
+    >   %26 = getelementptr inbounds ptr, ptr %0, i64 %25
+    >   %27 = load ptr, ptr %26, align 8
+    <   %20 = getelementptr inbounds ptr, ptr %0, i64 %7
+    <   %21 = load ptr, ptr %20, align 8
+  in block %22 / %28:
+    >   %29 = add nsw i32 %.01, 1
+
+in function random_double:
+  in block %0 / %0:
+    >   store i32 %2, ptr @seed, align 4
+        %3 = sdiv i32 %2, 127773
+    >   %4 = load i32, ptr @seed, align 4
+        %4 = mul nsw i32 %3, 127773
+    >   %6 = sub nsw i32 %4, %5
+    >   %7 = mul nsw i32 16807, %6
+    <   %5 = sub nsw i32 %2, %4
+    <   %6 = mul nsw i32 16807, %5
+        %7 = mul nsw i32 2836, %3
+    >   %9 = sub nsw i32 %7, %8
+    >   store i32 %9, ptr @seed, align 4
+    >   %10 = icmp slt i32 %9, 0
+    >   br i1 %10, label %11, label %13
+    <   %8 = sub nsw i32 %6, %7
+    <   store i32 %8, ptr @seed, align 4
+    <   %9 = icmp slt i32 %8, 0
+    <   br i1 %9, label %10, label %12"
+mem2reg,gvn,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__gvn.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__mem2reg.ll,"in function matgen:
+  in block %3 / %3:
+    >   %4 = phi ptr [ %10, %20 ], [ %0, %2 ]
+    >   %5 = phi i32 [ %21, %20 ], [ 0, %2 ]
+    >   %6 = icmp slt i32 %5, 2000
+    >   br i1 %6, label %7, label %22
+    <   %.01 = phi i32 [ 0, %2 ], [ %17, %16 ]
+    <   %4 = icmp slt i32 %.01, 2000
+    <   br i1 %4, label %5, label %18
+
+in function idamax:
+  in block %52 / %65:
+    >   %66 = phi i32 [ %64, %63 ], [ -1, %6 ]
+    >   ret i32 %66
+    <   %.0 = phi i32 [ -1, %6 ], [ %.1, %51 ]
+    <   ret i32 %.0
+  in block %37 / %43:
+    >   %44 = phi i32 [ %57, %56 ], [ 0, %38 ]
+    >   %45 = phi double [ %58, %56 ], [ %42, %38 ]
+    >   %46 = phi i32 [ %59, %56 ], [ 1, %38 ]
+    >   %47 = icmp slt i32 %46, %0
+    >   br i1 %47, label %48, label %60
+    <   %.26 = phi double [ %36, %32 ], [ %.37, %47 ]
+    <   %.13 = phi i32 [ 1, %32 ], [ %48, %47 ]
+    <   %.5 = phi i32 [ 0, %32 ], [ %.6, %47 ]
+    <   %38 = icmp slt i32 %.13, %0
+    <   br i1 %38, label %39, label %49
+  in block %18 / %18:
+    >   %19 = phi i32 [ %33, %32 ], [ 0, %12 ]
+    >   %20 = phi double [ %34, %32 ], [ %16, %12 ]
+    >   %21 = phi i32 [ %35, %32 ], [ %17, %12 ]
+    >   %22 = phi i32 [ %36, %32 ], [ 1, %12 ]
+    >   %23 = icmp slt i32 %22, %0
+    >   br i1 %23, label %24, label %37
+    <   %.04 = phi double [ %16, %12 ], [ %.15, %28 ]
+    <   %.02 = phi i32 [ 1, %12 ], [ %30, %28 ]
+    <   %.01 = phi i32 [ %17, %12 ], [ %29, %28 ]
+    <   %.2 = phi i32 [ 0, %12 ], [ %.3, %28 ]
+    <   %19 = icmp slt i32 %.02, %0
+    <   br i1 %19, label %20, label %31
+  in block %51 / %63:
+    >   %64 = phi i32 [ %62, %61 ], [ 0, %9 ]
+    <   %.1 = phi i32 [ 0, %9 ], [ %.4, %50 ]
+
+in function dscal:
+  in block %22 / %23:
+    >   %24 = phi i32 [ %32, %26 ], [ 0, %22 ]
+    >   %25 = icmp slt i32 %24, %0
+    >   br i1 %25, label %26, label %33
+    <   %.1 = phi i32 [ 0, %21 ], [ %30, %24 ]
+    <   %23 = icmp slt i32 %.1, %0
+    <   br i1 %23, label %24, label %31
+  in block %11 / %11:
+    >   %12 = phi i32 [ %20, %14 ], [ 0, %9 ]
+    >   %13 = icmp slt i32 %12, %10
+    >   br i1 %13, label %14, label %21
+    <   %.0 = phi i32 [ 0, %9 ], [ %19, %13 ]
+    <   %12 = icmp slt i32 %.0, %10
+    <   br i1 %12, label %13, label %20
+
+in function daxpy:
+  in block %44 / %49:
+    >   %50 = phi i32 [ %62, %52 ], [ 0, %48 ]
+    >   %51 = icmp slt i32 %50, %0
+    >   br i1 %51, label %52, label %63
+    <   %.14 = phi i32 [ 0, %43 ], [ %56, %46 ]
+    <   %45 = icmp slt i32 %.14, %0
+    <   br i1 %45, label %46, label %57
+  in block %27 / %29:
+    >   %30 = phi i32 [ %45, %34 ], [ %28, %27 ]
+    >   %31 = phi i32 [ %44, %34 ], [ %22, %27 ]
+    >   %32 = phi i32 [ %46, %34 ], [ 0, %27 ]
+    >   %33 = icmp slt i32 %32, %0
+    >   br i1 %33, label %34, label %47
+    <   %.03 = phi i32 [ 0, %26 ], [ %41, %29 ]
+    <   %.12 = phi i32 [ %.01, %26 ], [ %39, %29 ]
+    <   %.1 = phi i32 [ %.0, %26 ], [ %40, %29 ]
+    <   %28 = icmp slt i32 %.03, %0
+    <   br i1 %28, label %29, label %42
+
+in function dgefa:
+  in block %3 / %3:
+    >   %4 = phi ptr [ %59, %57 ], [ %0, %2 ]
+    >   %5 = phi i32 [ %.pre-phi, %57 ], [ 0, %2 ]
+    >   %6 = icmp slt i32 %5, 1999
+    >   br i1 %6, label %7, label %60
+    <   %.01 = phi i32 [ 0, %2 ], [ %9, %42 ]
+    <   %4 = icmp slt i32 %.01, 1999
+    <   br i1 %4, label %5, label %43
+
+in function dgesl:
+  in block %4 / %4:
+    >   %5 = phi i32 [ %19, %18 ], [ 0, %3 ]
+    >   %6 = icmp slt i32 %5, 1999
+    >   br i1 %6, label %7, label %23
+    <   %.01 = phi i32 [ 0, %3 ], [ %18, %17 ]
+    <   %5 = icmp slt i32 %.01, 1999
+    <   br i1 %5, label %6, label %22
+
+in function main:
+  in block %5 / %5:
+    >   %6 = phi i32 [ %15, %14 ], [ 1, %4 ]
+    >   %7 = icmp slt i32 %6, %0
+    >   br i1 %7, label %8, label %16
+    <   %.01 = phi i32 [ 1, %4 ], [ %14, %13 ]
+    <   %6 = icmp slt i32 %.01, %0
+    <   br i1 %6, label %7, label %15
+  in block %18 / %19:
+    >   %20 = phi i32 [ %26, %22 ], [ 0, %17 ]
+    >   %21 = icmp slt i32 %20, 2000
+    >   br i1 %21, label %22, label %27
+    <   %.12 = phi i32 [ 0, %16 ], [ %24, %20 ]
+    <   %19 = icmp slt i32 %.12, 2000
+    <   br i1 %19, label %20, label %25"
+mem2reg,sccp,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__mem2reg.ll,"in function dgesl:
+  in block %33 / %33:
+    >   %36 = sext i32 %35 to i64
+    >   %37 = getelementptr inbounds ptr, ptr %0, i64 %36
+    >   %38 = load ptr, ptr %37, align 8
+    >   %39 = sext i32 %35 to i64
+    >   %40 = getelementptr inbounds double, ptr %38, i64 %39
+    >   %41 = load double, ptr %40, align 8
+    >   %42 = sext i32 %35 to i64
+    >   %43 = getelementptr inbounds double, ptr %2, i64 %42
+    >   %44 = load double, ptr %43, align 8
+    >   %45 = fdiv double %44, %41
+    >   store double %45, ptr %43, align 8
+    >   %46 = sext i32 %35 to i64
+    >   %47 = getelementptr inbounds double, ptr %2, i64 %46
+    >   %48 = load double, ptr %47, align 8
+    >   %49 = fneg double %48
+    >   %50 = sext i32 %35 to i64
+    >   %51 = getelementptr inbounds ptr, ptr %0, i64 %50
+    >   %52 = load ptr, ptr %51, align 8
+    <   %36 = zext nneg i32 %35 to i64
+    <   %37 = getelementptr inbounds ptr, ptr %0, i64 %36
+    <   %38 = load ptr, ptr %37, align 8
+    <   %39 = zext nneg i32 %35 to i64
+    <   %40 = getelementptr inbounds double, ptr %38, i64 %39
+    <   %41 = load double, ptr %40, align 8
+    <   %42 = zext nneg i32 %35 to i64
+    <   %43 = getelementptr inbounds double, ptr %2, i64 %42
+    <   %44 = load double, ptr %43, align 8
+    <   %45 = fdiv double %44, %41
+    <   store double %45, ptr %43, align 8
+    <   %46 = zext nneg i32 %35 to i64
+    <   %47 = getelementptr inbounds double, ptr %2, i64 %46
+    <   %48 = load double, ptr %47, align 8
+    <   %49 = fneg double %48
+    <   %50 = zext nneg i32 %35 to i64
+    <   %51 = getelementptr inbounds ptr, ptr %0, i64 %50
+    <   %52 = load ptr, ptr %51, align 8"
+mem2reg,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__mem2reg.ll,
+mem2reg,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__mem2reg.ll,
+mem2reg,loop-rotate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__mem2reg.ll,"in function matgen:
+  in block %2 / %2:
+    >   %3 = icmp slt i32 0, 2000
+    >   br i1 %3, label %.lr.ph2, label %20
+    <   br label %3
+
+in function idamax:
+  in block %39 / %39:
+    >   %.29 = phi double [ %37, %.lr.ph ], [ %.310, %48 ]
+    >   %.16 = phi i32 [ 1, %.lr.ph ], [ %49, %48 ]
+    >   %.6 = phi i32 [ 0, %.lr.ph ], [ %.8, %48 ]
+    >   %40 = add nsw i32 %.16, %2
+    >   %41 = sext i32 %40 to i64
+    >   %42 = getelementptr inbounds double, ptr %1, i64 %41
+    >   %43 = load double, ptr %42, align 8
+    <   %.510 = phi i32 [ 0, %.lr.ph ], [ %.6, %48 ]
+    <   %.139 = phi i32 [ 1, %.lr.ph ], [ %49, %48 ]
+    <   %.268 = phi double [ %37, %.lr.ph ], [ %.37, %48 ]
+    <   %40 = add nsw i32 %.139, %2
+    <   %41 = sext i32 %40 to i64
+    <   %42 = getelementptr inbounds double, ptr %1, i64 %41
+    <   %43 = load double, ptr %42, align 8
+        %44 = call double @llvm.fabs.f64(double %43)
+    >   %45 = fcmp ogt double %44, %.29
+    >   br i1 %45, label %46, label %47
+    <   %45 = fcmp ogt double %44, %.268
+    <   br i1 %45, label %46, label %47
+  in block %19 / %19:
+    >   %.07 = phi double [ %16, %.lr.ph2 ], [ %.18, %29 ]
+    >   %.05 = phi i32 [ 1, %.lr.ph2 ], [ %30, %29 ]
+    >   %.04 = phi i32 [ %17, %.lr.ph2 ], [ %28, %29 ]
+    >   %.2 = phi i32 [ 0, %.lr.ph2 ], [ %.4, %29 ]
+    >   %20 = add nsw i32 %.04, %2
+    >   %21 = sext i32 %20 to i64
+    >   %22 = getelementptr inbounds double, ptr %1, i64 %21
+    >   %23 = load double, ptr %22, align 8
+    <   %.214 = phi i32 [ 0, %.lr.ph16 ], [ %.3, %29 ]
+    <   %.0113 = phi i32 [ %17, %.lr.ph16 ], [ %28, %29 ]
+    <   %.0212 = phi i32 [ 1, %.lr.ph16 ], [ %30, %29 ]
+    <   %.0411 = phi double [ %16, %.lr.ph16 ], [ %.15, %29 ]
+    <   %20 = add nsw i32 %.0113, %2
+    <   %21 = sext i32 %20 to i64
+    <   %22 = getelementptr inbounds double, ptr %1, i64 %21
+    <   %23 = load double, ptr %22, align 8
+        %24 = call double @llvm.fabs.f64(double %23)
+    >   %25 = fcmp ogt double %24, %.07
+    >   br i1 %25, label %26, label %27
+    <   %25 = fcmp ogt double %24, %.0411
+    <   br i1 %25, label %26, label %27
+  in block %32 / %32:
+    >   %.3 = phi i32 [ %.4, %._crit_edge3 ], [ 0, %12 ]
+    <   %.2.lcssa = phi i32 [ %split18, %._crit_edge17 ], [ 0, %12 ]
+  in block %51 / %51:
+    >   %.7 = phi i32 [ %.8, %._crit_edge ], [ 0, %33 ]
+    <   %.5.lcssa = phi i32 [ %split, %._crit_edge ], [ 0, %33 ]
+  in block %._crit_edge17 / %._crit_edge3:
+    <   %split18 = phi i32 [ %.3, %29 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.6, %48 ]
+
+in function daxpy:
+  in block %28 / %28:
+    >   %.06 = phi i32 [ 0, %.lr.ph2 ], [ %41, %40 ]
+    >   %.15 = phi i32 [ %.04, %.lr.ph2 ], [ %38, %40 ]
+    >   %.1 = phi i32 [ %.0, %.lr.ph2 ], [ %39, %40 ]
+    >   %29 = add nsw i32 %.15, %3
+    >   %30 = sext i32 %29 to i64
+    >   %31 = getelementptr inbounds double, ptr %2, i64 %30
+    >   %32 = load double, ptr %31, align 8
+    >   %33 = add nsw i32 %.1, %6
+    >   %34 = sext i32 %33 to i64
+    >   %35 = getelementptr inbounds double, ptr %5, i64 %34
+    >   %36 = load double, ptr %35, align 8
+    <   %.18 = phi i32 [ %.0, %.lr.ph10 ], [ %39, %40 ]
+    <   %.127 = phi i32 [ %.01, %.lr.ph10 ], [ %38, %40 ]
+    <   %.036 = phi i32 [ 0, %.lr.ph10 ], [ %41, %40 ]
+    <   %29 = add nsw i32 %.127, %3
+    <   %30 = sext i32 %29 to i64
+    <   %31 = getelementptr inbounds double, ptr %2, i64 %30
+    <   %32 = load double, ptr %31, align 8
+    <   %33 = add nsw i32 %.18, %6
+    <   %34 = sext i32 %33 to i64
+    <   %35 = getelementptr inbounds double, ptr %5, i64 %34
+    <   %36 = load double, ptr %35, align 8
+        %37 = call double @llvm.fmuladd.f64(double %1, double %32, double %36)
+    >   store double %37, ptr %35, align 8
+    >   %38 = add nsw i32 %.15, %4
+    >   %39 = add nsw i32 %.1, %7
+    <   store double %37, ptr %35, align 8
+    <   %38 = add nsw i32 %.127, %4
+    <   %39 = add nsw i32 %.18, %7
+
+in function dgefa:
+  in block %2 / %2:
+    >   %3 = icmp slt i32 0, 1999
+    >   br i1 %3, label %.lr.ph2, label %64
+    <   br label %3
+
+in function dgesl:
+  in block %3 / %3:
+    >   %4 = icmp slt i32 0, 1999
+    >   br i1 %4, label %.lr.ph, label %30
+    <   br label %4
+
+in function main:
+  in block %4 / %4:
+    >   %5 = icmp slt i32 1, %0
+    >   br i1 %5, label %.lr.ph, label %.loopexit
+    <   br label %5
+  in block %16 / %17:
+    >   %.0 = phi i8 [ %.1, %16 ], [ 0, %2 ]
+    <   %.0 = phi i8 [ %.1, %15 ], [ 0, %2 ]
+        %17 = call ptr @malloc(i64 noundef 16000) #6
+    >   %19 = icmp slt i32 0, 2000
+    >   br i1 %19, label %.lr.ph1, label %27
+    <   br label %18"
+mem2reg,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__mem2reg.ll,"in function matgen:
+  in block %3 / %3:
+    >   %.lcssa4 = phi i32 [ %.lcssa, %20 ], [ undef, %2 ]
+    >   %4 = phi i32 [ %21, %20 ], [ 0, %2 ]
+    >   %5 = icmp slt i32 %4, 2000
+    >   br i1 %5, label %6, label %22
+    <   %.01 = phi i32 [ 0, %2 ], [ %19, %18 ]
+    <   %4 = icmp slt i32 %.01, 2000
+    <   br i1 %4, label %5, label %20
+
+in function idamax:
+  in block %38 / %45:
+    >   %46 = phi i32 [ %60, %62 ], [ 0, %40 ]
+    >   %47 = phi double [ %61, %62 ], [ %44, %40 ]
+    >   %48 = phi double [ %56, %62 ], [ undef, %40 ]
+    >   %49 = phi i32 [ %63, %62 ], [ 1, %40 ]
+    >   %50 = icmp slt i32 %49, %0
+    >   br i1 %50, label %51, label %64
+    <   %.26 = phi double [ %37, %33 ], [ %.37, %49 ]
+    <   %.13 = phi i32 [ 1, %33 ], [ %50, %49 ]
+    <   %.5 = phi i32 [ 0, %33 ], [ %.6, %49 ]
+    <   %39 = icmp slt i32 %.13, %0
+    <   br i1 %39, label %40, label %51
+  in block %18 / %18:
+    >   %19 = phi i32 [ %34, %37 ], [ 0, %12 ]
+    >   %20 = phi double [ %35, %37 ], [ %16, %12 ]
+    >   %21 = phi double [ %30, %37 ], [ undef, %12 ]
+    >   %22 = phi i32 [ %36, %37 ], [ %17, %12 ]
+    >   %23 = phi i32 [ %38, %37 ], [ 1, %12 ]
+    >   %24 = icmp slt i32 %23, %0
+    >   br i1 %24, label %25, label %39
+    <   %.04 = phi double [ %16, %12 ], [ %.15, %30 ]
+    <   %.02 = phi i32 [ 1, %12 ], [ %31, %30 ]
+    <   %.01 = phi i32 [ %17, %12 ], [ %29, %30 ]
+    <   %.2 = phi i32 [ 0, %12 ], [ %.3, %30 ]
+    <   %19 = icmp slt i32 %.02, %0
+    <   br i1 %19, label %20, label %32
+  in block %52 / %65:
+    >   %.2 = phi i32 [ %.lcssa16, %39 ], [ %.lcssa6, %64 ]
+    <   %.4 = phi i32 [ %.2.lcssa, %32 ], [ %.5.lcssa, %51 ]
+  in block %32 / %39:
+    >   %.lcssa16 = phi i32 [ %19, %18 ]
+    >   %.lcssa14 = phi double [ %20, %18 ]
+    >   %.lcssa12 = phi double [ %21, %18 ]
+    >   %.lcssa10 = phi i32 [ %22, %18 ]
+    >   %.lcssa8 = phi i32 [ %23, %18 ]
+    <   %.2.lcssa = phi i32 [ %.2, %18 ]
+  in block %51 / %64:
+    >   %.lcssa6 = phi i32 [ %46, %45 ]
+    >   %.lcssa4 = phi double [ %47, %45 ]
+    >   %.lcssa2 = phi double [ %48, %45 ]
+    >   %.lcssa = phi i32 [ %49, %45 ]
+    <   %.5.lcssa = phi i32 [ %.5, %38 ]
+
+in function dscal:
+  in block %23 / %24:
+    >   %25 = phi i32 [ %34, %33 ], [ 0, %23 ]
+    >   %26 = icmp slt i32 %25, %0
+    >   br i1 %26, label %27, label %35
+    <   %.1 = phi i32 [ 0, %22 ], [ %32, %31 ]
+    <   %24 = icmp slt i32 %.1, %0
+    <   br i1 %24, label %25, label %33
+  in block %11 / %11:
+    >   %12 = phi i32 [ %21, %20 ], [ 0, %9 ]
+    >   %13 = icmp slt i32 %12, %10
+    >   br i1 %13, label %14, label %22
+    <   %.0 = phi i32 [ 0, %9 ], [ %20, %19 ]
+    <   %12 = icmp slt i32 %.0, %10
+    <   br i1 %12, label %13, label %21
+
+in function daxpy:
+  in block %45 / %48:
+    >   %49 = phi i32 [ %62, %61 ], [ 0, %47 ]
+    >   %50 = icmp slt i32 %49, %0
+    >   br i1 %50, label %51, label %63
+    <   %.14 = phi i32 [ 0, %44 ], [ %58, %57 ]
+    <   %46 = icmp slt i32 %.14, %0
+    <   br i1 %46, label %47, label %59
+  in block %27 / %27:
+    >   %28 = phi i32 [ %43, %44 ], [ %.0, %26 ]
+    >   %29 = phi i32 [ %42, %44 ], [ %.07, %26 ]
+    >   %30 = phi i32 [ %45, %44 ], [ 0, %26 ]
+    >   %31 = icmp slt i32 %30, %0
+    >   br i1 %31, label %32, label %46
+    <   %.03 = phi i32 [ 0, %26 ], [ %42, %41 ]
+    <   %.12 = phi i32 [ %.01, %26 ], [ %39, %41 ]
+    <   %.1 = phi i32 [ %.0, %26 ], [ %40, %41 ]
+    <   %28 = icmp slt i32 %.03, %0
+    <   br i1 %28, label %29, label %43
+
+in function dgefa:
+  in block %3 / %3:
+    >   %.lcssa220 = phi ptr [ %.lcssa219, %69 ], [ undef, %2 ]
+    >   %.lcssa18 = phi i32 [ %.lcssa17, %69 ], [ undef, %2 ]
+    >   %.lcssa415 = phi double [ %.lcssa414, %69 ], [ undef, %2 ]
+    >   %4 = phi i32 [ %16, %69 ], [ undef, %2 ]
+    >   %5 = phi i32 [ %13, %69 ], [ undef, %2 ]
+    >   %6 = phi ptr [ %12, %69 ], [ undef, %2 ]
+    >   %7 = phi i32 [ %70, %69 ], [ 0, %2 ]
+    >   %8 = icmp slt i32 %7, 1999
+    >   br i1 %8, label %9, label %71
+    <   %.01 = phi i32 [ 0, %2 ], [ %63, %62 ]
+    <   %4 = icmp slt i32 %.01, 1999
+    <   br i1 %4, label %5, label %64
+
+in function dgesl:
+  in block %4 / %4:
+    >   %5 = phi i32 [ %27, %32 ], [ undef, %3 ]
+    >   %6 = phi double [ %16, %32 ], [ undef, %3 ]
+    >   %7 = phi i32 [ %13, %32 ], [ undef, %3 ]
+    >   %8 = phi i32 [ %33, %32 ], [ 0, %3 ]
+    >   %9 = icmp slt i32 %8, 1999
+    >   br i1 %9, label %10, label %34
+    <   %.01 = phi i32 [ 0, %3 ], [ %29, %28 ]
+    <   %5 = icmp slt i32 %.01, 1999
+    <   br i1 %5, label %6, label %30
+
+in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ %16, %15 ], [ 1, %4 ]
+    >   %8 = icmp slt i32 %7, %0
+    >   br i1 %8, label %9, label %.loopexit
+    <   %.01 = phi i32 [ 1, %4 ], [ %15, %14 ]
+    <   %7 = icmp slt i32 %.01, %0
+    <   br i1 %7, label %8, label %.loopexit
+  in block %19 / %20:
+    >   %21 = phi i32 [ %28, %27 ], [ 0, %18 ]
+    >   %22 = icmp slt i32 %21, 2000
+    >   br i1 %22, label %23, label %29
+    <   %.12 = phi i32 [ 0, %17 ], [ %26, %25 ]
+    <   %20 = icmp slt i32 %.12, 2000
+    <   br i1 %20, label %21, label %27
+  in block %.loopexit:
+    >   %.lcssa = phi i32 [ %7, %6 ]
+  in block %12 / %13:
+    >   %.lcssa1 = phi i32 [ %7, %9 ]"
+mem2reg,indvars,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__mem2reg.ll,"function @llvm.smax.i32 exists only in left module
+in function matgen:
+  in block %3 / %3:
+    >   %.01 = phi i32 [ 0, %2 ], [ %19, %18 ]
+    >   %4 = icmp slt i32 %.01, 2000
+    >   br i1 %4, label %5, label %20
+    <   %indvars.iv4 = phi i64 [ %indvars.iv.next5, %13 ], [ 0, %2 ]
+    <   %exitcond7 = icmp ne i64 %indvars.iv4, 2000
+    <   br i1 %exitcond7, label %4, label %14
+
+in function idamax:
+  in block %33 / %33:
+    <   %38 = sext i32 %2 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %12 / %12:
+    <   %18 = sext i32 %17 to i64
+    <   %19 = sext i32 %3 to i64
+    <   %20 = sext i32 %2 to i64
+  in block %51 / %52:
+    >   %.4 = phi i32 [ %.2, %32 ], [ %.5, %51 ]
+    <   %.4 = phi i32 [ %.2.lcssa, %32 ], [ %.5.lcssa, %50 ]
+  in block %32 / %32:
+    <   %.2.lcssa = phi i32 [ %.2, %21 ]
+  in block %50 / %51:
+    <   %.5.lcssa = phi i32 [ %.5, %39 ]
+
+in function dscal:
+  in block %23 / %22:
+    <   %24 = sext i32 %3 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %9 / %9:
+    <   %11 = sext i32 %4 to i64
+    <   %12 = sext i32 %10 to i64
+    <   %13 = sext i32 %3 to i64
+
+in function daxpy:
+  in block %45 / %44:
+    <   %46 = sext i32 %3 to i64
+    <   %47 = sext i32 %6 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %26 / %26:
+    <   %27 = sext i32 %.01 to i64
+    <   %28 = sext i32 %4 to i64
+    <   %29 = sext i32 %3 to i64
+    <   %30 = sext i32 %.0 to i64
+    <   %31 = sext i32 %7 to i64
+    <   %32 = sext i32 %6 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %0, i32 0)
+
+in function dgefa:
+  in block %3 / %3:
+    >   %.01 = phi i32 [ 0, %2 ], [ %63, %62 ]
+    >   %4 = icmp slt i32 %.01, 1999
+    >   br i1 %4, label %5, label %64
+    <   %indvars.iv5 = phi i64 [ %indvars.iv.next6, %57 ], [ 0, %2 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %57 ], [ 1, %2 ]
+    <   %indvars7 = trunc i64 %indvars.iv5 to i32
+    <   %exitcond8 = icmp ne i64 %indvars.iv5, 1999
+    <   br i1 %exitcond8, label %4, label %58
+
+in function dgesl:
+  in block %4 / %4:
+    >   %.01 = phi i32 [ 0, %3 ], [ %29, %28 ]
+    >   %5 = icmp slt i32 %.01, 1999
+    >   br i1 %5, label %6, label %30
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %25 ], [ 0, %3 ]
+    <   %indvars2 = trunc i64 %indvars.iv to i32
+    <   %exitcond = icmp ne i64 %indvars.iv, 1999
+    <   br i1 %exitcond, label %5, label %26
+
+in function main:
+  in block %5 / %5:
+    >   %.01 = phi i32 [ 1, %4 ], [ %15, %14 ]
+    >   %6 = icmp slt i32 %.01, %0
+    >   br i1 %6, label %7, label %.loopexit
+    <   %.01 = phi i32 [ 1, %4 ], [ %14, %13 ]
+    <   %exitcond = icmp ne i32 %.01, %0
+    <   br i1 %exitcond, label %6, label %.loopexit
+  in block %18 / %19:
+    >   %.12 = phi i32 [ 0, %17 ], [ %26, %25 ]
+    >   %20 = icmp slt i32 %.12, 2000
+    >   br i1 %20, label %21, label %27
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %22 ], [ 0, %16 ]
+    <   %exitcond4 = icmp ne i64 %indvars.iv, 2000
+    <   br i1 %exitcond4, label %19, label %23"
+mem2reg,loop-unroll,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__mem2reg.ll,"in function matgen:
+  in block %21 / %21:
+    >   %.12 = phi i32 [ 0, %20 ], [ %27, %26 ]
+    >   %22 = icmp slt i32 %.12, 2000
+    >   br i1 %22, label %23, label %28
+    <   %.12 = phi i32 [ 0, %20 ], [ %37, %36 ]
+    <   br label %22
+
+in function idamax:
+  in block %51 / %51:
+    <   %.5.lcssa = phi i32 [ %.5, %38 ]
+  in block %32 / %32:
+    <   %.2.lcssa = phi i32 [ %.2, %18 ]
+  in block %52 / %52:
+    >   %.4 = phi i32 [ %.2, %32 ], [ %.5, %51 ]
+    <   %.4 = phi i32 [ %.2.lcssa, %32 ], [ %.5.lcssa, %51 ]"
+mem2reg,reassociate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\mem2reg__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__mem2reg.ll,"in function idamax:
+  in block %38 / %38:
+    >   %.26 = phi double [ %37, %33 ], [ %.37, %49 ]
+    <   %.26 = phi double [ %37, %33 ], [ %.37, %49 ]
+        %.13 = phi i32 [ 1, %33 ], [ %50, %49 ]
+    >   %.5 = phi i32 [ 0, %33 ], [ %.6, %49 ]
+    <   %.5 = phi i32 [ 0, %33 ], [ %.6, %49 ]
+  in block %40 / %40:
+    >   %41 = add nsw i32 %2, %.13
+    >   %42 = sext i32 %41 to i64
+    >   %43 = getelementptr inbounds double, ptr %1, i64 %42
+    >   %44 = load double, ptr %43, align 8
+    <   %41 = add nsw i32 %.13, %2
+    <   %42 = sext i32 %41 to i64
+    <   %43 = getelementptr inbounds double, ptr %1, i64 %42
+    <   %44 = load double, ptr %43, align 8
+  in block %18 / %18:
+    >   %.04 = phi double [ %16, %12 ], [ %.15, %30 ]
+    <   %.04 = phi double [ %16, %12 ], [ %.15, %30 ]
+        %.02 = phi i32 [ 1, %12 ], [ %31, %30 ]
+    >   %.01 = phi i32 [ %17, %12 ], [ %29, %30 ]
+    >   %.2 = phi i32 [ 0, %12 ], [ %.3, %30 ]
+    <   %.01 = phi i32 [ %17, %12 ], [ %29, %30 ]
+    <   %.2 = phi i32 [ 0, %12 ], [ %.3, %30 ]
+  in block %20 / %20:
+    >   %21 = add nsw i32 %2, %.01
+    >   %22 = sext i32 %21 to i64
+    >   %23 = getelementptr inbounds double, ptr %1, i64 %22
+    >   %24 = load double, ptr %23, align 8
+    <   %21 = add nsw i32 %.01, %2
+    <   %22 = sext i32 %21 to i64
+    <   %23 = getelementptr inbounds double, ptr %1, i64 %22
+    <   %24 = load double, ptr %23, align 8
+
+in function dscal:
+  in block %25 / %25:
+    >   %26 = add nsw i32 %3, %.1
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds double, ptr %2, i64 %27
+    >   %29 = load double, ptr %28, align 8
+    >   %30 = fmul double %1, %29
+    >   store double %30, ptr %28, align 8
+    <   %26 = add nsw i32 %.1, %3
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds double, ptr %2, i64 %27
+    <   %29 = load double, ptr %28, align 8
+    <   %30 = fmul double %1, %29
+    <   store double %30, ptr %28, align 8
+  in block %13 / %13:
+    >   %14 = add nsw i32 %3, %.0
+    >   %15 = sext i32 %14 to i64
+    >   %16 = getelementptr inbounds double, ptr %2, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    >   %18 = fmul double %1, %17
+    >   store double %18, ptr %16, align 8
+    <   %14 = add nsw i32 %.0, %3
+    <   %15 = sext i32 %14 to i64
+    <   %16 = getelementptr inbounds double, ptr %2, i64 %15
+    <   %17 = load double, ptr %16, align 8
+    <   %18 = fmul double %1, %17
+    <   store double %18, ptr %16, align 8
+
+in function daxpy:
+  in block %21 / %21:
+    >   %.01 = phi i32 [ %20, %18 ], [ 0, %16 ]
+    <   %.01 = phi i32 [ %20, %18 ], [ 0, %16 ]
+  in block %18 / %18:
+    >   %20 = mul nsw i32 %19, %4
+    <   %20 = mul nsw i32 %4, %19
+  in block %23 / %23:
+    >   %25 = mul nsw i32 %24, %7
+    <   %25 = mul nsw i32 %7, %24
+  in block %26 / %26:
+    >   %.0 = phi i32 [ %25, %23 ], [ 0, %21 ]
+    <   %.0 = phi i32 [ %25, %23 ], [ 0, %21 ]
+  in block %47 / %47:
+    >   %48 = add nsw i32 %3, %.14
+    >   %49 = sext i32 %48 to i64
+    >   %50 = getelementptr inbounds double, ptr %2, i64 %49
+    >   %51 = load double, ptr %50, align 8
+    >   %52 = add nsw i32 %6, %.14
+    >   %53 = sext i32 %52 to i64
+    >   %54 = getelementptr inbounds double, ptr %5, i64 %53
+    >   %55 = load double, ptr %54, align 8
+    <   %48 = add nsw i32 %.14, %3
+    <   %49 = sext i32 %48 to i64
+    <   %50 = getelementptr inbounds double, ptr %2, i64 %49
+    <   %51 = load double, ptr %50, align 8
+    <   %52 = add nsw i32 %.14, %6
+    <   %53 = sext i32 %52 to i64
+    <   %54 = getelementptr inbounds double, ptr %5, i64 %53
+    <   %55 = load double, ptr %54, align 8
+        %56 = call double @llvm.fmuladd.f64(double %1, double %51, double %55)
+    >   store double %56, ptr %54, align 8
+    <   store double %56, ptr %54, align 8
+  in block %27 / %27:
+    >   %.12 = phi i32 [ %.01, %26 ], [ %39, %41 ]
+    >   %.1 = phi i32 [ %.0, %26 ], [ %40, %41 ]
+    <   %.12 = phi i32 [ %.01, %26 ], [ %39, %41 ]
+    <   %.1 = phi i32 [ %.0, %26 ], [ %40, %41 ]
+  in block %29 / %29:
+    >   %30 = add nsw i32 %3, %.12
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds double, ptr %2, i64 %31
+    >   %33 = load double, ptr %32, align 8
+    >   %34 = add nsw i32 %6, %.1
+    >   %35 = sext i32 %34 to i64
+    >   %36 = getelementptr inbounds double, ptr %5, i64 %35
+    >   %37 = load double, ptr %36, align 8
+    <   %30 = add nsw i32 %.12, %3
+    <   %31 = sext i32 %30 to i64
+    <   %32 = getelementptr inbounds double, ptr %2, i64 %31
+    <   %33 = load double, ptr %32, align 8
+    <   %34 = add nsw i32 %.1, %6
+    <   %35 = sext i32 %34 to i64
+    <   %36 = getelementptr inbounds double, ptr %5, i64 %35
+    <   %37 = load double, ptr %36, align 8
+        %38 = call double @llvm.fmuladd.f64(double %1, double %33, double %37)
+    >   store double %38, ptr %36, align 8
+    <   store double %38, ptr %36, align 8
+
+in function dgefa:
+  in block %5 / %5:
+    >   %12 = add nsw i32 %.01, %11
+    <   %12 = add nsw i32 %11, %.01
+        %13 = sext i32 %.01 to i64
+        %14 = getelementptr inbounds i32, ptr %1, i64 %13
+    >   store i32 %12, ptr %14, align 4
+    >   %15 = sext i32 %12 to i64
+    >   %16 = getelementptr inbounds double, ptr %8, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    >   %18 = fcmp une double %17, 0.000000e+00
+    >   br i1 %18, label %19, label %61
+    <   store i32 %12, ptr %14, align 4
+    <   %15 = sext i32 %12 to i64
+    <   %16 = getelementptr inbounds double, ptr %8, i64 %15
+    <   %17 = load double, ptr %16, align 8
+    <   %18 = fcmp une double %17, 0.000000e+00
+    <   br i1 %18, label %19, label %61"
+instcombine,simplifycfg,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__instcombine.ll,"in function matgen:
+  in block %9 / %9:
+    >   br label %10
+    <   %storemerge4 = phi i32 [ %22, %11 ], [ 0, %7 ]
+    <   store i32 %storemerge4, ptr %6, align 4
+    <   %10 = icmp slt i32 %storemerge4, 2000
+    <   br i1 %10, label %11, label %23
+  in block %26 / %27:
+    >   br label %28
+    <   %storemerge1 = phi i32 [ %34, %28 ], [ 0, %7 ]
+    <   store i32 %storemerge1, ptr %5, align 4
+    <   %27 = icmp slt i32 %storemerge1, 2000
+    <   br i1 %27, label %28, label %35
+
+in function dscal:
+  in block %36 / %36:
+    >   br label %37
+    <   %storemerge = phi i32 [ %50, %39 ], [ 0, %14 ]
+    <   store i32 %storemerge, ptr %11, align 4
+    <   %37 = load i32, ptr %6, align 4
+    <   %38 = icmp slt i32 %storemerge, %37
+    <   br i1 %38, label %39, label %51
+
+in function daxpy:
+  in block %24 / %24:
+    >   %26 = icmp ne i32 %25, 1
+    <   %.not = icmp eq i32 %25, 1
+        %26 = load i32, ptr %16, align 4
+    >   %28 = icmp ne i32 %27, 1
+    >   %or.cond3 = select i1 %26, i1 true, i1 %28
+    >   br i1 %or.cond3, label %29, label %74
+    <   %.not1 = icmp eq i32 %26, 1
+    <   %or.cond4 = select i1 %.not, i1 %.not1, i1 false
+    <   br i1 %or.cond4, label %72, label %27
+
+in function dgesl:
+  in block %52 / %52:
+    >   br label %53
+    <   %storemerge1 = phi i32 [ %83, %54 ], [ 0, %12 ]
+    <   store i32 %storemerge1, ptr %9, align 4
+    <   %53 = icmp slt i32 %storemerge1, 2000
+    <   br i1 %53, label %54, label %84
+
+in function main:
+  in block %13 / %13:
+    >   br label %14
+    <   %storemerge = phi i32 [ %24, %22 ], [ 1, %2 ]
+    <   store i32 %storemerge, ptr %5, align 4
+    <   %14 = load i32, ptr %3, align 4
+    <   %15 = icmp slt i32 %storemerge, %14
+    <   br i1 %15, label %16, label %25
+  in block %27 / %28:
+    >   %storemerge1 = phi i32 [ 0, %26 ], [ %36, %30 ]
+    <   %storemerge1 = phi i32 [ 0, %25 ], [ %36, %29 ]
+  in block %29 / %30:
+    <   %35 = load i32, ptr %5, align 4
+  in block %46 / %46:
+    >   %storemerge2 = phi i32 [ 0, %37 ], [ %54, %48 ]
+    <   %storemerge2 = phi i32 [ 0, %37 ], [ %55, %48 ]
+  in block %48 / %48:
+    <   %54 = load i32, ptr %5, align 4"
+instcombine,dce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__dce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__instcombine.ll,
+instcombine,sroa,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__sroa.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__instcombine.ll,"in function matgen:
+  in block %3 / %3:
+    >   %.019 = phi i32 [ 0, %2 ], [ %19, %18 ]
+    >   %4 = icmp samesign ult i32 %.019, 2000
+    >   br i1 %4, label %5, label %20
+    <   %storemerge = phi i32 [ 0, %2 ], [ %19, %18 ]
+    <   %4 = icmp slt i32 %storemerge, 2000
+    <   br i1 %4, label %5, label %20
+
+in function idamax:
+  in block %17 / %17:
+    >   %.033 = phi double [ %15, %11 ], [ %.134, %28 ]
+    >   %.031 = phi i32 [ 1, %11 ], [ %30, %28 ]
+    >   %.030 = phi i32 [ %16, %11 ], [ %29, %28 ]
+    >   %.2 = phi i32 [ 0, %11 ], [ %.3, %28 ]
+    >   %18 = icmp slt i32 %.031, %0
+    >   br i1 %18, label %19, label %31
+    <   %.027 = phi double [ %15, %11 ], [ %.128, %29 ]
+    <   %.026 = phi i32 [ %16, %11 ], [ %28, %29 ]
+    <   %.2 = phi i32 [ 0, %11 ], [ %.3, %29 ]
+    <   %storemerge1 = phi i32 [ 1, %11 ], [ %30, %29 ]
+    <   %18 = icmp slt i32 %storemerge1, %0
+    <   br i1 %18, label %19, label %31
+  in block %37 / %37:
+    >   %.235 = phi double [ %36, %32 ], [ %.336, %48 ]
+    >   %.132 = phi i32 [ 1, %32 ], [ %49, %48 ]
+    >   %.5 = phi i32 [ 0, %32 ], [ %.6, %48 ]
+    >   %38 = icmp slt i32 %.132, %0
+    >   br i1 %38, label %39, label %50
+    <   %.229 = phi double [ %36, %32 ], [ %.330, %48 ]
+    <   %.5 = phi i32 [ 0, %32 ], [ %.6, %48 ]
+    <   %storemerge = phi i32 [ 1, %32 ], [ %49, %48 ]
+    <   %38 = icmp slt i32 %storemerge, %0
+    <   br i1 %38, label %39, label %50
+  in block %51 / %51:
+    >   %.4 = phi i32 [ %.2, %31 ], [ %.5, %50 ]
+    <   %.4 = phi i32 [ %.5, %50 ], [ %.2, %31 ]
+
+in function daxpy:
+  in block %25 / %25:
+    >   %.035 = phi i32 [ 0, %24 ], [ %40, %37 ]
+    >   %.134 = phi i32 [ %.033, %24 ], [ %39, %37 ]
+    >   %.1 = phi i32 [ %.0, %24 ], [ %38, %37 ]
+    >   %26 = icmp slt i32 %.035, %0
+    >   br i1 %26, label %27, label %41
+    <   %.134 = phi i32 [ %.033, %24 ], [ %37, %39 ]
+    <   %.1 = phi i32 [ %.0, %24 ], [ %38, %39 ]
+    <   %storemerge2 = phi i32 [ 0, %24 ], [ %40, %39 ]
+    <   %26 = icmp slt i32 %storemerge2, %0
+    <   br i1 %26, label %27, label %41
+
+in function dgefa:
+  in block %3 / %3:
+    >   %.0 = phi i32 [ 0, %2 ], [ %61, %60 ]
+    >   %4 = icmp samesign ult i32 %.0, 1999
+    >   br i1 %4, label %5, label %62
+    <   %storemerge = phi i32 [ 0, %2 ], [ %61, %60 ]
+    <   %4 = icmp slt i32 %storemerge, 1999
+    <   br i1 %4, label %5, label %62
+
+in function dgesl:
+  in block %4 / %4:
+    >   %.0 = phi i32 [ 0, %3 ], [ %28, %27 ]
+    >   %5 = icmp samesign ult i32 %.0, 1999
+    >   br i1 %5, label %6, label %29
+    <   %storemerge = phi i32 [ 0, %3 ], [ %28, %27 ]
+    <   %5 = icmp slt i32 %storemerge, 1999
+    <   br i1 %5, label %6, label %29
+
+in function main:
+  in block %16 / %16:
+    >   %.026 = phi i1 [ %6, %15 ], [ true, %2 ]
+    <   %.0 = phi i8 [ %.1, %15 ], [ 0, %2 ]
+  in block %5 / %5:
+    >   %.0 = phi i32 [ 1, %4 ], [ %14, %13 ]
+    >   %6 = icmp sge i32 %.0, %0
+    >   br i1 %6, label %15, label %7
+    <   %storemerge = phi i32 [ 1, %4 ], [ %14, %13 ]
+    <   %6 = icmp slt i32 %storemerge, %0
+    <   br i1 %6, label %7, label %15"
+instcombine,early-cse,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__early-cse.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__instcombine.ll,"in function idamax:
+  in block %16 / %16:
+    >   %17 = icmp eq i32 %0, 1
+    >   br i1 %17, label %18, label %19
+    <   %17 = load i32, ptr %5, align 4
+    <   %18 = icmp eq i32 %17, 1
+    <   br i1 %18, label %19, label %20
+
+in function dscal:
+  in block %15 / %15:
+    >   %16 = mul nsw i32 %0, %4
+    >   store i32 %16, ptr %12, align 4
+    <   %16 = load i32, ptr %6, align 4
+    <   %17 = mul nsw i32 %16, %4
+    <   store i32 %17, ptr %12, align 4
+
+in function dgefa:
+  in block %14 / %14:
+    in instruction %25 / %26:
+      operands %20 and %25 differ
+    <   %19 = add nsw i32 %storemerge, 1
+    <   store i32 %19, ptr %9, align 4
+        %20 = load i32, ptr %6, align 4
+    >   %20 = add nsw i32 %19, 1
+    >   store i32 %20, ptr %9, align 4
+        %21 = sub nsw i32 2000, %20
+        %22 = call i32 @idamax(i32 noundef %21, ptr noundef %18, i32 noundef %20, i32 noundef 1)
+        %23 = add nsw i32 %22, %20
+        store i32 %23, ptr %10, align 4
+        %24 = load ptr, ptr %4, align 8
+    >   %25 = load i32, ptr %6, align 4
+        %25 = sext i32 %20 to i64
+        %26 = getelementptr inbounds [4 x i8], ptr %24, i64 %25
+        store i32 %23, ptr %26, align 4
+        %27 = load ptr, ptr %8, align 8
+    >   %29 = load i32, ptr %10, align 4
+    >   %30 = sext i32 %29 to i64
+    >   %31 = getelementptr inbounds [8 x i8], ptr %28, i64 %30
+    >   %32 = load double, ptr %31, align 8
+    >   %33 = fcmp une double %32, 0.000000e+00
+    >   br i1 %33, label %34, label %94
+    <   %28 = sext i32 %23 to i64
+    <   %29 = getelementptr inbounds [8 x i8], ptr %27, i64 %28
+    <   %30 = load double, ptr %29, align 8
+    <   %31 = fcmp une double %30, 0.000000e+00
+    <   br i1 %31, label %32, label %96
+
+in function dgesl:
+  in block %3 / %3:
+    in instruction store to %6 / store to %6:
+      operands %6 and %6 differ
+    <   %4 = alloca ptr, align 8
+    <   %5 = alloca ptr, align 8
+
+in function random_double:
+  in block %0 / %0:
+    >   store i32 %2, ptr @seed, align 4
+        %3 = sdiv i32 %2, 127773
+        %.neg = mul i32 %3, -127773
+        %4 = add i32 %.neg, %2
+        %5 = mul nsw i32 %4, 16807
+        %.neg1 = mul nsw i32 %3, -2836
+        %6 = add i32 %.neg1, %5
+    <   store i32 %6, ptr @seed, align 4"
+instcombine,gvn,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__gvn.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__instcombine.ll,"in function matgen:
+  in block %2 / %2:
+    <   %3 = alloca ptr, align 8
+    <   %4 = alloca ptr, align 8
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca i32, align 4
+    <   store ptr %0, ptr %3, align 8
+    <   store ptr %1, ptr %4, align 8
+
+in function idamax:
+  in block %4 / %4:
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca ptr, align 8
+    <   %7 = alloca i32, align 4
+    <   %8 = alloca i32, align 4
+    <   %9 = alloca double, align 8
+    <   %10 = alloca double, align 8
+    <   %11 = alloca i32, align 4
+    <   %12 = alloca i32, align 4
+    <   %13 = alloca i32, align 4
+    <   store i32 %0, ptr %5, align 4
+    <   store ptr %1, ptr %6, align 8
+    <   store i32 %2, ptr %7, align 4
+    <   store i32 %3, ptr %8, align 4
+    <   store i32 0, ptr %13, align 4
+
+in function dscal:
+  in block %5 / %5:
+    <   %6 = alloca i32, align 4
+    <   %7 = alloca double, align 8
+    <   %8 = alloca ptr, align 8
+    <   %9 = alloca i32, align 4
+    <   %10 = alloca i32, align 4
+    <   %11 = alloca i32, align 4
+    <   %12 = alloca i32, align 4
+    <   store i32 %0, ptr %6, align 4
+    <   store double %1, ptr %7, align 8
+    <   store ptr %2, ptr %8, align 8
+    <   store i32 %3, ptr %9, align 4
+    <   store i32 %4, ptr %10, align 4
+
+in function daxpy:
+  in block %8 / %8:
+    <   %9 = alloca i32, align 4
+    <   %10 = alloca double, align 8
+    <   %11 = alloca ptr, align 8
+    <   %12 = alloca i32, align 4
+    <   %13 = alloca i32, align 4
+    <   %14 = alloca ptr, align 8
+    <   %15 = alloca i32, align 4
+    <   %16 = alloca i32, align 4
+    <   %17 = alloca i32, align 4
+    <   %18 = alloca i32, align 4
+    <   %19 = alloca i32, align 4
+    <   store i32 %0, ptr %9, align 4
+    <   store double %1, ptr %10, align 8
+    <   store ptr %2, ptr %11, align 8
+    <   store i32 %3, ptr %12, align 4
+    <   store i32 %4, ptr %13, align 4
+    <   store ptr %5, ptr %14, align 8
+    <   store i32 %6, ptr %15, align 4
+    <   store i32 %7, ptr %16, align 4
+
+in function dgefa:
+  in block %2 / %2:
+    <   %3 = alloca ptr, align 8
+    <   %4 = alloca ptr, align 8
+    <   %5 = alloca double, align 8
+    <   %6 = alloca i32, align 4
+    <   %7 = alloca i32, align 4
+    <   %8 = alloca ptr, align 8
+    <   %9 = alloca i32, align 4
+    <   %10 = alloca i32, align 4
+    <   %11 = alloca ptr, align 8
+    <   store ptr %0, ptr %3, align 8
+    <   store ptr %1, ptr %4, align 8
+
+in function dgesl:
+  in block %3 / %3:
+    <   %4 = alloca ptr, align 8
+    <   %5 = alloca ptr, align 8
+    <   %6 = alloca ptr, align 8
+    <   %7 = alloca double, align 8
+    <   %8 = alloca i32, align 4
+    <   %9 = alloca i32, align 4
+        %10 = alloca i32, align 4
+        %11 = alloca i32, align 4
+        store ptr %0, ptr %4, align 8
+    <   store ptr %1, ptr %5, align 8
+
+in function main:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca ptr, align 8
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca i8, align 1
+    <   %7 = alloca ptr, align 8
+    <   %8 = alloca ptr, align 8
+    <   %9 = alloca ptr, align 8
+        %10 = alloca ptr, align 8
+        %11 = alloca double, align 8
+    <   store i32 %0, ptr %3, align 4
+    <   store ptr %1, ptr %4, align 8
+
+in function random_double:
+  in block %0 / %0:
+    <   store i32 %6, ptr @seed, align 4"
+instcombine,sccp,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__instcombine.ll,"in function matgen:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph2, label %27
+    <   br label %7
+
+in function idamax:
+  in block %22 / %22:
+    >   %32 = icmp sgt i32 %31, 1
+    >   br i1 %32, label %.lr.ph2, label %56
+    <   %32 = icmp slt i32 1, %31
+    <   br i1 %32, label %.lr.ph, label %56
+  in block %57 / %57:
+    >   %65 = icmp sgt i32 %64, 1
+    >   br i1 %65, label %.lr.ph, label %86
+    <   %65 = icmp slt i32 1, %64
+    <   br i1 %65, label %.lr.ph3, label %86
+
+in function dscal:
+  in block %16 / %16:
+    >   %20 = icmp sgt i32 %19, 0
+    >   br i1 %20, label %.lr.ph2, label %37
+    <   %20 = load i32, ptr %12, align 4
+    <   %21 = icmp slt i32 0, %20
+    <   br i1 %21, label %.lr.ph, label %38
+  in block %39 / %38:
+    >   %40 = icmp sgt i32 %39, 0
+    >   br i1 %40, label %.lr.ph, label %56
+    <   %41 = icmp slt i32 0, %40
+    <   br i1 %41, label %.lr.ph3, label %57
+
+in function daxpy:
+  in block %77 / %77:
+    >   %79 = icmp sgt i32 %78, 0
+    >   br i1 %79, label %.lr.ph, label %102
+    <   %79 = icmp slt i32 0, %78
+    <   br i1 %79, label %.lr.ph4, label %102
+  in block %45 / %45:
+    >   %47 = icmp sgt i32 %46, 0
+    >   br i1 %47, label %.lr.ph2, label %76
+    <   %47 = icmp slt i32 0, %46
+    <   br i1 %47, label %.lr.ph, label %76
+
+in function dgefa:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph2, label %104
+    <   br label %12
+
+in function dgesl:
+  in block %3 / %3:
+    >   br i1 true, label %.lr.ph, label %52
+    <   br label %12
+
+in function main:
+  in block %13 / %13:
+    >   %15 = icmp sgt i32 %14, 1
+    >   br i1 %15, label %.lr.ph, label %.loopexit
+    <   %15 = icmp slt i32 1, %14
+    <   br i1 %15, label %.lr.ph, label %.loopexit
+  in block %29 / %29:
+    >   br i1 true, label %.lr.ph1, label %41
+    <   br label %31"
+instcombine,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__instcombine.ll,"in function matgen:
+  in block %2 / %2:
+    in instruction store to %4 / store to %4:
+      operands %4 and %4 differ
+    <   %3 = alloca ptr, align 8
+        %4 = alloca ptr, align 8
+        %5 = alloca i32, align 4
+        %6 = alloca i32, align 4
+        store ptr %0, ptr %3, align 8
+        store ptr %1, ptr %4, align 8
+    <   %7 = load ptr, ptr %3, align 8
+
+in function idamax:
+  in block %4 / %4:
+    in instruction store to %7 / store to %7:
+      operands %7 and %7 differ
+    in instruction store to %8 / store to %8:
+      operands %8 and %8 differ
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca ptr, align 8
+
+in function dscal:
+  in block %5 / %5:
+    in instruction store to %8 / store to %8:
+      operands %8 and %8 differ
+    in instruction store to %9 / store to %9:
+      operands %9 and %9 differ
+    in instruction store to %10 / store to %10:
+      operands %10 and %10 differ
+    <   %6 = alloca i32, align 4
+    <   %7 = alloca double, align 8
+
+in function daxpy:
+  in block %73 / %74:
+    >   store i32 0, ptr %17, align 4
+        %74 = load i32, ptr %9, align 4
+        %75 = load double, ptr %10, align 8
+        %76 = load ptr, ptr %11, align 8
+        %77 = load i32, ptr %12, align 4
+        %78 = load ptr, ptr %14, align 8
+        %79 = load i32, ptr %15, align 4
+    >   %.promoted = load i32, ptr %17, align 4
+  in block %45 / %45:
+    >   store i32 0, ptr %17, align 4
+        %46 = load i32, ptr %9, align 4
+        %47 = load double, ptr %10, align 8
+        %48 = load ptr, ptr %11, align 8
+        %49 = load i32, ptr %12, align 4
+        %50 = load ptr, ptr %14, align 8
+        %51 = load i32, ptr %15, align 4
+        %52 = load i32, ptr %13, align 4
+        %53 = load i32, ptr %16, align 4
+    >   %.promoted1 = load i32, ptr %17, align 4
+
+in function dgefa:
+  in block %2 / %2:
+    in instruction %.promoted12 / %.promoted13:
+      operands %5 and %4 differ
+    in instruction %.promoted15 / %.promoted16:
+      operands %11 and %5 differ
+    in instruction %.promoted / %.promoted:
+      operands %7 and %9 differ
+    <   %3 = alloca ptr, align 8
+    <   %4 = alloca ptr, align 8
+        %5 = alloca double, align 8
+        %6 = alloca i32, align 4
+        %7 = alloca i32, align 4
+        %8 = alloca ptr, align 8
+        %9 = alloca i32, align 4
+        %10 = alloca i32, align 4
+        %11 = alloca ptr, align 8
+    <   store ptr %0, ptr %3, align 8
+        store ptr %1, ptr %4, align 8
+    <   %12 = load ptr, ptr %3, align 8
+    <   %13 = load ptr, ptr %4, align 8
+    <   %14 = load ptr, ptr %3, align 8
+
+in function dgesl:
+  in block %3 / %3:
+    in instruction %.promoted2 / %.promoted3:
+      operands %7 and %6 differ
+    <   %4 = alloca ptr, align 8
+    <   %5 = alloca ptr, align 8
+    <   %6 = alloca ptr, align 8
+        %7 = alloca double, align 8
+        %8 = alloca i32, align 4
+        %9 = alloca i32, align 4
+        %10 = alloca i32, align 4
+        %11 = alloca i32, align 4
+        store ptr %0, ptr %4, align 8
+    <   store ptr %1, ptr %5, align 8
+        store ptr %2, ptr %6, align 8
+    <   %12 = load ptr, ptr %5, align 8
+    <   %13 = load ptr, ptr %6, align 8
+    <   %14 = load ptr, ptr %6, align 8
+    <   %15 = load ptr, ptr %6, align 8
+    <   %16 = load ptr, ptr %4, align 8
+    <   %17 = load ptr, ptr %6, align 8
+
+in function main:
+  in block %2 / %2:
+    in instruction store to %4 / store to %4:
+      operands %4 and %4 differ
+    <   %3 = alloca i32, align 4"
+instcombine,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__instcombine.ll,
+instcombine,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__instcombine.ll,
+instcombine,reassociate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\instcombine__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__instcombine.ll,"in function dgefa:
+  in block %14 / %14:
+    >   %24 = add nsw i32 %21, %23
+    >   store i32 %24, ptr %10, align 4
+    <   %24 = add nsw i32 %23, %21
+    <   store i32 %24, ptr %10, align 4
+        %25 = load ptr, ptr %4, align 8
+        %26 = sext i32 %21 to i64
+        %27 = getelementptr inbounds [4 x i8], ptr %25, i64 %26
+    >   store i32 %24, ptr %27, align 4
+    <   store i32 %24, ptr %27, align 4
+        %28 = load ptr, ptr %8, align 8
+    >   %29 = sext i32 %24 to i64
+    >   %30 = getelementptr inbounds [8 x i8], ptr %28, i64 %29
+    >   %31 = load double, ptr %30, align 8
+    >   %32 = fcmp une double %31, 0.000000e+00
+    >   br i1 %32, label %33, label %101
+    <   %29 = sext i32 %24 to i64
+    <   %30 = getelementptr inbounds [8 x i8], ptr %28, i64 %29
+    <   %31 = load double, ptr %30, align 8
+    <   %32 = fcmp une double %31, 0.000000e+00
+    <   br i1 %32, label %33, label %101
+
+in function random_double:
+  in block %0 / %0:
+    in instruction %6 / %6:
+      operands %5 and %.neg1 differ
+  in block %0 / %0:
+    >   %6 = add i32 %.neg1, %5
+    <   %6 = add i32 %5, %.neg1"
+simplifycfg,dce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__dce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,sroa,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__sroa.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__simplifycfg.ll,"in function matgen:
+  in block %18 / %17:
+    >   %.120 = phi i32 [ %22, %19 ], [ 0, %3 ]
+    >   %18 = icmp slt i32 %.120, 2000
+    >   br i1 %18, label %19, label %23
+    <   br label %19
+  in block %5 / %5:
+    >   %.0 = phi i32 [ %14, %7 ], [ 0, %3 ]
+    >   %6 = icmp slt i32 %.0, 2000
+    >   br i1 %6, label %7, label %15
+    <   br label %6
+
+in function idamax:
+  in block %6 / %42:
+    >   %.0 = phi i32 [ -1, %4 ], [ 0, %6 ], [ %.2, %16 ], [ %.5, %32 ]
+    >   ret i32 %.0
+    <   br label %48
+  in block %9 / %42:
+    >   %.0 = phi i32 [ -1, %4 ], [ 0, %6 ], [ %.2, %16 ], [ %.5, %32 ]
+    >   ret i32 %.0
+    <   br label %48
+  in block %36 / %32:
+    >   %.235 = phi double [ %31, %27 ], [ %.336, %34 ]
+    >   %.132 = phi i32 [ 1, %27 ], [ %41, %34 ]
+    >   %.5 = phi i32 [ 0, %27 ], [ %.6, %34 ]
+    >   %33 = icmp slt i32 %.132, %0
+    >   br i1 %33, label %34, label %42
+    <   %.235 = phi double [ %35, %31 ], [ %.336, %46 ]
+    <   %.132 = phi i32 [ 1, %31 ], [ %47, %46 ]
+    <   %.2 = phi i32 [ 0, %31 ], [ %.3, %46 ]
+    <   %37 = icmp slt i32 %.132, %0
+    <   br i1 %37, label %38, label %48
+  in block %18 / %16:
+    >   %.033 = phi double [ %14, %10 ], [ %.134, %18 ]
+    >   %.031 = phi i32 [ 1, %10 ], [ %26, %18 ]
+    >   %.030 = phi i32 [ %15, %10 ], [ %25, %18 ]
+    >   %.2 = phi i32 [ 0, %10 ], [ %.3, %18 ]
+    >   %17 = icmp slt i32 %.031, %0
+    >   br i1 %17, label %18, label %42
+    <   %.033 = phi double [ %16, %12 ], [ %.134, %28 ]
+    <   %.031 = phi i32 [ 1, %12 ], [ %30, %28 ]
+    <   %.030 = phi i32 [ %17, %12 ], [ %29, %28 ]
+    <   %.0 = phi i32 [ 0, %12 ], [ %.1, %28 ]
+    <   %19 = icmp slt i32 %.031, %0
+    <   br i1 %19, label %20, label %48
+
+in function dscal:
+  in block %20 / %20:
+    >   %.1 = phi i32 [ %28, %22 ], [ 0, %7 ]
+    >   %21 = icmp slt i32 %.1, %0
+    >   br i1 %21, label %22, label %29
+    <   br label %21
+
+in function daxpy:
+  in block %8 / %8:
+    >   %or.cond = and i1 %9, %10
+    >   br i1 %or.cond, label %11, label %49
+    <   %or.cond = select i1 %9, i1 %10, i1 false
+    <   br i1 %or.cond, label %11, label %54
+
+in function dgesl:
+  in block %29 / %29:
+    >   %.037 = phi i32 [ %51, %31 ], [ 0, %4 ]
+    >   %30 = icmp slt i32 %.037, 2000
+    >   br i1 %30, label %31, label %52
+    <   br label %30
+
+in function main:
+  in block %4 / %4:
+    >   %.0 = phi i32 [ %12, %11 ], [ 1, %2 ]
+    >   %5 = icmp slt i32 %.0, %0
+    >   br i1 %5, label %6, label %13
+    <   br label %5
+  in block %15 / %13:
+    >   %.026 = phi i8 [ 0, %2 ], [ 0, %4 ], [ 1, %6 ]
+    <   %.026 = phi i8 [ 1, %12 ], [ 0, %5 ], [ 0, %2 ]"
+simplifycfg,early-cse,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__simplifycfg.ll,"in function daxpy:
+  in block %24 / %24:
+    >   %or.cond2 = or i1 %26, %27
+    >   br i1 %or.cond2, label %28, label %72
+    <   %or.cond3 = select i1 %26, i1 true, i1 %27
+    <   br i1 %or.cond3, label %28, label %72"
+simplifycfg,gvn,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__gvn.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__simplifycfg.ll,"in function idamax:
+  in block %51 / %51:
+    >   %52 = phi i32 [ %65, %64 ], [ 0, %46 ]
+    >   %53 = phi double [ %66, %64 ], [ %50, %46 ]
+    >   %54 = phi i32 [ %67, %64 ], [ 1, %46 ]
+    <   %52 = phi i32 [ %65, %64 ], [ 0, %46 ]
+    <   %53 = phi double [ %66, %64 ], [ %50, %46 ]
+    <   %54 = phi i32 [ %67, %64 ], [ 1, %46 ]
+  in block %68 / %68:
+    >   %69 = phi i32 [ -1, %15 ], [ 0, %18 ], [ %28, %27 ], [ %52, %51 ]
+    >   ret i32 %69
+    <   %69 = phi i32 [ 0, %18 ], [ %52, %51 ], [ %28, %27 ], [ -1, %15 ]
+    <   ret i32 %69
+  in block %64 / %64:
+    >   %65 = phi i32 [ %54, %63 ], [ %52, %56 ]
+    >   %66 = phi double [ %61, %63 ], [ %53, %56 ]
+    <   %65 = phi i32 [ %52, %56 ], [ %54, %63 ]
+    <   %66 = phi double [ %53, %56 ], [ %61, %63 ]
+
+in function daxpy:
+  in block %8 / %8:
+    >   %or.cond = and i1 %20, %21
+    >   br i1 %or.cond, label %22, label %71
+    <   %or.cond = select i1 %20, i1 %21, i1 false
+    <   br i1 %or.cond, label %22, label %71
+
+in function dgefa:
+  in block %12 / %12:
+    >   %13 = phi ptr [ %68, %66 ], [ %0, %2 ]
+    >   %14 = phi i32 [ %.pre-phi, %66 ], [ 0, %2 ]
+    <   %13 = phi ptr [ %67, %65 ], [ %0, %2 ]
+    <   %14 = phi i32 [ %.pre-phi, %65 ], [ 0, %2 ]
+  in block %65 / %66:
+    >   %67 = phi i32 [ %41, %65 ], [ %14, %16 ]
+    >   %68 = phi ptr [ %44, %65 ], [ %13, %16 ]
+    <   %66 = phi i32 [ %14, %16 ], [ %41, %._crit_edge1 ]
+    <   %67 = phi ptr [ %13, %16 ], [ %44, %._crit_edge1 ]"
+simplifycfg,sccp,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__simplifycfg.ll,"in function idamax:
+  in block %.loopexit1 / %87:
+    >   %88 = load i32, ptr %13, align 4
+    >   ret i32 %88
+    <   br label %87
+  in block %.loopexit / %87:
+    >   %88 = load i32, ptr %13, align 4
+    >   ret i32 %88
+    <   br label %87
+
+in function dscal:
+  in block %.loopexit1 / %56:
+    >   ret void
+    <   br label %56
+  in block %.loopexit / %56:
+    >   ret void
+    <   br label %56
+
+in function daxpy:
+  in block %.loopexit4 / %99:
+    >   ret void
+    <   br label %99
+  in block %.loopexit / %99:
+    >   ret void
+    <   br label %99
+
+in function dgefa:
+  in block %.loopexit / %120:
+    in instruction   br label %120 /   br label %12, !llvm.loop !9:
+      successor %120 cannot be equivalent to %12; it's already equivalent to %120
+    >   %121 = load i32, ptr %6, align 4
+    >   %122 = add nsw i32 %121, 1
+    >   store i32 %122, ptr %6, align 4
+
+in function main:
+  in block %.loopexit:
+    in instruction   br label %31 /   br label %32:
+      successor %31 cannot be equivalent to %32; it's already equivalent to %.loopexit
+    >   %31 = call ptr @malloc(i64 noundef 16000) #6
+    >   store ptr %31, ptr %8, align 8
+    >   store i32 0, ptr %6, align 4"
+simplifycfg,loop-rotate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__simplifycfg.ll,"in function matgen:
+  in block %.lr.ph2:
+    >   store i32 0, ptr %6, align 4
+    >   %9 = load i32, ptr %6, align 4
+    >   %10 = icmp slt i32 %9, 2000
+    >   br i1 %10, label %.lr.ph, label %._crit_edge
+    <   br label %9
+  in block %.lr.ph5:
+    >   %30 = load ptr, ptr %4, align 8
+    >   %31 = load i32, ptr %5, align 4
+    >   %32 = sext i32 %31 to i64
+    >   %33 = getelementptr inbounds double, ptr %30, i64 %32
+    >   store double 0.000000e+00, ptr %33, align 8
+    >   %34 = load i32, ptr %5, align 4
+    >   %35 = add nsw i32 %34, 1
+    >   store i32 %35, ptr %5, align 4
+    >   %36 = load i32, ptr %5, align 4
+    >   %37 = icmp slt i32 %36, 2000
+    >   br i1 %37, label %.lr.ph5, label %._crit_edge6, !llvm.loop !10
+    <   br label %34
+  in block %.lr.ph11:
+    >   store i32 0, ptr %5, align 4
+    >   %40 = load i32, ptr %5, align 4
+    >   %41 = icmp slt i32 %40, 2000
+    >   br i1 %41, label %.lr.ph8, label %._crit_edge9
+    <   br label %46
+
+in function idamax:
+  in block %.lr.ph:
+    >   %69 = load ptr, ptr %6, align 8
+    >   %70 = load i32, ptr %11, align 4
+    >   %71 = load i32, ptr %7, align 4
+    >   %72 = add nsw i32 %70, %71
+    >   %73 = sext i32 %72 to i64
+    >   %74 = getelementptr inbounds double, ptr %69, i64 %73
+    >   %75 = load double, ptr %74, align 8
+    >   %76 = call double @llvm.fabs.f64(double %75)
+    >   store double %76, ptr %10, align 8
+    >   %77 = load double, ptr %10, align 8
+    >   %78 = load double, ptr %9, align 8
+    >   %79 = fcmp ogt double %77, %78
+    >   br i1 %79, label %80, label %83
+    <   br label %70
+  in block %.lr.ph2:
+    >   %36 = load ptr, ptr %6, align 8
+    >   %37 = load i32, ptr %12, align 4
+    >   %38 = load i32, ptr %7, align 4
+    >   %39 = add nsw i32 %37, %38
+    >   %40 = sext i32 %39 to i64
+    >   %41 = getelementptr inbounds double, ptr %36, i64 %40
+    >   %42 = load double, ptr %41, align 8
+    >   %43 = call double @llvm.fabs.f64(double %42)
+    >   store double %43, ptr %10, align 8
+    >   %44 = load double, ptr %10, align 8
+    >   %45 = load double, ptr %9, align 8
+    >   %46 = fcmp ogt double %44, %45
+    >   br i1 %46, label %47, label %50
+    <   br label %36
+  in block %.loopexit1 / %._crit_edge3:
+    >   %89 = load i32, ptr %13, align 4
+    >   ret i32 %89
+    <   br label %91
+  in block %.loopexit / %._crit_edge3:
+    >   %89 = load i32, ptr %13, align 4
+    >   ret i32 %89
+    <   br label %91
+
+in function dscal:
+  in block %.lr.ph:
+    >   %44 = load double, ptr %7, align 8
+    >   %45 = load ptr, ptr %8, align 8
+    >   %46 = load i32, ptr %11, align 4
+    >   %47 = load i32, ptr %9, align 4
+    >   %48 = add nsw i32 %46, %47
+    >   %49 = sext i32 %48 to i64
+    >   %50 = getelementptr inbounds double, ptr %45, i64 %49
+    >   %51 = load double, ptr %50, align 8
+    >   %52 = fmul double %51, %44
+    >   store double %52, ptr %50, align 8
+    >   %53 = load i32, ptr %11, align 4
+    >   %54 = add nsw i32 %53, 1
+    >   store i32 %54, ptr %11, align 4
+    >   %55 = load i32, ptr %11, align 4
+    >   %56 = load i32, ptr %6, align 4
+    >   %57 = icmp slt i32 %55, %56
+    >   br i1 %57, label %.lr.ph, label %._crit_edge3, !llvm.loop !9
+    <   br label %45
+  in block %.lr.ph2:
+    >   %25 = load double, ptr %7, align 8
+    >   %26 = load ptr, ptr %8, align 8
+    >   %27 = load i32, ptr %11, align 4
+    >   %28 = load i32, ptr %9, align 4
+    >   %29 = add nsw i32 %27, %28
+    >   %30 = sext i32 %29 to i64
+    >   %31 = getelementptr inbounds double, ptr %26, i64 %30
+    >   %32 = load double, ptr %31, align 8
+    >   %33 = fmul double %32, %25
+    >   store double %33, ptr %31, align 8
+    >   %34 = load i32, ptr %10, align 4
+    >   %35 = load i32, ptr %11, align 4
+    >   %36 = add nsw i32 %35, %34
+    >   store i32 %36, ptr %11, align 4
+    >   %37 = load i32, ptr %11, align 4
+    >   %38 = load i32, ptr %12, align 4
+    >   %39 = icmp slt i32 %37, %38
+    >   br i1 %39, label %.lr.ph2, label %._crit_edge3, !llvm.loop !7
+    <   br label %25
+  in block %.loopexit1 / %._crit_edge3:
+    >   ret void
+    <   br label %60
+  in block %.loopexit / %._crit_edge3:
+    >   ret void
+    <   br label %60
+
+in function daxpy:
+  in block %.lr.ph:
+    >   %80 = load double, ptr %10, align 8
+    >   %81 = load ptr, ptr %11, align 8
+    >   %82 = load i32, ptr %17, align 4
+    >   %83 = load i32, ptr %12, align 4
+    >   %84 = add nsw i32 %82, %83
+    >   %85 = sext i32 %84 to i64
+    >   %86 = getelementptr inbounds double, ptr %81, i64 %85
+    >   %87 = load double, ptr %86, align 8
+    >   %88 = load ptr, ptr %14, align 8
+    >   %89 = load i32, ptr %17, align 4
+    >   %90 = load i32, ptr %15, align 4
+    >   %91 = add nsw i32 %89, %90
+    >   %92 = sext i32 %91 to i64
+    >   %93 = getelementptr inbounds double, ptr %88, i64 %92
+    >   %94 = load double, ptr %93, align 8
+    >   %95 = call double @llvm.fmuladd.f64(double %80, double %87, double %94)
+    >   store double %95, ptr %93, align 8
+    >   %96 = load i32, ptr %17, align 4
+    >   %97 = add nsw i32 %96, 1
+    >   store i32 %97, ptr %17, align 4
+    >   %98 = load i32, ptr %17, align 4
+    >   %99 = load i32, ptr %9, align 4
+    >   %100 = icmp slt i32 %98, %99
+    >   br i1 %100, label %.lr.ph, label %._crit_edge3, !llvm.loop !9
+    <   br label %81
+  in block %.lr.ph5 / %.lr.ph2:
+    >   %49 = load double, ptr %10, align 8
+    >   %50 = load ptr, ptr %11, align 8
+    >   %51 = load i32, ptr %18, align 4
+    >   %52 = load i32, ptr %12, align 4
+    >   %53 = add nsw i32 %51, %52
+    >   %54 = sext i32 %53 to i64
+    >   %55 = getelementptr inbounds double, ptr %50, i64 %54
+    >   %56 = load double, ptr %55, align 8
+    >   %57 = load ptr, ptr %14, align 8
+    >   %58 = load i32, ptr %19, align 4
+    >   %59 = load i32, ptr %15, align 4
+    >   %60 = add nsw i32 %58, %59
+    >   %61 = sext i32 %60 to i64
+    >   %62 = getelementptr inbounds double, ptr %57, i64 %61
+    >   %63 = load double, ptr %62, align 8
+    >   %64 = call double @llvm.fmuladd.f64(double %49, double %56, double %63)
+    >   store double %64, ptr %62, align 8
+    >   %65 = load i32, ptr %13, align 4
+    >   %66 = load i32, ptr %18, align 4
+    >   %67 = add nsw i32 %66, %65
+    >   store i32 %67, ptr %18, align 4
+    >   %68 = load i32, ptr %16, align 4
+    >   %69 = load i32, ptr %19, align 4
+    >   %70 = add nsw i32 %69, %68
+    >   store i32 %70, ptr %19, align 4
+    >   %71 = load i32, ptr %17, align 4
+    >   %72 = add nsw i32 %71, 1
+    >   store i32 %72, ptr %17, align 4
+    >   %73 = load i32, ptr %17, align 4
+    >   %74 = load i32, ptr %9, align 4
+    >   %75 = icmp slt i32 %73, %74
+    >   br i1 %75, label %.lr.ph2, label %._crit_edge3, !llvm.loop !7
+    <   br label %49
+  in block %.loopexit / %._crit_edge3:
+    >   ret void
+    <   br label %103
+  in block %.loopexit4 / %._crit_edge3:
+    >   ret void
+    <   br label %103
+
+in function dgefa:
+  in block %.lr.ph1 / %.lr.ph2:
+    >   %14 = load ptr, ptr %3, align 8
+    >   %15 = load i32, ptr %6, align 4
+    >   %16 = sext i32 %15 to i64
+    >   %17 = getelementptr inbounds ptr, ptr %14, i64 %16
+    >   %18 = load ptr, ptr %17, align 8
+    >   store ptr %18, ptr %8, align 8
+    >   %19 = load i32, ptr %6, align 4
+    >   %20 = add nsw i32 %19, 1
+    >   store i32 %20, ptr %9, align 4
+    >   %21 = load i32, ptr %6, align 4
+    >   %22 = sub nsw i32 2000, %21
+    >   %23 = load ptr, ptr %8, align 8
+    >   %24 = load i32, ptr %6, align 4
+    >   %25 = call i32 @idamax(i32 noundef %22, ptr noundef %23, i32 noundef %24, i32 noundef 1)
+    >   %26 = load i32, ptr %6, align 4
+    >   %27 = add nsw i32 %25, %26
+    >   store i32 %27, ptr %10, align 4
+    >   %28 = load i32, ptr %10, align 4
+    >   %29 = load ptr, ptr %4, align 8
+    >   %30 = load i32, ptr %6, align 4
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds i32, ptr %29, i64 %31
+    >   store i32 %28, ptr %32, align 4
+    >   %33 = load ptr, ptr %8, align 8
+    >   %34 = load i32, ptr %10, align 4
+    >   %35 = sext i32 %34 to i64
+    >   %36 = getelementptr inbounds double, ptr %33, i64 %35
+    >   %37 = load double, ptr %36, align 8
+    >   %38 = fcmp une double %37, 0.000000e+00
+    >   br i1 %38, label %39, label %._crit_edge
+    <   br label %14
+
+in function dgesl:
+  in block %.lr.ph:
+    >   %14 = load ptr, ptr %5, align 8
+    >   %15 = load i32, ptr %8, align 4
+    >   %16 = sext i32 %15 to i64
+    >   %17 = getelementptr inbounds i32, ptr %14, i64 %16
+    >   %18 = load i32, ptr %17, align 4
+    >   store i32 %18, ptr %10, align 4
+    >   %19 = load ptr, ptr %6, align 8
+    >   %20 = load i32, ptr %10, align 4
+    >   %21 = sext i32 %20 to i64
+    >   %22 = getelementptr inbounds double, ptr %19, i64 %21
+    >   %23 = load double, ptr %22, align 8
+    >   store double %23, ptr %7, align 8
+    >   %24 = load i32, ptr %10, align 4
+    >   %25 = load i32, ptr %8, align 4
+    >   %26 = icmp ne i32 %24, %25
+    >   br i1 %26, label %27, label %42
+    <   br label %14
+  in block %.lr.ph2:
+    >   %62 = load i32, ptr %9, align 4
+    >   %63 = add nsw i32 %62, 1
+    >   %64 = sub nsw i32 2000, %63
+    >   store i32 %64, ptr %8, align 4
+    >   %65 = load ptr, ptr %4, align 8
+    >   %66 = load i32, ptr %8, align 4
+    >   %67 = sext i32 %66 to i64
+    >   %68 = getelementptr inbounds ptr, ptr %65, i64 %67
+    >   %69 = load ptr, ptr %68, align 8
+    >   %70 = load i32, ptr %8, align 4
+    >   %71 = sext i32 %70 to i64
+    >   %72 = getelementptr inbounds double, ptr %69, i64 %71
+    >   %73 = load double, ptr %72, align 8
+    >   %74 = load ptr, ptr %6, align 8
+    >   %75 = load i32, ptr %8, align 4
+    >   %76 = sext i32 %75 to i64
+    >   %77 = getelementptr inbounds double, ptr %74, i64 %76
+    >   %78 = load double, ptr %77, align 8
+    >   %79 = fdiv double %78, %73
+    >   store double %79, ptr %77, align 8
+    >   %80 = load ptr, ptr %6, align 8
+    >   %81 = load i32, ptr %8, align 4
+    >   %82 = sext i32 %81 to i64
+    >   %83 = getelementptr inbounds double, ptr %80, i64 %82
+    >   %84 = load double, ptr %83, align 8
+    >   %85 = fneg double %84
+    >   store double %85, ptr %7, align 8
+    >   %86 = load i32, ptr %8, align 4
+    >   %87 = load double, ptr %7, align 8
+    >   %88 = load ptr, ptr %4, align 8
+    >   %89 = load i32, ptr %8, align 4
+    >   %90 = sext i32 %89 to i64
+    >   %91 = getelementptr inbounds ptr, ptr %88, i64 %90
+    >   %92 = load ptr, ptr %91, align 8
+    >   %93 = load ptr, ptr %6, align 8
+    >   call void @daxpy(i32 noundef %86, double noundef %87, ptr noundef %92, i32 noundef 0, i32 noundef 1, ptr noundef %93, i32 noundef 0, i32 noundef 1)
+    >   %94 = load i32, ptr %9, align 4
+    >   %95 = add nsw i32 %94, 1
+    >   store i32 %95, ptr %9, align 4
+    >   %96 = load i32, ptr %9, align 4
+    >   %97 = icmp slt i32 %96, 2000
+    >   br i1 %97, label %.lr.ph2, label %._crit_edge3, !llvm.loop !9
+    <   br label %64
+
+in function main:
+  in block %.lr.ph:
+    >   %20 = load ptr, ptr %5, align 8
+    >   %21 = getelementptr inbounds ptr, ptr %20, i64 1
+    >   %22 = load ptr, ptr %21, align 8
+    >   %23 = call i32 @strcmp(ptr noundef %22, ptr noundef @.str) #5
+    >   %24 = icmp ne i32 %23, 0
+    >   br i1 %24, label %26, label %25
+    <   br label %20
+  in block %.lr.ph1:
+    >   %35 = call ptr @malloc(i64 noundef 16008) #6
+    >   %36 = load ptr, ptr %8, align 8
+    >   %37 = load i32, ptr %6, align 4
+    >   %38 = sext i32 %37 to i64
+    >   %39 = getelementptr inbounds ptr, ptr %36, i64 %38
+    >   store ptr %35, ptr %39, align 8
+    >   %40 = load i32, ptr %6, align 4
+    >   %41 = add nsw i32 %40, 1
+    >   store i32 %41, ptr %6, align 4
+    >   %42 = load i32, ptr %6, align 4
+    >   %43 = icmp slt i32 %42, 2000
+    >   br i1 %43, label %.lr.ph1, label %._crit_edge, !llvm.loop !9
+    <   br label %37
+  in block %.loopexit:
+    >   %32 = call ptr @malloc(i64 noundef 16000) #6
+    >   store ptr %32, ptr %8, align 8
+    >   store i32 0, ptr %6, align 4
+    >   %33 = load i32, ptr %6, align 4
+    >   %34 = icmp slt i32 %33, 2000
+    >   br i1 %34, label %.lr.ph1, label %._crit_edge
+    <   br label %33
+  in block %.lr.ph3:
+    >   %59 = load ptr, ptr %8, align 8
+    >   %60 = load i32, ptr %6, align 4
+    >   %61 = sext i32 %60 to i64
+    >   %62 = getelementptr inbounds ptr, ptr %59, i64 %61
+    >   %63 = load ptr, ptr %62, align 8
+    >   call void @free(ptr noundef %63)
+    >   %64 = load i32, ptr %6, align 4
+    >   %65 = add nsw i32 %64, 1
+    >   store i32 %65, ptr %6, align 4
+    >   %66 = load i32, ptr %6, align 4
+    >   %67 = icmp slt i32 %66, 2000
+    >   br i1 %67, label %.lr.ph3, label %._crit_edge4, !llvm.loop !10
+    <   br label %63"
+simplifycfg,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__simplifycfg.ll,"in function idamax:
+  in block %67 / %66:
+    >   %67 = phi i32 [ %79, %72 ], [ %.promoted5, %56 ]
+    >   %68 = phi double [ %80, %72 ], [ %.promoted3, %56 ]
+    >   %69 = phi double [ %77, %72 ], [ %.promoted1, %56 ]
+    >   %70 = phi i32 [ %81, %72 ], [ %.promoted, %56 ]
+    >   %71 = icmp slt i32 %70, %63
+    >   br i1 %71, label %72, label %82
+    <   %68 = phi i32 [ %82, %81 ], [ %.promoted6, %57 ]
+    <   %69 = phi double [ %83, %81 ], [ %.promoted4, %57 ]
+    <   %70 = phi double [ %78, %81 ], [ %.promoted2, %57 ]
+    <   %71 = phi i32 [ %84, %81 ], [ %.promoted, %57 ]
+    <   %72 = icmp slt i32 %71, %64
+    <   br i1 %72, label %73, label %.loopexit1
+  in block %37 / %37:
+    >   %38 = phi i32 [ %51, %44 ], [ %.promoted15, %24 ]
+    >   %39 = phi double [ %52, %44 ], [ %.promoted13, %24 ]
+    >   %40 = phi double [ %49, %44 ], [ %.promoted11, %24 ]
+    >   %41 = phi i32 [ %53, %44 ], [ %.promoted9, %24 ]
+    >   %42 = phi i32 [ %54, %44 ], [ %.promoted7, %24 ]
+    >   %43 = icmp slt i32 %42, %33
+    >   br i1 %43, label %44, label %55
+    <   %38 = phi i32 [ %53, %52 ], [ %.promoted16, %24 ]
+    <   %39 = phi double [ %54, %52 ], [ %.promoted14, %24 ]
+    <   %40 = phi double [ %49, %52 ], [ %.promoted12, %24 ]
+    <   %41 = phi i32 [ %55, %52 ], [ %.promoted10, %24 ]
+    <   %42 = phi i32 [ %56, %52 ], [ %.promoted8, %24 ]
+    <   %43 = icmp slt i32 %42, %33
+    <   br i1 %43, label %44, label %.loopexit
+
+in function dgefa:
+  in block %15 / %15:
+    >   %.lcssa220 = phi ptr [ %.lcssa219, %78 ], [ %.promoted, %2 ]
+    >   %.lcssa18 = phi i32 [ %.lcssa17, %78 ], [ %.promoted16, %2 ]
+    >   %.lcssa415 = phi double [ %.lcssa414, %78 ], [ %.promoted13, %2 ]
+    <   %.lcssa220 = phi ptr [ %.lcssa219, %78 ], [ %.promoted, %2 ]
+    <   %.lcssa18 = phi i32 [ %.lcssa17, %78 ], [ %.promoted16, %2 ]
+    <   %.lcssa415 = phi double [ %.lcssa414, %78 ], [ %.promoted13, %2 ]
+        %16 = phi i32 [ %28, %78 ], [ %.promoted11, %2 ]
+        %17 = phi i32 [ %25, %78 ], [ %.promoted9, %2 ]
+        %18 = phi ptr [ %24, %78 ], [ %.promoted7, %2 ]
+    >   %19 = phi i32 [ %79, %78 ], [ %.promoted5, %2 ]
+    <   %19 = phi i32 [ %79, %78 ], [ %.promoted5, %2 ]
+  in block %78 / %78:
+    >   %.lcssa219 = phi ptr [ %.lcssa220, %21 ], [ %62, %60 ]
+    >   %.lcssa17 = phi i32 [ %.lcssa18, %21 ], [ %63, %60 ]
+    >   %.lcssa414 = phi double [ %.lcssa415, %21 ], [ %61, %60 ]
+    <   %.lcssa219 = phi ptr [ %.lcssa2, %.loopexit ], [ %.lcssa220, %21 ]
+    <   %.lcssa17 = phi i32 [ %.lcssa, %.loopexit ], [ %.lcssa18, %21 ]
+    <   %.lcssa414 = phi double [ %.lcssa4, %.loopexit ], [ %.lcssa415, %21 ]
+  in block %.loopexit / %78:
+    in instruction   br label %78 /   br label %15, !llvm.loop !9:
+      successor %78 cannot be equivalent to %15; it's already equivalent to %78
+    >   %.lcssa219 = phi ptr [ %.lcssa220, %21 ], [ %62, %60 ]
+    >   %.lcssa17 = phi i32 [ %.lcssa18, %21 ], [ %63, %60 ]
+    >   %.lcssa414 = phi double [ %.lcssa415, %21 ], [ %61, %60 ]
+    >   %79 = add nsw i32 %19, 1
+    <   %.lcssa4 = phi double [ %61, %60 ]
+    <   %.lcssa2 = phi ptr [ %62, %60 ]
+    <   %.lcssa = phi i32 [ %63, %60 ]"
+simplifycfg,indvars,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__simplifycfg.ll,"in function idamax:
+  in block %.loopexit1 / %87:
+    >   %88 = load i32, ptr %13, align 4
+    >   ret i32 %88
+    <   br label %87
+  in block %.loopexit / %87:
+    >   %88 = load i32, ptr %13, align 4
+    >   ret i32 %88
+    <   br label %87
+
+in function dscal:
+  in block %.loopexit1 / %56:
+    >   ret void
+    <   br label %56
+  in block %.loopexit / %56:
+    >   ret void
+    <   br label %56
+
+in function daxpy:
+  in block %.loopexit4 / %99:
+    >   ret void
+    <   br label %99
+  in block %.loopexit / %99:
+    >   ret void
+    <   br label %99
+
+in function dgefa:
+  in block %.loopexit / %120:
+    in instruction   br label %120 /   br label %12, !llvm.loop !9:
+      successor %120 cannot be equivalent to %12; it's already equivalent to %120
+    >   %121 = load i32, ptr %6, align 4
+    >   %122 = add nsw i32 %121, 1
+    >   store i32 %122, ptr %6, align 4
+
+in function main:
+  in block %.loopexit:
+    in instruction   br label %31 /   br label %32:
+      successor %31 cannot be equivalent to %32; it's already equivalent to %.loopexit
+    >   %31 = call ptr @malloc(i64 noundef 16000) #6
+    >   store ptr %31, ptr %8, align 8
+    >   store i32 0, ptr %6, align 4"
+simplifycfg,loop-unroll,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__simplifycfg.ll,"in function idamax:
+  in block %.loopexit1 / %87:
+    >   %88 = load i32, ptr %13, align 4
+    >   ret i32 %88
+    <   br label %87
+  in block %.loopexit / %87:
+    >   %88 = load i32, ptr %13, align 4
+    >   ret i32 %88
+    <   br label %87
+
+in function dscal:
+  in block %.loopexit1 / %56:
+    >   ret void
+    <   br label %56
+  in block %.loopexit / %56:
+    >   ret void
+    <   br label %56
+
+in function daxpy:
+  in block %.loopexit4 / %99:
+    >   ret void
+    <   br label %99
+  in block %.loopexit / %99:
+    >   ret void
+    <   br label %99
+
+in function dgefa:
+  in block %.loopexit / %120:
+    in instruction   br label %120 /   br label %12, !llvm.loop !9:
+      successor %120 cannot be equivalent to %12; it's already equivalent to %120
+    >   %121 = load i32, ptr %6, align 4
+    >   %122 = add nsw i32 %121, 1
+    >   store i32 %122, ptr %6, align 4
+
+in function main:
+  in block %.loopexit:
+    in instruction   br label %31 /   br label %32:
+      successor %31 cannot be equivalent to %32; it's already equivalent to %.loopexit
+    >   %31 = call ptr @malloc(i64 noundef 16000) #6
+    >   store ptr %31, ptr %8, align 8
+    >   store i32 0, ptr %6, align 4"
+simplifycfg,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\simplifycfg__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__simplifycfg.ll,
+dce,sroa,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__sroa.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__dce.ll,
+dce,early-cse,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__early-cse.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__dce.ll,
+dce,gvn,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__gvn.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__dce.ll,"in function dgefa:
+  in block %12 / %12:
+    >   %13 = phi ptr [ %66, %65 ], [ %0, %2 ]
+    >   %14 = phi i32 [ %.pre-phi, %65 ], [ 0, %2 ]
+    <   %13 = phi ptr [ %68, %66 ], [ %0, %2 ]
+    <   %14 = phi i32 [ %.pre-phi, %66 ], [ 0, %2 ]
+  in block %34 / %34:
+    <   %36 = getelementptr inbounds double, ptr %19, i64 %17
+  in block %66 / %65:
+    >   %.pre-phi = phi i32 [ %.pre1, %64 ], [ %20, %16 ]
+    >   %66 = phi ptr [ %43, %64 ], [ %13, %16 ]
+    >   store i32 %.pre-phi, ptr %6, align 4
+    <   %.pre-phi = phi i32 [ %.pre1, %65 ], [ %20, %16 ]
+    <   %67 = phi i32 [ %41, %65 ], [ %14, %16 ]
+    <   %68 = phi ptr [ %44, %65 ], [ %13, %16 ]
+    <   store i32 %.pre-phi, ptr %6, align 4"
+dce,sccp,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__dce.ll,
+dce,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__dce.ll,
+dce,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__dce.ll,
+dce,loop-rotate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__dce.ll,
+dce,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\dce__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__dce.ll,
+sroa,early-cse,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__early-cse.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__sroa.ll,"in function dgefa:
+  in block %3 / %3:
+    >   %.0 = phi i32 [ 0, %2 ], [ %60, %59 ]
+    <   %.0 = phi i32 [ 0, %2 ], [ %9, %44 ]
+  in block %5 / %5:
+    in instruction %13 / %14:
+      operands %6 and %13 differ
+    >   %13 = sext i32 %.0 to i64
+  in block %44 / %59:
+    >   %60 = add nsw i32 %.0, 1
+
+in function dgesl:
+  in block %4 / %4:
+    >   %.0 = phi i32 [ 0, %3 ], [ %29, %28 ]
+    <   %.0 = phi i32 [ 0, %3 ], [ %18, %22 ]
+  in block %24 / %31:
+    >   %.023 = phi i32 [ 0, %30 ], [ %52, %51 ]
+    <   %.037 = phi i32 [ 0, %23 ], [ %27, %39 ]
+  in block %14 / %14:
+    >   %15 = sext i32 %.0 to i64
+    >   %16 = getelementptr inbounds double, ptr %2, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    >   %18 = sext i32 %9 to i64
+    >   %19 = getelementptr inbounds double, ptr %2, i64 %18
+    >   store double %17, ptr %19, align 8
+    >   %20 = sext i32 %.0 to i64
+    >   %21 = getelementptr inbounds double, ptr %2, i64 %20
+    >   store double %12, ptr %21, align 8
+    <   %15 = getelementptr inbounds double, ptr %2, i64 %7
+    <   %16 = load double, ptr %15, align 8
+    <   store double %16, ptr %11, align 8
+    <   store double %12, ptr %15, align 8
+  in block %26 / %33:
+    in instruction %38 / %50:
+      operands %30 and %49 differ
+    >   %44 = sext i32 %35 to i64
+    >   %45 = getelementptr inbounds double, ptr %2, i64 %44
+    >   %46 = load double, ptr %45, align 8
+    >   %47 = fneg double %46
+    >   %48 = sext i32 %35 to i64
+    >   %49 = getelementptr inbounds ptr, ptr %0, i64 %48
+    <   %37 = fneg double %36
+  in block %39 / %51:
+    >   %52 = add nsw i32 %.023, 1
+  in block %17 / %22:
+    >   %25 = sext i32 %.0 to i64
+    >   %26 = getelementptr inbounds ptr, ptr %0, i64 %25
+    >   %27 = load ptr, ptr %26, align 8
+    <   %20 = getelementptr inbounds ptr, ptr %0, i64 %7
+    <   %21 = load ptr, ptr %20, align 8
+  in block %22 / %28:
+    >   %29 = add nsw i32 %.0, 1
+
+in function random_double:
+  in block %0 / %0:
+    >   store i32 %2, ptr @seed, align 4
+        %3 = sdiv i32 %2, 127773
+    >   %4 = load i32, ptr @seed, align 4
+        %4 = mul nsw i32 %3, 127773
+    >   %6 = sub nsw i32 %4, %5
+    >   %7 = mul nsw i32 16807, %6
+    <   %5 = sub nsw i32 %2, %4
+    <   %6 = mul nsw i32 16807, %5
+        %7 = mul nsw i32 2836, %3
+    >   %9 = sub nsw i32 %7, %8
+    >   store i32 %9, ptr @seed, align 4
+    >   %10 = icmp slt i32 %9, 0
+    >   br i1 %10, label %11, label %13
+    <   %8 = sub nsw i32 %6, %7
+    <   store i32 %8, ptr @seed, align 4
+    <   %9 = icmp slt i32 %8, 0
+    <   br i1 %9, label %10, label %12"
+sroa,gvn,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__gvn.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__sroa.ll,"in function matgen:
+  in block %3 / %3:
+    >   %4 = phi ptr [ %10, %20 ], [ %0, %2 ]
+    >   %5 = phi i32 [ %21, %20 ], [ 0, %2 ]
+    >   %6 = icmp slt i32 %5, 2000
+    >   br i1 %6, label %7, label %22
+    <   %.019 = phi i32 [ 0, %2 ], [ %17, %16 ]
+    <   %4 = icmp slt i32 %.019, 2000
+    <   br i1 %4, label %5, label %18
+
+in function idamax:
+  in block %52 / %65:
+    >   %66 = phi i32 [ %64, %63 ], [ -1, %6 ]
+    >   ret i32 %66
+    <   %.0 = phi i32 [ -1, %6 ], [ %.1, %51 ]
+    <   ret i32 %.0
+  in block %37 / %43:
+    >   %44 = phi i32 [ %57, %56 ], [ 0, %38 ]
+    >   %45 = phi double [ %58, %56 ], [ %42, %38 ]
+    >   %46 = phi i32 [ %59, %56 ], [ 1, %38 ]
+    >   %47 = icmp slt i32 %46, %0
+    >   br i1 %47, label %48, label %60
+    <   %.235 = phi double [ %36, %32 ], [ %.336, %47 ]
+    <   %.132 = phi i32 [ 1, %32 ], [ %48, %47 ]
+    <   %.5 = phi i32 [ 0, %32 ], [ %.6, %47 ]
+    <   %38 = icmp slt i32 %.132, %0
+    <   br i1 %38, label %39, label %49
+  in block %18 / %18:
+    >   %19 = phi i32 [ %33, %32 ], [ 0, %12 ]
+    >   %20 = phi double [ %34, %32 ], [ %16, %12 ]
+    >   %21 = phi i32 [ %35, %32 ], [ %17, %12 ]
+    >   %22 = phi i32 [ %36, %32 ], [ 1, %12 ]
+    >   %23 = icmp slt i32 %22, %0
+    >   br i1 %23, label %24, label %37
+    <   %.033 = phi double [ %16, %12 ], [ %.134, %28 ]
+    <   %.031 = phi i32 [ 1, %12 ], [ %30, %28 ]
+    <   %.030 = phi i32 [ %17, %12 ], [ %29, %28 ]
+    <   %.2 = phi i32 [ 0, %12 ], [ %.3, %28 ]
+    <   %19 = icmp slt i32 %.031, %0
+    <   br i1 %19, label %20, label %31
+  in block %51 / %63:
+    >   %64 = phi i32 [ %62, %61 ], [ 0, %9 ]
+    <   %.1 = phi i32 [ 0, %9 ], [ %.4, %50 ]
+
+in function dscal:
+  in block %22 / %23:
+    >   %24 = phi i32 [ %32, %26 ], [ 0, %22 ]
+    >   %25 = icmp slt i32 %24, %0
+    >   br i1 %25, label %26, label %33
+    <   %.1 = phi i32 [ 0, %21 ], [ %30, %24 ]
+    <   %23 = icmp slt i32 %.1, %0
+    <   br i1 %23, label %24, label %31
+  in block %11 / %11:
+    >   %12 = phi i32 [ %20, %14 ], [ 0, %9 ]
+    >   %13 = icmp slt i32 %12, %10
+    >   br i1 %13, label %14, label %21
+    <   %.0 = phi i32 [ 0, %9 ], [ %19, %13 ]
+    <   %12 = icmp slt i32 %.0, %10
+    <   br i1 %12, label %13, label %20
+
+in function daxpy:
+  in block %44 / %49:
+    >   %50 = phi i32 [ %62, %52 ], [ 0, %48 ]
+    >   %51 = icmp slt i32 %50, %0
+    >   br i1 %51, label %52, label %63
+    <   %.136 = phi i32 [ 0, %43 ], [ %56, %46 ]
+    <   %45 = icmp slt i32 %.136, %0
+    <   br i1 %45, label %46, label %57
+  in block %27 / %29:
+    >   %30 = phi i32 [ %45, %34 ], [ %28, %27 ]
+    >   %31 = phi i32 [ %44, %34 ], [ %22, %27 ]
+    >   %32 = phi i32 [ %46, %34 ], [ 0, %27 ]
+    >   %33 = icmp slt i32 %32, %0
+    >   br i1 %33, label %34, label %47
+    <   %.035 = phi i32 [ 0, %26 ], [ %41, %29 ]
+    <   %.134 = phi i32 [ %.033, %26 ], [ %39, %29 ]
+    <   %.1 = phi i32 [ %.0, %26 ], [ %40, %29 ]
+    <   %28 = icmp slt i32 %.035, %0
+    <   br i1 %28, label %29, label %42
+
+in function dgefa:
+  in block %3 / %3:
+    >   %4 = phi ptr [ %59, %57 ], [ %0, %2 ]
+    >   %5 = phi i32 [ %.pre-phi, %57 ], [ 0, %2 ]
+    >   %6 = icmp slt i32 %5, 1999
+    >   br i1 %6, label %7, label %60
+    <   %.0 = phi i32 [ 0, %2 ], [ %9, %42 ]
+    <   %4 = icmp slt i32 %.0, 1999
+    <   br i1 %4, label %5, label %43
+
+in function dgesl:
+  in block %4 / %4:
+    >   %5 = phi i32 [ %19, %18 ], [ 0, %3 ]
+    >   %6 = icmp slt i32 %5, 1999
+    >   br i1 %6, label %7, label %23
+    <   %.0 = phi i32 [ 0, %3 ], [ %18, %17 ]
+    <   %5 = icmp slt i32 %.0, 1999
+    <   br i1 %5, label %6, label %22
+
+in function main:
+  in block %5 / %5:
+    >   %6 = phi i32 [ %15, %14 ], [ 1, %4 ]
+    >   %7 = icmp slt i32 %6, %0
+    >   br i1 %7, label %8, label %16
+    <   %.0 = phi i32 [ 1, %4 ], [ %14, %13 ]
+    <   %6 = icmp slt i32 %.0, %0
+    <   br i1 %6, label %7, label %15
+  in block %18 / %19:
+    >   %20 = phi i32 [ %26, %22 ], [ 0, %17 ]
+    >   %21 = icmp slt i32 %20, 2000
+    >   br i1 %21, label %22, label %27
+    <   %.1 = phi i32 [ 0, %16 ], [ %24, %20 ]
+    <   %19 = icmp slt i32 %.1, 2000
+    <   br i1 %19, label %20, label %25"
+sroa,sccp,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__sroa.ll,"in function dgesl:
+  in block %33 / %33:
+    >   %36 = sext i32 %35 to i64
+    >   %37 = getelementptr inbounds ptr, ptr %0, i64 %36
+    >   %38 = load ptr, ptr %37, align 8
+    >   %39 = sext i32 %35 to i64
+    >   %40 = getelementptr inbounds double, ptr %38, i64 %39
+    >   %41 = load double, ptr %40, align 8
+    >   %42 = sext i32 %35 to i64
+    >   %43 = getelementptr inbounds double, ptr %2, i64 %42
+    >   %44 = load double, ptr %43, align 8
+    >   %45 = fdiv double %44, %41
+    >   store double %45, ptr %43, align 8
+    >   %46 = sext i32 %35 to i64
+    >   %47 = getelementptr inbounds double, ptr %2, i64 %46
+    >   %48 = load double, ptr %47, align 8
+    >   %49 = fneg double %48
+    >   %50 = sext i32 %35 to i64
+    >   %51 = getelementptr inbounds ptr, ptr %0, i64 %50
+    >   %52 = load ptr, ptr %51, align 8
+    <   %36 = zext nneg i32 %35 to i64
+    <   %37 = getelementptr inbounds ptr, ptr %0, i64 %36
+    <   %38 = load ptr, ptr %37, align 8
+    <   %39 = zext nneg i32 %35 to i64
+    <   %40 = getelementptr inbounds double, ptr %38, i64 %39
+    <   %41 = load double, ptr %40, align 8
+    <   %42 = zext nneg i32 %35 to i64
+    <   %43 = getelementptr inbounds double, ptr %2, i64 %42
+    <   %44 = load double, ptr %43, align 8
+    <   %45 = fdiv double %44, %41
+    <   store double %45, ptr %43, align 8
+    <   %46 = zext nneg i32 %35 to i64
+    <   %47 = getelementptr inbounds double, ptr %2, i64 %46
+    <   %48 = load double, ptr %47, align 8
+    <   %49 = fneg double %48
+    <   %50 = zext nneg i32 %35 to i64
+    <   %51 = getelementptr inbounds ptr, ptr %0, i64 %50
+    <   %52 = load ptr, ptr %51, align 8"
+sroa,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__sroa.ll,
+sroa,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__sroa.ll,
+sroa,loop-rotate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__sroa.ll,"in function matgen:
+  in block %2 / %2:
+    >   %3 = icmp slt i32 0, 2000
+    >   br i1 %3, label %.lr.ph2, label %20
+    <   br label %3
+
+in function idamax:
+  in block %39 / %39:
+    >   %.242 = phi double [ %37, %.lr.ph ], [ %.343, %48 ]
+    >   %.139 = phi i32 [ 1, %.lr.ph ], [ %49, %48 ]
+    >   %.6 = phi i32 [ 0, %.lr.ph ], [ %.8, %48 ]
+    >   %40 = add nsw i32 %.139, %2
+    >   %41 = sext i32 %40 to i64
+    >   %42 = getelementptr inbounds double, ptr %1, i64 %41
+    >   %43 = load double, ptr %42, align 8
+    <   %.539 = phi i32 [ 0, %.lr.ph ], [ %.6, %48 ]
+    <   %.13238 = phi i32 [ 1, %.lr.ph ], [ %49, %48 ]
+    <   %.23537 = phi double [ %37, %.lr.ph ], [ %.336, %48 ]
+    <   %40 = add nsw i32 %.13238, %2
+    <   %41 = sext i32 %40 to i64
+    <   %42 = getelementptr inbounds double, ptr %1, i64 %41
+    <   %43 = load double, ptr %42, align 8
+        %44 = call double @llvm.fabs.f64(double %43)
+    >   %45 = fcmp ogt double %44, %.242
+    >   br i1 %45, label %46, label %47
+    <   %45 = fcmp ogt double %44, %.23537
+    <   br i1 %45, label %46, label %47
+  in block %19 / %19:
+    >   %.040 = phi double [ %16, %.lr.ph2 ], [ %.141, %29 ]
+    >   %.038 = phi i32 [ 1, %.lr.ph2 ], [ %30, %29 ]
+    >   %.037 = phi i32 [ %17, %.lr.ph2 ], [ %28, %29 ]
+    >   %.2 = phi i32 [ 0, %.lr.ph2 ], [ %.4, %29 ]
+    >   %20 = add nsw i32 %.037, %2
+    >   %21 = sext i32 %20 to i64
+    >   %22 = getelementptr inbounds double, ptr %1, i64 %21
+    >   %23 = load double, ptr %22, align 8
+    <   %.243 = phi i32 [ 0, %.lr.ph45 ], [ %.3, %29 ]
+    <   %.03042 = phi i32 [ %17, %.lr.ph45 ], [ %28, %29 ]
+    <   %.03141 = phi i32 [ 1, %.lr.ph45 ], [ %30, %29 ]
+    <   %.03340 = phi double [ %16, %.lr.ph45 ], [ %.134, %29 ]
+    <   %20 = add nsw i32 %.03042, %2
+    <   %21 = sext i32 %20 to i64
+    <   %22 = getelementptr inbounds double, ptr %1, i64 %21
+    <   %23 = load double, ptr %22, align 8
+        %24 = call double @llvm.fabs.f64(double %23)
+    >   %25 = fcmp ogt double %24, %.040
+    >   br i1 %25, label %26, label %27
+    <   %25 = fcmp ogt double %24, %.03340
+    <   br i1 %25, label %26, label %27
+  in block %32 / %32:
+    >   %.3 = phi i32 [ %.4, %._crit_edge3 ], [ 0, %12 ]
+    <   %.2.lcssa = phi i32 [ %split47, %._crit_edge46 ], [ 0, %12 ]
+  in block %51 / %51:
+    >   %.7 = phi i32 [ %.8, %._crit_edge ], [ 0, %33 ]
+    <   %.5.lcssa = phi i32 [ %split, %._crit_edge ], [ 0, %33 ]
+  in block %._crit_edge46 / %._crit_edge3:
+    <   %split47 = phi i32 [ %.3, %29 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %.6, %48 ]
+
+in function daxpy:
+  in block %28 / %28:
+    >   %.042 = phi i32 [ 0, %.lr.ph2 ], [ %41, %40 ]
+    >   %.141 = phi i32 [ %.040, %.lr.ph2 ], [ %38, %40 ]
+    >   %.1 = phi i32 [ %.0, %.lr.ph2 ], [ %39, %40 ]
+    >   %29 = add nsw i32 %.141, %3
+    >   %30 = sext i32 %29 to i64
+    >   %31 = getelementptr inbounds double, ptr %2, i64 %30
+    >   %32 = load double, ptr %31, align 8
+    >   %33 = add nsw i32 %.1, %6
+    >   %34 = sext i32 %33 to i64
+    >   %35 = getelementptr inbounds double, ptr %5, i64 %34
+    >   %36 = load double, ptr %35, align 8
+    <   %.140 = phi i32 [ %.0, %.lr.ph42 ], [ %39, %40 ]
+    <   %.13439 = phi i32 [ %.033, %.lr.ph42 ], [ %38, %40 ]
+    <   %.03538 = phi i32 [ 0, %.lr.ph42 ], [ %41, %40 ]
+    <   %29 = add nsw i32 %.13439, %3
+    <   %30 = sext i32 %29 to i64
+    <   %31 = getelementptr inbounds double, ptr %2, i64 %30
+    <   %32 = load double, ptr %31, align 8
+    <   %33 = add nsw i32 %.140, %6
+    <   %34 = sext i32 %33 to i64
+    <   %35 = getelementptr inbounds double, ptr %5, i64 %34
+    <   %36 = load double, ptr %35, align 8
+        %37 = call double @llvm.fmuladd.f64(double %1, double %32, double %36)
+    >   store double %37, ptr %35, align 8
+    >   %38 = add nsw i32 %.141, %4
+    >   %39 = add nsw i32 %.1, %7
+    <   store double %37, ptr %35, align 8
+    <   %38 = add nsw i32 %.13439, %4
+    <   %39 = add nsw i32 %.140, %7
+
+in function dgefa:
+  in block %2 / %2:
+    >   %3 = icmp slt i32 0, 1999
+    >   br i1 %3, label %.lr.ph2, label %64
+    <   br label %3
+
+in function dgesl:
+  in block %3 / %3:
+    >   %4 = icmp slt i32 0, 1999
+    >   br i1 %4, label %.lr.ph, label %30
+    <   br label %4
+
+in function main:
+  in block %4 / %4:
+    >   %5 = icmp slt i32 1, %0
+    >   br i1 %5, label %.lr.ph, label %.loopexit
+    <   br label %5
+  in block %16 / %17:
+    >   %.034 = phi i8 [ %.135, %16 ], [ 0, %2 ]
+    <   %.026 = phi i8 [ %.127, %15 ], [ 0, %2 ]
+        %17 = call ptr @malloc(i64 noundef 16000) #6
+    >   %19 = icmp slt i32 0, 2000
+    >   br i1 %19, label %.lr.ph1, label %27
+    <   br label %18"
+sroa,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__sroa.ll,"in function matgen:
+  in block %3 / %3:
+    >   %.lcssa4 = phi i32 [ %.lcssa, %20 ], [ undef, %2 ]
+    >   %4 = phi i32 [ %21, %20 ], [ 0, %2 ]
+    >   %5 = icmp slt i32 %4, 2000
+    >   br i1 %5, label %6, label %22
+    <   %.019 = phi i32 [ 0, %2 ], [ %19, %18 ]
+    <   %4 = icmp slt i32 %.019, 2000
+    <   br i1 %4, label %5, label %20
+
+in function idamax:
+  in block %38 / %45:
+    >   %46 = phi i32 [ %60, %62 ], [ 0, %40 ]
+    >   %47 = phi double [ %61, %62 ], [ %44, %40 ]
+    >   %48 = phi double [ %56, %62 ], [ undef, %40 ]
+    >   %49 = phi i32 [ %63, %62 ], [ 1, %40 ]
+    >   %50 = icmp slt i32 %49, %0
+    >   br i1 %50, label %51, label %64
+    <   %.235 = phi double [ %37, %33 ], [ %.336, %49 ]
+    <   %.132 = phi i32 [ 1, %33 ], [ %50, %49 ]
+    <   %.5 = phi i32 [ 0, %33 ], [ %.6, %49 ]
+    <   %39 = icmp slt i32 %.132, %0
+    <   br i1 %39, label %40, label %51
+  in block %18 / %18:
+    >   %19 = phi i32 [ %34, %37 ], [ 0, %12 ]
+    >   %20 = phi double [ %35, %37 ], [ %16, %12 ]
+    >   %21 = phi double [ %30, %37 ], [ undef, %12 ]
+    >   %22 = phi i32 [ %36, %37 ], [ %17, %12 ]
+    >   %23 = phi i32 [ %38, %37 ], [ 1, %12 ]
+    >   %24 = icmp slt i32 %23, %0
+    >   br i1 %24, label %25, label %39
+    <   %.033 = phi double [ %16, %12 ], [ %.134, %30 ]
+    <   %.031 = phi i32 [ 1, %12 ], [ %31, %30 ]
+    <   %.030 = phi i32 [ %17, %12 ], [ %29, %30 ]
+    <   %.2 = phi i32 [ 0, %12 ], [ %.3, %30 ]
+    <   %19 = icmp slt i32 %.031, %0
+    <   br i1 %19, label %20, label %32
+  in block %52 / %65:
+    >   %.2 = phi i32 [ %.lcssa16, %39 ], [ %.lcssa6, %64 ]
+    <   %.4 = phi i32 [ %.2.lcssa, %32 ], [ %.5.lcssa, %51 ]
+  in block %32 / %39:
+    >   %.lcssa16 = phi i32 [ %19, %18 ]
+    >   %.lcssa14 = phi double [ %20, %18 ]
+    >   %.lcssa12 = phi double [ %21, %18 ]
+    >   %.lcssa10 = phi i32 [ %22, %18 ]
+    >   %.lcssa8 = phi i32 [ %23, %18 ]
+    <   %.2.lcssa = phi i32 [ %.2, %18 ]
+  in block %51 / %64:
+    >   %.lcssa6 = phi i32 [ %46, %45 ]
+    >   %.lcssa4 = phi double [ %47, %45 ]
+    >   %.lcssa2 = phi double [ %48, %45 ]
+    >   %.lcssa = phi i32 [ %49, %45 ]
+    <   %.5.lcssa = phi i32 [ %.5, %38 ]
+
+in function dscal:
+  in block %23 / %24:
+    >   %25 = phi i32 [ %34, %33 ], [ 0, %23 ]
+    >   %26 = icmp slt i32 %25, %0
+    >   br i1 %26, label %27, label %35
+    <   %.1 = phi i32 [ 0, %22 ], [ %32, %31 ]
+    <   %24 = icmp slt i32 %.1, %0
+    <   br i1 %24, label %25, label %33
+  in block %11 / %11:
+    >   %12 = phi i32 [ %21, %20 ], [ 0, %9 ]
+    >   %13 = icmp slt i32 %12, %10
+    >   br i1 %13, label %14, label %22
+    <   %.0 = phi i32 [ 0, %9 ], [ %20, %19 ]
+    <   %12 = icmp slt i32 %.0, %10
+    <   br i1 %12, label %13, label %21
+
+in function daxpy:
+  in block %45 / %48:
+    >   %49 = phi i32 [ %62, %61 ], [ 0, %47 ]
+    >   %50 = icmp slt i32 %49, %0
+    >   br i1 %50, label %51, label %63
+    <   %.136 = phi i32 [ 0, %44 ], [ %58, %57 ]
+    <   %46 = icmp slt i32 %.136, %0
+    <   br i1 %46, label %47, label %59
+  in block %27 / %27:
+    >   %28 = phi i32 [ %43, %44 ], [ %.0, %26 ]
+    >   %29 = phi i32 [ %42, %44 ], [ %.033, %26 ]
+    >   %30 = phi i32 [ %45, %44 ], [ 0, %26 ]
+    >   %31 = icmp slt i32 %30, %0
+    >   br i1 %31, label %32, label %46
+    <   %.035 = phi i32 [ 0, %26 ], [ %42, %41 ]
+    <   %.134 = phi i32 [ %.033, %26 ], [ %39, %41 ]
+    <   %.1 = phi i32 [ %.0, %26 ], [ %40, %41 ]
+    <   %28 = icmp slt i32 %.035, %0
+    <   br i1 %28, label %29, label %43
+
+in function dgefa:
+  in block %3 / %3:
+    >   %.lcssa220 = phi ptr [ %.lcssa219, %69 ], [ undef, %2 ]
+    >   %.lcssa18 = phi i32 [ %.lcssa17, %69 ], [ undef, %2 ]
+    >   %.lcssa415 = phi double [ %.lcssa414, %69 ], [ undef, %2 ]
+    >   %4 = phi i32 [ %16, %69 ], [ undef, %2 ]
+    >   %5 = phi i32 [ %13, %69 ], [ undef, %2 ]
+    >   %6 = phi ptr [ %12, %69 ], [ undef, %2 ]
+    >   %7 = phi i32 [ %70, %69 ], [ 0, %2 ]
+    >   %8 = icmp slt i32 %7, 1999
+    >   br i1 %8, label %9, label %71
+    <   %.0 = phi i32 [ 0, %2 ], [ %63, %62 ]
+    <   %4 = icmp slt i32 %.0, 1999
+    <   br i1 %4, label %5, label %64
+
+in function dgesl:
+  in block %4 / %4:
+    >   %5 = phi i32 [ %27, %32 ], [ undef, %3 ]
+    >   %6 = phi double [ %16, %32 ], [ undef, %3 ]
+    >   %7 = phi i32 [ %13, %32 ], [ undef, %3 ]
+    >   %8 = phi i32 [ %33, %32 ], [ 0, %3 ]
+    >   %9 = icmp slt i32 %8, 1999
+    >   br i1 %9, label %10, label %34
+    <   %.0 = phi i32 [ 0, %3 ], [ %29, %28 ]
+    <   %5 = icmp slt i32 %.0, 1999
+    <   br i1 %5, label %6, label %30
+
+in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ %16, %15 ], [ 1, %4 ]
+    >   %8 = icmp slt i32 %7, %0
+    >   br i1 %8, label %9, label %.loopexit
+    <   %.0 = phi i32 [ 1, %4 ], [ %15, %14 ]
+    <   %7 = icmp slt i32 %.0, %0
+    <   br i1 %7, label %8, label %.loopexit
+  in block %19 / %20:
+    >   %21 = phi i32 [ %28, %27 ], [ 0, %18 ]
+    >   %22 = icmp slt i32 %21, 2000
+    >   br i1 %22, label %23, label %29
+    <   %.1 = phi i32 [ 0, %17 ], [ %26, %25 ]
+    <   %20 = icmp slt i32 %.1, 2000
+    <   br i1 %20, label %21, label %27
+  in block %.loopexit:
+    >   %.lcssa = phi i32 [ %7, %6 ]
+  in block %12 / %13:
+    >   %.lcssa1 = phi i32 [ %7, %9 ]"
+sroa,indvars,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__sroa.ll,"function @llvm.smax.i32 exists only in left module
+in function matgen:
+  in block %3 / %3:
+    >   %.019 = phi i32 [ 0, %2 ], [ %19, %18 ]
+    >   %4 = icmp slt i32 %.019, 2000
+    >   br i1 %4, label %5, label %20
+    <   %indvars.iv22 = phi i64 [ %indvars.iv.next23, %13 ], [ 0, %2 ]
+    <   %exitcond25 = icmp ne i64 %indvars.iv22, 2000
+    <   br i1 %exitcond25, label %4, label %14
+
+in function idamax:
+  in block %33 / %33:
+    <   %38 = sext i32 %2 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %12 / %12:
+    <   %18 = sext i32 %17 to i64
+    <   %19 = sext i32 %3 to i64
+    <   %20 = sext i32 %2 to i64
+  in block %51 / %52:
+    >   %.4 = phi i32 [ %.2, %32 ], [ %.5, %51 ]
+    <   %.4 = phi i32 [ %.2.lcssa, %32 ], [ %.5.lcssa, %50 ]
+  in block %32 / %32:
+    <   %.2.lcssa = phi i32 [ %.2, %21 ]
+  in block %50 / %51:
+    <   %.5.lcssa = phi i32 [ %.5, %39 ]
+
+in function dscal:
+  in block %23 / %22:
+    <   %24 = sext i32 %3 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %9 / %9:
+    <   %11 = sext i32 %4 to i64
+    <   %12 = sext i32 %10 to i64
+    <   %13 = sext i32 %3 to i64
+
+in function daxpy:
+  in block %45 / %44:
+    <   %46 = sext i32 %3 to i64
+    <   %47 = sext i32 %6 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %26 / %26:
+    <   %27 = sext i32 %.033 to i64
+    <   %28 = sext i32 %4 to i64
+    <   %29 = sext i32 %3 to i64
+    <   %30 = sext i32 %.0 to i64
+    <   %31 = sext i32 %7 to i64
+    <   %32 = sext i32 %6 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %0, i32 0)
+
+in function dgefa:
+  in block %3 / %3:
+    >   %.0 = phi i32 [ 0, %2 ], [ %63, %62 ]
+    >   %4 = icmp slt i32 %.0, 1999
+    >   br i1 %4, label %5, label %64
+    <   %indvars.iv57 = phi i64 [ %indvars.iv.next58, %57 ], [ 0, %2 ]
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %57 ], [ 1, %2 ]
+    <   %indvars59 = trunc i64 %indvars.iv57 to i32
+    <   %exitcond60 = icmp ne i64 %indvars.iv57, 1999
+    <   br i1 %exitcond60, label %4, label %58
+
+in function dgesl:
+  in block %4 / %4:
+    >   %.0 = phi i32 [ 0, %3 ], [ %29, %28 ]
+    >   %5 = icmp slt i32 %.0, 1999
+    >   br i1 %5, label %6, label %30
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %25 ], [ 0, %3 ]
+    <   %indvars38 = trunc i64 %indvars.iv to i32
+    <   %exitcond = icmp ne i64 %indvars.iv, 1999
+    <   br i1 %exitcond, label %5, label %26
+
+in function main:
+  in block %5 / %5:
+    >   %.0 = phi i32 [ 1, %4 ], [ %15, %14 ]
+    >   %6 = icmp slt i32 %.0, %0
+    >   br i1 %6, label %7, label %.loopexit
+    <   %.0 = phi i32 [ 1, %4 ], [ %14, %13 ]
+    <   %exitcond = icmp ne i32 %.0, %0
+    <   br i1 %exitcond, label %6, label %.loopexit
+  in block %18 / %19:
+    >   %.1 = phi i32 [ 0, %17 ], [ %26, %25 ]
+    >   %20 = icmp slt i32 %.1, 2000
+    >   br i1 %20, label %21, label %27
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %22 ], [ 0, %16 ]
+    <   %exitcond29 = icmp ne i64 %indvars.iv, 2000
+    <   br i1 %exitcond29, label %19, label %23"
+sroa,loop-unroll,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__sroa.ll,"in function matgen:
+  in block %21 / %21:
+    >   %.120 = phi i32 [ 0, %20 ], [ %27, %26 ]
+    >   %22 = icmp slt i32 %.120, 2000
+    >   br i1 %22, label %23, label %28
+    <   %.120 = phi i32 [ 0, %20 ], [ %37, %36 ]
+    <   br label %22
+
+in function idamax:
+  in block %51 / %51:
+    <   %.5.lcssa = phi i32 [ %.5, %38 ]
+  in block %32 / %32:
+    <   %.2.lcssa = phi i32 [ %.2, %18 ]
+  in block %52 / %52:
+    >   %.4 = phi i32 [ %.2, %32 ], [ %.5, %51 ]
+    <   %.4 = phi i32 [ %.2.lcssa, %32 ], [ %.5.lcssa, %51 ]"
+sroa,reassociate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sroa__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__sroa.ll,"in function idamax:
+  in block %38 / %38:
+    >   %.235 = phi double [ %37, %33 ], [ %.336, %49 ]
+    <   %.235 = phi double [ %37, %33 ], [ %.336, %49 ]
+        %.132 = phi i32 [ 1, %33 ], [ %50, %49 ]
+    >   %.5 = phi i32 [ 0, %33 ], [ %.6, %49 ]
+    <   %.5 = phi i32 [ 0, %33 ], [ %.6, %49 ]
+  in block %40 / %40:
+    >   %41 = add nsw i32 %2, %.132
+    >   %42 = sext i32 %41 to i64
+    >   %43 = getelementptr inbounds double, ptr %1, i64 %42
+    >   %44 = load double, ptr %43, align 8
+    <   %41 = add nsw i32 %.132, %2
+    <   %42 = sext i32 %41 to i64
+    <   %43 = getelementptr inbounds double, ptr %1, i64 %42
+    <   %44 = load double, ptr %43, align 8
+  in block %18 / %18:
+    >   %.033 = phi double [ %16, %12 ], [ %.134, %30 ]
+    <   %.033 = phi double [ %16, %12 ], [ %.134, %30 ]
+        %.031 = phi i32 [ 1, %12 ], [ %31, %30 ]
+    >   %.030 = phi i32 [ %17, %12 ], [ %29, %30 ]
+    >   %.2 = phi i32 [ 0, %12 ], [ %.3, %30 ]
+    <   %.030 = phi i32 [ %17, %12 ], [ %29, %30 ]
+    <   %.2 = phi i32 [ 0, %12 ], [ %.3, %30 ]
+  in block %20 / %20:
+    >   %21 = add nsw i32 %2, %.030
+    >   %22 = sext i32 %21 to i64
+    >   %23 = getelementptr inbounds double, ptr %1, i64 %22
+    >   %24 = load double, ptr %23, align 8
+    <   %21 = add nsw i32 %.030, %2
+    <   %22 = sext i32 %21 to i64
+    <   %23 = getelementptr inbounds double, ptr %1, i64 %22
+    <   %24 = load double, ptr %23, align 8
+
+in function dscal:
+  in block %25 / %25:
+    >   %26 = add nsw i32 %3, %.1
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds double, ptr %2, i64 %27
+    >   %29 = load double, ptr %28, align 8
+    >   %30 = fmul double %1, %29
+    >   store double %30, ptr %28, align 8
+    <   %26 = add nsw i32 %.1, %3
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds double, ptr %2, i64 %27
+    <   %29 = load double, ptr %28, align 8
+    <   %30 = fmul double %1, %29
+    <   store double %30, ptr %28, align 8
+  in block %13 / %13:
+    >   %14 = add nsw i32 %3, %.0
+    >   %15 = sext i32 %14 to i64
+    >   %16 = getelementptr inbounds double, ptr %2, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    >   %18 = fmul double %1, %17
+    >   store double %18, ptr %16, align 8
+    <   %14 = add nsw i32 %.0, %3
+    <   %15 = sext i32 %14 to i64
+    <   %16 = getelementptr inbounds double, ptr %2, i64 %15
+    <   %17 = load double, ptr %16, align 8
+    <   %18 = fmul double %1, %17
+    <   store double %18, ptr %16, align 8
+
+in function daxpy:
+  in block %21 / %21:
+    >   %.033 = phi i32 [ %20, %18 ], [ 0, %16 ]
+    <   %.033 = phi i32 [ %20, %18 ], [ 0, %16 ]
+  in block %18 / %18:
+    >   %20 = mul nsw i32 %19, %4
+    <   %20 = mul nsw i32 %4, %19
+  in block %23 / %23:
+    >   %25 = mul nsw i32 %24, %7
+    <   %25 = mul nsw i32 %7, %24
+  in block %26 / %26:
+    >   %.0 = phi i32 [ %25, %23 ], [ 0, %21 ]
+    <   %.0 = phi i32 [ %25, %23 ], [ 0, %21 ]
+  in block %47 / %47:
+    >   %48 = add nsw i32 %3, %.136
+    >   %49 = sext i32 %48 to i64
+    >   %50 = getelementptr inbounds double, ptr %2, i64 %49
+    >   %51 = load double, ptr %50, align 8
+    >   %52 = add nsw i32 %6, %.136
+    >   %53 = sext i32 %52 to i64
+    >   %54 = getelementptr inbounds double, ptr %5, i64 %53
+    >   %55 = load double, ptr %54, align 8
+    <   %48 = add nsw i32 %.136, %3
+    <   %49 = sext i32 %48 to i64
+    <   %50 = getelementptr inbounds double, ptr %2, i64 %49
+    <   %51 = load double, ptr %50, align 8
+    <   %52 = add nsw i32 %.136, %6
+    <   %53 = sext i32 %52 to i64
+    <   %54 = getelementptr inbounds double, ptr %5, i64 %53
+    <   %55 = load double, ptr %54, align 8
+        %56 = call double @llvm.fmuladd.f64(double %1, double %51, double %55)
+    >   store double %56, ptr %54, align 8
+    <   store double %56, ptr %54, align 8
+  in block %27 / %27:
+    >   %.134 = phi i32 [ %.033, %26 ], [ %39, %41 ]
+    >   %.1 = phi i32 [ %.0, %26 ], [ %40, %41 ]
+    <   %.134 = phi i32 [ %.033, %26 ], [ %39, %41 ]
+    <   %.1 = phi i32 [ %.0, %26 ], [ %40, %41 ]
+  in block %29 / %29:
+    >   %30 = add nsw i32 %3, %.134
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds double, ptr %2, i64 %31
+    >   %33 = load double, ptr %32, align 8
+    >   %34 = add nsw i32 %6, %.1
+    >   %35 = sext i32 %34 to i64
+    >   %36 = getelementptr inbounds double, ptr %5, i64 %35
+    >   %37 = load double, ptr %36, align 8
+    <   %30 = add nsw i32 %.134, %3
+    <   %31 = sext i32 %30 to i64
+    <   %32 = getelementptr inbounds double, ptr %2, i64 %31
+    <   %33 = load double, ptr %32, align 8
+    <   %34 = add nsw i32 %.1, %6
+    <   %35 = sext i32 %34 to i64
+    <   %36 = getelementptr inbounds double, ptr %5, i64 %35
+    <   %37 = load double, ptr %36, align 8
+        %38 = call double @llvm.fmuladd.f64(double %1, double %33, double %37)
+    >   store double %38, ptr %36, align 8
+    <   store double %38, ptr %36, align 8
+
+in function dgefa:
+  in block %5 / %5:
+    >   %12 = add nsw i32 %.0, %11
+    <   %12 = add nsw i32 %11, %.0
+        %13 = sext i32 %.0 to i64
+        %14 = getelementptr inbounds i32, ptr %1, i64 %13
+    >   store i32 %12, ptr %14, align 4
+    >   %15 = sext i32 %12 to i64
+    >   %16 = getelementptr inbounds double, ptr %8, i64 %15
+    >   %17 = load double, ptr %16, align 8
+    >   %18 = fcmp une double %17, 0.000000e+00
+    >   br i1 %18, label %19, label %61
+    <   store i32 %12, ptr %14, align 4
+    <   %15 = sext i32 %12 to i64
+    <   %16 = getelementptr inbounds double, ptr %8, i64 %15
+    <   %17 = load double, ptr %16, align 8
+    <   %18 = fcmp une double %17, 0.000000e+00
+    <   br i1 %18, label %19, label %61"
+early-cse,gvn,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__gvn.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__early-cse.ll,"in function dgefa:
+  in block %12 / %12:
+    >   %13 = phi ptr [ %66, %65 ], [ %0, %2 ]
+    >   %14 = phi i32 [ %.pre-phi, %65 ], [ 0, %2 ]
+    <   %13 = phi ptr [ %62, %60 ], [ %0, %2 ]
+    <   %14 = phi i32 [ %.pre-phi, %60 ], [ 0, %2 ]
+  in block %34 / %34:
+    <   %36 = getelementptr inbounds double, ptr %19, i64 %17
+  in block %60 / %65:
+    >   %.pre-phi = phi i32 [ %.pre1, %64 ], [ %20, %16 ]
+    >   %66 = phi ptr [ %43, %64 ], [ %13, %16 ]
+    >   store i32 %.pre-phi, ptr %6, align 4
+    <   %.pre-phi = phi i32 [ %.pre1, %59 ], [ %20, %16 ]
+    <   %61 = phi i32 [ %40, %59 ], [ %14, %16 ]
+    <   %62 = phi ptr [ %42, %59 ], [ %13, %16 ]
+    <   store i32 %.pre-phi, ptr %6, align 4"
+early-cse,sccp,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__early-cse.ll,"in function dgesl:
+  in block %57 / %57:
+    >   %61 = sext i32 %59 to i64
+    >   %62 = getelementptr inbounds ptr, ptr %60, i64 %61
+    >   %63 = load ptr, ptr %62, align 8
+    >   %64 = getelementptr inbounds double, ptr %63, i64 %61
+    >   %65 = load double, ptr %64, align 8
+    <   %61 = zext nneg i32 %59 to i64
+    <   %62 = getelementptr inbounds ptr, ptr %60, i64 %61
+    <   %63 = load ptr, ptr %62, align 8
+    <   %64 = getelementptr inbounds double, ptr %63, i64 %61
+    <   %65 = load double, ptr %64, align 8
+        %66 = load ptr, ptr %6, align 8
+    >   %67 = getelementptr inbounds double, ptr %66, i64 %61
+    >   %68 = load double, ptr %67, align 8
+    >   %69 = fdiv double %68, %65
+    >   store double %69, ptr %67, align 8
+    <   %67 = getelementptr inbounds double, ptr %66, i64 %61
+    <   %68 = load double, ptr %67, align 8
+    <   %69 = fdiv double %68, %65
+    <   store double %69, ptr %67, align 8"
+early-cse,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__early-cse.ll,
+early-cse,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__early-cse.ll,"in function matgen:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph2, label %27
+    <   %7 = load i32, ptr %5, align 4
+    <   %8 = icmp slt i32 %7, 2000
+    <   br i1 %8, label %.lr.ph2, label %33
+
+in function idamax:
+  in block %60 / %58:
+    <   %67 = load i32, ptr %11, align 4
+        %68 = load i32, ptr %5, align 4
+    >   %66 = icmp slt i32 1, %65
+    >   br i1 %66, label %.lr.ph, label %87
+    <   %69 = icmp slt i32 %67, %68
+    <   br i1 %69, label %.lr.ph, label %91
+  in block %23 / %23:
+    <   %32 = load i32, ptr %11, align 4
+        %33 = load i32, ptr %5, align 4
+    >   %33 = icmp slt i32 1, %32
+    >   br i1 %33, label %.lr.ph2, label %57
+    <   %34 = icmp slt i32 %32, %33
+    <   br i1 %34, label %.lr.ph2, label %59
+
+in function dscal:
+  in block %40 / %38:
+    <   %41 = load i32, ptr %11, align 4
+        %42 = load i32, ptr %6, align 4
+    >   %40 = icmp slt i32 0, %39
+    >   br i1 %40, label %.lr.ph, label %56
+    <   %43 = icmp slt i32 %41, %42
+    <   br i1 %43, label %.lr.ph, label %60
+  in block %17 / %17:
+    <   %19 = load i32, ptr %11, align 4
+        %20 = load i32, ptr %12, align 4
+    >   %20 = icmp slt i32 0, %19
+    >   br i1 %20, label %.lr.ph2, label %37
+    <   %21 = icmp slt i32 %19, %20
+    <   br i1 %21, label %.lr.ph2, label %39
+
+in function daxpy:
+  in block %78 / %76:
+    <   %79 = load i32, ptr %17, align 4
+        %80 = load i32, ptr %9, align 4
+    >   %78 = icmp slt i32 0, %77
+    >   br i1 %78, label %.lr.ph, label %100
+    <   %81 = icmp slt i32 %79, %80
+    <   br i1 %81, label %.lr.ph, label %104
+  in block %44 / %44:
+    <   %45 = load i32, ptr %17, align 4
+        %46 = load i32, ptr %9, align 4
+    >   %46 = icmp slt i32 0, %45
+    >   br i1 %46, label %.lr.ph2, label %75
+    <   %47 = icmp slt i32 %45, %46
+    <   br i1 %47, label %.lr.ph2, label %77
+
+in function dgefa:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph2, label %106
+    <   %12 = load i32, ptr %6, align 4
+    <   %13 = icmp slt i32 %12, 1999
+    <   br i1 %13, label %.lr.ph2, label %111
+
+in function dgesl:
+  in block %3 / %3:
+    >   br i1 true, label %.lr.ph, label %52
+    <   %12 = load i32, ptr %8, align 4
+    <   %13 = icmp slt i32 %12, 1999
+    <   br i1 %13, label %.lr.ph, label %55
+
+in function main:
+  in block %16 / %16:
+    <   %17 = load i32, ptr %6, align 4
+        %18 = load i32, ptr %4, align 4
+    >   %18 = icmp slt i32 1, %17
+    >   br i1 %18, label %.lr.ph, label %.loopexit
+    <   %19 = icmp slt i32 %17, %18
+    <   br i1 %19, label %.lr.ph, label %.loopexit
+  in block %35 / %33:
+    >   br i1 true, label %.lr.ph1, label %45
+    <   %37 = load i32, ptr %6, align 4
+    <   %38 = icmp slt i32 %37, 2000
+    <   br i1 %38, label %.lr.ph1, label %50"
+early-cse,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__early-cse.ll,"in function matgen:
+  in block %2 / %2:
+    in instruction %.promoted1 / %7:
+      operands %5 and %3 differ
+    <   %7 = load ptr, ptr %3, align 8
+
+in function idamax:
+  in block %58 / %58:
+    <   %.promoted = load i32, ptr %11, align 4
+  in block %23 / %23:
+    <   %.promoted7 = load i32, ptr %11, align 4
+
+in function dscal:
+  in block %36 / %36:
+    <   %.promoted = load i32, ptr %11, align 4
+  in block %17 / %17:
+    <   %.promoted1 = load i32, ptr %11, align 4
+
+in function daxpy:
+  in block %73 / %73:
+    <   %.promoted = load i32, ptr %17, align 4
+  in block %44 / %44:
+    <   %.promoted1 = load i32, ptr %17, align 4
+
+in function dgefa:
+  in block %2 / %2:
+    in instruction %.promoted5 / %13:
+      operands %6 and %4 differ
+    <   %12 = load ptr, ptr %3, align 8
+    <   %13 = load ptr, ptr %4, align 8
+
+in function dgesl:
+  in block %3 / %3:
+    in instruction %16 / %12:
+      operands %4 and %5 differ
+    in instruction %.promoted / %14:
+      operands %8 and %4 differ
+    <   %12 = load ptr, ptr %5, align 8
+    <   %13 = load ptr, ptr %6, align 8
+    <   %14 = load ptr, ptr %6, align 8
+    <   %15 = load ptr, ptr %6, align 8
+
+in function main:
+  in block %16 / %16:
+    <   %.promoted = load i32, ptr %6, align 4
+  in block %32 / %32:
+    <   %.promoted2 = load i32, ptr %6, align 4"
+early-cse,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__early-cse.ll,
+early-cse,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__early-cse.ll,
+early-cse,reassociate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\early-cse__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__early-cse.ll,"in function dscal:
+  in block %17 / %17:
+    >   %18 = mul nsw i32 %4, %13
+    >   store i32 %18, ptr %12, align 4
+    <   %18 = mul nsw i32 %13, %4
+    <   store i32 %18, ptr %12, align 4"
+gvn,sccp,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__sccp.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__gvn.ll,"in function dgesl:
+  in block %32 / %32:
+    >   %33 = phi ptr [ %48, %37 ], [ %2, %31 ]
+    >   %34 = phi ptr [ %52, %37 ], [ %0, %31 ]
+    >   %35 = phi i32 [ %38, %37 ], [ 0, %31 ]
+    <   %33 = phi ptr [ %48, %37 ], [ %2, %31 ]
+    <   %34 = phi ptr [ %52, %37 ], [ %0, %31 ]
+    <   %35 = phi i32 [ %38, %37 ], [ 0, %31 ]
+  in block %37 / %37:
+    >   %40 = sext i32 %39 to i64
+    >   %41 = getelementptr inbounds ptr, ptr %34, i64 %40
+    >   %42 = load ptr, ptr %41, align 8
+    >   %43 = getelementptr inbounds double, ptr %42, i64 %40
+    >   %44 = load double, ptr %43, align 8
+    >   %45 = getelementptr inbounds double, ptr %33, i64 %40
+    >   %46 = load double, ptr %45, align 8
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr %45, align 8
+    <   %40 = zext nneg i32 %39 to i64
+    <   %41 = getelementptr inbounds ptr, ptr %34, i64 %40
+    <   %42 = load ptr, ptr %41, align 8
+    <   %43 = getelementptr inbounds double, ptr %42, i64 %40
+    <   %44 = load double, ptr %43, align 8
+    <   %45 = getelementptr inbounds double, ptr %33, i64 %40
+    <   %46 = load double, ptr %45, align 8
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr %45, align 8
+        %48 = load ptr, ptr %6, align 8
+    >   %49 = getelementptr inbounds double, ptr %48, i64 %40
+    >   %50 = load double, ptr %49, align 8
+    >   %51 = fneg double %50
+    >   store double %51, ptr %7, align 8
+    <   %49 = getelementptr inbounds double, ptr %48, i64 %40
+    <   %50 = load double, ptr %49, align 8
+    <   %51 = fneg double %50
+    <   store double %51, ptr %7, align 8
+        %52 = load ptr, ptr %4, align 8
+    >   %53 = getelementptr inbounds ptr, ptr %52, i64 %40
+    >   %54 = load ptr, ptr %53, align 8
+    <   %53 = getelementptr inbounds ptr, ptr %52, i64 %40
+    <   %54 = load ptr, ptr %53, align 8"
+gvn,adce,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__gvn.ll,"in function dgefa:
+  in block %12 / %12:
+    >   %13 = phi ptr [ %68, %66 ], [ %0, %2 ]
+    >   %14 = phi i32 [ %.pre-phi, %66 ], [ 0, %2 ]
+    <   %13 = phi ptr [ %66, %65 ], [ %0, %2 ]
+    <   %14 = phi i32 [ %.pre-phi, %65 ], [ 0, %2 ]
+  in block %34 / %34:
+    >   %36 = getelementptr inbounds double, ptr %19, i64 %17
+  in block %65 / %66:
+    >   %.pre-phi = phi i32 [ %.pre1, %65 ], [ %20, %16 ]
+    >   %67 = phi i32 [ %41, %65 ], [ %14, %16 ]
+    >   %68 = phi ptr [ %44, %65 ], [ %13, %16 ]
+    >   store i32 %.pre-phi, ptr %6, align 4
+    <   %.pre-phi = phi i32 [ %.pre1, %64 ], [ %20, %16 ]
+    <   %66 = phi ptr [ %43, %64 ], [ %13, %16 ]
+    <   store i32 %.pre-phi, ptr %6, align 4"
+gvn,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__gvn.ll,"in function matgen:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph2, label %._crit_edge13
+    <   br label %7
+
+in function idamax:
+  in block %53 / %54:
+    >   %55 = phi i32 [ 0, %.lr.ph ], [ %66, %65 ]
+    >   %56 = phi double [ %52, %.lr.ph ], [ %67, %65 ]
+    >   %57 = phi i32 [ 1, %.lr.ph ], [ %68, %65 ]
+    >   %58 = add nsw i32 %57, %2
+    >   %59 = sext i32 %58 to i64
+    >   %60 = getelementptr inbounds double, ptr %1, i64 %59
+    >   %61 = load double, ptr %60, align 8
+    <   %54 = phi i32 [ 1, %.lr.ph ], [ %67, %64 ]
+    <   %55 = phi double [ %51, %.lr.ph ], [ %66, %64 ]
+    <   %56 = phi i32 [ 0, %.lr.ph ], [ %65, %64 ]
+    <   %57 = add nsw i32 %54, %2
+    <   %58 = sext i32 %57 to i64
+    <   %59 = getelementptr inbounds double, ptr %1, i64 %58
+    <   %60 = load double, ptr %59, align 8
+        %61 = call double @llvm.fabs.f64(double %60)
+        store double %61, ptr %10, align 8
+    >   %63 = fcmp ogt double %62, %56
+    >   br i1 %63, label %64, label %65
+    <   %62 = fcmp ogt double %61, %55
+    <   br i1 %62, label %63, label %64
+  in block %28 / %28:
+    >   %29 = phi i32 [ 0, %.lr.ph2 ], [ %41, %40 ]
+    >   %30 = phi i32 [ 1, %.lr.ph2 ], [ %44, %40 ]
+    >   %31 = phi double [ %25, %.lr.ph2 ], [ %42, %40 ]
+    >   %32 = phi i32 [ %26, %.lr.ph2 ], [ %43, %40 ]
+    >   %33 = add nsw i32 %32, %2
+    >   %34 = sext i32 %33 to i64
+    >   %35 = getelementptr inbounds double, ptr %1, i64 %34
+    >   %36 = load double, ptr %35, align 8
+    <   %29 = phi i32 [ 1, %.lr.ph3 ], [ %44, %40 ]
+    <   %30 = phi i32 [ %26, %.lr.ph3 ], [ %43, %40 ]
+    <   %31 = phi double [ %25, %.lr.ph3 ], [ %42, %40 ]
+    <   %32 = phi i32 [ 0, %.lr.ph3 ], [ %41, %40 ]
+    <   %33 = add nsw i32 %30, %2
+    <   %34 = sext i32 %33 to i64
+    <   %35 = getelementptr inbounds double, ptr %1, i64 %34
+    <   %36 = load double, ptr %35, align 8
+        %37 = call double @llvm.fabs.f64(double %36)
+        store double %37, ptr %10, align 8
+    >   %38 = fcmp ogt double %37, %31
+    >   br i1 %38, label %39, label %40
+    <   %38 = fcmp ogt double %37, %31
+    <   br i1 %38, label %39, label %40
+  in block %46 / %46:
+    >   %47 = phi i32 [ %41, %._crit_edge3 ], [ 0, %21 ]
+    <   %.lcssa = phi i32 [ %split5, %._crit_edge4 ], [ 0, %21 ]
+  in block %69 / %70:
+    >   %71 = phi i32 [ %66, %._crit_edge ], [ 0, %48 ]
+    <   %.lcssa1 = phi i32 [ %split, %._crit_edge ], [ 0, %47 ]
+  in block %._crit_edge4 / %._crit_edge3:
+    <   %split5 = phi i32 [ %41, %40 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ %65, %64 ]
+
+in function dscal:
+  in block %29 / %29:
+    >   br i1 true, label %.lr.ph, label %._crit_edge4
+    <   %30 = icmp slt i32 0, %0
+    <   br i1 %30, label %.lr.ph, label %40
+
+in function daxpy:
+  in block %59 / %58:
+    >   br i1 true, label %.lr.ph, label %._crit_edge4
+    <   %60 = icmp slt i32 0, %0
+    <   br i1 %60, label %.lr.ph, label %74
+  in block %38 / %38:
+    >   br i1 true, label %.lr.ph2, label %._crit_edge5
+    <   %40 = icmp slt i32 0, %0
+    <   br i1 %40, label %.lr.ph2, label %58
+
+in function dgefa:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph2, label %._crit_edge4
+    <   br label %12
+
+in function dgesl:
+  in block %3 / %3:
+    >   br i1 true, label %.lr.ph, label %._crit_edge4
+    <   br label %12
+
+in function main:
+  in block %15 / %15:
+    >   br i1 true, label %.lr.ph, label %..loopexit_crit_edge5
+    <   br label %16
+  in block %27 / %28:
+    >   %29 = phi i8 [ %27, %26 ], [ 0, %2 ]
+        %28 = call ptr @malloc(i64 noundef 16000) #6
+        store ptr %28, ptr %8, align 8
+        store i32 0, ptr %6, align 4
+    >   br i1 true, label %.lr.ph1, label %._crit_edge6
+    <   br label %29"
+gvn,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__gvn.ll,"in function matgen:
+  in block %2 / %2:
+    <   %.promoted3 = load i32, ptr %6, align 4
+    <   %.promoted = load i32, ptr %5, align 1
+
+in function idamax:
+  in block %54 / %48:
+    <   %.promoted = load double, ptr %10, align 1
+    <   %.promoted3 = load i32, ptr %13, align 1
+    <   %.promoted5 = load double, ptr %9, align 1
+    <   %.promoted7 = load i32, ptr %11, align 1
+  in block %21 / %21:
+    <   %.promoted9 = load double, ptr %10, align 1
+    <   %.promoted11 = load i32, ptr %13, align 1
+    <   %.promoted13 = load double, ptr %9, align 1
+    <   %.promoted15 = load i32, ptr %12, align 1
+    <   %.promoted17 = load i32, ptr %11, align 1
+  in block %83 / %72:
+    >   %73 = phi i32 [ %54, %71 ], [ %28, %47 ]
+    <   %84 = phi i32 [ %.lcssa1, %82 ], [ %.lcssa, %53 ]
+  in block %82 / %71:
+    >   store i32 %57, ptr %11, align 4
+    >   store double %56, ptr %10, align 8
+    >   store double %55, ptr %9, align 8
+    >   store i32 %54, ptr %13, align 1
+    <   %.lcssa8 = phi i32 [ %60, %59 ]
+    <   %.lcssa6 = phi double [ %61, %59 ]
+    <   %.lcssa4 = phi i32 [ %62, %59 ]
+    <   %.lcssa2 = phi double [ %63, %59 ]
+    <   %.lcssa1 = phi i32 [ %64, %59 ]
+    <   store double %.lcssa2, ptr %10, align 1
+    <   store i32 %.lcssa4, ptr %13, align 1
+    <   store double %.lcssa6, ptr %9, align 1
+    <   store i32 %.lcssa8, ptr %11, align 1
+  in block %53 / %47:
+    >   store i32 %32, ptr %11, align 4
+    >   store i32 %31, ptr %12, align 4
+    >   store double %30, ptr %10, align 8
+    >   store double %29, ptr %9, align 8
+    >   store i32 %28, ptr %13, align 1
+    <   %.lcssa18 = phi i32 [ %28, %27 ]
+    <   %.lcssa16 = phi i32 [ %29, %27 ]
+    <   %.lcssa14 = phi double [ %30, %27 ]
+    <   %.lcssa12 = phi i32 [ %31, %27 ]
+    <   %.lcssa10 = phi double [ %32, %27 ]
+    <   %.lcssa = phi i32 [ %33, %27 ]
+    <   store double %.lcssa10, ptr %10, align 1
+    <   store i32 %.lcssa12, ptr %13, align 1
+    <   store double %.lcssa14, ptr %9, align 1
+    <   store i32 %.lcssa16, ptr %12, align 1
+    <   store i32 %.lcssa18, ptr %11, align 1
+
+in function dscal:
+  in block %30 / %29:
+    <   %.promoted = load i32, ptr %11, align 1
+  in block %16 / %16:
+    <   %.promoted1 = load i32, ptr %11, align 1
+
+in function daxpy:
+  in block %62 / %57:
+    <   %.promoted = load i32, ptr %17, align 1
+  in block %38 / %37:
+    <   %.promoted1 = load i32, ptr %18, align 1
+    <   %.promoted3 = load i32, ptr %19, align 1
+    <   %.promoted5 = load i32, ptr %17, align 1
+
+in function dgefa:
+  in block %2 / %2:
+    <   %.promoted9 = load i32, ptr %10, align 1
+    <   %.promoted12 = load i32, ptr %7, align 1
+    <   %.promoted15 = load ptr, ptr %11, align 1
+    <   %.promoted = load i32, ptr %6, align 1
+
+in function dgesl:
+  in block %3 / %3:
+    <   %.promoted = load i32, ptr %8, align 1
+
+in function main:
+  in block %15 / %15:
+    <   %.promoted = load i32, ptr %6, align 1
+  in block %29 / %29:
+    >   %30 = phi i8 [ %28, %27 ], [ 0, %2 ]
+        %30 = call ptr @malloc(i64 noundef 16000) #6
+        store ptr %30, ptr %8, align 8
+        store i32 0, ptr %6, align 4
+    <   %.promoted2 = load i32, ptr %6, align 1"
+gvn,indvars,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__gvn.ll,"function @llvm.smax.i32 exists only in left module
+in function matgen:
+  in block %7 / %7:
+    >   %8 = phi ptr [ %14, %24 ], [ %0, %2 ]
+    >   %9 = phi i32 [ %25, %24 ], [ 0, %2 ]
+    >   %10 = icmp slt i32 %9, 2000
+    >   br i1 %10, label %11, label %26
+    <   %indvars.iv3 = phi i64 [ %indvars.iv.next4, %16 ], [ 0, %2 ]
+    <   %exitcond6 = icmp ne i64 %indvars.iv3, 2000
+    <   br i1 %exitcond6, label %8, label %18
+
+in function idamax:
+  in block %47 / %47:
+    <   %52 = sext i32 %2 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %21 / %21:
+    <   %27 = sext i32 %26 to i64
+    <   %28 = sext i32 %3 to i64
+    <   %29 = sext i32 %2 to i64
+  in block %70 / %70:
+    >   %71 = phi i32 [ %53, %69 ], [ %28, %46 ]
+    <   %71 = phi i32 [ %.lcssa1, %69 ], [ %.lcssa, %46 ]
+  in block %69 / %69:
+    <   %.lcssa1 = phi i32 [ %54, %53 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %31, %30 ]
+
+in function dscal:
+  in block %30 / %29:
+    <   %31 = sext i32 %3 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %16 / %16:
+    <   %18 = sext i32 %4 to i64
+    <   %19 = sext i32 %17 to i64
+    <   %20 = sext i32 %3 to i64
+
+in function daxpy:
+  in block %60 / %59:
+    <   %61 = sext i32 %3 to i64
+    <   %62 = sext i32 %6 to i64
+    <   %wide.trip.count = zext i32 %0 to i64
+  in block %38 / %38:
+    <   %40 = sext i32 %39 to i64
+    <   %41 = sext i32 %7 to i64
+    <   %42 = sext i32 %6 to i64
+    <   %43 = sext i32 %33 to i64
+    <   %44 = sext i32 %4 to i64
+    <   %45 = sext i32 %3 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %0, i32 0)
+
+in function dgefa:
+  in block %12 / %12:
+    >   %13 = phi ptr [ %68, %66 ], [ %0, %2 ]
+    >   %14 = phi i32 [ %.pre-phi, %66 ], [ 0, %2 ]
+    <   %13 = phi ptr [ %66, %65 ], [ %0, %2 ]
+    <   %14 = phi i32 [ %.pre-phi, %65 ], [ 0, %2 ]
+  in block %34 / %34:
+    >   %36 = getelementptr inbounds double, ptr %19, i64 %17
+        %36 = fdiv double -1.000000e+00, %35
+        store double %36, ptr %5, align 8
+        %37 = sub nsw i32 2000, %20
+        call void @dscal(i32 noundef %37, double noundef %36, ptr noundef %19, i32 noundef %20, i32 noundef 1)
+        store i32 %20, ptr %7, align 4
+    <   %38 = sext i32 %20 to i64
+  in block %65 / %66:
+    >   %.pre-phi = phi i32 [ %.pre1, %65 ], [ %20, %16 ]
+    >   %67 = phi i32 [ %41, %65 ], [ %14, %16 ]
+    >   %68 = phi ptr [ %44, %65 ], [ %13, %16 ]
+    >   store i32 %.pre-phi, ptr %6, align 4
+    <   %.pre-phi = phi i32 [ %.pre1, %63 ], [ %20, %16 ]
+    <   %66 = phi ptr [ %.lcssa, %63 ], [ %13, %16 ]
+    <   store i32 %.pre-phi, ptr %6, align 4
+
+in function dgesl:
+  in block %12 / %12:
+    >   %13 = phi i32 [ %27, %26 ], [ 0, %3 ]
+    >   %14 = icmp slt i32 %13, 1999
+    >   br i1 %14, label %15, label %31
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %24 ], [ 0, %3 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 1999
+    <   br i1 %exitcond, label %13, label %31
+
+in function main:
+  in block %16 / %16:
+    >   %17 = phi i32 [ %26, %25 ], [ 1, %15 ]
+    >   %18 = icmp slt i32 %17, %0
+    >   br i1 %18, label %19, label %.loopexit
+    <   %17 = phi i32 [ %25, %24 ], [ 1, %15 ]
+    <   %exitcond = icmp ne i32 %17, %0
+    <   br i1 %exitcond, label %18, label %.loopexit
+  in block %29 / %30:
+    >   %31 = phi i32 [ %37, %33 ], [ 0, %28 ]
+    >   %32 = icmp slt i32 %31, 2000
+    >   br i1 %32, label %33, label %38
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %30 ], [ 0, %27 ]
+    <   %exitcond2 = icmp ne i64 %indvars.iv, 2000
+    <   br i1 %exitcond2, label %30, label %34"
+gvn,loop-unroll,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__gvn.ll,"in function matgen:
+  in block %7 / %7:
+    >   %8 = phi ptr [ %14, %24 ], [ %0, %2 ]
+    >   %9 = phi i32 [ %25, %24 ], [ 0, %2 ]
+    <   %8 = phi ptr [ %.lcssa, %33 ], [ %0, %2 ]
+    <   %9 = phi i32 [ %34, %33 ], [ 0, %2 ]
+  in block %35 / %26:
+    <   %.lcssa1 = phi ptr [ %8, %7 ]
+  in block %.peel.begin / %12:
+    >   %13 = phi i32 [ %23, %16 ], [ 0, %11 ]
+    >   %14 = phi ptr [ %0, %16 ], [ %8, %11 ]
+    >   %15 = icmp slt i32 %13, 2000
+    >   br i1 %15, label %16, label %24
+    <   br label %12
+  in block %33 / %24:
+    <   %.lcssa = phi ptr [ %8, %12 ], [ %.lcssa.ph, %.loopexit ]
+
+in function idamax:
+  in block %69 / %69:
+    <   %.lcssa1 = phi i32 [ %53, %52 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %28, %27 ]
+  in block %70 / %70:
+    >   %71 = phi i32 [ %53, %69 ], [ %28, %46 ]
+    <   %71 = phi i32 [ %.lcssa1, %69 ], [ %.lcssa, %46 ]
+
+in function dgefa:
+  in block %.peel.begin / %39:
+    >   %40 = phi i32 [ %61, %60 ], [ %14, %34 ]
+    >   %41 = phi i32 [ %62, %60 ], [ %14, %34 ]
+    >   %42 = phi i32 [ %63, %60 ], [ %23, %34 ]
+    >   %43 = phi i32 [ %64, %60 ], [ %20, %34 ]
+    >   %44 = phi ptr [ %0, %60 ], [ %13, %34 ]
+    >   %45 = icmp slt i32 %43, 2000
+    >   br i1 %45, label %46, label %65
+    <   br label %39
+  in block %86 / %66:
+    >   %.pre-phi = phi i32 [ %.pre1, %65 ], [ %20, %16 ]
+    >   %67 = phi i32 [ %41, %65 ], [ %14, %16 ]
+    >   %68 = phi ptr [ %44, %65 ], [ %13, %16 ]
+    <   %.pre-phi = phi i32 [ %.pre1, %85 ], [ %20, %16 ]
+    <   %87 = phi i32 [ %.lcssa2, %85 ], [ %14, %16 ]
+    <   %88 = phi ptr [ %.lcssa, %85 ], [ %13, %16 ]
+  in block %85 / %65:
+    >   %.pre1 = add nsw i32 %41, 1
+    <   %.lcssa2 = phi i32 [ %14, %39 ], [ %.lcssa2.ph, %.loopexit ]
+    <   %.lcssa = phi ptr [ %13, %39 ], [ %.lcssa.ph, %.loopexit ]
+    <   %.pre1 = add nsw i32 %.lcssa2, 1"
+gvn,reassociate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\gvn__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__gvn.ll,"in function idamax:
+  in block %57 / %57:
+    >   %58 = add nsw i32 %2, %55
+    >   %59 = sext i32 %58 to i64
+    >   %60 = getelementptr inbounds double, ptr %1, i64 %59
+    >   %61 = load double, ptr %60, align 8
+    <   %58 = add nsw i32 %55, %2
+    <   %59 = sext i32 %58 to i64
+    <   %60 = getelementptr inbounds double, ptr %1, i64 %59
+    <   %61 = load double, ptr %60, align 8
+  in block %33 / %33:
+    >   %34 = add nsw i32 %2, %30
+    >   %35 = sext i32 %34 to i64
+    >   %36 = getelementptr inbounds double, ptr %1, i64 %35
+    >   %37 = load double, ptr %36, align 8
+    <   %34 = add nsw i32 %30, %2
+    <   %35 = sext i32 %34 to i64
+    <   %36 = getelementptr inbounds double, ptr %1, i64 %35
+    <   %37 = load double, ptr %36, align 8
+
+in function dscal:
+  in block %30 / %30:
+    >   %31 = phi i32 [ %39, %33 ], [ 0, %29 ]
+    <   %31 = phi i32 [ %39, %33 ], [ 0, %29 ]
+  in block %33 / %33:
+    >   %34 = add nsw i32 %3, %31
+    >   %35 = sext i32 %34 to i64
+    >   %36 = getelementptr inbounds double, ptr %2, i64 %35
+    >   %37 = load double, ptr %36, align 8
+    >   %38 = fmul double %1, %37
+    >   store double %38, ptr %36, align 8
+    <   %34 = add nsw i32 %31, %3
+    <   %35 = sext i32 %34 to i64
+    <   %36 = getelementptr inbounds double, ptr %2, i64 %35
+    <   %37 = load double, ptr %36, align 8
+    <   %38 = fmul double %1, %37
+    <   store double %38, ptr %36, align 8
+  in block %18 / %18:
+    >   %19 = phi i32 [ %27, %21 ], [ 0, %16 ]
+    <   %19 = phi i32 [ %27, %21 ], [ 0, %16 ]
+  in block %21 / %21:
+    >   %22 = add nsw i32 %3, %19
+    >   %23 = sext i32 %22 to i64
+    >   %24 = getelementptr inbounds double, ptr %2, i64 %23
+    >   %25 = load double, ptr %24, align 8
+    >   %26 = fmul double %1, %25
+    >   store double %26, ptr %24, align 8
+    <   %22 = add nsw i32 %19, %3
+    <   %23 = sext i32 %22 to i64
+    <   %24 = getelementptr inbounds double, ptr %2, i64 %23
+    <   %25 = load double, ptr %24, align 8
+    <   %26 = fmul double %1, %25
+    <   store double %26, ptr %24, align 8
+
+in function daxpy:
+  in block %32 / %32:
+    >   %33 = phi i32 [ %31, %29 ], [ 0, %27 ]
+    <   %33 = phi i32 [ %31, %29 ], [ 0, %27 ]
+  in block %29 / %29:
+    >   %31 = mul nsw i32 %30, %4
+    >   store i32 %31, ptr %18, align 4
+    <   %31 = mul nsw i32 %4, %30
+    <   store i32 %31, ptr %18, align 4
+  in block %35 / %35:
+    >   %37 = mul nsw i32 %36, %7
+    >   store i32 %37, ptr %19, align 4
+    <   %37 = mul nsw i32 %7, %36
+    <   store i32 %37, ptr %19, align 4
+  in block %38 / %38:
+    >   %39 = phi i32 [ %37, %35 ], [ 0, %32 ]
+    <   %39 = phi i32 [ %37, %35 ], [ 0, %32 ]
+  in block %60 / %60:
+    >   %61 = phi i32 [ %73, %63 ], [ 0, %59 ]
+    <   %61 = phi i32 [ %73, %63 ], [ 0, %59 ]
+  in block %63 / %63:
+    >   %64 = add nsw i32 %3, %61
+    >   %65 = sext i32 %64 to i64
+    >   %66 = getelementptr inbounds double, ptr %2, i64 %65
+    >   %67 = load double, ptr %66, align 8
+    >   %68 = add nsw i32 %6, %61
+    >   %69 = sext i32 %68 to i64
+    >   %70 = getelementptr inbounds double, ptr %5, i64 %69
+    >   %71 = load double, ptr %70, align 8
+    <   %64 = add nsw i32 %61, %3
+    <   %65 = sext i32 %64 to i64
+    <   %66 = getelementptr inbounds double, ptr %2, i64 %65
+    <   %67 = load double, ptr %66, align 8
+    <   %68 = add nsw i32 %61, %6
+    <   %69 = sext i32 %68 to i64
+    <   %70 = getelementptr inbounds double, ptr %5, i64 %69
+    <   %71 = load double, ptr %70, align 8
+        %72 = call double @llvm.fmuladd.f64(double %1, double %67, double %71)
+    >   store double %72, ptr %70, align 8
+    <   store double %72, ptr %70, align 8
+  in block %40 / %40:
+    >   %41 = phi i32 [ %56, %45 ], [ %39, %38 ]
+    >   %42 = phi i32 [ %55, %45 ], [ %33, %38 ]
+    >   %43 = phi i32 [ %57, %45 ], [ 0, %38 ]
+    <   %41 = phi i32 [ %56, %45 ], [ %39, %38 ]
+    <   %42 = phi i32 [ %55, %45 ], [ %33, %38 ]
+    <   %43 = phi i32 [ %57, %45 ], [ 0, %38 ]
+  in block %45 / %45:
+    >   %46 = add nsw i32 %3, %42
+    >   %47 = sext i32 %46 to i64
+    >   %48 = getelementptr inbounds double, ptr %2, i64 %47
+    >   %49 = load double, ptr %48, align 8
+    >   %50 = add nsw i32 %6, %41
+    >   %51 = sext i32 %50 to i64
+    >   %52 = getelementptr inbounds double, ptr %5, i64 %51
+    >   %53 = load double, ptr %52, align 8
+    <   %46 = add nsw i32 %42, %3
+    <   %47 = sext i32 %46 to i64
+    <   %48 = getelementptr inbounds double, ptr %2, i64 %47
+    <   %49 = load double, ptr %48, align 8
+    <   %50 = add nsw i32 %41, %6
+    <   %51 = sext i32 %50 to i64
+    <   %52 = getelementptr inbounds double, ptr %5, i64 %51
+    <   %53 = load double, ptr %52, align 8
+        %54 = call double @llvm.fmuladd.f64(double %1, double %49, double %53)
+    >   store double %54, ptr %52, align 8
+    <   store double %54, ptr %52, align 8
+
+in function dgefa:
+  in block %12 / %12:
+    >   %13 = phi ptr [ %68, %66 ], [ %0, %2 ]
+    >   %14 = phi i32 [ %.pre-phi, %66 ], [ 0, %2 ]
+    <   %13 = phi ptr [ %66, %65 ], [ %0, %2 ]
+    <   %14 = phi i32 [ %.pre-phi, %65 ], [ 0, %2 ]
+  in block %16 / %16:
+    >   %23 = add nsw i32 %14, %22
+    >   store i32 %23, ptr %10, align 4
+    <   %23 = add nsw i32 %22, %14
+    <   store i32 %23, ptr %10, align 4
+        %24 = getelementptr inbounds i32, ptr %1, i64 %17
+    >   store i32 %23, ptr %24, align 4
+    >   %25 = sext i32 %23 to i64
+    >   %26 = getelementptr inbounds double, ptr %19, i64 %25
+    >   %27 = load double, ptr %26, align 8
+    >   %28 = fcmp une double %27, 0.000000e+00
+    >   br i1 %28, label %29, label %66
+    <   store i32 %23, ptr %24, align 4
+    <   %25 = sext i32 %23 to i64
+    <   %26 = getelementptr inbounds double, ptr %19, i64 %25
+    <   %27 = load double, ptr %26, align 8
+    <   %28 = fcmp une double %27, 0.000000e+00
+    <   br i1 %28, label %29, label %65
+  in block %65 / %66:
+    >   %.pre-phi = phi i32 [ %.pre1, %65 ], [ %20, %16 ]
+    >   %67 = phi i32 [ %41, %65 ], [ %14, %16 ]
+    >   %68 = phi ptr [ %44, %65 ], [ %13, %16 ]
+    >   store i32 %.pre-phi, ptr %6, align 4
+    <   %.pre-phi = phi i32 [ %.pre1, %64 ], [ %20, %16 ]
+    <   %66 = phi ptr [ %43, %64 ], [ %13, %16 ]
+    <   store i32 %.pre-phi, ptr %6, align 4
+
+in function dgesl:
+  in block %32 / %32:
+    >   %33 = phi ptr [ %47, %37 ], [ %2, %31 ]
+    >   %34 = phi ptr [ %51, %37 ], [ %0, %31 ]
+    >   %35 = phi i32 [ %54, %37 ], [ 0, %31 ]
+    <   %33 = phi ptr [ %48, %37 ], [ %2, %31 ]
+    <   %34 = phi ptr [ %52, %37 ], [ %0, %31 ]
+    <   %35 = phi i32 [ %38, %37 ], [ 0, %31 ]
+  in block %37 / %37:
+    >   %.neg = sub i32 0, %35
+    >   %38 = add i32 %.neg, 1999
+    >   store i32 %38, ptr %8, align 4
+    >   %39 = sext i32 %38 to i64
+    >   %40 = getelementptr inbounds ptr, ptr %34, i64 %39
+    >   %41 = load ptr, ptr %40, align 8
+    >   %42 = getelementptr inbounds double, ptr %41, i64 %39
+    >   %43 = load double, ptr %42, align 8
+    >   %44 = getelementptr inbounds double, ptr %33, i64 %39
+    >   %45 = load double, ptr %44, align 8
+    >   %46 = fdiv double %45, %43
+    >   store double %46, ptr %44, align 8
+    <   %38 = add nsw i32 %35, 1
+    <   %39 = sub nsw i32 2000, %38
+    <   store i32 %39, ptr %8, align 4
+    <   %40 = sext i32 %39 to i64
+    <   %41 = getelementptr inbounds ptr, ptr %34, i64 %40
+    <   %42 = load ptr, ptr %41, align 8
+    <   %43 = getelementptr inbounds double, ptr %42, i64 %40
+    <   %44 = load double, ptr %43, align 8
+    <   %45 = getelementptr inbounds double, ptr %33, i64 %40
+    <   %46 = load double, ptr %45, align 8
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr %45, align 8
+        %48 = load ptr, ptr %6, align 8
+    >   %48 = getelementptr inbounds double, ptr %47, i64 %39
+    >   %49 = load double, ptr %48, align 8
+    >   %50 = fneg double %49
+    >   store double %50, ptr %7, align 8
+    <   %49 = getelementptr inbounds double, ptr %48, i64 %40
+    <   %50 = load double, ptr %49, align 8
+    <   %51 = fneg double %50
+    <   store double %51, ptr %7, align 8
+        %52 = load ptr, ptr %4, align 8
+    >   %52 = getelementptr inbounds ptr, ptr %51, i64 %39
+    >   %53 = load ptr, ptr %52, align 8
+    >   call void @daxpy(i32 noundef %38, double noundef %50, ptr noundef %53, i32 noundef 0, i32 noundef 1, ptr noundef %47, i32 noundef 0, i32 noundef 1)
+    >   %54 = add nsw i32 %35, 1
+    <   %53 = getelementptr inbounds ptr, ptr %52, i64 %40
+    <   %54 = load ptr, ptr %53, align 8
+    <   call void @daxpy(i32 noundef %39, double noundef %51, ptr noundef %54, i32 noundef 0, i32 noundef 1, ptr noundef %48, i32 noundef 0, i32 noundef 1)"
+sccp,adce,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__adce.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__sccp.ll,
+sccp,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__sccp.ll,"in function dgesl:
+  in block %55 / %55:
+    >   %56 = phi double [ %76, %80 ], [ %.promoted11, %49 ]
+    >   %57 = phi i32 [ %62, %80 ], [ %.promoted9, %49 ]
+    <   %56 = phi double [ %76, %80 ], [ %.promoted11, %49 ]
+    <   %57 = phi i32 [ %62, %80 ], [ %.promoted9, %49 ]
+  in block %60 / %60:
+    >   %63 = zext nneg i32 %62 to i64
+    >   %64 = getelementptr inbounds ptr, ptr %50, i64 %63
+    >   %65 = load ptr, ptr %64, align 8
+    >   %66 = zext nneg i32 %62 to i64
+    >   %67 = getelementptr inbounds double, ptr %65, i64 %66
+    >   %68 = load double, ptr %67, align 8
+    >   %69 = zext nneg i32 %62 to i64
+    >   %70 = getelementptr inbounds double, ptr %51, i64 %69
+    >   %71 = load double, ptr %70, align 8
+    >   %72 = fdiv double %71, %68
+    >   store double %72, ptr %70, align 8
+    >   %73 = zext nneg i32 %62 to i64
+    >   %74 = getelementptr inbounds double, ptr %52, i64 %73
+    >   %75 = load double, ptr %74, align 8
+    >   %76 = fneg double %75
+    >   %77 = zext nneg i32 %62 to i64
+    >   %78 = getelementptr inbounds ptr, ptr %53, i64 %77
+    >   %79 = load ptr, ptr %78, align 8
+    <   %63 = sext i32 %62 to i64
+    <   %64 = getelementptr inbounds ptr, ptr %50, i64 %63
+    <   %65 = load ptr, ptr %64, align 8
+    <   %66 = sext i32 %62 to i64
+    <   %67 = getelementptr inbounds double, ptr %65, i64 %66
+    <   %68 = load double, ptr %67, align 8
+    <   %69 = sext i32 %62 to i64
+    <   %70 = getelementptr inbounds double, ptr %51, i64 %69
+    <   %71 = load double, ptr %70, align 8
+    <   %72 = fdiv double %71, %68
+    <   store double %72, ptr %70, align 8
+    <   %73 = sext i32 %62 to i64
+    <   %74 = getelementptr inbounds double, ptr %52, i64 %73
+    <   %75 = load double, ptr %74, align 8
+    <   %76 = fneg double %75
+    <   %77 = sext i32 %62 to i64
+    <   %78 = getelementptr inbounds ptr, ptr %53, i64 %77
+    <   %79 = load ptr, ptr %78, align 8"
+sccp,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\sccp__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__sccp.ll,
+adce,loop-simplify,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__loop-simplify.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__adce.ll,
+adce,loop-rotate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__adce.ll,
+adce,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\adce__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__adce.ll,
+loop-simplify,loop-rotate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-simplify,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-simplify__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__loop-simplify.ll,
+loop-rotate,licm,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__licm.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__loop-rotate.ll,"in function matgen:
+  in block %2 / %2:
+    in instruction %7 / %.promoted3:
+      operands %5 and %6 differ
+    in instruction %8 / %8:
+      operands %7 and %.promoted1 differ
+    >   %7 = load ptr, ptr %3, align 8
+    >   %.promoted1 = load i32, ptr %5, align 4
+
+in function idamax:
+  in block %60 / %58:
+    >   %65 = load i32, ptr %5, align 4
+    >   %66 = load ptr, ptr %6, align 8
+    >   %67 = load i32, ptr %7, align 4
+        %67 = load i32, ptr %11, align 4
+    >   %.promoted1 = load double, ptr %10, align 8
+    >   %.promoted3 = load double, ptr %9, align 8
+    >   %.promoted5 = load i32, ptr %13, align 1
+    <   %68 = load i32, ptr %5, align 4
+  in block %24 / %24:
+    >   %33 = load i32, ptr %5, align 4
+    >   %34 = load ptr, ptr %6, align 8
+    >   %35 = load i32, ptr %7, align 4
+    >   %36 = load i32, ptr %8, align 4
+        %33 = load i32, ptr %11, align 4
+    >   %.promoted9 = load i32, ptr %12, align 4
+    >   %.promoted11 = load double, ptr %10, align 8
+    >   %.promoted13 = load double, ptr %9, align 8
+    >   %.promoted15 = load i32, ptr %13, align 1
+    <   %34 = load i32, ptr %5, align 4
+
+in function dscal:
+  in block %41 / %39:
+    >   %40 = load i32, ptr %6, align 4
+    >   %41 = load double, ptr %7, align 8
+    >   %42 = load ptr, ptr %8, align 8
+    >   %43 = load i32, ptr %9, align 4
+        %42 = load i32, ptr %11, align 4
+    <   %43 = load i32, ptr %6, align 4
+  in block %18 / %18:
+    >   %22 = load i32, ptr %12, align 4
+    >   %23 = load double, ptr %7, align 8
+    >   %24 = load ptr, ptr %8, align 8
+    >   %25 = load i32, ptr %9, align 4
+    >   %26 = load i32, ptr %10, align 4
+        %22 = load i32, ptr %11, align 4
+    <   %23 = load i32, ptr %12, align 4
+
+in function daxpy:
+  in block %78 / %76:
+    >   %77 = load i32, ptr %9, align 4
+    >   %78 = load double, ptr %10, align 8
+    >   %79 = load ptr, ptr %11, align 8
+    >   %80 = load i32, ptr %12, align 4
+    >   %81 = load ptr, ptr %14, align 8
+    >   %82 = load i32, ptr %15, align 4
+        %79 = load i32, ptr %17, align 4
+    <   %80 = load i32, ptr %9, align 4
+  in block %47 / %47:
+    >   %48 = load i32, ptr %9, align 4
+    >   %49 = load double, ptr %10, align 8
+    >   %50 = load ptr, ptr %11, align 8
+    >   %51 = load i32, ptr %12, align 4
+    >   %52 = load ptr, ptr %14, align 8
+    >   %53 = load i32, ptr %15, align 4
+    >   %54 = load i32, ptr %13, align 4
+    >   %55 = load i32, ptr %16, align 4
+        %48 = load i32, ptr %17, align 4
+    >   %.promoted3 = load i32, ptr %18, align 4
+    >   %.promoted5 = load i32, ptr %19, align 4
+    <   %49 = load i32, ptr %9, align 4
+
+in function dgefa:
+  in block %2 / %2:
+    in instruction %12 / %.promoted:
+      operands %6 and %11 differ
+    in instruction %13 / %15:
+      operands %12 and %.promoted5 differ
+    >   %12 = load ptr, ptr %3, align 8
+    >   %13 = load ptr, ptr %4, align 8
+    >   %14 = load ptr, ptr %3, align 8
+    >   %.promoted5 = load i32, ptr %6, align 4
+    >   %.promoted7 = load ptr, ptr %8, align 8
+    >   %.promoted9 = load i32, ptr %9, align 4
+    >   %.promoted11 = load i32, ptr %10, align 4
+    >   %.promoted13 = load double, ptr %5, align 8
+    >   %.promoted16 = load i32, ptr %7, align 4
+
+in function dgesl:
+  in block %3 / %3:
+    in instruction %12 / %.promoted5:
+      operands %8 and %11 differ
+    in instruction %13 / %19:
+      operands %12 and %.promoted differ
+    >   %12 = load ptr, ptr %5, align 8
+    >   %13 = load ptr, ptr %6, align 8
+    >   %14 = load ptr, ptr %6, align 8
+    >   %15 = load ptr, ptr %6, align 8
+    >   %16 = load ptr, ptr %6, align 8
+    >   %17 = load ptr, ptr %4, align 8
+    >   %18 = load ptr, ptr %6, align 8
+    >   %.promoted = load i32, ptr %8, align 4
+    >   %.promoted1 = load i32, ptr %10, align 4
+    >   %.promoted3 = load double, ptr %7, align 8
+
+in function main:
+  in block %16 / %16:
+    >   %17 = load i32, ptr %4, align 4
+    >   %18 = load ptr, ptr %5, align 8
+    >   %19 = getelementptr inbounds ptr, ptr %18, i64 1
+        %17 = load i32, ptr %6, align 4
+    <   %18 = load i32, ptr %4, align 4
+  in block %34 / %32:
+    >   %34 = load ptr, ptr %8, align 8"
+loop-rotate,indvars,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-rotate__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__indvars.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__licm.ll,"function @llvm.smax.i32 exists only in left module
+in function matgen:
+  in block %2 / %2:
+    <   %8 = sext i32 %.promoted1 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted1, i32 2000)
+    <   %wide.trip.count = sext i32 %smax to i64
+
+in function idamax:
+  in block %59 / %59:
+    <   %69 = sext i32 %.promoted to i64
+    <   %70 = sext i32 %68 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 %66)
+    <   %wide.trip.count = sext i32 %smax to i64
+  in block %24 / %24:
+    <   %37 = sext i32 %.promoted9 to i64
+    <   %38 = sext i32 %36 to i64
+    <   %39 = sext i32 %35 to i64
+    <   %smax20 = call i32 @llvm.smax.i32(i32 %.promoted7, i32 %33)
+
+in function dscal:
+  in block %41 / %39:
+    <   %46 = sext i32 %.promoted to i64
+    <   %47 = sext i32 %45 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 %42)
+    <   %wide.trip.count = sext i32 %smax to i64
+  in block %18 / %18:
+    <   %27 = sext i32 %.promoted1 to i64
+    <   %28 = sext i32 %26 to i64
+    <   %29 = sext i32 %25 to i64
+    <   %30 = sext i32 %22 to i64
+
+in function daxpy:
+  in block %77 / %76:
+    <   %84 = sext i32 %.promoted to i64
+    <   %85 = sext i32 %83 to i64
+    <   %86 = sext i32 %81 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 %78)
+    <   %wide.trip.count = sext i32 %smax to i64
+  in block %47 / %47:
+    <   %56 = sext i32 %.promoted5 to i64
+    <   %57 = sext i32 %55 to i64
+    <   %58 = sext i32 %53 to i64
+    <   %59 = sext i32 %.promoted3 to i64
+    <   %60 = sext i32 %54 to i64
+    <   %61 = sext i32 %51 to i64
+    <   %smax12 = call i32 @llvm.smax.i32(i32 %.promoted1, i32 %48)
+
+in function dgefa:
+  in block %2 / %2:
+    <   %15 = add i32 %.promoted5, 1
+    <   %16 = sext i32 %15 to i64
+    <   %17 = sext i32 %.promoted5 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted5, i32 1999)
+    <   %wide.trip.count = sext i32 %smax to i64
+
+in function dgesl:
+  in block %3 / %3:
+    <   %19 = sext i32 %.promoted to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 1999)
+    <   %wide.trip.count = sext i32 %smax to i64
+
+in function main:
+  in block %16 / %16:
+    <   %smax = call i32 @llvm.smax.i32(i32 %.promoted, i32 %17)
+  in block %31 / %32:
+    <   %34 = sext i32 %.promoted2 to i64
+    <   %smax7 = call i32 @llvm.smax.i32(i32 %.promoted2, i32 2000)
+    <   %wide.trip.count = sext i32 %smax7 to i64"
+licm,loop-unroll,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__licm.ll,"in function matgen:
+  in block %40 / %40:
+    >   %.lcssa711 = phi i32 [ %.lcssa7, %61 ], [ %.promoted10, %37 ]
+    <   %.lcssa711 = phi i32 [ %.lcssa7, %72 ], [ %.promoted10, %37 ]
+  in block %46 / %46:
+    >   %47 = phi i32 [ %59, %58 ], [ 0, %43 ]
+    >   %48 = icmp slt i32 %47, 2000
+    >   br i1 %48, label %49, label %60
+    <   %47 = phi i32 [ 0, %43 ], [ %70, %69 ]
+    <   %48 = icmp samesign ult i32 %47, 2000
+    <   br i1 %48, label %49, label %71"
+licm,reassociate,false,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\licm__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__licm.ll,"in function idamax:
+  in block %69 / %69:
+    >   %70 = phi i32 [ %84, %86 ], [ %.promoted5, %59 ]
+    >   %71 = phi double [ %85, %86 ], [ %.promoted3, %59 ]
+    >   %72 = phi double [ %80, %86 ], [ %.promoted1, %59 ]
+    <   %70 = phi i32 [ %84, %86 ], [ %.promoted5, %59 ]
+    <   %71 = phi double [ %85, %86 ], [ %.promoted3, %59 ]
+    <   %72 = phi double [ %80, %86 ], [ %.promoted1, %59 ]
+  in block %75 / %75:
+    >   %76 = add nsw i32 %68, %73
+    >   %77 = sext i32 %76 to i64
+    >   %78 = getelementptr inbounds double, ptr %67, i64 %77
+    >   %79 = load double, ptr %78, align 8
+    <   %76 = add nsw i32 %73, %68
+    <   %77 = sext i32 %76 to i64
+    <   %78 = getelementptr inbounds double, ptr %67, i64 %77
+    <   %79 = load double, ptr %78, align 8
+  in block %37 / %37:
+    >   %38 = phi i32 [ %53, %56 ], [ %.promoted15, %24 ]
+    >   %39 = phi double [ %54, %56 ], [ %.promoted13, %24 ]
+    >   %40 = phi double [ %49, %56 ], [ %.promoted11, %24 ]
+    >   %41 = phi i32 [ %55, %56 ], [ %.promoted9, %24 ]
+    <   %38 = phi i32 [ %53, %56 ], [ %.promoted15, %24 ]
+    <   %39 = phi double [ %54, %56 ], [ %.promoted13, %24 ]
+    <   %40 = phi double [ %49, %56 ], [ %.promoted11, %24 ]
+    <   %41 = phi i32 [ %55, %56 ], [ %.promoted9, %24 ]
+  in block %44 / %44:
+    >   %45 = add nsw i32 %35, %41
+    >   %46 = sext i32 %45 to i64
+    >   %47 = getelementptr inbounds double, ptr %34, i64 %46
+    >   %48 = load double, ptr %47, align 8
+    <   %45 = add nsw i32 %41, %35
+    <   %46 = sext i32 %45 to i64
+    <   %47 = getelementptr inbounds double, ptr %34, i64 %46
+    <   %48 = load double, ptr %47, align 8
+
+in function dscal:
+  in block %47 / %47:
+    >   %48 = add nsw i32 %43, %45
+    >   %49 = sext i32 %48 to i64
+    >   %50 = getelementptr inbounds double, ptr %42, i64 %49
+    >   %51 = load double, ptr %50, align 8
+    >   %52 = fmul double %41, %51
+    >   store double %52, ptr %50, align 8
+    <   %48 = add nsw i32 %45, %43
+    <   %49 = sext i32 %48 to i64
+    <   %50 = getelementptr inbounds double, ptr %42, i64 %49
+    <   %51 = load double, ptr %50, align 8
+    <   %52 = fmul double %41, %51
+    <   store double %52, ptr %50, align 8
+  in block %30 / %30:
+    >   %31 = add nsw i32 %25, %28
+    >   %32 = sext i32 %31 to i64
+    >   %33 = getelementptr inbounds double, ptr %24, i64 %32
+    >   %34 = load double, ptr %33, align 8
+    >   %35 = fmul double %23, %34
+    >   store double %35, ptr %33, align 8
+    <   %31 = add nsw i32 %28, %25
+    <   %32 = sext i32 %31 to i64
+    <   %33 = getelementptr inbounds double, ptr %24, i64 %32
+    <   %34 = load double, ptr %33, align 8
+    <   %35 = fmul double %23, %34
+    <   store double %35, ptr %33, align 8
+
+in function daxpy:
+  in block %86 / %86:
+    >   %87 = add nsw i32 %80, %84
+    >   %88 = sext i32 %87 to i64
+    >   %89 = getelementptr inbounds double, ptr %79, i64 %88
+    >   %90 = load double, ptr %89, align 8
+    >   %91 = add nsw i32 %82, %84
+    >   %92 = sext i32 %91 to i64
+    >   %93 = getelementptr inbounds double, ptr %81, i64 %92
+    >   %94 = load double, ptr %93, align 8
+    <   %87 = add nsw i32 %84, %80
+    <   %88 = sext i32 %87 to i64
+    <   %89 = getelementptr inbounds double, ptr %79, i64 %88
+    <   %90 = load double, ptr %89, align 8
+    <   %91 = add nsw i32 %84, %82
+    <   %92 = sext i32 %91 to i64
+    <   %93 = getelementptr inbounds double, ptr %81, i64 %92
+    <   %94 = load double, ptr %93, align 8
+        %95 = call double @llvm.fmuladd.f64(double %78, double %90, double %94)
+    >   store double %95, ptr %93, align 8
+    <   store double %95, ptr %93, align 8
+  in block %56 / %56:
+    >   %57 = phi i32 [ %72, %73 ], [ %.promoted5, %47 ]
+    >   %58 = phi i32 [ %71, %73 ], [ %.promoted3, %47 ]
+    <   %57 = phi i32 [ %72, %73 ], [ %.promoted5, %47 ]
+    <   %58 = phi i32 [ %71, %73 ], [ %.promoted3, %47 ]
+  in block %61 / %61:
+    >   %62 = add nsw i32 %51, %58
+    >   %63 = sext i32 %62 to i64
+    >   %64 = getelementptr inbounds double, ptr %50, i64 %63
+    >   %65 = load double, ptr %64, align 8
+    >   %66 = add nsw i32 %53, %57
+    >   %67 = sext i32 %66 to i64
+    >   %68 = getelementptr inbounds double, ptr %52, i64 %67
+    >   %69 = load double, ptr %68, align 8
+    <   %62 = add nsw i32 %58, %51
+    <   %63 = sext i32 %62 to i64
+    <   %64 = getelementptr inbounds double, ptr %50, i64 %63
+    <   %65 = load double, ptr %64, align 8
+    <   %66 = add nsw i32 %57, %53
+    <   %67 = sext i32 %66 to i64
+    <   %68 = getelementptr inbounds double, ptr %52, i64 %67
+    <   %69 = load double, ptr %68, align 8
+        %70 = call double @llvm.fmuladd.f64(double %49, double %65, double %69)
+    >   store double %70, ptr %68, align 8
+    <   store double %70, ptr %68, align 8
+
+in function dgefa:
+  in block %15 / %15:
+    >   %.lcssa220 = phi ptr [ %.lcssa219, %81 ], [ %.promoted, %2 ]
+    >   %.lcssa18 = phi i32 [ %.lcssa17, %81 ], [ %.promoted16, %2 ]
+    >   %.lcssa415 = phi double [ %.lcssa414, %81 ], [ %.promoted13, %2 ]
+    >   %16 = phi i32 [ %28, %81 ], [ %.promoted11, %2 ]
+    >   %17 = phi i32 [ %25, %81 ], [ %.promoted9, %2 ]
+    >   %18 = phi ptr [ %24, %81 ], [ %.promoted7, %2 ]
+    <   %.lcssa220 = phi ptr [ %.lcssa219, %81 ], [ %.promoted, %2 ]
+    <   %.lcssa18 = phi i32 [ %.lcssa17, %81 ], [ %.promoted16, %2 ]
+    <   %.lcssa415 = phi double [ %.lcssa414, %81 ], [ %.promoted13, %2 ]
+    <   %16 = phi i32 [ %28, %81 ], [ %.promoted11, %2 ]
+    <   %17 = phi i32 [ %25, %81 ], [ %.promoted9, %2 ]
+    <   %18 = phi ptr [ %24, %81 ], [ %.promoted7, %2 ]
+  in block %21 / %21:
+    >   %28 = add nsw i32 %19, %27
+    <   %28 = add nsw i32 %27, %19
+        %29 = sext i32 %19 to i64
+        %30 = getelementptr inbounds i32, ptr %13, i64 %29
+    >   store i32 %28, ptr %30, align 4
+    >   %31 = sext i32 %28 to i64
+    >   %32 = getelementptr inbounds double, ptr %24, i64 %31
+    >   %33 = load double, ptr %32, align 8
+    >   %34 = fcmp une double %33, 0.000000e+00
+    >   br i1 %34, label %35, label %80
+    <   store i32 %28, ptr %30, align 4
+    <   %31 = sext i32 %28 to i64
+    <   %32 = getelementptr inbounds double, ptr %24, i64 %31
+    <   %33 = load double, ptr %32, align 8
+    <   %34 = fcmp une double %33, 0.000000e+00
+    <   br i1 %34, label %35, label %80"
+indvars,loop-unroll,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__loop-unroll.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__indvars.ll,
+indvars,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\indvars__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,true,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\loop-unroll__then__reassociate.ll,results\paper_full\CoyoteBench_lpbench\round_000\analysis\CoyoteBench_lpbench\commutativity\reassociate__then__loop-unroll.ll,

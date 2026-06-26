@@ -1,0 +1,11 @@
+{
+  "kind": "random_ordered_pair",
+  "passes": [
+    "sroa",
+    "mem2reg"
+  ],
+  "winner": "random",
+  "score_improvement": 0,
+  "details": "random chose sroa->mem2reg",
+  "changed": true
+}

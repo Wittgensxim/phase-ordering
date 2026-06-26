@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "indvars",
+    "instcombine"
+  ],
+  "details": "perturbation: indvars->instcombine",
+  "changed": true
+}

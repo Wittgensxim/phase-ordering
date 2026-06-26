@@ -1,0 +1,602 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+mem2reg,instcombine,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__instcombine.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__mem2reg.ll,"in function main:
+  in block %0 / %0:
+    >   %1 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %2 = mul nsw i32 15625, 20000
+        %1 = load double, ptr @one, align 8
+    >   %4 = sitofp i32 %2 to double
+    >   %5 = fdiv double %3, %4
+    <   %2 = fdiv double %1, 3.125000e+08
+        %3 = load double, ptr @D1, align 8
+        %4 = load double, ptr @D2, align 8
+        %5 = load double, ptr @D3, align 8
+        %6 = load double, ptr @E2, align 8
+        %7 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %2)"
+mem2reg,simplifycfg,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__simplifycfg.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__mem2reg.ll,
+mem2reg,dce,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__dce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__mem2reg.ll,"in function main:
+  in block %20 / %20:
+    >   %21 = phi double [ %34, %35 ], [ 0.000000e+00, %0 ]
+    >   %22 = phi double [ %27, %35 ], [ undef, %0 ]
+    >   %23 = phi double [ %26, %35 ], [ 0.000000e+00, %0 ]
+    >   %24 = phi i32 [ %36, %35 ], [ 1, %0 ]
+    >   %exitcond = icmp ne i32 %24, %smax
+    >   br i1 %exitcond, label %25, label %37
+    <   %21 = phi double [ %33, %34 ], [ 0.000000e+00, %0 ]
+    <   %22 = phi double [ %25, %34 ], [ 0.000000e+00, %0 ]
+    <   %23 = phi i32 [ %35, %34 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %23, %smax
+    <   br i1 %exitcond, label %24, label %36"
+mem2reg,sroa,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__sroa.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__mem2reg.ll,
+mem2reg,early-cse,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__early-cse.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__mem2reg.ll,"in function main:
+  in block %0 / %0:
+    >   %6 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %7 = mul nsw i32 2, %6
+    >   %8 = load double, ptr @one, align 8
+    >   %9 = sitofp i32 %7 to double
+    >   %10 = fdiv double %8, %9
+        %6 = load double, ptr @one, align 8
+    <   %7 = fdiv double %6, 3.125000e+08
+        %8 = load double, ptr @D1, align 8
+        %9 = load double, ptr @D2, align 8
+        %10 = load double, ptr @D3, align 8
+        %11 = load double, ptr @E2, align 8
+        %12 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %7)"
+mem2reg,gvn,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__gvn.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__mem2reg.ll,
+mem2reg,sccp,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__mem2reg.ll,"in function main:
+  in block %0 / %0:
+    >   %3 = sitofp i32 15625 to double
+    >   %4 = fdiv double 1.000000e+06, %3
+    >   store double %4, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+    <   store double 6.400000e+01, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+        store double 1.000000e+00, ptr @TLimit, align 8
+        store double f0x400921FB54442D18, ptr @piref, align 8
+        store double 1.000000e+00, ptr @one, align 8
+        store double 2.000000e+00, ptr @two, align 8
+        store double 3.000000e+00, ptr @three, align 8
+        store double 4.000000e+00, ptr @four, align 8
+        store double 5.000000e+00, ptr @five, align 8
+        %3 = load double, ptr @one, align 8
+        store double %3, ptr @scale, align 8
+        %4 = call i32 (ptr, ...) @printf(ptr noundef @.str.2)
+        %5 = call i32 (ptr, ...) @printf(ptr noundef @.str.3)
+    >   %8 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %9 = mul nsw i32 2, %8
+        %6 = load double, ptr @one, align 8
+    >   %11 = sitofp i32 %9 to double
+    >   %12 = fdiv double %10, %11
+    <   %7 = fdiv double %6, 3.125000e+08
+        %8 = load double, ptr @one, align 8
+        %9 = load double, ptr @D1, align 8
+        %10 = load double, ptr @D2, align 8
+        %11 = load double, ptr @D3, align 8
+        %12 = load double, ptr @D1, align 8
+        %13 = load double, ptr @E2, align 8
+        %14 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %9)"
+mem2reg,adce,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__mem2reg.ll,"in function main:
+  in block %20 / %20:
+    >   %21 = phi double [ %34, %35 ], [ 0.000000e+00, %0 ]
+    >   %22 = phi double [ %27, %35 ], [ undef, %0 ]
+    >   %23 = phi double [ %26, %35 ], [ 0.000000e+00, %0 ]
+    >   %24 = phi i32 [ %36, %35 ], [ 1, %0 ]
+    >   %exitcond = icmp ne i32 %24, %smax
+    >   br i1 %exitcond, label %25, label %37
+    <   %21 = phi double [ %33, %34 ], [ 0.000000e+00, %0 ]
+    <   %22 = phi double [ %25, %34 ], [ 0.000000e+00, %0 ]
+    <   %23 = phi i32 [ %35, %34 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %23, %smax
+    <   br i1 %exitcond, label %24, label %36"
+mem2reg,loop-rotate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__mem2reg.ll,"in function main:
+  in block %0 / %0:
+    >   %exitcond1 = icmp ne i32 1, %smax
+    >   br i1 %exitcond1, label %.lr.ph, label %35
+    <   br label %20"
+mem2reg,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__mem2reg.ll,
+mem2reg,indvars,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__mem2reg.ll,"in function main:
+  in block %20 / %20:
+    >   %21 = phi double [ %34, %35 ], [ 0.000000e+00, %0 ]
+    >   %22 = phi double [ %27, %35 ], [ undef, %0 ]
+    >   %23 = phi double [ %26, %35 ], [ 0.000000e+00, %0 ]
+    >   %24 = phi i32 [ %36, %35 ], [ 1, %0 ]
+    >   %exitcond = icmp ne i32 %24, %smax
+    >   br i1 %exitcond, label %25, label %37
+    <   %21 = phi double [ %33, %34 ], [ 0.000000e+00, %0 ]
+    <   %22 = phi double [ %25, %34 ], [ 0.000000e+00, %0 ]
+    <   %23 = phi i32 [ %35, %34 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %23, %smax
+    <   br i1 %exitcond, label %24, label %36"
+mem2reg,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__mem2reg.ll,
+mem2reg,reassociate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\mem2reg__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__mem2reg.ll,"in function main:
+  in block %0 / %0:
+    >   %8 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %9 = mul nsw i32 %8, 2
+        %8 = load double, ptr @one, align 8
+    >   %11 = sitofp i32 %9 to double
+    >   %12 = fdiv double %10, %11
+    <   %9 = sitofp i32 312500000 to double
+    <   %10 = fdiv double %8, %9
+        %11 = load double, ptr @one, align 8
+        %12 = load double, ptr @D1, align 8
+        %13 = load double, ptr @D2, align 8
+        %14 = load double, ptr @D3, align 8
+        %15 = load double, ptr @D1, align 8
+        %16 = load double, ptr @E2, align 8
+        %17 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %9)
+    <   %smax = call i32 @llvm.smax.i32(i32 1, i32 312500000)"
+instcombine,simplifycfg,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__simplifycfg.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,dce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__dce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__instcombine.ll,
+instcombine,sroa,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__sroa.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__instcombine.ll,"in function main:
+  in block %0 / %0:
+    <   %1 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    <   %2 = mul nsw i32 15625, 20000
+        %3 = load double, ptr @one, align 8
+    >   %2 = fdiv double %1, 3.125000e+08
+    <   %4 = sitofp i32 %2 to double
+    <   %5 = fdiv double %3, %4
+        %6 = load double, ptr @D1, align 8
+        %7 = load double, ptr @D2, align 8
+        %8 = load double, ptr @D3, align 8
+        %9 = load double, ptr @E2, align 8
+        %10 = load double, ptr @E3, align 8
+    <   %smax = call i32 @llvm.smax.i32(i32 1, i32 %2)"
+instcombine,early-cse,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__early-cse.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__instcombine.ll,"in function main:
+  in block %0 / %0:
+    in instruction store to %5 / store to %5:
+      operands %5 and %5 differ
+    in instruction %8 / %7:
+      operands %5 and %5 differ
+    in instruction store to %4 / store to %4:
+      operands %4 and %4 differ
+    in instruction store to %3 / store to %3:
+      operands %3 and %3 differ
+    in instruction %.promoted1 / %.promoted1:
+      operands %3 and %3 differ
+    in instruction %.promoted3 / %.promoted3:
+      operands %2 and %2 differ
+    <   %1 = alloca double, align 8
+        %2 = alloca double, align 8
+        %3 = alloca double, align 8
+        %4 = alloca double, align 8
+        %5 = alloca i32, align 4
+        %6 = alloca i32, align 4
+        %7 = alloca i32, align 4
+        %putchar = call i32 @putchar(i32 10)
+        %puts = call i32 @puts(ptr nonnull dereferenceable(1) @str)
+        store i32 15625, ptr %5, align 4
+        store double 6.400000e+01, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+        store double 1.000000e+00, ptr @TLimit, align 8
+        store double f0x400921FB54442D18, ptr @piref, align 8
+        store double 1.000000e+00, ptr @one, align 8
+        store double 2.000000e+00, ptr @two, align 8
+        store double 3.000000e+00, ptr @three, align 8
+        store double 4.000000e+00, ptr @four, align 8
+        store double 5.000000e+00, ptr @five, align 8
+        store double 1.000000e+00, ptr @scale, align 8
+        %puts1 = call i32 @puts(ptr nonnull dereferenceable(1) @str.1)
+        %puts2 = call i32 @puts(ptr nonnull dereferenceable(1) @str.2)
+        %8 = load i32, ptr %5, align 4
+        %9 = mul nsw i32 %8, 10000
+        store i32 %9, ptr %7, align 4
+        store double 0.000000e+00, ptr @sa, align 8
+        %10 = mul nsw i32 %8, 20000
+        store i32 %10, ptr %7, align 4
+        %11 = load double, ptr @one, align 8
+        %12 = sitofp i32 %10 to double
+        %13 = fdiv double %11, %12
+        store double %13, ptr %4, align 8
+        store double 0.000000e+00, ptr %1, align 8
+        store double 0.000000e+00, ptr %3, align 8
+    <   store i32 1, ptr %6, align 4
+        %14 = load i32, ptr %7, align 4
+        %15 = load double, ptr @D1, align 8
+        %16 = load double, ptr @D2, align 8
+        %17 = load double, ptr @D3, align 8
+        %18 = load double, ptr @E2, align 8
+        %19 = load double, ptr @E3, align 8
+        %.promoted1 = load double, ptr %3, align 8
+        %.promoted3 = load double, ptr %2, align 8
+        %.promoted5 = load double, ptr %1, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 %13, i32 1)
+    <   %smax = call i32 @llvm.smax.i32(i32 1, i32 %14)"
+instcombine,gvn,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__gvn.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__instcombine.ll,"in function main:
+  in block %0 / %0:
+    <   %1 = alloca double, align 8
+    <   %2 = alloca double, align 8
+    <   %3 = alloca double, align 8
+    <   %4 = alloca double, align 8
+    <   %5 = alloca i32, align 4
+    <   %6 = alloca i32, align 4
+    <   %7 = alloca i32, align 4
+        %putchar = call i32 @putchar(i32 10)
+        %puts = call i32 @puts(ptr nonnull dereferenceable(1) @str)
+    <   store i32 15625, ptr %5, align 4
+        store double 6.400000e+01, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+        store double 1.000000e+00, ptr @TLimit, align 8
+        store double f0x400921FB54442D18, ptr @piref, align 8
+        store double 1.000000e+00, ptr @one, align 8
+        store double 2.000000e+00, ptr @two, align 8
+        store double 3.000000e+00, ptr @three, align 8
+        store double 4.000000e+00, ptr @four, align 8
+        store double 5.000000e+00, ptr @five, align 8
+        store double 1.000000e+00, ptr @scale, align 8
+        %puts1 = call i32 @puts(ptr nonnull dereferenceable(1) @str.1)
+        %puts2 = call i32 @puts(ptr nonnull dereferenceable(1) @str.2)
+    <   store i32 156250000, ptr %7, align 4
+        store double 0.000000e+00, ptr @sa, align 8
+    <   store i32 312500000, ptr %7, align 4
+        %8 = load double, ptr @one, align 8
+        %9 = fdiv double %8, 3.125000e+08
+    <   store double %9, ptr %4, align 8
+    <   store double 0.000000e+00, ptr %1, align 8
+    <   store double 0.000000e+00, ptr %3, align 8
+    <   store i32 1, ptr %6, align 4"
+instcombine,sccp,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__instcombine.ll,
+instcombine,loop-rotate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %0 / %0:
+    >   %exitcond1.not.not = icmp slt i32 %.promoted, %14
+    >   br i1 %exitcond1.not.not, label %.lr.ph, label %35
+    <   %exitcond.not5 = icmp eq i32 %.promoted, %smax
+    <   br i1 %exitcond.not5, label %35, label %.lr.ph"
+instcombine,licm,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %37 / %37:
+    <   %.lcssa4 = phi double [ %21, %20 ]
+    <   %.lcssa3 = phi double [ %22, %20 ]
+    <   %.lcssa = phi double [ %23, %20 ]
+        store i32 %smax, ptr %6, align 4
+    >   store double %23, ptr %3, align 8
+    >   store double %22, ptr %2, align 8
+    >   store double %21, ptr %1, align 8
+    <   store double %.lcssa, ptr %3, align 8
+    <   store double %.lcssa3, ptr %2, align 8
+    <   store double %.lcssa4, ptr %1, align 8"
+instcombine,indvars,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__instcombine.ll,"in function main:
+  in block %37 / %37:
+    <   %.lcssa4 = phi double [ %21, %20 ]
+    <   %.lcssa3 = phi double [ %22, %20 ]
+    <   %.lcssa = phi double [ %23, %20 ]
+        store i32 %smax, ptr %6, align 4
+    >   store double %23, ptr %3, align 8
+    >   store double %22, ptr %2, align 8
+    >   store double %21, ptr %1, align 8
+    <   store double %.lcssa, ptr %3, align 8
+    <   store double %.lcssa3, ptr %2, align 8
+    <   store double %.lcssa4, ptr %1, align 8"
+instcombine,loop-unroll,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__instcombine.ll,"in function main:
+  in block %37 / %37:
+    <   %.lcssa4 = phi double [ %21, %20 ]
+    <   %.lcssa3 = phi double [ %22, %20 ]
+    <   %.lcssa = phi double [ %23, %20 ]
+        store i32 %smax, ptr %6, align 4
+    >   store double %23, ptr %3, align 8
+    >   store double %22, ptr %2, align 8
+    >   store double %21, ptr %1, align 8
+    <   store double %.lcssa, ptr %3, align 8
+    <   store double %.lcssa3, ptr %2, align 8
+    <   store double %.lcssa4, ptr %1, align 8"
+instcombine,reassociate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\instcombine__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__instcombine.ll,"in function main:
+  in block %37 / %37:
+    in instruction %44 / %44:
+      operands %38 and %43 differ
+  in block %37 / %37:
+    >   %44 = fadd double %43, %38
+    <   %44 = fadd double %38, %43"
+simplifycfg,dce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__dce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,sroa,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__sroa.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__simplifycfg.ll,
+simplifycfg,early-cse,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__early-cse.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__gvn.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-rotate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph:
+    >   %39 = phi i32 [ %51, %.lr.ph ], [ %.promoted, %0 ]
+    >   %40 = phi double [ %42, %.lr.ph ], [ %.promoted1, %0 ]
+    >   %41 = phi double [ %50, %.lr.ph ], [ %.promoted5, %0 ]
+    >   %42 = fadd double %40, %30
+    >   %43 = fmul double %42, %31
+    >   %44 = call double @llvm.fmuladd.f64(double %43, double %34, double %33)
+    >   %45 = call double @llvm.fmuladd.f64(double %43, double %44, double %32)
+    >   %46 = call double @llvm.fmuladd.f64(double %43, double %38, double %37)
+    >   %47 = call double @llvm.fmuladd.f64(double %43, double %46, double %36)
+    >   %48 = call double @llvm.fmuladd.f64(double %43, double %47, double %35)
+    >   %49 = fdiv double %45, %48
+    >   %50 = fadd double %41, %49
+    >   %51 = add i32 %39, 1
+    >   %exitcond = icmp ne i32 %51, %smax
+    >   br i1 %exitcond, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %39
+  in block %53 / %._crit_edge:
+    >   %.lcssa6 = phi double [ %.promoted5, %0 ], [ %50, %.lr.ph ]
+    >   %.lcssa4 = phi double [ %.promoted3, %0 ], [ %43, %.lr.ph ]
+    >   %.lcssa2 = phi double [ %.promoted1, %0 ], [ %42, %.lr.ph ]
+    <   %.lcssa6 = phi double [ %split, %._crit_edge ], [ %.promoted5, %0 ]
+    <   %.lcssa4 = phi double [ %split2, %._crit_edge ], [ %.promoted3, %0 ]
+    <   %.lcssa2 = phi double [ %split3, %._crit_edge ], [ %.promoted1, %0 ]
+        store i32 %smax, ptr %9, align 4
+    >   store double %.lcssa2, ptr %4, align 8
+    >   store double %.lcssa4, ptr %3, align 8
+    >   store double %.lcssa6, ptr %2, align 8
+    <   store double %.lcssa2, ptr %4, align 8
+    <   store double %.lcssa4, ptr %3, align 8
+    <   store double %.lcssa6, ptr %2, align 8"
+simplifycfg,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__simplifycfg.ll,
+simplifycfg,indvars,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__simplifycfg.ll,
+simplifycfg,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__simplifycfg.ll,
+simplifycfg,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\simplifycfg__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__simplifycfg.ll,
+dce,sroa,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__sroa.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__dce.ll,"in function main:
+  in block %20 / %20:
+    >   %21 = phi double [ %33, %34 ], [ 0.000000e+00, %0 ]
+    >   %22 = phi double [ %25, %34 ], [ 0.000000e+00, %0 ]
+    >   %23 = phi i32 [ %35, %34 ], [ 1, %0 ]
+    >   %exitcond = icmp ne i32 %23, %smax
+    >   br i1 %exitcond, label %24, label %36
+    <   %21 = phi double [ %34, %35 ], [ 0.000000e+00, %0 ]
+    <   %22 = phi double [ %27, %35 ], [ undef, %0 ]
+    <   %23 = phi double [ %26, %35 ], [ 0.000000e+00, %0 ]
+    <   %24 = phi i32 [ %36, %35 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %24, %smax
+    <   br i1 %exitcond, label %25, label %37"
+dce,early-cse,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__early-cse.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__dce.ll,
+dce,gvn,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__gvn.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__dce.ll,
+dce,sccp,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__dce.ll,
+dce,adce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__dce.ll,
+dce,loop-rotate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__dce.ll,
+dce,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\dce__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__dce.ll,
+sroa,early-cse,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__early-cse.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__sroa.ll,"in function main:
+  in block %0 / %0:
+    >   %6 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %7 = mul nsw i32 2, %6
+    >   %8 = load double, ptr @one, align 8
+    >   %9 = sitofp i32 %7 to double
+    >   %10 = fdiv double %8, %9
+        %6 = load double, ptr @one, align 8
+    <   %7 = fdiv double %6, 3.125000e+08
+        %8 = load double, ptr @D1, align 8
+        %9 = load double, ptr @D2, align 8
+        %10 = load double, ptr @D3, align 8
+        %11 = load double, ptr @E2, align 8
+        %12 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %7)"
+sroa,gvn,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__gvn.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__sroa.ll,
+sroa,sccp,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__sroa.ll,"in function main:
+  in block %0 / %0:
+    >   %3 = sitofp i32 15625 to double
+    >   %4 = fdiv double 1.000000e+06, %3
+    >   store double %4, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+    <   store double 6.400000e+01, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+        store double 1.000000e+00, ptr @TLimit, align 8
+        store double f0x400921FB54442D18, ptr @piref, align 8
+        store double 1.000000e+00, ptr @one, align 8
+        store double 2.000000e+00, ptr @two, align 8
+        store double 3.000000e+00, ptr @three, align 8
+        store double 4.000000e+00, ptr @four, align 8
+        store double 5.000000e+00, ptr @five, align 8
+        %3 = load double, ptr @one, align 8
+        store double %3, ptr @scale, align 8
+        %4 = call i32 (ptr, ...) @printf(ptr noundef @.str.2)
+        %5 = call i32 (ptr, ...) @printf(ptr noundef @.str.3)
+    >   %8 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %9 = mul nsw i32 2, %8
+        %6 = load double, ptr @one, align 8
+    >   %11 = sitofp i32 %9 to double
+    >   %12 = fdiv double %10, %11
+    <   %7 = fdiv double %6, 3.125000e+08
+        %8 = load double, ptr @one, align 8
+        %9 = load double, ptr @D1, align 8
+        %10 = load double, ptr @D2, align 8
+        %11 = load double, ptr @D3, align 8
+        %12 = load double, ptr @D1, align 8
+        %13 = load double, ptr @E2, align 8
+        %14 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %9)"
+sroa,adce,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__sroa.ll,"in function main:
+  in block %20 / %20:
+    >   %21 = phi double [ %34, %35 ], [ 0.000000e+00, %0 ]
+    >   %22 = phi double [ %27, %35 ], [ undef, %0 ]
+    >   %23 = phi double [ %26, %35 ], [ 0.000000e+00, %0 ]
+    >   %24 = phi i32 [ %36, %35 ], [ 1, %0 ]
+    >   %exitcond = icmp ne i32 %24, %smax
+    >   br i1 %exitcond, label %25, label %37
+    <   %21 = phi double [ %33, %34 ], [ 0.000000e+00, %0 ]
+    <   %22 = phi double [ %25, %34 ], [ 0.000000e+00, %0 ]
+    <   %23 = phi i32 [ %35, %34 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %23, %smax
+    <   br i1 %exitcond, label %24, label %36"
+sroa,loop-rotate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__sroa.ll,"in function main:
+  in block %0 / %0:
+    >   %exitcond1 = icmp ne i32 1, %smax
+    >   br i1 %exitcond1, label %.lr.ph, label %35
+    <   br label %20"
+sroa,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__sroa.ll,
+sroa,indvars,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__sroa.ll,"in function main:
+  in block %20 / %20:
+    >   %21 = phi double [ %34, %35 ], [ 0.000000e+00, %0 ]
+    >   %22 = phi double [ %27, %35 ], [ undef, %0 ]
+    >   %23 = phi double [ %26, %35 ], [ 0.000000e+00, %0 ]
+    >   %24 = phi i32 [ %36, %35 ], [ 1, %0 ]
+    >   %exitcond = icmp ne i32 %24, %smax
+    >   br i1 %exitcond, label %25, label %37
+    <   %21 = phi double [ %33, %34 ], [ 0.000000e+00, %0 ]
+    <   %22 = phi double [ %25, %34 ], [ 0.000000e+00, %0 ]
+    <   %23 = phi i32 [ %35, %34 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %23, %smax
+    <   br i1 %exitcond, label %24, label %36"
+sroa,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__sroa.ll,
+sroa,reassociate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sroa__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__sroa.ll,"in function main:
+  in block %0 / %0:
+    >   %8 = mul nsw i32 15625, 10000
+        store double 0.000000e+00, ptr @sa, align 8
+    >   %9 = mul nsw i32 %8, 2
+        %8 = load double, ptr @one, align 8
+    >   %11 = sitofp i32 %9 to double
+    >   %12 = fdiv double %10, %11
+    <   %9 = sitofp i32 312500000 to double
+    <   %10 = fdiv double %8, %9
+        %11 = load double, ptr @one, align 8
+        %12 = load double, ptr @D1, align 8
+        %13 = load double, ptr @D2, align 8
+        %14 = load double, ptr @D3, align 8
+        %15 = load double, ptr @D1, align 8
+        %16 = load double, ptr @E2, align 8
+        %17 = load double, ptr @E3, align 8
+    >   %smax = call i32 @llvm.smax.i32(i32 1, i32 %9)
+    <   %smax = call i32 @llvm.smax.i32(i32 1, i32 312500000)"
+early-cse,gvn,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__gvn.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__early-cse.ll,
+early-cse,adce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__early-cse.ll,
+early-cse,loop-rotate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %47 / %47:
+    >   %.lcssa6 = phi double [ %44, %._crit_edge ], [ %.promoted5, %0 ]
+    >   %.lcssa4 = phi double [ %37, %._crit_edge ], [ %.promoted3, %0 ]
+    >   %.lcssa2 = phi double [ %36, %._crit_edge ], [ %.promoted1, %0 ]
+    <   %.lcssa2 = phi double [ %split, %._crit_edge ], [ %.promoted5, %0 ]
+    <   %.lcssa1 = phi double [ %split4, %._crit_edge ], [ %.promoted3, %0 ]
+    <   %.lcssa = phi double [ %split5, %._crit_edge ], [ %.promoted1, %0 ]
+        store i32 %smax, ptr %9, align 4
+    >   store double %.lcssa2, ptr %4, align 8
+    >   store double %.lcssa4, ptr %3, align 8
+    >   store double %.lcssa6, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8
+  in block %._crit_edge:
+    <   %split = phi double [ %44, %45 ]
+    <   %split4 = phi double [ %37, %45 ]
+    <   %split5 = phi double [ %36, %45 ]"
+early-cse,licm,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %49 / %49:
+    <   %.lcssa2 = phi double [ %33, %32 ]
+    <   %.lcssa1 = phi double [ %34, %32 ]
+    <   %.lcssa = phi double [ %35, %32 ]
+        store i32 %smax, ptr %9, align 4
+    >   store double %35, ptr %4, align 8
+    >   store double %34, ptr %3, align 8
+    >   store double %33, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8"
+early-cse,indvars,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__early-cse.ll,"in function main:
+  in block %49 / %49:
+    <   %.lcssa2 = phi double [ %33, %32 ]
+    <   %.lcssa1 = phi double [ %34, %32 ]
+    <   %.lcssa = phi double [ %35, %32 ]
+        store i32 %smax, ptr %9, align 4
+    >   store double %35, ptr %4, align 8
+    >   store double %34, ptr %3, align 8
+    >   store double %33, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8"
+early-cse,loop-unroll,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__early-cse.ll,"in function main:
+  in block %49 / %49:
+    <   %.lcssa2 = phi double [ %33, %32 ]
+    <   %.lcssa1 = phi double [ %34, %32 ]
+    <   %.lcssa = phi double [ %35, %32 ]
+        store i32 %smax, ptr %9, align 4
+    >   store double %35, ptr %4, align 8
+    >   store double %34, ptr %3, align 8
+    >   store double %33, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8"
+early-cse,reassociate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\early-cse__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__early-cse.ll,"in function main:
+  in block %49 / %49:
+    in instruction %56 / %56:
+      operands %50 and %55 differ
+    in instruction %65 / %65:
+      operands %62 and %64 differ
+  in block %49 / %49:
+    >   %56 = fadd double %55, %50
+    <   %56 = fadd double %50, %55
+        %57 = load double, ptr @E2, align 8
+        %58 = fadd double %56, %57
+        %59 = load double, ptr @E3, align 8
+        %60 = fadd double %58, %59
+        %61 = fdiv double %54, %60
+        store double %61, ptr @sa, align 8
+        %62 = load double, ptr @D1, align 8
+        store double %62, ptr @sb, align 8
+        %63 = load double, ptr %6, align 8
+        %64 = load double, ptr @sa, align 8
+    >   %65 = fadd double %64, %62
+    <   %65 = fadd double %62, %64"
+gvn,sccp,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__sccp.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__gvn.ll,
+gvn,adce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__gvn.ll,
+gvn,loop-rotate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %0 / %0:
+    >   br i1 true, label %.lr.ph, label %._crit_edge4
+    <   br label %23"
+gvn,licm,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__gvn.ll,"in function main:
+  in block %39 / %39:
+    <   %.lcssa2 = phi double [ %24, %23 ]
+    <   %.lcssa1 = phi double [ %25, %23 ]
+    <   %.lcssa = phi double [ %26, %23 ]
+        store i32 312500000, ptr %9, align 4
+    >   store double %26, ptr %4, align 8
+    >   store double %25, ptr %3, align 8
+    >   store double %24, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8"
+gvn,indvars,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__gvn.ll,"in function main:
+  in block %39 / %39:
+    <   %.lcssa2 = phi double [ %24, %23 ]
+    <   %.lcssa1 = phi double [ %25, %23 ]
+    <   %.lcssa = phi double [ %26, %23 ]
+        store i32 312500000, ptr %9, align 4
+    >   store double %26, ptr %4, align 8
+    >   store double %25, ptr %3, align 8
+    >   store double %24, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8"
+gvn,loop-unroll,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %39 / %39:
+    <   %.lcssa2 = phi double [ %24, %23 ]
+    <   %.lcssa1 = phi double [ %25, %23 ]
+    <   %.lcssa = phi double [ %26, %23 ]
+        store i32 312500000, ptr %9, align 4
+    >   store double %26, ptr %4, align 8
+    >   store double %25, ptr %3, align 8
+    >   store double %24, ptr %2, align 8
+    <   store double %.lcssa, ptr %4, align 8
+    <   store double %.lcssa1, ptr %3, align 8
+    <   store double %.lcssa2, ptr %2, align 8"
+gvn,reassociate,false,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\gvn__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__gvn.ll,"in function main:
+  in block %38 / %38:
+    >   %45 = fadd double %44, %17
+    <   %45 = fadd double %17, %44"
+sccp,adce,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__adce.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__sccp.ll,
+sccp,loop-rotate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\sccp__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__sccp.ll,
+adce,loop-rotate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__loop-rotate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__adce.ll,
+adce,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\adce__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__adce.ll,
+loop-rotate,licm,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__licm.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__loop-rotate.ll,
+loop-rotate,indvars,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-rotate__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__indvars.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__licm.ll,
+licm,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__licm.ll,
+licm,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\licm__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__licm.ll,
+indvars,loop-unroll,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__loop-unroll.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__indvars.ll,
+indvars,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\indvars__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,true,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\loop-unroll__then__reassociate.ll,results\cmp_test\cmp_rule_O2\Misc_flops_1\round_001\analysis\Misc_flops_1\commutativity\reassociate__then__loop-unroll.ll,

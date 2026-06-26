@@ -1,0 +1,11 @@
+{
+  "kind": "rule_ordered_pair",
+  "passes": [
+    "instcombine",
+    "indvars"
+  ],
+  "winner": 14,
+  "score_improvement": 0,
+  "details": "rule chose instcombine->indvars (rule_score=14)",
+  "changed": true
+}

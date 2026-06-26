@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "gvn",
+    "indvars"
+  ],
+  "details": "perturbation: gvn->indvars",
+  "changed": true
+}

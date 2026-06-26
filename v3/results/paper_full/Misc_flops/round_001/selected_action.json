@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "gvn",
+    "mem2reg"
+  ],
+  "winner": "tie",
+  "score_improvement": 51.0,
+  "details": "oracle chose gvn->mem2reg (improvement: 51.00)",
+  "changed": true
+}

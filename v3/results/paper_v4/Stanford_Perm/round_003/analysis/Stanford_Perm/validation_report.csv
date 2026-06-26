@@ -1,0 +1,100 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+gvn,indvars,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function Initialize:
+  in block %0 / %0:
+    >   store i32 0, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 4), align 4
+    >   store i32 1, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 8), align 4
+    >   store i32 2, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 12), align 4
+    >   store i32 3, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 16), align 4
+    >   store i32 4, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 20), align 4
+    >   store i32 5, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 24), align 4
+    >   store i32 6, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 28), align 4
+    >   ret void
+    <   br label %1
+
+in function Perm:
+  in block %0 / %0:
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   %1 = load i32, ptr @pctr, align 4
+    >   %.not = icmp eq i32 %1, 43300
+    >   br i1 %.not, label %3, label %2
+    <   br label %1"
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->indvars,"in function Permute:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge"
+instcombine,licm,dependent,true,false_positive,inst:Permute:%10;inst:Permute:%9,inst:Permute:%10;inst:Permute:%9,inst:Permute:%10;inst:Permute:%9,read_write;enablement,strong,strong,strong,none,inst:Permute:%10;inst:Permute:%9,,inst,symmetric_rewrite,expansion;mutation,instcombine->licm;licm->instcombine,
+instcombine,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,true,false_positive,inst:Initialize:%2;inst:Initialize:%3;inst:Initialize:%4;inst:Initialize:%exitcond;inst:Perm:%exitcond;loop:Initialize:bb0;loop:Perm:bb0;loop:main:bb0,inst:Initialize:%2;inst:Initialize:%3;inst:Initialize:%4;inst:Initialize:%exitcond;inst:Perm:%exitcond;loop:Initialize:bb0;loop:Perm:bb0;loop:main:bb0,inst:Initialize:%2;inst:Initialize:%3;inst:Initialize:%4;inst:Initialize:%exitcond;inst:Perm:%exitcond;loop:Initialize:bb0;loop:Perm:bb0;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:Initialize:%2;inst:Initialize:%3;inst:Initialize:%4;inst:Initialize:%exitcond;inst:Perm:%exitcond;loop:Initialize:bb0;loop:Perm:bb0;loop:main:bb0,,inst;loop,symmetric_rewrite,expansion;mutation,instcombine->loop-unroll;loop-unroll->instcombine,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->licm,"in function Permute:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge"
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-rotate,"in function Permute:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge"
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function Permute:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge"
+loop-unroll,simplifycfg,dependent,false,agree_dependent,inst:Permute:bb3:4:br;loop:Permute:bb3,inst:Permute:bb3:4:br;loop:Permute:bb3,inst:Permute:bb3:4:br;loop:Permute:bb3,read_write;enablement,strong,strong,strong,none,loop:Permute:bb3,inst:Permute:bb3:4:br,inst;loop,symmetric_rewrite,expansion,simplifycfg->loop-unroll;loop-unroll->simplifycfg,"in function Initialize:
+  in block %0 / %0:
+    >   store i32 0, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 4), align 4
+    >   store i32 1, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 8), align 4
+    >   store i32 2, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 12), align 4
+    >   store i32 3, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 16), align 4
+    >   store i32 4, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 20), align 4
+    >   store i32 5, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 24), align 4
+    >   store i32 6, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 28), align 4
+    >   ret void
+    <   br label %1
+
+in function Permute:
+  in block %._crit_edge.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %._crit_edge
+
+in function Perm:
+  in block %0 / %0:
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   %1 = load i32, ptr @pctr, align 4
+    >   %.not = icmp eq i32 %1, 43300
+    >   br i1 %.not, label %3, label %2
+    <   br label %1"

@@ -1,0 +1,1216 @@
+{
+  "benchmark": "Stanford_Bubblesort",
+  "rounds": 5,
+  "final_metrics": {
+    "function_count": 5,
+    "basic_block_count": 18,
+    "instruction_count": 80,
+    "load_count": 10,
+    "store_count": 10,
+    "call_count": 6,
+    "branch_count": 18,
+    "phi_count": 6,
+    "ret_count": 5,
+    "ir_file_size": 8794,
+    "ir_cost": 164.13,
+    "score_ir": 164.13,
+    "score": 164.13
+  },
+  "trace": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_000\\input.ll",
+      "input_hash": "a47dabd99db44732195d868e97506e2b5d3a8b9eaad79b86942f21410022a977",
+      "metric_score": 100.0,
+      "instruction_count": 153,
+      "candidate_pass_count": 12,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-unroll",
+        "mem2reg",
+        "reassociate",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "early-cse,mem2reg",
+        "early-cse,sccp",
+        "early-cse,sroa",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,mem2reg",
+        "gvn,reassociate",
+        "gvn,sccp",
+        "gvn,sroa",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,mem2reg",
+        "instcombine,sccp",
+        "instcombine,simplifycfg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,simplifycfg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "mem2reg,simplifycfg",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "gvn,instcombine",
+      "action_details": "oracle chose gvn->instcombine (improvement: 113.28)",
+      "output_hash": "ece16592a35f7eb7d1dce802cbf9c053d21cfe5b61b8c35171a111ec223b8dc4",
+      "metric_after": 68.11,
+      "metric_delta": -31.89,
+      "changed": "true"
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_001\\input.ll",
+      "input_hash": "ece16592a35f7eb7d1dce802cbf9c053d21cfe5b61b8c35171a111ec223b8dc4",
+      "metric_score": 68.11,
+      "instruction_count": 85,
+      "candidate_pass_count": 9,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,licm",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,simplifycfg",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "licm,loop-rotate",
+        "licm,simplifycfg",
+        "loop-rotate,loop-unroll",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "licm,loop-rotate",
+      "action_details": "oracle chose licm->loop-rotate (improvement: 13.25)",
+      "output_hash": "2572dd60006e6f8209a2886b0cb6b3436a8373b3dbd1b03619ba70e12c966f70",
+      "metric_after": 64.23,
+      "metric_delta": -3.88,
+      "changed": "true"
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_002\\input.ll",
+      "input_hash": "2572dd60006e6f8209a2886b0cb6b3436a8373b3dbd1b03619ba70e12c966f70",
+      "metric_score": 64.23,
+      "instruction_count": 82,
+      "candidate_pass_count": 9,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-unroll",
+        "sccp",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,indvars",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "indvars,instcombine",
+        "indvars,loop-unroll",
+        "indvars,sccp",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "indvars,early-cse",
+      "action_details": "oracle chose indvars->early-cse (improvement: 4.18)",
+      "output_hash": "989eba66ee5b8790ea073f94d8f59e2fcc3b388939d052e6209e14da1cf88b11",
+      "metric_after": 63.4,
+      "metric_delta": -0.83,
+      "changed": "true"
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\input.ll",
+      "input_hash": "989eba66ee5b8790ea073f94d8f59e2fcc3b388939d052e6209e14da1cf88b11",
+      "metric_score": 63.4,
+      "instruction_count": 78,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,instcombine",
+        "gvn,loop-unroll",
+        "indvars,instcombine",
+        "indvars,loop-unroll",
+        "instcombine,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "indvars,instcombine",
+      "action_details": "oracle chose indvars->instcombine (improvement: 0.00)",
+      "output_hash": "74ca4e5e8e62a43ff93a344f8652166b14d62edd1a262aaa96179f13c1d5e9ea",
+      "metric_after": 63.43,
+      "metric_delta": 0.03,
+      "changed": "true"
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_004\\input.ll",
+      "input_hash": "74ca4e5e8e62a43ff93a344f8652166b14d62edd1a262aaa96179f13c1d5e9ea",
+      "metric_score": 63.43,
+      "instruction_count": 78,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,instcombine",
+        "gvn,loop-unroll",
+        "indvars,loop-unroll",
+        "instcombine,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "gvn,instcombine",
+      "action_details": "oracle chose gvn->instcombine (improvement: -3.31)",
+      "output_hash": "df953b3c910bc74a4f4428a84f78e58d958ee5a20e5676909a811759f0a851f1",
+      "metric_after": 64.6,
+      "metric_delta": 1.17,
+      "changed": "true"
+    }
+  ],
+  "policy_reports": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,mem2reg:order_sensitive",
+        "early-cse,reassociate:needs_attribution",
+        "early-cse,sccp:order_sensitive",
+        "early-cse,simplifycfg:needs_attribution",
+        "early-cse,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.0909
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-unroll:confirmed_independent",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "gvn,simplifycfg:needs_attribution",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.5455
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:likely_independent",
+        "instcombine,sccp:order_sensitive",
+        "instcombine,simplifycfg:order_sensitive",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:needs_attribution",
+        "licm,sccp:needs_attribution",
+        "licm,simplifycfg:order_sensitive",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.0909
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:confirmed_independent",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:confirmed_independent",
+        "loop-unroll,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 10,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.9091
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-unroll,mem2reg:confirmed_independent",
+        "mem2reg,reassociate:needs_attribution",
+        "mem2reg,sccp:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:likely_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "reassociate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:needs_attribution",
+        "gvn,reassociate:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:likely_independent",
+        "licm,reassociate:needs_attribution",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-unroll,reassociate:confirmed_independent",
+        "mem2reg,reassociate:needs_attribution",
+        "reassociate,sccp:needs_attribution",
+        "reassociate,simplifycfg:needs_attribution",
+        "reassociate,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:order_sensitive",
+        "licm,sccp:needs_attribution",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "mem2reg,sccp:confirmed_independent",
+        "reassociate,sccp:needs_attribution",
+        "sccp,simplifycfg:confirmed_independent",
+        "sccp,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.5455
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:needs_attribution",
+        "gvn,simplifycfg:needs_attribution",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:order_sensitive",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:order_sensitive",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-unroll,sroa:confirmed_independent",
+        "mem2reg,sroa:likely_independent",
+        "reassociate,sroa:needs_attribution",
+        "sccp,sroa:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:confirmed_independent",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:confirmed_independent",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.875
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.75
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:needs_attribution",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.625
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:confirmed_independent",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:needs_attribution",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-rotate,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.875
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:confirmed_independent",
+        "gvn,loop-unroll:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.75
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:order_sensitive",
+        "loop-rotate,simplifycfg:needs_attribution",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:order_sensitive",
+        "early-cse,instcombine:likely_independent",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,sccp:confirmed_independent",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:order_sensitive",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:confirmed_independent",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-unroll:order_sensitive",
+        "indvars,sccp:order_sensitive",
+        "indvars,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:likely_independent",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,sccp:confirmed_independent",
+        "instcombine,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.25
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.625
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.625
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.375
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:order_sensitive",
+        "instcombine,sccp:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.875
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:needs_attribution",
+        "instcombine,simplifycfg:needs_attribution",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-rotate,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 8,
+      "safe_edge_ratio": 0.625
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "indvars,loop-unroll:order_sensitive",
+        "indvars,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.2
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:needs_attribution",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:needs_attribution",
+        "gvn,instcombine:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.4
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:needs_attribution",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,loop-unroll:order_sensitive",
+        "indvars,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_Bubblesort",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_score": 62.39,
+    "scheduler_score": 64.6,
+    "improvement": -2.2099999999999937,
+    "baseline_instruction_count": 78,
+    "scheduler_instruction_count": 80
+  }
+}

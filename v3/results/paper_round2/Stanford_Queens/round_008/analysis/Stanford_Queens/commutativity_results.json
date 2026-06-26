@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "total_pairs": 3,
+    "commuting_pairs": 1,
+    "non_commuting_pairs": 2
+  },
+  "pairs": [
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_round2\\Stanford_Queens\\round_008\\analysis\\Stanford_Queens\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_round2\\Stanford_Queens\\round_008\\analysis\\Stanford_Queens\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_round2\\Stanford_Queens\\round_008\\analysis\\Stanford_Queens\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_round2\\Stanford_Queens\\round_008\\analysis\\Stanford_Queens\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function Queens:\n  in block %1 / %1:\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   %2 = add nsw i32 %0, 1\n    >   %3 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.1, i32 noundef %2) #3\n    >   ret void\n    <   br label %2"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_round2\\Stanford_Queens\\round_008\\analysis\\Stanford_Queens\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_round2\\Stanford_Queens\\round_008\\analysis\\Stanford_Queens\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Queens:\n  in block %1 / %1:\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   %2 = add nsw i32 %0, 1\n    >   %3 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.1, i32 noundef %2) #3\n    >   ret void\n    <   br label %2"
+    }
+  ]
+}

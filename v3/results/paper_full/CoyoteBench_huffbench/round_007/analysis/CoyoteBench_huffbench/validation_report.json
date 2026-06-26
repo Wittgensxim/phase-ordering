@@ -1,0 +1,3221 @@
+{
+  "summary": {
+    "total_pairs": 45,
+    "agree_dependent": 24,
+    "agree_independent": 4,
+    "false_positive": 17,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 0,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "early-cse->indvars",
+        "indvars->early-cse"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %27 ], [ %.01, %10 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "instcombine",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "early-cse->licm",
+        "licm->early-cse"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    >   %21 = trunc i64 %.010 to i32\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n    <   %21 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %29 ], [ %.01, %13 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "early-cse->loop-rotate",
+        "loop-rotate->early-cse"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    >   %.not20 = icmp eq i64 %.111, 0\n    >   br i1 %.not20, label %.preheader4.preheader, label %.lr.ph22\n    <   %.010.lcssa = phi i64 [ %.111, %.preheader6 ]\n    <   %.not20 = icmp eq i64 %.010.lcssa, 0\n    <   br i1 %.not20, label %.preheader4.preheader, label %.lr.ph22\n\nin function heap_adjust:\n  in block %.._crit_edge_crit_edge4:\n    <   %split5 = phi i32 [ %.0, %37 ]\n  in block %.._crit_edge_crit_edge:\n    <   %split = phi i32 [ %.012, %26 ]\n  in block %._crit_edge:\n    >   %.01.lcssa = phi i32 [ %.012, %.._crit_edge_crit_edge ], [ %.0, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n    <   %.01.lcssa = phi i32 [ %split, %.._crit_edge_crit_edge ], [ %split5, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not.lcssa, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %6 / %6:\n    >   %exitcond.not2 = phi i1 [ false, %.preheader ], [ %exitcond.not, %5 ]\n    >   %.011 = phi i32 [ 1, %.preheader ], [ %9, %5 ]\n    <   %.011 = phi i32 [ 1, %.preheader ], [ %.01, %5 ]\n        %7 = load ptr, ptr %4, align 8\n        %8 = call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %7, ptr noundef nonnull dereferenceable(4) @.str.4) #9\n        %.not = icmp eq i32 %8, 0\n    >   %9 = add nuw i32 %.011, 1\n    <   %9 = add nuw i32 %.011, 1\n  in block %.loopexit.loopexit:\n    >   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not2, %6 ]\n    <   %.not1.ph = phi i1 [ %exitcond.not, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "early-cse->loop-simplify"
+      ],
+      "commutativity_details": "in function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ %exitcond.not, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "early-cse->loop-unroll",
+        "loop-unroll->early-cse"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %27 ], [ %.01, %10 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->indvars",
+        "indvars->gvn"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %27 ], [ %.01, %10 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->licm",
+        "licm->gvn"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    >   %21 = trunc i64 %.010 to i32\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n    <   %21 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %29 ], [ %.01, %13 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->loop-rotate",
+        "loop-rotate->gvn"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    >   %.not20 = icmp eq i64 %.111, 0\n    >   br i1 %.not20, label %.preheader4.preheader, label %.lr.ph22\n    <   %.010.lcssa = phi i64 [ %.111, %.preheader6 ]\n    <   %.not20 = icmp eq i64 %.010.lcssa, 0\n    <   br i1 %.not20, label %.preheader4.preheader, label %.lr.ph22\n\nin function heap_adjust:\n  in block %.._crit_edge_crit_edge4:\n    <   %split5 = phi i32 [ %.0, %37 ]\n  in block %.._crit_edge_crit_edge:\n    >   %.pre = sext i32 %.012 to i64\n    <   %split = phi i32 [ %.012, %26 ]\n  in block %._crit_edge:\n    >   %.pre-phi = phi i64 [ %30, %.._crit_edge_crit_edge4 ], [ %.pre, %.._crit_edge_crit_edge ], [ %5, %4 ]\n    >   %.01.lcssa = phi i32 [ %.012, %.._crit_edge_crit_edge ], [ %.0, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n    <   %.01.lcssa = phi i32 [ %split, %.._crit_edge_crit_edge ], [ %split5, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n        %41 = ashr exact i64 %9, 32\n    >   %42 = getelementptr [8 x i8], ptr %1, i64 %.pre-phi\n    >   %43 = getelementptr i8, ptr %42, i64 -8\n    >   store i64 %41, ptr %43, align 8\n    <   %42 = sext i32 %.01.lcssa to i64\n    <   %43 = getelementptr [8 x i8], ptr %1, i64 %42\n    <   %44 = getelementptr i8, ptr %43, i64 -8\n    <   store i64 %41, ptr %44, align 8\n\nin function main:\n  in block %6 / %6:\n    >   %.011 = phi i32 [ 1, %.preheader ], [ %9, %5 ]\n    <   %.011 = phi i32 [ 1, %.preheader ], [ %.01, %5 ]\n        %7 = load ptr, ptr %4, align 8\n        %8 = call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %7, ptr noundef nonnull dereferenceable(4) @.str.4) #9\n        %.not = icmp eq i32 %8, 0\n    >   %9 = add nuw i32 %.011, 1\n    <   %9 = add nuw i32 %.011, 1\n  in block %5 / %5:\n    >   %exitcond.not = icmp eq i32 %9, %0\n    >   br i1 %exitcond.not, label %.loopexit.loopexit, label %6, !llvm.loop !7\n    <   %.01 = phi i32 [ %9, %6 ]\n    <   %exitcond.not = icmp eq i32 %.01, %0\n    <   br i1 %exitcond.not, label %.loopexit.loopexit, label %6, !llvm.loop !7"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->loop-simplify"
+      ],
+      "commutativity_details": "in function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ true, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "gvn->loop-unroll",
+        "loop-unroll->gvn"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n  in block %.preheader6.1:\n    >   %28 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %27\n    >   %29 = load i64, ptr %28, align 8\n    >   %.not8.1 = icmp eq i64 %29, 0\n    >   br i1 %.not8.1, label %33, label %30\n    <   br label %28\n  in block %28 / %.preheader6.1:\n    >   %.111 = phi i64 [ %26, %24 ], [ %.010, %21 ]\n    >   %27 = add nuw nsw i64 %.13, 1\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %27 ], [ %.01, %10 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "instcombine",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->indvars",
+        "indvars->instcombine"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %27 ], [ %.01, %10 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ true, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->indvars"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %50 / %50:\n    >   %.212.lcssa = phi i64 [ %split, %.preheader4._crit_edge ], [ %.010.lcssa, %.preheader4.preheader ]\n    >   %51 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %.212.lcssa\n    >   %52 = getelementptr inbounds nuw i8, ptr %51, i64 1024\n    >   store i32 0, ptr %52, align 4\n    <   %.212.lcssa = phi i64 [ 1, %.preheader4._crit_edge ], [ %.010.lcssa, %.preheader4.preheader ]\n    <   %51 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %.212.lcssa\n    <   %52 = getelementptr inbounds nuw i8, ptr %51, i64 1024\n    <   store i32 0, ptr %52, align 4\n  in block %.preheader4._crit_edge:\n    >   %split = phi i64 [ %31, %.preheader4 ]\n\nin function main:\n  in block %6 / %6:\n    >   %exitcond.not2 = phi i1 [ false, %.preheader ], [ %exitcond.not, %5 ]\n    >   %.011 = phi i32 [ 1, %.preheader ], [ %.01, %5 ]\n    <   %exitcond.not2 = phi i1 [ false, %.preheader ], [ %exitcond.not, %5 ]\n    <   %.011 = phi i32 [ 1, %.preheader ], [ %9, %5 ]\n        %7 = load ptr, ptr %4, align 8\n        %8 = call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %7, ptr noundef nonnull dereferenceable(4) @.str.4) #9\n        %.not = icmp eq i32 %8, 0\n    >   %9 = add nuw i32 %.011, 1\n    <   %9 = add i32 %.011, 1\n  in block %.loopexit.loopexit:\n    >   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not2, %6 ]\n    <   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not2, %6 ]\n  in block %5 / %5:\n    >   %.01 = phi i32 [ %9, %6 ]\n    >   %exitcond.not = icmp eq i32 %.01, %0\n    >   br i1 %exitcond.not, label %.loopexit.loopexit, label %6, !llvm.loop !7\n    <   %exitcond.not = icmp eq i32 %9, %0\n    <   br i1 %exitcond.not, label %.loopexit.loopexit, label %6, !llvm.loop !7"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:%.not1",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->indvars",
+        "indvars->sccp"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "indvars->simplifycfg"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader6.preheader / %.preheader6:\n    >   %.010 = phi i64 [ %.111, %27 ], [ 0, %12 ]\n    >   %.13 = phi i64 [ %28, %27 ], [ 0, %12 ]\n    >   %exitcond13.not = icmp eq i64 %.13, 256\n    >   br i1 %exitcond13.not, label %.preheader5.preheader, label %21\n    <   br label %.preheader6\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not.lcssa, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %12:\n      successor %.loopexit cannot be equivalent to %12; it's already equivalent to %.loopexit\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    >   %11 = call ptr @generate_test_data(i64 noundef 10000000)\n    <   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->licm",
+        "licm->instcombine"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    >   %21 = trunc i64 %.010 to i32\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n    <   %21 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %29 ], [ %.01, %13 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ true, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->loop-rotate",
+        "loop-rotate->instcombine"
+      ],
+      "commutativity_details": "in function generate_test_data:\n  in block %1 / %1:\n    >   %exitcond.not1 = icmp eq i64 %0, 0\n    >   br i1 %exitcond.not1, label %8, label %.lr.ph\n    <   %exitcond.not1 = icmp eq i64 0, %0\n    <   br i1 %exitcond.not1, label %8, label %.lr.ph\n\nin function compdecomp:\n  in block %2 / %2:\n    >   %exitcond.not14 = icmp eq i64 %1, 0\n    >   br i1 %exitcond.not14, label %.preheader6.preheader, label %.lr.ph\n    <   %exitcond.not14 = icmp eq i64 0, %1\n    <   br i1 %exitcond.not14, label %.preheader6.preheader, label %.lr.ph\n\nin function heap_adjust:\n  in block %.._crit_edge_crit_edge4:\n    <   %split5 = phi i32 [ %.0, %37 ]\n  in block %.._crit_edge_crit_edge:\n    <   %split = phi i32 [ %.012, %26 ]\n  in block %._crit_edge:\n    >   %.01.lcssa = phi i32 [ %.012, %.._crit_edge_crit_edge ], [ %.0, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n    <   %.01.lcssa = phi i32 [ %split, %.._crit_edge_crit_edge ], [ %split5, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %6 / %7:\n    >   %.011 = phi i32 [ 1, %.preheader ], [ %6, %5 ]\n    <   %.011 = phi i32 [ 1, %.preheader ], [ %.01, %5 ]\n        %7 = load ptr, ptr %4, align 8\n        %8 = call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %7, ptr noundef nonnull dereferenceable(4) @.str.4) #9\n    >   %.not = icmp ne i32 %9, 0\n    >   br i1 %.not, label %5, label %.loopexit.loopexit\n    <   %.not = icmp eq i32 %8, 0\n    <   %9 = add nuw i32 %.011, 1\n    <   br i1 %.not, label %.loopexit.loopexit, label %5"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->loop-simplify"
+      ],
+      "commutativity_details": "in function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ true, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "instcombine->loop-unroll",
+        "loop-unroll->instcombine"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    <   %.010.lcssa = phi i64 [ %.010, %.preheader6 ]\n  in block %.preheader6.1:\n    >   %27 = or disjoint i64 %.13, 1\n    <   %27 = add nuw nsw i64 %.13, 1\n  in block %34 / %34:\n    >   %.111.1 = phi i64 [ %33, %31 ], [ %.111, %28 ]\n    <   %.111.1 = phi i64 [ %33, %31 ], [ %.111, %28 ]\n  in block %31 / %31:\n    >   store i64 %27, ptr %32, align 8\n    <   store i64 %27, ptr %32, align 8\n  in block %28 / %28:\n    >   %29 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %27\n    >   %30 = load i64, ptr %29, align 8\n    >   %.not8.1 = icmp eq i64 %30, 0\n    >   br i1 %.not8.1, label %34, label %31\n    <   %29 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %27\n    <   %30 = load i64, ptr %29, align 8\n    <   %.not8.1 = icmp eq i64 %30, 0\n    <   br i1 %.not8.1, label %34, label %31\n\nin function heap_adjust:\n  in block %._crit_edge:\n    <   %.01.lcssa = phi i32 [ %.01, %27 ], [ %.01, %10 ]\n        %42 = ashr exact i64 %9, 32\n    >   %43 = sext i32 %.01 to i64\n    >   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    >   %45 = getelementptr i8, ptr %44, i64 -8\n    >   store i64 %42, ptr %45, align 8\n    <   %43 = sext i32 %.01.lcssa to i64\n    <   %44 = getelementptr [8 x i8], ptr %1, i64 %43\n    <   %45 = getelementptr i8, ptr %44, i64 -8\n    <   store i64 %42, ptr %45, align 8\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ true, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%22",
+        "inst:compdecomp:%23",
+        "inst:compdecomp:%25",
+        "inst:compdecomp:%26",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%30",
+        "inst:heap_adjust:%11",
+        "inst:heap_adjust:%13",
+        "inst:heap_adjust:%14",
+        "inst:heap_adjust:%16",
+        "inst:heap_adjust:%17",
+        "inst:heap_adjust:%18",
+        "inst:heap_adjust:%19",
+        "inst:heap_adjust:%20",
+        "inst:heap_adjust:%22",
+        "inst:heap_adjust:%23",
+        "inst:heap_adjust:%25",
+        "inst:heap_adjust:%26",
+        "inst:heap_adjust:%28",
+        "inst:heap_adjust:%29",
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%22",
+        "inst:compdecomp:%23",
+        "inst:compdecomp:%25",
+        "inst:compdecomp:%26",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%30",
+        "inst:heap_adjust:%11",
+        "inst:heap_adjust:%13",
+        "inst:heap_adjust:%14",
+        "inst:heap_adjust:%16",
+        "inst:heap_adjust:%17",
+        "inst:heap_adjust:%18",
+        "inst:heap_adjust:%19",
+        "inst:heap_adjust:%20",
+        "inst:heap_adjust:%22",
+        "inst:heap_adjust:%23",
+        "inst:heap_adjust:%25",
+        "inst:heap_adjust:%26",
+        "inst:heap_adjust:%28",
+        "inst:heap_adjust:%29",
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:%145",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%21",
+        "inst:compdecomp:%22",
+        "inst:compdecomp:%23",
+        "inst:compdecomp:%24",
+        "inst:compdecomp:%25",
+        "inst:compdecomp:%26",
+        "inst:compdecomp:%27",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%29",
+        "inst:compdecomp:%30",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:heap_adjust:%10",
+        "inst:heap_adjust:%11",
+        "inst:heap_adjust:%12",
+        "inst:heap_adjust:%13",
+        "inst:heap_adjust:%14",
+        "inst:heap_adjust:%15",
+        "inst:heap_adjust:%16",
+        "inst:heap_adjust:%17",
+        "inst:heap_adjust:%18",
+        "inst:heap_adjust:%19",
+        "inst:heap_adjust:%20",
+        "inst:heap_adjust:%22",
+        "inst:heap_adjust:%23",
+        "inst:heap_adjust:%25",
+        "inst:heap_adjust:%26",
+        "inst:heap_adjust:%27",
+        "inst:heap_adjust:%28",
+        "inst:heap_adjust:%29",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:%145",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%21",
+        "inst:compdecomp:%22",
+        "inst:compdecomp:%23",
+        "inst:compdecomp:%24",
+        "inst:compdecomp:%25",
+        "inst:compdecomp:%26",
+        "inst:compdecomp:%27",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%29",
+        "inst:compdecomp:%30",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:heap_adjust:%10",
+        "inst:heap_adjust:%11",
+        "inst:heap_adjust:%12",
+        "inst:heap_adjust:%13",
+        "inst:heap_adjust:%14",
+        "inst:heap_adjust:%15",
+        "inst:heap_adjust:%16",
+        "inst:heap_adjust:%17",
+        "inst:heap_adjust:%18",
+        "inst:heap_adjust:%19",
+        "inst:heap_adjust:%20",
+        "inst:heap_adjust:%22",
+        "inst:heap_adjust:%23",
+        "inst:heap_adjust:%25",
+        "inst:heap_adjust:%26",
+        "inst:heap_adjust:%27",
+        "inst:heap_adjust:%28",
+        "inst:heap_adjust:%29",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->licm",
+        "licm->loop-rotate"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader5.preheader:\n    >   %20 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %4 / %4:\n    >   %11 = ashr exact i64 %9, 29\n    >   %12 = getelementptr inbounds i8, ptr %0, i64 %11"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:%.not1",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%30",
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%30",
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:%145",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%27",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%29",
+        "inst:compdecomp:%30",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:%145",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%27",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%29",
+        "inst:compdecomp:%30",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "licm->loop-unroll",
+        "loop-unroll->licm"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->licm",
+        "licm->sccp"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "licm->simplifycfg"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader6.preheader / %.preheader6:\n    >   %.010 = phi i64 [ %.111, %28 ], [ 0, %12 ]\n    >   %.13 = phi i64 [ %29, %28 ], [ 0, %12 ]\n    >   %exitcond13.not = icmp eq i64 %.13, 256\n    >   br i1 %exitcond13.not, label %.preheader5.preheader, label %22\n    <   br label %.preheader6\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not.lcssa, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %12:\n      successor %.loopexit cannot be equivalent to %12; it's already equivalent to %.loopexit\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    >   %11 = call ptr @generate_test_data(i64 noundef 10000000)\n    <   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:%.not1",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:compdecomp:%.010",
+        "inst:compdecomp:%.13",
+        "inst:compdecomp:%100",
+        "inst:compdecomp:%102",
+        "inst:compdecomp:%104",
+        "inst:compdecomp:%105",
+        "inst:compdecomp:%106",
+        "inst:compdecomp:%108",
+        "inst:compdecomp:%109",
+        "inst:compdecomp:%111",
+        "inst:compdecomp:%112",
+        "inst:compdecomp:%114",
+        "inst:compdecomp:%115",
+        "inst:compdecomp:%116",
+        "inst:compdecomp:%117",
+        "inst:compdecomp:%118",
+        "inst:compdecomp:%119",
+        "inst:compdecomp:%120",
+        "inst:compdecomp:%122",
+        "inst:compdecomp:%123",
+        "inst:compdecomp:%125",
+        "inst:compdecomp:%126",
+        "inst:compdecomp:%127",
+        "inst:compdecomp:%128",
+        "inst:compdecomp:%132",
+        "inst:compdecomp:%133",
+        "inst:compdecomp:%134",
+        "inst:compdecomp:%135",
+        "inst:compdecomp:%137",
+        "inst:compdecomp:%138",
+        "inst:compdecomp:%139",
+        "inst:compdecomp:%141",
+        "inst:compdecomp:%142",
+        "inst:compdecomp:%143",
+        "inst:compdecomp:%144",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%150",
+        "inst:compdecomp:%151",
+        "inst:compdecomp:%152",
+        "inst:compdecomp:%153",
+        "inst:compdecomp:%155",
+        "inst:compdecomp:%157",
+        "inst:compdecomp:%159",
+        "inst:compdecomp:%160",
+        "inst:compdecomp:%161",
+        "inst:compdecomp:%162",
+        "inst:compdecomp:%165",
+        "inst:compdecomp:%168",
+        "inst:compdecomp:%170",
+        "inst:compdecomp:%171",
+        "inst:compdecomp:%172",
+        "inst:compdecomp:%173",
+        "inst:compdecomp:%174",
+        "inst:compdecomp:%175",
+        "inst:compdecomp:%176",
+        "inst:compdecomp:%178",
+        "inst:compdecomp:%179",
+        "inst:compdecomp:%181",
+        "inst:compdecomp:%182",
+        "inst:compdecomp:%184",
+        "inst:compdecomp:%185",
+        "inst:compdecomp:%186",
+        "inst:compdecomp:%187",
+        "inst:compdecomp:%188",
+        "inst:compdecomp:%189",
+        "inst:compdecomp:%191",
+        "inst:compdecomp:%192",
+        "inst:compdecomp:%193",
+        "inst:compdecomp:%195",
+        "inst:compdecomp:%197",
+        "inst:compdecomp:%199",
+        "inst:compdecomp:%200",
+        "inst:compdecomp:%201",
+        "inst:compdecomp:%202",
+        "inst:compdecomp:%204",
+        "inst:compdecomp:%205",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%30",
+        "inst:compdecomp:%31",
+        "inst:compdecomp:%32",
+        "inst:compdecomp:%33",
+        "inst:compdecomp:%35",
+        "inst:compdecomp:%39",
+        "inst:compdecomp:%40",
+        "inst:compdecomp:%41",
+        "inst:compdecomp:%42",
+        "inst:compdecomp:%44",
+        "inst:compdecomp:%45",
+        "inst:compdecomp:%46",
+        "inst:compdecomp:%47",
+        "inst:compdecomp:%48",
+        "inst:compdecomp:%49",
+        "inst:compdecomp:%50",
+        "inst:compdecomp:%51",
+        "inst:compdecomp:%52",
+        "inst:compdecomp:%54",
+        "inst:compdecomp:%55",
+        "inst:compdecomp:%58",
+        "inst:compdecomp:%59",
+        "inst:compdecomp:%62",
+        "inst:compdecomp:%65",
+        "inst:compdecomp:%66",
+        "inst:compdecomp:%67",
+        "inst:compdecomp:%68",
+        "inst:compdecomp:%69",
+        "inst:compdecomp:%71",
+        "inst:compdecomp:%72",
+        "inst:compdecomp:%73",
+        "inst:compdecomp:%74",
+        "inst:compdecomp:%76",
+        "inst:compdecomp:%78",
+        "inst:compdecomp:%81",
+        "inst:compdecomp:%83",
+        "inst:compdecomp:%85",
+        "inst:compdecomp:%86",
+        "inst:compdecomp:%88",
+        "inst:compdecomp:%89",
+        "inst:compdecomp:%90",
+        "inst:compdecomp:%91",
+        "inst:compdecomp:%92",
+        "inst:compdecomp:%93",
+        "inst:compdecomp:%94",
+        "inst:compdecomp:%95",
+        "inst:compdecomp:%97",
+        "inst:compdecomp:%98",
+        "inst:compdecomp:%99",
+        "inst:compdecomp:bb11:1:store",
+        "inst:compdecomp:bb11:2:store",
+        "inst:compdecomp:bb11:3:br",
+        "inst:compdecomp:bb13:1:br",
+        "inst:compdecomp:bb14:1:store",
+        "inst:compdecomp:bb14:2:store",
+        "inst:compdecomp:bb14:3:br",
+        "inst:compdecomp:bb15:1:br",
+        "inst:compdecomp:bb16:1:call",
+        "inst:compdecomp:bb16:2:unreachable",
+        "inst:compdecomp:bb17:1:br",
+        "inst:compdecomp:bb19:1:store",
+        "inst:compdecomp:bb19:2:call",
+        "inst:compdecomp:bb19:3:br",
+        "inst:compdecomp:bb20:1:br",
+        "inst:compdecomp:bb21:1:br",
+        "inst:compdecomp:bb22:1:br",
+        "inst:compdecomp:bb23:1:br",
+        "inst:compdecomp:bb24:1:store",
+        "inst:compdecomp:bb24:2:br",
+        "inst:compdecomp:bb25:1:br",
+        "inst:compdecomp:bb26:1:call",
+        "inst:compdecomp:bb26:2:unreachable",
+        "inst:compdecomp:bb27:1:br",
+        "inst:compdecomp:bb28:1:br",
+        "inst:compdecomp:bb29:1:store",
+        "inst:compdecomp:bb29:2:br",
+        "inst:compdecomp:bb30:1:br",
+        "inst:compdecomp:bb31:1:br",
+        "inst:compdecomp:bb32:1:br",
+        "inst:compdecomp:bb33:1:store",
+        "inst:compdecomp:bb33:2:br",
+        "inst:compdecomp:bb34:1:br",
+        "inst:compdecomp:bb35:1:br",
+        "inst:compdecomp:bb36:1:br",
+        "inst:compdecomp:bb37:1:br",
+        "inst:compdecomp:bb38:1:store",
+        "inst:compdecomp:bb38:2:store",
+        "inst:compdecomp:bb38:3:br",
+        "inst:compdecomp:bb39:1:br",
+        "inst:compdecomp:bb3:1:br",
+        "inst:compdecomp:bb40:1:br",
+        "inst:compdecomp:bb41:1:call",
+        "inst:compdecomp:bb41:2:ret",
+        "inst:compdecomp:bb42:1:br",
+        "inst:compdecomp:bb43:1:br",
+        "inst:compdecomp:bb45:1:store",
+        "inst:compdecomp:bb45:2:br",
+        "inst:compdecomp:bb46:1:br",
+        "inst:compdecomp:bb4:1:store",
+        "inst:compdecomp:bb4:2:br",
+        "inst:compdecomp:bb5:1:call",
+        "inst:compdecomp:bb5:2:br",
+        "inst:compdecomp:bb6:1:store",
+        "inst:compdecomp:bb6:2:call",
+        "inst:compdecomp:bb6:3:store",
+        "inst:compdecomp:bb6:4:store",
+        "inst:compdecomp:bb6:5:store",
+        "inst:compdecomp:bb6:6:store",
+        "inst:compdecomp:bb6:7:call",
+        "inst:compdecomp:bb6:8:br",
+        "inst:compdecomp:bb7:1:store",
+        "inst:compdecomp:bb7:2:br",
+        "inst:compdecomp:bb8:1:br",
+        "inst:main:%.not1",
+        "loop:compdecomp:.preheader",
+        "loop:compdecomp:.preheader1",
+        "loop:compdecomp:.preheader3",
+        "loop:compdecomp:.preheader4",
+        "loop:compdecomp:.preheader5",
+        "loop:compdecomp:.preheader6",
+        "loop:compdecomp:bb12",
+        "loop:compdecomp:bb21",
+        "loop:compdecomp:bb28",
+        "loop:compdecomp:bb32",
+        "loop:compdecomp:bb36",
+        "loop:compdecomp:bb42",
+        "loop:compdecomp:bb8"
+      ],
+      "wb_intersect_ra": [
+        "inst:compdecomp:%.010",
+        "inst:compdecomp:%.13",
+        "inst:compdecomp:%100",
+        "inst:compdecomp:%102",
+        "inst:compdecomp:%104",
+        "inst:compdecomp:%105",
+        "inst:compdecomp:%106",
+        "inst:compdecomp:%108",
+        "inst:compdecomp:%109",
+        "inst:compdecomp:%111",
+        "inst:compdecomp:%112",
+        "inst:compdecomp:%114",
+        "inst:compdecomp:%115",
+        "inst:compdecomp:%116",
+        "inst:compdecomp:%117",
+        "inst:compdecomp:%118",
+        "inst:compdecomp:%119",
+        "inst:compdecomp:%120",
+        "inst:compdecomp:%122",
+        "inst:compdecomp:%123",
+        "inst:compdecomp:%125",
+        "inst:compdecomp:%126",
+        "inst:compdecomp:%127",
+        "inst:compdecomp:%128",
+        "inst:compdecomp:%132",
+        "inst:compdecomp:%133",
+        "inst:compdecomp:%134",
+        "inst:compdecomp:%135",
+        "inst:compdecomp:%137",
+        "inst:compdecomp:%138",
+        "inst:compdecomp:%139",
+        "inst:compdecomp:%141",
+        "inst:compdecomp:%142",
+        "inst:compdecomp:%143",
+        "inst:compdecomp:%144",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%150",
+        "inst:compdecomp:%151",
+        "inst:compdecomp:%152",
+        "inst:compdecomp:%153",
+        "inst:compdecomp:%155",
+        "inst:compdecomp:%157",
+        "inst:compdecomp:%159",
+        "inst:compdecomp:%160",
+        "inst:compdecomp:%161",
+        "inst:compdecomp:%162",
+        "inst:compdecomp:%165",
+        "inst:compdecomp:%168",
+        "inst:compdecomp:%170",
+        "inst:compdecomp:%171",
+        "inst:compdecomp:%172",
+        "inst:compdecomp:%173",
+        "inst:compdecomp:%174",
+        "inst:compdecomp:%175",
+        "inst:compdecomp:%176",
+        "inst:compdecomp:%178",
+        "inst:compdecomp:%179",
+        "inst:compdecomp:%181",
+        "inst:compdecomp:%182",
+        "inst:compdecomp:%184",
+        "inst:compdecomp:%185",
+        "inst:compdecomp:%186",
+        "inst:compdecomp:%187",
+        "inst:compdecomp:%188",
+        "inst:compdecomp:%189",
+        "inst:compdecomp:%191",
+        "inst:compdecomp:%192",
+        "inst:compdecomp:%193",
+        "inst:compdecomp:%195",
+        "inst:compdecomp:%197",
+        "inst:compdecomp:%199",
+        "inst:compdecomp:%200",
+        "inst:compdecomp:%201",
+        "inst:compdecomp:%202",
+        "inst:compdecomp:%204",
+        "inst:compdecomp:%205",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%30",
+        "inst:compdecomp:%31",
+        "inst:compdecomp:%32",
+        "inst:compdecomp:%33",
+        "inst:compdecomp:%35",
+        "inst:compdecomp:%39",
+        "inst:compdecomp:%40",
+        "inst:compdecomp:%41",
+        "inst:compdecomp:%42",
+        "inst:compdecomp:%44",
+        "inst:compdecomp:%45",
+        "inst:compdecomp:%46",
+        "inst:compdecomp:%47",
+        "inst:compdecomp:%48",
+        "inst:compdecomp:%49",
+        "inst:compdecomp:%50",
+        "inst:compdecomp:%51",
+        "inst:compdecomp:%52",
+        "inst:compdecomp:%54",
+        "inst:compdecomp:%55",
+        "inst:compdecomp:%58",
+        "inst:compdecomp:%59",
+        "inst:compdecomp:%62",
+        "inst:compdecomp:%65",
+        "inst:compdecomp:%66",
+        "inst:compdecomp:%67",
+        "inst:compdecomp:%68",
+        "inst:compdecomp:%69",
+        "inst:compdecomp:%71",
+        "inst:compdecomp:%72",
+        "inst:compdecomp:%73",
+        "inst:compdecomp:%74",
+        "inst:compdecomp:%76",
+        "inst:compdecomp:%78",
+        "inst:compdecomp:%81",
+        "inst:compdecomp:%83",
+        "inst:compdecomp:%85",
+        "inst:compdecomp:%86",
+        "inst:compdecomp:%88",
+        "inst:compdecomp:%89",
+        "inst:compdecomp:%90",
+        "inst:compdecomp:%91",
+        "inst:compdecomp:%92",
+        "inst:compdecomp:%93",
+        "inst:compdecomp:%94",
+        "inst:compdecomp:%95",
+        "inst:compdecomp:%97",
+        "inst:compdecomp:%98",
+        "inst:compdecomp:%99",
+        "inst:compdecomp:bb11:1:store",
+        "inst:compdecomp:bb11:2:store",
+        "inst:compdecomp:bb11:3:br",
+        "inst:compdecomp:bb13:1:br",
+        "inst:compdecomp:bb14:1:store",
+        "inst:compdecomp:bb14:2:store",
+        "inst:compdecomp:bb14:3:br",
+        "inst:compdecomp:bb15:1:br",
+        "inst:compdecomp:bb16:1:call",
+        "inst:compdecomp:bb16:2:unreachable",
+        "inst:compdecomp:bb17:1:br",
+        "inst:compdecomp:bb19:1:store",
+        "inst:compdecomp:bb19:2:call",
+        "inst:compdecomp:bb19:3:br",
+        "inst:compdecomp:bb20:1:br",
+        "inst:compdecomp:bb21:1:br",
+        "inst:compdecomp:bb22:1:br",
+        "inst:compdecomp:bb23:1:br",
+        "inst:compdecomp:bb24:1:store",
+        "inst:compdecomp:bb24:2:br",
+        "inst:compdecomp:bb25:1:br",
+        "inst:compdecomp:bb26:1:call",
+        "inst:compdecomp:bb26:2:unreachable",
+        "inst:compdecomp:bb27:1:br",
+        "inst:compdecomp:bb28:1:br",
+        "inst:compdecomp:bb29:1:store",
+        "inst:compdecomp:bb29:2:br",
+        "inst:compdecomp:bb30:1:br",
+        "inst:compdecomp:bb31:1:br",
+        "inst:compdecomp:bb32:1:br",
+        "inst:compdecomp:bb33:1:store",
+        "inst:compdecomp:bb33:2:br",
+        "inst:compdecomp:bb34:1:br",
+        "inst:compdecomp:bb35:1:br",
+        "inst:compdecomp:bb36:1:br",
+        "inst:compdecomp:bb37:1:br",
+        "inst:compdecomp:bb38:1:store",
+        "inst:compdecomp:bb38:2:store",
+        "inst:compdecomp:bb38:3:br",
+        "inst:compdecomp:bb39:1:br",
+        "inst:compdecomp:bb3:1:br",
+        "inst:compdecomp:bb40:1:br",
+        "inst:compdecomp:bb41:1:call",
+        "inst:compdecomp:bb41:2:ret",
+        "inst:compdecomp:bb42:1:br",
+        "inst:compdecomp:bb43:1:br",
+        "inst:compdecomp:bb45:1:store",
+        "inst:compdecomp:bb45:2:br",
+        "inst:compdecomp:bb46:1:br",
+        "inst:compdecomp:bb4:1:store",
+        "inst:compdecomp:bb4:2:br",
+        "inst:compdecomp:bb5:1:call",
+        "inst:compdecomp:bb5:2:br",
+        "inst:compdecomp:bb6:1:store",
+        "inst:compdecomp:bb6:2:call",
+        "inst:compdecomp:bb6:3:store",
+        "inst:compdecomp:bb6:4:store",
+        "inst:compdecomp:bb6:5:store",
+        "inst:compdecomp:bb6:6:store",
+        "inst:compdecomp:bb6:7:call",
+        "inst:compdecomp:bb6:8:br",
+        "inst:compdecomp:bb7:1:store",
+        "inst:compdecomp:bb7:2:br",
+        "inst:compdecomp:bb8:1:br",
+        "inst:main:%.not1",
+        "loop:compdecomp:.preheader",
+        "loop:compdecomp:.preheader1",
+        "loop:compdecomp:.preheader3",
+        "loop:compdecomp:.preheader4",
+        "loop:compdecomp:.preheader5",
+        "loop:compdecomp:.preheader6",
+        "loop:compdecomp:bb12",
+        "loop:compdecomp:bb21",
+        "loop:compdecomp:bb28",
+        "loop:compdecomp:bb32",
+        "loop:compdecomp:bb36",
+        "loop:compdecomp:bb42",
+        "loop:compdecomp:bb8"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.13",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:%100",
+        "inst:compdecomp:%101",
+        "inst:compdecomp:%102",
+        "inst:compdecomp:%104",
+        "inst:compdecomp:%105",
+        "inst:compdecomp:%106",
+        "inst:compdecomp:%107",
+        "inst:compdecomp:%108",
+        "inst:compdecomp:%109",
+        "inst:compdecomp:%111",
+        "inst:compdecomp:%112",
+        "inst:compdecomp:%113",
+        "inst:compdecomp:%114",
+        "inst:compdecomp:%115",
+        "inst:compdecomp:%116",
+        "inst:compdecomp:%117",
+        "inst:compdecomp:%118",
+        "inst:compdecomp:%119",
+        "inst:compdecomp:%120",
+        "inst:compdecomp:%121",
+        "inst:compdecomp:%122",
+        "inst:compdecomp:%123",
+        "inst:compdecomp:%125",
+        "inst:compdecomp:%126",
+        "inst:compdecomp:%127",
+        "inst:compdecomp:%128",
+        "inst:compdecomp:%130",
+        "inst:compdecomp:%132",
+        "inst:compdecomp:%133",
+        "inst:compdecomp:%134",
+        "inst:compdecomp:%135",
+        "inst:compdecomp:%137",
+        "inst:compdecomp:%138",
+        "inst:compdecomp:%139",
+        "inst:compdecomp:%140",
+        "inst:compdecomp:%141",
+        "inst:compdecomp:%142",
+        "inst:compdecomp:%143",
+        "inst:compdecomp:%144",
+        "inst:compdecomp:%145",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%150",
+        "inst:compdecomp:%151",
+        "inst:compdecomp:%152",
+        "inst:compdecomp:%153",
+        "inst:compdecomp:%154",
+        "inst:compdecomp:%155",
+        "inst:compdecomp:%156",
+        "inst:compdecomp:%157",
+        "inst:compdecomp:%158",
+        "inst:compdecomp:%159",
+        "inst:compdecomp:%160",
+        "inst:compdecomp:%161",
+        "inst:compdecomp:%162",
+        "inst:compdecomp:%164",
+        "inst:compdecomp:%165",
+        "inst:compdecomp:%168",
+        "inst:compdecomp:%169",
+        "inst:compdecomp:%170",
+        "inst:compdecomp:%171",
+        "inst:compdecomp:%172",
+        "inst:compdecomp:%173",
+        "inst:compdecomp:%174",
+        "inst:compdecomp:%175",
+        "inst:compdecomp:%176",
+        "inst:compdecomp:%178",
+        "inst:compdecomp:%179",
+        "inst:compdecomp:%181",
+        "inst:compdecomp:%182",
+        "inst:compdecomp:%183",
+        "inst:compdecomp:%184",
+        "inst:compdecomp:%185",
+        "inst:compdecomp:%186",
+        "inst:compdecomp:%187",
+        "inst:compdecomp:%188",
+        "inst:compdecomp:%189",
+        "inst:compdecomp:%191",
+        "inst:compdecomp:%192",
+        "inst:compdecomp:%193",
+        "inst:compdecomp:%194",
+        "inst:compdecomp:%195",
+        "inst:compdecomp:%197",
+        "inst:compdecomp:%199",
+        "inst:compdecomp:%200",
+        "inst:compdecomp:%201",
+        "inst:compdecomp:%202",
+        "inst:compdecomp:%204",
+        "inst:compdecomp:%205",
+        "inst:compdecomp:%27",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%29",
+        "inst:compdecomp:%30",
+        "inst:compdecomp:%31",
+        "inst:compdecomp:%32",
+        "inst:compdecomp:%33",
+        "inst:compdecomp:%35",
+        "inst:compdecomp:%39",
+        "inst:compdecomp:%40",
+        "inst:compdecomp:%41",
+        "inst:compdecomp:%42",
+        "inst:compdecomp:%44",
+        "inst:compdecomp:%45",
+        "inst:compdecomp:%46",
+        "inst:compdecomp:%47",
+        "inst:compdecomp:%48",
+        "inst:compdecomp:%49",
+        "inst:compdecomp:%50",
+        "inst:compdecomp:%51",
+        "inst:compdecomp:%52",
+        "inst:compdecomp:%54",
+        "inst:compdecomp:%55",
+        "inst:compdecomp:%57",
+        "inst:compdecomp:%58",
+        "inst:compdecomp:%59",
+        "inst:compdecomp:%62",
+        "inst:compdecomp:%65",
+        "inst:compdecomp:%66",
+        "inst:compdecomp:%67",
+        "inst:compdecomp:%68",
+        "inst:compdecomp:%69",
+        "inst:compdecomp:%71",
+        "inst:compdecomp:%72",
+        "inst:compdecomp:%73",
+        "inst:compdecomp:%74",
+        "inst:compdecomp:%75",
+        "inst:compdecomp:%76",
+        "inst:compdecomp:%78",
+        "inst:compdecomp:%81",
+        "inst:compdecomp:%83",
+        "inst:compdecomp:%85",
+        "inst:compdecomp:%86",
+        "inst:compdecomp:%87",
+        "inst:compdecomp:%88",
+        "inst:compdecomp:%89",
+        "inst:compdecomp:%90",
+        "inst:compdecomp:%91",
+        "inst:compdecomp:%92",
+        "inst:compdecomp:%93",
+        "inst:compdecomp:%94",
+        "inst:compdecomp:%95",
+        "inst:compdecomp:%97",
+        "inst:compdecomp:%98",
+        "inst:compdecomp:%99",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:compdecomp:bb11:1:br",
+        "inst:compdecomp:bb11:1:store",
+        "inst:compdecomp:bb11:2:store",
+        "inst:compdecomp:bb11:3:br",
+        "inst:compdecomp:bb13:1:br",
+        "inst:compdecomp:bb13:1:store",
+        "inst:compdecomp:bb13:3:br",
+        "inst:compdecomp:bb14:1:br",
+        "inst:compdecomp:bb14:1:store",
+        "inst:compdecomp:bb14:2:store",
+        "inst:compdecomp:bb14:3:br",
+        "inst:compdecomp:bb15:1:br",
+        "inst:compdecomp:bb16:1:call",
+        "inst:compdecomp:bb16:1:store",
+        "inst:compdecomp:bb16:2:unreachable",
+        "inst:compdecomp:bb17:1:br",
+        "inst:compdecomp:bb19:1:br",
+        "inst:compdecomp:bb19:1:store",
+        "inst:compdecomp:bb19:2:call",
+        "inst:compdecomp:bb19:3:br",
+        "inst:compdecomp:bb20:1:br",
+        "inst:compdecomp:bb21:1:br",
+        "inst:compdecomp:bb22:1:br",
+        "inst:compdecomp:bb23:1:br",
+        "inst:compdecomp:bb24:1:store",
+        "inst:compdecomp:bb24:2:br",
+        "inst:compdecomp:bb25:1:br",
+        "inst:compdecomp:bb26:1:call",
+        "inst:compdecomp:bb26:2:unreachable",
+        "inst:compdecomp:bb27:1:br",
+        "inst:compdecomp:bb28:1:br",
+        "inst:compdecomp:bb28:1:call",
+        "inst:compdecomp:bb29:1:br",
+        "inst:compdecomp:bb29:1:store",
+        "inst:compdecomp:bb29:2:br",
+        "inst:compdecomp:bb30:1:br",
+        "inst:compdecomp:bb31:1:br",
+        "inst:compdecomp:bb32:1:br",
+        "inst:compdecomp:bb33:1:store",
+        "inst:compdecomp:bb33:2:br",
+        "inst:compdecomp:bb34:1:br",
+        "inst:compdecomp:bb35:1:br",
+        "inst:compdecomp:bb36:1:br",
+        "inst:compdecomp:bb37:1:br",
+        "inst:compdecomp:bb38:1:store",
+        "inst:compdecomp:bb38:2:store",
+        "inst:compdecomp:bb38:3:br",
+        "inst:compdecomp:bb39:1:br",
+        "inst:compdecomp:bb3:1:br",
+        "inst:compdecomp:bb3:1:store",
+        "inst:compdecomp:bb3:2:br",
+        "inst:compdecomp:bb40:1:br",
+        "inst:compdecomp:bb41:1:call",
+        "inst:compdecomp:bb41:2:ret",
+        "inst:compdecomp:bb42:1:br",
+        "inst:compdecomp:bb43:1:br",
+        "inst:compdecomp:bb45:1:store",
+        "inst:compdecomp:bb45:2:br",
+        "inst:compdecomp:bb46:1:br",
+        "inst:compdecomp:bb4:1:br",
+        "inst:compdecomp:bb4:1:store",
+        "inst:compdecomp:bb4:2:br",
+        "inst:compdecomp:bb5:1:call",
+        "inst:compdecomp:bb5:2:br",
+        "inst:compdecomp:bb6:1:store",
+        "inst:compdecomp:bb6:2:call",
+        "inst:compdecomp:bb6:3:store",
+        "inst:compdecomp:bb6:4:store",
+        "inst:compdecomp:bb6:5:store",
+        "inst:compdecomp:bb6:6:store",
+        "inst:compdecomp:bb6:7:call",
+        "inst:compdecomp:bb6:8:br",
+        "inst:compdecomp:bb7:1:store",
+        "inst:compdecomp:bb7:2:br",
+        "inst:compdecomp:bb8:1:br",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "inst:main:.loopexit.loopexit:1:br",
+        "loop:compdecomp:.preheader",
+        "loop:compdecomp:.preheader1",
+        "loop:compdecomp:.preheader3",
+        "loop:compdecomp:.preheader4",
+        "loop:compdecomp:.preheader5",
+        "loop:compdecomp:.preheader6",
+        "loop:compdecomp:bb12",
+        "loop:compdecomp:bb21",
+        "loop:compdecomp:bb28",
+        "loop:compdecomp:bb30",
+        "loop:compdecomp:bb32",
+        "loop:compdecomp:bb36",
+        "loop:compdecomp:bb42",
+        "loop:compdecomp:bb8"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compdecomp:%.01.lcssa",
+        "inst:compdecomp:%.010",
+        "inst:compdecomp:%.010.lcssa",
+        "inst:compdecomp:%.019.lcssa",
+        "inst:compdecomp:%.024.lcssa",
+        "inst:compdecomp:%.028.lcssa",
+        "inst:compdecomp:%.039.lcssa",
+        "inst:compdecomp:%.043.lcssa",
+        "inst:compdecomp:%.045.lcssa",
+        "inst:compdecomp:%.1.lcssa",
+        "inst:compdecomp:%.125.lcssa",
+        "inst:compdecomp:%.129.lcssa",
+        "inst:compdecomp:%.13",
+        "inst:compdecomp:%.212.lcssa",
+        "inst:compdecomp:%.3.lcssa",
+        "inst:compdecomp:%.49.lcssa",
+        "inst:compdecomp:%.8.lcssa",
+        "inst:compdecomp:%.lcssa",
+        "inst:compdecomp:%100",
+        "inst:compdecomp:%101",
+        "inst:compdecomp:%102",
+        "inst:compdecomp:%104",
+        "inst:compdecomp:%105",
+        "inst:compdecomp:%106",
+        "inst:compdecomp:%107",
+        "inst:compdecomp:%108",
+        "inst:compdecomp:%109",
+        "inst:compdecomp:%111",
+        "inst:compdecomp:%112",
+        "inst:compdecomp:%113",
+        "inst:compdecomp:%114",
+        "inst:compdecomp:%115",
+        "inst:compdecomp:%116",
+        "inst:compdecomp:%117",
+        "inst:compdecomp:%118",
+        "inst:compdecomp:%119",
+        "inst:compdecomp:%120",
+        "inst:compdecomp:%121",
+        "inst:compdecomp:%122",
+        "inst:compdecomp:%123",
+        "inst:compdecomp:%125",
+        "inst:compdecomp:%126",
+        "inst:compdecomp:%127",
+        "inst:compdecomp:%128",
+        "inst:compdecomp:%130",
+        "inst:compdecomp:%132",
+        "inst:compdecomp:%133",
+        "inst:compdecomp:%134",
+        "inst:compdecomp:%135",
+        "inst:compdecomp:%137",
+        "inst:compdecomp:%138",
+        "inst:compdecomp:%139",
+        "inst:compdecomp:%140",
+        "inst:compdecomp:%141",
+        "inst:compdecomp:%142",
+        "inst:compdecomp:%143",
+        "inst:compdecomp:%144",
+        "inst:compdecomp:%145",
+        "inst:compdecomp:%147",
+        "inst:compdecomp:%148",
+        "inst:compdecomp:%149",
+        "inst:compdecomp:%150",
+        "inst:compdecomp:%151",
+        "inst:compdecomp:%152",
+        "inst:compdecomp:%153",
+        "inst:compdecomp:%154",
+        "inst:compdecomp:%155",
+        "inst:compdecomp:%156",
+        "inst:compdecomp:%157",
+        "inst:compdecomp:%158",
+        "inst:compdecomp:%159",
+        "inst:compdecomp:%160",
+        "inst:compdecomp:%161",
+        "inst:compdecomp:%162",
+        "inst:compdecomp:%164",
+        "inst:compdecomp:%165",
+        "inst:compdecomp:%168",
+        "inst:compdecomp:%169",
+        "inst:compdecomp:%170",
+        "inst:compdecomp:%171",
+        "inst:compdecomp:%172",
+        "inst:compdecomp:%173",
+        "inst:compdecomp:%174",
+        "inst:compdecomp:%175",
+        "inst:compdecomp:%176",
+        "inst:compdecomp:%178",
+        "inst:compdecomp:%179",
+        "inst:compdecomp:%181",
+        "inst:compdecomp:%182",
+        "inst:compdecomp:%183",
+        "inst:compdecomp:%184",
+        "inst:compdecomp:%185",
+        "inst:compdecomp:%186",
+        "inst:compdecomp:%187",
+        "inst:compdecomp:%188",
+        "inst:compdecomp:%189",
+        "inst:compdecomp:%191",
+        "inst:compdecomp:%192",
+        "inst:compdecomp:%193",
+        "inst:compdecomp:%194",
+        "inst:compdecomp:%195",
+        "inst:compdecomp:%197",
+        "inst:compdecomp:%199",
+        "inst:compdecomp:%200",
+        "inst:compdecomp:%201",
+        "inst:compdecomp:%202",
+        "inst:compdecomp:%204",
+        "inst:compdecomp:%205",
+        "inst:compdecomp:%27",
+        "inst:compdecomp:%28",
+        "inst:compdecomp:%29",
+        "inst:compdecomp:%30",
+        "inst:compdecomp:%31",
+        "inst:compdecomp:%32",
+        "inst:compdecomp:%33",
+        "inst:compdecomp:%35",
+        "inst:compdecomp:%39",
+        "inst:compdecomp:%40",
+        "inst:compdecomp:%41",
+        "inst:compdecomp:%42",
+        "inst:compdecomp:%44",
+        "inst:compdecomp:%45",
+        "inst:compdecomp:%46",
+        "inst:compdecomp:%47",
+        "inst:compdecomp:%48",
+        "inst:compdecomp:%49",
+        "inst:compdecomp:%50",
+        "inst:compdecomp:%51",
+        "inst:compdecomp:%52",
+        "inst:compdecomp:%54",
+        "inst:compdecomp:%55",
+        "inst:compdecomp:%57",
+        "inst:compdecomp:%58",
+        "inst:compdecomp:%59",
+        "inst:compdecomp:%62",
+        "inst:compdecomp:%65",
+        "inst:compdecomp:%66",
+        "inst:compdecomp:%67",
+        "inst:compdecomp:%68",
+        "inst:compdecomp:%69",
+        "inst:compdecomp:%71",
+        "inst:compdecomp:%72",
+        "inst:compdecomp:%73",
+        "inst:compdecomp:%74",
+        "inst:compdecomp:%75",
+        "inst:compdecomp:%76",
+        "inst:compdecomp:%78",
+        "inst:compdecomp:%81",
+        "inst:compdecomp:%83",
+        "inst:compdecomp:%85",
+        "inst:compdecomp:%86",
+        "inst:compdecomp:%87",
+        "inst:compdecomp:%88",
+        "inst:compdecomp:%89",
+        "inst:compdecomp:%90",
+        "inst:compdecomp:%91",
+        "inst:compdecomp:%92",
+        "inst:compdecomp:%93",
+        "inst:compdecomp:%94",
+        "inst:compdecomp:%95",
+        "inst:compdecomp:%97",
+        "inst:compdecomp:%98",
+        "inst:compdecomp:%99",
+        "inst:compdecomp:bb11:1:store",
+        "inst:compdecomp:bb11:2:store",
+        "inst:compdecomp:bb13:1:store",
+        "inst:compdecomp:bb14:1:store",
+        "inst:compdecomp:bb14:2:store",
+        "inst:compdecomp:bb16:1:call",
+        "inst:compdecomp:bb16:1:store",
+        "inst:compdecomp:bb19:1:store",
+        "inst:compdecomp:bb19:2:call",
+        "inst:compdecomp:bb24:1:store",
+        "inst:compdecomp:bb26:1:call",
+        "inst:compdecomp:bb28:1:call",
+        "inst:compdecomp:bb29:1:store",
+        "inst:compdecomp:bb33:1:store",
+        "inst:compdecomp:bb38:1:store",
+        "inst:compdecomp:bb38:2:store",
+        "inst:compdecomp:bb3:1:store",
+        "inst:compdecomp:bb41:1:call",
+        "inst:compdecomp:bb45:1:store",
+        "inst:compdecomp:bb4:1:store",
+        "inst:compdecomp:bb5:1:call",
+        "inst:compdecomp:bb6:1:store",
+        "inst:compdecomp:bb6:2:call",
+        "inst:compdecomp:bb6:3:store",
+        "inst:compdecomp:bb6:4:store",
+        "inst:compdecomp:bb6:5:store",
+        "inst:compdecomp:bb6:6:store",
+        "inst:compdecomp:bb6:7:call",
+        "inst:compdecomp:bb7:1:store",
+        "inst:heap_adjust:%.01.lcssa",
+        "inst:main:%.not1",
+        "inst:main:%exitcond.not.lcssa",
+        "loop:compdecomp:.preheader",
+        "loop:compdecomp:.preheader1",
+        "loop:compdecomp:.preheader3",
+        "loop:compdecomp:.preheader4",
+        "loop:compdecomp:.preheader5",
+        "loop:compdecomp:.preheader6",
+        "loop:compdecomp:bb12",
+        "loop:compdecomp:bb21",
+        "loop:compdecomp:bb28",
+        "loop:compdecomp:bb30",
+        "loop:compdecomp:bb32",
+        "loop:compdecomp:bb36",
+        "loop:compdecomp:bb42",
+        "loop:compdecomp:bb8"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:compdecomp:bb11:1:br",
+        "inst:compdecomp:bb11:3:br",
+        "inst:compdecomp:bb13:1:br",
+        "inst:compdecomp:bb13:3:br",
+        "inst:compdecomp:bb14:1:br",
+        "inst:compdecomp:bb14:3:br",
+        "inst:compdecomp:bb15:1:br",
+        "inst:compdecomp:bb16:2:unreachable",
+        "inst:compdecomp:bb17:1:br",
+        "inst:compdecomp:bb19:1:br",
+        "inst:compdecomp:bb19:3:br",
+        "inst:compdecomp:bb20:1:br",
+        "inst:compdecomp:bb21:1:br",
+        "inst:compdecomp:bb22:1:br",
+        "inst:compdecomp:bb23:1:br",
+        "inst:compdecomp:bb24:2:br",
+        "inst:compdecomp:bb25:1:br",
+        "inst:compdecomp:bb26:2:unreachable",
+        "inst:compdecomp:bb27:1:br",
+        "inst:compdecomp:bb28:1:br",
+        "inst:compdecomp:bb29:1:br",
+        "inst:compdecomp:bb29:2:br",
+        "inst:compdecomp:bb30:1:br",
+        "inst:compdecomp:bb31:1:br",
+        "inst:compdecomp:bb32:1:br",
+        "inst:compdecomp:bb33:2:br",
+        "inst:compdecomp:bb34:1:br",
+        "inst:compdecomp:bb35:1:br",
+        "inst:compdecomp:bb36:1:br",
+        "inst:compdecomp:bb37:1:br",
+        "inst:compdecomp:bb38:3:br",
+        "inst:compdecomp:bb39:1:br",
+        "inst:compdecomp:bb3:1:br",
+        "inst:compdecomp:bb3:2:br",
+        "inst:compdecomp:bb40:1:br",
+        "inst:compdecomp:bb41:2:ret",
+        "inst:compdecomp:bb42:1:br",
+        "inst:compdecomp:bb43:1:br",
+        "inst:compdecomp:bb45:2:br",
+        "inst:compdecomp:bb46:1:br",
+        "inst:compdecomp:bb4:1:br",
+        "inst:compdecomp:bb4:2:br",
+        "inst:compdecomp:bb5:2:br",
+        "inst:compdecomp:bb6:8:br",
+        "inst:compdecomp:bb7:2:br",
+        "inst:compdecomp:bb8:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst",
+        "loop"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->loop-unroll",
+        "loop-unroll->loop-rotate"
+      ],
+      "commutativity_details": "function @llvm.assume exists only in left module\nin function compdecomp:\n  in block %.preheader6.1 / %.preheader6:\n    in instruction %.111.1 / %.111.1:\n      successor %.preheader6 cannot be equivalent to %27; it's already equivalent to %.preheader6.1\n  in block %.lr.ph:\n    >   br label %12\n    <   %12 = add i64 %1, -1\n    <   %xtraiter = and i64 %1, 3\n    <   %13 = icmp ult i64 %12, 3\n    <   br i1 %13, label %.epil.preheader, label %.lr.ph.new\n  in block %.preheader6 / %.preheader6.1:\n    >   br label %27\n    <   %55 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %54\n    <   %56 = load i64, ptr %55, align 8\n    <   %.not8.1 = icmp eq i64 %56, 0\n    <   br i1 %.not8.1, label %.preheader6.1, label %57\n  in block %.lr.ph65 / %.lr.ph59:\n    >   br label %145\n    <   %172 = add nsw i64 %171, -1\n    <   %xtraiter81 = and i64 %171, 1\n    <   %173 = icmp ult i64 %172, 1\n    <   br i1 %173, label %.epil.preheader80, label %.lr.ph65.new\n  in block %193 / %153:\n    >   %.019.lcssa = phi i32 [ %split61, %._crit_edge60 ], [ 0, %140 ]\n    <   %.019.lcssa = phi i32 [ %split67, %._crit_edge66 ], [ 0, %167 ]\n  in block %._crit_edge66 / %._crit_edge60:\n    >   %split61 = phi i32 [ %spec.select1, %145 ]\n    <   %split67 = phi i32 [ %split67.ph, %._crit_edge66.unr-lcssa ], [ %spec.select1.epil, %._crit_edge66.epilog-lcssa ]\n\nin function main:\n  in block %11 / %11:\n    >   %.123 = phi i32 [ 0, %.loopexit ], [ %12, %11 ]\n        call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    >   %12 = add nuw nsw i32 %.123, 1\n    >   %exitcond1.not = icmp eq i32 %12, 30\n    >   br i1 %exitcond1.not, label %13, label %11, !llvm.loop !9\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @compdecomp(ptr noundef %10, i64 noundef 10000000)\n    <   call void @free(ptr noundef %10) #10\n    <   br i1 %.not1, label %15, label %12"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->loop-rotate",
+        "loop-rotate->sccp"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->simplifycfg"
+      ],
+      "commutativity_details": "in function generate_test_data:\n  in block %.lr.ph:\n    >   %.013 = phi ptr [ %6, %.lr.ph ], [ %2, %1 ]\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %1 ]\n    >   %3 = call i64 @random4()\n    >   %4 = getelementptr inbounds nuw i8, ptr @.str, i64 %3\n    >   %5 = load i8, ptr %4, align 1\n    >   store i8 %5, ptr %.013, align 1\n    >   %6 = getelementptr inbounds nuw i8, ptr %.013, i64 1\n    >   %indvars.iv.next = add nuw i64 %indvars.iv2, 1\n    >   %exitcond.not = icmp eq i64 %indvars.iv.next, %0\n    >   br i1 %exitcond.not, label %._crit_edge, label %.lr.ph, !llvm.loop !7\n    <   br label %3\n\nin function compdecomp:\n  in block %.lr.ph:\n    >   %.0216 = phi i64 [ %18, %.lr.ph ], [ 0, %2 ]\n    >   %.03315 = phi ptr [ %17, %.lr.ph ], [ %0, %2 ]\n    >   %12 = load i8, ptr %.03315, align 1\n    >   %13 = zext i8 %12 to i64\n    >   %14 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %13\n    >   %15 = load i64, ptr %14, align 8\n    >   %16 = add i64 %15, 1\n    >   store i64 %16, ptr %14, align 8\n    >   %17 = getelementptr inbounds nuw i8, ptr %.03315, i64 1\n    >   %18 = add i64 %.0216, 1\n    >   %exitcond.not = icmp eq i64 %18, %1\n    >   br i1 %exitcond.not, label %.preheader6.preheader, label %.lr.ph, !llvm.loop !7\n    <   br label %12\n  in block %.lr.ph22 / %.preheader5:\n    >   %.2421 = phi i64 [ %29, %.preheader5 ], [ %.010.lcssa, %.preheader5.preheader ]\n    >   %27 = trunc i64 %.010.lcssa to i32\n    >   %28 = trunc i64 %.2421 to i32\n    >   call void @heap_adjust(ptr noundef nonnull %3, ptr noundef nonnull %4, i32 noundef %27, i32 noundef %28)\n    >   %29 = add i64 %.2421, -1\n    >   %.not = icmp eq i64 %29, 0\n    >   br i1 %.not, label %.preheader4.preheader, label %.preheader5, !llvm.loop !10\n    <   br label %.preheader5\n  in block %.lr.ph24 / %.preheader4:\n    >   %.21223 = phi i64 [ %30, %.preheader4 ], [ %.010.lcssa, %.preheader4.preheader ]\n    >   %30 = add i64 %.21223, -1\n    >   %31 = load i64, ptr %4, align 16\n    >   %32 = getelementptr inbounds nuw [8 x i8], ptr %4, i64 %30\n    >   %33 = load i64, ptr %32, align 8\n    >   store i64 %33, ptr %4, align 16\n    >   %34 = trunc i64 %30 to i32\n    >   call void @heap_adjust(ptr noundef nonnull %3, ptr noundef nonnull %4, i32 noundef %34, i32 noundef 1)\n    >   %35 = load i64, ptr %4, align 16\n    >   %36 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %35\n    >   %37 = load i64, ptr %36, align 8\n    >   %38 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %31\n    >   %39 = load i64, ptr %38, align 8\n    >   %40 = add i64 %37, %39\n    >   %41 = add i64 %.21223, 255\n    >   %42 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %41\n    >   store i64 %40, ptr %42, align 8\n    >   %43 = trunc i64 %41 to i32\n    >   %44 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %31\n    >   store i32 %43, ptr %44, align 4\n    >   %45 = trunc i64 %.21223 to i32\n    >   %46 = sub i32 -255, %45\n    >   %47 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %35\n    >   store i32 %46, ptr %47, align 4\n    >   store i64 %41, ptr %4, align 16\n    >   call void @heap_adjust(ptr noundef nonnull %3, ptr noundef nonnull %4, i32 noundef %34, i32 noundef 1)\n    >   %48 = icmp ugt i64 %30, 1\n    >   br i1 %48, label %.preheader4, label %.preheader4._crit_edge, !llvm.loop !11\n    <   br label %.preheader4\n  in block %50 / %.preheader4._crit_edge:\n    >   %.212.lcssa = phi i64 [ %.010.lcssa, %.preheader4.preheader ], [ %30, %.preheader4 ]\n    >   %49 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %.212.lcssa\n    >   %50 = getelementptr inbounds nuw i8, ptr %49, i64 1024\n    >   store i32 0, ptr %50, align 4\n    <   %.212.lcssa = phi i64 [ %split, %.preheader4._crit_edge ], [ %.010.lcssa, %.preheader4.preheader ]\n    <   %51 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %.212.lcssa\n    <   %52 = getelementptr inbounds nuw i8, ptr %51, i64 1024\n    <   store i32 0, ptr %52, align 4\n\nin function heap_adjust:\n  in block %.lr.ph:\n    >   %.012 = phi i32 [ %.0, %36 ], [ %3, %4 ]\n    >   %11 = shl nsw i32 %.012, 1\n    >   %12 = icmp slt i32 %11, %2\n    >   br i1 %12, label %13, label %25\n    <   br label %11\n  in block %._crit_edge:\n    >   %.01.lcssa = phi i32 [ %3, %4 ], [ %.012, %25 ], [ %.0, %36 ]\n    <   %.01.lcssa = phi i32 [ %split, %.._crit_edge_crit_edge ], [ %split5, %.._crit_edge_crit_edge4 ], [ %3, %4 ]\n        %41 = ashr exact i64 %9, 32\n    >   %41 = sext i32 %.01.lcssa to i64\n    >   %42 = getelementptr [8 x i8], ptr %1, i64 %41\n    >   %43 = getelementptr i8, ptr %42, i64 -8\n    >   store i64 %40, ptr %43, align 8\n    <   %42 = sext i32 %.01.lcssa to i64\n    <   %43 = getelementptr [8 x i8], ptr %1, i64 %42\n    <   %44 = getelementptr i8, ptr %43, i64 -8\n    <   store i64 %41, ptr %44, align 8\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not2, %6 ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not.lcssa, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %11:\n      successor %.loopexit cannot be equivalent to %11; it's already equivalent to %.loopexit\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not2, %6 ]\n    >   %10 = call ptr @generate_test_data(i64 noundef 10000000)\n    <   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not2, %6 ]"
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:%.not1",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [
+        "bb:compdecomp:.preheader.preheader",
+        "bb:compdecomp:.preheader1.preheader",
+        "bb:compdecomp:.preheader2.preheader",
+        "bb:compdecomp:.preheader3.preheader",
+        "bb:compdecomp:.preheader4.preheader",
+        "bb:compdecomp:.preheader5.preheader",
+        "bb:compdecomp:.preheader6.preheader",
+        "bb:compdecomp:.preheader7",
+        "bb:main:.loopexit.loopexit",
+        "inst:compdecomp:.preheader.preheader:1:br",
+        "inst:compdecomp:.preheader1.preheader:1:br",
+        "inst:compdecomp:.preheader2.preheader:1:br",
+        "inst:compdecomp:.preheader3.preheader:1:br",
+        "inst:compdecomp:.preheader4.preheader:1:br",
+        "inst:compdecomp:.preheader5.preheader:1:br",
+        "inst:compdecomp:.preheader6.preheader:1:br",
+        "inst:compdecomp:.preheader7:1:br",
+        "inst:main:.loopexit.loopexit:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->loop-simplify"
+      ],
+      "commutativity_details": "in function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %.not1.ph, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit:\n    <   %.not1.ph = phi i1 [ true, %5 ], [ false, %6 ]"
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-simplify->simplifycfg"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader6.preheader / %.preheader6:\n    >   %.010 = phi i64 [ %.111, %27 ], [ 0, %12 ]\n    >   %.13 = phi i64 [ %28, %27 ], [ 0, %12 ]\n    >   %exitcond13.not = icmp eq i64 %.13, 256\n    >   br i1 %exitcond13.not, label %.preheader5, label %21\n    <   br label %.preheader6\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %12:\n      successor %.loopexit cannot be equivalent to %12; it's already equivalent to %.loopexit\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    >   %11 = call ptr @generate_test_data(i64 noundef 10000000)"
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "sccp",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:main:%.not1"
+      ],
+      "wb_intersect_ra": [
+        "inst:main:%.not1"
+      ],
+      "wa_intersect_wb": [
+        "inst:main:%.not1"
+      ],
+      "dependency_kinds": [
+        "read_write",
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:main:%.not1"
+      ],
+      "weak_intersections": [],
+      "intersection_token_kinds": [
+        "inst"
+      ],
+      "overlap_pattern": "symmetric_rewrite",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "sccp->loop-unroll",
+        "loop-unroll->sccp"
+      ],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->simplifycfg"
+      ],
+      "commutativity_details": "in function compdecomp:\n  in block %.preheader6.preheader / %.preheader6:\n    >   %.010 = phi i64 [ %.111.1, %33 ], [ 0, %12 ]\n    >   %.13 = phi i64 [ %34, %33 ], [ 0, %12 ]\n    >   %exitcond13.not = icmp eq i64 %.13, 256\n    >   br i1 %exitcond13.not, label %.preheader5.preheader, label %21\n    <   br label %.preheader6\n\nin function main:\n  in block %.loopexit:\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    <   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not.lcssa, %.loopexit.loopexit ]\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %12:\n      successor %.loopexit cannot be equivalent to %12; it's already equivalent to %.loopexit\n    >   %.not1 = phi i1 [ true, %2 ], [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]\n    >   %11 = call ptr @generate_test_data(i64 noundef 10000000)\n    <   %exitcond.not.lcssa = phi i1 [ %exitcond.not, %5 ], [ %exitcond.not, %6 ]"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+pass_a,pass_b,classification,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,enablement_evidence
+early-cse,gvn,independent,,none,none,none,none,,,,,,,none,,,
+early-cse,instcombine,independent,,none,none,none,none,,,,,,,none,,,
+early-cse,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->early-cse,kind=activation round=1 prefix=loop-rotate writes=inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1
+early-cse,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->early-cse,kind=activation round=1 prefix=loop-unroll writes=inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1
+early-cse,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+gvn,instcombine,independent,,none,none,none,none,,,,,,,none,,,
+gvn,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->gvn,kind=activation round=1 prefix=loop-rotate writes=inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1
+gvn,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->gvn,kind=activation round=1 prefix=loop-unroll writes=inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1
+gvn,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+instcombine,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->instcombine,kind=activation round=1 prefix=loop-rotate writes=inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1
+instcombine,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->instcombine,kind=activation round=1 prefix=loop-unroll writes=inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1
+instcombine,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+loop-rotate,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1,inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1,,inst,write_write_only,,,
+loop-rotate,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,
+loop-unroll,simplifycfg,independent,,none,none,none,none,,,,,,,none,,,

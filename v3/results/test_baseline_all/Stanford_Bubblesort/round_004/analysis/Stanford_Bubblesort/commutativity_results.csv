@@ -1,0 +1,158 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\instcombine__then__simplifycfg.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,early-cse,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\instcombine__then__early-cse.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\early-cse__then__instcombine.ll,"in function Bubble:
+  in block %13 / %13:
+    >   %14 = zext nneg i32 %7 to i64
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %14
+    >   store i32 %11, ptr %15, align 4
+    <   store i32 %11, ptr %9, align 4"
+instcombine,gvn,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\instcombine__then__gvn.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\gvn__then__instcombine.ll,"in function Bubble:
+  in block %13 / %13:
+    >   %14 = zext nneg i32 %7 to i64
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %14
+    >   store i32 %11, ptr %15, align 4
+    <   store i32 %11, ptr %9, align 4"
+instcombine,loop-rotate,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\instcombine__then__loop-rotate.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__instcombine.ll,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %25, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %18, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %26 = sext i32 %.epil.init2 to i64
+    >   %27 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %26
+    >   %28 = getelementptr inbounds nuw i8, ptr %27, i64 4
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = icmp sgt i32 %.epil.init, %29
+    >   br i1 %30, label %31, label %.epilog-lcssa
+    <   %26 = sext i32 %.epil.init2 to i64
+    <   %27 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %26
+    <   %28 = getelementptr inbounds nuw i8, ptr %27, i64 4
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = icmp sgt i32 %.epil.init, %29
+    <   br i1 %30, label %31, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %25, %24 ]
+    <   %.lcssa = phi i32 [ %18, %24 ]"
+instcombine,loop-unroll,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\instcombine__then__loop-unroll.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__instcombine.ll,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %25, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %18, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %26 = sext i32 %.epil.init2 to i64
+    >   %27 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %26
+    >   %28 = getelementptr inbounds nuw i8, ptr %27, i64 4
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = icmp sgt i32 %.epil.init, %29
+    >   br i1 %30, label %31, label %.epilog-lcssa
+    <   %26 = sext i32 %.epil.init2 to i64
+    <   %27 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %26
+    <   %28 = getelementptr inbounds nuw i8, ptr %27, i64 4
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = icmp sgt i32 %.epil.init, %29
+    <   br i1 %30, label %31, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %25, %24 ]
+    <   %.lcssa = phi i32 [ %18, %24 ]"
+simplifycfg,early-cse,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__early-cse.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__gvn.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,loop-rotate,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__loop-rotate.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__simplifycfg.ll,
+simplifycfg,loop-unroll,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__loop-unroll.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__simplifycfg.ll,
+early-cse,gvn,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\early-cse__then__gvn.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\gvn__then__early-cse.ll,
+early-cse,loop-rotate,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\early-cse__then__loop-rotate.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__early-cse.ll,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %27, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = icmp ne i32 %xtraiter, 0
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %28 = add nuw nsw i32 %.epil.init2, 1
+    >   %29 = zext nneg i32 %28 to i64
+    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    >   %31 = load i32, ptr %30, align 4
+    >   %32 = icmp sgt i32 %.epil.init, %31
+    >   br i1 %32, label %33, label %.epilog-lcssa
+    <   %28 = add nuw nsw i32 %.epil.init2, 1
+    <   %29 = zext nneg i32 %28 to i64
+    <   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    <   %31 = load i32, ptr %30, align 4
+    <   %32 = icmp sgt i32 %.epil.init, %31
+    <   br i1 %32, label %33, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %27, %26 ]
+    <   %.lcssa = phi i32 [ %20, %26 ]"
+early-cse,loop-unroll,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\early-cse__then__loop-unroll.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__early-cse.ll,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %27, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = icmp ne i32 %xtraiter, 0
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %28 = add nuw nsw i32 %.epil.init2, 1
+    >   %29 = zext nneg i32 %28 to i64
+    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    >   %31 = load i32, ptr %30, align 4
+    >   %32 = icmp sgt i32 %.epil.init, %31
+    >   br i1 %32, label %33, label %.epilog-lcssa
+    <   %28 = add nuw nsw i32 %.epil.init2, 1
+    <   %29 = zext nneg i32 %28 to i64
+    <   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    <   %31 = load i32, ptr %30, align 4
+    <   %32 = icmp sgt i32 %.epil.init, %31
+    <   br i1 %32, label %33, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %27, %26 ]
+    <   %.lcssa = phi i32 [ %20, %26 ]"
+gvn,loop-rotate,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\gvn__then__loop-rotate.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__gvn.ll,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %27, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = icmp ne i32 %xtraiter, 0
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %28 = add nuw nsw i32 %.epil.init2, 1
+    >   %29 = zext nneg i32 %28 to i64
+    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    >   %31 = load i32, ptr %30, align 4
+    >   %32 = icmp sgt i32 %.epil.init, %31
+    >   br i1 %32, label %33, label %.epilog-lcssa
+    <   %28 = add nuw nsw i32 %.epil.init2, 1
+    <   %29 = zext nneg i32 %28 to i64
+    <   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    <   %31 = load i32, ptr %30, align 4
+    <   %32 = icmp sgt i32 %.epil.init, %31
+    <   br i1 %32, label %33, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %27, %26 ]
+    <   %.lcssa = phi i32 [ %20, %26 ]"
+gvn,loop-unroll,false,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\gvn__then__loop-unroll.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__gvn.ll,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %27, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = icmp ne i32 %xtraiter, 0
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %28 = add nuw nsw i32 %.epil.init2, 1
+    >   %29 = zext nneg i32 %28 to i64
+    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    >   %31 = load i32, ptr %30, align 4
+    >   %32 = icmp sgt i32 %.epil.init, %31
+    >   br i1 %32, label %33, label %.epilog-lcssa
+    <   %28 = add nuw nsw i32 %.epil.init2, 1
+    <   %29 = zext nneg i32 %28 to i64
+    <   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29
+    <   %31 = load i32, ptr %30, align 4
+    <   %32 = icmp sgt i32 %.epil.init, %31
+    <   br i1 %32, label %33, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %27, %26 ]
+    <   %.lcssa = phi i32 [ %20, %26 ]"
+loop-rotate,loop-unroll,true,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__loop-unroll.ll,results\test_baseline_all\Stanford_Bubblesort\round_004\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__loop-rotate.ll,

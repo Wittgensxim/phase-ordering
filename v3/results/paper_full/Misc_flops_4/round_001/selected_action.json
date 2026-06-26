@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "loop-rotate",
+    "early-cse"
+  ],
+  "winner": "B->A",
+  "score_improvement": 15.5,
+  "details": "oracle chose loop-rotate->early-cse (improvement: 15.50)",
+  "changed": true
+}

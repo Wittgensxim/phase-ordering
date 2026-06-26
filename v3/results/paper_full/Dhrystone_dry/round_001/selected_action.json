@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "instcombine",
+    "early-cse"
+  ],
+  "winner": "B->A",
+  "score_improvement": 59.0,
+  "details": "oracle chose instcombine->early-cse (improvement: 59.00)",
+  "changed": true
+}

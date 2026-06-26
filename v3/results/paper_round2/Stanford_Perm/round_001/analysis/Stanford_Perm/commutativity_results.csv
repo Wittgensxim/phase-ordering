@@ -1,0 +1,245 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__simplifycfg.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,gvn,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__gvn.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__instcombine.ll,
+instcombine,sccp,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__sccp.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__loop-simplify.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__loop-rotate.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__instcombine.ll,"in function Initialize:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 1, %0 ], [ %6, %1 ]
+    >   %3 = add nsw i32 %2, -1
+    >   %4 = zext nneg i32 %2 to i64
+    >   %5 = getelementptr inbounds nuw [4 x i8], ptr @permarray, i64 %4
+    >   store i32 %3, ptr %5, align 4
+    >   %6 = add nuw nsw i32 %2, 1
+    >   %7 = icmp samesign ult i32 %2, 7
+    >   br i1 %7, label %1, label %8, !llvm.loop !7
+    <   %2 = phi i32 [ 1, %0 ], [ %6, %1 ]
+    <   %3 = add nsw i32 %2, -1
+    <   %4 = zext nneg i32 %2 to i64
+    <   %5 = getelementptr inbounds nuw [4 x i8], ptr @permarray, i64 %4
+    <   store i32 %3, ptr %5, align 4
+    <   %6 = add nuw nsw i32 %2, 1
+    <   %7 = icmp samesign ult i32 %6, 8
+    <   br i1 %7, label %1, label %8, !llvm.loop !7
+
+in function Permute:
+  in block %4 / %4:
+    >   %6 = icmp sgt i32 %0, 1
+    >   br i1 %6, label %.lr.ph, label %15
+    <   %6 = icmp sgt i32 %5, 0
+    <   br i1 %6, label %.lr.ph, label %15
+
+in function Perm:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 1, %0 ], [ %3, %1 ]
+    <   %2 = phi i32 [ 1, %0 ], [ %3, %1 ]
+        call void @Initialize()
+        call void @Permute(i32 noundef 7)
+    >   %3 = add nuw nsw i32 %2, 1
+    >   %4 = icmp samesign ult i32 %2, 5
+    >   br i1 %4, label %1, label %5, !llvm.loop !7
+    <   %3 = add nuw nsw i32 %2, 1
+    <   %4 = icmp samesign ult i32 %3, 6
+    <   br i1 %4, label %1, label %5, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+    <   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+        call void @Perm()
+    >   %3 = add nuw nsw i32 %2, 1
+    >   %4 = icmp samesign ult i32 %2, 99
+    >   br i1 %4, label %1, label %5, !llvm.loop !7
+    <   %3 = add nuw nsw i32 %2, 1
+    <   %4 = icmp samesign ult i32 %3, 100
+    <   br i1 %4, label %1, label %5, !llvm.loop !7"
+instcombine,licm,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__licm.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__instcombine.ll,
+instcombine,indvars,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__instcombine.ll,"in function Initialize:
+  in block %1 / %1:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 1, %0 ]
+    >   %exitcond.not = icmp eq i64 %indvars.iv, 8
+    >   br i1 %exitcond.not, label %6, label %2
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 8
+    <   br i1 %exitcond, label %2, label %6
+
+in function Perm:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %4, %3 ], [ 1, %0 ]
+    >   %exitcond.not = icmp eq i32 %2, 6
+    >   br i1 %exitcond.not, label %5, label %3
+    <   %2 = phi i32 [ %4, %3 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i32 %2, 6
+    <   br i1 %exitcond, label %3, label %5
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %4, %3 ], [ 0, %0 ]
+    >   %exitcond.not = icmp eq i32 %2, 100
+    >   br i1 %exitcond.not, label %5, label %3
+    <   %2 = phi i32 [ %4, %3 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i32 %2, 100
+    <   br i1 %exitcond, label %3, label %5"
+instcombine,loop-unroll,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\instcombine__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__instcombine.ll,"in function Initialize:
+  in block %9 / %9:
+    <   store i32 7, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 32), align 4
+
+in function Perm:
+  in block %7 / %7:
+    <   call void @Initialize()
+    <   call void @Permute(i32 noundef 7)"
+simplifycfg,gvn,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__gvn.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__sccp.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__simplifycfg.ll,"in function Permute:
+  in block %.loopexit / %15:
+    >   ret void
+    <   br label %15"
+simplifycfg,loop-rotate,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__simplifycfg.ll,"in function Permute:
+  in block %.lr.ph:
+    >   %7 = phi i32 [ %12, %.lr.ph ], [ %5, %4 ]
+    >   %8 = sext i32 %0 to i64
+    >   %9 = getelementptr inbounds [4 x i8], ptr @permarray, i64 %8
+    >   %10 = zext nneg i32 %7 to i64
+    >   %11 = getelementptr inbounds nuw [4 x i8], ptr @permarray, i64 %10
+    >   call void @Swap(ptr noundef nonnull %9, ptr noundef nonnull %11)
+    >   call void @Permute(i32 noundef %5)
+    >   call void @Swap(ptr noundef nonnull %9, ptr noundef nonnull %11)
+    >   %12 = add nsw i32 %7, -1
+    >   %13 = icmp sgt i32 %12, 0
+    >   br i1 %13, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %7
+  in block %.loopexit / %._crit_edge:
+    >   ret void
+    <   br label %15"
+simplifycfg,licm,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__licm.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__simplifycfg.ll,"in function Permute:
+  in block %.loopexit / %15:
+    >   ret void
+    <   br label %15"
+simplifycfg,indvars,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__simplifycfg.ll,"in function Permute:
+  in block %.loopexit / %14:
+    >   ret void
+    <   br label %14"
+simplifycfg,loop-unroll,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__simplifycfg.ll,"in function Initialize:
+  in block %0 / %0:
+    >   store i32 0, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 4), align 4
+    >   store i32 1, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 8), align 4
+    >   store i32 2, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 12), align 4
+    >   store i32 3, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 16), align 4
+    >   store i32 4, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 20), align 4
+    >   store i32 5, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 24), align 4
+    >   store i32 6, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 28), align 4
+    >   ret void
+    <   br label %1
+
+in function Permute:
+  in block %.loopexit / %15:
+    >   ret void
+    <   br label %15
+
+in function Perm:
+  in block %0 / %0:
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   %1 = load i32, ptr @pctr, align 4
+    >   %.not = icmp eq i32 %1, 43300
+    >   br i1 %.not, label %3, label %2
+    <   br label %1"
+gvn,sccp,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__sccp.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__gvn.ll,
+gvn,loop-simplify,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__loop-simplify.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__loop-rotate.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__gvn.ll,
+gvn,licm,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__licm.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__gvn.ll,
+gvn,indvars,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__gvn.ll,
+gvn,loop-unroll,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\gvn__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__gvn.ll,"in function Initialize:
+  in block %0 / %0:
+    >   store i32 0, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 4), align 4
+    >   store i32 1, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 8), align 4
+    >   store i32 2, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 12), align 4
+    >   store i32 3, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 16), align 4
+    >   store i32 4, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 20), align 4
+    >   store i32 5, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 24), align 4
+    >   store i32 6, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 28), align 4
+    >   br i1 false, label %1, label %2
+    <   br label %1
+
+in function Perm:
+  in block %0 / %0:
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   call void @Initialize()
+    >   call void @Permute(i32 noundef 7)
+    >   br i1 false, label %1, label %2
+    <   br label %1"
+sccp,loop-simplify,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__loop-simplify.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__loop-rotate.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__licm.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\sccp__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__sccp.ll,"in function Initialize:
+  in block %8 / %8:
+    >   br label %9
+    <   br i1 false, label %9, label %10
+
+in function Perm:
+  in block %6 / %6:
+    >   br label %7
+    <   br i1 false, label %7, label %8"
+loop-simplify,loop-rotate,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__licm.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-rotate,licm,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__licm.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__loop-rotate.ll,"in function Permute:
+  in block %4 / %4:
+    >   %6 = sext i32 %0 to i64
+    >   %7 = getelementptr inbounds [4 x i8], ptr @permarray, i64 %6"
+loop-rotate,indvars,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__loop-rotate.ll,"in function Permute:
+  in block %4 / %4:
+    >   %6 = zext i32 %5 to i64"
+loop-rotate,loop-unroll,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__loop-rotate.ll,"in function Initialize:
+  in block %1 / %1:
+    >   br label %2
+    <   store i32 0, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 4), align 4
+    <   store i32 1, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 8), align 4
+    <   store i32 2, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 12), align 4
+    <   store i32 3, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 16), align 4
+    <   store i32 4, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 20), align 4
+    <   store i32 5, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 24), align 4
+    <   store i32 6, ptr getelementptr inbounds nuw (i8, ptr @permarray, i64 28), align 4
+    <   ret void
+
+in function Perm:
+  in block %1 / %1:
+    >   br label %2
+    <   call void @Initialize()
+    <   call void @Permute(i32 noundef 7)
+    <   call void @Initialize()
+    <   call void @Permute(i32 noundef 7)
+    <   call void @Initialize()
+    <   call void @Permute(i32 noundef 7)
+    <   call void @Initialize()
+    <   call void @Permute(i32 noundef 7)
+    <   call void @Initialize()
+    <   call void @Permute(i32 noundef 7)
+    <   %2 = load i32, ptr @pctr, align 4
+    <   %.not = icmp eq i32 %2, 43300
+    <   br i1 %.not, label %4, label %3"
+licm,indvars,false,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__indvars.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__licm.ll,"in function Permute:
+  in block %4 / %4:
+    >   %6 = zext i32 %5 to i64
+        %6 = sext i32 %0 to i64
+        %7 = getelementptr inbounds [4 x i8], ptr @permarray, i64 %6
+    <   %8 = zext i32 %5 to i64"
+licm,loop-unroll,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\licm__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,true,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\indvars__then__loop-unroll.ll,results\paper_round2\Stanford_Perm\round_001\analysis\Stanford_Perm\commutativity\loop-unroll__then__indvars.ll,

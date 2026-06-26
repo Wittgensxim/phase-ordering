@@ -1,0 +1,347 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,early-cse,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__early-cse.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__gvn.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__instcombine.ll,
+instcombine,sccp,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__sccp.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %0 / %0:
+    >   %4 = fcmp ogt double %3, 0.000000e+00
+    >   br i1 %4, label %.lr.ph20, label %.loopexit
+    <   %4 = fcmp olt double 0.000000e+00, %3
+    <   br i1 %4, label %.lr.ph20, label %.loopexit"
+instcombine,licm,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__licm.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %23, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+    <   %.lcssa11 = phi i32 [ %6, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %23, %21 ]"
+instcombine,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__instcombine.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %18, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+  in block %16 / %16:
+    >   %17 = phi double [ %21, %20 ], [ 0.000000e+00, %10 ]
+    >   %18 = phi double [ %34, %20 ], [ 0.000000e+00, %10 ]
+    >   %19 = phi i32 [ %35, %20 ], [ 1, %10 ]
+    >   %exitcond.not = icmp eq i32 %19, %11
+    >   br i1 %exitcond.not, label %36, label %20
+    <   %17 = phi double [ %21, %20 ], [ 0.000000e+00, %10 ]
+    <   %18 = phi double [ %34, %20 ], [ 0.000000e+00, %10 ]
+    <   %19 = phi i32 [ %35, %20 ], [ 1, %10 ]
+    <   %exitcond = icmp ne i32 %19, %11
+    <   br i1 %exitcond, label %20, label %36"
+instcombine,loop-unroll,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__instcombine.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %18, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+    <   %.lcssa11 = phi i32 [ %6, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %18, %16 ]"
+simplifycfg,early-cse,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__gvn.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__sccp.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,loop-rotate,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph13 / %.lr.ph20:
+    >   %12 = phi i32 [ %8, %5 ], [ 15625, %0 ]
+    >   %13 = shl nsw i32 %12, 1
+    >   %14 = load double, ptr @one, align 8
+    >   %15 = sitofp i32 %13 to double
+    >   %16 = fdiv double %14, %15
+    >   %17 = call i32 @dtime(ptr noundef nonnull @TimeArray)
+    >   %.not.not18 = icmp slt i32 1, %13
+    >   br i1 %.not.not18, label %.lr.ph, label %._crit_edge
+    <   br label %12
+  in block %.loopexit:
+    >   %39 = phi double [ %.lcssa10, %._crit_edge ], [ undef, %0 ], [ %6, %5 ]
+    >   %40 = phi double [ %16, %._crit_edge ], [ undef, %0 ], [ %7, %5 ]
+    >   %41 = phi i32 [ 512000000, %._crit_edge ], [ 15625, %0 ], [ %8, %5 ]
+    <   %42 = phi double [ %split18, %..loopexit_crit_edge17 ], [ %split14, %..loopexit_crit_edge ], [ undef, %0 ]
+    <   %43 = phi double [ %split19, %..loopexit_crit_edge17 ], [ %split15, %..loopexit_crit_edge ], [ undef, %0 ]
+    <   %44 = phi i32 [ %split20, %..loopexit_crit_edge17 ], [ %split16, %..loopexit_crit_edge ], [ 15625, %0 ]"
+simplifycfg,licm,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__licm.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__simplifycfg.ll,
+simplifycfg,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__simplifycfg.ll,"in function main:
+  in block %.loopexit:
+    >   %42 = call i32 @dtime(ptr noundef nonnull @TimeArray)
+    >   %43 = call i32 @dtime(ptr noundef nonnull @TimeArray)
+    >   %44 = load double, ptr getelementptr inbounds nuw (i8, ptr @T, i64 8), align 8
+    >   %45 = load double, ptr getelementptr inbounds nuw (i8, ptr @TimeArray, i64 8), align 8
+    >   %46 = fmul double %44, %45
+    >   %47 = fcmp olt double %46, 0.000000e+00
+    >   %48 = select i1 %47, double 0.000000e+00, double %46
+    >   store double %48, ptr @nulltime, align 8
+    >   %49 = load double, ptr @sa, align 8
+    >   %50 = fneg double %48
+    >   %51 = call double @llvm.fmuladd.f64(double %44, double %49, double %50)
+    >   store double %51, ptr getelementptr inbounds nuw (i8, ptr @T, i64 16), align 16
+    >   %52 = load double, ptr @D1, align 8
+    >   %53 = load double, ptr @D2, align 8
+    >   %54 = fadd double %52, %53
+    >   %55 = load double, ptr @D3, align 8
+    >   %56 = fadd double %54, %55
+    >   %57 = load double, ptr @one, align 8
+    >   %58 = fadd double %57, %52
+    >   %59 = load double, ptr @E2, align 8
+    >   %60 = fadd double %58, %59
+    >   %61 = load double, ptr @E3, align 8
+    >   %62 = fadd double %60, %61
+    >   %63 = fdiv double %56, %62
+    >   store double %63, ptr @sa, align 8
+    >   store double %52, ptr @sb, align 8
+    >   %64 = fdiv double %51, 1.400000e+01
+    >   store double %64, ptr getelementptr inbounds nuw (i8, ptr @T, i64 24), align 8
+    >   %65 = fadd double %63, %52
+    >   %66 = load double, ptr @two, align 8
+    >   %67 = call double @llvm.fmuladd.f64(double %66, double %40, double %65)
+    >   %68 = fmul double %41, %67
+    >   %69 = fdiv double %68, %66
+    >   store double %69, ptr @sa, align 8
+    >   %70 = fdiv double %57, %69
+    >   store double %70, ptr @sb, align 8
+    >   %71 = fptosi double %70 to i32
+    >   %72 = mul nsw i32 %71, 40000
+    >   %73 = sitofp i32 %72 to double
+    >   %74 = load double, ptr @scale, align 8
+    >   %75 = fdiv double %73, %74
+    >   %76 = fptosi double %75 to i32
+    >   %77 = fadd double %70, -2.520000e+01
+    >   store double %77, ptr @sc, align 8
+    >   %78 = fdiv double %57, %64
+    >   store double %78, ptr getelementptr inbounds nuw (i8, ptr @T, i64 32), align 16
+    >   %79 = fmul double %77, 1.000000e-30
+    >   %80 = fmul double %51, 1.000000e-30
+    >   %81 = fmul double %78, 1.000000e-30
+    >   %82 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.4, double noundef %79, double noundef %80, double noundef %81) #4
+    >   %83 = load double, ptr @five, align 8
+    >   %84 = fneg double %83
+    >   %85 = load double, ptr @one, align 8
+    >   %86 = fneg double %85
+    >   store double %86, ptr @sa, align 8
+        %42 = call i32 @dtime(ptr noundef nonnull @TimeArray)
+    >   %smax = call i32 @llvm.smax.i32(i32 %76, i32 0)
+    >   %88 = add nuw i32 %smax, 1"
+simplifycfg,loop-unroll,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__simplifycfg.ll,
+early-cse,gvn,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__gvn.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__sccp.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %.loopexit:
+    >   %.lcssa15 = phi double [ %.lcssa10, %..loopexit_crit_edge ], [ undef, %0 ]
+    >   %.lcssa13 = phi double [ %13, %..loopexit_crit_edge ], [ undef, %0 ]
+    >   %.lcssa11 = phi i32 [ %10, %..loopexit_crit_edge ], [ 15625, %0 ]
+    <   %.lcssa15 = phi double [ %split21, %..loopexit_crit_edge ], [ undef, %0 ]
+    <   %.lcssa13 = phi double [ %split22, %..loopexit_crit_edge ], [ undef, %0 ]
+    <   %.lcssa11 = phi i32 [ %split23, %..loopexit_crit_edge ], [ 15625, %0 ]
+  in block %12 / %8:
+    >   %9 = phi i32 [ 15625, %.lr.ph20 ], [ %10, %5 ]
+    >   %10 = shl nsw i32 %9, 1
+    <   %13 = phi i32 [ 15625, %.lr.ph20 ], [ %8, %5 ]
+    <   %14 = shl nsw i32 %13, 1
+        %15 = load double, ptr @one, align 8
+    >   %12 = sitofp i32 %10 to double
+    >   %13 = fdiv double %11, %12
+    <   %16 = sitofp i32 %14 to double
+    <   %17 = fdiv double %15, %16
+        %18 = call i32 @dtime(ptr noundef nonnull @TimeArray)
+    >   %.not.not18 = icmp slt i32 1, %10
+    >   br i1 %.not.not18, label %.lr.ph, label %34
+    <   %.not.not18 = icmp slt i32 1, %14
+    <   br i1 %.not.not18, label %.lr.ph, label %38"
+early-cse,licm,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__licm.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %23, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+    <   %.lcssa11 = phi i32 [ %6, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %23, %21 ]"
+early-cse,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__early-cse.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %18, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %18, %16 ]"
+early-cse,loop-unroll,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__early-cse.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %18, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+    <   %.lcssa11 = phi i32 [ %6, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %18, %16 ]"
+gvn,sccp,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__sccp.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__gvn.ll,
+gvn,loop-rotate,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__loop-rotate.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %.loopexit:
+    >   %.lcssa15 = phi double [ %.lcssa10, %..loopexit_crit_edge ], [ undef, %0 ]
+    >   %.lcssa13 = phi double [ %13, %..loopexit_crit_edge ], [ undef, %0 ]
+    >   %.lcssa11 = phi i32 [ %10, %..loopexit_crit_edge ], [ 15625, %0 ]
+    <   %.lcssa15 = phi double [ %split21, %..loopexit_crit_edge ], [ undef, %0 ]
+    <   %.lcssa13 = phi double [ %split22, %..loopexit_crit_edge ], [ undef, %0 ]
+    <   %.lcssa11 = phi i32 [ %split23, %..loopexit_crit_edge ], [ 15625, %0 ]
+  in block %12 / %8:
+    >   %9 = phi i32 [ 15625, %.lr.ph20 ], [ %10, %5 ]
+    >   %10 = shl nsw i32 %9, 1
+    <   %13 = phi i32 [ 15625, %.lr.ph20 ], [ %8, %5 ]
+    <   %14 = shl nsw i32 %13, 1
+        %15 = load double, ptr @one, align 8
+    >   %12 = sitofp i32 %10 to double
+    >   %13 = fdiv double %11, %12
+    <   %16 = sitofp i32 %14 to double
+    <   %17 = fdiv double %15, %16
+        %18 = call i32 @dtime(ptr noundef nonnull @TimeArray)
+    >   %.not.not18 = icmp slt i32 1, %10
+    >   br i1 %.not.not18, label %.lr.ph, label %29
+    <   %.not.not18 = icmp slt i32 1, %14
+    <   br i1 %.not.not18, label %.lr.ph, label %38"
+gvn,licm,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__licm.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__gvn.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %23, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+    <   %.lcssa11 = phi i32 [ %6, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %23, %21 ]"
+gvn,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__gvn.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %18, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %18, %16 ]"
+gvn,loop-unroll,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\gvn__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %3 / %3:
+    >   %4 = phi double [ %18, %41 ], [ undef, %0 ]
+    <   %4 = phi double [ %.lcssa10, %41 ], [ undef, %0 ]
+        %5 = phi double [ %14, %41 ], [ undef, %0 ]
+        %6 = phi i32 [ %11, %41 ], [ 15625, %0 ]
+    >   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+    <   %7 = phi double [ %38, %41 ], [ 0.000000e+00, %0 ]
+  in block %.loopexit:
+    <   %.lcssa15 = phi double [ %4, %3 ]
+    <   %.lcssa13 = phi double [ %5, %3 ]
+    <   %.lcssa11 = phi i32 [ %6, %3 ]
+  in block %36 / %36:
+    <   %.lcssa10 = phi double [ %18, %16 ]"
+sccp,loop-rotate,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__loop-rotate.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__licm.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__sccp.ll,
+sccp,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__sccp.ll,"in function main:
+  in block %46 / %46:
+    >   br label %47
+    <   br i1 false, label %47, label %48"
+sccp,loop-unroll,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\sccp__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__sccp.ll,
+loop-rotate,licm,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__licm.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__loop-rotate.ll,"in function main:
+  in block %12 / %12:
+    >   %19 = load double, ptr @D1, align 8
+    >   %20 = load double, ptr @D2, align 8
+    >   %21 = load double, ptr @D3, align 8
+    >   %22 = load double, ptr @E2, align 8
+    >   %23 = load double, ptr @E3, align 8
+  in block %58 / %58:
+    >   %sa.promoted = load double, ptr @sa, align 8
+  in block %24 / %24:
+    in instruction %30 / %30:
+      arguments %21 and %21 differ
+  in block %.lr.ph:
+    <   %19 = load double, ptr @D1, align 8
+    <   %20 = load double, ptr @D2, align 8
+    <   %21 = load double, ptr @D3, align 8
+    <   %22 = load double, ptr @E2, align 8
+    <   %23 = load double, ptr @E3, align 8"
+loop-rotate,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__loop-rotate.ll,"function @llvm.smax.i32 exists only in right module
+in function main:
+  in block %12 / %12:
+    >   br label %19
+    <   %.not.not18 = icmp slt i32 1, %14
+    <   br i1 %.not.not18, label %.lr.ph, label %38
+  in block %55 / %55:
+    >   %smax = call i32 @llvm.smax.i32(i32 %84, i32 0)
+    >   %96 = add nuw i32 %smax, 1
+    >   %exitcond1830 = icmp eq i32 1, %96
+    >   br i1 %exitcond1830, label %104, label %.lr.ph31
+    <   %.not24 = icmp sgt i32 1, %84
+    <   br i1 %.not24, label %104, label %.lr.ph26
+  in block %42 / %42:
+    >   %.lcssa10.lcssa = phi double [ %.lcssa10, %38 ]
+    <   %.lcssa10.lcssa = phi double [ %.lcssa10, %38 ]
+  in block %5 / %5:
+    >   %6 = phi double [ %.lcssa10, %38 ]
+    <   %6 = phi double [ %.lcssa10, %38 ]
+        %7 = phi double [ %17, %38 ]
+        %8 = phi i32 [ %14, %38 ]
+    >   %9 = phi double [ %40, %38 ]
+    <   %9 = phi double [ %40, %38 ]
+  in block %38 / %38:
+    >   %.lcssa10 = phi double [ %36, %19 ]
+    <   %.lcssa10 = phi double [ %split, %._crit_edge ], [ 0.000000e+00, %12 ]"
+loop-rotate,loop-unroll,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__loop-rotate.ll,"function @llvm.smax.i32 exists only in left module
+function @llvm.assume exists only in left module
+in function main:
+  in block %43 / %43:
+    >   br label %48
+    <   %smax = call i32 @llvm.smax.i32(i32 %46, i32 1)
+    <   %48 = add nsw i32 %smax, -1
+    <   %xtraiter = and i32 %smax, 7
+    <   %49 = icmp ult i32 %48, 7
+    <   br i1 %49, label %.epil.preheader, label %.new"
+licm,indvars,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__indvars.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__licm.ll,"in function main:
+  in block %55 / %55:
+    <   %sa.promoted = load double, ptr @sa, align 8
+        %smax = call i32 @llvm.smax.i32(i32 %84, i32 0)
+        %96 = add nuw i32 %smax, 1
+    >   %sa.promoted = load double, ptr @sa, align 8"
+licm,loop-unroll,true,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\licm__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,false,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\indvars__then__loop-unroll.ll,results\paper_full\Misc_flops\round_004\analysis\Misc_flops\commutativity\loop-unroll__then__indvars.ll,"in function main:
+  in block %47 / %47:
+    >   br label %46, !llvm.loop !10
+    <   unreachable"

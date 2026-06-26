@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "licm",
+    "simplifycfg"
+  ],
+  "details": "perturbation: licm->simplifycfg",
+  "changed": true
+}

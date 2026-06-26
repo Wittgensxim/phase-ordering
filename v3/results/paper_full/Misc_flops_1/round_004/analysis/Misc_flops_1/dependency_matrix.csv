@@ -1,0 +1,22 @@
+pass_a,pass_b,classification,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,enablement_evidence
+early-cse,gvn,independent,,none,none,none,none,,,,,,,none,,,
+early-cse,indvars,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,indvars->early-cse,kind=activation round=1 prefix=indvars writes=inst:main:%.lcssa
+early-cse,instcombine,independent,,none,none,none,none,,,,,,,none,,,
+early-cse,licm,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,licm->early-cse,kind=activation round=1 prefix=licm writes=inst:main:%.lcssa
+early-cse,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->early-cse,kind=activation round=1 prefix=loop-rotate writes=inst:main:%.lcssa
+early-cse,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->early-cse,kind=activation round=1 prefix=loop-unroll writes=inst:main:%.lcssa
+gvn,indvars,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,indvars->gvn,kind=activation round=1 prefix=indvars writes=inst:main:%.lcssa
+gvn,instcombine,independent,,none,none,none,none,,,,,,,none,,,
+gvn,licm,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,licm->gvn,kind=activation round=1 prefix=licm writes=inst:main:%.lcssa
+gvn,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->gvn,kind=activation round=1 prefix=loop-rotate writes=inst:main:%.lcssa
+gvn,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->gvn,kind=activation round=1 prefix=loop-unroll writes=inst:main:%.lcssa
+indvars,instcombine,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,indvars->instcombine,kind=activation round=1 prefix=indvars writes=inst:main:%.lcssa
+indvars,licm,dependent,read_write,strong,strong,none,none,,,inst:main:%.lcssa,inst:main:%.lcssa,,inst,write_write_only,,,
+indvars,loop-rotate,dependent,read_write,strong,strong,none,none,,,inst:main:%.lcssa,inst:main:%.lcssa,,inst,write_write_only,,,
+indvars,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:main:%.lcssa,inst:main:%.lcssa,,inst,write_write_only,,,
+instcombine,licm,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,licm->instcombine,kind=activation round=1 prefix=licm writes=inst:main:%.lcssa
+instcombine,loop-rotate,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-rotate->instcombine,kind=activation round=1 prefix=loop-rotate writes=inst:main:%.lcssa
+instcombine,loop-unroll,dependent,enablement,strong,none,strong,none,,,,,,,none,activation,loop-unroll->instcombine,kind=activation round=1 prefix=loop-unroll writes=inst:main:%.lcssa
+licm,loop-rotate,dependent,read_write,strong,strong,none,none,,,inst:main:%.lcssa,inst:main:%.lcssa,,inst,write_write_only,,,
+licm,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:main:%.lcssa,inst:main:%.lcssa,,inst,write_write_only,,,
+loop-rotate,loop-unroll,dependent,read_write,strong,strong,none,none,,,inst:main:%.lcssa,inst:main:%.lcssa,,inst,write_write_only,,,

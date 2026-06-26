@@ -1,0 +1,156 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\instcombine__then__simplifycfg.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,early-cse,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\instcombine__then__early-cse.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\instcombine__then__gvn.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\gvn__then__instcombine.ll,
+instcombine,loop-simplify,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\instcombine__then__loop-simplify.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\instcombine__then__loop-rotate.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-rotate__then__instcombine.ll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+    <   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+  in block %.preheader.preheader:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    >   %.2 = phi i32 [ %15, %22 ], [ %.1, %21 ]
+    >   %.not6 = icmp sgt i32 %.2, %.239
+    >   br i1 %.not6, label %24, label %9, !llvm.loop !10
+    <   %.239 = phi i32 [ %.lcssa3, %22 ], [ %.138.lcssa, %21 ]
+    <   %.2 = phi i32 [ %.lcssa, %22 ], [ %.1.lcssa, %21 ]
+    <   %.not6 = icmp sgt i32 %.2, %.239
+    <   br i1 %.not6, label %24, label %9, !llvm.loop !10"
+instcombine,loop-unroll,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\instcombine__then__loop-unroll.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-unroll__then__instcombine.ll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+    <   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+  in block %.preheader.preheader:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    >   %.2 = phi i32 [ %15, %22 ], [ %.1, %21 ]
+    >   %.not6 = icmp sgt i32 %.2, %.239
+    >   br i1 %.not6, label %24, label %9, !llvm.loop !10
+    <   %.239 = phi i32 [ %.lcssa3, %22 ], [ %.138.lcssa, %21 ]
+    <   %.2 = phi i32 [ %.lcssa, %22 ], [ %.1.lcssa, %21 ]
+    <   %.not6 = icmp sgt i32 %.2, %.239
+    <   br i1 %.not6, label %24, label %9, !llvm.loop !10"
+simplifycfg,early-cse,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\simplifycfg__then__early-cse.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\simplifycfg__then__gvn.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\simplifycfg__then__loop-simplify.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-simplify__then__simplifycfg.ll,"in function Quicksort:
+  in block %.preheader.preheader / %.preheader:
+    >   %.138 = phi i32 [ %20, %.preheader ], [ %.037, %10 ]
+    >   %16 = sext i32 %.138 to i64
+    >   %17 = getelementptr inbounds [4 x i8], ptr %0, i64 %16
+    >   %18 = load i32, ptr %17, align 4
+    >   %19 = icmp slt i32 %8, %18
+    >   %20 = add nsw i32 %.138, -1
+    >   br i1 %19, label %.preheader, label %21, !llvm.loop !9
+    <   br label %.preheader
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    <   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+  in block %22 / %22:
+    >   store i32 %18, ptr %12, align 4
+    >   store i32 %13, ptr %17, align 4
+    <   store i32 %18, ptr %12, align 4
+    <   store i32 %13, ptr %17, align 4
+  in block %21 / %21:
+    >   %.not = icmp sgt i32 %.1, %.138
+    <   %.not = icmp sgt i32 %.1, %.138"
+simplifycfg,loop-rotate,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\simplifycfg__then__loop-rotate.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-rotate__then__simplifycfg.ll,
+simplifycfg,loop-unroll,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\simplifycfg__then__loop-unroll.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-unroll__then__simplifycfg.ll,
+early-cse,gvn,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\early-cse__then__gvn.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\gvn__then__early-cse.ll,
+early-cse,loop-simplify,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\early-cse__then__loop-simplify.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\early-cse__then__loop-rotate.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-rotate__then__early-cse.ll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+    <   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+  in block %.preheader.preheader:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    >   %.2 = phi i32 [ %15, %22 ], [ %.1, %21 ]
+    >   %.not6 = icmp sgt i32 %.2, %.239
+    >   br i1 %.not6, label %24, label %9, !llvm.loop !10
+    <   %.239 = phi i32 [ %.lcssa3, %22 ], [ %.138.lcssa, %21 ]
+    <   %.2 = phi i32 [ %.lcssa, %22 ], [ %.1.lcssa, %21 ]
+    <   %.not6 = icmp sgt i32 %.2, %.239
+    <   br i1 %.not6, label %24, label %9, !llvm.loop !10"
+early-cse,loop-unroll,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\early-cse__then__loop-unroll.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-unroll__then__early-cse.ll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+    <   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+  in block %.preheader.preheader:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    >   %.2 = phi i32 [ %15, %22 ], [ %.1, %21 ]
+    >   %.not6 = icmp sgt i32 %.2, %.239
+    >   br i1 %.not6, label %24, label %9, !llvm.loop !10
+    <   %.239 = phi i32 [ %.lcssa3, %22 ], [ %.138.lcssa, %21 ]
+    <   %.2 = phi i32 [ %.lcssa, %22 ], [ %.1.lcssa, %21 ]
+    <   %.not6 = icmp sgt i32 %.2, %.239
+    <   br i1 %.not6, label %24, label %9, !llvm.loop !10"
+gvn,loop-simplify,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\gvn__then__loop-simplify.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\gvn__then__loop-rotate.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-rotate__then__gvn.ll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+    <   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+  in block %.preheader.preheader:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    >   %.2 = phi i32 [ %15, %22 ], [ %.1, %21 ]
+    >   %.not6 = icmp sgt i32 %.2, %.239
+    >   br i1 %.not6, label %24, label %9, !llvm.loop !10
+    <   %.239 = phi i32 [ %.lcssa3, %22 ], [ %.138.lcssa, %21 ]
+    <   %.2 = phi i32 [ %.lcssa, %22 ], [ %.1.lcssa, %21 ]
+    <   %.not6 = icmp sgt i32 %.2, %.239
+    <   br i1 %.not6, label %24, label %9, !llvm.loop !10"
+gvn,loop-unroll,false,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\gvn__then__loop-unroll.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-unroll__then__gvn.ll,"in function Quicksort:
+  in block %9 / %9:
+    >   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    >   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+    <   %.037 = phi i32 [ %2, %3 ], [ %.239, %23 ]
+    <   %.0 = phi i32 [ %1, %3 ], [ %.2, %23 ]
+  in block %.preheader.preheader:
+    <   %.1.lcssa = phi i32 [ %.1, %10 ]
+    <   %.lcssa2 = phi ptr [ %12, %10 ]
+    <   %.lcssa1 = phi i32 [ %13, %10 ]
+    <   %.lcssa = phi i32 [ %15, %10 ]
+  in block %23 / %23:
+    >   %.239 = phi i32 [ %20, %22 ], [ %.138, %21 ]
+    >   %.2 = phi i32 [ %15, %22 ], [ %.1, %21 ]
+    >   %.not6 = icmp sgt i32 %.2, %.239
+    >   br i1 %.not6, label %24, label %9, !llvm.loop !10
+    <   %.239 = phi i32 [ %.lcssa3, %22 ], [ %.138.lcssa, %21 ]
+    <   %.2 = phi i32 [ %.lcssa, %22 ], [ %.1.lcssa, %21 ]
+    <   %.not6 = icmp sgt i32 %.2, %.239
+    <   br i1 %.not6, label %24, label %9, !llvm.loop !10"
+loop-simplify,loop-rotate,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-simplify__then__loop-rotate.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-simplify__then__loop-unroll.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-rotate,loop-unroll,true,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-rotate__then__loop-unroll.ll,results\test_baseline_qs\Stanford_Quicksort\round_006\analysis\Stanford_Quicksort\commutativity\loop-unroll__then__loop-rotate.ll,

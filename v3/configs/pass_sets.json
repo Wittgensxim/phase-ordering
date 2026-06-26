@@ -1,0 +1,106 @@
+{
+    "description": "LLVM pass sets for different optimization levels with mandatory ordering constraints",
+    "pass_sets": {
+        "minimal": [
+            "instcombine",
+            "simplifycfg",
+            "dce"
+        ],
+        "O1": [
+            "mem2reg",
+            "instcombine",
+            "simplifycfg",
+            "early-cse",
+            "sccp",
+            "dce",
+            "adce",
+            "loop-simplify",
+            "loop-rotate"
+        ],
+        "O2": [
+            "mem2reg",
+            "instcombine",
+            "simplifycfg",
+            "early-cse",
+            "gvn",
+            "sccp",
+            "loop-simplify",
+            "loop-rotate",
+            "dce",
+            "adce",
+            "sroa"
+        ],
+        "O3": [
+            "mem2reg",
+            "instcombine",
+            "simplifycfg",
+            "early-cse",
+            "gvn",
+            "sccp",
+            "loop-simplify",
+            "loop-rotate",
+            "loop-unroll",
+            "dce",
+            "adce",
+            "sroa"
+        ],
+        "research": [
+            "mem2reg",
+            "instcombine",
+            "simplifycfg",
+            "dce",
+            "sroa",
+            "early-cse",
+            "gvn",
+            "sccp",
+            "adce",
+            "loop-simplify",
+            "loop-rotate",
+            "licm",
+            "indvars",
+            "loop-unroll",
+            "reassociate"
+        ]
+    },
+    "mandatory_orders": [
+        {
+            "before": "mem2reg",
+            "after": "*",
+            "reason": "mem2reg must run first to promote allocas to SSA"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-rotate",
+            "reason": "loop-simplify canonicalizes loops before rotation"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "licm",
+            "reason": "licm requires canonicalized loop structure"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-unroll",
+            "reason": "loop-simplify canonicalizes loops before unrolling"
+        },
+        {
+            "before": "loop-rotate",
+            "after": "licm",
+            "reason": "loop-rotate exposes more loop-invariant code for licm"
+        },
+        {
+            "before": "indvars",
+            "after": "loop-unroll",
+            "reason": "indvars simplifies induction variables before unrolling"
+        }
+    ],
+    "scheduler_defaults": {
+        "mode": "relaxed",
+        "independence_threshold": 0.9,
+        "max_rounds": 50,
+        "metric_stagnation_rounds": 5,
+        "ir_cycle_detection": true,
+        "safe_pass_strategy": "one_at_a_time",
+        "oracle_max_candidates": 10
+    }
+}

@@ -1,0 +1,633 @@
+{
+  "summary": {
+    "total_pairs": 78,
+    "commuting_pairs": 52,
+    "non_commuting_pairs": 26
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": "function @llvm.smin.i32 exists only in right module\nin function Min0:\n  in block %2 / %2:\n    >   %. = call i32 @llvm.smin.i32(i32 %0, i32 %1)\n    >   ret i32 %.\n    <   %3 = icmp slt i32 %0, %1\n    <   %. = select i1 %3, i32 %0, i32 %1\n    <   ret i32 %."
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__dce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__adce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function Cos:\n  in block %22 / %22:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Fft:\n  in block %8 / %8:\n    >   %.04 = phi i32 [ 1, %7 ], [ %56, %57 ]\n    >   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]\n    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]\n    >   %9 = sext i32 %.02 to i64\n    >   %10 = getelementptr [8 x i8], ptr %3, i64 %9\n    >   %11 = getelementptr i8, ptr %10, i64 8\n    >   %12 = getelementptr i8, ptr %10, i64 12\n    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %57 ]\n    <   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]\n    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]\n    <   %9 = sext i32 %.02 to i64\n    <   %10 = getelementptr [8 x i8], ptr %3, i64 %9\n    <   %11 = getelementptr i8, ptr %10, i64 8\n    <   %12 = getelementptr i8, ptr %10, i64 12"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function Cos:\n  in block %22 / %22:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Exptab:\n  in block %27 / %27:\n    >   %.02 = phi i32 [ 1, %14 ], [ %51, %49 ]\n    >   %.0 = phi i32 [ %16, %14 ], [ %28, %49 ]\n    >   %28 = sdiv i32 %.0, 2\n    >   %.phi.trans.insert = sext i32 %.02 to i64\n    >   %.phi.trans.insert3 = getelementptr inbounds [4 x i8], ptr %3, i64 %.phi.trans.insert\n    >   %.pre = load float, ptr %.phi.trans.insert3, align 4\n    >   %invariant.op = add nsw i32 %28, 1\n    <   %.02 = phi i32 [ 1, %14 ], [ %51, %49 ]\n    <   %.0 = phi i32 [ %16, %14 ], [ %28, %49 ]\n    <   %28 = sdiv i32 %.0, 2\n    <   %.phi.trans.insert = sext i32 %.02 to i64\n    <   %.phi.trans.insert3 = getelementptr inbounds [4 x i8], ptr %3, i64 %.phi.trans.insert\n    <   %.pre = load float, ptr %.phi.trans.insert3, align 4\n    <   %invariant.op = add nsw i32 %28, 1\n    <   %invariant.op1 = sub i32 1, %28\n\nin function Fft:\n  in block %8 / %8:\n    >   %.04 = phi i32 [ 1, %7 ], [ %56, %57 ]\n    >   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]\n    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]\n    >   %9 = sext i32 %.02 to i64\n    >   %10 = getelementptr [8 x i8], ptr %3, i64 %9\n    >   %11 = getelementptr i8, ptr %10, i64 8\n    >   %12 = getelementptr i8, ptr %10, i64 12\n    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %57 ]\n    <   %.03 = phi i32 [ %.01, %7 ], [ %58, %57 ]\n    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %57 ]\n    <   %9 = sext i32 %.02 to i64\n    <   %10 = getelementptr [8 x i8], ptr %3, i64 %9\n    <   %11 = getelementptr i8, ptr %10, i64 8\n    <   %12 = getelementptr i8, ptr %10, i64 12"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function Cos:\n  in block %2 / %2:\n    >   %.013 = phi i32 [ 2, %1 ], [ %20, %19 ]\n    <   %.013 = phi i32 [ 2, %1 ], [ %20, %19 ]\n        %.022 = phi i32 [ 1, %1 ], [ %3, %19 ]\n    >   %.031 = phi float [ 1.000000e+00, %1 ], [ %.1, %19 ]\n    <   %.031 = phi float [ 1.000000e+00, %1 ], [ %.1, %19 ]\n  in block %19 / %19:\n    >   %exitcond.not = icmp eq i32 %20, 11\n    >   br i1 %exitcond.not, label %21, label %2, !llvm.loop !7\n    <   %exitcond = icmp ne i32 %20, 11\n    <   br i1 %exitcond, label %2, label %21, !llvm.loop !7\n\nin function Exptab:\n  in block %4 / %4:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 1, %2 ]\n    >   %.032 = phi float [ %10, %4 ], [ 4.000000e+00, %2 ]\n    >   %5 = fdiv float f0x40490FDB, %.032\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 1, %2 ]\n    <   %.032 = phi float [ 4.000000e+00, %2 ], [ %10, %4 ]\n    <   %5 = fdiv float f0x40490FDB, %.032\n        %6 = call float @Cos(float noundef %5)\n        %7 = fmul float %6, 2.000000e+00\n        %8 = fdiv float 1.000000e+00, %7\n    >   %9 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %indvars.iv\n    >   store float %8, ptr %9, align 4\n    >   %10 = fadd float %.032, %.032\n    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\n    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 26\n    >   br i1 %exitcond.not, label %11, label %4, !llvm.loop !7\n    <   %9 = getelementptr inbounds nuw [4 x i8], ptr %3, i64 %indvars.iv\n    <   store float %8, ptr %9, align 4\n    <   %10 = fadd float %.032, %.032\n    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\n    <   %exitcond = icmp ne i64 %indvars.iv.next, 26\n    <   br i1 %exitcond, label %4, label %11, !llvm.loop !7\n\nin function Fft:\n  in block %73 / %71:\n    >   %indvars.iv10 = phi i64 [ %indvars.iv.next11, %71 ], [ 1, %.lr.ph ]\n    >   %72 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %indvars.iv10\n    >   %73 = load float, ptr %72, align 4\n    >   %74 = fmul float %4, %73\n    >   store float %74, ptr %72, align 4\n    >   %75 = getelementptr inbounds nuw i8, ptr %72, i64 4\n    >   %76 = load float, ptr %75, align 4\n    >   %77 = fmul float %76, %69\n    >   store float %77, ptr %75, align 4\n    >   %indvars.iv.next11 = add nuw nsw i64 %indvars.iv10, 1\n    >   %exitcond14.not = icmp eq i64 %indvars.iv.next11, %wide.trip.count13\n    >   br i1 %exitcond14.not, label %._crit_edge, label %71, !llvm.loop !12\n    <   %indvars.iv13 = phi i64 [ %indvars.iv.next14, %73 ], [ 1, %.lr.ph ]\n    <   %74 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %indvars.iv13\n    <   %75 = load float, ptr %74, align 4\n    <   %76 = fmul float %4, %75\n    <   store float %76, ptr %74, align 4\n    <   %77 = getelementptr inbounds nuw i8, ptr %74, i64 4\n    <   %78 = load float, ptr %77, align 4\n    <   %79 = fmul float %78, %71\n    <   store float %79, ptr %77, align 4\n    <   %indvars.iv.next14 = add nuw nsw i64 %indvars.iv13, 1\n    <   %exitcond17 = icmp ne i64 %indvars.iv.next14, %wide.trip.count16\n    <   br i1 %exitcond17, label %73, label %._crit_edge, !llvm.loop !12\n  in block %12 / %12:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %58 ], [ %11, %10 ]\n    >   %.04 = phi i64 [ %indvars.iv.next, %58 ], [ 1, %10 ]\n    >   %.02 = phi i32 [ %59, %58 ], [ 0, %10 ]\n    >   %13 = sext i32 %.02 to i64\n    >   %14 = getelementptr [8 x i8], ptr %3, i64 %13\n    >   %15 = getelementptr i8, ptr %14, i64 8\n    >   %16 = getelementptr i8, ptr %14, i64 12\n    >   %sext = shl i64 %.04, 32\n    >   %17 = ashr exact i64 %sext, 32\n    >   %18 = sext i32 %.02 to i64\n    >   %smax = call i64 @llvm.smax.i64(i64 %indvars.iv2, i64 %17)\n    <   %indvars.iv5 = phi i64 [ %indvars.iv.next6, %59 ], [ %11, %10 ]\n    <   %.04 = phi i32 [ 1, %10 ], [ %60, %59 ]\n    <   %.02 = phi i32 [ 0, %10 ], [ %61, %59 ]\n    <   %13 = sext i32 %.02 to i64\n    <   %14 = getelementptr [8 x i8], ptr %3, i64 %13\n    <   %15 = getelementptr i8, ptr %14, i64 8\n    <   %16 = getelementptr i8, ptr %14, i64 12\n    <   %17 = sext i32 %.04 to i64\n    <   %18 = sext i32 %.02 to i64\n    <   %smax = call i64 @llvm.smax.i64(i64 %indvars.iv5, i64 %17)\n    <   %19 = add i64 %smax, 1\n\nin function Oscar:\n  in block %2 / %2:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 1, %0 ]\n    >   %3 = phi i32 [ %5, %2 ], [ 5767, %0 ]\n    >   store i32 %3, ptr %1, align 4\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 1, %0 ]\n    <   %3 = phi i32 [ 5767, %0 ], [ %5, %2 ]\n    <   store i32 %3, ptr %1, align 4\n        call void @Uniform11(ptr noundef nonnull %1, ptr noundef nonnull @zr)\n        %4 = load i32, ptr %1, align 4\n        store i32 %4, ptr @seed, align 4\n        call void @Uniform11(ptr noundef nonnull %1, ptr noundef nonnull @zi)\n        %5 = load i32, ptr %1, align 4\n        store i32 %5, ptr @seed, align 4\n        %6 = load float, ptr @zr, align 4\n        %7 = call float @llvm.fmuladd.f32(float %6, float 2.000000e+01, float -1.000000e+01)\n    >   %8 = getelementptr inbounds nuw [8 x i8], ptr @z, i64 %indvars.iv\n    >   store float %7, ptr %8, align 8\n    <   %8 = getelementptr inbounds nuw [8 x i8], ptr @z, i64 %indvars.iv\n    <   store float %7, ptr %8, align 8\n        %9 = load float, ptr @zi, align 4\n        %10 = call float @llvm.fmuladd.f32(float %9, float 2.000000e+01, float -1.000000e+01)\n    >   %11 = getelementptr inbounds nuw i8, ptr %8, i64 4\n    >   store float %10, ptr %11, align 4\n    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\n    >   %exitcond.not = icmp eq i64 %indvars.iv.next, 257\n    >   br i1 %exitcond.not, label %12, label %2, !llvm.loop !7\n    <   %11 = getelementptr inbounds nuw i8, ptr %8, i64 4\n    <   store float %10, ptr %11, align 4\n    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\n    <   %exitcond = icmp ne i64 %indvars.iv.next, 257\n    <   br i1 %exitcond, label %2, label %12, !llvm.loop !7\n\nin function main:\n  in block %1 / %1:\n    >   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]\n    <   %.01 = phi i32 [ 0, %0 ], [ %2, %1 ]\n        call void @Oscar()\n    >   %2 = add nuw nsw i32 %.01, 1\n    >   %exitcond.not = icmp eq i32 %2, 10\n    >   br i1 %exitcond.not, label %3, label %1, !llvm.loop !7\n    <   %2 = add nuw nsw i32 %.01, 1\n    <   %exitcond = icmp ne i32 %2, 10\n    <   br i1 %exitcond, label %1, label %3, !llvm.loop !7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function Cos:\n  in block %8 / %6:\n    >   %7 = fmul float %3, 5.000000e-01\n    >   %8 = fsub float 1.000000e+00, %7\n    <   %9 = fdiv float %3, 2.000000e+00\n    <   %10 = fsub float 1.000000e+00, %9\n  in block %5 / %5:\n    <   %6 = fdiv float %3, 2.000000e+00\n    <   %7 = fadd float 1.000000e+00, %6\n  in block %12 / %10:\n    >   %.1 = phi float [ %.2, %9 ], [ poison, %2 ]\n    <   %.1 = phi float [ %.2, %11 ], [ 1.000000e+00, %2 ]\n\nin function Fft:\n  in block %5 / %5:\n    <   %7 = add nsw i32 %smax, -1"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\instcombine__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__instcombine.ll",
+      "details": "in function Exptab:\n  in block %29 / %29:\n    >   %.01 = phi i32 [ %28, %27 ], [ %48, %29 ]\n    >   %.reass = add i32 %invariant.op, %.01\n    >   %30 = sext i32 %.reass to i64\n    >   %31 = getelementptr inbounds [8 x i8], ptr %1, i64 %30\n    >   %32 = load float, ptr %31, align 4\n    >   %reass.sub = sub i32 %.01, %28\n    >   %.reass2 = add i32 %reass.sub, 1\n    >   %33 = sext i32 %.reass2 to i64\n    >   %34 = getelementptr inbounds [8 x i8], ptr %1, i64 %33\n    >   %35 = load float, ptr %34, align 4\n    >   %36 = fadd float %32, %35\n    >   %37 = fmul float %.pre, %36\n    >   %38 = sext i32 %.01 to i64\n    >   %39 = getelementptr [8 x i8], ptr %1, i64 %38\n    >   %40 = getelementptr i8, ptr %39, i64 8\n    >   store float %37, ptr %40, align 4\n    >   %41 = getelementptr inbounds nuw i8, ptr %31, i64 4\n    >   %42 = load float, ptr %41, align 4\n    >   %43 = getelementptr inbounds nuw i8, ptr %34, i64 4\n    >   %44 = load float, ptr %43, align 4\n    >   %45 = fadd float %42, %44\n    >   %46 = fmul float %.pre, %45\n    >   %47 = getelementptr i8, ptr %39, i64 12\n    >   store float %46, ptr %47, align 4\n    >   %48 = add nsw i32 %.01, %.0\n    >   %.not = icmp sgt i32 %48, %15\n    >   br i1 %.not, label %49, label %29, !llvm.loop !9\n    <   %.01 = phi i32 [ %28, %27 ], [ %48, %29 ]\n    <   %.reass = add i32 %invariant.op, %.01\n    <   %30 = sext i32 %.reass to i64\n    <   %31 = getelementptr inbounds [8 x i8], ptr %1, i64 %30\n    <   %32 = load float, ptr %31, align 4\n    <   %.neg = sub i32 0, %28\n    <   %reass.sub = add i32 %.neg, 1\n    <   %.reass2 = add i32 %reass.sub, %.01\n    <   %33 = sext i32 %.reass2 to i64\n    <   %34 = getelementptr inbounds [8 x i8], ptr %1, i64 %33\n    <   %35 = load float, ptr %34, align 4\n    <   %36 = fadd float %32, %35\n    <   %37 = fmul float %.pre, %36\n    <   %38 = sext i32 %.01 to i64\n    <   %39 = getelementptr [8 x i8], ptr %1, i64 %38\n    <   %40 = getelementptr i8, ptr %39, i64 8\n    <   store float %37, ptr %40, align 4\n    <   %41 = getelementptr inbounds nuw i8, ptr %31, i64 4\n    <   %42 = load float, ptr %41, align 4\n    <   %43 = getelementptr inbounds nuw i8, ptr %34, i64 4\n    <   %44 = load float, ptr %43, align 4\n    <   %45 = fadd float %42, %44\n    <   %46 = fmul float %.pre, %45\n    <   %47 = getelementptr i8, ptr %39, i64 12\n    <   store float %46, ptr %47, align 4\n    <   %48 = add nsw i32 %.01, %.0\n    <   %.not = icmp sgt i32 %48, %15\n    <   br i1 %.not, label %49, label %29, !llvm.loop !9\n\nin function Fft:\n  in block %71 / %70:\n    >   %.21 = phi i32 [ 1, %.lr.ph ], [ %78, %70 ]\n    >   %71 = zext nneg i32 %.21 to i64\n    >   %72 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %71\n    >   %73 = load float, ptr %72, align 4\n    >   %74 = fmul float %4, %73\n    >   store float %74, ptr %72, align 4\n    >   %75 = getelementptr inbounds nuw i8, ptr %72, i64 4\n    >   %76 = load float, ptr %75, align 4\n    >   %77 = fmul float %76, %69\n    >   store float %77, ptr %75, align 4\n    >   %78 = add nuw nsw i32 %.21, 1\n    >   %.not3.not = icmp slt i32 %.21, %0\n    >   br i1 %.not3.not, label %70, label %._crit_edge, !llvm.loop !12\n    <   %.21 = phi i32 [ 1, %.lr.ph ], [ %79, %71 ]\n    <   %72 = zext nneg i32 %.21 to i64\n    <   %73 = getelementptr inbounds nuw [8 x i8], ptr %1, i64 %72\n    <   %74 = load float, ptr %73, align 4\n    <   %75 = fmul float %4, %74\n    <   store float %75, ptr %73, align 4\n    <   %76 = getelementptr inbounds nuw i8, ptr %73, i64 4\n    <   %77 = load float, ptr %76, align 4\n    <   %78 = fmul float %70, %77\n    <   store float %78, ptr %76, align 4\n    <   %79 = add nuw nsw i32 %.21, 1\n    <   %.not3.not = icmp slt i32 %.21, %0\n    <   br i1 %.not3.not, label %71, label %._crit_edge, !llvm.loop !12"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__dce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__adce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-simplify",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__simplifycfg.ll",
+      "details": "in function Fft:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   ret void\n    <   br label %._crit_edge\n  in block %.preheader / %61:\n    >   %.0 = phi i32 [ %65, %61 ], [ 1, %58 ]\n    >   %62 = sext i32 %.0 to i64\n    >   %63 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %62\n    >   %64 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %62\n    >   call void @llvm.memcpy.p0.p0.i64(ptr align 4 %63, ptr align 4 %64, i64 8, i1 false)\n    >   %65 = add nsw i32 %.0, 1\n    >   %66 = icmp sle i32 %65, %0\n    >   br i1 %66, label %61, label %67, !llvm.loop !10\n    <   br label %61\n\nin function Oscar:\n  in block %.preheader / %15:\n    >   %.12 = phi i32 [ %16, %15 ], [ 1, %2 ]\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   %16 = add nsw i32 %.12, 1\n    >   %17 = icmp sle i32 %16, 20\n    >   br i1 %17, label %15, label %18, !llvm.loop !9\n    <   br label %15"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function Fft:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   ret void\n    <   br label %._crit_edge\n  in block %.preheader / %61:\n    >   %.0 = phi i32 [ %65, %61 ], [ 1, %58 ]\n    >   %62 = sext i32 %.0 to i64\n    >   %63 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %62\n    >   %64 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %62\n    >   call void @llvm.memcpy.p0.p0.i64(ptr align 4 %63, ptr align 4 %64, i64 8, i1 false)\n    >   %65 = add nsw i32 %.0, 1\n    >   %66 = icmp sle i32 %65, %0\n    >   br i1 %66, label %61, label %67, !llvm.loop !10\n    <   br label %61\n\nin function Oscar:\n  in block %.preheader / %15:\n    >   %.12 = phi i32 [ %16, %15 ], [ 1, %2 ]\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   %16 = add nsw i32 %.12, 1\n    >   %17 = icmp sle i32 %16, 20\n    >   br i1 %17, label %15, label %18, !llvm.loop !9\n    <   br label %15"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__simplifycfg.ll",
+      "details": "in function Fft:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   ret void\n    <   br label %._crit_edge\n  in block %.preheader / %61:\n    >   %.0 = phi i32 [ %65, %61 ], [ 1, %58 ]\n    >   %62 = sext i32 %.0 to i64\n    >   %63 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %62\n    >   %64 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %62\n    >   call void @llvm.memcpy.p0.p0.i64(ptr align 4 %63, ptr align 4 %64, i64 8, i1 false)\n    >   %65 = add nsw i32 %.0, 1\n    >   %66 = icmp sle i32 %65, %0\n    >   br i1 %66, label %61, label %67, !llvm.loop !10\n    <   br label %61\n\nin function Oscar:\n  in block %.preheader / %15:\n    >   %.12 = phi i32 [ %16, %15 ], [ 1, %2 ]\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   %16 = add nsw i32 %.12, 1\n    >   %17 = icmp sle i32 %16, 20\n    >   br i1 %17, label %15, label %18, !llvm.loop !9\n    <   br label %15"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": "in function Fft:\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   ret void\n    <   br label %._crit_edge\n  in block %63 / %64:\n    >   %indvars.iv5 = phi i64 [ %indvars.iv.next6, %64 ], [ 1, %63 ]\n    >   %65 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %indvars.iv5\n    >   %66 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %indvars.iv5\n    <   %indvars.iv5 = phi i64 [ 1, %.preheader ], [ %indvars.iv.next6, %63 ]\n    <   %64 = getelementptr inbounds %struct.complex, ptr %1, i64 %indvars.iv5\n    <   %65 = getelementptr inbounds %struct.complex, ptr %2, i64 %indvars.iv5\n        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %64, ptr align 4 %65, i64 8, i1 false)\n    >   %indvars.iv.next6 = add nuw nsw i64 %indvars.iv5, 1\n    >   %exitcond9 = icmp ne i64 %indvars.iv.next6, %wide.trip.count\n    >   br i1 %exitcond9, label %64, label %67, !llvm.loop !10\n    <   %indvars.iv.next6 = add nuw nsw i64 %indvars.iv5, 1\n    <   %exitcond9 = icmp ne i64 %indvars.iv.next6, %wide.trip.count\n    <   br i1 %exitcond9, label %63, label %66, !llvm.loop !10\n\nin function Oscar:\n  in block %.preheader / %12:\n    >   %.12 = phi i32 [ %13, %12 ], [ 1, %2 ]\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   %13 = add nuw nsw i32 %.12, 1\n    >   %exitcond2 = icmp ne i32 %13, 21\n    >   br i1 %exitcond2, label %12, label %14, !llvm.loop !9\n    <   br label %12"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function Cos:\n  in block %1 / %1:\n    >   %2 = fmul float %0, %0\n    >   %3 = fdiv float %2, 2.000000e+00\n    >   %4 = fsub float 1.000000e+00, %3\n    >   %5 = fmul float %2, %0\n    >   %6 = fmul float %5, %0\n    >   %7 = fdiv float %6, 2.400000e+01\n    >   %8 = fadd float %4, %7\n    >   %9 = fmul float %6, %0\n    >   %10 = fmul float %9, %0\n    >   %11 = fdiv float %10, 7.200000e+02\n    >   %12 = fsub float %8, %11\n    >   %13 = fmul float %10, %0\n    >   %14 = fmul float %13, %0\n    >   %15 = fdiv float %14, 4.032000e+04\n    >   %16 = fadd float %12, %15\n    >   %17 = fmul float %14, %0\n    >   %18 = fmul float %17, %0\n    >   %19 = fdiv float %18, 3.628800e+06\n    >   %20 = fsub float %16, %19\n    >   ret float %20\n    <   br label %2\n\nin function Fft:\n  in block %80 / %81:\n    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    >   %82 = sext i32 %.0.epil to i64\n    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82\n    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82\n    <   %.0.epil = phi i32 [ %84, %80 ], [ %.0.epil.init, %.epil.preheader ]\n    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %80 ]\n    <   %81 = sext i32 %.0.epil to i64\n    <   %82 = getelementptr inbounds %struct.complex, ptr %1, i64 %81\n    <   %83 = getelementptr inbounds %struct.complex, ptr %2, i64 %81\n        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %82, ptr align 4 %83, i64 8, i1 false)\n    >   %85 = add nsw i32 %.0.epil, 1\n    >   %86 = icmp sle i32 %85, %0\n    >   %epil.iter.next = add i32 %epil.iter, 1\n    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11\n    <   %84 = add nsw i32 %.0.epil, 1\n    <   %85 = icmp sle i32 %84, %0\n    <   %epil.iter.next = add i32 %epil.iter, 1\n    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    <   br i1 %epil.iter.cmp, label %80, label %.epilog-lcssa, !llvm.loop !11\n  in block %.epil.preheader2:\n    >   %111 = sext i32 %.21.epil.init to i64\n    >   %112 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %111\n    >   %113 = load float, ptr %112, align 4\n    >   %114 = fmul float %4, %113\n    >   store float %114, ptr %112, align 4\n    >   %115 = getelementptr inbounds nuw %struct.complex.0, ptr %112, i32 0, i32 1\n    >   %116 = load float, ptr %115, align 4\n    >   %117 = fmul float %91, %116\n    >   store float %117, ptr %115, align 4\n  in block %._crit_edge.loopexit / %._crit_edge:\n    >   ret void\n    <   br label %._crit_edge\n\nin function Oscar:\n  in block %.preheader / %15:\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Printcomplex(ptr noundef @z, i32 noundef 1, i32 noundef 256, i32 noundef 17)\n    >   ret void\n    <   br label %15\n\nin function main:\n  in block %0 / %0:\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   ret i32 0\n    <   br label %1"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\simplifycfg__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__adce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__dce.ll",
+      "details": "in function Fft:\n  in block %81 / %81:\n    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    >   %82 = sext i32 %.0.epil to i64\n    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82\n    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82\n    <   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    <   %82 = sext i32 %.0.epil to i64\n    <   %83 = getelementptr inbounds %struct.complex, ptr %1, i64 %82\n    <   %84 = getelementptr inbounds %struct.complex, ptr %2, i64 %82\n        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %83, ptr align 4 %84, i64 8, i1 false)\n    >   %85 = add nsw i32 %.0.epil, 1\n    >   %epil.iter.next = add i32 %epil.iter, 1\n    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11\n    <   %85 = add nsw i32 %.0.epil, 1\n    <   %86 = icmp sle i32 %85, %0\n    <   %epil.iter.next = add i32 %epil.iter, 1\n    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    <   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11"
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\dce__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__adce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function Cos:\n  in block %22 / %22:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Fft:\n  in block %8 / %8:\n    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]\n    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    >   %9 = add nsw i32 %.02, 1\n    >   %10 = sext i32 %9 to i64\n    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10\n    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1\n    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]\n    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    <   %9 = add nsw i32 %.02, 1\n    <   %10 = sext i32 %9 to i64\n    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10\n    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function Cos:\n  in block %22 / %22:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Fft:\n  in block %8 / %8:\n    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]\n    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    >   %9 = add nsw i32 %.02, 1\n    >   %10 = sext i32 %9 to i64\n    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10\n    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1\n    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]\n    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    <   %9 = add nsw i32 %.02, 1\n    <   %10 = sext i32 %9 to i64\n    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10\n    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function Cos:\n  in block %21 / %21:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Exptab:\n  in block %29 / %29:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]\n    >   %30 = trunc nsw i64 %indvars.iv2 to i32\n    >   %.reass = add i32 %30, %invariant.op\n    >   %31 = sext i32 %.reass to i64\n    >   %32 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %31\n    >   %33 = load float, ptr %32, align 4\n    >   %.reass2 = add i32 %30, %invariant.op1\n    >   %34 = sext i32 %.reass2 to i64\n    >   %35 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %34\n    >   %36 = load float, ptr %35, align 4\n    >   %37 = fadd float %33, %36\n    >   %38 = fmul float %.pre, %37\n    >   %39 = add nsw i64 %indvars.iv2, 1\n    >   %40 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %39\n    >   store float %38, ptr %40, align 4\n    >   %41 = getelementptr inbounds nuw %struct.complex.0, ptr %32, i32 0, i32 1\n    >   %42 = load float, ptr %41, align 4\n    >   %43 = getelementptr inbounds nuw %struct.complex.0, ptr %35, i32 0, i32 1\n    >   %44 = load float, ptr %43, align 4\n    >   %45 = fadd float %42, %44\n    >   %46 = fmul float %.pre, %45\n    >   %47 = getelementptr inbounds nuw %struct.complex.0, ptr %40, i32 0, i32 1\n    >   store float %46, ptr %47, align 4\n    >   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28\n    >   %48 = icmp sle i64 %indvars.iv.next3, %24\n    >   br i1 %48, label %29, label %49, !llvm.loop !9\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]\n    <   %30 = trunc nsw i64 %indvars.iv2 to i32\n    <   %.reass = add i32 %30, %invariant.op\n    <   %31 = sext i32 %.reass to i64\n    <   %32 = getelementptr inbounds %struct.complex, ptr %1, i64 %31\n    <   %33 = load float, ptr %32, align 4\n    <   %34 = trunc nsw i64 %indvars.iv2 to i32\n    <   %.reass2 = add i32 %34, %invariant.op1\n    <   %35 = sext i32 %.reass2 to i64\n    <   %36 = getelementptr inbounds %struct.complex, ptr %1, i64 %35\n    <   %37 = load float, ptr %36, align 4\n    <   %38 = fadd float %33, %37\n    <   %39 = fmul float %.pre, %38\n    <   %40 = add nsw i64 %indvars.iv2, 1\n    <   %41 = getelementptr inbounds %struct.complex, ptr %1, i64 %40\n    <   store float %39, ptr %41, align 4\n    <   %42 = getelementptr inbounds nuw %struct.complex, ptr %32, i32 0, i32 1\n    <   %43 = load float, ptr %42, align 4\n    <   %44 = getelementptr inbounds nuw %struct.complex, ptr %36, i32 0, i32 1\n    <   %45 = load float, ptr %44, align 4\n    <   %46 = fadd float %43, %45\n    <   %47 = fmul float %.pre, %46\n    <   %48 = getelementptr inbounds nuw %struct.complex, ptr %41, i32 0, i32 1\n    <   store float %47, ptr %48, align 4\n    <   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28\n    <   %49 = icmp sle i64 %indvars.iv.next3, %24\n    <   br i1 %49, label %29, label %50, !llvm.loop !9\n\nin function Fft:\n  in block %5 / %5:\n    <   %7 = sext i32 %6 to i64"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function Fft:\n  in block %9 / %9:\n    >   %.04 = phi i32 [ 1, %8 ], [ %57, %59 ]\n    >   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]\n    >   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]\n    >   %10 = add nsw i32 %.02, 1\n    >   %11 = sext i32 %10 to i64\n    >   %12 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %11\n    >   %13 = getelementptr inbounds nuw %struct.complex.0, ptr %12, i32 0, i32 1\n    <   %.04 = phi i32 [ 1, %8 ], [ %.lcssa, %59 ]\n    <   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]\n    <   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]\n    <   %10 = add nsw i32 %.02, 1\n    <   %11 = sext i32 %10 to i64\n    <   %12 = getelementptr inbounds %struct.complex, ptr %3, i64 %11\n    <   %13 = getelementptr inbounds nuw %struct.complex, ptr %12, i32 0, i32 1\n  in block %.epil.preheader2:\n    >   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %110, %._crit_edge.unr-lcssa ]\n    <   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %.21.unr, %._crit_edge.unr-lcssa ]\n  in block %._crit_edge.unr-lcssa:\n    <   %.21.unr = phi i32 [ %111, %95 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\early-cse__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__adce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function Cos:\n  in block %22 / %22:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Fft:\n  in block %8 / %8:\n    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]\n    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    >   %9 = add nsw i32 %.02, 1\n    >   %10 = sext i32 %9 to i64\n    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10\n    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1\n    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]\n    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    <   %9 = add nsw i32 %.02, 1\n    <   %10 = sext i32 %9 to i64\n    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10\n    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__gvn.ll",
+      "details": "in function Cos:\n  in block %22 / %22:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Fft:\n  in block %8 / %8:\n    >   %.04 = phi i32 [ 1, %7 ], [ %56, %58 ]\n    >   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    >   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    >   %9 = add nsw i32 %.02, 1\n    >   %10 = sext i32 %9 to i64\n    >   %11 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %10\n    >   %12 = getelementptr inbounds nuw %struct.complex.0, ptr %11, i32 0, i32 1\n    <   %.04 = phi i32 [ 1, %7 ], [ %.lcssa, %58 ]\n    <   %.03 = phi i32 [ %.01, %7 ], [ %59, %58 ]\n    <   %.02 = phi i32 [ 0, %7 ], [ %.03, %58 ]\n    <   %9 = add nsw i32 %.02, 1\n    <   %10 = sext i32 %9 to i64\n    <   %11 = getelementptr inbounds %struct.complex, ptr %3, i64 %10\n    <   %12 = getelementptr inbounds nuw %struct.complex, ptr %11, i32 0, i32 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function Cos:\n  in block %21 / %21:\n    >   ret float %.1\n    <   %.1.lcssa = phi float [ %.1, %19 ]\n    <   ret float %.1.lcssa\n\nin function Exptab:\n  in block %29 / %29:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]\n    >   %30 = trunc nsw i64 %indvars.iv2 to i32\n    >   %.reass = add i32 %30, %invariant.op\n    >   %31 = sext i32 %.reass to i64\n    >   %32 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %31\n    >   %33 = load float, ptr %32, align 4\n    >   %.reass2 = add i32 %30, %invariant.op1\n    >   %34 = sext i32 %.reass2 to i64\n    >   %35 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %34\n    >   %36 = load float, ptr %35, align 4\n    >   %37 = fadd float %33, %36\n    >   %38 = fmul float %.pre, %37\n    >   %39 = add nsw i64 %indvars.iv2, 1\n    >   %40 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %39\n    >   store float %38, ptr %40, align 4\n    >   %41 = getelementptr inbounds nuw %struct.complex.0, ptr %32, i32 0, i32 1\n    >   %42 = load float, ptr %41, align 4\n    >   %43 = getelementptr inbounds nuw %struct.complex.0, ptr %35, i32 0, i32 1\n    >   %44 = load float, ptr %43, align 4\n    >   %45 = fadd float %42, %44\n    >   %46 = fmul float %.pre, %45\n    >   %47 = getelementptr inbounds nuw %struct.complex.0, ptr %40, i32 0, i32 1\n    >   store float %46, ptr %47, align 4\n    >   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28\n    >   %48 = icmp sle i64 %indvars.iv.next3, %24\n    >   br i1 %48, label %29, label %49, !llvm.loop !9\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ %27, %25 ]\n    <   %30 = trunc nsw i64 %indvars.iv2 to i32\n    <   %.reass = add i32 %30, %invariant.op\n    <   %31 = sext i32 %.reass to i64\n    <   %32 = getelementptr inbounds %struct.complex, ptr %1, i64 %31\n    <   %33 = load float, ptr %32, align 4\n    <   %34 = trunc nsw i64 %indvars.iv2 to i32\n    <   %.reass2 = add i32 %34, %invariant.op1\n    <   %35 = sext i32 %.reass2 to i64\n    <   %36 = getelementptr inbounds %struct.complex, ptr %1, i64 %35\n    <   %37 = load float, ptr %36, align 4\n    <   %38 = fadd float %33, %37\n    <   %39 = fmul float %.pre, %38\n    <   %40 = add nsw i64 %indvars.iv2, 1\n    <   %41 = getelementptr inbounds %struct.complex, ptr %1, i64 %40\n    <   store float %39, ptr %41, align 4\n    <   %42 = getelementptr inbounds nuw %struct.complex, ptr %32, i32 0, i32 1\n    <   %43 = load float, ptr %42, align 4\n    <   %44 = getelementptr inbounds nuw %struct.complex, ptr %36, i32 0, i32 1\n    <   %45 = load float, ptr %44, align 4\n    <   %46 = fadd float %43, %45\n    <   %47 = fmul float %.pre, %46\n    <   %48 = getelementptr inbounds nuw %struct.complex, ptr %41, i32 0, i32 1\n    <   store float %47, ptr %48, align 4\n    <   %indvars.iv.next3 = add nsw i64 %indvars.iv2, %28\n    <   %49 = icmp sle i64 %indvars.iv.next3, %24\n    <   br i1 %49, label %29, label %50, !llvm.loop !9\n\nin function Fft:\n  in block %5 / %5:\n    <   %7 = sext i32 %6 to i64"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Cos:\n  in block %1 / %1:\n    >   %2 = fmul float %0, %0\n    >   br i1 true, label %3, label %._crit_edge\n    <   br label %2\n\nin function Fft:\n  in block %9 / %9:\n    >   %.04 = phi i32 [ 1, %8 ], [ %57, %59 ]\n    >   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]\n    >   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]\n    >   %10 = add nsw i32 %.02, 1\n    >   %11 = sext i32 %10 to i64\n    >   %12 = getelementptr inbounds %struct.complex.0, ptr %3, i64 %11\n    >   %13 = getelementptr inbounds nuw %struct.complex.0, ptr %12, i32 0, i32 1\n    <   %.04 = phi i32 [ 1, %8 ], [ %.lcssa, %59 ]\n    <   %.03 = phi i32 [ %.01, %8 ], [ %60, %59 ]\n    <   %.02 = phi i32 [ 0, %8 ], [ %.03, %59 ]\n    <   %10 = add nsw i32 %.02, 1\n    <   %11 = sext i32 %10 to i64\n    <   %12 = getelementptr inbounds %struct.complex, ptr %3, i64 %11\n    <   %13 = getelementptr inbounds nuw %struct.complex, ptr %12, i32 0, i32 1\n  in block %.epil.preheader2:\n    >   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %111, %._crit_edge.unr-lcssa ]\n    <   %.21.epil.init = phi i32 [ 1, %.lr.ph ], [ %.21.unr, %._crit_edge.unr-lcssa ]\n        %lcmp.mod6 = icmp ne i32 %xtraiter3, 0\n        call void @llvm.assume(i1 %lcmp.mod6)\n    >   %112 = sext i32 %.21.epil.init to i64\n    >   %113 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %112\n    >   %114 = load float, ptr %113, align 4\n    >   %115 = fmul float %4, %114\n    >   store float %115, ptr %113, align 4\n    >   %116 = getelementptr inbounds nuw %struct.complex.0, ptr %113, i32 0, i32 1\n    >   %117 = load float, ptr %116, align 4\n    >   %118 = fmul float %92, %117\n    >   store float %118, ptr %116, align 4\n  in block %._crit_edge.unr-lcssa:\n    <   %.21.unr = phi i32 [ %111, %95 ]\n\nin function Oscar:\n  in block %15 / %15:\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Fft(i32 noundef 256, ptr noundef @z, ptr noundef @w, ptr noundef @e, float noundef 6.250000e-02)\n    >   call void @Printcomplex(ptr noundef @z, i32 noundef 1, i32 noundef 256, i32 noundef 17)\n    >   ret void\n    <   br label %16\n\nin function main:\n  in block %0 / %0:\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   call void @Oscar()\n    >   ret i32 0\n    <   br label %1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\gvn__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__adce.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__sccp.ll",
+      "details": "in function Cos:\n  in block %2 / %2:\n    >   br label %4\n    <   br i1 true, label %4, label %12\n\nin function Fft:\n  in block %62 / %62:\n    >   %63 = icmp slt i32 %smax, 4\n    >   br i1 %63, label %.epil.preheader, label %.new\n    <   %63 = icmp ult i32 %7, 3\n    <   br i1 %63, label %.epil.preheader, label %.new\n  in block %.lr.ph:\n    >   %94 = icmp eq i32 %0, 1\n    >   br i1 %94, label %.epil.preheader2, label %.lr.ph.new\n    <   %94 = icmp ult i32 %93, 1\n    <   br i1 %94, label %.epil.preheader11, label %.lr.ph.new"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\sccp__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__adce.ll",
+      "details": "in function Fft:\n  in block %81 / %81:\n    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    >   %82 = sext i32 %.0.epil to i64\n    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82\n    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82\n    <   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    <   %82 = sext i32 %.0.epil to i64\n    <   %83 = getelementptr inbounds %struct.complex, ptr %1, i64 %82\n    <   %84 = getelementptr inbounds %struct.complex, ptr %2, i64 %82\n        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %83, ptr align 4 %84, i64 8, i1 false)\n    >   %85 = add nsw i32 %.0.epil, 1\n    >   %epil.iter.next = add i32 %epil.iter, 1\n    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11\n    <   %85 = add nsw i32 %.0.epil, 1\n    <   %86 = icmp sle i32 %85, %0\n    <   %epil.iter.next = add i32 %epil.iter, 1\n    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    <   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11"
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\adce__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-simplify__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-rotate__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__licm.ll",
+      "details": "in function Fft:\n  in block %5 / %5:\n    >   %wide.trip.count = zext i32 %9 to i64"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__licm.ll",
+      "details": "in function Fft:\n  in block %5 / %5:\n    >   %xtraiter = and i32 %smax, 3\n    >   %8 = icmp ult i32 %7, 3\n    >   %unroll_iter = sub i32 %smax, %xtraiter\n    >   %lcmp.mod = icmp ne i32 %xtraiter, 0\n    >   %lcmp.mod1 = icmp ne i32 %xtraiter, 0"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\licm__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": "function @llvm.smax.i64 exists only in left module\nin function Fft:\n  in block %5 / %5:\n    >   %smax = call i32 @llvm.smax.i32(i32 %0, i32 1)\n    >   %7 = add nsw i32 %smax, -1\n        %7 = sext i32 %6 to i64\n        %8 = sext i32 %6 to i64\n    <   %smax8 = call i32 @llvm.smax.i32(i32 %0, i32 1)\n    <   %9 = add nuw i32 %smax8, 1\n    <   %10 = add nsw i32 %smax8, -1"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\indvars__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\loop-unroll__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Stanford_Oscar\\round_005\\analysis\\Stanford_Oscar\\commutativity\\reassociate__then__loop-unroll.ll",
+      "details": "in function Cos:\n  in block %5 / %5:\n    >   %7 = fadd float 1.000000e+00, %6\n    <   %7 = fadd float %6, 1.000000e+00\n  in block %11 / %11:\n    >   %.2 = phi float [ %7, %5 ], [ %10, %8 ]\n    <   %.2 = phi float [ %7, %5 ], [ %10, %8 ]\n  in block %18 / %18:\n    >   %20 = fadd float %.1, %19\n    <   %20 = fadd float %19, %.1\n  in block %21 / %21:\n    >   %.2.1 = phi float [ %20, %18 ], [ %17, %15 ]\n    <   %.2.1 = phi float [ %20, %18 ], [ %17, %15 ]\n  in block %28 / %28:\n    >   %30 = fadd float %.1.1, %29\n    <   %30 = fadd float %29, %.1.1\n  in block %31 / %31:\n    >   %.2.2 = phi float [ %30, %28 ], [ %27, %25 ]\n    <   %.2.2 = phi float [ %30, %28 ], [ %27, %25 ]\n  in block %38 / %38:\n    >   %40 = fadd float %.1.2, %39\n    <   %40 = fadd float %39, %.1.2\n  in block %41 / %41:\n    >   %.2.3 = phi float [ %40, %38 ], [ %37, %35 ]\n    <   %.2.3 = phi float [ %40, %38 ], [ %37, %35 ]\n  in block %48 / %48:\n    >   %50 = fadd float %.1.3, %49\n    <   %50 = fadd float %49, %.1.3\n  in block %51 / %51:\n    >   %.2.4 = phi float [ %50, %48 ], [ %47, %45 ]\n    <   %.2.4 = phi float [ %50, %48 ], [ %47, %45 ]\n  in block %58 / %58:\n    >   %60 = fadd float %.1.4, %59\n    <   %60 = fadd float %59, %.1.4\n  in block %61 / %61:\n    >   %.2.5 = phi float [ %60, %58 ], [ %57, %55 ]\n    <   %.2.5 = phi float [ %60, %58 ], [ %57, %55 ]\n  in block %68 / %68:\n    >   %70 = fadd float %.1.5, %69\n    <   %70 = fadd float %69, %.1.5\n  in block %71 / %71:\n    >   %.2.6 = phi float [ %70, %68 ], [ %67, %65 ]\n    <   %.2.6 = phi float [ %70, %68 ], [ %67, %65 ]\n  in block %78 / %78:\n    >   %80 = fadd float %.1.6, %79\n    <   %80 = fadd float %79, %.1.6\n  in block %81 / %81:\n    >   %.2.7 = phi float [ %80, %78 ], [ %77, %75 ]\n    <   %.2.7 = phi float [ %80, %78 ], [ %77, %75 ]\n  in block %88 / %88:\n    >   %90 = fadd float %.1.7, %89\n    <   %90 = fadd float %89, %.1.7\n  in block %91 / %91:\n    >   %.2.8 = phi float [ %90, %88 ], [ %87, %85 ]\n    <   %.2.8 = phi float [ %90, %88 ], [ %87, %85 ]\n\nin function Fft:\n  in block %81 / %81:\n    >   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    >   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    >   %82 = sext i32 %.0.epil to i64\n    >   %83 = getelementptr inbounds %struct.complex.0, ptr %1, i64 %82\n    >   %84 = getelementptr inbounds %struct.complex.0, ptr %2, i64 %82\n    <   %.0.epil = phi i32 [ %.0.epil.init, %.epil.preheader ], [ %85, %81 ]\n    <   %epil.iter = phi i32 [ 0, %.epil.preheader ], [ %epil.iter.next, %81 ]\n    <   %82 = sext i32 %.0.epil to i64\n    <   %83 = getelementptr inbounds %struct.complex, ptr %1, i64 %82\n    <   %84 = getelementptr inbounds %struct.complex, ptr %2, i64 %82\n        call void @llvm.memcpy.p0.p0.i64(ptr align 4 %83, ptr align 4 %84, i64 8, i1 false)\n    >   %85 = add nsw i32 %.0.epil, 1\n    >   %86 = icmp sle i32 %85, %0\n    >   %epil.iter.next = add i32 %epil.iter, 1\n    >   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    >   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11\n    <   %85 = add nsw i32 %.0.epil, 1\n    <   %epil.iter.next = add i32 %epil.iter, 1\n    <   %epil.iter.cmp = icmp ne i32 %epil.iter.next, %xtraiter\n    <   br i1 %epil.iter.cmp, label %81, label %.epilog-lcssa, !llvm.loop !11"
+    }
+  ]
+}

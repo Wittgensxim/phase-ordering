@@ -1,0 +1,633 @@
+{
+  "summary": {
+    "total_pairs": 78,
+    "commuting_pairs": 44,
+    "non_commuting_pairs": 34
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": "function @llvm.umax.i64 exists only in right module\nfunction @llvm.abs.i32 exists only in right module\nin function compdecomp:\n  in block %66 / %66:\n    >   %.045 = phi i64 [ 0, %63 ], [ %.146, %87 ]\n    >   %.042 = phi i64 [ 0, %63 ], [ %88, %87 ]\n    >   %.039 = phi i64 [ 0, %63 ], [ %.140, %87 ]\n    <   %.045 = phi i64 [ 0, %63 ], [ %.146, %89 ]\n    <   %.042 = phi i64 [ 0, %63 ], [ %90, %89 ]\n    <   %.039 = phi i64 [ 0, %63 ], [ %.140, %89 ]\n  in block %74 / %74:\n    >   br label %75\n    <   %.043 = phi i64 [ %.144, %75 ], [ 0, %68 ]\n    <   %.042.pn = phi i64 [ %79, %75 ], [ %.042, %68 ]\n    <   %.05 = phi i64 [ %80, %75 ], [ 1, %68 ]\n    <   %.3 = phi i64 [ %81, %75 ], [ 0, %68 ]\n    <   %.037.in = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %.042.pn\n    <   %.037 = load i32, ptr %.037.in, align 4\n    <   %.not7 = icmp eq i32 %.037, 0\n    <   br i1 %.not7, label %82, label %75\n  in block %89 / %87:\n    >   %.146 = phi i64 [ %spec.select, %82 ], [ %.045, %71 ]\n    >   %.140 = phi i64 [ %.241, %82 ], [ %.039, %71 ]\n    <   %.146 = phi i64 [ %spec.select, %82 ], [ %.045, %71 ]\n    <   %.140 = phi i64 [ %.241, %82 ], [ %.039, %71 ]\n  in block %101 / %99:\n    >   %.028 = phi i64 [ %.129, %139 ], [ 0, %94 ]\n    >   %.024 = phi i8 [ %.125, %139 ], [ 0, %94 ]\n    <   %.028 = phi i64 [ %.129, %141 ], [ 0, %96 ]\n    <   %.024 = phi i8 [ %.125, %141 ], [ 0, %96 ]\n        %.16 = phi i64 [ %143, %141 ], [ 0, %96 ]\n    >   %.01 = phi i32 [ %.1, %139 ], [ -1, %94 ]\n    <   %.01 = phi i32 [ %.1, %141 ], [ -1, %96 ]\n  in block %112 / %110:\n    >   %.129 = phi i64 [ %.028, %101 ], [ %.230, %129 ]\n    >   %.125 = phi i8 [ %.024, %101 ], [ %.327, %129 ]\n    >   %.015 = phi i64 [ %109, %101 ], [ %137, %129 ]\n    >   %.4 = phi i64 [ 0, %101 ], [ %138, %129 ]\n    >   %.1 = phi i32 [ %.01, %101 ], [ %.2, %129 ]\n    <   %.129 = phi i64 [ %.028, %103 ], [ %.230, %131 ]\n    <   %.125 = phi i8 [ %.024, %103 ], [ %spec.select9, %131 ]\n    <   %.015 = phi i64 [ %111, %103 ], [ %139, %131 ]\n    <   %.4 = phi i64 [ 0, %103 ], [ %140, %131 ]\n    <   %.1 = phi i32 [ %.01, %103 ], [ %.2, %131 ]\n        %113 = load i8, ptr %.134, align 1\n        %114 = zext i8 %113 to i64\n        %115 = getelementptr inbounds nuw i8, ptr %7, i64 %114\n        %116 = load i8, ptr %115, align 1\n        %117 = zext i8 %116 to i64\n    >   %116 = icmp ult i64 %.4, %115\n    >   br i1 %116, label %117, label %139\n    <   %118 = icmp ult i64 %.4, %117\n    <   br i1 %118, label %119, label %141\n  in block %219 / %217:\n    >   %.235 = phi ptr [ %.336, %241 ], [ %0, %211 ]\n    >   %.031 = phi ptr [ %.132, %241 ], [ %11, %211 ]\n    >   %.221 = phi i32 [ %.423, %241 ], [ 0, %211 ]\n    >   %.217 = phi i64 [ %.318, %241 ], [ 128, %211 ]\n    >   %.313 = phi i64 [ %.414, %241 ], [ 0, %211 ]\n    >   %.7 = phi i64 [ %.9, %241 ], [ %.49, %211 ]\n    >   %218 = icmp ult i64 %.313, %1\n    >   br i1 %218, label %219, label %244\n    <   %.235 = phi ptr [ %.336, %243 ], [ %0, %213 ]\n    <   %.031 = phi ptr [ %.132, %243 ], [ %11, %213 ]\n    <   %.221 = phi i32 [ %.423, %243 ], [ 0, %213 ]\n    <   %.217 = phi i64 [ %.318, %243 ], [ 128, %213 ]\n    <   %.313 = phi i64 [ %.414, %243 ], [ 0, %213 ]\n    <   %.7 = phi i64 [ %.9, %243 ], [ %.49, %213 ]\n    <   %220 = icmp ult i64 %.313, %1\n    <   br i1 %220, label %221, label %247\n\nin function heap_adjust:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %3, %4 ], [ %.0, %39 ]\n    <   %.01 = phi i32 [ %3, %4 ], [ %.0, %39 ]\n  in block %14 / %14:\n    >   %27 = zext i1 %26 to i32\n    >   %spec.select = or disjoint i32 %12, %27\n    <   %27 = or disjoint i32 %12, 1\n    <   %spec.select = select i1 %26, i32 %27, i32 %12\n  in block %28 / %28:\n    >   %.0 = phi i32 [ %12, %11 ], [ %spec.select, %14 ]\n    <   %.0 = phi i32 [ %12, %11 ], [ %spec.select, %14 ]\n        %sext = shl i64 %8, 32\n        %29 = ashr exact i64 %sext, 29\n        %30 = getelementptr inbounds i8, ptr %0, i64 %29\n        %31 = load i64, ptr %30, align 8\n    >   %32 = sext i32 %.0 to i64\n    >   %33 = getelementptr [8 x i8], ptr %1, i64 %32\n    >   %34 = getelementptr i8, ptr %33, i64 -8\n    >   %35 = load i64, ptr %34, align 8\n    >   %36 = getelementptr inbounds nuw [8 x i8], ptr %0, i64 %35\n    >   %37 = load i64, ptr %36, align 8\n    >   %38 = icmp ult i64 %31, %37\n    >   br i1 %38, label %47, label %39\n    <   %32 = sext i32 %.0 to i64\n    <   %33 = getelementptr [8 x i8], ptr %1, i64 %32\n    <   %34 = getelementptr i8, ptr %33, i64 -8\n    <   %35 = load i64, ptr %34, align 8\n    <   %36 = getelementptr inbounds nuw [8 x i8], ptr %0, i64 %35\n    <   %37 = load i64, ptr %36, align 8\n    <   %38 = icmp ult i64 %31, %37\n    <   br i1 %38, label %47, label %39\n  in block %39 / %39:\n    >   %40 = sext i32 %.0 to i64\n    <   %40 = sext i32 %.0 to i64\n\nin function main:\n  in block %12 / %12:\n    >   %.not1 = phi i1 [ true, %2 ], [ true, %4 ], [ false, %6 ]\n    <   %.0 = phi i1 [ true, %2 ], [ %5, %6 ], [ %5, %4 ]\n  in block %4 / %4:\n    >   %.01 = phi i32 [ %11, %10 ], [ 1, %2 ]\n    >   %5 = icmp slt i32 %.01, %0\n    >   br i1 %5, label %6, label %12\n    <   %.01 = phi i32 [ %11, %10 ], [ 1, %2 ]\n    <   %5 = icmp sge i32 %.01, %0\n    <   br i1 %5, label %12, label %6"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__dce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__instcombine.ll",
+      "details": "in function compdecomp:\n  in block %43 / %43:\n    >   %.212 = phi i64 [ %.010, %42 ], [ %46, %45 ]\n    <   %.212 = phi i64 [ %.010, %42 ], [ %46, %45 ]\n  in block %45 / %45:\n    >   %57 = add i64 %.212, 255\n    >   %58 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %57\n    >   store i64 %56, ptr %58, align 8\n    >   %59 = trunc i64 %57 to i32\n    >   %60 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %47\n    >   store i32 %59, ptr %60, align 4\n    <   %57 = getelementptr [8 x i8], ptr %3, i64 %.212\n    <   %58 = getelementptr i8, ptr %57, i64 2040\n    <   store i64 %56, ptr %58, align 8\n        %59 = trunc i64 %.212 to i32\n    <   %60 = add i32 %59, 255\n    <   %61 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %47\n    <   store i32 %60, ptr %61, align 4\n        %62 = sub i32 -255, %59\n        %63 = load i64, ptr %4, align 16\n        %64 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %63\n        store i32 %62, ptr %64, align 4\n    <   %65 = add i64 %.212, 255\n  in block %211 / %210:\n    >   %.38 = phi i64 [ %.6, %205 ], [ %226, %218 ]\n    <   %.38 = phi i64 [ %.6, %206 ], [ %226, %219 ]\n  in block %219 / %218:\n    >   %219 = add i64 %.38, -1\n    >   %220 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %219\n    >   %221 = load i32, ptr %220, align 4\n        %220 = getelementptr [4 x i8], ptr %8, i64 %.38\n    >   store i32 %221, ptr %222, align 4\n    >   %223 = getelementptr inbounds nuw i8, ptr %9, i64 %219\n    >   %224 = load i8, ptr %223, align 1\n    <   %221 = getelementptr i8, ptr %220, i64 -4\n    <   %222 = load i32, ptr %221, align 4\n    <   store i32 %222, ptr %220, align 4\n        %223 = getelementptr i8, ptr %9, i64 %.38\n    >   store i8 %224, ptr %225, align 1\n    <   %224 = getelementptr i8, ptr %223, i64 -1\n    <   %225 = load i8, ptr %224, align 1\n    <   store i8 %225, ptr %223, align 1\n\nin function heap_adjust:\n  in block %14 / %14:\n    in instruction %21 / %23:\n      operands %16 and %22 differ\n    >   %21 = sext i32 %12 to i64\n    >   %22 = getelementptr inbounds [8 x i8], ptr %1, i64 %21\n\nin function random4:\n  in block %0 / %0:\n    <   store i32 %6, ptr @seed, align 4"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__instcombine.ll",
+      "details": "in function compdecomp:\n  in block %40 / %40:\n    >   %.212 = phi i64 [ %.010, %39 ], [ %43, %42 ]\n    <   %.212 = phi i64 [ %.010, %39 ], [ %43, %42 ]\n  in block %42 / %42:\n    >   %54 = add i64 %.212, 255\n    >   %55 = getelementptr inbounds nuw [8 x i8], ptr %3, i64 %54\n    >   store i64 %53, ptr %55, align 8\n    >   %56 = trunc i64 %54 to i32\n    >   %57 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %44\n    >   store i32 %56, ptr %57, align 4\n    <   %54 = getelementptr [8 x i8], ptr %3, i64 %.212\n    <   %55 = getelementptr i8, ptr %54, i64 2040\n    <   store i64 %53, ptr %55, align 8\n        %56 = trunc i64 %.212 to i32\n    <   %57 = add i32 %56, 255\n    <   %58 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %44\n    <   store i32 %57, ptr %58, align 4\n        %59 = sub i32 -255, %56\n        %60 = getelementptr inbounds nuw [4 x i8], ptr %5, i64 %48\n        store i32 %59, ptr %60, align 4\n    <   %61 = add i64 %.212, 255\n  in block %108 / %107:\n    >   %.028 = phi i64 [ 0, %106 ], [ %.129, %146 ]\n    >   %.024 = phi i8 [ 0, %106 ], [ %.125, %146 ]\n    <   %.028 = phi i64 [ 0, %107 ], [ %.129, %150 ]\n    <   %.024 = phi i8 [ 0, %107 ], [ %.125, %150 ]\n        %.16 = phi i64 [ 0, %107 ], [ %152, %150 ]\n    >   %.01 = phi i32 [ -1, %106 ], [ %.1, %146 ]\n    <   %.01 = phi i32 [ -1, %107 ], [ %.1, %150 ]\n  in block %119 / %118:\n    >   %119 = phi i8 [ %110, %109 ], [ %.pre-phi.in, %143 ]\n    >   %120 = phi i8 [ %113, %109 ], [ %.pre, %143 ]\n    >   %.129 = phi i64 [ %.028, %109 ], [ %.230, %143 ]\n    >   %.125 = phi i8 [ %.024, %109 ], [ %.327, %143 ]\n    >   %.015 = phi i64 [ %117, %109 ], [ %144, %143 ]\n    >   %.4 = phi i64 [ 0, %109 ], [ %145, %143 ]\n    >   %.1 = phi i32 [ %.01, %109 ], [ %.2, %143 ]\n    >   %121 = zext i8 %120 to i64\n    >   %122 = icmp ult i64 %.4, %121\n    >   br i1 %122, label %123, label %146\n    <   %120 = phi i8 [ %111, %110 ], [ %140, %147 ]\n    <   %121 = phi i8 [ %114, %110 ], [ %.pre, %147 ]\n    <   %.129 = phi i64 [ %.028, %110 ], [ %.230, %147 ]\n    <   %.125 = phi i8 [ %.024, %110 ], [ %.327, %147 ]\n    <   %.015 = phi i64 [ %118, %110 ], [ %148, %147 ]\n    <   %.4 = phi i64 [ 0, %110 ], [ %149, %147 ]\n    <   %.1 = phi i32 [ %.01, %110 ], [ %.2, %147 ]\n    <   %122 = zext i8 %120 to i64\n    <   %123 = getelementptr inbounds nuw i8, ptr %7, i64 %122\n    <   %124 = zext i8 %121 to i64\n    <   %125 = icmp ult i64 %.4, %124\n    <   br i1 %125, label %126, label %150\n  in block %199 / %195:\n    >   %.38 = phi i64 [ %.6, %190 ], [ %211, %203 ]\n    <   %.38 = phi i64 [ %.6, %194 ], [ %214, %207 ]\n  in block %207 / %203:\n    >   %204 = add i64 %.38, -1\n    >   %205 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %204\n    >   %206 = load i32, ptr %205, align 4\n        %208 = getelementptr [4 x i8], ptr %8, i64 %.38\n    >   store i32 %206, ptr %207, align 4\n    >   %208 = getelementptr inbounds nuw i8, ptr %9, i64 %204\n    >   %209 = load i8, ptr %208, align 1\n    <   %209 = getelementptr i8, ptr %208, i64 -4\n    <   %210 = load i32, ptr %209, align 4\n    <   store i32 %210, ptr %208, align 4\n        %211 = getelementptr i8, ptr %9, i64 %.38\n    >   store i8 %209, ptr %210, align 1\n    <   %212 = getelementptr i8, ptr %211, i64 -1\n    <   %213 = load i8, ptr %212, align 1\n    <   store i8 %213, ptr %211, align 1\n\nin function heap_adjust:\n  in block %9 / %9:\n    >   %.01 = phi i32 [ %3, %4 ], [ %.0, %41 ]\n    <   %.01 = phi i32 [ %3, %4 ], [ %.0, %39 ]\n  in block %._crit_edge:\n    >   %.pre = ashr exact i64 %sext, 32\n  in block %14 / %14:\n    in instruction %21 / %23:\n      operands %16 and %22 differ\n    >   %21 = sext i32 %12 to i64\n    >   %22 = getelementptr inbounds [8 x i8], ptr %1, i64 %21\n  in block %39 / %41:\n    >   store i64 %36, ptr %44, align 8\n    <   store i64 %34, ptr %42, align 8\n  in block %27 / %29:\n    >   %.0 = phi i32 [ %28, %27 ], [ %12, %14 ], [ %12, %11 ]\n    <   %.0 = phi i32 [ %26, %25 ], [ %12, %14 ], [ %12, %11 ]\n        %sext = shl i64 %8, 32\n    >   %30 = ashr exact i64 %sext1, 32\n    >   %31 = getelementptr inbounds [8 x i8], ptr %0, i64 %30\n    >   %32 = load i64, ptr %31, align 8\n    >   %33 = sext i32 %.0 to i64\n    >   %34 = getelementptr [8 x i8], ptr %1, i64 %33\n    >   %35 = getelementptr i8, ptr %34, i64 -8\n    >   %36 = load i64, ptr %35, align 8\n    >   %37 = getelementptr inbounds nuw [8 x i8], ptr %0, i64 %36\n    >   %38 = load i64, ptr %37, align 8\n    >   %39 = icmp ult i64 %32, %38\n    >   br i1 %39, label %40, label %41\n    <   %28 = ashr exact i64 %sext, 29\n    <   %29 = getelementptr inbounds i8, ptr %0, i64 %28\n    <   %30 = load i64, ptr %29, align 8\n    <   %31 = sext i32 %.0 to i64\n    <   %32 = getelementptr [8 x i8], ptr %1, i64 %31\n    <   %33 = getelementptr i8, ptr %32, i64 -8\n    <   %34 = load i64, ptr %33, align 8\n    <   %35 = getelementptr inbounds nuw [8 x i8], ptr %0, i64 %34\n    <   %36 = load i64, ptr %35, align 8\n    <   %37 = icmp ult i64 %30, %36\n    <   br i1 %37, label %38, label %39\n\nin function random4:\n  in block %0 / %0:\n    <   store i32 %6, ptr @seed, align 4"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__sccp.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__adce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function generate_test_data:\n  in block %1 / %1:\n    >   %.not = icmp eq i64 %0, 0\n    >   br i1 %.not, label %12, label %.lr.ph\n    <   %3 = icmp ugt i64 %0, 0\n    <   br i1 %3, label %.lr.ph, label %13\n\nin function compdecomp:\n  in block %2 / %2:\n    >   %.not = icmp eq i64 %1, 0\n    >   br i1 %.not, label %23, label %.lr.ph\n    <   %13 = icmp ult i64 0, %1\n    <   br i1 %13, label %.lr.ph, label %24\n\nin function heap_adjust:\n  in block %.loopexit:\n    >   %.01.lcssa = phi i32 [ %.0, %..loopexit_crit_edge ], [ %3, %4 ]\n    <   %.01.lcssa = phi i32 [ %split, %..loopexit_crit_edge ], [ %3, %4 ]\n  in block %48 / %48:\n    >   %.012 = phi i32 [ %.01.lcssa, %.loopexit ], [ %.013, %39 ]\n    <   %.013 = phi i32 [ %.01.lcssa, %.loopexit ], [ %.01.lcssa2, %39 ]\n  in block %39 / %39:\n    <   %.01.lcssa2 = phi i32 [ %.015, %28 ]\n  in block %..loopexit_crit_edge:\n    <   %split = phi i32 [ %.0, %40 ]\n\nin function main:\n  in block %17 / %15:\n    >   %.0 = phi i1 [ %.not, %14 ], [ true, %2 ]\n    <   %.0 = phi i1 [ %16, %15 ], [ true, %2 ]\n  in block %5 / %5:\n    >   %.011 = phi i32 [ 1, %4 ], [ %12, %11 ]\n    <   %6 = phi i1 [ false, %4 ], [ %14, %12 ]\n    <   %.013 = phi i32 [ 1, %4 ], [ %13, %12 ]\n        %7 = getelementptr inbounds nuw i8, ptr %1, i64 8\n        %8 = load ptr, ptr %7, align 8\n        %9 = call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %8, ptr noundef nonnull dereferenceable(4) @.str.4) #7\n    >   %.not = icmp ne i32 %8, 0\n    >   br i1 %.not, label %10, label %9\n    <   %.not = icmp eq i32 %9, 0\n    <   br i1 %.not, label %10, label %11"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function compdecomp:\n  in block %36 / %36:\n    >   %37 = trunc i64 %.010 to i32\n    <   %.010.lcssa = phi i64 [ %.010, %25 ]\n    <   %37 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %12 ]\n  in block %40 / %40:\n    <   %.01.lcssa2 = phi i32 [ %.01, %31 ]\n\nin function main:\n  in block %17 / %16:\n    >   %.0 = phi i1 [ %7, %15 ], [ true, %2 ]\n    <   %.0 = phi i1 [ %16, %15 ], [ true, %2 ]\n  in block %.loopexit:\n    <   %.lcssa = phi i1 [ %7, %6 ]\n  in block %11 / %11:\n    <   %.lcssa2 = phi i1 [ %7, %8 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function generate_test_data:\n  in block %3 / %3:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ 0, %1 ]\n    >   %.01 = phi ptr [ %9, %8 ], [ %2, %1 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %0\n    >   br i1 %exitcond.not, label %10, label %4\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ 0, %1 ]\n    <   %.01 = phi ptr [ %2, %1 ], [ %9, %8 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %0\n    <   br i1 %exitcond, label %4, label %10\n\nin function compdecomp:\n  in block %13 / %13:\n    >   %.033 = phi ptr [ %0, %2 ], [ %21, %20 ]\n    >   %.02 = phi i64 [ 0, %2 ], [ %22, %20 ]\n    >   %exitcond.not = icmp eq i64 %.02, %1\n    >   br i1 %exitcond.not, label %23, label %14\n    <   %.033 = phi ptr [ %0, %2 ], [ %21, %20 ]\n    <   %.02 = phi i64 [ 0, %2 ], [ %22, %20 ]\n    <   %exitcond = icmp ne i64 %.02, %1\n    <   br i1 %exitcond, label %14, label %23\n\nin function heap_adjust:\n  in block %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %9 ]\n  in block %40 / %40:\n    <   %.01.lcssa2 = phi i32 [ %.01, %29 ]\n\nin function main:\n  in block %17 / %15:\n    >   %.0 = phi i1 [ %exitcond.not, %14 ], [ true, %2 ]\n    <   %.0 = phi i1 [ %16, %15 ], [ true, %2 ]\n  in block %5 / %5:\n    >   %.01 = phi i32 [ 1, %4 ], [ %13, %12 ]\n    >   %exitcond.not = icmp eq i32 %.01, %0\n    >   br i1 %exitcond.not, label %.loopexit, label %6\n    <   %.01 = phi i32 [ 1, %4 ], [ %14, %13 ]\n    <   %6 = icmp sge i32 %.01, %0\n    <   %exitcond = icmp eq i32 %.01, %0\n    <   br i1 %exitcond, label %.loopexit, label %7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function compdecomp:\n  in block %25 / %25:\n    >   %.010 = phi i64 [ 0, %24 ], [ %.111.1, %43 ]\n    <   %.010 = phi i64 [ 0, %24 ], [ %.111.1, %43 ]\n  in block %45 / %45:\n    <   %.010.lcssa = phi i64 [ %.010, %25 ]\n  in block %34 / %34:\n    >   %35 = or disjoint i64 %.13, 1\n    <   %35 = add nuw nsw i64 %.13, 1\n\nin function heap_adjust:\n  in block %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %9 ]\n  in block %40 / %40:\n    <   %.01.lcssa2 = phi i32 [ %.01, %29 ]\n\nin function main:\n  in block %17 / %16:\n    >   %.0 = phi i1 [ %6, %15 ], [ true, %2 ]\n    <   %.0 = phi i1 [ %16, %15 ], [ true, %2 ]\n  in block %.loopexit:\n    <   %.lcssa = phi i1 [ %6, %5 ]\n  in block %11 / %11:\n    <   %.lcssa2 = phi i1 [ %6, %7 ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\instcombine__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__instcombine.ll",
+      "details": "in function compdecomp:\n  in block %170 / %170:\n    >   %.0 = phi ptr [ %9, %164 ], [ %174, %209 ]\n    <   %.0 = phi ptr [ %9, %164 ], [ %174, %209 ]\n  in block %172 / %172:\n    >   %180 = or i32 %176, %179\n    >   %.not3 = icmp eq i32 %180, 0\n    >   br i1 %.not3, label %208, label %181\n    <   %180 = or i32 %179, %176\n    <   %.not3 = icmp eq i32 %180, 0\n    <   br i1 %.not3, label %208, label %181\n  in block %251 / %251:\n    >   %.235 = phi ptr [ %0, %250 ], [ %.336, %283 ]\n    <   %.235 = phi ptr [ %0, %250 ], [ %.336, %283 ]\n        %.031 = phi ptr [ %11, %250 ], [ %.132, %283 ]\n    >   %.221 = phi i32 [ 0, %250 ], [ %.423, %283 ]\n    <   %.221 = phi i32 [ 0, %250 ], [ %.423, %283 ]\n        %.217 = phi i64 [ 128, %250 ], [ %.318, %283 ]\n    >   %.313 = phi i64 [ 0, %250 ], [ %.414, %283 ]\n    >   %.7 = phi i64 [ %.49, %250 ], [ %.9, %283 ]\n    <   %.313 = phi i64 [ 0, %250 ], [ %.414, %283 ]\n    <   %.7 = phi i64 [ %.49, %250 ], [ %.9, %283 ]\n  in block %253 / %253:\n    >   %258 = and i64 %.217, %257\n    >   %.not1 = icmp eq i64 %258, 0\n    >   br i1 %.not1, label %261, label %259\n    <   %258 = and i64 %257, %.217\n    <   %.not1 = icmp eq i64 %258, 0\n    <   br i1 %.not1, label %261, label %259\n  in block %127 / %127:\n    >   %.129 = phi i64 [ %.028, %118 ], [ %.230, %157 ]\n    >   %.125 = phi i8 [ %.024, %118 ], [ %.327, %157 ]\n    <   %.129 = phi i64 [ %.028, %118 ], [ %.230, %157 ]\n    <   %.125 = phi i8 [ %.024, %118 ], [ %.327, %157 ]\n        %.015 = phi i64 [ %126, %118 ], [ %158, %157 ]\n        %.4 = phi i64 [ 0, %118 ], [ %159, %157 ]\n    >   %.1 = phi i32 [ %.01, %118 ], [ %.2, %157 ]\n    <   %.1 = phi i32 [ %.01, %118 ], [ %.2, %157 ]\n  in block %147 / %147:\n    >   %153 = and i64 %.015, %152\n    >   %.not5 = icmp eq i64 %153, 0\n    >   br i1 %.not5, label %156, label %154\n    <   %153 = and i64 %152, %.015\n    <   %.not5 = icmp eq i64 %153, 0\n    <   br i1 %.not5, label %156, label %154\n\nin function random4:\n  in block %0 / %0:\n    in instruction %6 / %6:\n      operands %5 and %.neg1 differ\n  in block %0 / %0:\n    >   %6 = add i32 %.neg1, %5\n    <   %6 = add i32 %5, %.neg1"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "dce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__dce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %201 / %201:\n    >   %.38 = phi i64 [ %.6, %196 ], [ %216, %208 ]\n    <   %.38 = phi i64 [ %.6, %196 ], [ %213, %208 ]\n  in block %208 / %208:\n    >   %209 = sub i64 %.38, 1\n    >   %210 = getelementptr inbounds nuw [256 x i32], ptr %8, i64 0, i64 %209\n    >   %211 = load i32, ptr %210, align 4\n        %209 = getelementptr inbounds nuw [256 x i32], ptr %8, i64 0, i64 %.38\n    >   store i32 %211, ptr %212, align 4\n    >   %213 = getelementptr inbounds nuw [256 x i8], ptr %9, i64 0, i64 %209\n    >   %214 = load i8, ptr %213, align 1\n    <   store i32 %206, ptr %209, align 4\n    <   %210 = getelementptr inbounds nuw [256 x i8], ptr %9, i64 0, i64 %204\n    <   %211 = load i8, ptr %210, align 1\n        %212 = getelementptr inbounds nuw [256 x i8], ptr %9, i64 0, i64 %.38\n    >   store i8 %214, ptr %215, align 1\n    <   store i8 %211, ptr %212, align 1"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %116 / %116:\n    >   %117 = phi i8 [ %108, %107 ], [ %139, %138 ]\n    >   %118 = phi i8 [ %111, %107 ], [ %.pre, %138 ]\n    >   %.129 = phi i64 [ %.028, %107 ], [ %.230, %138 ]\n    >   %.125 = phi i8 [ %.024, %107 ], [ %.327, %138 ]\n    >   %.015 = phi i64 [ %115, %107 ], [ %148, %138 ]\n    >   %.4 = phi i64 [ 0, %107 ], [ %149, %138 ]\n    >   %.1 = phi i32 [ %.01, %107 ], [ %.2, %138 ]\n    <   %117 = phi i8 [ %108, %107 ], [ %138, %137 ]\n    <   %118 = phi i8 [ %111, %107 ], [ %.pre, %137 ]\n    <   %.129 = phi i64 [ %.028, %107 ], [ %.230, %137 ]\n    <   %.125 = phi i8 [ %.024, %107 ], [ %.327, %137 ]\n    <   %.015 = phi i64 [ %115, %107 ], [ %147, %137 ]\n    <   %.4 = phi i64 [ 0, %107 ], [ %148, %137 ]\n    <   %.1 = phi i32 [ %.01, %107 ], [ %.2, %137 ]\n  in block %137 / %138:\n    >   %.pre-phi = phi i64 [ %119, %133 ], [ %.pre2, %132 ]\n    >   %139 = phi i8 [ %.pre1, %132 ], [ %117, %133 ]\n    >   %.230 = phi i64 [ %127, %132 ], [ %.129, %133 ]\n    >   %.226 = phi i8 [ 0, %132 ], [ %137, %133 ]\n    >   %.2 = phi i32 [ 0, %132 ], [ %134, %133 ]\n    >   %140 = getelementptr inbounds nuw [256 x i32], ptr %6, i64 0, i64 %.pre-phi\n    >   %141 = load i32, ptr %140, align 4\n    >   %142 = zext i32 %141 to i64\n    >   %143 = and i64 %142, %.015\n    >   %144 = icmp ne i64 %143, 0\n    >   %145 = sext i8 %.226 to i32\n    >   %146 = or i32 %145, 1\n    >   %147 = trunc i32 %146 to i8\n    >   %.327 = select i1 %144, i8 %147, i8 %.226\n    <   %.pre-phi = phi i64 [ %.pre4, %._crit_edge ], [ %119, %132 ]\n    <   %138 = phi i8 [ %117, %132 ], [ %.pre3, %._crit_edge ]\n    <   %.230 = phi i64 [ %.129, %132 ], [ %127, %._crit_edge ]\n    <   %.226 = phi i8 [ %136, %132 ], [ 0, %._crit_edge ]\n    <   %.2 = phi i32 [ %133, %132 ], [ 0, %._crit_edge ]\n    <   %139 = getelementptr inbounds nuw [256 x i32], ptr %6, i64 0, i64 %.pre-phi\n    <   %140 = load i32, ptr %139, align 4\n    <   %141 = zext i32 %140 to i64\n    <   %142 = and i64 %141, %.015\n    <   %143 = icmp ne i64 %142, 0\n    <   %144 = sext i8 %.226 to i32\n    <   %145 = or i32 %144, 1\n    <   %146 = trunc i32 %145 to i8\n    <   %.327 = select i1 %143, i8 %146, i8 %.226\n        %147 = lshr i64 %.015, 1\n        %148 = add i64 %.4, 1\n    >   %.phi.trans.insert = getelementptr inbounds nuw [256 x i8], ptr %7, i64 0, i64 %.pre-phi\n    >   %.pre = load i8, ptr %.phi.trans.insert, align 1\n    <   %.phi.trans.insert = getelementptr inbounds nuw [256 x i8], ptr %7, i64 0, i64 %.pre-phi\n    <   %.pre = load i8, ptr %.phi.trans.insert, align 1\n  in block %197 / %198:\n    >   %.38 = phi i64 [ %.6, %193 ], [ %213, %205 ]\n    <   %.38 = phi i64 [ %.6, %192 ], [ %209, %204 ]\n  in block %204 / %205:\n    >   %206 = sub i64 %.38, 1\n    >   %207 = getelementptr inbounds nuw [256 x i32], ptr %8, i64 0, i64 %206\n    >   %208 = load i32, ptr %207, align 4\n        %205 = getelementptr inbounds nuw [256 x i32], ptr %8, i64 0, i64 %.38\n    >   store i32 %208, ptr %209, align 4\n    >   %210 = getelementptr inbounds nuw [256 x i8], ptr %9, i64 0, i64 %206\n    >   %211 = load i8, ptr %210, align 1\n    <   store i32 %202, ptr %205, align 4\n    <   %206 = getelementptr inbounds nuw [256 x i8], ptr %9, i64 0, i64 %200\n    <   %207 = load i8, ptr %206, align 1\n        %208 = getelementptr inbounds nuw [256 x i8], ptr %9, i64 0, i64 %.38\n    >   store i8 %211, ptr %212, align 1\n    <   store i8 %207, ptr %208, align 1\n\nin function heap_adjust:\n  in block %45 / %45:\n    >   %.pre-phi = phi i64 [ %.pre, %._crit_edge ], [ %31, %30 ]\n    <   %.pre-phi = phi i64 [ %31, %split ], [ %.pre, %._crit_edge ]\n        %46 = sub nsw i32 %.01, 1\n        %47 = sext i32 %46 to i64\n        %48 = getelementptr inbounds i64, ptr %1, i64 %47\n    >   store i64 %.pre-phi, ptr %48, align 8\n    <   store i64 %.pre-phi, ptr %48, align 8\n  in block %split / %45:\n    >   %.pre-phi = phi i64 [ %.pre, %._crit_edge ], [ %31, %30 ]\n    >   %46 = sub nsw i32 %.01, 1\n    >   %47 = sext i32 %46 to i64\n    >   %48 = getelementptr inbounds i64, ptr %1, i64 %47\n    >   store i64 %.pre-phi, ptr %48, align 8\n    >   ret void\n    <   br label %45"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sccp",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__sccp.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %97 / %97:\n    >   %.043 = phi i64 [ 0, %94 ], [ %.144, %99 ]\n    >   %.037 = phi i32 [ %96, %94 ], [ %105, %99 ]\n    >   %.05 = phi i64 [ 1, %94 ], [ %106, %99 ]\n    >   %.3 = phi i64 [ 0, %94 ], [ %107, %99 ]\n    <   %.043 = phi i64 [ 0, %94 ], [ %.144, %99 ]\n    <   %.037 = phi i32 [ %96, %94 ], [ %105, %99 ]\n    <   %.05 = phi i64 [ 1, %94 ], [ %106, %99 ]\n    <   %.3 = phi i64 [ 0, %94 ], [ %107, %99 ]\n  in block %99 / %99:\n    >   %103 = zext nneg i32 %.138 to i64\n    >   %104 = getelementptr inbounds [512 x i32], ptr %5, i64 0, i64 %103\n    >   %105 = load i32, ptr %104, align 4\n    <   %103 = sext i32 %.138 to i64\n    <   %104 = getelementptr inbounds [512 x i32], ptr %5, i64 0, i64 %103\n    <   %105 = load i32, ptr %104, align 4"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__adce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-simplify",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %.preheader8 / %29:\n    >   %.010 = phi i64 [ %.111, %38 ], [ 0, %19 ]\n    >   %.13 = phi i64 [ %39, %38 ], [ 0, %19 ]\n    >   %30 = icmp ult i64 %.13, 256\n    >   br i1 %30, label %31, label %40\n    <   br label %29\n\nin function main:\n  in block %.preheader / %4:\n    >   %.01 = phi i32 [ %12, %11 ], [ 1, %2 ]\n    >   %5 = icmp slt i32 %.01, %0\n    >   br i1 %5, label %6, label %.loopexit\n    <   %4 = getelementptr inbounds ptr, ptr %1, i64 1\n    <   br label %5\n  in block %13 / %.loopexit:\n    >   %.0 = phi i8 [ 0, %2 ], [ 1, %6 ], [ 0, %4 ]\n    <   %.0 = phi i8 [ 0, %2 ], [ %.0.ph, %.loopexit ]"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function generate_test_data:\n  in block %.lr.ph:\n    >   %.02 = phi i32 [ %8, %.lr.ph ], [ 0, %1 ]\n    >   %.011 = phi ptr [ %7, %.lr.ph ], [ %2, %1 ]\n    >   %4 = call i64 @random4()\n    >   %5 = getelementptr inbounds nuw i8, ptr @.str, i64 %4\n    >   %6 = load i8, ptr %5, align 1\n    >   store i8 %6, ptr %.011, align 1\n    >   %7 = getelementptr inbounds nuw i8, ptr %.011, i32 1\n    >   %8 = add nsw i32 %.02, 1\n    >   %9 = sext i32 %8 to i64\n    >   %10 = icmp ult i64 %9, %0\n    >   br i1 %10, label %.lr.ph, label %._crit_edge, !llvm.loop !7\n    <   br label %4\n\nin function compdecomp:\n  in block %.lr.ph:\n    >   %.029 = phi i64 [ %26, %.lr.ph ], [ 0, %2 ]\n    >   %.0337 = phi ptr [ %25, %.lr.ph ], [ %0, %2 ]\n    >   %20 = load i8, ptr %.0337, align 1\n    >   %21 = zext i8 %20 to i64\n    >   %22 = getelementptr inbounds nuw [512 x i64], ptr %3, i64 0, i64 %21\n    >   %23 = load i64, ptr %22, align 8\n    >   %24 = add i64 %23, 1\n    >   store i64 %24, ptr %22, align 8\n    >   %25 = getelementptr inbounds nuw i8, ptr %.0337, i32 1\n    >   %26 = add i64 %.029, 1\n    >   %27 = icmp ult i64 %26, %1\n    >   br i1 %27, label %.lr.ph, label %._crit_edge, !llvm.loop !7\n    <   br label %20\n  in block %.lr.ph20 / %.lr.ph14:\n    >   %.2412 = phi i64 [ %44, %.lr.ph14 ], [ %.010.lcssa, %38 ]\n    >   %40 = getelementptr inbounds [512 x i64], ptr %3, i64 0, i64 0\n    >   %41 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %42 = trunc i64 %.010.lcssa to i32\n    >   %43 = trunc i64 %.2412 to i32\n    >   call void @heap_adjust(ptr noundef %40, ptr noundef %41, i32 noundef %42, i32 noundef %43)\n    >   %44 = add i64 %.2412, -1\n    >   %45 = icmp ugt i64 %44, 0\n    >   br i1 %45, label %.lr.ph14, label %._crit_edge15, !llvm.loop !10\n    <   br label %41\n  in block %.lr.ph22 / %.lr.ph18:\n    >   %.21216 = phi i64 [ %47, %.lr.ph18 ], [ %.010.lcssa, %._crit_edge15 ]\n    >   %47 = add i64 %.21216, -1\n    >   %48 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %49 = load i64, ptr %48, align 16\n    >   %50 = getelementptr inbounds nuw [256 x i64], ptr %4, i64 0, i64 %47\n    >   %51 = load i64, ptr %50, align 8\n    >   %52 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   store i64 %51, ptr %52, align 16\n    >   %53 = getelementptr inbounds [512 x i64], ptr %3, i64 0, i64 0\n    >   %54 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %55 = trunc i64 %47 to i32\n    >   call void @heap_adjust(ptr noundef %53, ptr noundef %54, i32 noundef %55, i32 noundef 1)\n    >   %56 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %57 = load i64, ptr %56, align 16\n    >   %58 = getelementptr inbounds nuw [512 x i64], ptr %3, i64 0, i64 %57\n    >   %59 = load i64, ptr %58, align 8\n    >   %60 = getelementptr inbounds nuw [512 x i64], ptr %3, i64 0, i64 %49\n    >   %61 = load i64, ptr %60, align 8\n    >   %62 = add i64 %59, %61\n    >   %63 = add i64 256, %47\n    >   %64 = getelementptr inbounds nuw [512 x i64], ptr %3, i64 0, i64 %63\n    >   store i64 %62, ptr %64, align 8\n    >   %65 = add i64 256, %47\n    >   %66 = trunc i64 %65 to i32\n    >   %67 = getelementptr inbounds nuw [512 x i32], ptr %5, i64 0, i64 %49\n    >   store i32 %66, ptr %67, align 4\n    >   %68 = sub i64 -256, %47\n    >   %69 = trunc i64 %68 to i32\n    >   %70 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %71 = load i64, ptr %70, align 16\n    >   %72 = getelementptr inbounds nuw [512 x i32], ptr %5, i64 0, i64 %71\n    >   store i32 %69, ptr %72, align 4\n    >   %73 = add i64 256, %47\n    >   %74 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   store i64 %73, ptr %74, align 16\n    >   %75 = getelementptr inbounds [512 x i64], ptr %3, i64 0, i64 0\n    >   %76 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %77 = trunc i64 %47 to i32\n    >   call void @heap_adjust(ptr noundef %75, ptr noundef %76, i32 noundef %77, i32 noundef 1)\n    >   %78 = icmp ugt i64 %47, 1\n    >   br i1 %78, label %.lr.ph18, label %._crit_edge19, !llvm.loop !11\n    <   br label %48\n  in block %81 / %._crit_edge19:\n    >   %.212.lcssa = phi i64 [ %.010.lcssa, %._crit_edge15 ], [ %47, %.lr.ph18 ]\n    >   %79 = add i64 256, %.212.lcssa\n    >   %80 = getelementptr inbounds nuw [512 x i32], ptr %5, i64 0, i64 %79\n    >   store i32 0, ptr %80, align 4\n    <   %.212.lcssa = phi i64 [ %split, %._crit_edge ], [ %.010.lcssa, %.preheader6 ]\n    <   %82 = add i64 256, %.212.lcssa\n    <   %83 = getelementptr inbounds nuw [512 x i32], ptr %5, i64 0, i64 %82\n    <   store i32 0, ptr %83, align 4\n\nin function heap_adjust:\n  in block %.lr.ph:\n    >   %.013 = phi i32 [ %.0, %39 ], [ %3, %4 ]\n    >   %12 = add nsw i32 %.013, %.013\n    >   %13 = icmp slt i32 %12, %2\n    >   br i1 %13, label %14, label %28\n    <   br label %12\n  in block %49 / %.loopexit:\n    >   %.012 = phi i32 [ %.013, %28 ], [ %3, %4 ], [ %.0, %39 ]\n    <   %.01.lcssa = phi i32 [ %split, %._crit_edge ], [ %split3, %._crit_edge2 ], [ %3, %4 ]\n        %50 = sext i32 %9 to i64\n    >   %49 = sub nsw i32 %.012, 1\n    >   %50 = sext i32 %49 to i64\n    >   %51 = getelementptr inbounds i64, ptr %1, i64 %50\n    >   store i64 %48, ptr %51, align 8\n    <   %51 = sub nsw i32 %.01.lcssa, 1\n    <   %52 = sext i32 %51 to i64\n    <   %53 = getelementptr inbounds i64, ptr %1, i64 %52\n    <   store i64 %50, ptr %53, align 8\n\nin function main:\n  in block %.preheader / %4:\n    >   %.011 = phi i32 [ %10, %9 ], [ 1, %2 ]\n        %4 = getelementptr inbounds ptr, ptr %1, i64 1\n    >   %6 = load ptr, ptr %5, align 8\n    >   %7 = call i32 @strcmp(ptr noundef %6, ptr noundef @.str.4) #6\n    >   %8 = icmp ne i32 %7, 0\n    >   br i1 %8, label %9, label %.loopexit\n    <   br label %7\n  in block %12 / %.loopexit:\n    >   %.0 = phi i8 [ 0, %2 ], [ 1, %4 ], [ 0, %9 ]\n    <   %.0 = phi i8 [ 0, %2 ], [ %.0.ph, %.loopexit ]"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %.preheader8 / %29:\n    >   %.010 = phi i64 [ %.111, %38 ], [ 0, %19 ]\n    >   %.13 = phi i64 [ %39, %38 ], [ 0, %19 ]\n    >   %30 = icmp ult i64 %.13, 256\n    >   br i1 %30, label %31, label %40\n    <   br label %29\n\nin function main:\n  in block %13 / %.loopexit:\n    >   %.0 = phi i8 [ 0, %2 ], [ 1, %8 ], [ 0, %6 ]\n    <   %.0 = phi i8 [ 0, %2 ], [ %.0.ph, %.loopexit ]\n  in block %5 / %6:\n    >   %.01 = phi i32 [ 1, %4 ], [ %13, %12 ]\n    >   %7 = icmp slt i32 %.01, %0\n    >   br i1 %7, label %8, label %.loopexit\n    <   %.01 = phi i32 [ %12, %11 ], [ 1, %.preheader ]\n    <   %6 = icmp slt i32 %.01, %0\n    <   br i1 %6, label %7, label %.loopexit"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %.preheader8 / %28:\n    >   %.010 = phi i64 [ %.111, %36 ], [ 0, %19 ]\n    >   %.13 = phi i64 [ %37, %36 ], [ 0, %19 ]\n    >   %exitcond7 = icmp ne i64 %.13, 256\n    >   br i1 %exitcond7, label %29, label %38\n    <   br label %28\n\nin function main:\n  in block %.preheader / %4:\n    >   %.01 = phi i32 [ %11, %10 ], [ 1, %2 ]\n    >   %exitcond = icmp ne i32 %.01, %0\n    >   br i1 %exitcond, label %5, label %.loopexit\n    <   %4 = getelementptr inbounds ptr, ptr %1, i64 1\n    <   br label %5\n  in block %12 / %.loopexit:\n    >   %.0 = phi i8 [ 0, %2 ], [ 1, %5 ], [ 0, %4 ]\n    <   %.0 = phi i8 [ 0, %2 ], [ %.0.ph, %.loopexit ]"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function compdecomp:\n  in block %.preheader14 / %29:\n    >   %.010 = phi i64 [ %.111.1, %46 ], [ 0, %19 ]\n    >   %.13 = phi i64 [ %47, %46 ], [ 0, %19 ]\n    >   %30 = icmp samesign ult i64 %.13, 256\n    >   br i1 %30, label %31, label %48\n    <   br label %29\n\nin function main:\n  in block %.preheader / %4:\n    >   %.01 = phi i32 [ %12, %11 ], [ 1, %2 ]\n    >   %5 = icmp slt i32 %.01, %0\n    >   br i1 %5, label %6, label %.loopexit\n    <   %4 = getelementptr inbounds ptr, ptr %1, i64 1\n    <   br label %5\n  in block %13 / %.loopexit:\n    >   %.0 = phi i8 [ 0, %2 ], [ 1, %6 ], [ 0, %4 ]\n    <   %.0 = phi i8 [ 0, %2 ], [ %.0.ph, %.loopexit ]"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\simplifycfg__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__gvn.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__dce.ll",
+      "details": "in function compdecomp:\n  in block %115 / %115:\n    >   %.028 = phi i64 [ 0, %114 ], [ %.129, %161 ]\n    >   %.024 = phi i8 [ 0, %114 ], [ %.125, %161 ]\n    <   %.028 = phi i64 [ 0, %114 ], [ %.129, %162 ]\n    <   %.024 = phi i8 [ 0, %114 ], [ %.125, %162 ]\n        %.16 = phi i64 [ 0, %114 ], [ %164, %162 ]\n    >   %.01 = phi i32 [ -1, %114 ], [ %.1, %161 ]\n    <   %.01 = phi i32 [ -1, %114 ], [ %.1, %162 ]\n  in block %126 / %126:\n    >   %127 = phi i8 [ %118, %117 ], [ %148, %158 ]\n    >   %128 = phi i8 [ %121, %117 ], [ %.pre, %158 ]\n    >   %.129 = phi i64 [ %.028, %117 ], [ %.230, %158 ]\n    >   %.125 = phi i8 [ %.024, %117 ], [ %.327, %158 ]\n    >   %.015 = phi i64 [ %125, %117 ], [ %159, %158 ]\n    >   %.4 = phi i64 [ 0, %117 ], [ %160, %158 ]\n    >   %.1 = phi i32 [ %.01, %117 ], [ %.2, %158 ]\n    >   %129 = zext i8 %127 to i64\n    >   %130 = zext i8 %128 to i64\n    >   %131 = icmp ult i64 %.4, %130\n    >   br i1 %131, label %132, label %161\n    <   %127 = phi i8 [ %118, %117 ], [ %149, %159 ]\n    <   %128 = phi i8 [ %121, %117 ], [ %.pre, %159 ]\n    <   %.129 = phi i64 [ %.028, %117 ], [ %.230, %159 ]\n    <   %.125 = phi i8 [ %.024, %117 ], [ %.327, %159 ]\n    <   %.015 = phi i64 [ %125, %117 ], [ %160, %159 ]\n    <   %.4 = phi i64 [ 0, %117 ], [ %161, %159 ]\n    <   %.1 = phi i32 [ %.01, %117 ], [ %.2, %159 ]\n    <   %129 = zext i8 %127 to i64\n    <   %130 = getelementptr inbounds nuw [256 x i8], ptr %7, i64 0, i64 %129\n    <   %131 = zext i8 %128 to i64\n    <   %132 = icmp ult i64 %.4, %131\n    <   br i1 %132, label %133, label %162"
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__sccp.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__adce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "dce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\dce__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__dce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__early-cse.ll",
+      "details": "in function compdecomp:\n  in block %115 / %115:\n    >   %.028 = phi i64 [ 0, %114 ], [ %.129, %161 ]\n    >   %.024 = phi i8 [ 0, %114 ], [ %.125, %161 ]\n    <   %.028 = phi i64 [ 0, %114 ], [ %.129, %162 ]\n    <   %.024 = phi i8 [ 0, %114 ], [ %.125, %162 ]\n        %.16 = phi i64 [ 0, %114 ], [ %164, %162 ]\n    >   %.01 = phi i32 [ -1, %114 ], [ %.1, %161 ]\n    <   %.01 = phi i32 [ -1, %114 ], [ %.1, %162 ]\n  in block %126 / %126:\n    >   %127 = phi i8 [ %118, %117 ], [ %148, %158 ]\n    >   %128 = phi i8 [ %121, %117 ], [ %.pre, %158 ]\n    >   %.129 = phi i64 [ %.028, %117 ], [ %.230, %158 ]\n    >   %.125 = phi i8 [ %.024, %117 ], [ %.327, %158 ]\n    >   %.015 = phi i64 [ %125, %117 ], [ %159, %158 ]\n    >   %.4 = phi i64 [ 0, %117 ], [ %160, %158 ]\n    >   %.1 = phi i32 [ %.01, %117 ], [ %.2, %158 ]\n    >   %129 = zext i8 %127 to i64\n    >   %130 = zext i8 %128 to i64\n    >   %131 = icmp ult i64 %.4, %130\n    >   br i1 %131, label %132, label %161\n    <   %127 = phi i8 [ %118, %117 ], [ %149, %159 ]\n    <   %128 = phi i8 [ %121, %117 ], [ %.pre, %159 ]\n    <   %.129 = phi i64 [ %.028, %117 ], [ %.230, %159 ]\n    <   %.125 = phi i8 [ %.024, %117 ], [ %.327, %159 ]\n    <   %.015 = phi i64 [ %125, %117 ], [ %160, %159 ]\n    <   %.4 = phi i64 [ 0, %117 ], [ %161, %159 ]\n    <   %.1 = phi i32 [ %.01, %117 ], [ %.2, %159 ]\n    <   %129 = zext i8 %127 to i64\n    <   %130 = getelementptr inbounds nuw [256 x i8], ptr %7, i64 0, i64 %129\n    <   %131 = zext i8 %128 to i64\n    <   %132 = icmp ult i64 %.4, %131\n    <   br i1 %132, label %133, label %162"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__sccp.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__adce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function compdecomp:\n  in block %35 / %35:\n    >   %36 = icmp ugt i64 %.111, 0\n    >   br i1 %36, label %.lr.ph14, label %43\n    <   %.010.lcssa = phi i64 [ %.111, %32 ]\n    <   %36 = icmp ugt i64 %.010.lcssa, 0\n    <   br i1 %36, label %.lr.ph14, label %43\n\nin function heap_adjust:\n  in block %.loopexit:\n    >   %.01.lcssa = phi i32 [ %.0, %..loopexit_crit_edge ], [ %3, %4 ]\n    <   %.01.lcssa = phi i32 [ %split, %..loopexit_crit_edge ], [ %3, %4 ]\n  in block %47 / %47:\n    >   %.012 = phi i32 [ %.01.lcssa, %.loopexit ], [ %.013, %41 ]\n    <   %.012 = phi i32 [ %.01.lcssa, %.loopexit ], [ %.01.lcssa1, %41 ]\n  in block %41 / %41:\n    <   %.01.lcssa1 = phi i32 [ %.013, %30 ]\n  in block %..loopexit_crit_edge:\n    <   %split = phi i32 [ %.0, %42 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function compdecomp:\n  in block %36 / %36:\n    >   %37 = trunc i64 %.010 to i32\n    <   %.010.lcssa = phi i64 [ %.010, %24 ]\n    <   %37 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %13 ]\n  in block %42 / %42:\n    <   %.01.lcssa1 = phi i32 [ %.01, %33 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function compdecomp:\n  in block %34 / %34:\n    <   %.010.lcssa = phi i64 [ %.010, %23 ]\n\nin function heap_adjust:\n  in block %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %10 ]\n  in block %42 / %42:\n    <   %.01.lcssa1 = phi i32 [ %.01, %31 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function compdecomp:\n  in block %46 / %46:\n    <   %.010.lcssa = phi i64 [ %.010, %24 ]\n\nin function heap_adjust:\n  in block %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %10 ]\n  in block %42 / %42:\n    <   %.01.lcssa1 = phi i32 [ %.01, %31 ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\early-cse__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__sccp.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "adce",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__adce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__gvn.ll",
+      "details": "in function compdecomp:\n  in block %115 / %115:\n    >   %.028 = phi i64 [ 0, %114 ], [ %.129, %162 ]\n    >   %.024 = phi i8 [ 0, %114 ], [ %.125, %162 ]\n    <   %.028 = phi i64 [ 0, %114 ], [ %.129, %161 ]\n    <   %.024 = phi i8 [ 0, %114 ], [ %.125, %161 ]\n        %.16 = phi i64 [ 0, %114 ], [ %163, %161 ]\n    >   %.01 = phi i32 [ -1, %114 ], [ %.1, %162 ]\n    <   %.01 = phi i32 [ -1, %114 ], [ %.1, %161 ]\n  in block %126 / %126:\n    >   %127 = phi i8 [ %118, %117 ], [ %149, %159 ]\n    >   %128 = phi i8 [ %121, %117 ], [ %.pre, %159 ]\n    >   %.129 = phi i64 [ %.028, %117 ], [ %.230, %159 ]\n    >   %.125 = phi i8 [ %.024, %117 ], [ %.327, %159 ]\n    >   %.015 = phi i64 [ %125, %117 ], [ %160, %159 ]\n    >   %.4 = phi i64 [ 0, %117 ], [ %161, %159 ]\n    >   %.1 = phi i32 [ %.01, %117 ], [ %.2, %159 ]\n    >   %129 = zext i8 %127 to i64\n    >   %130 = getelementptr inbounds nuw [256 x i8], ptr %7, i64 0, i64 %129\n    >   %131 = zext i8 %128 to i64\n    >   %132 = icmp ult i64 %.4, %131\n    >   br i1 %132, label %133, label %162\n    <   %127 = phi i8 [ %118, %117 ], [ %148, %158 ]\n    <   %128 = phi i8 [ %121, %117 ], [ %.pre, %158 ]\n    <   %.129 = phi i64 [ %.028, %117 ], [ %.230, %158 ]\n    <   %.125 = phi i8 [ %.024, %117 ], [ %.327, %158 ]\n    <   %.015 = phi i64 [ %125, %117 ], [ %159, %158 ]\n    <   %.4 = phi i64 [ 0, %117 ], [ %160, %158 ]\n    <   %.1 = phi i32 [ %.01, %117 ], [ %.2, %158 ]\n    <   %129 = zext i8 %127 to i64\n    <   %130 = zext i8 %128 to i64\n    <   %131 = icmp ult i64 %.4, %130\n    <   br i1 %131, label %132, label %161"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function compdecomp:\n  in block %33 / %33:\n    >   %34 = icmp ugt i64 %.111, 0\n    >   br i1 %34, label %.lr.ph14, label %40\n    <   %.010.lcssa = phi i64 [ %.111, %30 ]\n    <   %34 = icmp ugt i64 %.010.lcssa, 0\n    <   br i1 %34, label %.lr.ph15, label %40\n\nin function heap_adjust:\n  in block %._crit_edge / %..loopexit_crit_edge4:\n    <   %.01.lcssa = phi i32 [ %split, %.._crit_edge_crit_edge ], [ %3, %4 ]\n  in block %.._crit_edge_crit_edge / %..loopexit_crit_edge:\n    in instruction   br label %._crit_edge /   br label %.loopexit:\n      successor %._crit_edge cannot be equivalent to %.loopexit; it's already equivalent to %..loopexit_crit_edge4\n    <   %split = phi i32 [ %.0, %42 ]\n  in block %41 / %41:\n    in instruction   br label %47 /   br label %47:\n      successor %47 cannot be equivalent to %47; it's already equivalent to %.loopexit\n    <   %.lcssa = phi i64 [ %31, %30 ]\n    <   %.01.lcssa1 = phi i32 [ %.013, %30 ]\n\nin function main:\n  in block %7 / %5:\n    >   %.011 = phi i32 [ 1, %4 ], [ %12, %11 ]\n    <   %.011 = phi i32 [ 1, %4 ], [ %.01, %5 ]\n        %8 = getelementptr inbounds ptr, ptr %1, i64 1\n        %9 = load ptr, ptr %8, align 8\n        %10 = call i32 @strcmp(ptr noundef %9, ptr noundef @.str.4) #6\n        %11 = icmp ne i32 %10, 0\n    <   %12 = add nsw i32 %.011, 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__gvn.ll",
+      "details": "in function compdecomp:\n  in block %34 / %34:\n    >   %35 = trunc i64 %.010 to i32\n    <   %.010.lcssa = phi i64 [ %.010, %23 ]\n    <   %35 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %._crit_edge / %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %13 ]\n    <   %.pre = sext i32 %9 to i64\n  in block %42 / %42:\n    <   %.lcssa = phi i64 [ %11, %33 ]\n    <   %.01.lcssa1 = phi i32 [ %.01, %33 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function compdecomp:\n  in block %32 / %32:\n    <   %.010.lcssa = phi i64 [ %.010, %22 ]\n\nin function heap_adjust:\n  in block %4 / %4:\n    <   %10 = sext i32 %9 to i64"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function compdecomp:\n  in block %43 / %42:\n    <   %.010.lcssa = phi i64 [ %.010, %23 ]\n  in block %32 / %32:\n    >   %34 = getelementptr inbounds nuw [512 x i64], ptr %3, i64 0, i64 %33\n    >   %35 = load i64, ptr %34, align 8\n    >   %36 = icmp ne i64 %35, 0\n    >   br i1 %36, label %37, label %40\n    <   br label %34\n  in block %34 / %32:\n    >   %.111 = phi i64 [ %31, %29 ], [ %.010, %25 ]\n    >   %33 = add nuw nsw i64 %.13, 1\n\nin function heap_adjust:\n  in block %._crit_edge / %.loopexit:\n    <   %.01.lcssa = phi i32 [ %.01, %10 ]\n  in block %42 / %42:\n    <   %.lcssa = phi i64 [ %32, %31 ]\n    <   %.01.lcssa1 = phi i32 [ %.01, %31 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\gvn__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__gvn.ll",
+      "details": "in function compdecomp:\n  in block %115 / %115:\n    >   %.028 = phi i64 [ 0, %114 ], [ %.129, %162 ]\n    >   %.024 = phi i8 [ 0, %114 ], [ %.125, %162 ]\n    <   %.028 = phi i64 [ 0, %114 ], [ %.129, %161 ]\n    <   %.024 = phi i8 [ 0, %114 ], [ %.125, %161 ]\n        %.16 = phi i64 [ 0, %114 ], [ %163, %161 ]\n    >   %.01 = phi i32 [ -1, %114 ], [ %.1, %162 ]\n    <   %.01 = phi i32 [ -1, %114 ], [ %.1, %161 ]\n  in block %189 / %190:\n    >   %194 = and i64 %193, %.116\n    >   %195 = icmp ne i64 %194, 0\n    >   br i1 %195, label %196, label %198\n    <   %193 = and i64 %.116, %192\n    <   %194 = icmp ne i64 %193, 0\n    <   br i1 %194, label %195, label %197\n  in block %126 / %126:\n    >   %127 = phi i8 [ %118, %117 ], [ %149, %159 ]\n    >   %128 = phi i8 [ %121, %117 ], [ %.pre, %159 ]\n    >   %.129 = phi i64 [ %.028, %117 ], [ %.230, %159 ]\n    >   %.125 = phi i8 [ %.024, %117 ], [ %.327, %159 ]\n    >   %.015 = phi i64 [ %125, %117 ], [ %160, %159 ]\n    >   %.4 = phi i64 [ 0, %117 ], [ %161, %159 ]\n    >   %.1 = phi i32 [ %.01, %117 ], [ %.2, %159 ]\n    >   %129 = zext i8 %127 to i64\n    >   %130 = getelementptr inbounds nuw [256 x i8], ptr %7, i64 0, i64 %129\n    >   %131 = zext i8 %128 to i64\n    >   %132 = icmp ult i64 %.4, %131\n    >   br i1 %132, label %133, label %162\n    <   %127 = phi i8 [ %118, %117 ], [ %148, %158 ]\n    <   %128 = phi i8 [ %121, %117 ], [ %.pre, %158 ]\n    <   %.129 = phi i64 [ %.028, %117 ], [ %.230, %158 ]\n    <   %.125 = phi i8 [ %.024, %117 ], [ %.327, %158 ]\n    <   %.015 = phi i64 [ %125, %117 ], [ %159, %158 ]\n    <   %.4 = phi i64 [ 0, %117 ], [ %160, %158 ]\n    <   %.1 = phi i32 [ %.01, %117 ], [ %.2, %158 ]\n    <   %129 = zext i8 %127 to i64\n    <   %130 = zext i8 %128 to i64\n    <   %131 = icmp ult i64 %.4, %130\n    <   br i1 %131, label %132, label %161"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "adce",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__adce.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\sccp__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "adce",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\adce__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__adce.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-simplify__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__loop-rotate.ll",
+      "details": "in function compdecomp:\n  in block %42 / %42:\n    >   %43 = getelementptr inbounds [512 x i64], ptr %3, i64 0, i64 0\n    >   %44 = getelementptr inbounds [256 x i64], ptr %4, i64 0, i64 0\n    >   %45 = trunc i64 %.010.lcssa to i32\n\nin function heap_adjust:\n  in block %4 / %4:\n    >   %11 = sext i32 %9 to i64\n    >   %12 = getelementptr inbounds i64, ptr %0, i64 %11"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": "in function generate_test_data:\n  in block %1 / %1:\n    >   %exitcond2 = icmp ne i64 0, %0\n    >   br i1 %exitcond2, label %.lr.ph, label %9\n    <   %3 = icmp ult i64 0, %0\n    <   br i1 %3, label %.lr.ph, label %11\n\nin function compdecomp:\n  in block %2 / %2:\n    >   %exitcond12 = icmp ne i64 0, %1\n    >   br i1 %exitcond12, label %.lr.ph, label %28\n    <   %19 = icmp ult i64 0, %1\n    <   br i1 %19, label %.lr.ph, label %29"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": "function @llvm.assume exists only in left module\nin function compdecomp:\n  in block %.lr.ph:\n    >   br label %20\n    <   %20 = add i64 %1, -1\n    <   %xtraiter = and i64 %1, 1\n    <   %21 = icmp ult i64 %20, 1\n    <   br i1 %21, label %.epil.preheader, label %.lr.ph.new\n  in block %45 / %31:\n    >   %.01010 = phi i64 [ 0, %30 ], [ %.111.1, %49 ]\n    <   %.01010 = phi i64 [ 0, %44 ], [ %.111.1, %62 ]\n  in block %53 / %39:\n    >   br label %41\n    <   %55 = getelementptr inbounds nuw [512 x i64], ptr %3, i64 0, i64 %54\n    <   %56 = load i64, ptr %55, align 8\n    <   %57 = icmp ne i64 %56, 0\n    <   br i1 %57, label %58, label %61\n  in block %65 / %52:\n    >   %.010.lcssa = phi i64 [ %.111.1, %49 ]\n    <   %.010.lcssa = phi i64 [ %.111.1, %62 ]"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-rotate__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__loop-rotate.ll",
+      "details": "in function compdecomp:\n  in block %102 / %102:\n    >   %103 = add i64 %.0522, %.04320\n    <   %103 = add i64 %.04320, %.0522\n  in block %105 / %105:\n    >   %.144 = phi i64 [ %103, %102 ], [ %.04320, %100 ]\n    <   %.144 = phi i64 [ %103, %102 ], [ %.04320, %100 ]"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__licm.ll",
+      "details": "in function compdecomp:\n  in block %220 / %220:\n    >   %.019 = phi i32 [ 0, %209 ], [ %.120, %233 ]\n    >   %.116 = phi i64 [ %215, %209 ], [ %232, %233 ]\n    >   %.5 = phi i64 [ 0, %209 ], [ %234, %233 ]\n    >   %221 = icmp samesign ult i64 %.5, %218\n    >   br i1 %221, label %222, label %235\n    <   %.019 = phi i32 [ 0, %209 ], [ %.120, %232 ]\n    <   %.116 = phi i64 [ %215, %209 ], [ %231, %232 ]\n    <   %.5 = phi i64 [ 0, %209 ], [ %233, %232 ]\n    <   %exitcond10 = icmp ne i64 %.5, %218\n    <   br i1 %exitcond10, label %221, label %234"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\licm__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": "in function compdecomp:\n  in block %30 / %30:\n    >   %.010 = phi i64 [ 0, %29 ], [ %.111.1, %50 ]\n    >   %.13 = phi i64 [ 0, %29 ], [ %51, %50 ]\n    >   %31 = icmp samesign ult i64 %.13, 256\n    >   br i1 %31, label %32, label %52\n    <   %.010 = phi i64 [ 0, %29 ], [ %.111.1, %49 ]\n    <   %.13 = phi i64 [ 0, %29 ], [ %50, %49 ]\n    <   %exitcond7 = icmp ne i64 %.13, 256\n    <   br i1 %exitcond7, label %31, label %51"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\indvars__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\loop-unroll__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\CoyoteBench_huffbench\\round_001\\analysis\\CoyoteBench_huffbench\\commutativity\\reassociate__then__loop-unroll.ll",
+      "details": ""
+    }
+  ]
+}

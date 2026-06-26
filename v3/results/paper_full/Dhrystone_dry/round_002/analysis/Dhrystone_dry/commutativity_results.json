@@ -1,0 +1,369 @@
+{
+  "summary": {
+    "total_pairs": 45,
+    "commuting_pairs": 16,
+    "non_commuting_pairs": 29
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": "in function Proc2:\n  in block %1 / %1:\n    <   %2 = load i32, ptr %0, align 4\n\nin function Func2:\n  in block %3 / %3:\n    >   %.01 = phi i32 [ 1, %2 ], [ %spec.select, %5 ]\n    >   %4 = icmp samesign ult i32 %.01, 2\n    >   br i1 %4, label %5, label %17\n    <   %.01 = phi i32 [ 1, %2 ], [ %spec.select, %5 ]\n    <   %4 = icmp slt i32 %.01, 2\n    <   br i1 %4, label %5, label %17\n\nin function Func3:\n  in block %1 / %1:\n    >   %. = zext i1 %2 to i32\n    >   ret i32 %.\n    <   %. = select i1 %2, i32 1, i32 0\n    <   ret i32 %."
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__instcombine.ll",
+      "details": "in function Func2:\n  in block %5 / %5:\n    >   %9 = getelementptr i8, ptr %1, i64 2\n    >   %10 = load i8, ptr %9, align 1\n    >   %11 = sext i8 %10 to i32\n    <   %9 = getelementptr i8, ptr %1, i64 1\n    <   %10 = getelementptr i8, ptr %9, i64 1\n    <   %11 = load i8, ptr %10, align 1\n    <   %12 = sext i8 %11 to i32"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %7 / %7:\n    >   %.02 = phi i32 [ 0, %0 ], [ %9, %8 ]\n    <   %.02 = phi i32 [ 0, %0 ], [ %9, %8 ]\n  in block %8 / %8:\n    >   %10 = icmp samesign ult i32 %.02, 99999999\n    >   br i1 %10, label %7, label %11, !llvm.loop !7\n    <   %10 = icmp samesign ult i32 %9, 100000000\n    <   br i1 %10, label %7, label %11, !llvm.loop !7\n\nin function Proc8:\n  in block %13 / %13:\n    >   %.01 = phi i32 [ %5, %4 ], [ %18, %17 ]\n    <   %.01 = phi i32 [ %5, %4 ], [ %18, %17 ]\n  in block %17 / %17:\n    >   %.not.not = icmp slt i32 %.01, %12\n    >   br i1 %.not.not, label %13, label %19, !llvm.loop !7\n    <   %.not = icmp sgt i32 %18, %12\n    <   br i1 %.not, label %19, label %13, !llvm.loop !7"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %39 / %39:\n    <   %.lcssa = phi i32 [ %31, %30 ]\n        %40 = load i32, ptr %2, align 4\n    >   %41 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %31, i32 noundef %40)\n    <   %41 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %.lcssa, i32 noundef %40)"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %21 / %21:\n    >   %.1 = phi i32 [ 0, %10 ], [ %58, %57 ]\n    >   %exitcond.not = icmp eq i32 %.1, 100000000\n    >   br i1 %exitcond.not, label %59, label %22\n    <   %.1 = phi i32 [ 0, %10 ], [ %58, %57 ]\n    <   %exitcond = icmp ne i32 %.1, 100000000\n    <   br i1 %exitcond, label %22, label %59"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function Proc0:\n  in block %53 / %53:\n    <   %.lcssa = phi i32 [ %45, %44 ]\n        %54 = load i32, ptr %2, align 4\n    >   %55 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %45, i32 noundef %54)\n    <   %55 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %.lcssa, i32 noundef %54)\n\nin function Proc8:\n  in block %17 / %17:\n    <   %18 = add nsw i32 %2, 6"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\instcombine__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__instcombine.ll",
+      "details": "in function Proc2:\n  in block %6 / %6:\n    >   %9 = sub i32 %7, %8\n    >   store i32 %9, ptr %0, align 4\n    <   %.neg = sub i32 0, %8\n    <   %9 = add i32 %7, %.neg\n    <   store i32 %9, ptr %0, align 4"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": "function @llvm.assume exists only in right module\nin function Proc3:\n  in block %1 / %1:\n    >   %3 = xor i1 %.not, true\n    >   call void @llvm.assume(i1 %3)\n    >   %4 = load ptr, ptr %2, align 8\n    >   store ptr %4, ptr %0, align 8\n    >   %.pre = load i32, ptr @IntGlob, align 4\n    >   %.pre1 = load ptr, ptr @PtrGlb, align 8\n    >   %5 = getelementptr inbounds nuw i8, ptr %.pre1, i64 16\n    >   %6 = call i32 @Proc7(i32 noundef 10, i32 noundef %.pre, ptr noundef nonnull %5)\n    >   ret i32 undef\n    <   br i1 %.not, label %5, label %3"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function Proc0:\n  in block %7 / %7:\n    >   %.02 = phi i32 [ 0, %0 ], [ %8, %7 ]\n    >   %8 = add nuw nsw i32 %.02, 1\n    >   %9 = icmp samesign ult i32 %8, 100000000\n    >   br i1 %9, label %7, label %10, !llvm.loop !7\n    <   %.0 = phi i32 [ 0, %0 ], [ %9, %7 ]\n    <   %8 = icmp samesign ult i32 %.0, 100000000\n    <   %9 = add nuw nsw i32 %.0, 1\n    <   br i1 %8, label %7, label %10, !llvm.loop !7"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__simplifycfg.ll",
+      "details": "in function Proc2:\n  in block %1 / %1:\n    >   %5 = add nsw i32 %2, 9"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": "in function Proc0:\n  in block %0 / %0:\n    >   %6 = call i32 @clock() #5\n    >   %7 = call i32 @clock() #5\n    >   %8 = call dereferenceable_or_null(56) ptr @malloc(i64 noundef 56) #6\n    >   store ptr %8, ptr @PtrGlbNext, align 8\n    >   %9 = call dereferenceable_or_null(56) ptr @malloc(i64 noundef 56) #6\n    >   store ptr %9, ptr @PtrGlb, align 8\n    >   %10 = load ptr, ptr @PtrGlbNext, align 8\n    >   store ptr %10, ptr %9, align 8\n    >   %11 = getelementptr inbounds nuw i8, ptr %9, i64 8\n    >   store i32 0, ptr %11, align 8\n    >   %12 = getelementptr inbounds nuw i8, ptr %9, i64 12\n    >   store i32 10001, ptr %12, align 4\n    >   %13 = load ptr, ptr @PtrGlb, align 8\n    >   %14 = getelementptr inbounds nuw i8, ptr %13, i64 16\n    >   store i32 40, ptr %14, align 8\n    >   %15 = getelementptr inbounds nuw i8, ptr %13, i64 20\n    >   call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 1 dereferenceable(31) %15, ptr noundef nonnull align 1 dereferenceable(31) @.str, i64 31, i1 false) #5\n    >   call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 16 dereferenceable(31) %4, ptr noundef nonnull align 1 dereferenceable(31) @.str.1, i64 31, i1 false) #5\n    >   store i32 10, ptr getelementptr inbounds nuw (i8, ptr @Array2Glob, i64 1660), align 4"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function Proc0:\n  in block %9 / %9:\n    >   %10 = add nuw nsw i32 %.0, 8\n\nin function Proc8:\n  in block %4 / %4:\n    >   %12 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    >   %13 = sext i32 %5 to i64\n    >   %14 = getelementptr inbounds [4 x i8], ptr %12, i64 %13\n    >   store i32 %5, ptr %14, align 4\n    >   %15 = add nsw i32 %2, 6\n    >   %16 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    >   %17 = sext i32 %15 to i64\n    >   %18 = getelementptr inbounds [4 x i8], ptr %16, i64 %17\n    >   store i32 %5, ptr %18, align 4\n    >   %19 = add nsw i32 %2, 7\n    >   %20 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    >   %21 = getelementptr [4 x i8], ptr %20, i64 %8\n    >   %22 = getelementptr i8, ptr %21, i64 16\n    >   %23 = load i32, ptr %22, align 4\n    >   %24 = add nsw i32 %23, 1\n    >   store i32 %24, ptr %22, align 4\n    >   %25 = load i32, ptr %7, align 4\n    >   %26 = getelementptr [204 x i8], ptr %1, i64 %8\n    >   %27 = getelementptr i8, ptr %26, i64 5100\n    >   %28 = getelementptr inbounds [4 x i8], ptr %27, i64 %6\n    >   store i32 %25, ptr %28, align 4\n    >   store i32 5, ptr @IntGlob, align 4\n    >   ret i32 undef\n    <   br label %12"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\simplifycfg__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %29 / %29:\n    >   %30 = phi i32 [ %27, %.lr.ph ], [ %35, %29 ]\n    >   %31 = mul nsw i32 %30, 5\n    >   %32 = add nsw i32 %31, -3\n    >   store i32 %32, ptr %2, align 4\n    <   %30 = phi i32 [ %27, %.lr.ph ], [ %36, %29 ]\n    <   %31 = mul nsw i32 %30, 5\n    <   %32 = add nsw i32 %31, -3\n    <   store i32 %32, ptr %2, align 4\n        %33 = call i32 @Proc7(i32 noundef %30, i32 noundef 3, ptr noundef nonnull %2)\n        %34 = load i32, ptr %1, align 4\n        %35 = add nsw i32 %34, 1\n        store i32 %35, ptr %1, align 4\n    >   %36 = icmp slt i32 %35, 3\n    >   br i1 %36, label %29, label %._crit_edge, !llvm.loop !9\n    <   %36 = load i32, ptr %1, align 4\n    <   %37 = icmp slt i32 %36, 3\n    <   br i1 %37, label %29, label %._crit_edge, !llvm.loop !9\n  in block %38 / %37:\n    >   %.lcssa = phi i32 [ %35, %._crit_edge ], [ %27, %22 ]\n    <   %.lcssa = phi i32 [ %split, %._crit_edge ], [ %27, %22 ]\n\nin function Proc8:\n  in block %19 / %19:\n    >   %20 = getelementptr [4 x i8], ptr %14, i64 %8\n    >   %21 = getelementptr i8, ptr %20, i64 16\n    >   %22 = load i32, ptr %21, align 4\n    >   %23 = add nsw i32 %22, 1\n    >   store i32 %23, ptr %21, align 4\n    <   %20 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    <   %21 = getelementptr [4 x i8], ptr %20, i64 %8\n    <   %22 = getelementptr i8, ptr %21, i64 16\n    <   %23 = load i32, ptr %22, align 4\n    <   %24 = add nsw i32 %23, 1\n    <   store i32 %24, ptr %22, align 4"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %39 / %39:\n    <   %.lcssa = phi i32 [ %31, %30 ]\n        %40 = load i32, ptr %2, align 4\n    >   %41 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %31, i32 noundef %40)\n    <   %41 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %.lcssa, i32 noundef %40)\n\nin function Proc8:\n  in block %20 / %20:\n    >   %21 = getelementptr [4 x i8], ptr %13, i64 %8\n    >   %22 = getelementptr i8, ptr %21, i64 16\n    >   %23 = load i32, ptr %22, align 4\n    >   %24 = add nsw i32 %23, 1\n    >   store i32 %24, ptr %22, align 4\n    <   %21 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    <   %22 = getelementptr [4 x i8], ptr %21, i64 %8\n    <   %23 = getelementptr i8, ptr %22, i64 16\n    <   %24 = load i32, ptr %23, align 4\n    <   %25 = add nsw i32 %24, 1\n    <   store i32 %25, ptr %23, align 4"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %36 / %36:\n    <   %.lcssa = phi i32 [ %28, %27 ]\n        %37 = load i32, ptr %2, align 4\n    >   %38 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %28, i32 noundef %37)\n    <   %38 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %.lcssa, i32 noundef %37)\n\nin function Proc8:\n  in block %4 / %4:\n    <   %12 = sext i32 %2 to i64"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function Proc0:\n  in block %53 / %53:\n    <   %.lcssa = phi i32 [ %45, %44 ]\n        %54 = load i32, ptr %2, align 4\n    >   %55 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %45, i32 noundef %54)\n    <   %55 = call i32 @Proc8(ptr noundef nonnull @Array1Glob, ptr noundef nonnull @Array2Glob, i32 noundef %.lcssa, i32 noundef %54)\n\nin function Proc8:\n  in block %13 / %13:\n    >   %15 = getelementptr inbounds [4 x i8], ptr %14, i64 %6\n    >   store i32 %5, ptr %15, align 4\n    <   %15 = sext i32 %5 to i64\n    <   %16 = getelementptr inbounds [4 x i8], ptr %14, i64 %15\n    <   store i32 %5, ptr %16, align 4"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\early-cse__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__sccp.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__gvn.ll",
+      "details": "in function Proc2:\n  in block %1 / %1:\n    >   %4 = icmp eq i8 %3, 65\n    >   br i1 %4, label %5, label %9\n    <   br label %3\n\nin function Func2:\n  in block %17 / %17:\n    >   %18 = call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %0, ptr noundef nonnull dereferenceable(1) %1) #5\n    >   %19 = icmp sgt i32 %18, 0\n    >   br i1 %19, label %20, label %21\n    <   br label %18"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %7 / %7:\n    >   %.02 = phi i32 [ 0, %0 ], [ %8, %7 ]\n    >   %8 = add nuw nsw i32 %.02, 1\n    >   %9 = icmp samesign ult i32 %8, 100000000\n    >   br i1 %9, label %7, label %10, !llvm.loop !7\n    <   %.0 = phi i32 [ 0, %0 ], [ %9, %7 ]\n    <   %8 = icmp samesign ult i32 %.0, 100000000\n    <   %9 = add nuw nsw i32 %.0, 1\n    <   br i1 %8, label %7, label %10, !llvm.loop !7\n\nin function Proc2:\n  in block %9 / %9:\n    in instruction   br i1 true, label %10, label %3 /   br i1 true, label %10, label %._crit_edge:\n      successor %3 cannot be equivalent to %._crit_edge; it's already equivalent to %3\n\nin function Proc8:\n  in block %18 / %18:\n    >   %19 = getelementptr [4 x i8], ptr %14, i64 %8\n    >   %20 = getelementptr i8, ptr %19, i64 16\n    >   %21 = load i32, ptr %20, align 4\n    >   %22 = add nsw i32 %21, 1\n    >   store i32 %22, ptr %20, align 4\n    <   %19 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    <   %20 = getelementptr [4 x i8], ptr %19, i64 %8\n    <   %21 = getelementptr i8, ptr %20, i64 16\n    <   %22 = load i32, ptr %21, align 4\n    <   %23 = add nsw i32 %22, 1\n    <   store i32 %23, ptr %21, align 4"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %37 / %37:\n    <   %.lcssa = phi i32 [ %29, %28 ]\n\nin function Proc8:\n  in block %19 / %19:\n    >   %20 = getelementptr [4 x i8], ptr %13, i64 %8\n    >   %21 = getelementptr i8, ptr %20, i64 16\n    >   %22 = load i32, ptr %21, align 4\n    >   %23 = add nsw i32 %22, 1\n    >   store i32 %23, ptr %21, align 4\n    <   %20 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    <   %21 = getelementptr [4 x i8], ptr %20, i64 %8\n    <   %22 = getelementptr i8, ptr %21, i64 16\n    <   %23 = load i32, ptr %22, align 4\n    <   %24 = add nsw i32 %23, 1\n    <   store i32 %24, ptr %22, align 4"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %34 / %34:\n    <   %.lcssa = phi i32 [ %26, %25 ]\n\nin function Proc8:\n  in block %4 / %4:\n    <   %12 = sext i32 %2 to i64"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Proc0:\n  in block %9 / %9:\n    >   %10 = add nuw nsw i32 %.0, 8\n  in block %44 / %37:\n    <   %.lcssa = phi i32 [ %36, %35 ]\n\nin function Proc2:\n  in block %1 / %1:\n    >   %4 = icmp eq i8 %3, 65\n    >   br i1 %4, label %5, label %9\n    <   br label %3\n\nin function Proc8:\n  in block %4 / %4:\n    >   %12 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    >   %13 = getelementptr inbounds [4 x i8], ptr %12, i64 %6\n    >   store i32 %5, ptr %13, align 4\n    >   %14 = add nsw i32 %2, 6\n    >   %15 = sext i32 %14 to i64\n    >   %16 = getelementptr inbounds [4 x i8], ptr %12, i64 %15\n    >   store i32 %5, ptr %16, align 4\n    >   %17 = add nsw i32 %2, 7\n    >   br i1 true, label %22, label %18\n    <   br label %12"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\gvn__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__sccp.ll",
+      "details": "in function Proc2:\n  in block %1 / %1:\n    >   %3 = load i8, ptr @Char1Glob, align 1\n    >   %4 = icmp eq i8 %3, 65\n    >   %5 = add nsw i32 %2, 9\n\nin function Func2:\n  in block %2 / %2:\n    <   %3 = getelementptr inbounds nuw i8, ptr %0, i64 1\n    <   %4 = getelementptr i8, ptr %1, i64 1\n    <   %5 = getelementptr i8, ptr %4, i64 1"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__sccp.ll",
+      "details": "in function Proc0:\n  in block %7 / %7:\n    >   br label %8\n    <   br i1 false, label %8, label %10"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__sccp.ll",
+      "details": "in function Proc8:\n  in block %23 / %23:\n    >   br label %25\n    <   br i1 true, label %30, label %25"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\sccp__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": "in function Proc0:\n  in block %0 / %0:\n    >   br i1 false, label %.lr.ph, label %9\n    <   br label %7\n\nin function Proc8:\n  in block %4 / %4:\n    <   %12 = add nsw i32 %2, 6\n        %13 = sext i32 %2 to i64\n        %14 = add nsw i64 %13, 5\n    >   %14 = add i32 %2, 7\n    >   %wide.trip.count = sext i32 %14 to i64\n    >   %exitcond2 = icmp eq i64 %13, %wide.trip.count\n    >   br i1 %exitcond2, label %19, label %.lr.ph\n    <   %15 = sext i32 %12 to i64\n    <   br label %16"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": "in function Proc0:\n  in block %16 / %16:\n    in instruction   br label %17 /   br label %17:\n      successor %17 cannot be equivalent to %17; it's already equivalent to %22\n  in block %7 / %7:\n    >   %.02 = phi i32 [ 0, %0 ], [ %23, %22 ]\n    <   %.02 = phi i32 [ 0, %0 ], [ %18, %17 ]\n  in block %17 / %22:\n    >   %23 = add nuw nsw i32 %.02, 8\n    >   %24 = icmp samesign ult i32 %23, 100000000\n    >   br i1 %24, label %7, label %25, !llvm.loop !7\n    <   %18 = add nuw nsw i32 %.02, 10\n    <   %19 = icmp samesign ult i32 %18, 100000000\n    <   br i1 %19, label %7, label %20, !llvm.loop !7\n\nin function Proc2:\n  in block %10 / %10:\n    >   br i1 true, label %11, label %12\n    <   br label %11\n\nin function Proc8:\n  in block %12 / %12:\n    <   %13 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n    <   %14 = sext i32 %5 to i64\n    <   %15 = getelementptr inbounds [4 x i8], ptr %13, i64 %14\n    <   store i32 %5, ptr %15, align 4"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-rotate__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__licm.ll",
+      "details": "in function Proc8:\n  in block %4 / %4:\n    <   %12 = getelementptr inbounds [204 x i8], ptr %1, i64 %6\n        %13 = sext i32 %2 to i64\n        %14 = add nsw i64 %13, 5\n        %15 = add i32 %2, 7\n        %wide.trip.count = sext i32 %15 to i64\n    >   %15 = getelementptr inbounds [204 x i8], ptr %1, i64 %6"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__licm.ll",
+      "details": "in function Proc2:\n  in block %1 / %1:\n    <   %3 = load i8, ptr @Char1Glob, align 1\n    <   %4 = icmp eq i8 %3, 65\n    <   %5 = add nsw i32 %2, 9\n\nin function Proc8:\n  in block %4 / %4:\n    <   %12 = getelementptr inbounds [204 x i8], ptr %1, i64 %6"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\licm__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": "in function Proc0:\n  in block %9 / %9:\n    >   br label %10\n    <   unreachable\n\nin function Proc8:\n  in block %4 / %4:\n    <   %12 = sext i32 %2 to i64\n    <   %13 = add nsw i64 %12, 5\n    <   %14 = add i32 %2, 7\n    <   %wide.trip.count = sext i32 %14 to i64"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\indvars__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__indvars.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\loop-unroll__then__reassociate.ll",
+      "ba_path": "results\\paper_full\\Dhrystone_dry\\round_002\\analysis\\Dhrystone_dry\\commutativity\\reassociate__then__loop-unroll.ll",
+      "details": ""
+    }
+  ]
+}

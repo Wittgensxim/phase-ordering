@@ -1,0 +1,11 @@
+{
+  "kind": "random_ordered_pair",
+  "passes": [
+    "simplifycfg",
+    "loop-unroll"
+  ],
+  "winner": "random",
+  "score_improvement": 0,
+  "details": "random chose simplifycfg->loop-unroll",
+  "changed": true
+}

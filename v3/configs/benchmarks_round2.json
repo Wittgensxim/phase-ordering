@@ -1,0 +1,26 @@
+{
+    "description": "5 new benchmarks for second round testing",
+    "test_suite_root": "E:/llvm-test-suite",
+    "benchmarks": [
+        {
+            "name": "Misc_flops_5",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-5.c"
+        },
+        {
+            "name": "Stanford_Towers",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Towers.c"
+        },
+        {
+            "name": "Stanford_Puzzle",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Puzzle.c"
+        },
+        {
+            "name": "Stanford_Perm",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Perm.c"
+        },
+        {
+            "name": "Stanford_Queens",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Queens.c"
+        }
+    ]
+}

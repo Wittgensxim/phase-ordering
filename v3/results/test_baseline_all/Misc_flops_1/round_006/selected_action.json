@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "loop-rotate",
+    "early-cse"
+  ],
+  "details": "perturbation: loop-rotate->early-cse",
+  "changed": true
+}

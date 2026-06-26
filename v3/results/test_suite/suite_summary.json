@@ -1,0 +1,51 @@
+{
+  "summary": {
+    "total_benchmarks": 1,
+    "completed": 1,
+    "failed": 0,
+    "stable_false_positive_pairs": 0
+  },
+  "benchmarks": [
+    {
+      "benchmark": "Misc_flops_1",
+      "input_ir": "results\\test_suite\\Misc_flops_1\\Misc_flops_1.ll",
+      "candidate_passes": [
+        "instcombine",
+        "simplifycfg",
+        "sroa",
+        "early-cse",
+        "gvn",
+        "sccp",
+        "dce",
+        "adce",
+        "loop-rotate",
+        "loop-unroll"
+      ],
+      "inactive_passes": 1,
+      "enable_edges": 51,
+      "dependency_pairs": 45,
+      "independent_pairs": 14,
+      "dependent_pairs": 31,
+      "uncertain_pairs": 0,
+      "validation_pairs": 45,
+      "agree_dependent": 15,
+      "agree_independent": 14,
+      "false_positive": 16,
+      "false_negative": 0,
+      "uncertain_commuting": 0,
+      "uncertain_non_commuting": 0,
+      "confirmed_independent_pairs": 14,
+      "likely_independent_pairs": 6,
+      "needs_attribution_pairs": 10,
+      "order_sensitive_pairs": 15
+    }
+  ],
+  "failed_benchmarks": [],
+  "stable_false_positive_pairs": [],
+  "independence_confirmation": {
+    "confirmed_independent": 14,
+    "likely_independent": 6,
+    "needs_attribution": 10,
+    "order_sensitive": 15
+  }
+}

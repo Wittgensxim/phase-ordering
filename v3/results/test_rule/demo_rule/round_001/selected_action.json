@@ -1,0 +1,6 @@
+{
+  "kind": "auto_safe_pass",
+  "pass": "adce",
+  "details": "single safe pass: adce",
+  "changed": true
+}

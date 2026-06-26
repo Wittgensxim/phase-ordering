@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "sccp",
+    "gvn"
+  ],
+  "winner": "B->A",
+  "score_improvement": 87.07999999999993,
+  "details": "oracle chose sccp->gvn (improvement: 87.08)",
+  "changed": true
+}

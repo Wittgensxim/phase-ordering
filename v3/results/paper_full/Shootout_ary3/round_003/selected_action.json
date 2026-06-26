@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "early-cse",
+    "simplifycfg"
+  ],
+  "winner": "A->B",
+  "score_improvement": 2.5,
+  "details": "oracle chose early-cse->simplifycfg (improvement: 2.50)",
+  "changed": true
+}

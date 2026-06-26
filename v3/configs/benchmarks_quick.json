@@ -1,0 +1,26 @@
+{
+    "description": "Quick smoke test with 5 key benchmarks",
+    "test_suite_root": "E:/llvm-test-suite",
+    "benchmarks": [
+        {
+            "name": "Misc_flops_1",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/flops-1.c"
+        },
+        {
+            "name": "Stanford_Quicksort",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Quicksort.c"
+        },
+        {
+            "name": "Stanford_Bubblesort",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Bubblesort.c"
+        },
+        {
+            "name": "Shootout_nestedloop",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/nestedloop.c"
+        },
+        {
+            "name": "Dhrystone_dry",
+            "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Dhrystone/dry.c"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{"pass": "mem2reg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "instcombine", "reads": ["inst:main:%exitcond", "loop:main:bb0"], "write_values": {"inst:main:%exitcond": null, "inst:main:%exitcond.not": "%v = icmp eq i32 %v, 156250000", "loop:main:bb0": null, "loop:main:bb1": "header=bb1 latch=bb0 terminator=br i1 %v, label %v, label %v, !llvm.loop !7"}, "writes": ["inst:main:%exitcond", "inst:main:%exitcond.not", "loop:main:bb0", "loop:main:bb1"]}
+{"pass": "simplifycfg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "dce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sroa", "reads": [], "write_values": {}, "writes": []}
+{"pass": "early-cse", "reads": [], "write_values": {}, "writes": []}
+{"pass": "gvn", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sccp", "reads": [], "write_values": {}, "writes": []}
+{"pass": "adce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-simplify", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-rotate", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "licm", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "indvars", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "loop-unroll", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "reassociate", "reads": [], "write_values": {}, "writes": []}

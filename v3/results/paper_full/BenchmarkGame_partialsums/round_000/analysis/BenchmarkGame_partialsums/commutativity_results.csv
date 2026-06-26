@@ -1,0 +1,1041 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+mem2reg,instcombine,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__instcombine.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__mem2reg.ll,"in function main:
+  in block %10 / %10:
+    >   %.04 = phi double [ 0.000000e+00, %2 ], [ %31, %32 ]
+    >   %.03 = phi double [ 0.000000e+00, %2 ], [ %27, %32 ]
+    >   %.02 = phi double [ 0.000000e+00, %2 ], [ %19, %32 ]
+    >   %.0 = phi double [ 0.000000e+00, %2 ], [ %16, %32 ]
+    >   %storemerge = phi double [ 1.000000e+00, %2 ], [ %33, %32 ]
+    >   %11 = sitofp i32 2500000 to double
+    >   %12 = fcmp ugt double %storemerge, %11
+    >   br i1 %12, label %34, label %13
+    <   %.06 = phi double [ 0.000000e+00, %2 ], [ %24, %18 ]
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %28, %18 ]
+    <   %.04 = phi double [ 0.000000e+00, %2 ], [ %30, %18 ]
+    <   %.03 = phi double [ 0.000000e+00, %2 ], [ %31, %18 ]
+    <   %.0 = phi double [ 1.000000e+00, %2 ], [ %32, %18 ]
+    <   %11 = fcmp ugt double %.0, 2.500000e+06
+    <   br i1 %11, label %33, label %12"
+mem2reg,simplifycfg,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__simplifycfg.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__mem2reg.ll,
+mem2reg,dce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__dce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__mem2reg.ll,
+mem2reg,sroa,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__sroa.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__mem2reg.ll,"in function main:
+  in block %9 / %9:
+    >   %.057 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    >   %.056 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    >   %.055 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    >   %.054 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    >   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %.06 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    <   %.04 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    <   %.03 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %.0 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+        %10 = sitofp i32 2500000 to double
+    >   %11 = fcmp ole double %.057, %10
+    >   br i1 %11, label %12, label %33
+    <   %11 = fcmp ole double %.0, %10
+    <   br i1 %11, label %12, label %33"
+mem2reg,early-cse,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__early-cse.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__mem2reg.ll,"in function main:
+  in block %10 / %10:
+    >   %.06 = phi double [ 0.000000e+00, %2 ], [ %31, %32 ]
+    >   %.05 = phi double [ 0.000000e+00, %2 ], [ %27, %32 ]
+    >   %.04 = phi double [ 0.000000e+00, %2 ], [ %19, %32 ]
+    >   %.03 = phi double [ 0.000000e+00, %2 ], [ %16, %32 ]
+    >   %.0 = phi double [ 1.000000e+00, %2 ], [ %33, %32 ]
+    >   %11 = sitofp i32 2500000 to double
+    >   %12 = fcmp ole double %.0, %11
+    >   br i1 %12, label %13, label %34
+    <   %.06 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    <   %.04 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    <   %.03 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %.0 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    <   %11 = fcmp ole double %.0, 2.500000e+06
+    <   br i1 %11, label %12, label %33"
+mem2reg,gvn,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__gvn.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__mem2reg.ll,"in function main:
+  in block %2 / %2:
+    <   %3 = alloca <2 x double>, align 16"
+mem2reg,sccp,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__mem2reg.ll,"in function main:
+  in block %10 / %10:
+    >   %.06 = phi double [ 0.000000e+00, %2 ], [ %31, %32 ]
+    >   %.05 = phi double [ 0.000000e+00, %2 ], [ %27, %32 ]
+    >   %.04 = phi double [ 0.000000e+00, %2 ], [ %19, %32 ]
+    >   %.03 = phi double [ 0.000000e+00, %2 ], [ %16, %32 ]
+    >   %.0 = phi double [ 1.000000e+00, %2 ], [ %33, %32 ]
+    >   %11 = sitofp i32 2500000 to double
+    >   %12 = fcmp ole double %.0, %11
+    >   br i1 %12, label %13, label %34
+    <   %.06 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    <   %.04 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    <   %.03 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %.0 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    <   %11 = fcmp ole double %.0, 2.500000e+06
+    <   br i1 %11, label %12, label %33"
+mem2reg,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__mem2reg.ll,
+mem2reg,loop-rotate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__mem2reg.ll,"in function main:
+  in block %34 / %35:
+    >   %.114 = phi double [ %30, %._crit_edge ], [ 0.000000e+00, %2 ]
+    >   %.112 = phi double [ %26, %._crit_edge ], [ 0.000000e+00, %2 ]
+    >   %.110 = phi double [ %18, %._crit_edge ], [ 0.000000e+00, %2 ]
+    >   %.18 = phi double [ %15, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.06.lcssa = phi double [ %split, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.05.lcssa = phi double [ %split15, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.04.lcssa = phi double [ %split16, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.03.lcssa = phi double [ %split17, %._crit_edge ], [ 0.000000e+00, %2 ]
+  in block %12 / %12:
+    >   %.013 = phi double [ 0.000000e+00, %.lr.ph ], [ %30, %31 ]
+    >   %.011 = phi double [ 0.000000e+00, %.lr.ph ], [ %26, %31 ]
+    >   %.09 = phi double [ 0.000000e+00, %.lr.ph ], [ %18, %31 ]
+    >   %.07 = phi double [ 0.000000e+00, %.lr.ph ], [ %15, %31 ]
+    >   %.0 = phi double [ 1.000000e+00, %.lr.ph ], [ %32, %31 ]
+    >   %13 = fsub double %.0, 1.000000e+00
+    <   %.014 = phi double [ 1.000000e+00, %.lr.ph ], [ %32, %31 ]
+    <   %.0313 = phi double [ 0.000000e+00, %.lr.ph ], [ %15, %31 ]
+    <   %.0412 = phi double [ 0.000000e+00, %.lr.ph ], [ %18, %31 ]
+    <   %.0511 = phi double [ 0.000000e+00, %.lr.ph ], [ %26, %31 ]
+    <   %.0610 = phi double [ 0.000000e+00, %.lr.ph ], [ %30, %31 ]
+    <   %13 = fsub double %.014, 1.000000e+00
+        %14 = call double @pow(double noundef f0x3FE5555555555555, double noundef %13) #4
+    >   %15 = fadd double %.07, %14
+    <   %15 = fadd double %.0313, %14
+        %16 = call double @sqrt(double noundef %.014) #4
+        %17 = fdiv double 1.000000e+00, %16
+    >   %18 = fadd double %.09, %17
+    >   %19 = fmul double %.0, %.0
+    >   %20 = fmul double %19, %.0
+    <   %18 = fadd double %.0412, %17
+    <   %19 = fmul double %.014, %.014
+    <   %20 = fmul double %19, %.014
+        %21 = call double @sin(double noundef %.014) #4
+        %22 = call double @cos(double noundef %.014) #4
+    >   %23 = fmul double %20, %21
+    >   %24 = fmul double %23, %21
+    >   %25 = fdiv double 1.000000e+00, %24
+    >   %26 = fadd double %.011, %25
+    >   %27 = fmul double %20, %22
+    >   %28 = fmul double %27, %22
+    >   %29 = fdiv double 1.000000e+00, %28
+    >   %30 = fadd double %.013, %29
+    <   %23 = fmul double %20, %21
+    <   %24 = fmul double %23, %21
+    <   %25 = fdiv double 1.000000e+00, %24
+    <   %26 = fadd double %.0511, %25
+    <   %27 = fmul double %20, %22
+    <   %28 = fmul double %27, %22
+    <   %29 = fdiv double 1.000000e+00, %28
+    <   %30 = fadd double %.0610, %29"
+mem2reg,licm,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__mem2reg.ll,"in function main:
+  in block %11 / %11:
+    >   %12 = phi double [ %39, %40 ], [ 0.000000e+00, %2 ]
+    >   %13 = phi double [ %35, %40 ], [ 0.000000e+00, %2 ]
+    >   %14 = phi double [ %31, %40 ], [ undef, %2 ]
+    >   %15 = phi double [ %30, %40 ], [ undef, %2 ]
+    >   %16 = phi double [ %29, %40 ], [ undef, %2 ]
+    >   %17 = phi double [ %27, %40 ], [ 0.000000e+00, %2 ]
+    >   %18 = phi double [ %24, %40 ], [ 0.000000e+00, %2 ]
+    >   %19 = phi double [ %41, %40 ], [ 1.000000e+00, %2 ]
+    >   %20 = fcmp ole double %19, %10
+    >   br i1 %20, label %21, label %42
+    <   %.06 = phi double [ 0.000000e+00, %2 ], [ %31, %32 ]
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %27, %32 ]
+    <   %.04 = phi double [ 0.000000e+00, %2 ], [ %19, %32 ]
+    <   %.03 = phi double [ 0.000000e+00, %2 ], [ %16, %32 ]
+    <   %.0 = phi double [ 1.000000e+00, %2 ], [ %33, %32 ]
+    <   %12 = fcmp ole double %.0, %10
+    <   br i1 %12, label %13, label %34"
+mem2reg,indvars,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__mem2reg.ll,"in function main:
+  in block %34 / %34:
+    <   %.06.lcssa = phi double [ %.06, %10 ]
+    <   %.05.lcssa = phi double [ %.05, %10 ]
+    <   %.04.lcssa = phi double [ %.04, %10 ]
+    <   %.03.lcssa = phi double [ %.03, %10 ]"
+mem2reg,loop-unroll,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__mem2reg.ll,"in function main:
+  in block %34 / %34:
+    <   %.06.lcssa = phi double [ %.06, %10 ]
+    <   %.05.lcssa = phi double [ %.05, %10 ]
+    <   %.04.lcssa = phi double [ %.04, %10 ]
+    <   %.03.lcssa = phi double [ %.03, %10 ]"
+mem2reg,reassociate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\mem2reg__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__mem2reg.ll,"in function main:
+  in block %10 / %10:
+    >   %.06 = phi double [ 0.000000e+00, %2 ], [ %31, %32 ]
+    >   %.05 = phi double [ 0.000000e+00, %2 ], [ %27, %32 ]
+    >   %.04 = phi double [ 0.000000e+00, %2 ], [ %19, %32 ]
+    >   %.03 = phi double [ 0.000000e+00, %2 ], [ %16, %32 ]
+    <   %.06 = phi double [ 0.000000e+00, %2 ], [ %31, %32 ]
+    <   %.05 = phi double [ 0.000000e+00, %2 ], [ %27, %32 ]
+    <   %.04 = phi double [ 0.000000e+00, %2 ], [ %19, %32 ]
+    <   %.03 = phi double [ 0.000000e+00, %2 ], [ %16, %32 ]
+  in block %13 / %13:
+    >   %16 = fadd double %15, %.03
+    <   %16 = fadd double %.03, %15
+        %17 = call double @sqrt(double noundef %.0) #4
+        %18 = fdiv double 1.000000e+00, %17
+        %19 = fadd double %.04, %18
+        %20 = fmul double %.0, %.0
+    >   %21 = fmul double %20, %.0
+    <   %21 = fmul double %.0, %20
+        %22 = call double @sin(double noundef %.0) #4
+        %23 = call double @cos(double noundef %.0) #4
+    >   %24 = fmul double %21, %22
+    >   %25 = fmul double %24, %22
+    >   %26 = fdiv double 1.000000e+00, %25
+    >   %27 = fadd double %.05, %26
+    >   %28 = fmul double %21, %23
+    >   %29 = fmul double %28, %23
+    >   %30 = fdiv double 1.000000e+00, %29
+    >   %31 = fadd double %.06, %30
+    <   %24 = fmul double %21, %22
+    <   %25 = fmul double %22, %24
+    <   %26 = fdiv double 1.000000e+00, %25
+    <   %27 = fadd double %.05, %26
+    <   %28 = fmul double %21, %23
+    <   %29 = fmul double %23, %28
+    <   %30 = fdiv double 1.000000e+00, %29
+    <   %31 = fadd double %.06, %30
+  in block %35 / %35:
+    >   %.09 = phi <2 x double> [ %4, %34 ], [ %45, %62 ]
+    >   %.08 = phi <2 x double> [ %4, %34 ], [ %53, %62 ]
+    >   %.07 = phi <2 x double> [ %4, %34 ], [ %48, %62 ]
+    >   %.02 = phi <2 x double> [ %4, %34 ], [ %56, %62 ]
+    >   %.01 = phi <2 x double> [ %4, %34 ], [ %61, %62 ]
+    <   %.09 = phi <2 x double> [ %4, %34 ], [ %45, %62 ]
+    <   %.08 = phi <2 x double> [ %4, %34 ], [ %53, %62 ]
+    <   %.07 = phi <2 x double> [ %4, %34 ], [ %48, %62 ]
+    <   %.02 = phi <2 x double> [ %4, %34 ], [ %56, %62 ]
+    <   %.01 = phi <2 x double> [ %4, %34 ], [ %61, %62 ]
+  in block %39 / %39:
+    >   %42 = fadd <2 x double> %41, %5
+    >   %43 = fmul <2 x double> %40, %42
+    >   %44 = fdiv <2 x double> %5, %43
+    >   %45 = fadd <2 x double> %.09, %44
+    <   %42 = fadd <2 x double> %5, %41
+    <   %43 = fmul <2 x double> %40, %42
+    <   %44 = fdiv <2 x double> %5, %43
+    <   %45 = fadd <2 x double> %.09, %44"
+instcombine,simplifycfg,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,dce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__dce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__instcombine.ll,
+instcombine,sroa,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__sroa.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__instcombine.ll,"in function make_vec:
+  in block %2 / %2:
+    >   %.0.vec.insert = insertelement <2 x double> poison, double %0, i64 0
+    >   %.8.vec.insert = insertelement <2 x double> %.0.vec.insert, double %1, i64 1
+    >   ret <2 x double> %.8.vec.insert
+    <   %.0.vec.insert = insertelement <2 x double> undef, double %0, i32 0
+    <   %.8.vec.insert = insertelement <2 x double> %.0.vec.insert, double %1, i32 1
+    <   ret <2 x double> %.8.vec.insert
+
+in function sum_vec:
+  in block %1 / %1:
+    >   %.0.vec.extract = extractelement <2 x double> %0, i64 0
+    >   %.8.vec.extract = extractelement <2 x double> %0, i64 1
+    >   %2 = fadd double %.0.vec.extract, %.8.vec.extract
+    >   ret double %2
+    <   %.0.vec.extract = extractelement <2 x double> %0, i32 0
+    <   %.8.vec.extract = extractelement <2 x double> %0, i32 1
+    <   %2 = fadd double %.0.vec.extract, %.8.vec.extract
+    <   ret double %2
+
+in function main:
+  in block %9 / %9:
+    >   %.057 = phi double [ 1.000000e+00, %2 ], [ %31, %17 ]
+    >   %.056 = phi double [ 0.000000e+00, %2 ], [ %23, %17 ]
+    >   %.055 = phi double [ 0.000000e+00, %2 ], [ %27, %17 ]
+    >   %.054 = phi double [ 0.000000e+00, %2 ], [ %29, %17 ]
+    >   %.0 = phi double [ 0.000000e+00, %2 ], [ %30, %17 ]
+    >   %10 = fcmp ugt double %.057, 2.500000e+06
+    >   br i1 %10, label %32, label %11
+    <   %.040 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    <   %.039 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    <   %.038 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    <   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %storemerge = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    <   %10 = sitofp i32 2500000 to double
+    <   %11 = fcmp ugt double %storemerge, %10
+    <   br i1 %11, label %33, label %12"
+instcombine,early-cse,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__early-cse.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__instcombine.ll,"in function main:
+  in block %33 / %33:
+    in instruction %45 / %46:
+      arguments %42 and %45 differ
+    >   %38 = load double, ptr %18, align 8
+    >   %39 = call double @sqrt(double noundef %38) #4
+    >   %40 = fdiv double 1.000000e+00, %39
+    <   %38 = call double @sqrt(double noundef %storemerge) #4
+    <   %39 = fdiv double 1.000000e+00, %38
+        %40 = load double, ptr %4, align 8
+    >   %42 = fadd double %41, %40
+    >   store double %42, ptr %4, align 8
+    <   %41 = fadd double %40, %39
+    <   store double %41, ptr %4, align 8
+    <   %42 = load double, ptr %18, align 8
+        %43 = fmul double %42, %42
+        %44 = fmul double %43, %42
+        store double %44, ptr %19, align 8
+    >   %45 = load double, ptr %18, align 8"
+instcombine,gvn,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__gvn.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__instcombine.ll,"in function sum_vec:
+  in block %1 / %1:
+    >   %2 = extractelement <2 x double> %0, i64 0
+    >   %3 = extractelement <2 x double> %0, i64 1
+    >   %4 = fadd double %2, %3
+    >   ret double %4
+    <   %2 = alloca <2 x double>, align 16
+    <   store <2 x double> %0, ptr %2, align 16
+    <   %3 = bitcast <2 x double> %0 to i128
+    <   %4 = trunc i128 %3 to i64
+    <   %5 = bitcast i64 %4 to double
+    <   %6 = getelementptr inbounds nuw i8, ptr %2, i64 8
+    <   %7 = lshr i128 %3, 64
+    <   %8 = trunc i128 %7 to i64
+    <   %9 = bitcast i64 %8 to double
+    <   %10 = fadd double %5, %9
+    <   ret double %10
+
+in function main:
+  in block %2 / %2:
+    <   %3 = alloca double, align 8
+    <   %4 = alloca double, align 8
+    <   %5 = alloca double, align 8
+    <   %6 = alloca double, align 8
+    <   %7 = alloca <2 x double>, align 16
+    <   %8 = alloca <2 x double>, align 16
+    <   %9 = alloca <2 x double>, align 16
+    <   %10 = alloca <2 x double>, align 16
+    <   %11 = alloca <2 x double>, align 16
+    <   %12 = alloca <2 x double>, align 16
+    <   %13 = alloca <2 x double>, align 16
+    <   %14 = alloca <2 x double>, align 16
+    <   %15 = alloca <2 x double>, align 16
+    <   %16 = alloca <2 x double>, align 16
+    <   %17 = alloca <2 x double>, align 16
+    <   %18 = alloca double, align 8
+    <   %19 = alloca double, align 8
+    <   %20 = alloca double, align 8
+    <   %21 = alloca i32, align 4
+    <   store double 0.000000e+00, ptr %3, align 8
+    <   store double 0.000000e+00, ptr %4, align 8
+    <   store double 0.000000e+00, ptr %5, align 8
+    <   store double 0.000000e+00, ptr %6, align 8
+    <   store i32 2500000, ptr %21, align 4
+        %22 = call <2 x double> @make_vec(double noundef 0.000000e+00, double noundef 0.000000e+00)
+    <   store <2 x double> %22, ptr %12, align 16
+        %23 = call <2 x double> @make_vec(double noundef 1.000000e+00, double noundef 1.000000e+00)
+    <   store <2 x double> %23, ptr %13, align 16
+        %24 = call <2 x double> @make_vec(double noundef 2.000000e+00, double noundef 2.000000e+00)
+    <   store <2 x double> %24, ptr %14, align 16
+        %25 = call <2 x double> @make_vec(double noundef -1.000000e+00, double noundef -1.000000e+00)
+        %26 = call <2 x double> @make_vec(double noundef 1.000000e+00, double noundef 2.000000e+00)
+    <   store <2 x double> %26, ptr %15, align 16
+        %27 = call <2 x double> @make_vec(double noundef 1.000000e+00, double noundef -1.000000e+00)
+    <   store <2 x double> %27, ptr %17, align 16
+    <   store <2 x double> %22, ptr %11, align 16
+    <   store <2 x double> %22, ptr %10, align 16
+    <   store <2 x double> %22, ptr %9, align 16
+    <   store <2 x double> %22, ptr %8, align 16
+    <   store <2 x double> %22, ptr %7, align 16"
+instcombine,sccp,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    >   %30 = icmp sgt i32 %29, 0
+    >   br i1 %30, label %.lr.ph, label %64
+    <   %30 = sitofp i32 %29 to double
+    <   %31 = fcmp ugt double 1.000000e+00, %30
+    <   br i1 %31, label %65, label %.lr.ph"
+instcombine,licm,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    in instruction %.promoted / %.promoted3:
+      operands %3 and %4 differ
+    in instruction %.promoted2 / %.promoted5:
+      operands %4 and %18 differ
+    >   %.promoted1 = load double, ptr %3, align 8"
+instcombine,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__instcombine.ll,
+instcombine,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__instcombine.ll,
+instcombine,reassociate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\instcombine__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__instcombine.ll,"in function main:
+  in block %33 / %33:
+    >   %45 = fmul double %44, %43
+    >   store double %45, ptr %19, align 8
+    <   %45 = fmul double %43, %44
+    <   store double %45, ptr %19, align 8
+        %46 = call double @sin(double noundef %43) #4
+        %47 = call double @cos(double noundef %43) #4
+        store double %47, ptr %20, align 8
+    >   %48 = fmul double %45, %46
+    >   %49 = fmul double %48, %46
+    >   %50 = fdiv double 1.000000e+00, %49
+    <   %48 = fmul double %45, %46
+    <   %49 = fmul double %46, %48
+    <   %50 = fdiv double 1.000000e+00, %49
+        %51 = load double, ptr %5, align 8
+    >   %52 = fadd double %51, %50
+    >   store double %52, ptr %5, align 8
+    <   %52 = fadd double %51, %50
+    <   store double %52, ptr %5, align 8
+        %53 = load double, ptr %19, align 8
+        %54 = load double, ptr %20, align 8
+        %55 = fmul double %53, %54
+    >   %56 = fmul double %55, %54
+    >   %57 = fdiv double 1.000000e+00, %56
+    <   %56 = fmul double %54, %55
+    <   %57 = fdiv double 1.000000e+00, %56
+        %58 = load double, ptr %6, align 8
+    >   %59 = fadd double %58, %57
+    >   store double %59, ptr %6, align 8
+    <   %59 = fadd double %58, %57
+    <   store double %59, ptr %6, align 8
+  in block %70 / %70:
+    >   %73 = fadd <2 x double> %72, %71
+    >   %74 = fmul <2 x double> %72, %73
+    >   %75 = fdiv <2 x double> %71, %74
+    <   %73 = fadd <2 x double> %71, %72
+    <   %74 = fmul <2 x double> %72, %73
+    <   %75 = fdiv <2 x double> %71, %74
+        %76 = load <2 x double>, ptr %9, align 16
+    >   %77 = fadd <2 x double> %76, %75
+    >   store <2 x double> %77, ptr %9, align 16
+    <   %77 = fadd <2 x double> %76, %75
+    <   store <2 x double> %77, ptr %9, align 16
+        %78 = load <2 x double>, ptr %13, align 16
+        %79 = load <2 x double>, ptr %16, align 16
+        %80 = fdiv <2 x double> %78, %79
+        %81 = load <2 x double>, ptr %7, align 16
+        %82 = fadd <2 x double> %81, %80
+        store <2 x double> %82, ptr %7, align 16
+        %83 = fmul <2 x double> %79, %79
+        %84 = fdiv <2 x double> %78, %83
+        %85 = load <2 x double>, ptr %8, align 16
+    >   %86 = fadd <2 x double> %85, %84
+    >   store <2 x double> %86, ptr %8, align 16
+    <   %86 = fadd <2 x double> %84, %85
+    <   store <2 x double> %86, ptr %8, align 16"
+simplifycfg,dce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__dce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,sroa,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__sroa.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__simplifycfg.ll,"in function main:
+  in block %32 / %32:
+    >   %.063 = phi <2 x double> [ %50, %35 ], [ %3, %9 ]
+    >   %.062 = phi <2 x double> [ %46, %35 ], [ %3, %9 ]
+    >   %.061 = phi <2 x double> [ %39, %35 ], [ %3, %9 ]
+    >   %.060 = phi <2 x double> [ %44, %35 ], [ %3, %9 ]
+    >   %.059 = phi <2 x double> [ %51, %35 ], [ %7, %9 ]
+    >   %.058 = phi <2 x double> [ %41, %35 ], [ %3, %9 ]
+    >   %.0.vec.extract = extractelement <2 x double> %.059, i32 0
+    >   %33 = sitofp i32 2500000 to double
+    >   %34 = fcmp ole double %.0.vec.extract, %33
+    >   br i1 %34, label %35, label %52
+    <   br label %33"
+simplifycfg,early-cse,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__gvn.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-rotate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph:
+    >   %38 = load double, ptr %22, align 8
+    >   %39 = fsub double %38, 1.000000e+00
+    >   %40 = call double @pow(double noundef f0x3FE5555555555555, double noundef %39) #4
+    >   %41 = load double, ptr %6, align 8
+    >   %42 = fadd double %41, %40
+    >   store double %42, ptr %6, align 8
+    >   %43 = load double, ptr %22, align 8
+    >   %44 = call double @sqrt(double noundef %43) #4
+    >   %45 = fdiv double 1.000000e+00, %44
+    >   %46 = load double, ptr %7, align 8
+    >   %47 = fadd double %46, %45
+    >   store double %47, ptr %7, align 8
+    >   %48 = load double, ptr %22, align 8
+    >   %49 = load double, ptr %22, align 8
+    >   %50 = fmul double %48, %49
+    >   %51 = load double, ptr %22, align 8
+    >   %52 = fmul double %50, %51
+    >   store double %52, ptr %23, align 8
+    >   %53 = load double, ptr %22, align 8
+    >   %54 = call double @sin(double noundef %53) #4
+    >   store double %54, ptr %24, align 8
+    >   %55 = load double, ptr %22, align 8
+    >   %56 = call double @cos(double noundef %55) #4
+    >   store double %56, ptr %25, align 8
+    >   %57 = load double, ptr %23, align 8
+    >   %58 = load double, ptr %24, align 8
+    >   %59 = fmul double %57, %58
+    >   %60 = load double, ptr %24, align 8
+    >   %61 = fmul double %59, %60
+    >   %62 = fdiv double 1.000000e+00, %61
+    >   %63 = load double, ptr %8, align 8
+    >   %64 = fadd double %63, %62
+    >   store double %64, ptr %8, align 8
+    >   %65 = load double, ptr %23, align 8
+    >   %66 = load double, ptr %25, align 8
+    >   %67 = fmul double %65, %66
+    >   %68 = load double, ptr %25, align 8
+    >   %69 = fmul double %67, %68
+    >   %70 = fdiv double 1.000000e+00, %69
+    >   %71 = load double, ptr %9, align 8
+    >   %72 = fadd double %71, %70
+    >   store double %72, ptr %9, align 8
+    >   %73 = load double, ptr %22, align 8
+    >   %74 = fadd double %73, 1.000000e+00
+    >   store double %74, ptr %22, align 8
+    >   %75 = load double, ptr %22, align 8
+    >   %76 = load i32, ptr %26, align 4
+    >   %77 = sitofp i32 %76 to double
+    >   %78 = fcmp ole double %75, %77
+    >   br i1 %78, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %38
+  in block %.lr.ph2:
+    >   %84 = load <2 x double>, ptr %16, align 16
+    >   %85 = load <2 x double>, ptr %20, align 16
+    >   %86 = load <2 x double>, ptr %20, align 16
+    >   %87 = load <2 x double>, ptr %16, align 16
+    >   %88 = fadd <2 x double> %86, %87
+    >   %89 = fmul <2 x double> %85, %88
+    >   %90 = fdiv <2 x double> %84, %89
+    >   %91 = load <2 x double>, ptr %12, align 16
+    >   %92 = fadd <2 x double> %91, %90
+    >   store <2 x double> %92, ptr %12, align 16
+    >   %93 = load <2 x double>, ptr %16, align 16
+    >   %94 = load <2 x double>, ptr %20, align 16
+    >   %95 = fdiv <2 x double> %93, %94
+    >   %96 = load <2 x double>, ptr %10, align 16
+    >   %97 = fadd <2 x double> %96, %95
+    >   store <2 x double> %97, ptr %10, align 16
+    >   %98 = load <2 x double>, ptr %16, align 16
+    >   %99 = load <2 x double>, ptr %20, align 16
+    >   %100 = load <2 x double>, ptr %20, align 16
+    >   %101 = fmul <2 x double> %99, %100
+    >   %102 = fdiv <2 x double> %98, %101
+    >   %103 = load <2 x double>, ptr %11, align 16
+    >   %104 = fadd <2 x double> %103, %102
+    >   store <2 x double> %104, ptr %11, align 16
+    >   %105 = load <2 x double>, ptr %21, align 16
+    >   %106 = load <2 x double>, ptr %20, align 16
+    >   %107 = fdiv <2 x double> %105, %106
+    >   %108 = load <2 x double>, ptr %13, align 16
+    >   %109 = fadd <2 x double> %108, %107
+    >   store <2 x double> %109, ptr %13, align 16
+    >   %110 = load <2 x double>, ptr %21, align 16
+    >   %111 = load <2 x double>, ptr %17, align 16
+    >   %112 = load <2 x double>, ptr %20, align 16
+    >   %113 = load <2 x double>, ptr %16, align 16
+    >   %114 = fneg <2 x double> %113
+    >   %115 = call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %111, <2 x double> %112, <2 x double> %114)
+    >   %116 = fdiv <2 x double> %110, %115
+    >   %117 = load <2 x double>, ptr %14, align 16
+    >   %118 = fadd <2 x double> %117, %116
+    >   store <2 x double> %118, ptr %14, align 16
+    >   %119 = load <2 x double>, ptr %17, align 16
+    >   %120 = load <2 x double>, ptr %20, align 16
+    >   %121 = fadd <2 x double> %120, %119
+    >   store <2 x double> %121, ptr %20, align 16
+    >   %122 = load double, ptr %20, align 16
+    >   %123 = load i32, ptr %26, align 4
+    >   %124 = sitofp i32 %123 to double
+    >   %125 = fcmp ole double %122, %124
+    >   br i1 %125, label %.lr.ph2, label %._crit_edge3, !llvm.loop !9
+    <   br label %86"
+simplifycfg,licm,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__simplifycfg.ll,
+simplifycfg,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__simplifycfg.ll,
+simplifycfg,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__simplifycfg.ll,
+simplifycfg,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\simplifycfg__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__simplifycfg.ll,
+dce,sroa,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__sroa.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__dce.ll,
+dce,early-cse,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__early-cse.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__dce.ll,
+dce,gvn,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__gvn.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__dce.ll,"in function sum_vec:
+  in block %1 / %1:
+    <   %7 = getelementptr inbounds double, ptr %2, i64 1"
+dce,sccp,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__dce.ll,
+dce,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__dce.ll,
+dce,loop-rotate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__dce.ll,
+dce,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\dce__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__dce.ll,
+sroa,early-cse,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__early-cse.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__sroa.ll,"in function main:
+  in block %9 / %9:
+    >   %.049 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    >   %.048 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    >   %.047 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    >   %.046 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    >   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    >   %10 = sitofp i32 2500000 to double
+    >   %11 = fcmp ole double %.049, %10
+    >   br i1 %11, label %12, label %33
+    <   %.057 = phi double [ 1.000000e+00, %2 ], [ %31, %30 ]
+    <   %.056 = phi double [ 0.000000e+00, %2 ], [ %29, %30 ]
+    <   %.055 = phi double [ 0.000000e+00, %2 ], [ %25, %30 ]
+    <   %.054 = phi double [ 0.000000e+00, %2 ], [ %17, %30 ]
+    <   %.0 = phi double [ 0.000000e+00, %2 ], [ %14, %30 ]
+    <   %10 = fcmp ole double %.057, 2.500000e+06
+    <   br i1 %10, label %11, label %32"
+sroa,gvn,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__gvn.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__sroa.ll,"in function sum_vec:
+  in block %1 / %1:
+    >   %2 = bitcast <2 x double> %0 to i128
+    >   %3 = trunc i128 %2 to i64
+    >   %4 = bitcast i64 %3 to double
+    >   %5 = lshr i128 %2, 64
+    >   %6 = trunc i128 %5 to i64
+    >   %7 = bitcast i64 %6 to double
+    >   %8 = fadd double %4, %7
+    >   ret double %8
+    <   %.0.vec.extract = extractelement <2 x double> %0, i32 0
+    <   %.8.vec.extract = extractelement <2 x double> %0, i32 1
+    <   %2 = fadd double %.0.vec.extract, %.8.vec.extract
+    <   ret double %2
+
+in function main:
+  in block %9 / %9:
+    >   %10 = phi double [ %34, %16 ], [ 0.000000e+00, %2 ]
+    >   %11 = phi double [ %30, %16 ], [ 0.000000e+00, %2 ]
+    >   %12 = phi double [ %22, %16 ], [ 0.000000e+00, %2 ]
+    >   %13 = phi double [ %19, %16 ], [ 0.000000e+00, %2 ]
+    >   %14 = phi double [ %35, %16 ], [ 1.000000e+00, %2 ]
+    >   %15 = fcmp ole double %14, 2.500000e+06
+    >   br i1 %15, label %16, label %36
+    <   %.057 = phi double [ 1.000000e+00, %2 ], [ %30, %11 ]
+    <   %.056 = phi double [ 0.000000e+00, %2 ], [ %29, %11 ]
+    <   %.055 = phi double [ 0.000000e+00, %2 ], [ %25, %11 ]
+    <   %.054 = phi double [ 0.000000e+00, %2 ], [ %17, %11 ]
+    <   %.0 = phi double [ 0.000000e+00, %2 ], [ %14, %11 ]
+    <   %10 = fcmp ole double %.057, 2.500000e+06
+    <   br i1 %10, label %11, label %31"
+sroa,sccp,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__sroa.ll,"in function main:
+  in block %9 / %9:
+    >   %.057 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    >   %.056 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    >   %.055 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    >   %.054 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    >   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    >   %10 = sitofp i32 2500000 to double
+    >   %11 = fcmp ole double %.057, %10
+    >   br i1 %11, label %12, label %33
+    <   %.057 = phi double [ 1.000000e+00, %2 ], [ %31, %30 ]
+    <   %.056 = phi double [ 0.000000e+00, %2 ], [ %29, %30 ]
+    <   %.055 = phi double [ 0.000000e+00, %2 ], [ %25, %30 ]
+    <   %.054 = phi double [ 0.000000e+00, %2 ], [ %17, %30 ]
+    <   %.0 = phi double [ 0.000000e+00, %2 ], [ %14, %30 ]
+    <   %10 = fcmp ole double %.057, 2.500000e+06
+    <   br i1 %10, label %11, label %32"
+sroa,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__sroa.ll,
+sroa,loop-rotate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__sroa.ll,"in function main:
+  in block %33 / %34:
+    >   %.167 = phi double [ %29, %._crit_edge ], [ 0.000000e+00, %2 ]
+    >   %.165 = phi double [ %25, %._crit_edge ], [ 0.000000e+00, %2 ]
+    >   %.163 = phi double [ %17, %._crit_edge ], [ 0.000000e+00, %2 ]
+    >   %.1 = phi double [ %14, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.056.lcssa = phi double [ %split, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.055.lcssa = phi double [ %split69, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.054.lcssa = phi double [ %split70, %._crit_edge ], [ 0.000000e+00, %2 ]
+    <   %.0.lcssa = phi double [ %split71, %._crit_edge ], [ 0.000000e+00, %2 ]
+  in block %11 / %11:
+    >   %.068 = phi double [ 1.000000e+00, %.lr.ph ], [ %31, %30 ]
+    >   %.066 = phi double [ 0.000000e+00, %.lr.ph ], [ %29, %30 ]
+    >   %.064 = phi double [ 0.000000e+00, %.lr.ph ], [ %25, %30 ]
+    >   %.062 = phi double [ 0.000000e+00, %.lr.ph ], [ %17, %30 ]
+    >   %.0 = phi double [ 0.000000e+00, %.lr.ph ], [ %14, %30 ]
+    >   %12 = fsub double %.068, 1.000000e+00
+    <   %.068 = phi double [ 0.000000e+00, %.lr.ph ], [ %14, %30 ]
+    <   %.05467 = phi double [ 0.000000e+00, %.lr.ph ], [ %17, %30 ]
+    <   %.05566 = phi double [ 0.000000e+00, %.lr.ph ], [ %25, %30 ]
+    <   %.05665 = phi double [ 0.000000e+00, %.lr.ph ], [ %29, %30 ]
+    <   %.05764 = phi double [ 1.000000e+00, %.lr.ph ], [ %31, %30 ]
+    <   %12 = fsub double %.05764, 1.000000e+00
+        %13 = call double @pow(double noundef f0x3FE5555555555555, double noundef %12) #4
+    >   %14 = fadd double %.0, %13
+    <   %14 = fadd double %.068, %13
+        %15 = call double @sqrt(double noundef %.05764) #4
+        %16 = fdiv double 1.000000e+00, %15
+    >   %17 = fadd double %.062, %16
+    >   %18 = fmul double %.068, %.068
+    >   %19 = fmul double %18, %.068
+    <   %17 = fadd double %.05467, %16
+    <   %18 = fmul double %.05764, %.05764
+    <   %19 = fmul double %18, %.05764
+        %20 = call double @sin(double noundef %.05764) #4
+        %21 = call double @cos(double noundef %.05764) #4
+    >   %22 = fmul double %19, %20
+    >   %23 = fmul double %22, %20
+    >   %24 = fdiv double 1.000000e+00, %23
+    >   %25 = fadd double %.064, %24
+    >   %26 = fmul double %19, %21
+    >   %27 = fmul double %26, %21
+    >   %28 = fdiv double 1.000000e+00, %27
+    >   %29 = fadd double %.066, %28
+    <   %22 = fmul double %19, %20
+    <   %23 = fmul double %22, %20
+    <   %24 = fdiv double 1.000000e+00, %23
+    <   %25 = fadd double %.05566, %24
+    <   %26 = fmul double %19, %21
+    <   %27 = fmul double %26, %21
+    <   %28 = fdiv double 1.000000e+00, %27
+    <   %29 = fadd double %.05665, %28"
+sroa,licm,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__sroa.ll,"in function main:
+  in block %10 / %10:
+    >   %11 = phi double [ %38, %39 ], [ 0.000000e+00, %2 ]
+    >   %12 = phi double [ %34, %39 ], [ 0.000000e+00, %2 ]
+    >   %13 = phi double [ %30, %39 ], [ undef, %2 ]
+    >   %14 = phi double [ %29, %39 ], [ undef, %2 ]
+    >   %15 = phi double [ %28, %39 ], [ undef, %2 ]
+    >   %16 = phi double [ %26, %39 ], [ 0.000000e+00, %2 ]
+    >   %17 = phi double [ %23, %39 ], [ 0.000000e+00, %2 ]
+    >   %18 = phi double [ %40, %39 ], [ 1.000000e+00, %2 ]
+    >   %19 = fcmp ole double %18, %9
+    >   br i1 %19, label %20, label %41
+    <   %.057 = phi double [ 1.000000e+00, %2 ], [ %32, %31 ]
+    <   %.056 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    <   %.055 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    <   %.054 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    <   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %11 = fcmp ole double %.057, %9
+    <   br i1 %11, label %12, label %33"
+sroa,indvars,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__sroa.ll,"in function main:
+  in block %33 / %33:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+sroa,loop-unroll,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__sroa.ll,"in function main:
+  in block %33 / %33:
+    <   %.056.lcssa = phi double [ %.056, %9 ]
+    <   %.055.lcssa = phi double [ %.055, %9 ]
+    <   %.054.lcssa = phi double [ %.054, %9 ]
+    <   %.0.lcssa = phi double [ %.0, %9 ]"
+sroa,reassociate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sroa__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__sroa.ll,"in function main:
+  in block %9 / %9:
+    >   %.056 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    >   %.055 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    >   %.054 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    >   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+    <   %.056 = phi double [ 0.000000e+00, %2 ], [ %30, %31 ]
+    <   %.055 = phi double [ 0.000000e+00, %2 ], [ %26, %31 ]
+    <   %.054 = phi double [ 0.000000e+00, %2 ], [ %18, %31 ]
+    <   %.0 = phi double [ 0.000000e+00, %2 ], [ %15, %31 ]
+  in block %12 / %12:
+    >   %15 = fadd double %14, %.0
+    <   %15 = fadd double %.0, %14
+        %16 = call double @sqrt(double noundef %.057) #4
+        %17 = fdiv double 1.000000e+00, %16
+        %18 = fadd double %.054, %17
+        %19 = fmul double %.057, %.057
+    >   %20 = fmul double %19, %.057
+    <   %20 = fmul double %.057, %19
+        %21 = call double @sin(double noundef %.057) #4
+        %22 = call double @cos(double noundef %.057) #4
+    >   %23 = fmul double %20, %21
+    >   %24 = fmul double %23, %21
+    >   %25 = fdiv double 1.000000e+00, %24
+    >   %26 = fadd double %.055, %25
+    >   %27 = fmul double %20, %22
+    >   %28 = fmul double %27, %22
+    >   %29 = fdiv double 1.000000e+00, %28
+    >   %30 = fadd double %.056, %29
+    <   %23 = fmul double %20, %21
+    <   %24 = fmul double %21, %23
+    <   %25 = fdiv double 1.000000e+00, %24
+    <   %26 = fadd double %.055, %25
+    <   %27 = fmul double %20, %22
+    <   %28 = fmul double %22, %27
+    <   %29 = fdiv double 1.000000e+00, %28
+    <   %30 = fadd double %.056, %29
+  in block %34 / %34:
+    >   %.063 = phi <2 x double> [ %3, %33 ], [ %52, %53 ]
+    >   %.062 = phi <2 x double> [ %3, %33 ], [ %48, %53 ]
+    >   %.061 = phi <2 x double> [ %3, %33 ], [ %41, %53 ]
+    >   %.060 = phi <2 x double> [ %3, %33 ], [ %46, %53 ]
+    <   %.063 = phi <2 x double> [ %3, %33 ], [ %52, %53 ]
+    <   %.062 = phi <2 x double> [ %3, %33 ], [ %48, %53 ]
+    <   %.061 = phi <2 x double> [ %3, %33 ], [ %41, %53 ]
+    <   %.060 = phi <2 x double> [ %3, %33 ], [ %46, %53 ]
+        %.059 = phi <2 x double> [ %7, %33 ], [ %54, %53 ]
+    >   %.058 = phi <2 x double> [ %3, %33 ], [ %43, %53 ]
+    <   %.058 = phi <2 x double> [ %3, %33 ], [ %43, %53 ]
+  in block %37 / %37:
+    >   %38 = fadd <2 x double> %.059, %4
+    >   %39 = fmul <2 x double> %.059, %38
+    >   %40 = fdiv <2 x double> %4, %39
+    >   %41 = fadd <2 x double> %.061, %40
+    <   %38 = fadd <2 x double> %4, %.059
+    <   %39 = fmul <2 x double> %.059, %38
+    <   %40 = fdiv <2 x double> %4, %39
+    <   %41 = fadd <2 x double> %.061, %40"
+early-cse,gvn,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__gvn.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__early-cse.ll,"in function sum_vec:
+  in block %1 / %1:
+    <   %7 = getelementptr inbounds double, ptr %2, i64 1"
+early-cse,sccp,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__early-cse.ll,
+early-cse,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %2 / %2:
+    <   %34 = load double, ptr %22, align 8
+        %35 = load i32, ptr %26, align 4
+        %36 = sitofp i32 %35 to double
+    >   %36 = fcmp ole double 1.000000e+00, %35
+    >   br i1 %36, label %.lr.ph, label %75
+    <   %37 = fcmp ole double %34, %36
+    <   br i1 %37, label %.lr.ph, label %77"
+early-cse,licm,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %2 / %2:
+    <   %.promoted = load double, ptr %22, align 8"
+early-cse,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__early-cse.ll,
+early-cse,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__early-cse.ll,
+early-cse,reassociate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\early-cse__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__early-cse.ll,"in function main:
+  in block %80 / %80:
+    in instruction %83 / %83:
+      operands %81 and %82 differ
+  in block %39 / %39:
+    >   %51 = fmul double %50, %49
+    >   store double %51, ptr %23, align 8
+    <   %51 = fmul double %49, %50
+    <   store double %51, ptr %23, align 8
+        %52 = load double, ptr %22, align 8
+        %53 = call double @sin(double noundef %52) #4
+        store double %53, ptr %24, align 8
+        %54 = load double, ptr %22, align 8
+        %55 = call double @cos(double noundef %54) #4
+        store double %55, ptr %25, align 8
+        %56 = load double, ptr %23, align 8
+        %57 = load double, ptr %24, align 8
+        %58 = fmul double %56, %57
+    >   %59 = fmul double %58, %57
+    >   %60 = fdiv double 1.000000e+00, %59
+    <   %59 = fmul double %57, %58
+    <   %60 = fdiv double 1.000000e+00, %59
+        %61 = load double, ptr %8, align 8
+    >   %62 = fadd double %61, %60
+    >   store double %62, ptr %8, align 8
+    <   %62 = fadd double %61, %60
+    <   store double %62, ptr %8, align 8
+        %63 = load double, ptr %23, align 8
+        %64 = load double, ptr %25, align 8
+        %65 = fmul double %63, %64
+    >   %66 = fmul double %65, %64
+    >   %67 = fdiv double 1.000000e+00, %66
+    <   %66 = fmul double %64, %65
+    <   %67 = fdiv double 1.000000e+00, %66
+        %68 = load double, ptr %9, align 8
+    >   %69 = fadd double %68, %67
+    >   store double %69, ptr %9, align 8
+    <   %69 = fadd double %68, %67
+    <   store double %69, ptr %9, align 8
+  in block %80 / %80:
+    >   %83 = fadd <2 x double> %82, %81
+    <   %83 = fadd <2 x double> %81, %82"
+gvn,sccp,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__sccp.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__gvn.ll,
+gvn,adce,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__gvn.ll,"in function sum_vec:
+  in block %1 / %1:
+    >   %7 = getelementptr inbounds double, ptr %2, i64 1"
+gvn,loop-rotate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %2 / %2:
+    >   br i1 true, label %.lr.ph, label %._crit_edge4
+    <   br label %33"
+gvn,licm,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__gvn.ll,"in function main:
+  in block %2 / %2:
+    <   %.promoted = load double, ptr %6, align 1
+    <   %.promoted10 = load double, ptr %7, align 1
+    <   %.promoted12 = load double, ptr %23, align 1
+    <   %.promoted14 = load double, ptr %24, align 1
+    <   %.promoted16 = load double, ptr %25, align 1
+    <   %.promoted18 = load double, ptr %8, align 1
+    <   %.promoted20 = load double, ptr %9, align 1
+    <   %.promoted22 = load double, ptr %22, align 1"
+gvn,indvars,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__gvn.ll,"in function main:
+  in block %60 / %60:
+    <   %.lcssa8 = phi double [ %34, %33 ]
+    <   %.lcssa7 = phi double [ %35, %33 ]
+    <   %.lcssa6 = phi double [ %36, %33 ]
+    <   %.lcssa5 = phi double [ %37, %33 ]"
+gvn,loop-unroll,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %60 / %60:
+    <   %.lcssa8 = phi double [ %34, %33 ]
+    <   %.lcssa7 = phi double [ %35, %33 ]
+    <   %.lcssa6 = phi double [ %36, %33 ]
+    <   %.lcssa5 = phi double [ %37, %33 ]"
+gvn,reassociate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\gvn__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__gvn.ll,"in function sum_vec:
+  in block %1 / %1:
+    >   %7 = getelementptr inbounds double, ptr %2, i64 1
+
+in function main:
+  in block %33 / %33:
+    >   %34 = phi double [ %58, %40 ], [ 0.000000e+00, %2 ]
+    >   %35 = phi double [ %54, %40 ], [ 0.000000e+00, %2 ]
+    >   %36 = phi double [ %46, %40 ], [ 0.000000e+00, %2 ]
+    >   %37 = phi double [ %43, %40 ], [ 0.000000e+00, %2 ]
+    >   %38 = phi double [ %59, %40 ], [ 1.000000e+00, %2 ]
+    <   %34 = phi double [ %58, %40 ], [ 0.000000e+00, %2 ]
+    <   %35 = phi double [ %54, %40 ], [ 0.000000e+00, %2 ]
+    <   %36 = phi double [ %46, %40 ], [ 0.000000e+00, %2 ]
+    <   %37 = phi double [ %43, %40 ], [ 0.000000e+00, %2 ]
+    <   %38 = phi double [ %59, %40 ], [ 1.000000e+00, %2 ]
+  in block %40 / %40:
+    >   %43 = fadd double %42, %37
+    >   store double %43, ptr %6, align 8
+    <   %43 = fadd double %37, %42
+    <   store double %43, ptr %6, align 8
+        %44 = call double @sqrt(double noundef %38) #4
+        %45 = fdiv double 1.000000e+00, %44
+        %46 = fadd double %36, %45
+        store double %46, ptr %7, align 8
+        %47 = fmul double %38, %38
+    >   %48 = fmul double %47, %38
+    >   store double %48, ptr %23, align 8
+    <   %48 = fmul double %38, %47
+    <   store double %48, ptr %23, align 8
+        %49 = call double @sin(double noundef %38) #4
+        store double %49, ptr %24, align 8
+        %50 = call double @cos(double noundef %38) #4
+        store double %50, ptr %25, align 8
+    >   %51 = fmul double %48, %49
+    >   %52 = fmul double %51, %49
+    >   %53 = fdiv double 1.000000e+00, %52
+    >   %54 = fadd double %35, %53
+    >   store double %54, ptr %8, align 8
+    >   %55 = fmul double %48, %50
+    >   %56 = fmul double %55, %50
+    >   %57 = fdiv double 1.000000e+00, %56
+    >   %58 = fadd double %34, %57
+    >   store double %58, ptr %9, align 8
+    <   %51 = fmul double %48, %49
+    <   %52 = fmul double %49, %51
+    <   %53 = fdiv double 1.000000e+00, %52
+    <   %54 = fadd double %35, %53
+    <   store double %54, ptr %8, align 8
+    <   %55 = fmul double %48, %50
+    <   %56 = fmul double %50, %55
+    <   %57 = fdiv double 1.000000e+00, %56
+    <   %58 = fadd double %34, %57
+    <   store double %58, ptr %9, align 8
+  in block %64 / %64:
+    >   %65 = phi <2 x double> [ %89, %73 ], [ %31, %60 ]
+    >   %66 = phi <2 x double> [ %88, %73 ], [ %27, %60 ]
+    >   %67 = phi <2 x double> [ %84, %73 ], [ %27, %60 ]
+    >   %68 = phi <2 x double> [ %82, %73 ], [ %27, %60 ]
+    >   %69 = phi <2 x double> [ %79, %73 ], [ %27, %60 ]
+    >   %70 = phi <2 x double> [ %77, %73 ], [ %27, %60 ]
+    >   %71 = phi double [ %92, %73 ], [ %63, %60 ]
+    <   %65 = phi <2 x double> [ %89, %73 ], [ %31, %60 ]
+    <   %66 = phi <2 x double> [ %88, %73 ], [ %27, %60 ]
+    <   %67 = phi <2 x double> [ %84, %73 ], [ %27, %60 ]
+    <   %68 = phi <2 x double> [ %82, %73 ], [ %27, %60 ]
+    <   %69 = phi <2 x double> [ %79, %73 ], [ %27, %60 ]
+    <   %70 = phi <2 x double> [ %77, %73 ], [ %27, %60 ]
+    <   %71 = phi double [ %92, %73 ], [ %63, %60 ]
+  in block %73 / %73:
+    >   %74 = fadd <2 x double> %65, %28
+    >   %75 = fmul <2 x double> %65, %74
+    >   %76 = fdiv <2 x double> %28, %75
+    >   %77 = fadd <2 x double> %70, %76
+    >   store <2 x double> %77, ptr %12, align 16
+    <   %74 = fadd <2 x double> %28, %65
+    <   %75 = fmul <2 x double> %65, %74
+    <   %76 = fdiv <2 x double> %28, %75
+    <   %77 = fadd <2 x double> %76, %70
+    <   store <2 x double> %77, ptr %12, align 16
+        %78 = fdiv <2 x double> %28, %65
+    >   %79 = fadd <2 x double> %69, %78
+    >   store <2 x double> %79, ptr %10, align 16
+    <   %79 = fadd <2 x double> %78, %69
+    <   store <2 x double> %79, ptr %10, align 16
+        %80 = fmul <2 x double> %65, %65
+        %81 = fdiv <2 x double> %28, %80
+    >   %82 = fadd <2 x double> %68, %81
+    >   store <2 x double> %82, ptr %11, align 16
+    <   %82 = fadd <2 x double> %81, %68
+    <   store <2 x double> %82, ptr %11, align 16
+        %83 = fdiv <2 x double> %32, %65
+    >   %84 = fadd <2 x double> %67, %83
+    >   store <2 x double> %84, ptr %13, align 16
+    <   %84 = fadd <2 x double> %83, %67
+    <   store <2 x double> %84, ptr %13, align 16"
+sccp,adce,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__adce.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\sccp__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__sccp.ll,
+adce,loop-rotate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__loop-rotate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__adce.ll,
+adce,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\adce__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__adce.ll,
+loop-rotate,licm,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__licm.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__loop-rotate.ll,"in function main:
+  in block %2 / %2:
+    in instruction %34 / %.promoted11:
+      operands %22 and %8 differ
+    in instruction %35 / %.promoted13:
+      operands %26 and %9 differ
+    in instruction %37 / %36:
+      operands %34 and %.promoted differ
+    >   %34 = load i32, ptr %26, align 4
+    >   %35 = sitofp i32 %34 to double
+    >   %.promoted = load double, ptr %22, align 8
+    >   %.promoted1 = load double, ptr %6, align 8
+    >   %.promoted3 = load double, ptr %7, align 8
+    >   %.promoted5 = load double, ptr %23, align 8
+    >   %.promoted7 = load double, ptr %24, align 8
+    >   %.promoted9 = load double, ptr %25, align 8
+        %34 = load double, ptr %22, align 8
+        %35 = load i32, ptr %26, align 4
+    <   %36 = sitofp i32 %35 to double"
+loop-rotate,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-rotate__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__indvars.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__licm.ll,
+licm,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__licm.ll,
+licm,reassociate,false,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\licm__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__licm.ll,"in function main:
+  in block %36 / %36:
+    >   %37 = phi double [ %64, %65 ], [ %.promoted13, %2 ]
+    >   %38 = phi double [ %60, %65 ], [ %.promoted11, %2 ]
+    >   %39 = phi double [ %56, %65 ], [ %.promoted9, %2 ]
+    >   %40 = phi double [ %55, %65 ], [ %.promoted7, %2 ]
+    >   %41 = phi double [ %54, %65 ], [ %.promoted5, %2 ]
+    >   %42 = phi double [ %52, %65 ], [ %.promoted3, %2 ]
+    >   %43 = phi double [ %49, %65 ], [ %.promoted1, %2 ]
+    <   %37 = phi double [ %64, %65 ], [ %.promoted13, %2 ]
+    <   %38 = phi double [ %60, %65 ], [ %.promoted11, %2 ]
+    <   %39 = phi double [ %56, %65 ], [ %.promoted9, %2 ]
+    <   %40 = phi double [ %55, %65 ], [ %.promoted7, %2 ]
+    <   %41 = phi double [ %54, %65 ], [ %.promoted5, %2 ]
+    <   %42 = phi double [ %52, %65 ], [ %.promoted3, %2 ]
+    <   %43 = phi double [ %49, %65 ], [ %.promoted1, %2 ]
+  in block %46 / %46:
+    >   %49 = fadd double %48, %43
+    <   %49 = fadd double %43, %48
+        %50 = call double @sqrt(double noundef %44) #4
+        %51 = fdiv double 1.000000e+00, %50
+        %52 = fadd double %42, %51
+        %53 = fmul double %44, %44
+    >   %54 = fmul double %53, %44
+    <   %54 = fmul double %44, %53
+        %55 = call double @sin(double noundef %44) #4
+        %56 = call double @cos(double noundef %44) #4
+    >   %57 = fmul double %54, %55
+    >   %58 = fmul double %57, %55
+    >   %59 = fdiv double 1.000000e+00, %58
+    >   %60 = fadd double %38, %59
+    >   %61 = fmul double %54, %56
+    >   %62 = fmul double %61, %56
+    >   %63 = fdiv double 1.000000e+00, %62
+    >   %64 = fadd double %37, %63
+    <   %57 = fmul double %54, %55
+    <   %58 = fmul double %55, %57
+    <   %59 = fdiv double 1.000000e+00, %58
+    <   %60 = fadd double %38, %59
+    <   %61 = fmul double %54, %56
+    <   %62 = fmul double %56, %61
+    <   %63 = fdiv double 1.000000e+00, %62
+    <   %64 = fadd double %37, %63
+  in block %81 / %81:
+    >   %82 = phi <2 x double> [ %110, %111 ], [ %.promoted23, %67 ]
+    >   %83 = phi <2 x double> [ %106, %111 ], [ %.promoted21, %67 ]
+    >   %84 = phi <2 x double> [ %103, %111 ], [ %.promoted19, %67 ]
+    >   %85 = phi <2 x double> [ %98, %111 ], [ %.promoted17, %67 ]
+    >   %86 = phi <2 x double> [ %95, %111 ], [ %.promoted15, %67 ]
+    <   %82 = phi <2 x double> [ %110, %111 ], [ %.promoted23, %67 ]
+    <   %83 = phi <2 x double> [ %106, %111 ], [ %.promoted21, %67 ]
+    <   %84 = phi <2 x double> [ %103, %111 ], [ %.promoted19, %67 ]
+    <   %85 = phi <2 x double> [ %98, %111 ], [ %.promoted17, %67 ]
+    <   %86 = phi <2 x double> [ %95, %111 ], [ %.promoted15, %67 ]
+  in block %89 / %89:
+    >   %92 = fadd <2 x double> %91, %72
+    >   %93 = fmul <2 x double> %90, %92
+    >   %94 = fdiv <2 x double> %71, %93
+    >   %95 = fadd <2 x double> %86, %94
+    <   %92 = fadd <2 x double> %72, %91
+    <   %93 = fmul <2 x double> %90, %92
+    <   %94 = fdiv <2 x double> %71, %93
+    <   %95 = fadd <2 x double> %86, %94"
+indvars,loop-unroll,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__loop-unroll.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__indvars.ll,
+indvars,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\indvars__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,true,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\loop-unroll__then__reassociate.ll,results\paper_full\BenchmarkGame_partialsums\round_000\analysis\BenchmarkGame_partialsums\commutativity\reassociate__then__loop-unroll.ll,

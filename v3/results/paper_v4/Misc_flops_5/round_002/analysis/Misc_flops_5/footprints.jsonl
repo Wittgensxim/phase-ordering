@@ -1,0 +1,15 @@
+{"pass": "mem2reg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "instcombine", "reads": ["inst:main:%27"], "write_values": {"inst:main:%27": "%v = icmp samesign ult i32 %v, 156249999"}, "writes": ["inst:main:%27"]}
+{"pass": "simplifycfg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "dce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sroa", "reads": [], "write_values": {}, "writes": []}
+{"pass": "early-cse", "reads": [], "write_values": {}, "writes": []}
+{"pass": "gvn", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sccp", "reads": [], "write_values": {}, "writes": []}
+{"pass": "adce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-simplify", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-rotate", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "licm", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "indvars", "reads": ["inst:main:%27", "inst:main:%29", "inst:main:%30", "inst:main:%36", "inst:main:%37", "inst:main:%43", "inst:main:%44", "inst:main:%45", "inst:main:%46", "inst:main:%47", "inst:main:%48", "inst:main:%49", "inst:main:%50", "inst:main:%51"], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]", "inst:main:%27": null, "inst:main:%28": "%v = fdiv double %v, %v", "inst:main:%29": "%v = fmul double %v, %v", "inst:main:%30": "%v = call double @llvm.fmuladd.f64(double %v, double %v, double %v)", "inst:main:%36": "%v = fmul double %v, %v", "inst:main:%37": "%v = call double @llvm.fmuladd.f64(double %v, double %v, double %v)", "inst:main:%43": "%v = fdiv double %v, %v", "inst:main:%44": "%v = load double, ptr @two, align 8", "inst:main:%45": "%v = call double @llvm.fmuladd.f64(double %v, double %v, double %v)", "inst:main:%46": "%v = fmul double %v, %v", "inst:main:%47": "%v = fdiv double %v, %v", "inst:main:%48": "%v = fadd double %v, f0xBFE62E42FEFA39EF", "inst:main:%49": "%v = fmul double %v, 1.000000e-30", "inst:main:%50": "%v = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.4, double noundef %v, double noundef 0.000000e+00, double noundef 0.000000e+00) #4", "inst:main:%51": null, "inst:main:%exitcond": "%v = icmp ne i32 %v, 156250000"}, "writes": ["inst:main:%.lcssa", "inst:main:%27", "inst:main:%28", "inst:main:%29", "inst:main:%30", "inst:main:%36", "inst:main:%37", "inst:main:%43", "inst:main:%44", "inst:main:%45", "inst:main:%46", "inst:main:%47", "inst:main:%48", "inst:main:%49", "inst:main:%50", "inst:main:%51", "inst:main:%exitcond"]}
+{"pass": "loop-unroll", "reads": [], "write_values": {"inst:main:%.lcssa": "%v = phi double [ %v, %v ]"}, "writes": ["inst:main:%.lcssa"]}
+{"pass": "reassociate", "reads": [], "write_values": {}, "writes": []}

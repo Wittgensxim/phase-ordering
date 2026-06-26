@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "total_pairs": 10,
+    "commuting_pairs": 5,
+    "non_commuting_pairs": 5
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %3 / %3:\n    >   %4 = phi i32 [ %.pre, %2 ], [ %15, %14 ]\n    >   %5 = phi i32 [ 1, %2 ], [ %6, %14 ]\n    >   %6 = add nuw nsw i32 %5, 1\n    >   %7 = zext nneg i32 %6 to i64\n    >   %8 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %7\n    >   %9 = load i32, ptr %8, align 4\n    >   %10 = icmp sgt i32 %4, %9\n    >   br i1 %10, label %11, label %14\n    <   %4 = phi i32 [ %.pre, %2 ], [ %15, %14 ]\n    <   %5 = phi i32 [ 1, %2 ], [ %8, %14 ]\n    <   %6 = zext nneg i32 %5 to i64\n    <   %7 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %6\n    <   %8 = add nuw nsw i32 %5, 1\n    <   %9 = zext nneg i32 %8 to i64\n    <   %10 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %9\n    <   %11 = load i32, ptr %10, align 4\n    <   %12 = icmp sgt i32 %4, %11\n    <   br i1 %12, label %13, label %14"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i32 [ %indvar.next, %37 ], [ 0, %1 ]\n    >   %storemerge1 = phi i32 [ %38, %37 ], [ 500, %1 ]\n    >   %3 = sub i32 499, %indvar\n    >   %xtraiter = and i32 %3, 1\n    >   %4 = icmp eq i32 %indvar, 498\n    >   br i1 %4, label %.epil.preheader, label %.new\n    <   %indvar = phi i32 [ %indvar.next, %39 ], [ 0, %1 ]\n    <   %storemerge1 = phi i32 [ 500, %1 ], [ %40, %39 ]\n    <   %3 = mul nsw i32 %indvar, -1\n    <   %4 = add i32 %3, 499\n    <   %5 = add i32 %3, 498\n    <   %xtraiter = and i32 %4, 1\n    <   %6 = icmp ult i32 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.new"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %29 = zext nneg i32 %.epil.init to i64\n    >   %30 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %29\n    >   %31 = load i32, ptr %30, align 4\n    >   %32 = add nuw nsw i32 %.epil.init, 1\n    >   %33 = zext nneg i32 %32 to i64\n    >   %34 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %33\n    >   %35 = load i32, ptr %34, align 4\n    >   %36 = icmp sgt i32 %31, %35\n    >   br i1 %36, label %37, label %.epilog-lcssa\n    <   br label %29"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %.epil.init = phi i32 [ 1, %2 ], [ %20, %.unr-lcssa ]\n    <   %.epil.init = phi i32 [ 1, %2 ], [ %.unr, %.unr-lcssa ]\n  in block %7 / %7:\n    >   %8 = phi i32 [ 1, %.new ], [ %20, %26 ]\n    <   %8 = phi i32 [ 1, %.new ], [ %22, %28 ]\n  in block %18 / %18:\n    >   %19 = load i32, ptr %14, align 4\n    <   %19 = zext nneg i32 %12 to i64\n    <   %20 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n        %22 = add nuw nsw i32 %8, 2\n        %23 = zext nneg i32 %22 to i64\n        %24 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %23\n        %25 = load i32, ptr %24, align 4\n    >   %24 = icmp sgt i32 %19, %23\n    >   br i1 %24, label %25, label %26\n    <   %26 = icmp sgt i32 %21, %25\n    <   br i1 %26, label %27, label %28\n  in block %.unr-lcssa:\n    <   %.unr = phi i32 [ %22, %28 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\test_baseline_all\\Stanford_Bubblesort\\round_002\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i32 [ %indvar.next, %37 ], [ 0, %1 ]\n    >   %storemerge1 = phi i32 [ 500, %1 ], [ %38, %37 ]\n    >   %3 = mul nsw i32 %indvar, -1\n    >   %4 = add i32 %3, 499\n    >   %5 = add i32 %3, 498\n    >   %xtraiter = and i32 %4, 1\n    >   %6 = icmp ult i32 %5, 1\n    >   br i1 %6, label %..epil.preheader_crit_edge, label %.new\n    <   %indvar = phi i32 [ %indvar.next, %39 ], [ 0, %1 ]\n    <   %storemerge1 = phi i32 [ 500, %1 ], [ %40, %39 ]\n    <   %3 = mul nsw i32 %indvar, -1\n    <   %4 = add i32 %3, 499\n    <   %5 = add i32 %3, 498\n    <   %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4\n    <   %xtraiter = and i32 %4, 1\n    <   %6 = icmp ult i32 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.new"
+    }
+  ]
+}

@@ -1,0 +1,1073 @@
+{
+  "summary": {
+    "total_passes": 15,
+    "active_passes": 9,
+    "enabled_passes": 1,
+    "expanded_passes": 6,
+    "inactive_passes": 5,
+    "tested_prefix_pairs": 126,
+    "activation_edges": 5,
+    "expansion_edges": 14,
+    "mutation_edges": 4,
+    "enable_edges": 23
+  },
+  "active_passes": [
+    "adce",
+    "dce",
+    "early-cse",
+    "indvars",
+    "instcombine",
+    "licm",
+    "loop-rotate",
+    "loop-unroll",
+    "reassociate"
+  ],
+  "enabled_passes": [
+    "gvn"
+  ],
+  "expanded_passes": [
+    "adce",
+    "dce",
+    "early-cse",
+    "indvars",
+    "instcombine",
+    "reassociate"
+  ],
+  "inactive_passes": [
+    "loop-simplify",
+    "mem2reg",
+    "sccp",
+    "simplifycfg",
+    "sroa"
+  ],
+  "edges": [
+    {
+      "edge_kind": "expansion",
+      "enabler": "instcombine",
+      "enabled": "indvars",
+      "round": 1,
+      "prefix": [
+        "instcombine"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%14",
+        "inst:main:%20",
+        "inst:main:%21",
+        "inst:main:%22",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%30"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%20",
+        "inst:main:%21",
+        "inst:main:%22",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%30",
+        "inst:main:%exitcond"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%20",
+        "inst:main:%21",
+        "inst:main:%22",
+        "inst:main:%23",
+        "inst:main:%30"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29"
+      ]
+    },
+    {
+      "edge_kind": "mutation",
+      "enabler": "dce",
+      "enabled": "indvars",
+      "round": 1,
+      "prefix": [
+        "dce"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%exitcond"
+      ],
+      "new_writes_after_prefix": [],
+      "changed_writes_after_prefix": [
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34"
+      ]
+    },
+    {
+      "edge_kind": "activation",
+      "enabler": "early-cse",
+      "enabled": "gvn",
+      "round": 1,
+      "prefix": [
+        "early-cse"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "mutation",
+      "enabler": "early-cse",
+      "enabled": "indvars",
+      "round": 1,
+      "prefix": [
+        "early-cse"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%exitcond"
+      ],
+      "new_writes_after_prefix": [],
+      "changed_writes_after_prefix": [
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ]
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "early-cse",
+      "enabled": "reassociate",
+      "round": 1,
+      "prefix": [
+        "early-cse"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%34"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37"
+      ]
+    },
+    {
+      "edge_kind": "mutation",
+      "enabler": "adce",
+      "enabled": "indvars",
+      "round": 1,
+      "prefix": [
+        "adce"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%exitcond"
+      ],
+      "new_writes_after_prefix": [],
+      "changed_writes_after_prefix": [
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34"
+      ]
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "loop-rotate",
+      "enabled": "instcombine",
+      "round": 1,
+      "prefix": [
+        "loop-rotate"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%2",
+        "inst:main:%21",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%8",
+        "inst:main:%9"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%2",
+        "inst:main:%21",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%7",
+        "inst:main:%8",
+        "inst:main:%9",
+        "inst:main:%putchar",
+        "inst:main:%puts",
+        "inst:main:%puts1",
+        "inst:main:%puts2"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "loop-rotate",
+      "enabled": "early-cse",
+      "round": 1,
+      "prefix": [
+        "loop-rotate"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "activation",
+      "enabler": "loop-rotate",
+      "enabled": "gvn",
+      "round": 1,
+      "prefix": [
+        "loop-rotate"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "licm",
+      "enabled": "instcombine",
+      "round": 1,
+      "prefix": [
+        "licm"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%2",
+        "inst:main:%21",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%8",
+        "inst:main:%9"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%2",
+        "inst:main:%21",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%7",
+        "inst:main:%8",
+        "inst:main:%9",
+        "inst:main:%putchar",
+        "inst:main:%puts",
+        "inst:main:%puts1",
+        "inst:main:%puts2"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "licm",
+      "enabled": "early-cse",
+      "round": 1,
+      "prefix": [
+        "licm"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "activation",
+      "enabler": "licm",
+      "enabled": "gvn",
+      "round": 1,
+      "prefix": [
+        "licm"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "indvars",
+      "enabled": "instcombine",
+      "round": 1,
+      "prefix": [
+        "indvars"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%2",
+        "inst:main:%20",
+        "inst:main:%22",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%8",
+        "inst:main:%9",
+        "inst:main:%exitcond",
+        "loop:main:bb0"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%2",
+        "inst:main:%20",
+        "inst:main:%22",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%7",
+        "inst:main:%8",
+        "inst:main:%9",
+        "inst:main:%exitcond",
+        "inst:main:%exitcond.not",
+        "inst:main:%putchar",
+        "inst:main:%puts",
+        "inst:main:%puts1",
+        "inst:main:%puts2",
+        "loop:main:bb0",
+        "loop:main:bb1"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%20",
+        "inst:main:%22",
+        "inst:main:%exitcond",
+        "inst:main:%exitcond.not",
+        "loop:main:bb0",
+        "loop:main:bb1"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%30"
+      ]
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "indvars",
+      "enabled": "dce",
+      "round": 1,
+      "prefix": [
+        "indvars"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%31"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34"
+      ]
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "indvars",
+      "enabled": "early-cse",
+      "round": 1,
+      "prefix": [
+        "indvars"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%35"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ]
+    },
+    {
+      "edge_kind": "activation",
+      "enabler": "indvars",
+      "enabled": "gvn",
+      "round": 1,
+      "prefix": [
+        "indvars"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "indvars",
+      "enabled": "adce",
+      "round": 1,
+      "prefix": [
+        "indvars"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%31"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34"
+      ]
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "indvars",
+      "enabled": "reassociate",
+      "round": 1,
+      "prefix": [
+        "indvars"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%32",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%32",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%32",
+        "inst:main:%34"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37"
+      ]
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "loop-unroll",
+      "enabled": "instcombine",
+      "round": 1,
+      "prefix": [
+        "loop-unroll"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%2",
+        "inst:main:%21",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%8",
+        "inst:main:%9"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%1",
+        "inst:main:%11",
+        "inst:main:%12",
+        "inst:main:%13",
+        "inst:main:%14",
+        "inst:main:%15",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%2",
+        "inst:main:%21",
+        "inst:main:%23",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%3",
+        "inst:main:%30",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39",
+        "inst:main:%4",
+        "inst:main:%5",
+        "inst:main:%6",
+        "inst:main:%7",
+        "inst:main:%8",
+        "inst:main:%9",
+        "inst:main:%putchar",
+        "inst:main:%puts",
+        "inst:main:%puts1",
+        "inst:main:%puts2"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "loop-unroll",
+      "enabled": "early-cse",
+      "round": 1,
+      "prefix": [
+        "loop-unroll"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%38",
+        "inst:main:%39"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "activation",
+      "enabler": "loop-unroll",
+      "enabled": "gvn",
+      "round": 1,
+      "prefix": [
+        "loop-unroll"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%.lcssa"
+      ],
+      "changed_writes_after_prefix": []
+    },
+    {
+      "edge_kind": "expansion",
+      "enabler": "reassociate",
+      "enabled": "early-cse",
+      "round": 1,
+      "prefix": [
+        "reassociate"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37"
+      ],
+      "new_writes_after_prefix": [
+        "inst:main:%34",
+        "inst:main:%35"
+      ],
+      "changed_writes_after_prefix": [
+        "inst:main:%36",
+        "inst:main:%37"
+      ]
+    },
+    {
+      "edge_kind": "mutation",
+      "enabler": "reassociate",
+      "enabled": "indvars",
+      "round": 1,
+      "prefix": [
+        "reassociate"
+      ],
+      "reads_after_prefix": [
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37"
+      ],
+      "writes_after_prefix": [
+        "inst:main:%.lcssa",
+        "inst:main:%17",
+        "inst:main:%18",
+        "inst:main:%19",
+        "inst:main:%24",
+        "inst:main:%25",
+        "inst:main:%26",
+        "inst:main:%27",
+        "inst:main:%28",
+        "inst:main:%29",
+        "inst:main:%31",
+        "inst:main:%32",
+        "inst:main:%33",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37",
+        "inst:main:%exitcond"
+      ],
+      "new_writes_after_prefix": [],
+      "changed_writes_after_prefix": [
+        "inst:main:%32",
+        "inst:main:%34",
+        "inst:main:%35",
+        "inst:main:%36",
+        "inst:main:%37"
+      ]
+    }
+  ]
+}

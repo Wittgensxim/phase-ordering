@@ -1,0 +1,135 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %22, %6 ]
+    >   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %25, %6 ]
+    <   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]
+        %8 = sext i32 %3 to i64
+        %9 = getelementptr inbounds [328 x i8], ptr %1, i64 %8
+    >   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2
+    >   %11 = load double, ptr %10, align 8
+    >   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2
+    <   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2
+    <   %11 = load double, ptr %10, align 8
+    <   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2
+        %13 = sext i32 %4 to i64
+    >   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13
+    >   %15 = load double, ptr %14, align 8
+    <   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13
+    <   %15 = load double, ptr %14, align 8
+        %16 = call double @llvm.fmuladd.f64(double %11, double %15, double %7)
+        store double %16, ptr %0, align 8
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1
+    >   %17 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv.next
+    >   %18 = load double, ptr %17, align 8
+    >   %19 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next
+    >   %20 = getelementptr inbounds [8 x i8], ptr %19, i64 %13
+    >   %21 = load double, ptr %20, align 8
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1
+    <   %17 = sext i32 %3 to i64
+    <   %18 = getelementptr inbounds [328 x i8], ptr %1, i64 %17
+    <   %19 = getelementptr inbounds nuw [8 x i8], ptr %18, i64 %indvars.iv.next
+    <   %20 = load double, ptr %19, align 8
+    <   %21 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next
+    <   %22 = sext i32 %4 to i64
+    <   %23 = getelementptr inbounds [8 x i8], ptr %21, i64 %22
+    <   %24 = load double, ptr %23, align 8
+        %25 = call double @llvm.fmuladd.f64(double %20, double %24, double %16)
+        store double %25, ptr %0, align 8
+    >   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2
+    >   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41
+    >   br i1 %exitcond.1, label %6, label %23, !llvm.loop !7
+    <   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2
+    <   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41
+    <   br i1 %exitcond.1, label %6, label %26, !llvm.loop !7"
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function rInnerproduct:
+  in block %6 / %6:
+    >   %7 = phi double [ 0.000000e+00, %5 ], [ %22, %6 ]
+    >   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]
+    <   %7 = phi double [ 0.000000e+00, %5 ], [ %25, %6 ]
+    <   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]
+        %8 = sext i32 %3 to i64
+        %9 = getelementptr inbounds [328 x i8], ptr %1, i64 %8
+    >   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2
+    >   %11 = load double, ptr %10, align 8
+    >   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2
+    <   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2
+    <   %11 = load double, ptr %10, align 8
+    <   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2
+        %13 = sext i32 %4 to i64
+    >   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13
+    >   %15 = load double, ptr %14, align 8
+    <   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13
+    <   %15 = load double, ptr %14, align 8
+        %16 = call double @llvm.fmuladd.f64(double %11, double %15, double %7)
+        store double %16, ptr %0, align 8
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1
+    >   %17 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv.next
+    >   %18 = load double, ptr %17, align 8
+    >   %19 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next
+    >   %20 = getelementptr inbounds [8 x i8], ptr %19, i64 %13
+    >   %21 = load double, ptr %20, align 8
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1
+    <   %17 = sext i32 %3 to i64
+    <   %18 = getelementptr inbounds [328 x i8], ptr %1, i64 %17
+    <   %19 = getelementptr inbounds nuw [8 x i8], ptr %18, i64 %indvars.iv.next
+    <   %20 = load double, ptr %19, align 8
+    <   %21 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next
+    <   %22 = sext i32 %4 to i64
+    <   %23 = getelementptr inbounds [8 x i8], ptr %21, i64 %22
+    <   %24 = load double, ptr %23, align 8
+        %25 = call double @llvm.fmuladd.f64(double %20, double %24, double %16)
+        store double %25, ptr %0, align 8
+    >   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2
+    >   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41
+    >   br i1 %exitcond.1, label %6, label %23, !llvm.loop !7
+    <   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2
+    <   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41
+    <   br i1 %exitcond.1, label %6, label %26, !llvm.loop !7
+
+in function main:
+  in block %0 / %0:
+    >   call void @Mm(i32 noundef 0)
+    >   call void @Mm(i32 noundef 1)
+    >   call void @Mm(i32 noundef 2)
+    >   call void @Mm(i32 noundef 3)
+    >   call void @Mm(i32 noundef 4)
+    >   call void @Mm(i32 noundef 5)
+    >   call void @Mm(i32 noundef 6)
+    >   call void @Mm(i32 noundef 7)
+    >   call void @Mm(i32 noundef 8)
+    >   call void @Mm(i32 noundef 9)
+    >   ret i32 0
+    <   br label %1"
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,true,false_positive,inst:main:%exitcond;inst:rInnerproduct:%exitcond;loop:main:bb0,inst:main:%exitcond;inst:rInnerproduct:%exitcond;loop:main:bb0,inst:main:%exitcond;inst:rInnerproduct:%exitcond;loop:main:bb0,read_write;enablement,strong,strong,strong,none,inst:main:%exitcond;inst:rInnerproduct:%exitcond;loop:main:bb0,,inst;loop,symmetric_rewrite,expansion,instcombine->loop-unroll;loop-unroll->instcombine,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,licm->loop-unroll;loop-unroll->licm,"in function rInnerproduct:
+  in block %5 / %5:
+    >   %6 = sext i32 %3 to i64
+    >   %7 = getelementptr inbounds [328 x i8], ptr %1, i64 %6
+    >   %8 = sext i32 %4 to i64
+    >   %invariant.gep = getelementptr [8 x i8], ptr %2, i64 %8"
+licm,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function main:
+  in block %0 / %0:
+    >   call void @Mm(i32 noundef 0)
+    >   call void @Mm(i32 noundef 1)
+    >   call void @Mm(i32 noundef 2)
+    >   call void @Mm(i32 noundef 3)
+    >   call void @Mm(i32 noundef 4)
+    >   call void @Mm(i32 noundef 5)
+    >   call void @Mm(i32 noundef 6)
+    >   call void @Mm(i32 noundef 7)
+    >   call void @Mm(i32 noundef 8)
+    >   call void @Mm(i32 noundef 9)
+    >   ret i32 0
+    <   br label %1"

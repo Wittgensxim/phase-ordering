@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "instcombine",
+    "loop-rotate"
+  ],
+  "details": "perturbation: instcombine->loop-rotate",
+  "changed": true
+}

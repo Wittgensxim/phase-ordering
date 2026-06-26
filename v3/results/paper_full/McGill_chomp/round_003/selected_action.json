@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "licm",
+    "early-cse"
+  ],
+  "winner": "B->A",
+  "score_improvement": -7.5,
+  "details": "oracle chose licm->early-cse (improvement: -7.50)",
+  "changed": true
+}

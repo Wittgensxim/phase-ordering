@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "gvn",
+    "simplifycfg"
+  ],
+  "winner": "A->B",
+  "score_improvement": 46.5,
+  "details": "oracle chose gvn->simplifycfg (improvement: 46.50)",
+  "changed": true
+}

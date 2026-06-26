@@ -1,0 +1,6 @@
+benchmark,O0_score,O0_inst,O1_score,O1_inst,O2_score,O2_inst,O3_score,O3_inst,oracle_score,oracle_inst,oracle_rounds,rule_score,rule_inst,rule_rounds,random_score,random_inst,random_rounds
+Misc_flops_1,244.1,134,128.2,67,122.2,64,122.2,64,57.2,58,5,87.5,121,5,60.6,65,5
+Stanford_Quicksort,405.6,208,218.8,109,218.3,109,218.3,109,58.8,103,5,84.0,167,5,63.7,113,5
+Stanford_Bubblesort,291.5,153,173.3,84,159.2,78,231.7,118,64.6,78,5,81.9,117,5,79.3,97,5
+Shootout_nestedloop,217.7,98,161.2,76,161.2,76,199.7,97,20.4,14,5,81.0,77,5,22.0,15,5
+Dhrystone_dry,924.3,493,401.8,212,401.1,212,407.0,215,55.2,226,5,58.9,259,5,56.2,260,5

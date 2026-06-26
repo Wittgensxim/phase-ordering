@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "total_pairs": 3,
+    "agree_dependent": 2,
+    "agree_independent": 1,
+    "false_positive": 0,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 0,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "commutativity_details": "in function Queens:\n  in block %1 / %1:\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   %2 = add nsw i32 %0, 1\n    >   %3 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.1, i32 noundef %2) #3\n    >   ret void\n    <   br label %2"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->simplifycfg"
+      ],
+      "commutativity_details": "in function Queens:\n  in block %1 / %1:\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   call void @Doit()\n    >   %2 = add nsw i32 %0, 1\n    >   %3 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.1, i32 noundef %2) #3\n    >   ret void\n    <   br label %2"
+    }
+  ]
+}

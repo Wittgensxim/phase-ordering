@@ -1,0 +1,11 @@
+{
+  "kind": "random_ordered_pair",
+  "passes": [
+    "adce",
+    "reassociate"
+  ],
+  "winner": "random",
+  "score_improvement": 0,
+  "details": "random chose adce->reassociate",
+  "changed": true
+}

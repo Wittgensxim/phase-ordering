@@ -1,0 +1,611 @@
+{
+  "summary": {
+    "total_pairs": 21,
+    "agree_dependent": 9,
+    "agree_independent": 9,
+    "false_positive": 3,
+    "false_negative": 0,
+    "uncertain_commuting": 0,
+    "uncertain_non_commuting": 0,
+    "missing_commutativity": 0,
+    "unknown": 0
+  },
+  "pairs": [
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->early-cse"
+      ],
+      "commutativity_details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->early-cse"
+      ],
+      "commutativity_details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->gvn"
+      ],
+      "commutativity_details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "commutativity_details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-rotate->instcombine"
+      ],
+      "commutativity_details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "expansion"
+      ],
+      "enablement_edges": [
+        "loop-unroll->instcombine"
+      ],
+      "commutativity_details": "in function compute:\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result\n  in block %exit.loopexit:\n    <   %add.lcssa = phi i32 [ %add, %loop ]"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "independent",
+      "commute": true,
+      "agreement": "agree_independent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-simplify",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "wb_intersect_ra": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "wa_intersect_wb": [
+        "bb:compute:exit.loopexit",
+        "bb:compute:loop.preheader",
+        "inst:compute:%i",
+        "inst:compute:%sum",
+        "inst:compute:exit.loopexit:1:br",
+        "inst:compute:loop.preheader:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "weak_intersections": [
+        "bb:compute:exit.loopexit",
+        "bb:compute:loop.preheader",
+        "inst:compute:exit.loopexit:1:br",
+        "inst:compute:loop.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "wb_intersect_ra": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "wa_intersect_wb": [
+        "bb:compute:exit.loopexit",
+        "bb:compute:loop.preheader",
+        "inst:compute:%add.lcssa",
+        "inst:compute:%i",
+        "inst:compute:%sum",
+        "inst:compute:exit.loopexit:1:br",
+        "inst:compute:loop.preheader:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compute:%add.lcssa",
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "weak_intersections": [
+        "bb:compute:exit.loopexit",
+        "bb:compute:loop.preheader",
+        "inst:compute:exit.loopexit:1:br",
+        "inst:compute:loop.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->simplifycfg"
+      ],
+      "commutativity_details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "footprint_classification": "dependent",
+      "commute": true,
+      "agreement": "false_positive",
+      "wa_intersect_rb": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "wb_intersect_ra": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "wa_intersect_wb": [
+        "bb:compute:exit.loopexit",
+        "bb:compute:loop.preheader",
+        "inst:compute:%i",
+        "inst:compute:%sum",
+        "inst:compute:exit.loopexit:1:br",
+        "inst:compute:loop.preheader:1:br"
+      ],
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "strong",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "strong_intersections": [
+        "inst:compute:%i",
+        "inst:compute:%sum"
+      ],
+      "weak_intersections": [
+        "bb:compute:exit.loopexit",
+        "bb:compute:loop.preheader",
+        "inst:compute:exit.loopexit:1:br",
+        "inst:compute:loop.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "mixed",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "commutativity_details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-simplify->simplifycfg"
+      ],
+      "commutativity_details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    <   %result = phi i32 [ 0, %entry ], [ %add, %exit.loopexit ]\n  in block %exit.loopexit / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %exit"
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "footprint_classification": "dependent",
+      "commute": false,
+      "agreement": "agree_dependent",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->simplifycfg"
+      ],
+      "commutativity_details": "in function compute:\n  in block %loop.preheader / %loop:\n    >   %i = phi i32 [ %next, %loop ], [ 0, %entry ]\n    >   %sum = phi i32 [ %add, %loop ], [ 0, %entry ]\n    >   %gep = getelementptr i32, ptr %arr, i32 %i\n    >   %val = load i32, ptr %gep, align 4\n    >   %mul = mul i32 %val, 2\n    >   %add = add i32 %sum, %mul\n    >   %next = add i32 %i, 1\n    >   %cond = icmp slt i32 %next, %n\n    >   br i1 %cond, label %loop, label %exit\n    <   br label %loop\n  in block %exit:\n    >   %result = phi i32 [ 0, %entry ], [ %add, %loop ]\n    >   ret i32 %result\n    <   %result = phi i32 [ 0, %entry ], [ %add.lcssa, %exit.loopexit ]\n    <   ret i32 %result"
+    }
+  ]
+}

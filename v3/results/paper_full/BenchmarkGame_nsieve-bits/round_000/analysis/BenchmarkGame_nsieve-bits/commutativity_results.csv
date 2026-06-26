@@ -1,0 +1,503 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+mem2reg,instcombine,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__instcombine.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__mem2reg.ll,"in function main:
+  in block %54 / %53:
+    >   %storemerge = phi i32 [ 1, %4 ], [ 0, %52 ]
+    >   ret i32 %storemerge
+    <   %.0 = phi i32 [ 0, %53 ], [ 1, %4 ]
+    <   ret i32 %.0
+  in block %8 / %8:
+    >   %10 = lshr i32 %9, 3
+    >   %narrow = add nuw nsw i32 %10, 4
+    >   %11 = zext nneg i32 %narrow to i64
+    <   %10 = lshr exact i32 5120000, %.03
+    <   %11 = or disjoint i32 %10, 4
+    <   %12 = zext nneg i32 %11 to i64"
+mem2reg,simplifycfg,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__simplifycfg.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__mem2reg.ll,"in function main:
+  in block %62 / %8:
+    >   br label %64
+    <   %.0 = phi i32 [ 0, %61 ], [ 1, %2 ]
+    <   ret i32 %.0
+  in block %8 / %9:
+    >   br label %10
+    <   %.03 = phi i32 [ %60, %58 ], [ 0, %2 ]
+    <   %9 = icmp ule i32 %.03, 2
+    <   br i1 %9, label %10, label %61"
+mem2reg,sroa,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__sroa.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__mem2reg.ll,
+mem2reg,early-cse,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__early-cse.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__mem2reg.ll,
+mem2reg,gvn,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__gvn.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__mem2reg.ll,"in function main:
+  in block %51 / %69:
+    >   call void @free(ptr noundef %10)
+    <   call void @free(ptr noundef %3)
+  in block %7 / %7:
+    >   %.01 = phi i32 [ 0, %6 ], [ %68, %66 ]
+    >   %8 = phi ptr [ %19, %66 ], [ %3, %6 ]
+    >   %9 = phi ptr [ %20, %66 ], [ %3, %6 ]
+    >   %10 = phi ptr [ %23, %66 ], [ %3, %6 ]
+    >   %11 = phi i32 [ %68, %66 ], [ 0, %6 ]
+    >   %12 = icmp ule i32 %11, 2
+    >   br i1 %12, label %13, label %69
+    <   %.03 = phi i32 [ 0, %6 ], [ %50, %48 ]
+    <   %8 = icmp ule i32 %.03, 2
+    <   br i1 %8, label %9, label %51"
+mem2reg,sccp,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__sccp.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__mem2reg.ll,"in function main:
+  in block %2 / %2:
+    >   %3 = udiv i32 40960000, 8
+    >   %4 = zext nneg i32 %3 to i64
+    >   %5 = add nuw nsw i64 %4, 4
+    >   %6 = call ptr @malloc(i64 noundef %5) #4
+    >   %7 = icmp ne ptr %6, null
+    >   br i1 %7, label %9, label %8
+    <   %3 = call ptr @malloc(i64 noundef 5120004) #4
+    <   %4 = icmp ne ptr %3, null
+    <   br i1 %4, label %6, label %5"
+mem2reg,loop-simplify,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__mem2reg.ll,
+mem2reg,loop-rotate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__mem2reg.ll,"in function main:
+  in block %9 / %9:
+    >   %10 = icmp ule i32 0, 2
+    >   br i1 %10, label %.lr.ph5, label %67
+    <   br label %10"
+mem2reg,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__mem2reg.ll,"in function main:
+  in block %67 / %73:
+    >   %.lcssa7.lcssa16.lcssa = phi i32 [ %.lcssa7.lcssa16, %10 ]
+    >   %.lcssa214.lcssa = phi i32 [ %.lcssa214, %10 ]
+    >   %.lcssa12 = phi i32 [ %11, %10 ]
+    >   %.lcssa410.lcssa = phi i32 [ %.lcssa410, %10 ]
+    >   %.lcssa8 = phi i32 [ %12, %10 ]
+  in block %10 / %10:
+    >   %.lcssa7.lcssa16 = phi i32 [ %.lcssa7.lcssa, %71 ], [ undef, %9 ]
+    >   %.lcssa214 = phi i32 [ %.lcssa2, %71 ], [ undef, %9 ]
+    >   %11 = phi i32 [ %15, %71 ], [ undef, %9 ]
+    >   %.lcssa410 = phi i32 [ %.lcssa4, %71 ], [ undef, %9 ]
+    >   %12 = phi i32 [ %72, %71 ], [ 0, %9 ]
+    >   %13 = icmp ule i32 %12, 2
+    >   br i1 %13, label %14, label %73
+    <   %.03 = phi i32 [ 0, %9 ], [ %66, %65 ]
+    <   %11 = icmp ule i32 %.03, 2
+    <   br i1 %11, label %12, label %67"
+mem2reg,indvars,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__mem2reg.ll,"function @llvm.umax.i32 exists only in left module
+in function main:
+  in block %10 / %10:
+    >   %.03 = phi i32 [ 0, %9 ], [ %66, %65 ]
+    >   %11 = icmp ule i32 %.03, 2
+    >   br i1 %11, label %12, label %67
+    <   %.03 = phi i32 [ 0, %9 ], [ %57, %56 ]
+    <   %exitcond11 = icmp ne i32 %.03, 3
+    <   br i1 %exitcond11, label %11, label %58"
+mem2reg,loop-unroll,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__mem2reg.ll,"in function main:
+  in block %63 / %63:
+    <   %.01.lcssa = phi i32 [ %.01, %17 ]"
+mem2reg,reassociate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\mem2reg__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__mem2reg.ll,"in function main:
+  in block %17 / %17:
+    >   %.01 = phi i32 [ 0, %12 ], [ %.1, %61 ]
+    <   %.01 = phi i32 [ 0, %12 ], [ %.1, %60 ]
+  in block %19 / %19:
+    >   %28 = and i32 %27, %23
+    >   %29 = icmp ne i32 %28, 0
+    >   br i1 %29, label %30, label %60
+    <   %28 = and i32 %23, %27
+    <   %29 = icmp ne i32 %28, 0
+    <   br i1 %29, label %30, label %59"
+instcombine,simplifycfg,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__instcombine.ll,"in function main:
+  in block %11 / %12:
+    >   br label %13
+    <   %storemerge1 = phi i32 [ %71, %66 ], [ 0, %2 ]
+    <   store i32 %storemerge1, ptr %3, align 4
+    <   %12 = icmp ult i32 %storemerge1, 3
+    <   br i1 %12, label %13, label %72
+  in block %74 / %11:
+    >   br label %76
+    <   %storemerge = phi i32 [ 0, %72 ], [ 1, %2 ]
+    <   ret i32 %storemerge"
+instcombine,sroa,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__sroa.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__instcombine.ll,"in function main:
+  in block %53 / %54:
+    >   %.0 = phi i32 [ 0, %53 ], [ 1, %4 ]
+    >   ret i32 %.0
+    <   %storemerge = phi i32 [ 1, %4 ], [ 0, %52 ]
+    <   ret i32 %storemerge
+  in block %8 / %8:
+    >   %10 = lshr exact i32 5120000, %.033
+    >   %11 = or disjoint i32 %10, 4
+    >   %12 = zext nneg i32 %11 to i64
+    <   %10 = lshr i32 %9, 3
+    <   %narrow = add nuw nsw i32 %10, 4
+    <   %11 = zext nneg i32 %narrow to i64"
+instcombine,early-cse,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__early-cse.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__gvn.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca ptr, align 8
+    <   %6 = alloca i32, align 4
+    <   %7 = alloca i32, align 4
+        %8 = alloca i32, align 4
+        %9 = alloca i32, align 4
+    <   store i32 40960000, ptr %4, align 4
+        %10 = call dereferenceable_or_null(5120004) ptr @malloc(i64 noundef 5120004) #4
+    <   store ptr %10, ptr %5, align 8"
+instcombine,sccp,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__sccp.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %12 / %12:
+    >   br i1 true, label %.lr.ph5, label %78
+    <   br label %13"
+instcombine,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4"
+instcombine,indvars,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__instcombine.ll,
+instcombine,loop-unroll,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__instcombine.ll,
+instcombine,reassociate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\instcombine__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__instcombine.ll,"in function main:
+  in block %51 / %51:
+    >   %60 = xor i32 %54, %59
+    >   store i32 %60, ptr %58, align 4
+    <   %60 = xor i32 %59, %54
+    <   store i32 %60, ptr %58, align 4"
+simplifycfg,sroa,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__sroa.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__simplifycfg.ll,"in function main:
+  in block %8 / %62:
+    >   %.0 = phi i32 [ 0, %61 ], [ 1, %2 ]
+    >   ret i32 %.0
+    <   br label %64
+  in block %9 / %8:
+    >   %.033 = phi i32 [ %60, %58 ], [ 0, %2 ]
+    >   %9 = icmp ule i32 %.033, 2
+    >   br i1 %9, label %10, label %61
+    <   br label %10"
+simplifycfg,early-cse,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__gvn.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__simplifycfg.ll,"in function main:
+  in block %49 / %49:
+    >   %50 = phi ptr [ %69, %68 ], [ %29, %45 ]
+    >   %51 = phi i32 [ %70, %68 ], [ %48, %45 ]
+    >   %52 = phi ptr [ %69, %68 ], [ %30, %45 ]
+    <   %50 = phi ptr [ %69, %68 ], [ %29, %45 ]
+    <   %51 = phi i32 [ %70, %68 ], [ %48, %45 ]
+    <   %52 = phi ptr [ %69, %68 ], [ %30, %45 ]
+  in block %68 / %68:
+    >   %69 = phi ptr [ %13, %64 ], [ %50, %54 ]
+    <   %69 = phi ptr [ %50, %54 ], [ %13, %64 ]"
+simplifycfg,sccp,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__sccp.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__simplifycfg.ll,"in function main:
+  in block %.loopexit / %93:
+    in instruction   br label %93 /   br label %34, !llvm.loop !9:
+      successor %93 cannot be equivalent to %34; it's already equivalent to %93
+    >   %94 = load i32, ptr %9, align 4
+    >   %95 = add i32 %94, 1
+    >   store i32 %95, ptr %9, align 4"
+simplifycfg,loop-rotate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph3 / %.lr.ph5:
+    >   store i32 0, ptr %11, align 4
+    >   %24 = load i32, ptr %7, align 4
+    >   %25 = load i32, ptr %6, align 4
+    >   %26 = lshr i32 %24, %25
+    >   store i32 %26, ptr %12, align 4
+    >   %27 = load ptr, ptr %8, align 8
+    >   %28 = load i32, ptr %12, align 4
+    >   %29 = udiv i32 %28, 8
+    >   %30 = zext i32 %29 to i64
+    >   %31 = add i64 %30, 4
+    >   call void @llvm.memset.p0.i64(ptr align 4 %27, i8 -1, i64 %31, i1 false)
+    >   store i32 2, ptr %9, align 4
+    >   %32 = load i32, ptr %9, align 4
+    >   %33 = load i32, ptr %12, align 4
+    >   %34 = icmp ule i32 %32, %33
+    >   br i1 %34, label %.lr.ph2, label %._crit_edge3
+    <   br label %24"
+simplifycfg,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__simplifycfg.ll,"in function main:
+  in block %36 / %36:
+    >   %.lcssa7 = phi i32 [ %.lcssa6, %80 ], [ %.lcssa7.lcssa16, %31 ]
+    >   %37 = phi i32 [ %81, %80 ], [ 0, %31 ]
+    >   %38 = phi i32 [ %82, %80 ], [ 2, %31 ]
+    <   %.lcssa7 = phi i32 [ %.lcssa6, %80 ], [ %.lcssa7.lcssa16, %31 ]
+    <   %37 = phi i32 [ %81, %80 ], [ 0, %31 ]
+    <   %38 = phi i32 [ %82, %80 ], [ 2, %31 ]
+  in block %80 / %80:
+    >   %.lcssa6 = phi i32 [ %.lcssa7, %40 ], [ %55, %54 ]
+    >   %81 = phi i32 [ %37, %40 ], [ %52, %54 ]
+    <   %.lcssa6 = phi i32 [ %.lcssa, %.loopexit ], [ %.lcssa7, %40 ]
+    <   %81 = phi i32 [ %52, %.loopexit ], [ %37, %40 ]
+  in block %.loopexit / %80:
+    in instruction   br label %80 /   br label %36, !llvm.loop !9:
+      successor %80 cannot be equivalent to %36; it's already equivalent to %80
+    >   %.lcssa6 = phi i32 [ %.lcssa7, %40 ], [ %55, %54 ]
+    >   %81 = phi i32 [ %37, %40 ], [ %52, %54 ]
+    >   %82 = add i32 %38, 1
+    <   %.lcssa = phi i32 [ %55, %54 ]"
+simplifycfg,indvars,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__simplifycfg.ll,"in function main:
+  in block %.loopexit / %93:
+    in instruction   br label %93 /   br label %34, !llvm.loop !9:
+      successor %93 cannot be equivalent to %34; it's already equivalent to %93
+    >   %94 = load i32, ptr %9, align 4
+    >   %95 = add i32 %94, 1
+    >   store i32 %95, ptr %9, align 4"
+simplifycfg,loop-unroll,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__simplifycfg.ll,"in function main:
+  in block %.loopexit / %93:
+    in instruction   br label %93 /   br label %34, !llvm.loop !9:
+      successor %93 cannot be equivalent to %34; it's already equivalent to %93
+    >   %94 = load i32, ptr %9, align 4
+    >   %95 = add i32 %94, 1
+    >   store i32 %95, ptr %9, align 4"
+simplifycfg,reassociate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\simplifycfg__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__simplifycfg.ll,
+sroa,early-cse,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__early-cse.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__sroa.ll,
+sroa,gvn,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__gvn.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__sroa.ll,"in function main:
+  in block %51 / %69:
+    >   call void @free(ptr noundef %10)
+    <   call void @free(ptr noundef %3)
+  in block %7 / %7:
+    >   %.04 = phi i32 [ 0, %6 ], [ %68, %66 ]
+    >   %8 = phi ptr [ %19, %66 ], [ %3, %6 ]
+    >   %9 = phi ptr [ %20, %66 ], [ %3, %6 ]
+    >   %10 = phi ptr [ %23, %66 ], [ %3, %6 ]
+    >   %11 = phi i32 [ %68, %66 ], [ 0, %6 ]
+    >   %12 = icmp ule i32 %11, 2
+    >   br i1 %12, label %13, label %69
+    <   %.033 = phi i32 [ 0, %6 ], [ %50, %48 ]
+    <   %8 = icmp ule i32 %.033, 2
+    <   br i1 %8, label %9, label %51"
+sroa,sccp,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__sccp.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__sroa.ll,"in function main:
+  in block %2 / %2:
+    >   %3 = udiv i32 40960000, 8
+    >   %4 = zext nneg i32 %3 to i64
+    >   %5 = add nuw nsw i64 %4, 4
+    >   %6 = call ptr @malloc(i64 noundef %5) #4
+    >   %7 = icmp ne ptr %6, null
+    >   br i1 %7, label %9, label %8
+    <   %3 = call ptr @malloc(i64 noundef 5120004) #4
+    <   %4 = icmp ne ptr %3, null
+    <   br i1 %4, label %6, label %5"
+sroa,loop-simplify,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__sroa.ll,
+sroa,loop-rotate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__sroa.ll,"in function main:
+  in block %9 / %9:
+    >   %10 = icmp ule i32 0, 2
+    >   br i1 %10, label %.lr.ph5, label %67
+    <   br label %10"
+sroa,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__sroa.ll,"in function main:
+  in block %67 / %73:
+    >   %.lcssa7.lcssa16.lcssa = phi i32 [ %.lcssa7.lcssa16, %10 ]
+    >   %.lcssa214.lcssa = phi i32 [ %.lcssa214, %10 ]
+    >   %.lcssa12 = phi i32 [ %11, %10 ]
+    >   %.lcssa410.lcssa = phi i32 [ %.lcssa410, %10 ]
+    >   %.lcssa8 = phi i32 [ %12, %10 ]
+  in block %10 / %10:
+    >   %.lcssa7.lcssa16 = phi i32 [ %.lcssa7.lcssa, %71 ], [ undef, %9 ]
+    >   %.lcssa214 = phi i32 [ %.lcssa2, %71 ], [ undef, %9 ]
+    >   %11 = phi i32 [ %15, %71 ], [ undef, %9 ]
+    >   %.lcssa410 = phi i32 [ %.lcssa4, %71 ], [ undef, %9 ]
+    >   %12 = phi i32 [ %72, %71 ], [ 0, %9 ]
+    >   %13 = icmp ule i32 %12, 2
+    >   br i1 %13, label %14, label %73
+    <   %.033 = phi i32 [ 0, %9 ], [ %66, %65 ]
+    <   %11 = icmp ule i32 %.033, 2
+    <   br i1 %11, label %12, label %67"
+sroa,indvars,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__sroa.ll,"function @llvm.umax.i32 exists only in left module
+in function main:
+  in block %10 / %10:
+    >   %.033 = phi i32 [ 0, %9 ], [ %66, %65 ]
+    >   %11 = icmp ule i32 %.033, 2
+    >   br i1 %11, label %12, label %67
+    <   %.033 = phi i32 [ 0, %9 ], [ %57, %56 ]
+    <   %exitcond40 = icmp ne i32 %.033, 3
+    <   br i1 %exitcond40, label %11, label %58"
+sroa,loop-unroll,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__sroa.ll,"in function main:
+  in block %63 / %63:
+    <   %.030.lcssa = phi i32 [ %.030, %17 ]"
+sroa,reassociate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sroa__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__sroa.ll,"in function main:
+  in block %17 / %17:
+    >   %.030 = phi i32 [ 0, %12 ], [ %.1, %61 ]
+    <   %.030 = phi i32 [ 0, %12 ], [ %.1, %60 ]
+  in block %19 / %19:
+    >   %28 = and i32 %27, %23
+    >   %29 = icmp ne i32 %28, 0
+    >   br i1 %29, label %30, label %60
+    <   %28 = and i32 %23, %27
+    <   %29 = icmp ne i32 %28, 0
+    <   br i1 %29, label %30, label %59"
+early-cse,gvn,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__gvn.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__early-cse.ll,"in function main:
+  in block %75 / %82:
+  in block %17 / %17:
+    >   %18 = phi ptr [ %29, %77 ], [ %13, %16 ]
+    >   %19 = phi ptr [ %30, %77 ], [ %13, %16 ]
+    >   %20 = phi ptr [ %33, %77 ], [ %13, %16 ]
+    >   %21 = phi i32 [ %81, %77 ], [ 0, %16 ]
+    >   %22 = icmp ule i32 %21, 2
+    >   br i1 %22, label %23, label %82
+    <   %18 = phi ptr [ %28, %70 ], [ %13, %16 ]
+    <   %19 = phi ptr [ %31, %70 ], [ %13, %16 ]
+    <   %20 = phi i32 [ %74, %70 ], [ 0, %16 ]
+    <   %21 = icmp ule i32 %20, 2
+    <   br i1 %21, label %22, label %75"
+early-cse,sccp,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__sccp.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__early-cse.ll,
+early-cse,loop-simplify,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %16 / %16:
+    >   br i1 true, label %.lr.ph5, label %82
+    <   %17 = load i32, ptr %6, align 4
+    <   %18 = icmp ule i32 %17, 2
+    <   br i1 %18, label %.lr.ph5, label %88"
+early-cse,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %16 / %16:
+    <   %18 = load ptr, ptr %8, align 8
+    <   %19 = load ptr, ptr %8, align 8
+        %20 = load ptr, ptr %8, align 8
+    <   %.promoted = load i32, ptr %6, align 4"
+early-cse,indvars,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__early-cse.ll,"in function main:
+  in block %75 / %75:
+    <   %.lcssa = phi i32 [ %30, %28 ]
+        %76 = load i32, ptr %11, align 4
+    >   %77 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %30, i32 noundef %76)
+    <   %77 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %.lcssa, i32 noundef %76)"
+early-cse,loop-unroll,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__early-cse.ll,"in function main:
+  in block %75 / %75:
+    <   %.lcssa = phi i32 [ %30, %28 ]
+        %76 = load i32, ptr %11, align 4
+    >   %77 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %30, i32 noundef %76)
+    <   %77 = call i32 (ptr, ...) @printf(ptr noundef @.str, i32 noundef %.lcssa, i32 noundef %76)"
+early-cse,reassociate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\early-cse__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__early-cse.ll,"in function main:
+  in block %32 / %32:
+    >   %41 = and i32 %40, %37
+    >   %42 = icmp ne i32 %41, 0
+    >   br i1 %42, label %43, label %71
+    <   %41 = and i32 %37, %40
+    <   %42 = icmp ne i32 %41, 0
+    <   br i1 %42, label %43, label %70"
+gvn,sccp,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__sccp.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__gvn.ll,
+gvn,loop-simplify,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %16 / %16:
+    >   br i1 true, label %.lr.ph5, label %._crit_edge7
+    <   br label %17
+  in block %79 / %83:
+    >   call void @free(ptr noundef %13)
+    <   %.lcssa6 = phi ptr [ %.lcssa2, %73 ]
+    <   call void @free(ptr noundef %.lcssa6)"
+gvn,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__gvn.ll,"in function main:
+  in block %83 / %67:
+    >   store i32 %19, ptr %6, align 4
+    >   store i32 %.lcssa410, ptr %11, align 4
+    >   store i32 %18, ptr %12, align 4
+    >   store i32 %.lcssa214, ptr %9, align 4
+    >   store i32 %.lcssa7.lcssa16, ptr %10, align 4
+    >   call void @free(ptr noundef %13)
+    <   %.lcssa6 = phi ptr [ %20, %17 ]
+    <   call void @free(ptr noundef %.lcssa6)
+  in block %17 / %17:
+    >   %.lcssa7.lcssa16 = phi i32 [ %.lcssa7, %64 ], [ undef, %16 ]
+    >   %.lcssa214 = phi i32 [ %28, %64 ], [ undef, %16 ]
+    >   %18 = phi i32 [ %22, %64 ], [ undef, %16 ]
+    >   %.lcssa410 = phi i32 [ %27, %64 ], [ undef, %16 ]
+    >   %19 = phi i32 [ %66, %64 ], [ 0, %16 ]
+    >   %20 = icmp ule i32 %19, 2
+    >   br i1 %20, label %21, label %67
+    <   %18 = phi ptr [ %.lcssa5, %78 ], [ %13, %16 ]
+    <   %19 = phi ptr [ %.lcssa4, %78 ], [ %13, %16 ]
+    <   %20 = phi ptr [ %.lcssa2, %78 ], [ %13, %16 ]
+    <   %21 = phi i32 [ %82, %78 ], [ 0, %16 ]
+    <   %22 = icmp ule i32 %21, 2
+    <   br i1 %22, label %23, label %83"
+gvn,indvars,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__gvn.ll,"in function main:
+  in block %82 / %82:
+    <   %.lcssa6 = phi ptr [ %20, %17 ]
+  in block %17 / %17:
+    >   %18 = phi ptr [ %29, %77 ], [ %13, %16 ]
+    >   %19 = phi ptr [ %30, %77 ], [ %13, %16 ]
+    >   %20 = phi ptr [ %33, %77 ], [ %13, %16 ]
+    >   %21 = phi i32 [ %81, %77 ], [ 0, %16 ]
+    <   %18 = phi ptr [ %.lcssa5, %77 ], [ %13, %16 ]
+    <   %19 = phi ptr [ %.lcssa4, %77 ], [ %13, %16 ]
+    <   %20 = phi ptr [ %.lcssa2, %77 ], [ %13, %16 ]
+    <   %21 = phi i32 [ %81, %77 ], [ 0, %16 ]
+  in block %77 / %77:
+    <   %.lcssa5 = phi ptr [ %29, %28 ]
+    <   %.lcssa4 = phi ptr [ %30, %28 ]
+    <   %.lcssa3 = phi i32 [ %31, %28 ]
+    <   %.lcssa2 = phi ptr [ %33, %28 ]
+  in block %72 / %72:
+    >   %73 = phi ptr [ %50, %71 ], [ %29, %35 ]
+    >   %74 = phi ptr [ %52, %71 ], [ %30, %35 ]
+    <   %73 = phi ptr [ %.lcssa1, %71 ], [ %29, %35 ]
+    <   %74 = phi ptr [ %.lcssa, %71 ], [ %30, %35 ]
+  in block %71 / %71:
+    <   %.lcssa1 = phi ptr [ %50, %49 ]
+    <   %.lcssa = phi ptr [ %52, %49 ]"
+gvn,loop-unroll,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %82 / %82:
+    <   %.lcssa6 = phi ptr [ %20, %17 ]
+  in block %17 / %17:
+    >   %18 = phi ptr [ %29, %77 ], [ %13, %16 ]
+    >   %19 = phi ptr [ %30, %77 ], [ %13, %16 ]
+    >   %20 = phi ptr [ %33, %77 ], [ %13, %16 ]
+    >   %21 = phi i32 [ %81, %77 ], [ 0, %16 ]
+    <   %18 = phi ptr [ %.lcssa5, %77 ], [ %13, %16 ]
+    <   %19 = phi ptr [ %.lcssa4, %77 ], [ %13, %16 ]
+    <   %20 = phi ptr [ %.lcssa2, %77 ], [ %13, %16 ]
+    <   %21 = phi i32 [ %81, %77 ], [ 0, %16 ]
+  in block %77 / %77:
+    <   %.lcssa5 = phi ptr [ %29, %28 ]
+    <   %.lcssa4 = phi ptr [ %30, %28 ]
+    <   %.lcssa3 = phi i32 [ %31, %28 ]
+    <   %.lcssa2 = phi ptr [ %33, %28 ]
+  in block %72 / %72:
+    >   %73 = phi ptr [ %50, %71 ], [ %29, %35 ]
+    >   %74 = phi ptr [ %52, %71 ], [ %30, %35 ]
+    <   %73 = phi ptr [ %.lcssa1, %71 ], [ %29, %35 ]
+    <   %74 = phi ptr [ %.lcssa, %71 ], [ %30, %35 ]
+  in block %71 / %71:
+    <   %.lcssa1 = phi ptr [ %50, %49 ]
+    <   %.lcssa = phi ptr [ %52, %49 ]"
+gvn,reassociate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\gvn__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__gvn.ll,"in function main:
+  in block %35 / %35:
+    >   %43 = and i32 %42, %39
+    >   %44 = icmp ne i32 %43, 0
+    >   br i1 %44, label %45, label %72
+    <   %43 = and i32 %39, %42
+    <   %44 = icmp ne i32 %43, 0
+    <   br i1 %44, label %45, label %71
+  in block %71 / %72:
+    >   %73 = phi ptr [ %50, %71 ], [ %29, %35 ]
+    >   %74 = phi ptr [ %52, %71 ], [ %30, %35 ]
+    <   %72 = phi ptr [ %49, %70 ], [ %29, %35 ]
+    <   %73 = phi ptr [ %51, %70 ], [ %30, %35 ]"
+sccp,loop-simplify,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__loop-simplify.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\sccp__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__sccp.ll,
+loop-simplify,loop-rotate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-simplify,reassociate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-simplify__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__loop-simplify.ll,
+loop-rotate,licm,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__licm.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__loop-rotate.ll,"in function main:
+  in block %21 / %21:
+    >   %22 = load i32, ptr %7, align 4
+    >   %23 = load ptr, ptr %8, align 8
+    >   %24 = load ptr, ptr %8, align 8
+    >   %25 = load ptr, ptr %8, align 8
+    >   %26 = load ptr, ptr %8, align 8
+        %22 = load i32, ptr %6, align 4
+    >   %.promoted9 = load i32, ptr %11, align 4
+    >   %.promoted11 = load i32, ptr %12, align 4
+    >   %.promoted13 = load i32, ptr %9, align 4
+    >   %.promoted15 = load i32, ptr %10, align 4"
+loop-rotate,indvars,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-rotate__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__indvars.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__licm.ll,"function @llvm.umax.i32 exists only in left module
+in function main:
+  in block %21 / %21:
+    <   %umax18 = call i32 @llvm.umax.i32(i32 %.promoted, i32 3)"
+licm,loop-unroll,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__licm.ll,
+licm,reassociate,false,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\licm__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__licm.ll,"in function main:
+  in block %36 / %36:
+    >   %.lcssa7 = phi i32 [ %.lcssa6, %84 ], [ %.lcssa7.lcssa16, %31 ]
+    >   %37 = phi i32 [ %83, %84 ], [ 0, %31 ]
+    <   %.lcssa7 = phi i32 [ %.lcssa6, %83 ], [ %.lcssa7.lcssa16, %31 ]
+    <   %37 = phi i32 [ %82, %83 ], [ 0, %31 ]
+  in block %40 / %40:
+    >   %49 = and i32 %48, %44
+    >   %50 = icmp ne i32 %49, 0
+    >   br i1 %50, label %51, label %82
+    <   %49 = and i32 %44, %48
+    <   %50 = icmp ne i32 %49, 0
+    <   br i1 %50, label %51, label %81"
+indvars,loop-unroll,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__loop-unroll.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__indvars.ll,
+indvars,reassociate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\indvars__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,true,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\loop-unroll__then__reassociate.ll,results\paper_full\BenchmarkGame_nsieve-bits\round_000\analysis\BenchmarkGame_nsieve-bits\commutativity\reassociate__then__loop-unroll.ll,

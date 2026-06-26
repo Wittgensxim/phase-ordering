@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "simplifycfg",
+    "loop-rotate"
+  ],
+  "details": "perturbation: simplifycfg->loop-rotate",
+  "changed": true
+}

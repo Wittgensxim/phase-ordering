@@ -1,0 +1,11 @@
+{
+  "kind": "rule_ordered_pair",
+  "passes": [
+    "instcombine",
+    "loop-unroll"
+  ],
+  "winner": 14,
+  "score_improvement": 0,
+  "details": "rule chose instcombine->loop-unroll (rule_score=14)",
+  "changed": true
+}

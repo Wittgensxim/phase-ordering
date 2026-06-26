@@ -1,0 +1,99 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+gvn,indvars,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %.preheader.1 / %27:
+    >   %indvars.iv2.1 = phi i64 [ %indvars.iv.next3.1, %31 ], [ %10, %.preheader.1 ]
+    >   %28 = icmp sgt i64 %indvars.iv2.1, 0
+    >   br i1 %28, label %31, label %29
+    <   br label %28"
+gvn,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,inst;loop,mixed,expansion,instcombine->indvars,
+indvars,licm,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write,strong,strong,none,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,bb;inst;loop,mixed,,,
+indvars,loop-rotate,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:3:ret,bb;inst;loop,mixed,expansion,indvars->loop-rotate,
+indvars,loop-simplify,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write,strong,strong,none,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,bb;inst;loop,mixed,,,
+indvars,loop-unroll,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write,strong,strong,none,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,bb;inst;loop,mixed,,,
+indvars,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->simplifycfg,"in function main:
+  in block %.preheader1:
+    >   %17 = phi i32 [ %26, %25 ], [ 0, %13 ]
+    >   %exitcond5 = icmp ne i32 %17, 1000
+    >   br i1 %exitcond5, label %.preheader, label %27
+    <   br label %17"
+instcombine,licm,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,inst;loop,mixed,expansion,instcombine->licm,
+instcombine,loop-rotate,dependent,false,agree_dependent,inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb2;loop:main:bb4;loop:main:bb5,inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:bb4:1:br;inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb2;loop:main:bb4;loop:main:bb5,inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb3:2:br;inst:main:bb4:1:br;inst:main:bb4:1:store;inst:main:bb4:2:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb2;loop:main:bb4;loop:main:bb5,read_write;enablement,strong,strong,strong,none,inst:main:bb3:1:store;inst:main:bb4:1:store;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb2;loop:main:bb4;loop:main:bb5,inst:main:bb3:1:br;inst:main:bb3:2:br;inst:main:bb4:1:br;inst:main:bb4:2:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:3:ret,inst;loop,mixed,expansion,instcombine->loop-rotate;loop-rotate->instcombine,"in function main:
+  in block %8 / %8:
+    >   %exitcond2.not = icmp slt i32 %9, 1
+    >   br i1 %exitcond2.not, label %.preheader1, label %.lr.ph
+    <   %exitcond.not2 = icmp eq i64 0, %wide.trip.count
+    <   br i1 %exitcond.not2, label %.preheader1, label %.lr.ph"
+instcombine,loop-simplify,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,inst;loop,mixed,expansion,instcombine->loop-simplify,
+instcombine,loop-unroll,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb4;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb4;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb4;loop:main:bb5;loop:main:bb6,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb4;loop:main:bb5;loop:main:bb6,inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,inst;loop,mixed,expansion,instcombine->loop-unroll,
+instcombine,sccp,dependent,true,false_positive,inst:main:%wide.trip.count,inst:main:%wide.trip.count,inst:main:%wide.trip.count,read_write,strong,strong,none,none,inst:main:%wide.trip.count,,inst,symmetric_rewrite,,,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,dependent,false,agree_dependent,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:3:ret,bb;inst;loop,mixed,expansion,loop-rotate->licm;licm->loop-rotate,"in function main:
+  in block %.preheader1:
+    <   %13 = icmp sgt i64 %10, 0"
+licm,loop-simplify,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write,strong,strong,none,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,bb;inst;loop,mixed,,,
+licm,loop-unroll,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write,strong,strong,none,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,bb;inst;loop,mixed,,,
+licm,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->simplifycfg,"in function main:
+  in block %.preheader1:
+    >   %17 = phi i32 [ %26, %25 ], [ 0, %13 ]
+    >   %exitcond5 = icmp ne i32 %17, 1000
+    >   br i1 %exitcond5, label %.preheader, label %27
+    <   br label %17"
+loop-rotate,loop-simplify,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,read_write;enablement,strong,strong,strong,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:3:ret,bb;inst;loop,mixed,expansion,loop-simplify->loop-rotate,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,inst:main:%18;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;inst:main:bb8:1:br;loop:main:bb4;loop:main:bb5,inst:main:%18;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;inst:main:bb8:1:br;loop:main:bb4;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:%18;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;inst:main:bb8:1:br;loop:main:bb4;loop:main:bb5,read_write;enablement,strong,strong,strong,none,inst:main:%18;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb4;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:3:ret;inst:main:bb8:1:br,bb;inst;loop,mixed,expansion,loop-rotate->loop-unroll;loop-unroll->loop-rotate,"function @llvm.assume exists only in left module
+in function main:
+  in block %.lr.ph:
+    >   br label %13
+    <   %13 = add nsw i64 %wide.trip.count, -1
+    <   %xtraiter = and i64 %wide.trip.count, 7
+    <   %14 = icmp ult i64 %13, 7
+    <   br i1 %14, label %.epil.preheader, label %.lr.ph.new
+  in block %.preheader1:
+    <   %18 = add nsw i64 %10, -1"
+loop-rotate,sccp,dependent,true,false_positive,inst:main:%22;inst:main:%24,inst:main:%22;inst:main:%24,inst:main:%22;inst:main:%24,read_write;enablement,strong,strong,strong,none,inst:main:%22;inst:main:%24,,inst,symmetric_rewrite,mutation,sccp->loop-rotate,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->simplifycfg,"in function main:
+  in block %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %8 ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %13 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %14 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %14, ptr %13, align 4
+    >   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %.lr.ph, label %.preheader1, !llvm.loop !7
+    <   br label %13
+  in block %.lr.ph5:
+    >   %indvars.iv24 = phi i64 [ %indvars.iv.next3, %.lr.ph5 ], [ %10, %.preheader ]
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv24, -1
+    >   %17 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3
+    >   %18 = load i32, ptr %17, align 4
+    >   %19 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = add nsw i32 %20, %18
+    >   store i32 %21, ptr %19, align 4
+    >   %22 = icmp sgt i64 %indvars.iv.next3, 0
+    >   br i1 %22, label %.lr.ph5, label %._crit_edge, !llvm.loop !9
+    <   br label %18"
+loop-simplify,loop-unroll,dependent,true,false_positive,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,inst:main:bb5:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:1:call;inst:main:bb6:2:call;inst:main:bb6:3:ret;loop:main:bb5;loop:main:bb6,read_write,strong,strong,none,none,inst:main:bb5:1:call;inst:main:bb5:2:call;inst:main:bb6:1:call;inst:main:bb6:2:call;loop:main:bb5;loop:main:bb6,bb:main:.preheader;bb:main:.preheader1;inst:main:.preheader1:1:br;inst:main:.preheader:1:br;inst:main:bb5:1:br;inst:main:bb5:3:ret;inst:main:bb6:1:br;inst:main:bb6:3:ret,bb;inst;loop,mixed,,,
+loop-simplify,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-simplify->simplifycfg,"in function main:
+  in block %.preheader1:
+    >   %17 = phi i32 [ %26, %25 ], [ 0, %13 ]
+    >   %exitcond5 = icmp ne i32 %17, 1000
+    >   br i1 %exitcond5, label %.preheader, label %27
+    <   br label %17"
+loop-unroll,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,expansion;mutation,sccp->loop-unroll;loop-unroll->sccp,
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function main:
+  in block %.preheader1:
+    >   %17 = phi i32 [ %27, %26 ], [ 0, %13 ]
+    >   %exitcond5 = icmp ne i32 %17, 1000
+    >   br i1 %exitcond5, label %.preheader, label %34
+    <   br label %17"
+sccp,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,

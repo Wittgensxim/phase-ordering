@@ -1,0 +1,177 @@
+{
+  "summary": {
+    "total_pairs": 21,
+    "commuting_pairs": 9,
+    "non_commuting_pairs": 12
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\licm__then__gvn.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function main:\n  in block %14 / %14:\n    <   %.lcssa = phi double [ %12, %3 ]\n        %15 = fadd double %.pre, %.pre4\n        %16 = fadd double %15, %.pre5\n        %17 = fadd double %1, %.pre\n        %18 = fadd double %17, %.pre6\n        %19 = fadd double %18, %.pre7\n        %20 = fdiv double %16, %19\n        store double %20, ptr @sa, align 8\n        store double %.pre, ptr @sb, align 8\n        %21 = fadd double %20, %.pre\n        %22 = load double, ptr @two, align 8\n    >   %23 = call double @llvm.fmuladd.f64(double %22, double %12, double %21)\n    >   %24 = fmul double %2, %23\n    >   %25 = fdiv double %24, %22\n    >   store double %25, ptr @sa, align 8\n    >   %26 = fdiv double %1, %25\n    >   store double %26, ptr @sb, align 8\n    >   %27 = fadd double %26, -2.520000e+01\n    >   store double %27, ptr @sc, align 8\n    >   %28 = fmul double %27, 1.000000e-30\n    <   %23 = call double @llvm.fmuladd.f64(double %22, double %.lcssa, double %21)\n    <   %24 = fmul double %2, %23\n    <   %25 = fdiv double %24, %22\n    <   store double %25, ptr @sa, align 8\n    <   %26 = fdiv double %1, %25\n    <   store double %26, ptr @sb, align 8\n    <   %27 = fadd double %26, -2.520000e+01\n    <   store double %27, ptr @sc, align 8\n    <   %28 = fmul double %27, 1.000000e-30"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\indvars__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\test_paper\\Misc_flops_1\\round_006\\analysis\\Misc_flops_1\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": ""
+    }
+  ]
+}

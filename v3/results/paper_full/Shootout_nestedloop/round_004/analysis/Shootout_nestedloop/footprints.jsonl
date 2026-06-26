@@ -1,0 +1,15 @@
+{"pass": "mem2reg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "instcombine", "reads": [], "write_values": {}, "writes": []}
+{"pass": "simplifycfg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "dce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sroa", "reads": [], "write_values": {}, "writes": []}
+{"pass": "early-cse", "reads": [], "write_values": {}, "writes": []}
+{"pass": "gvn", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sccp", "reads": [], "write_values": {}, "writes": []}
+{"pass": "adce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-simplify", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-rotate", "reads": [], "write_values": {}, "writes": []}
+{"pass": "licm", "reads": [], "write_values": {}, "writes": []}
+{"pass": "indvars", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-unroll", "reads": [], "write_values": {}, "writes": []}
+{"pass": "reassociate", "reads": [], "write_values": {}, "writes": []}

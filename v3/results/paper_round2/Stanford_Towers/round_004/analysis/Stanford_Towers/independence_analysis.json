@@ -1,0 +1,1124 @@
+{
+  "summary": {
+    "total_pairs": 45,
+    "independent_pairs": 27,
+    "dependent_pairs": 8,
+    "uncertain_pairs": 10
+  },
+  "pairs": [
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "instcombine",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->gvn"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-unroll writes=bb:Towers:bb2;inst:Towers:%1;inst:Towers:%2;inst:Towers:%4;inst:Towers:%5;inst:Towers:%6;inst:Towers:bb0:10:store;inst:Towers:bb0:11:store;inst:Towers:bb0:12:store;inst:Towers:bb0:13:store;inst:Towers:bb0:14:store;inst:Towers:bb0:15:store;inst:Towers:bb0:16:store;inst:Towers:bb0:17:store;inst:Towers:bb0:18:store;inst:Towers:bb0:19:store;inst:Towers:bb0:1:ret;inst:Towers:bb0:1:store;inst:Towers:bb0:20:call;inst:Towers:bb0:21:call;inst:Towers:bb0:22:call;inst:Towers:bb0:23:store;inst:Towers:bb0:24:call;inst:Towers:bb0:25:br;inst:Towers:bb0:2:store;inst:Towers:bb0:3:store;inst:Towers:bb0:4:store;inst:Towers:bb0:5:store;inst:Towers:bb0:6:store;inst:Towers:bb0:7:store;inst:Towers:bb0:8:store;inst:Towers:bb0:9:store;inst:Towers:bb1:1:br;inst:Towers:bb1:1:ret;inst:Towers:bb2:1:br;inst:Towers:entry:10:store;inst:Towers:entry:11:store;inst:Towers:entry:12:store;inst:Towers:entry:13:store;inst:Towers:entry:14:store;inst:Towers:entry:15:store;inst:Towers:entry:16:store;inst:Towers:entry:17:store;inst:Towers:entry:18:store;inst:Towers:entry:19:store;inst:Towers:entry:1:br;inst:Towers:entry:1:store;inst:Towers:entry:20:call;inst:Towers:entry:21:call;inst:Towers:entry:22:call;inst:Towers:entry:23:store;inst:Towers:entry:24:call;inst:Towers:entry:25:br;inst:Towers:entry:2:store;inst:Towers:entry:3:store;inst:Towers:entry:4:store;inst:Towers:entry:5:store;inst:Towers:entry:6:store;inst:Towers:entry:7:store;inst:Towers:entry:8:store;inst:Towers:entry:9:store"
+      ]
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "reassociate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "instcombine",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "licm",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-rotate",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-simplify",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "reassociate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "indvars->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=indvars writes=bb:Init:._crit_edge.loopexit;bb:Init:.lr.ph.preheader;inst:Init:._crit_edge.loopexit:1:br;inst:Init:.lr.ph.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "reassociate",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "reassociate->instcombine"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=reassociate writes=inst:tower:%.neg;inst:tower:%.neg1;inst:tower:%.neg2;inst:tower:%8;inst:tower:%9"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "sccp->instcombine"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=sccp writes=inst:Push:%15"
+      ]
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-rotate",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-simplify",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "reassociate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "licm->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=licm writes=bb:Init:._crit_edge.loopexit;bb:Init:.lr.ph.preheader;inst:Init:._crit_edge.loopexit:1:br;inst:Init:.lr.ph.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-simplify",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "reassociate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-rotate->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-rotate writes=bb:Init:._crit_edge.loopexit;bb:Init:.lr.ph.preheader;inst:Init:._crit_edge.loopexit:1:br;inst:Init:.lr.ph.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "classification": "uncertain",
+      "dependency_kinds": [
+        "read_write"
+      ],
+      "dependency_strength": "weak",
+      "read_write_strength": "weak",
+      "enablement_strength": "none",
+      "uncertainty_risk": "low",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "strong_intersections": [],
+      "weak_intersections": [
+        "bb:Init:._crit_edge.loopexit",
+        "bb:Init:.lr.ph.preheader",
+        "inst:Init:._crit_edge.loopexit:1:br",
+        "inst:Init:.lr.ph.preheader:1:br"
+      ],
+      "intersection_token_kinds": [
+        "bb",
+        "inst"
+      ],
+      "overlap_pattern": "write_write_only",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "reassociate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-simplify->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-simplify writes=bb:Init:._crit_edge.loopexit;bb:Init:.lr.ph.preheader;inst:Init:._crit_edge.loopexit:1:br;inst:Init:.lr.ph.preheader:1:br"
+      ]
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "reassociate",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "loop-unroll",
+      "pass_b": "simplifycfg",
+      "classification": "dependent",
+      "dependency_kinds": [
+        "enablement"
+      ],
+      "dependency_strength": "strong",
+      "read_write_strength": "none",
+      "enablement_strength": "strong",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [
+        "activation"
+      ],
+      "enablement_edges": [
+        "loop-unroll->simplifycfg"
+      ],
+      "enablement_evidence": [
+        "kind=activation round=1 prefix=loop-unroll writes=bb:Init:._crit_edge.loopexit;bb:Init:.lr.ph.preheader;bb:Towers:bb2;inst:Init:._crit_edge.loopexit:1:br;inst:Init:.lr.ph.preheader:1:br;inst:Towers:%1;inst:Towers:%2;inst:Towers:%4;inst:Towers:%5;inst:Towers:%6;inst:Towers:bb0:10:store;inst:Towers:bb0:11:store;inst:Towers:bb0:12:store;inst:Towers:bb0:13:store;inst:Towers:bb0:14:store;inst:Towers:bb0:15:store;inst:Towers:bb0:16:store;inst:Towers:bb0:17:store;inst:Towers:bb0:18:store;inst:Towers:bb0:19:store;inst:Towers:bb0:1:ret;inst:Towers:bb0:1:store;inst:Towers:bb0:20:call;inst:Towers:bb0:21:call;inst:Towers:bb0:22:call;inst:Towers:bb0:23:store;inst:Towers:bb0:24:call;inst:Towers:bb0:25:br;inst:Towers:bb0:2:store;inst:Towers:bb0:3:store;inst:Towers:bb0:4:store;inst:Towers:bb0:5:store;inst:Towers:bb0:6:store;inst:Towers:bb0:7:store;inst:Towers:bb0:8:store;inst:Towers:bb0:9:store;inst:Towers:bb1:1:br;inst:Towers:bb1:1:ret;inst:Towers:bb2:1:br;inst:Towers:entry:10:store;inst:Towers:entry:11:store;inst:Towers:entry:12:store;inst:Towers:entry:13:store;inst:Towers:entry:14:store;inst:Towers:entry:15:store;inst:Towers:entry:16:store;inst:Towers:entry:17:store;inst:Towers:entry:18:store;inst:Towers:entry:19:store;inst:Towers:entry:1:br;inst:Towers:entry:1:store;inst:Towers:entry:20:call;inst:Towers:entry:21:call;inst:Towers:entry:22:call;inst:Towers:entry:23:store;inst:Towers:entry:24:call;inst:Towers:entry:25:br;inst:Towers:entry:2:store;inst:Towers:entry:3:store;inst:Towers:entry:4:store;inst:Towers:entry:5:store;inst:Towers:entry:6:store;inst:Towers:entry:7:store;inst:Towers:entry:8:store;inst:Towers:entry:9:store"
+      ]
+    },
+    {
+      "pass_a": "reassociate",
+      "pass_b": "sccp",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "reassociate",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "simplifycfg",
+      "classification": "independent",
+      "dependency_kinds": [],
+      "dependency_strength": "none",
+      "read_write_strength": "none",
+      "enablement_strength": "none",
+      "uncertainty_risk": "none",
+      "wa_intersect_rb": [],
+      "wb_intersect_ra": [],
+      "wa_intersect_wb": [],
+      "strong_intersections": [],
+      "weak_intersections": [],
+      "intersection_token_kinds": [],
+      "overlap_pattern": "none",
+      "enablement_edge_kinds": [],
+      "enablement_edges": [],
+      "enablement_evidence": []
+    }
+  ]
+}

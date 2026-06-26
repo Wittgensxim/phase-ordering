@@ -1,0 +1,11 @@
+{"pass": "instcombine", "reads": [], "write_values": {}, "writes": []}
+{"pass": "simplifycfg", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sroa", "reads": [], "write_values": {}, "writes": []}
+{"pass": "early-cse", "reads": [], "write_values": {}, "writes": []}
+{"pass": "gvn", "reads": [], "write_values": {}, "writes": []}
+{"pass": "sccp", "reads": [], "write_values": {}, "writes": []}
+{"pass": "dce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "adce", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-simplify", "reads": [], "write_values": {}, "writes": []}
+{"pass": "loop-rotate", "reads": [], "write_values": {"inst:Bubble:%.lcssa": "%v = phi i32 [ %v, %v ]", "inst:Bubble:%.lcssa1": "%v = phi i32 [ %v, %v ]"}, "writes": ["inst:Bubble:%.lcssa", "inst:Bubble:%.lcssa1"]}
+{"pass": "loop-unroll", "reads": [], "write_values": {"inst:Bubble:%.lcssa": "%v = phi i32 [ %v, %v ]", "inst:Bubble:%.lcssa1": "%v = phi i32 [ %v, %v ]"}, "writes": ["inst:Bubble:%.lcssa", "inst:Bubble:%.lcssa1"]}

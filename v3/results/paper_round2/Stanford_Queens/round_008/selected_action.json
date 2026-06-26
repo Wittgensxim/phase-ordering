@@ -1,0 +1,9 @@
+{
+  "kind": "perturbation",
+  "passes": [
+    "loop-unroll",
+    "simplifycfg"
+  ],
+  "details": "perturbation: loop-unroll->simplifycfg",
+  "changed": true
+}

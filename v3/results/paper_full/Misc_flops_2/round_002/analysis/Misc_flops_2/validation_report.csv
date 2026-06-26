@@ -1,0 +1,235 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function main:
+  in block %11 / %11:
+    <   %.lcssa = phi double [ %6, %5 ]
+    <   %.0.lcssa = phi double [ %.0, %5 ]"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function main:
+  in block %13 / %13:
+    >   store double %6, ptr @sa, align 8
+    <   %.lcssa1 = phi double [ %6, %5 ]
+    <   %.lcssa = phi double [ %7, %5 ]
+    <   %.0.lcssa = phi double [ %.0, %5 ]
+    <   store double %.lcssa1, ptr @sa, align 8"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %11 / %11:
+    <   %.lcssa = phi double [ %8, %5 ]
+    <   %.0.lcssa = phi double [ %7, %5 ]"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %15, %14 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %16, %14 ]
+    >   %7 = icmp samesign ult i32 %.05, 156250001
+    >   br i1 %7, label %8, label %17
+    <   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+    <   %.0 = phi double [ %2, %0 ], [ %.0, %16 ]
+    <   %7 = icmp samesign ult i32 %.05, 156250001
+    <   br i1 %7, label %8, label %19"
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->gvn,"in function main:
+  in block %11 / %11:
+    <   %.lcssa = phi double [ %6, %5 ]
+    <   %.0.lcssa = phi double [ %.0, %5 ]"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function main:
+  in block %13 / %13:
+    >   store double %6, ptr @sa, align 8
+    <   %.lcssa1 = phi double [ %6, %5 ]
+    <   %.lcssa = phi double [ %7, %5 ]
+    <   %.0.lcssa = phi double [ %.0, %5 ]
+    <   store double %.lcssa1, ptr @sa, align 8"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function main:
+  in block %11 / %11:
+    <   %.lcssa = phi double [ %8, %5 ]
+    <   %.0.lcssa = phi double [ %7, %5 ]
+        store double 1.562500e+08, ptr @sc, align 8
+    >   %.pre = load double, ptr @two, align 8"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %12, %8 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %13, %8 ]
+    >   %7 = icmp samesign ult i32 %.05, 156250001
+    >   br i1 %7, label %8, label %14
+    <   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+    <   %.0 = phi double [ %2, %0 ], [ %.0, %16 ]
+    <   %7 = icmp samesign ult i32 %.05, 156250001
+    <   br i1 %7, label %8, label %19"
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->instcombine,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %9, %7 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %10, %7 ]
+    >   %.0 = phi double [ %2, %0 ], [ %8, %7 ]
+    >   %exitcond.not = icmp eq i32 %.05, 156250001
+    >   br i1 %exitcond.not, label %11, label %7
+    <   %6 = phi double [ %4, %0 ], [ %9, %7 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %10, %7 ]
+    <   %.0 = phi double [ %2, %0 ], [ %8, %7 ]
+    <   %exitcond = icmp ne i32 %.05, 156250001
+    <   br i1 %exitcond, label %7, label %11"
+indvars,licm,dependent,true,false_positive,inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%9,inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%9,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%8;inst:main:%9,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%8;inst:main:%9,,inst,mixed,expansion,licm->indvars;indvars->licm,
+indvars,loop-rotate,dependent,true,false_positive,inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%9,inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%9,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%8;inst:main:%9,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%8;inst:main:%9,,inst,mixed,expansion,loop-rotate->indvars;indvars->loop-rotate,
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,dependent,false,agree_dependent,inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38,inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38,,inst,mixed,expansion,indvars->loop-unroll;loop-unroll->indvars,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+    >   %7 = icmp samesign ult i32 %.05, 156250001
+    >   br i1 %7, label %8, label %19
+    <   %6 = phi double [ %4, %0 ], [ %16, %15 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %17, %15 ]
+    <   %.0 = phi double [ %2, %0 ], [ %.0, %15 ]
+    <   %exitcond = icmp ne i32 %.05, 156250001
+    <   br i1 %exitcond, label %7, label %18"
+indvars,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->instcombine,"in function main:
+  in block %13 / %13:
+    >   store double %6, ptr @sa, align 8
+    <   %.lcssa1 = phi double [ %6, %5 ]
+    <   %.lcssa = phi double [ %7, %5 ]
+    <   %.0.lcssa = phi double [ %.0, %5 ]
+    <   store double %.lcssa1, ptr @sa, align 8"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function main:
+  in block %5 / %5:
+    >   %.04 = phi double [ %2, %0 ], [ %7, %5 ]
+    >   %.051 = phi i32 [ 1, %0 ], [ %9, %5 ]
+    >   %6 = phi double [ %4, %0 ], [ %8, %5 ]
+    >   %7 = fneg double %.04
+    >   %8 = fsub double %6, %.04
+    >   store double %8, ptr @sa, align 8
+    >   %9 = add nuw nsw i32 %.051, 1
+    >   %10 = icmp samesign ult i32 %.051, 156250000
+    >   br i1 %10, label %5, label %11, !llvm.loop !7
+    <   %.04 = phi double [ %2, %0 ], [ %7, %5 ]
+    <   %.051 = phi i32 [ 1, %0 ], [ %9, %5 ]
+    <   %6 = phi double [ %4, %0 ], [ %8, %5 ]
+    <   %7 = fneg double %.04
+    <   %8 = fsub double %6, %.04
+    <   store double %8, ptr @sa, align 8
+    <   %9 = add nuw nsw i32 %.051, 1
+    <   %10 = icmp samesign ult i32 %9, 156250001
+    <   br i1 %10, label %5, label %11, !llvm.loop !7"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->instcombine,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %15, %14 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %16, %14 ]
+    >   %7 = icmp samesign ult i32 %.05, 156250001
+    >   br i1 %7, label %8, label %17
+    <   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+    <   %.0 = phi double [ %2, %0 ], [ %.0, %16 ]
+    <   %7 = icmp samesign ult i32 %.05, 156250001
+    <   br i1 %7, label %8, label %19"
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,dependent,true,false_positive,inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%9;inst:main:bb1:1:store;inst:main:bb1:2:br;inst:main:bb2:1:store;inst:main:bb2:2:br;inst:main:bb4:1:store;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret,inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%9;inst:main:bb1:1:store;inst:main:bb1:2:br;inst:main:bb2:1:store;inst:main:bb2:2:br;inst:main:bb4:1:store;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb1:1:store;inst:main:bb1:2:br;inst:main:bb2:1:store;inst:main:bb2:2:br;inst:main:bb4:1:store;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%7;inst:main:%8;inst:main:%9;inst:main:bb1:1:store;inst:main:bb2:1:store;inst:main:bb4:1:store;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store,inst:main:bb1:2:br;inst:main:bb2:2:br;inst:main:bb4:2:br;inst:main:bb5:6:ret,inst,mixed,expansion,loop-rotate->licm;licm->loop-rotate,
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,false,agree_dependent,inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:bb1:2:br;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret,inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:bb1:2:br;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:bb1:2:br;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%11;inst:main:%12;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:%39;inst:main:%40;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store,inst:main:bb1:2:br;inst:main:bb4:2:br;inst:main:bb5:6:ret,inst,mixed,expansion,licm->loop-unroll;loop-unroll->licm,"in function main:
+  in block %0 / %0:
+    >   %5 = fneg double %2
+    >   %6 = fneg double %2"
+licm,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:bb1:2:br;inst:main:bb3:1:br;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret;loop:main:bb0;loop:main:bb3,inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:bb1:2:br;inst:main:bb3:1:br;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret;loop:main:bb0;loop:main:bb3,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:bb1:2:br;inst:main:bb3:1:br;inst:main:bb3:1:store;inst:main:bb4:2:br;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;inst:main:bb5:6:ret;loop:main:bb0;loop:main:bb3,read_write;enablement,strong,strong,strong,none,inst:main:%.0.lcssa;inst:main:%.02.lcssa;inst:main:%.03.lcssa;inst:main:%.lcssa;inst:main:%11;inst:main:%14;inst:main:%15;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%25;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%35;inst:main:%37;inst:main:%38;inst:main:bb3:1:store;inst:main:bb5:2:store;inst:main:bb5:3:store;inst:main:bb5:4:store;inst:main:bb5:5:store;loop:main:bb0;loop:main:bb3,inst:main:bb1:2:br;inst:main:bb3:1:br;inst:main:bb4:2:br;inst:main:bb5:6:ret,inst;loop,mixed,expansion,loop-rotate->loop-unroll;loop-unroll->loop-rotate,"in function main:
+  in block %5 / %5:
+    >   %.051 = phi i32 [ 1, %0 ], [ %16, %14 ]
+    >   %6 = phi double [ %4, %0 ], [ %15, %14 ]
+    >   %7 = fneg double %2
+    >   %8 = fsub double %6, %2
+    >   store double %8, ptr @sa, align 8
+    >   br label %9
+    <   %.04 = phi double [ %2, %0 ], [ %13, %5 ]
+    <   %.051 = phi i32 [ 1, %0 ], [ %15, %5 ]
+    <   %6 = phi double [ %4, %0 ], [ %14, %5 ]
+    <   %7 = fneg double %.04
+    <   %8 = fsub double %6, %.04
+    <   store double %8, ptr @sa, align 8
+    <   %9 = fsub double %8, %7
+    <   store double %9, ptr @sa, align 8
+    <   %10 = fneg double %.04
+    <   %11 = fsub double %9, %.04
+    <   store double %11, ptr @sa, align 8
+    <   %12 = fsub double %11, %10
+    <   store double %12, ptr @sa, align 8
+    <   %13 = fneg double %.04
+    <   %14 = fsub double %12, %.04
+    <   store double %14, ptr @sa, align 8
+    <   %15 = add nuw nsw i32 %.051, 5
+    <   %16 = icmp samesign ult i32 %15, 156250001
+    <   br i1 %16, label %5, label %17, !llvm.loop !7"
+loop-rotate,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->loop-simplify,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+    >   %7 = icmp samesign ult i32 %.05, 156250001
+    >   br i1 %7, label %8, label %19
+    <   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+    <   %.0 = phi double [ %2, %0 ], [ %.0, %16 ]
+    <   %7 = icmp samesign ult i32 %.05, 156250001
+    <   br i1 %7, label %8, label %19"
+loop-simplify,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->simplifycfg,"in function main:
+  in block %5 / %5:
+    >   %6 = phi double [ %4, %0 ], [ %14, %8 ]
+    >   %.05 = phi i32 [ 1, %0 ], [ %15, %8 ]
+    <   %6 = phi double [ %4, %0 ], [ %17, %16 ]
+    <   %.05 = phi i32 [ 1, %0 ], [ %18, %16 ]
+  in block %8 / %8:
+    >   %11 = fsub double %10, %9
+    >   store double %11, ptr @sa, align 8
+    >   %12 = fneg double %.0
+    >   %13 = fsub double %11, %.0
+    >   store double %13, ptr @sa, align 8
+    >   %14 = fsub double %13, %12
+    >   store double %14, ptr @sa, align 8
+    >   %15 = add nuw nsw i32 %.05, 4
+  in block %20 / %17:
+    >   %18 = phi double [ %.lcssa, %16 ], [ %28, %20 ]
+    >   %.16 = phi i32 [ 1, %16 ], [ %33, %20 ]
+    >   %.03 = phi double [ 0.000000e+00, %16 ], [ %32, %20 ]
+    >   %.02 = phi double [ 0.000000e+00, %16 ], [ %30, %20 ]
+    >   %.01 = phi double [ %.lcssa, %16 ], [ %29, %20 ]
+    <   %21 = phi double [ %.lcssa, %19 ], [ %32, %31 ]
+    <   %.16 = phi i32 [ 1, %19 ], [ %37, %31 ]
+    <   %.03 = phi double [ 0.000000e+00, %19 ], [ %36, %31 ]
+    <   %.02 = phi double [ 0.000000e+00, %19 ], [ %34, %31 ]
+    <   %.01 = phi double [ %.lcssa, %19 ], [ %33, %31 ]
+  in block %23 / %20:
+    in instruction   br label %31 /   br label %17, !llvm.loop !9:
+      successor %31 cannot be equivalent to %17; it's already equivalent to %20
+    >   %28 = fsub double %22, %21
+    >   store double %28, ptr @sa, align 8
+    >   %29 = fadd double %24, %23
+    >   %30 = call double @llvm.fmuladd.f64(double %21, double %29, double %25)
+    >   %31 = fdiv double %21, %29
+    >   %32 = fsub double %27, %31
+    >   %33 = add nuw nsw i32 %.16, 2
+  in block %31 / %20:
+    >   %21 = fneg double %.1
+    >   %22 = fsub double %18, %.1
+    >   store double %22, ptr @sa, align 8
+    >   %23 = load double, ptr @two, align 8
+    >   %24 = fadd double %.01, %23
+    >   %25 = call double @llvm.fmuladd.f64(double %.1, double %24, double %.02)
+    >   %26 = fdiv double %.1, %24
+    >   %27 = fsub double %.03, %26
+  in block %16 / %8:
+    >   %9 = fneg double %.0
+    >   %10 = fsub double %6, %.0
+    >   store double %10, ptr @sa, align 8
+    >   %11 = fsub double %10, %9
+    >   store double %11, ptr @sa, align 8
+    >   %12 = fneg double %.0
+    >   %13 = fsub double %11, %.0
+    >   store double %13, ptr @sa, align 8
+    >   %14 = fsub double %13, %12
+    >   store double %14, ptr @sa, align 8
+    <   %17 = fsub double %15, %14
+    <   store double %17, ptr @sa, align 8"

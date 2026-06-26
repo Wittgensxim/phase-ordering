@@ -1,0 +1,155 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__simplifycfg.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,early-cse,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__early-cse.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__gvn.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__instcombine.ll,
+instcombine,loop-simplify,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__loop-simplify.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__loop-rotate.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__instcombine.ll,"in function bInitarr:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 1, %0 ], [ %17, %16 ]
+    <   %2 = phi i32 [ 1, %0 ], [ %17, %16 ]
+  in block %16 / %16:
+    >   %18 = icmp samesign ult i32 %2, 500
+    >   br i1 %18, label %1, label %19, !llvm.loop !7
+    <   %18 = icmp samesign ult i32 %17, 501
+    <   br i1 %18, label %1, label %19, !llvm.loop !7
+
+in function Bubble:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]
+    <   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]
+  in block %16 / %16:
+    >   %18 = icmp sgt i32 %storemerge1, 2
+    >   br i1 %18, label %2, label %19, !llvm.loop !9
+    <   %18 = icmp sgt i32 %17, 1
+    <   br i1 %18, label %2, label %19, !llvm.loop !9
+  in block %14 / %14:
+    >   %15 = icmp samesign ult i32 %8, %storemerge1
+    >   br i1 %15, label %3, label %16, !llvm.loop !7
+    <   %15 = icmp slt i32 %8, %storemerge1
+    <   br i1 %15, label %3, label %16, !llvm.loop !7
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+    <   %2 = phi i32 [ 0, %0 ], [ %3, %1 ]
+        call void @Bubble(i32 noundef %2)
+    >   %3 = add nuw nsw i32 %2, 1
+    >   %4 = icmp samesign ult i32 %2, 99
+    >   br i1 %4, label %1, label %5, !llvm.loop !7
+    <   %3 = add nuw nsw i32 %2, 1
+    <   %4 = icmp samesign ult i32 %3, 100
+    <   br i1 %4, label %1, label %5, !llvm.loop !7"
+instcombine,licm,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__licm.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__instcombine.ll,"in function Bubble:
+  in block %21 / %21:
+    >   store i32 %storemerge, ptr @top, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %2 ]
+    <   store i32 %storemerge.lcssa, ptr @top, align 4"
+instcombine,indvars,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__instcombine.ll,"in function bInitarr:
+  in block %1 / %1:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %15 ], [ 1, %0 ]
+    >   %exitcond.not = icmp eq i64 %indvars.iv, 501
+    >   br i1 %exitcond.not, label %16, label %2
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %15 ], [ 1, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 501
+    <   br i1 %exitcond, label %2, label %16
+
+in function Bubble:
+  in block %6 / %6:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %5 ]
+    >   %exitcond.not = icmp eq i64 %indvars.iv, %indvars.iv2
+    >   br i1 %exitcond.not, label %15, label %7
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 1, %5 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %indvars.iv2
+    <   br i1 %exitcond, label %7, label %15
+
+in function main:
+  in block %1 / %1:
+    >   %2 = phi i32 [ %4, %3 ], [ 0, %0 ]
+    >   %exitcond.not = icmp eq i32 %2, 100
+    >   br i1 %exitcond.not, label %5, label %3
+    <   %2 = phi i32 [ %4, %3 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i32 %2, 100
+    <   br i1 %exitcond, label %3, label %5"
+instcombine,loop-unroll,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\instcombine__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__instcombine.ll,
+simplifycfg,early-cse,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__early-cse.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__gvn.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__loop-simplify.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__simplifycfg.ll,"in function Bubble:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %11, %17 ], [ 1, %2 ]
+    >   %6 = icmp slt i32 %5, %storemerge
+    >   br i1 %6, label %7, label %18
+    <   br label %4"
+simplifycfg,loop-rotate,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__loop-rotate.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__simplifycfg.ll,
+simplifycfg,licm,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__licm.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__simplifycfg.ll,"in function Bubble:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %11, %17 ], [ 1, %2 ]
+    >   %6 = icmp slt i32 %5, %storemerge
+    >   br i1 %6, label %7, label %18
+    <   br label %4"
+simplifycfg,indvars,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__simplifycfg.ll,"in function Bubble:
+  in block %.preheader / %5:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %13 ], [ 1, %2 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, %indvars.iv2
+    >   br i1 %exitcond, label %6, label %14
+    <   br label %5"
+simplifycfg,loop-unroll,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\simplifycfg__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__simplifycfg.ll,"in function Bubble:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %11, %17 ], [ 1, %2 ]
+    >   %6 = icmp slt i32 %5, %storemerge
+    >   br i1 %6, label %7, label %18
+    <   br label %4"
+early-cse,gvn,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__gvn.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__early-cse.ll,
+early-cse,loop-simplify,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__loop-simplify.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__loop-rotate.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__early-cse.ll,
+early-cse,licm,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__licm.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__early-cse.ll,"in function Bubble:
+  in block %21 / %21:
+    >   store i32 %storemerge, ptr @top, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %2 ]
+    <   store i32 %storemerge.lcssa, ptr @top, align 4"
+early-cse,indvars,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__early-cse.ll,
+early-cse,loop-unroll,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\early-cse__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__early-cse.ll,
+gvn,loop-simplify,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__loop-simplify.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__loop-rotate.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__gvn.ll,"in function Bubble:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 500, %1 ], [ %18, %17 ]
+    >   %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4
+    <   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]"
+gvn,licm,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__licm.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__gvn.ll,"in function Bubble:
+  in block %21 / %21:
+    >   store i32 %storemerge, ptr @top, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %2 ]
+    <   store i32 %storemerge.lcssa, ptr @top, align 4"
+gvn,indvars,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__gvn.ll,
+gvn,loop-unroll,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\gvn__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__gvn.ll,
+loop-simplify,loop-rotate,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__loop-rotate.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__licm.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-simplify__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-rotate,licm,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__licm.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__loop-rotate.ll,"in function Bubble:
+  in block %1 / %1:
+    <   store i32 500, ptr @top, align 4"
+loop-rotate,indvars,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-rotate__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__loop-rotate.ll,"function @llvm.assume exists only in left module
+in function Bubble:
+  in block %2 / %2:
+    >   %storemerge1 = phi i32 [ 500, %1 ], [ %17, %16 ]
+    >   br label %3
+    <   %indvar = phi i32 [ 0, %1 ], [ %indvar.next, %39 ]
+    <   %storemerge1 = phi i32 [ 500, %1 ], [ %40, %39 ]
+    <   %3 = mul nsw i32 %indvar, -1
+    <   %4 = add i32 %3, 499
+    <   %5 = add i32 %3, 498
+    <   %xtraiter = and i32 %4, 1
+    <   %6 = icmp ult i32 %5, 1
+    <   br i1 %6, label %.epil.preheader, label %.new"
+licm,indvars,false,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__indvars.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__licm.ll,"in function Bubble:
+  in block %2 / %2:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %15 ], [ 500, %1 ]
+    >   %3 = trunc nuw nsw i64 %indvars.iv2 to i32
+    >   %4 = icmp samesign ugt i64 %indvars.iv2, 1
+    >   br i1 %4, label %5, label %16
+    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %14 ], [ 500, %1 ]
+    <   %3 = icmp samesign ugt i64 %indvars.iv2, 1
+    <   br i1 %3, label %4, label %15"
+licm,loop-unroll,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\licm__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,true,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\indvars__then__loop-unroll.ll,results\cmp_test\cmp_oracle_O2\Stanford_Bubblesort\round_001\analysis\Stanford_Bubblesort\commutativity\loop-unroll__then__indvars.ll,

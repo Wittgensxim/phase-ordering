@@ -1,0 +1,143 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %23, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %16, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %24 = sext i32 %.epil.init2 to i64
+    >   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    >   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    >   %27 = load i32, ptr %26, align 4
+    >   %28 = icmp sgt i32 %.epil.init, %27
+    >   br i1 %28, label %29, label %.epilog-lcssa
+    <   %24 = sext i32 %.epil.init2 to i64
+    <   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    <   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    <   %27 = load i32, ptr %26, align 4
+    <   %28 = icmp sgt i32 %.epil.init, %27
+    <   br i1 %28, label %29, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %23, %22 ]
+    <   %.lcssa = phi i32 [ %16, %22 ]"
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %23, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %16, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %24 = sext i32 %.epil.init2 to i64
+    >   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    >   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    >   %27 = load i32, ptr %26, align 4
+    >   %28 = icmp sgt i32 %.epil.init, %27
+    >   br i1 %28, label %29, label %.epilog-lcssa
+    <   %24 = sext i32 %.epil.init2 to i64
+    <   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    <   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    <   %27 = load i32, ptr %26, align 4
+    <   %28 = icmp sgt i32 %.epil.init, %27
+    <   br i1 %28, label %29, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %23, %22 ]
+    <   %.lcssa = phi i32 [ %16, %22 ]"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %23, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %16, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %24 = sext i32 %.epil.init2 to i64
+    >   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    >   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    >   %27 = load i32, ptr %26, align 4
+    >   %28 = icmp sgt i32 %.epil.init, %27
+    >   br i1 %28, label %29, label %.epilog-lcssa
+    <   %24 = sext i32 %.epil.init2 to i64
+    <   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    <   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    <   %27 = load i32, ptr %26, align 4
+    <   %28 = icmp sgt i32 %.epil.init, %27
+    <   br i1 %28, label %29, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %23, %22 ]
+    <   %.lcssa = phi i32 [ %16, %22 ]"
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %23, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %16, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %24 = sext i32 %.epil.init2 to i64
+    >   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    >   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    >   %27 = load i32, ptr %26, align 4
+    >   %28 = icmp sgt i32 %.epil.init, %27
+    >   br i1 %28, label %29, label %.epilog-lcssa
+    <   %24 = sext i32 %.epil.init2 to i64
+    <   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    <   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    <   %27 = load i32, ptr %26, align 4
+    <   %28 = icmp sgt i32 %.epil.init, %27
+    <   br i1 %28, label %29, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %23, %22 ]
+    <   %.lcssa = phi i32 [ %16, %22 ]"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %23, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %16, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %24 = sext i32 %.epil.init2 to i64
+    >   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    >   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    >   %27 = load i32, ptr %26, align 4
+    >   %28 = icmp sgt i32 %.epil.init, %27
+    >   br i1 %28, label %29, label %.epilog-lcssa
+    <   %24 = sext i32 %.epil.init2 to i64
+    <   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    <   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    <   %27 = load i32, ptr %26, align 4
+    <   %28 = icmp sgt i32 %.epil.init, %27
+    <   br i1 %28, label %29, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %23, %22 ]
+    <   %.lcssa = phi i32 [ %16, %22 ]"
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->instcombine,"in function Bubble:
+  in block %.epil.preheader:
+    >   %.epil.init = phi i32 [ %.pre, %2 ], [ %23, %.unr-lcssa ]
+    >   %.epil.init2 = phi i32 [ 1, %2 ], [ %16, %.unr-lcssa ]
+    <   %.epil.init = phi i32 [ %.pre, %2 ], [ %.lcssa1, %.unr-lcssa ]
+    <   %.epil.init2 = phi i32 [ 1, %2 ], [ %.lcssa, %.unr-lcssa ]
+        %lcmp.mod3 = trunc i32 %3 to i1
+        call void @llvm.assume(i1 %lcmp.mod3)
+    >   %24 = sext i32 %.epil.init2 to i64
+    >   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    >   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    >   %27 = load i32, ptr %26, align 4
+    >   %28 = icmp sgt i32 %.epil.init, %27
+    >   br i1 %28, label %29, label %.epilog-lcssa
+    <   %24 = sext i32 %.epil.init2 to i64
+    <   %25 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %24
+    <   %26 = getelementptr inbounds nuw i8, ptr %25, i64 4
+    <   %27 = load i32, ptr %26, align 4
+    <   %28 = icmp sgt i32 %.epil.init, %27
+    <   br i1 %28, label %29, label %.epilog-lcssa
+  in block %.unr-lcssa:
+    <   %.lcssa1 = phi i32 [ %23, %22 ]
+    <   %.lcssa = phi i32 [ %16, %22 ]"
+loop-rotate,loop-unroll,dependent,true,false_positive,,,inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1,read_write,strong,strong,none,none,inst:Bubble:%.lcssa;inst:Bubble:%.lcssa1,,inst,write_write_only,,,

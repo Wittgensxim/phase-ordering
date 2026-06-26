@@ -1,0 +1,369 @@
+{
+  "summary": {
+    "total_pairs": 45,
+    "commuting_pairs": 23,
+    "non_commuting_pairs": 22
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": "in function doSearch:\n  in block %26 / %26:\n    in instruction   br i1 %.not, label %28, label %.critedge /   br i1 %.not, label %28, label %split:\n      successor %.critedge cannot be equivalent to %split; it's already equivalent to %35\n  in block %._crit_edge:\n    >   br label %split\n    <   br i1 %25, label %31, label %.critedge"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__sccp.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__instcombine.ll",
+      "details": "in function initWorkList:\n  in block %3 / %3:\n    >   %4 = icmp sgt i32 %2, 0\n    >   br i1 %4, label %.lr.ph, label %12\n    <   %4 = icmp slt i32 0, %2\n    <   br i1 %4, label %.lr.ph, label %12\n\nin function initCombList:\n  in block %2 / %2:\n    >   %3 = icmp sgt i32 %1, 0\n    >   br i1 %3, label %.lr.ph, label %10\n    <   %3 = icmp slt i32 0, %1\n    <   br i1 %3, label %.lr.ph, label %10\n\nin function saveSolution:\n  in block %3 / %3:\n    >   %4 = icmp sgt i32 %2, 0\n    >   br i1 %4, label %.lr.ph, label %18\n    <   %4 = icmp slt i32 0, %2\n    <   br i1 %4, label %.lr.ph, label %18\n\nin function printSolution:\n  in block %2 / %2:\n    >   %4 = icmp sgt i32 %1, 0\n    >   br i1 %4, label %.lr.ph, label %31\n    <   %4 = icmp slt i32 0, %1\n    <   br i1 %4, label %.lr.ph, label %31\n\nin function printList:\n  in block %3 / %3:\n    >   %4 = icmp sgt i32 %1, 0\n    >   br i1 %4, label %.lr.ph, label %16\n    <   %4 = icmp slt i32 0, %1\n    <   br i1 %4, label %.lr.ph, label %16\n\nin function recSearch:\n  in block %.preheader1:\n    >   %.024 = phi i32 [ 1, %.preheader2 ], [ %92, %91 ]\n    >   %34 = icmp eq i32 %.024, 4\n    >   %.old = icmp eq i32 %.024, 2\n    <   %.024 = phi i32 [ 1, %.preheader2 ], [ %93, %92 ]\n    <   %34 = icmp eq i32 %.024, 4\n    <   %.old = icmp eq i32 %.024, 2\n        %35 = load i32, ptr @listLength, align 4\n        %36 = add nsw i32 %35, %0\n    >   %37 = icmp sgt i32 %36, 0\n    >   br i1 %37, label %.lr.ph3, label %91\n    <   %37 = icmp slt i32 0, %36\n    <   br i1 %37, label %.lr.ph3, label %92\n\nin function doSearch:\n  in block %0 / %0:\n    >   %3 = icmp sgt i32 %.pre, 0\n    >   br i1 %3, label %.lr.ph, label %19\n    <   %3 = icmp slt i32 0, %.pre\n    <   br i1 %3, label %.lr.ph, label %19\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__instcombine.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %20 = icmp eq i32 %4, %2\n    >   br i1 %20, label %21, label %22\n    <   %.lcssa = phi i32 [ %4, %3 ]\n    <   %20 = icmp eq i32 %.lcssa, %2\n    <   br i1 %20, label %21, label %22\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function initWorkList:\n  in block %4 / %4:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %5 ], [ 0, %3 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count\n    >   br i1 %exitcond.not, label %9, label %5\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %5 ], [ 0, %3 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count\n    <   br i1 %exitcond, label %5, label %9\n\nin function initCombList:\n  in block %3 / %3:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 0, %2 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count\n    >   br i1 %exitcond.not, label %7, label %4\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %4 ], [ 0, %2 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count\n    <   br i1 %exitcond, label %4, label %7\n\nin function saveSolution:\n  in block %4 / %4:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %5 ], [ 0, %3 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count\n    >   br i1 %exitcond.not, label %15, label %5\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %5 ], [ 0, %3 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count\n    <   br i1 %exitcond, label %5, label %15\n\nin function printSolution:\n  in block %5 / %5:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %28 ], [ 0, %2 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count\n    >   br i1 %exitcond.not, label %29, label %6\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %28 ], [ 0, %2 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count\n    <   br i1 %exitcond, label %6, label %29\n\nin function printList:\n  in block %4 / %4:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %13 ], [ 0, %3 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count\n    >   br i1 %exitcond.not, label %14, label %5\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %13 ], [ 0, %3 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count\n    <   br i1 %exitcond, label %5, label %14\n\nin function recSearch:\n  in block %34 / %34:\n    >   %.02 = phi i32 [ %90, %89 ], [ 1, %.preheader2 ]\n    >   %exitcond5.not = icmp eq i32 %.02, 5\n    >   br i1 %exitcond5.not, label %.loopexit3, label %.preheader1\n    <   %.02 = phi i32 [ %90, %89 ], [ 1, %.preheader2 ]\n    <   %exitcond5 = icmp ne i32 %.02, 5\n    <   br i1 %exitcond5, label %.preheader1, label %.loopexit3\n\nin function doSearch:\n  in block %3 / %3:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 0, %0 ]\n    >   %4 = phi i32 [ %15, %14 ], [ %best.promoted, %0 ]\n    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count\n    >   br i1 %exitcond.not, label %16, label %5\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %14 ], [ 0, %0 ]\n    <   %4 = phi i32 [ %best.promoted, %0 ], [ %15, %14 ]\n    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count\n    <   br i1 %exitcond, label %5, label %16\n\nin function getInput:\n  in block %5 / %5:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %7 ], [ 0, %0 ]\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ 0, %0 ]\n        %6 = call i32 @getchar() #8\n    <   %7 = trunc nuw nsw i64 %indvars.iv to i32"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %20 = icmp eq i32 %4, %2\n    >   br i1 %20, label %21, label %22\n    <   %.lcssa = phi i32 [ %4, %3 ]\n    <   %20 = icmp eq i32 %.lcssa, %2\n    <   br i1 %20, label %21, label %22\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__sccp.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-simplify",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__simplifycfg.ll",
+      "details": "in function recSearch:\n  in block %.loopexit3.loopexit / %.loopexit3:\n    >   ret void\n    <   br label %.loopexit3\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %37, !llvm.loop !9:\n      successor %.loopexit cannot be equivalent to %37; it's already equivalent to %.loopexit\n    >   %90 = add nuw nsw i32 %.04, 1\n\nin function doSearch:\n  in block %.preheader / %22:\n    >   %23 = phi i32 [ %.pre1, %27 ], [ %.pre, %19 ]\n    >   %storemerge = phi i32 [ %29, %27 ], [ 1, %19 ]\n    >   store i32 %storemerge, ptr @dmax, align 4\n    >   %24 = icmp slt i32 %storemerge, %23\n    >   br i1 %24, label %25, label %._crit_edge\n    <   br label %22"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__simplifycfg.ll",
+      "details": "in function initWorkList:\n  in block %.lr.ph:\n    >   %.01 = phi i32 [ %9, %.lr.ph ], [ 0, %3 ]\n    >   %5 = zext nneg i32 %.01 to i64\n    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %1, i64 %5\n    >   %7 = load i32, ptr %6, align 4\n    >   %8 = getelementptr inbounds nuw [4 x i8], ptr %0, i64 %5\n    >   store i32 %7, ptr %8, align 4\n    >   %9 = add nuw nsw i32 %.01, 1\n    >   %10 = icmp slt i32 %9, %2\n    >   br i1 %10, label %.lr.ph, label %._crit_edge, !llvm.loop !7\n    <   br label %5\n\nin function initCombList:\n  in block %.lr.ph:\n    >   %.01 = phi i32 [ %7, %.lr.ph ], [ 0, %2 ]\n    >   %4 = zext nneg i32 %.01 to i64\n    >   %5 = getelementptr inbounds nuw [12 x i8], ptr %0, i64 %4\n    >   %6 = getelementptr inbounds nuw i8, ptr %5, i64 8\n    >   store i32 0, ptr %6, align 4\n    >   %7 = add nuw nsw i32 %.01, 1\n    >   %8 = icmp slt i32 %7, %1\n    >   br i1 %8, label %.lr.ph, label %._crit_edge, !llvm.loop !7\n    <   br label %4\n\nin function saveSolution:\n  in block %.lr.ph:\n    >   %.01 = phi i32 [ %15, %.lr.ph ], [ 0, %3 ]\n    >   %5 = zext nneg i32 %.01 to i64\n    >   %6 = getelementptr inbounds nuw [12 x i8], ptr %1, i64 %5\n    >   %7 = load i32, ptr %6, align 4\n    >   %8 = getelementptr inbounds nuw [12 x i8], ptr %0, i64 %5\n    >   store i32 %7, ptr %8, align 4\n    >   %9 = getelementptr inbounds nuw i8, ptr %6, i64 4\n    >   %10 = load i32, ptr %9, align 4\n    >   %11 = getelementptr inbounds nuw i8, ptr %8, i64 4\n    >   store i32 %10, ptr %11, align 4\n    >   %12 = getelementptr inbounds nuw i8, ptr %6, i64 8\n    >   %13 = load i32, ptr %12, align 4\n    >   %14 = getelementptr inbounds nuw i8, ptr %8, i64 8\n    >   store i32 %13, ptr %14, align 4\n    >   %15 = add nuw nsw i32 %.01, 1\n    >   %16 = icmp slt i32 %15, %2\n    >   br i1 %16, label %.lr.ph, label %._crit_edge, !llvm.loop !7\n    <   br label %5\n\nin function printSolution:\n  in block %.lr.ph:\n    >   %.01 = phi i32 [ %28, %27 ], [ 0, %2 ]\n    >   %5 = zext nneg i32 %.01 to i64\n    >   %6 = getelementptr inbounds nuw [12 x i8], ptr %0, i64 %5\n    >   %7 = load i32, ptr %6, align 4\n    >   %8 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str.2, i32 noundef %7) #7\n    >   %9 = getelementptr inbounds nuw i8, ptr %6, i64 8\n    >   %10 = load i32, ptr %9, align 4\n    >   switch i32 %10, label %16 [\n    i32 0, label %11\n    i32 1, label %12\n    i32 2, label %13\n    i32 3, label %14\n    i32 4, label %15\n  ]\n    <   br label %5\n\nin function printList:\n  in block %.lr.ph:\n    >   %.01 = phi i32 [ %13, %12 ], [ 0, %3 ]\n    >   %5 = shl nuw i32 1, %.01\n    >   %6 = and i32 %5, %2\n    >   %.not = icmp eq i32 %6, 0\n    >   br i1 %.not, label %7, label %12\n    <   br label %5\n\nin function recSearch:\n  in block %.lr.ph3:\n    >   %.042 = phi i32 [ %85, %.loopexit ], [ 0, %.preheader1 ]\n    >   %38 = shl nuw i32 1, %.042\n    >   %39 = and i32 %38, %1\n    >   %.not1 = icmp eq i32 %39, 0\n    >   br i1 %.not1, label %.preheader, label %.loopexit\n    <   br label %38\n  in block %.loopexit3.loopexit / %.loopexit3:\n    >   ret void\n    <   br label %.loopexit3\n\nin function doSearch:\n  in block %.lr.ph:\n    >   %.02 = phi i32 [ %16, %14 ], [ 0, %0 ]\n    >   %4 = phi i32 [ %15, %14 ], [ %best.promoted, %0 ]\n    >   %5 = zext nneg i32 %.02 to i64\n    >   %6 = getelementptr inbounds nuw [4 x i8], ptr %1, i64 %5\n    >   %7 = load i32, ptr %6, align 4\n    >   %8 = sub nsw i32 %7, %2\n    >   %9 = call i32 @llvm.abs.i32(i32 %8, i1 true)\n    >   %10 = sub nsw i32 %4, %2\n    >   %11 = call i32 @llvm.abs.i32(i32 %10, i1 true)\n    >   %12 = icmp samesign ult i32 %9, %11\n    >   br i1 %12, label %13, label %14\n    <   br label %4\n  in block %19 / %._crit_edge4:\n    >   %.lcssa1 = phi i32 [ %best.promoted, %0 ], [ %15, %14 ]\n    >   %18 = icmp eq i32 %.lcssa1, %2\n    >   br i1 %18, label %19, label %20\n    <   %.lcssa1 = phi i32 [ %split5, %._crit_edge4 ], [ %best.promoted, %0 ]\n    <   %20 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %20, label %22, label %.preheader"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__simplifycfg.ll",
+      "details": "in function recSearch:\n  in block %.loopexit3.loopexit / %.loopexit3:\n    >   ret void\n    <   br label %.loopexit3\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %37, !llvm.loop !9:\n      successor %.loopexit cannot be equivalent to %37; it's already equivalent to %.loopexit\n    >   %90 = add nuw nsw i32 %.04, 1\n\nin function doSearch:\n  in block %.preheader / %22:\n    >   %23 = phi i32 [ %.pre1, %27 ], [ %.pre, %19 ]\n    >   %storemerge = phi i32 [ %29, %27 ], [ 1, %19 ]\n    >   store i32 %storemerge, ptr @dmax, align 4\n    >   %24 = icmp slt i32 %storemerge, %23\n    >   br i1 %24, label %25, label %._crit_edge\n    <   br label %22"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": "in function recSearch:\n  in block %.loopexit3.loopexit / %.loopexit3:\n    >   ret void\n    <   br label %.loopexit3\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %36, !llvm.loop !9:\n      successor %.loopexit cannot be equivalent to %36; it's already equivalent to %.loopexit\n    >   %indvars.iv.next3 = add nuw nsw i64 %indvars.iv2, 1\n\nin function doSearch:\n  in block %.preheader / %19:\n    >   %20 = phi i32 [ %.pre1, %24 ], [ %.pre, %16 ]\n    >   %storemerge = phi i32 [ %26, %24 ], [ 1, %16 ]\n    >   store i32 %storemerge, ptr @dmax, align 4\n    >   %21 = icmp slt i32 %storemerge, %20\n    >   br i1 %21, label %22, label %._crit_edge\n    <   br label %19"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function recSearch:\n  in block %.loopexit3.loopexit / %.loopexit3:\n    >   ret void\n    <   br label %.loopexit3\n  in block %.loopexit.loopexit / %.loopexit:\n    in instruction   br label %.loopexit /   br label %37, !llvm.loop !9:\n      successor %.loopexit cannot be equivalent to %37; it's already equivalent to %.loopexit\n    >   %90 = add nuw nsw i32 %.04, 1\n\nin function doSearch:\n  in block %.preheader / %22:\n    >   %23 = phi i32 [ %.pre1, %27 ], [ %.pre, %19 ]\n    >   %storemerge = phi i32 [ %29, %27 ], [ 1, %19 ]\n    >   store i32 %storemerge, ptr @dmax, align 4\n    >   %24 = icmp slt i32 %storemerge, %23\n    >   br i1 %24, label %25, label %._crit_edge\n    <   br label %22"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__sccp.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__early-cse.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %.lcssa1 = phi i32 [ %16, %._crit_edge4 ], [ %best.promoted, %0 ]\n    <   %.lcssa1 = phi i32 [ %split5, %._crit_edge4 ], [ %best.promoted, %0 ]\n  in block %._crit_edge4:\n    <   %split5 = phi i32 [ %16, %15 ]\n  in block %split:\n    <   %.lcssa = phi i32 [ %25, %24 ]\n  in block %30 / %30:\n    >   %31 = phi i32 [ %25, %split ], [ %.pre2, %._crit_edge ]\n    >   %32 = icmp eq i32 %31, 0\n    >   br i1 %32, label %33, label %36\n    <   %31 = phi i32 [ %.lcssa, %split ], [ %.pre2, %._crit_edge ]\n    <   %32 = icmp eq i32 %31, 0\n    <   br i1 %32, label %33, label %36\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__early-cse.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %20 = icmp eq i32 %4, %2\n    >   br i1 %20, label %21, label %22\n    <   %.lcssa1 = phi i32 [ %4, %3 ]\n    <   %20 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %20, label %21, label %22\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__early-cse.ll",
+      "details": "in function doSearch:\n  in block %16 / %16:\n    >   %17 = icmp eq i32 %4, %2\n    >   br i1 %17, label %18, label %19\n    <   %.lcssa1 = phi i32 [ %4, %3 ]\n    <   %17 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %17, label %18, label %19\n\nin function getInput:\n  in block %14 / %14:\n    >   %15 = icmp eq i32 %7, 0\n    >   %16 = add nsw i32 %7, -1\n    >   %17 = select i1 %15, i32 3, i32 %16\n    >   store i32 %17, ptr @listLength, align 4\n    >   %18 = sext i32 %17 to i64\n    >   %19 = getelementptr inbounds [4 x i8], ptr %1, i64 %18\n    >   %20 = load i32, ptr %19, align 4\n    >   store i32 %20, ptr @goal, align 4\n    >   %21 = shl nsw i32 %17, 1\n    <   %.0.lcssa = phi i32 [ %7, %5 ], [ %7, %5 ]\n    <   %15 = icmp eq i32 %.0.lcssa, 0\n    <   %16 = add nsw i32 %.0.lcssa, -1\n    <   %17 = select i1 %15, i32 3, i32 %16\n    <   store i32 %17, ptr @listLength, align 4\n    <   %18 = sext i32 %17 to i64\n    <   %19 = getelementptr inbounds [4 x i8], ptr %1, i64 %18\n    <   %20 = load i32, ptr %19, align 4\n    <   store i32 %20, ptr @goal, align 4\n    <   %21 = shl nsw i32 %17, 1"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %20 = icmp eq i32 %4, %2\n    >   br i1 %20, label %21, label %22\n    <   %.lcssa1 = phi i32 [ %4, %3 ]\n    <   %20 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %20, label %21, label %22\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "sccp",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__sccp.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__gvn.ll",
+      "details": "in function recSearch:\n  in block %.preheader2:\n    >   %.pre = load i32, ptr @listLength, align 4\n\nin function doSearch:\n  in block %.._crit_edge_crit_edge:\n    in instruction   br label %._crit_edge /   br label %._crit_edge:\n      successor %._crit_edge cannot be equivalent to %._crit_edge; it's already equivalent to %.._crit_edge_crit_edge8\n  in block %19 / %19:\n    >   %.lcssa1 = phi i32 [ %16, %._crit_edge4 ], [ %best.promoted, %0 ]\n    <   %.lcssa1 = phi i32 [ %split5, %._crit_edge4 ], [ %best.promoted, %0 ]\n  in block %._crit_edge4:\n    <   %split5 = phi i32 [ %16, %15 ]\n  in block %split:\n    in instruction   br label %30 /   br label %30:\n      successor %30 cannot be equivalent to %30; it's already equivalent to %._crit_edge\n    <   %.lcssa = phi i32 [ %25, %24 ]\n  in block %30 / %._crit_edge:\n    >   %.pre2 = phi i32 [ %.pre2.pre, %.._crit_edge_crit_edge8 ], [ 0, %.._crit_edge_crit_edge ]\n    >   br label %30\n    <   %31 = phi i32 [ %.lcssa, %split ], [ %.pre2, %._crit_edge ]\n    <   %32 = icmp eq i32 %31, 0\n    <   br i1 %32, label %33, label %36\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__gvn.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %20 = icmp eq i32 %4, %2\n    >   br i1 %20, label %21, label %22\n    <   %.lcssa1 = phi i32 [ %4, %3 ]\n    <   %20 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %20, label %21, label %22\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__gvn.ll",
+      "details": "in function doSearch:\n  in block %16 / %16:\n    >   %17 = icmp eq i32 %4, %2\n    >   br i1 %17, label %18, label %19\n    <   %.lcssa1 = phi i32 [ %4, %3 ]\n    <   %17 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %17, label %18, label %19\n\nin function getInput:\n  in block %14 / %14:\n    >   %15 = icmp eq i32 %7, 0\n    >   %16 = add nsw i32 %7, -1\n    >   %17 = select i1 %15, i32 3, i32 %16\n    >   store i32 %17, ptr @listLength, align 4\n    >   %18 = sext i32 %17 to i64\n    >   %19 = getelementptr inbounds [4 x i8], ptr %1, i64 %18\n    >   %20 = load i32, ptr %19, align 4\n    >   store i32 %20, ptr @goal, align 4\n    >   %21 = shl nsw i32 %17, 1\n    <   %.0.lcssa = phi i32 [ %7, %5 ], [ %7, %5 ]\n    <   %15 = icmp eq i32 %.0.lcssa, 0\n    <   %16 = add nsw i32 %.0.lcssa, -1\n    <   %17 = select i1 %15, i32 3, i32 %16\n    <   store i32 %17, ptr @listLength, align 4\n    <   %18 = sext i32 %17 to i64\n    <   %19 = getelementptr inbounds [4 x i8], ptr %1, i64 %18\n    <   %20 = load i32, ptr %19, align 4\n    <   store i32 %20, ptr @goal, align 4\n    <   %21 = shl nsw i32 %17, 1"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function doSearch:\n  in block %19 / %19:\n    >   %20 = icmp eq i32 %4, %2\n    >   br i1 %20, label %21, label %22\n    <   %.lcssa1 = phi i32 [ %4, %3 ]\n    <   %20 = icmp eq i32 %.lcssa1, %2\n    <   br i1 %20, label %21, label %22\n\nin function getInput:\n  in block %15 / %15:\n    >   %16 = icmp eq i32 %.0, 0\n    >   %17 = add nsw i32 %.0, -1\n    >   %18 = select i1 %16, i32 3, i32 %17\n    >   store i32 %18, ptr @listLength, align 4\n    >   %19 = sext i32 %18 to i64\n    >   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    >   %21 = load i32, ptr %20, align 4\n    >   store i32 %21, ptr @goal, align 4\n    >   %22 = shl nsw i32 %18, 1\n    <   %.0.lcssa = phi i32 [ %.0, %5 ], [ %.0, %5 ]\n    <   %16 = icmp eq i32 %.0.lcssa, 0\n    <   %17 = add nsw i32 %.0.lcssa, -1\n    <   %18 = select i1 %16, i32 3, i32 %17\n    <   store i32 %18, ptr @listLength, align 4\n    <   %19 = sext i32 %18 to i64\n    <   %20 = getelementptr inbounds [4 x i8], ptr %1, i64 %19\n    <   %21 = load i32, ptr %20, align 4\n    <   store i32 %21, ptr @goal, align 4\n    <   %22 = shl nsw i32 %18, 1"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-simplify",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__loop-simplify.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-rotate",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__sccp.ll",
+      "details": "in function recSearch:\n  in block %38 / %38:\n    >   %.042 = phi i32 [ 0, %.lr.ph3 ], [ %88, %87 ]\n    <   %.049 = phi i32 [ 0, %.lr.ph11 ], [ %88, %87 ]\n  in block %87 / %87:\n    >   %88 = add nuw nsw i32 %.042, 1\n    <   %.0410 = phi i32 [ %.049, %.loopexit ], [ %.049, %38 ]\n    <   %88 = add nuw nsw i32 %.0410, 1\n        %89 = load i32, ptr @listLength, align 4\n        %90 = add nsw i32 %89, %0\n    >   %91 = icmp slt i32 %88, %90\n    >   br i1 %91, label %38, label %._crit_edge, !llvm.loop !9\n    <   %91 = icmp slt i32 %88, %90\n    <   br i1 %91, label %38, label %._crit_edge, !llvm.loop !9"
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "sccp",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\sccp__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__sccp.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-rotate",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__loop-rotate.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-simplify",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-simplify__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__loop-simplify.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__licm.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__loop-rotate.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__loop-rotate.ll",
+      "details": "function @llvm.smax.i32 exists only in right module\nin function initWorkList:\n  in block %3 / %3:\n    >   %smax = call i32 @llvm.smax.i32(i32 %2, i32 0)\n    >   %wide.trip.count = zext i32 %smax to i64\n    >   %exitcond2 = icmp ne i64 0, %wide.trip.count\n    >   br i1 %exitcond2, label %.lr.ph, label %8\n    <   %4 = icmp slt i32 0, %2\n    <   br i1 %4, label %.lr.ph, label %9\n\nin function initCombList:\n  in block %2 / %2:\n    >   %smax = call i32 @llvm.smax.i32(i32 %1, i32 0)\n    >   %wide.trip.count = zext i32 %smax to i64\n    >   %exitcond2 = icmp ne i64 0, %wide.trip.count\n    >   br i1 %exitcond2, label %.lr.ph, label %6\n    <   %3 = icmp slt i32 0, %1\n    <   br i1 %3, label %.lr.ph, label %7\n\nin function saveSolution:\n  in block %3 / %3:\n    >   %smax = call i32 @llvm.smax.i32(i32 %2, i32 0)\n    >   %wide.trip.count = zext i32 %smax to i64\n    >   %exitcond2 = icmp ne i64 0, %wide.trip.count\n    >   br i1 %exitcond2, label %.lr.ph, label %14\n    <   %4 = icmp slt i32 0, %2\n    <   br i1 %4, label %.lr.ph, label %15\n\nin function printSolution:\n  in block %2 / %2:\n    >   %4 = sext i32 %3 to i64\n    >   %smax = call i32 @llvm.smax.i32(i32 %1, i32 0)\n    >   %wide.trip.count = zext i32 %smax to i64\n    >   %exitcond2 = icmp ne i64 0, %wide.trip.count\n    >   br i1 %exitcond2, label %.lr.ph, label %28\n    <   %4 = icmp slt i32 0, %1\n    <   br i1 %4, label %.lr.ph, label %29\n\nin function printList:\n  in block %3 / %3:\n    >   %smax = call i32 @llvm.smax.i32(i32 %1, i32 0)\n    >   %wide.trip.count = zext i32 %smax to i64\n    >   %exitcond2 = icmp ne i64 0, %wide.trip.count\n    >   br i1 %exitcond2, label %.lr.ph, label %13\n    <   %4 = icmp slt i32 0, %1\n    <   br i1 %4, label %.lr.ph, label %14\n\nin function recSearch:\n  in block %.preheader1:\n    >   %.0211 = phi i32 [ 1, %.preheader2 ], [ %91, %90 ]\n    >   %34 = icmp eq i32 %.0211, 4\n    >   %.old = icmp eq i32 %.0211, 2\n    <   %.024 = phi i32 [ 1, %.preheader2 ], [ %91, %90 ]\n    <   %34 = icmp eq i32 %.024, 4\n    <   %.old = icmp eq i32 %.024, 2\n        %35 = load i32, ptr @listLength, align 4\n        %36 = add nsw i32 %35, %0\n    >   %37 = sext i32 %36 to i64\n    >   %38 = icmp slt i64 0, %37\n    >   br i1 %38, label %.lr.ph10, label %90\n    <   %37 = icmp slt i32 0, %36\n    <   br i1 %37, label %.lr.ph3, label %90\n\nin function doSearch:\n  in block %0 / %0:\n    >   %smax = call i32 @llvm.smax.i32(i32 %.pre, i32 0)\n    >   %wide.trip.count = zext i32 %smax to i64\n    >   %exitcond3 = icmp ne i64 0, %wide.trip.count\n    >   br i1 %exitcond3, label %.lr.ph, label %15\n    <   %3 = icmp slt i32 0, %.pre\n    <   br i1 %3, label %.lr.ph, label %16"
+    },
+    {
+      "pass_a": "loop-rotate",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-rotate__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__loop-rotate.ll",
+      "details": "function @llvm.assume exists only in left module\nin function initWorkList:\n  in block %.lr.ph:\n    >   br label %5\n    <   %5 = add i32 %2, -1\n    <   %xtraiter = and i32 %2, 3\n    <   %6 = icmp ult i32 %5, 3\n    <   br i1 %6, label %.epil.preheader, label %.lr.ph.new\n\nin function initCombList:\n  in block %.lr.ph:\n    >   br label %4\n    <   %4 = add i32 %1, -1\n    <   %xtraiter = and i32 %1, 7\n    <   %5 = icmp ult i32 %4, 7\n    <   br i1 %5, label %.epil.preheader, label %.lr.ph.new\n\nin function saveSolution:\n  in block %.lr.ph:\n    >   br label %5\n    <   %5 = add i32 %2, -1\n    <   %xtraiter = and i32 %2, 1\n    <   %6 = icmp ult i32 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.lr.ph.new"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__indvars.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__licm.ll",
+      "details": "in function getInput:\n  in block %5 / %5:\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %7 ], [ 0, %0 ]\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %8 ], [ 0, %0 ]\n        %6 = call i32 @getchar() #8\n    <   %7 = trunc nuw nsw i64 %indvars.iv to i32"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__licm.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\McGill_exptree\\round_007\\analysis\\McGill_exptree\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": ""
+    }
+  ]
+}

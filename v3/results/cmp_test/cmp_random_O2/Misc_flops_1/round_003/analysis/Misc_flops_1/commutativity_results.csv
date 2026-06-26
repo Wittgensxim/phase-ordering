@@ -1,0 +1,139 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,early-cse,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\instcombine__then__early-cse.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\instcombine__then__gvn.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\gvn__then__instcombine.ll,
+instcombine,loop-rotate,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\instcombine__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %8 / %8:
+    >   %.03 = phi i32 [ 1, %0 ], [ %18, %8 ]
+    >   %.0192 = phi double [ 0.000000e+00, %0 ], [ %17, %8 ]
+    >   %.0201 = phi double [ 0.000000e+00, %0 ], [ %9, %8 ]
+    >   %9 = fadd double %.0201, %1
+    >   %10 = fmul double %9, %2
+    <   %.03 = phi i32 [ 1, %0 ], [ %18, %8 ]
+    <   %.0192 = phi double [ 0.000000e+00, %0 ], [ %17, %8 ]
+    <   %.0201 = phi double [ 0.000000e+00, %0 ], [ %9, %8 ]
+    <   %9 = fadd double %.0201, %1
+    <   %10 = fmul double %9, %2
+        %11 = call double @llvm.fmuladd.f64(double %10, double %5, double %4)
+        %12 = call double @llvm.fmuladd.f64(double %10, double %11, double %3)
+        %13 = call double @llvm.fmuladd.f64(double %10, double %7, double %6)
+        %14 = call double @llvm.fmuladd.f64(double %10, double %13, double %3)
+        %15 = call double @llvm.fmuladd.f64(double %10, double %14, double %1)
+        %16 = fdiv double %12, %15
+    >   %17 = fadd double %.0192, %16
+    >   %18 = add nuw nsw i32 %.03, 1
+    >   %19 = icmp samesign ult i32 %.03, 312499999
+    >   br i1 %19, label %8, label %20, !llvm.loop !7
+    <   %17 = fadd double %.0192, %16
+    <   %18 = add nuw nsw i32 %.03, 1
+    <   %19 = icmp samesign ult i32 %18, 312500000
+    <   br i1 %19, label %8, label %20, !llvm.loop !7"
+instcombine,licm,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\instcombine__then__licm.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\licm__then__instcombine.ll,"in function main:
+  in block %21 / %21:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+instcombine,indvars,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\instcombine__then__indvars.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\indvars__then__instcombine.ll,"in function main:
+  in block %8 / %8:
+    >   %.020 = phi double [ 0.000000e+00, %0 ], [ %10, %9 ]
+    >   %.019 = phi double [ 0.000000e+00, %0 ], [ %18, %9 ]
+    >   %.0 = phi i32 [ 1, %0 ], [ %19, %9 ]
+    >   %exitcond.not = icmp eq i32 %.0, 312500000
+    >   br i1 %exitcond.not, label %20, label %9
+    <   %.020 = phi double [ 0.000000e+00, %0 ], [ %10, %9 ]
+    <   %.019 = phi double [ 0.000000e+00, %0 ], [ %18, %9 ]
+    <   %.0 = phi i32 [ 1, %0 ], [ %19, %9 ]
+    <   %exitcond = icmp ne i32 %.0, 312500000
+    <   br i1 %exitcond, label %9, label %20"
+instcombine,loop-unroll,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\instcombine__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-unroll__then__instcombine.ll,"in function main:
+  in block %21 / %21:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+early-cse,gvn,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\early-cse__then__gvn.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\gvn__then__early-cse.ll,
+early-cse,loop-rotate,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\early-cse__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-rotate__then__early-cse.ll,"in function main:
+  in block %20 / %20:
+    <   %.019.lcssa = phi double [ %17, %8 ]
+        %21 = load double, ptr @D1, align 8
+        %22 = load double, ptr @D2, align 8
+        %23 = fadd double %21, %22
+        %24 = load double, ptr @D3, align 8
+        %25 = fadd double %23, %24
+        %26 = fadd double %1, %21
+        %27 = load double, ptr @E2, align 8
+        %28 = fadd double %26, %27
+        %29 = load double, ptr @E3, align 8
+        %30 = fadd double %28, %29
+        %31 = fdiv double %25, %30
+        store double %31, ptr @sa, align 8
+        store double %21, ptr @sb, align 8
+        %32 = fadd double %31, %21
+        %33 = load double, ptr @two, align 8
+    >   %34 = call double @llvm.fmuladd.f64(double %33, double %17, double %32)
+    >   %35 = fmul double %2, %34
+    >   %36 = fdiv double %35, %33
+    >   store double %36, ptr @sa, align 8
+    >   %37 = fdiv double %1, %36
+    >   store double %37, ptr @sb, align 8
+    >   %38 = fadd double %37, -2.520000e+01
+    >   store double %38, ptr @sc, align 8
+    >   %39 = fmul double %38, 1.000000e-30
+    <   %34 = call double @llvm.fmuladd.f64(double %33, double %.019.lcssa, double %32)
+    <   %35 = fmul double %2, %34
+    <   %36 = fdiv double %35, %33
+    <   store double %36, ptr @sa, align 8
+    <   %37 = fdiv double %1, %36
+    <   store double %37, ptr @sb, align 8
+    <   %38 = fadd double %37, -2.520000e+01
+    <   store double %38, ptr @sc, align 8
+    <   %39 = fmul double %38, 1.000000e-30"
+early-cse,licm,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\early-cse__then__licm.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\licm__then__early-cse.ll,"in function main:
+  in block %21 / %21:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+early-cse,indvars,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\early-cse__then__indvars.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\indvars__then__early-cse.ll,"in function main:
+  in block %20 / %20:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+early-cse,loop-unroll,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\early-cse__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-unroll__then__early-cse.ll,"in function main:
+  in block %21 / %21:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+gvn,loop-rotate,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\gvn__then__loop-rotate.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-rotate__then__gvn.ll,"in function main:
+  in block %20 / %20:
+    <   %.019.lcssa = phi double [ %17, %8 ]
+        %21 = fadd double %3, %4
+        %22 = fadd double %21, %5
+        %23 = fadd double %1, %3
+        %24 = fadd double %23, %6
+        %25 = fadd double %24, %7
+        %26 = fdiv double %22, %25
+        store double %26, ptr @sa, align 8
+        store double %3, ptr @sb, align 8
+        %27 = fadd double %26, %3
+        %28 = load double, ptr @two, align 8
+    >   %29 = call double @llvm.fmuladd.f64(double %28, double %17, double %27)
+    >   %30 = fmul double %2, %29
+    >   %31 = fdiv double %30, %28
+    >   store double %31, ptr @sa, align 8
+    >   %32 = fdiv double %1, %31
+    >   store double %32, ptr @sb, align 8
+    >   %33 = fadd double %32, -2.520000e+01
+    >   store double %33, ptr @sc, align 8
+    >   %34 = fmul double %33, 1.000000e-30
+    <   %29 = call double @llvm.fmuladd.f64(double %28, double %.019.lcssa, double %27)
+    <   %30 = fmul double %2, %29
+    <   %31 = fdiv double %30, %28
+    <   store double %31, ptr @sa, align 8
+    <   %32 = fdiv double %1, %31
+    <   store double %32, ptr @sb, align 8
+    <   %33 = fadd double %32, -2.520000e+01
+    <   store double %33, ptr @sc, align 8
+    <   %34 = fmul double %33, 1.000000e-30"
+gvn,licm,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\gvn__then__licm.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\licm__then__gvn.ll,"in function main:
+  in block %21 / %21:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+gvn,indvars,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\gvn__then__indvars.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\indvars__then__gvn.ll,"in function main:
+  in block %20 / %20:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+gvn,loop-unroll,false,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\gvn__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %21 / %21:
+    <   %.019.lcssa = phi double [ %.019, %8 ]"
+loop-rotate,licm,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-rotate__then__licm.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\licm__then__loop-rotate.ll,
+loop-rotate,indvars,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-rotate__then__indvars.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-rotate__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-unroll__then__loop-rotate.ll,
+licm,indvars,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\licm__then__indvars.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\indvars__then__licm.ll,
+licm,loop-unroll,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\licm__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,true,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\indvars__then__loop-unroll.ll,results\cmp_test\cmp_random_O2\Misc_flops_1\round_003\analysis\Misc_flops_1\commutativity\loop-unroll__then__indvars.ll,

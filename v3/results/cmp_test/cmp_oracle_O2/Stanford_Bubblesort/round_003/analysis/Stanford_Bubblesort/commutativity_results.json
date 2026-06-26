@@ -1,0 +1,129 @@
+{
+  "summary": {
+    "total_pairs": 15,
+    "commuting_pairs": 8,
+    "non_commuting_pairs": 7
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %3 / %3:\n    >   %4 = phi i32 [ %11, %10 ], [ %.pre, %2 ]\n    >   %indvars.iv = phi i64 [ %indvars.iv.next, %10 ], [ 1, %2 ]\n    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\n    >   %5 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv.next\n    >   %6 = load i32, ptr %5, align 4\n    >   %7 = icmp sgt i32 %4, %6\n    >   br i1 %7, label %8, label %10\n    <   %4 = phi i32 [ %11, %10 ], [ %.pre, %2 ]\n    <   %indvars.iv = phi i64 [ %indvars.iv.next, %10 ], [ 1, %2 ]\n    <   %5 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv\n    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1\n    <   %6 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv.next\n    <   %7 = load i32, ptr %6, align 4\n    <   %8 = icmp sgt i32 %4, %7\n    <   br i1 %8, label %9, label %10"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "indvars",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %11 ], [ 500, %1 ]\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %11 ], [ 500, %1 ]\n  in block %11 / %11:\n    >   %12 = icmp sgt i64 %indvars.iv2, 2\n    >   br i1 %12, label %2, label %13, !llvm.loop !9\n    <   %12 = icmp samesign ugt i64 %indvars.iv2, 2\n    <   br i1 %12, label %2, label %13, !llvm.loop !9"
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i64 [ %indvar.next, %28 ], [ 0, %1 ]\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %28 ], [ 500, %1 ]\n    >   %3 = sub i64 499, %indvar\n    >   %xtraiter = and i64 %3, 1\n    >   %4 = icmp eq i64 %indvar, 498\n    >   br i1 %4, label %.epil.preheader, label %.new\n    <   %indvar = phi i64 [ %indvar.next, %29 ], [ 0, %1 ]\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ 500, %1 ]\n    <   %3 = mul nsw i64 %indvar, -1\n    <   %4 = add i64 %3, 499\n    <   %5 = add i64 %3, 498\n    <   %xtraiter = and i64 %4, 1\n    <   %6 = icmp ult i64 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.new"
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %22 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv.epil.init\n    >   %23 = load i32, ptr %22, align 4\n    >   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv.epil.init, 1\n    >   %24 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv.next.epil\n    >   %25 = load i32, ptr %24, align 4\n    >   %26 = icmp sgt i32 %23, %25\n    >   br i1 %26, label %27, label %.epilog-lcssa\n    <   br label %22"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function Bubble:\n  in block %.epil.preheader:\n    >   %indvars.iv.epil.init = phi i64 [ 1, %2 ], [ %indvars.iv.next.1, %.unr-lcssa ]\n    <   %indvars.iv.epil.init = phi i64 [ 1, %2 ], [ %indvars.iv.unr, %.unr-lcssa ]\n  in block %7 / %7:\n    >   %indvars.iv = phi i64 [ 1, %.new ], [ %indvars.iv.next.1, %20 ]\n    <   %indvars.iv = phi i64 [ 1, %.new ], [ %indvars.iv.next.1, %21 ]\n  in block %14 / %14:\n    >   %15 = load i32, ptr %10, align 4\n    <   %15 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv.next\n    <   %16 = load i32, ptr %15, align 4\n        %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv, 2\n        %17 = getelementptr inbounds nuw [4 x i8], ptr @sortlist, i64 %indvars.iv.next.1\n        %18 = load i32, ptr %17, align 4\n    >   %18 = icmp sgt i32 %15, %17\n    >   br i1 %18, label %19, label %20\n    <   %19 = icmp sgt i32 %16, %18\n    <   br i1 %19, label %20, label %21\n  in block %.unr-lcssa:\n    <   %indvars.iv.unr = phi i64 [ %indvars.iv.next.1, %21 ]"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "indvars",
+      "commute": true,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__indvars.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i64 [ %indvar.next, %28 ], [ 0, %1 ]\n    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %28 ], [ 500, %1 ]\n    >   %3 = mul nsw i64 %indvar, -1\n    >   %4 = add i64 %3, 499\n    >   %5 = add i64 %3, 498\n    >   %xtraiter = and i64 %4, 1\n    >   %6 = icmp ult i64 %5, 1\n    >   br i1 %6, label %..epil.preheader_crit_edge, label %.new\n    <   %indvar = phi i64 [ %indvar.next, %29 ], [ 0, %1 ]\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ 500, %1 ]\n    <   %3 = mul nsw i64 %indvar, -1\n    <   %4 = add i64 %3, 499\n    <   %5 = add i64 %3, 498\n    <   %.pre = load i32, ptr getelementptr inbounds nuw (i8, ptr @sortlist, i64 4), align 4\n    <   %xtraiter = and i64 %4, 1\n    <   %6 = icmp ult i64 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.new"
+    },
+    {
+      "pass_a": "indvars",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\indvars__then__loop-unroll.ll",
+      "ba_path": "results\\cmp_test\\cmp_oracle_O2\\Stanford_Bubblesort\\round_003\\analysis\\Stanford_Bubblesort\\commutativity\\loop-unroll__then__indvars.ll",
+      "details": "in function Bubble:\n  in block %2 / %2:\n    >   %indvar = phi i64 [ %indvar.next, %29 ], [ 0, %1 ]\n    >   %3 = mul nsw i64 %indvar, -1\n    >   %4 = add nsw i64 %3, 499\n    >   %5 = add nsw i64 %3, 498\n    >   %xtraiter = and i64 %4, 1\n    >   %6 = icmp samesign ult i64 %5, 1\n    >   br i1 %6, label %.epil.preheader, label %.new\n    <   %indvar = phi i64 [ %indvar.next, %29 ], [ 0, %1 ]\n    <   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %29 ], [ 500, %1 ]\n    <   %3 = mul nsw i64 %indvar, -1\n    <   %4 = add i64 %3, 499\n    <   %5 = add i64 %3, 498\n    <   %xtraiter = and i64 %4, 1\n    <   %6 = icmp ult i64 %5, 1\n    <   br i1 %6, label %.epil.preheader, label %.new"
+    }
+  ]
+}

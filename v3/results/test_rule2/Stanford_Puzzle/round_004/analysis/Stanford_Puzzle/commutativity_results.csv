@@ -1,0 +1,3395 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+mem2reg,instcombine,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__instcombine.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__mem2reg.ll,"in function Fit:
+  in block %7 / %7:
+    >   %9 = sext i32 %storemerge to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not2 = icmp eq i32 %11, 0
+    >   br i1 %.not2, label %17, label %12
+    <   %9 = zext nneg i32 %storemerge to i64
+    <   %10 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %.not2 = icmp eq i32 %11, 0
+    <   br i1 %.not2, label %17, label %12
+
+in function Place:
+  in block %7 / %7:
+    >   %9 = sext i32 %storemerge to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not4 = icmp eq i32 %11, 0
+    >   br i1 %.not4, label %16, label %12
+    <   %9 = zext nneg i32 %storemerge to i64
+    <   %10 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %.not4 = icmp eq i32 %11, 0
+    <   br i1 %.not4, label %16, label %12
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond.not, label %.loopexit, label %28
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond.not, label %.loopexit, label %27
+
+in function Remove:
+  in block %7 / %7:
+    >   %9 = sext i32 %storemerge to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not1 = icmp eq i32 %11, 0
+    >   br i1 %.not1, label %16, label %12
+    <   %9 = zext nneg i32 %storemerge to i64
+    <   %10 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %.not1 = icmp eq i32 %11, 0
+    <   br i1 %.not1, label %16, label %12
+
+in function Trial:
+  in block %4 / %4:
+    >   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    >   %5 = icmp slt i32 %storemerge, 13
+    >   br i1 %5, label %6, label %22
+    <   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    <   %5 = icmp samesign ult i32 %storemerge, 13
+    <   br i1 %5, label %6, label %22
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 512
+    >   br i1 %2, label %3, label %.preheader31
+    <   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    <   %2 = icmp samesign ult i32 %storemerge, 512
+    <   br i1 %2, label %3, label %.preheader31
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %5
+    <   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %2 = icmp samesign ult i32 %storemerge, 100
+    <   br i1 %2, label %3, label %5"
+mem2reg,simplifycfg,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__simplifycfg.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__mem2reg.ll,
+mem2reg,dce,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__dce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__mem2reg.ll,"in function Place:
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit"
+mem2reg,sroa,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__sroa.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__mem2reg.ll,
+mem2reg,early-cse,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__early-cse.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__mem2reg.ll,"in function Place:
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit"
+mem2reg,gvn,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__gvn.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__mem2reg.ll,"in function Trial:
+  in block %4 / %4:
+    >   %5 = phi i32 [ %0, %1 ], [ %23, %22 ]
+    >   %6 = phi i32 [ 0, %1 ], [ %24, %22 ]
+    >   %7 = icmp slt i32 %6, 13
+    >   br i1 %7, label %8, label %25
+    <   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    <   %5 = icmp slt i32 %storemerge, 13
+    <   br i1 %5, label %6, label %22
+
+in function Puzzle:
+  in block %7 / %8:
+    >   %9 = phi i32 [ %30, %29 ], [ 1, %.preheader31 ]
+    <   %storemerge1 = phi i32 [ %24, %23 ], [ 1, %.preheader31 ]
+  in block %23 / %29:
+    >   %30 = add nsw i32 %12, 1
+    <   %24 = add nsw i32 %storemerge1, 1
+  in block %37 / %45:
+    >   %46 = phi i32 [ %67, %66 ], [ 0, %.preheader26 ]
+    <   %storemerge3 = phi i32 [ %54, %53 ], [ 0, %.preheader26 ]
+  in block %56 / %69:
+    >   %70 = phi i32 [ 0, %68 ], [ %91, %90 ]
+    <   %storemerge4 = phi i32 [ 0, %55 ], [ %73, %72 ]
+  in block %53 / %66:
+    >   %67 = add nsw i32 %49, 1
+    <   %54 = add nsw i32 %storemerge3, 1
+  in block %58 / %72:
+    >   %73 = phi i32 [ %77, %88 ], [ %70, %.preheader23 ]
+    >   %74 = phi i32 [ %89, %88 ], [ 0, %.preheader23 ]
+    >   %75 = icmp slt i32 %74, 1
+    >   br i1 %75, label %.preheader22, label %90
+    <   %storemerge42 = phi i32 [ %71, %70 ], [ 0, %.preheader23 ]
+    <   %59 = icmp slt i32 %storemerge42, 1
+    <   br i1 %59, label %.preheader22, label %72
+  in block %75 / %93:
+    >   %94 = phi i32 [ 0, %92 ], [ %115, %114 ]
+    <   %storemerge5 = phi i32 [ 0, %74 ], [ %92, %91 ]
+  in block %72 / %90:
+    >   %91 = add nsw i32 %73, 1
+    <   %73 = add nsw i32 %storemerge4, 1
+  in block %77 / %96:
+    >   %97 = phi i32 [ %101, %112 ], [ %94, %.preheader21 ]
+    >   %98 = phi i32 [ %113, %112 ], [ 0, %.preheader21 ]
+    >   %99 = icmp slt i32 %98, 4
+    >   br i1 %99, label %.preheader20, label %114
+    <   %storemerge40 = phi i32 [ %90, %89 ], [ 0, %.preheader21 ]
+    <   %78 = icmp slt i32 %storemerge40, 4
+    <   br i1 %78, label %.preheader20, label %91
+  in block %94 / %117:
+    >   %118 = phi i32 [ 0, %116 ], [ %139, %138 ]
+    <   %storemerge6 = phi i32 [ 0, %93 ], [ %111, %110 ]
+  in block %91 / %114:
+    >   %115 = add nsw i32 %97, 1
+    <   %92 = add nsw i32 %storemerge5, 1
+  in block %96 / %120:
+    >   %121 = phi i32 [ %125, %136 ], [ %118, %.preheader19 ]
+    >   %122 = phi i32 [ %137, %136 ], [ 0, %.preheader19 ]
+    >   %123 = icmp slt i32 %122, 4
+    >   br i1 %123, label %.preheader18, label %138
+    <   %storemerge38 = phi i32 [ %109, %108 ], [ 0, %.preheader19 ]
+    <   %97 = icmp slt i32 %storemerge38, 4
+    <   br i1 %97, label %.preheader18, label %110
+  in block %113 / %141:
+    >   %142 = phi i32 [ 0, %140 ], [ %163, %162 ]
+    <   %storemerge7 = phi i32 [ 0, %112 ], [ %130, %129 ]
+  in block %110 / %138:
+    >   %139 = add nsw i32 %121, 1
+    <   %111 = add nsw i32 %storemerge6, 1
+  in block %115 / %144:
+    >   %145 = phi i32 [ %149, %160 ], [ %142, %.preheader17 ]
+    >   %146 = phi i32 [ %161, %160 ], [ 0, %.preheader17 ]
+    >   %147 = icmp slt i32 %146, 1
+    >   br i1 %147, label %.preheader16, label %162
+    <   %storemerge36 = phi i32 [ %128, %127 ], [ 0, %.preheader17 ]
+    <   %116 = icmp slt i32 %storemerge36, 1
+    <   br i1 %116, label %.preheader16, label %129
+  in block %132 / %165:
+    >   %166 = phi i32 [ 0, %164 ], [ %187, %186 ]
+    <   %storemerge8 = phi i32 [ 0, %131 ], [ %149, %148 ]
+  in block %129 / %162:
+    >   %163 = add nsw i32 %145, 1
+    <   %130 = add nsw i32 %storemerge7, 1
+  in block %134 / %168:
+    >   %169 = phi i32 [ %173, %184 ], [ %166, %.preheader15 ]
+    >   %170 = phi i32 [ %185, %184 ], [ 0, %.preheader15 ]
+    >   %171 = icmp slt i32 %170, 2
+    >   br i1 %171, label %.preheader14, label %186
+    <   %storemerge34 = phi i32 [ %147, %146 ], [ 0, %.preheader15 ]
+    <   %135 = icmp slt i32 %storemerge34, 2
+    <   br i1 %135, label %.preheader14, label %148
+  in block %151 / %189:
+    >   %190 = phi i32 [ 0, %188 ], [ %211, %210 ]
+    <   %storemerge9 = phi i32 [ 0, %150 ], [ %168, %167 ]
+  in block %148 / %186:
+    >   %187 = add nsw i32 %169, 1
+    <   %149 = add nsw i32 %storemerge8, 1
+  in block %153 / %192:
+    >   %193 = phi i32 [ %197, %208 ], [ %190, %.preheader13 ]
+    >   %194 = phi i32 [ %209, %208 ], [ 0, %.preheader13 ]
+    >   %195 = icmp slt i32 %194, 1
+    >   br i1 %195, label %.preheader12, label %210
+    <   %storemerge32 = phi i32 [ %166, %165 ], [ 0, %.preheader13 ]
+    <   %154 = icmp slt i32 %storemerge32, 1
+    <   br i1 %154, label %.preheader12, label %167
+  in block %170 / %213:
+    >   %214 = phi i32 [ 0, %212 ], [ %235, %234 ]
+    <   %storemerge10 = phi i32 [ 0, %169 ], [ %187, %186 ]
+  in block %167 / %210:
+    >   %211 = add nsw i32 %193, 1
+    <   %168 = add nsw i32 %storemerge9, 1
+  in block %172 / %216:
+    >   %217 = phi i32 [ %221, %232 ], [ %214, %.preheader11 ]
+    >   %218 = phi i32 [ %233, %232 ], [ 0, %.preheader11 ]
+    >   %219 = icmp slt i32 %218, 3
+    >   br i1 %219, label %.preheader10, label %234
+    <   %storemerge30 = phi i32 [ %185, %184 ], [ 0, %.preheader11 ]
+    <   %173 = icmp slt i32 %storemerge30, 3
+    <   br i1 %173, label %.preheader10, label %186
+  in block %189 / %237:
+    >   %238 = phi i32 [ 0, %236 ], [ %259, %258 ]
+    <   %storemerge11 = phi i32 [ 0, %188 ], [ %206, %205 ]
+  in block %186 / %234:
+    >   %235 = add nsw i32 %217, 1
+    <   %187 = add nsw i32 %storemerge10, 1
+  in block %191 / %240:
+    >   %241 = phi i32 [ %245, %256 ], [ %238, %.preheader9 ]
+    >   %242 = phi i32 [ %257, %256 ], [ 0, %.preheader9 ]
+    >   %243 = icmp slt i32 %242, 1
+    >   br i1 %243, label %.preheader8, label %258
+    <   %storemerge28 = phi i32 [ %204, %203 ], [ 0, %.preheader9 ]
+    <   %192 = icmp slt i32 %storemerge28, 1
+    <   br i1 %192, label %.preheader8, label %205
+  in block %208 / %261:
+    >   %262 = phi i32 [ 0, %260 ], [ %283, %282 ]
+    <   %storemerge12 = phi i32 [ 0, %207 ], [ %225, %224 ]
+  in block %205 / %258:
+    >   %259 = add nsw i32 %241, 1
+    <   %206 = add nsw i32 %storemerge11, 1
+  in block %210 / %264:
+    >   %265 = phi i32 [ %269, %280 ], [ %262, %.preheader7 ]
+    >   %266 = phi i32 [ %281, %280 ], [ 0, %.preheader7 ]
+    >   %267 = icmp slt i32 %266, 2
+    >   br i1 %267, label %.preheader6, label %282
+    <   %storemerge26 = phi i32 [ %223, %222 ], [ 0, %.preheader7 ]
+    <   %211 = icmp slt i32 %storemerge26, 2
+    <   br i1 %211, label %.preheader6, label %224
+  in block %227 / %285:
+    >   %286 = phi i32 [ 0, %284 ], [ %307, %306 ]
+    <   %storemerge13 = phi i32 [ 0, %226 ], [ %244, %243 ]
+  in block %224 / %282:
+    >   %283 = add nsw i32 %265, 1
+    <   %225 = add nsw i32 %storemerge12, 1
+  in block %229 / %288:
+    >   %289 = phi i32 [ %293, %304 ], [ %286, %.preheader5 ]
+    >   %290 = phi i32 [ %305, %304 ], [ 0, %.preheader5 ]
+    >   %291 = icmp slt i32 %290, 1
+    >   br i1 %291, label %.preheader4, label %306
+    <   %storemerge24 = phi i32 [ %242, %241 ], [ 0, %.preheader5 ]
+    <   %230 = icmp slt i32 %storemerge24, 1
+    <   br i1 %230, label %.preheader4, label %243
+  in block %246 / %309:
+    >   %310 = phi i32 [ 0, %308 ], [ %331, %330 ]
+    <   %storemerge14 = phi i32 [ 0, %245 ], [ %263, %262 ]
+  in block %243 / %306:
+    >   %307 = add nsw i32 %289, 1
+    <   %244 = add nsw i32 %storemerge13, 1
+  in block %248 / %312:
+    >   %313 = phi i32 [ %317, %328 ], [ %310, %.preheader3 ]
+    >   %314 = phi i32 [ %329, %328 ], [ 0, %.preheader3 ]
+    >   %315 = icmp slt i32 %314, 2
+    >   br i1 %315, label %.preheader2, label %330
+    <   %storemerge22 = phi i32 [ %261, %260 ], [ 0, %.preheader3 ]
+    <   %249 = icmp slt i32 %storemerge22, 2
+    <   br i1 %249, label %.preheader2, label %262
+  in block %265 / %333:
+    >   %334 = phi i32 [ 0, %332 ], [ %355, %354 ]
+    <   %storemerge15 = phi i32 [ 0, %264 ], [ %282, %281 ]
+  in block %262 / %330:
+    >   %331 = add nsw i32 %313, 1
+    <   %263 = add nsw i32 %storemerge14, 1
+  in block %281 / %354:
+    >   %355 = add nsw i32 %337, 1
+    <   %282 = add nsw i32 %storemerge15, 1
+  in block %39 / %48:
+    >   %49 = phi i32 [ %53, %64 ], [ %46, %.preheader25 ]
+    >   %50 = phi i32 [ %65, %64 ], [ 0, %.preheader25 ]
+    >   %51 = icmp slt i32 %50, 2
+    >   br i1 %51, label %.preheader24, label %66
+    <   %storemerge44 = phi i32 [ %52, %51 ], [ 0, %.preheader25 ]
+    <   %40 = icmp slt i32 %storemerge44, 2
+    <   br i1 %40, label %.preheader24, label %53
+  in block %9 / %11:
+    >   %12 = phi i32 [ %16, %27 ], [ %9, %.preheader30 ]
+    >   %13 = phi i32 [ %28, %27 ], [ 1, %.preheader30 ]
+    >   %14 = icmp slt i32 %13, 6
+    >   br i1 %14, label %.preheader29, label %29
+    <   %storemerge47 = phi i32 [ %22, %21 ], [ 1, %.preheader30 ]
+    <   %10 = icmp slt i32 %storemerge47, 6
+    <   br i1 %10, label %.preheader29, label %23
+  in block %267 / %336:
+    >   %337 = phi i32 [ %341, %352 ], [ %334, %.preheader1 ]
+    >   %338 = phi i32 [ %353, %352 ], [ 0, %.preheader1 ]
+    >   %339 = icmp slt i32 %338, 2
+    >   br i1 %339, label %.preheader, label %354
+    <   %storemerge20 = phi i32 [ %280, %279 ], [ 0, %.preheader1 ]
+    <   %268 = icmp slt i32 %storemerge20, 2
+    <   br i1 %268, label %.preheader, label %281"
+mem2reg,sccp,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__mem2reg.ll,"in function Puzzle:
+  in block %56 / %58:
+    >   %storemerge42 = phi i32 [ %71, %70 ], [ 0, %.preheader23 ]
+    >   %59 = icmp slt i32 %storemerge42, 1
+    >   br i1 %59, label %.preheader22, label %72
+    <   %storemerge42 = phi i32 [ 1, %67 ], [ 0, %.preheader23 ]
+    <   %57 = icmp slt i32 %storemerge42, 1
+    <   br i1 %57, label %.preheader22, label %68
+  in block %71 / %75:
+    >   %storemerge5 = phi i32 [ 0, %74 ], [ %92, %91 ]
+    >   %76 = icmp slt i32 %storemerge5, 1
+    >   br i1 %76, label %.preheader21, label %93
+    <   %storemerge5 = phi i32 [ 0, %70 ], [ 1, %87 ]
+    <   %72 = icmp slt i32 %storemerge5, 1
+    <   br i1 %72, label %.preheader21, label %88
+  in block %41 / %41:
+    >   %storemerge45 = phi i32 [ %50, %43 ], [ 0, %.preheader24 ]
+    >   %42 = icmp slt i32 %storemerge45, 1
+    >   br i1 %42, label %43, label %51
+    <   %storemerge45 = phi i32 [ 1, %43 ], [ 0, %.preheader24 ]
+    <   %42 = icmp slt i32 %storemerge45, 1
+    <   br i1 %42, label %43, label %49"
+mem2reg,adce,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__mem2reg.ll,"in function Place:
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit"
+mem2reg,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__mem2reg.ll,
+mem2reg,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__mem2reg.ll,"in function Fit:
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 0, %.lr.ph ], [ %18, %17 ]
+    >   %7 = phi i64 [ %3, %.lr.ph ], [ %19, %17 ]
+    >   %storemerge2 = phi i32 [ 0, %.lr.ph ], [ %18, %17 ]
+    >   %8 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %9 = sext i32 %storemerge2 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not2 = icmp eq i32 %11, 0
+    >   br i1 %.not2, label %17, label %12
+    <   %storemerge2 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    <   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %8 = sext i32 %storemerge2 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr %7, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not2 = icmp eq i32 %10, 0
+    <   br i1 %.not2, label %16, label %11
+  in block %11 / %12:
+    >   %13 = add nsw i32 %1, %storemerge2
+    <   %12 = add nsw i32 %1, %storemerge2
+  in block %16 / %17:
+    >   %18 = add nsw i32 %.0, 1
+    >   %19 = sext i32 %0 to i64
+    >   %20 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %19
+    >   %21 = load i32, ptr %20, align 4
+    >   %.not = icmp sgt i32 %18, %21
+    >   br i1 %.not, label %._crit_edge3, label %6, !llvm.loop !7
+    <   %17 = add nsw i32 %storemerge2, 1
+    <   %18 = load i32, ptr %4, align 4
+    <   %.not = icmp sgt i32 %17, %18
+    <   br i1 %.not, label %._crit_edge3, label %6, !llvm.loop !7
+
+in function Place:
+  in block %18 / %21:
+    >   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+  in block %._crit_edge:
+    >   %split = phi i64 [ %18, %16 ]
+    <   %split = phi i64 [ %3, %15 ]
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %7 = phi i64 [ %3, %.lr.ph ], [ %18, %16 ]
+    >   %storemerge3 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %8 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %9 = sext i32 %storemerge3 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not4 = icmp eq i32 %11, 0
+    >   br i1 %.not4, label %16, label %12
+    <   %storemerge3 = phi i32 [ 0, %.lr.ph ], [ %16, %15 ]
+    <   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %8 = sext i32 %storemerge3 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr %7, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not4 = icmp eq i32 %10, 0
+    <   br i1 %.not4, label %15, label %11
+
+in function Remove:
+  in block %18 / %21:
+    >   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %7 = phi i64 [ %3, %.lr.ph ], [ %18, %16 ]
+    >   %storemerge3 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %8 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %9 = sext i32 %storemerge3 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not1 = icmp eq i32 %11, 0
+    >   br i1 %.not1, label %16, label %12
+    <   %storemerge3 = phi i32 [ 0, %.lr.ph ], [ %16, %15 ]
+    <   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %8 = sext i32 %storemerge3 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr %7, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not1 = icmp eq i32 %10, 0
+    <   br i1 %.not1, label %15, label %11
+  in block %._crit_edge:
+    >   %split = phi i64 [ %18, %16 ]
+    <   %split = phi i64 [ %3, %15 ]
+
+in function Trial:
+  in block %4 / %4:
+    >   %.0 = phi i32 [ 0, %1 ], [ %19, %18 ]
+    >   %storemerge2 = phi i32 [ 0, %1 ], [ %19, %18 ]
+    >   %5 = sext i32 %storemerge2 to i64
+    >   %6 = getelementptr inbounds [4 x i8], ptr @class, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %8 = sext i32 %7 to i64
+    >   %9 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %8
+    >   %10 = load i32, ptr %9, align 4
+    >   %.not = icmp eq i32 %10, 0
+    >   br i1 %.not, label %18, label %11
+    <   %storemerge2 = phi i32 [ 0, %1 ], [ %19, %18 ]
+    <   %5 = sext i32 %storemerge2 to i64
+    <   %6 = getelementptr inbounds [4 x i8], ptr @class, i64 %5
+    <   %7 = load i32, ptr %6, align 4
+    <   %8 = sext i32 %7 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not = icmp eq i32 %10, 0
+    <   br i1 %.not, label %18, label %11
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %.060 = phi i32 [ 0, %0 ], [ %4, %1 ]
+    >   %storemerge16 = phi i32 [ 0, %0 ], [ %4, %1 ]
+    >   %2 = sext i32 %storemerge16 to i64
+    >   %3 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %2
+    >   store i32 1, ptr %3, align 4
+    >   %4 = add nsw i32 %.060, 1
+    >   %5 = icmp slt i32 %4, 512
+    >   br i1 %5, label %1, label %.preheader31, !llvm.loop !7
+    <   %storemerge16 = phi i32 [ 0, %0 ], [ %4, %1 ]
+    <   %2 = sext i32 %storemerge16 to i64
+    <   %3 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %2
+    <   store i32 1, ptr %3, align 4
+    <   %4 = add nsw i32 %storemerge16, 1
+    <   %5 = icmp slt i32 %4, 512
+    <   br i1 %5, label %1, label %.preheader31, !llvm.loop !7"
+mem2reg,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__mem2reg.ll,"in function Fit:
+  in block %19 / %19:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %12 ], [ %storemerge, %7 ]
+
+in function Place:
+  in block %18 / %18:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %7 ]
+
+in function Remove:
+  in block %18 / %18:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %7 ]
+
+in function Trial:
+  in block %4 / %4:
+    >   %5 = phi i32 [ undef, %1 ], [ %22, %21 ]
+    >   %storemerge = phi i32 [ 0, %1 ], [ %23, %21 ]
+    >   %6 = icmp slt i32 %storemerge, 13
+    >   br i1 %6, label %7, label %24
+    <   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    <   %5 = icmp slt i32 %storemerge, 13
+    <   br i1 %5, label %6, label %22
+
+in function Puzzle:
+  in block %.preheader31:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]
+
+in function main:
+  in block %5 / %5:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]"
+mem2reg,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__mem2reg.ll,"in function Fit:
+  in block %2 / %2:
+    <   %3 = sext i32 %1 to i64
+
+in function Place:
+  in block %2 / %2:
+    <   %3 = sext i32 %1 to i64
+
+in function Remove:
+  in block %2 / %2:
+    <   %3 = sext i32 %1 to i64
+
+in function Trial:
+  in block %4 / %4:
+    >   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    >   %5 = icmp slt i32 %storemerge, 13
+    >   br i1 %5, label %6, label %22
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %21 ], [ 0, %1 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 13
+    <   br i1 %exitcond, label %5, label %22
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 512
+    >   br i1 %2, label %3, label %.preheader31
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 512
+    <   br i1 %exitcond, label %2, label %.preheader31
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %5
+    <   %storemerge = phi i32 [ 0, %0 ], [ %3, %2 ]
+    <   %exitcond = icmp ne i32 %storemerge, 100
+    <   br i1 %exitcond, label %2, label %4"
+mem2reg,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__mem2reg.ll,"in function Puzzle:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 512
+    >   br i1 %2, label %3, label %.preheader31
+    <   %storemerge = phi i32 [ 0, %0 ], [ %14, %11 ]
+    <   br label %2"
+mem2reg,reassociate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\mem2reg__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__mem2reg.ll,"in function Fit:
+  in block %12 / %12:
+    >   %13 = add nsw i32 %1, %storemerge
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    >   %16 = load i32, ptr %15, align 4
+    >   %.not3 = icmp eq i32 %16, 0
+    >   br i1 %.not3, label %17, label %19
+    <   %13 = add nsw i32 %storemerge, %1
+    <   %14 = sext i32 %13 to i64
+    <   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    <   %16 = load i32, ptr %15, align 4
+    <   %.not3 = icmp eq i32 %16, 0
+    <   br i1 %.not3, label %17, label %19
+
+in function Place:
+  in block %12 / %12:
+    >   %13 = add nsw i32 %1, %storemerge
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    >   store i32 1, ptr %15, align 4
+    <   %13 = add nsw i32 %storemerge, %1
+    <   %14 = sext i32 %13 to i64
+    <   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    <   store i32 1, ptr %15, align 4
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit
+
+in function Remove:
+  in block %12 / %12:
+    >   %13 = add nsw i32 %1, %storemerge
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    >   store i32 0, ptr %15, align 4
+    <   %13 = add nsw i32 %storemerge, %1
+    <   %14 = sext i32 %13 to i64
+    <   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    <   store i32 0, ptr %15, align 4
+
+in function Puzzle:
+  in block %60 / %60:
+    >   %storemerge43 = phi i32 [ %69, %62 ], [ 0, %.preheader22 ]
+    <   %storemerge43 = phi i32 [ %69, %62 ], [ 0, %.preheader22 ]
+  in block %62 / %62:
+    >   %65 = add i32 %storemerge4, %63
+    >   %66 = add i32 %65, %64
+    >   %67 = sext i32 %66 to i64
+    >   %68 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %67
+    >   store i32 1, ptr %68, align 4
+    <   %65 = add i32 %64, %storemerge4
+    <   %66 = add i32 %65, %63
+    <   %67 = sext i32 %66 to i64
+    <   %68 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %67
+    <   store i32 1, ptr %68, align 4
+  in block %11 / %11:
+    >   %storemerge48 = phi i32 [ %20, %13 ], [ 1, %.preheader29 ]
+    <   %storemerge48 = phi i32 [ %20, %13 ], [ 1, %.preheader29 ]
+  in block %13 / %13:
+    >   %16 = add i32 %storemerge1, %14
+    >   %17 = add i32 %16, %15
+    >   %18 = sext i32 %17 to i64
+    >   %19 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %18
+    >   store i32 0, ptr %19, align 4
+    <   %16 = add i32 %15, %storemerge1
+    <   %17 = add i32 %16, %14
+    <   %18 = sext i32 %17 to i64
+    <   %19 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %18
+    <   store i32 0, ptr %19, align 4
+  in block %41 / %41:
+    >   %storemerge45 = phi i32 [ %50, %43 ], [ 0, %.preheader24 ]
+    <   %storemerge45 = phi i32 [ %50, %43 ], [ 0, %.preheader24 ]
+  in block %43 / %43:
+    >   %46 = add i32 %storemerge3, %44
+    >   %47 = add i32 %46, %45
+    >   %48 = sext i32 %47 to i64
+    >   %49 = getelementptr inbounds [4 x i8], ptr @p, i64 %48
+    >   store i32 1, ptr %49, align 4
+    <   %46 = add i32 %45, %storemerge3
+    <   %47 = add i32 %46, %44
+    <   %48 = sext i32 %47 to i64
+    <   %49 = getelementptr inbounds [4 x i8], ptr @p, i64 %48
+    <   store i32 1, ptr %49, align 4
+  in block %98 / %98:
+    >   %storemerge39 = phi i32 [ %107, %100 ], [ 0, %.preheader18 ]
+    <   %storemerge39 = phi i32 [ %107, %100 ], [ 0, %.preheader18 ]
+  in block %100 / %100:
+    >   %103 = add i32 %storemerge6, %101
+    >   %104 = add i32 %103, %102
+    >   %105 = sext i32 %104 to i64
+    >   %106 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %105
+    >   store i32 1, ptr %106, align 4
+    <   %103 = add i32 %102, %storemerge6
+    <   %104 = add i32 %103, %101
+    <   %105 = sext i32 %104 to i64
+    <   %106 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %105
+    <   store i32 1, ptr %106, align 4
+  in block %136 / %136:
+    >   %storemerge35 = phi i32 [ %145, %138 ], [ 0, %.preheader14 ]
+    <   %storemerge35 = phi i32 [ %145, %138 ], [ 0, %.preheader14 ]
+  in block %138 / %138:
+    >   %141 = add i32 %storemerge8, %139
+    >   %142 = add i32 %141, %140
+    >   %143 = sext i32 %142 to i64
+    >   %144 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %143
+    >   store i32 1, ptr %144, align 4
+    <   %141 = add i32 %140, %storemerge8
+    <   %142 = add i32 %141, %139
+    <   %143 = sext i32 %142 to i64
+    <   %144 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %143
+    <   store i32 1, ptr %144, align 4
+  in block %155 / %155:
+    >   %storemerge33 = phi i32 [ %164, %157 ], [ 0, %.preheader12 ]
+    <   %storemerge33 = phi i32 [ %164, %157 ], [ 0, %.preheader12 ]
+  in block %157 / %157:
+    >   %160 = add i32 %storemerge9, %158
+    >   %161 = add i32 %160, %159
+    >   %162 = sext i32 %161 to i64
+    >   %163 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %162
+    >   store i32 1, ptr %163, align 4
+    <   %160 = add i32 %159, %storemerge9
+    <   %161 = add i32 %160, %158
+    <   %162 = sext i32 %161 to i64
+    <   %163 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %162
+    <   store i32 1, ptr %163, align 4
+  in block %174 / %174:
+    >   %storemerge31 = phi i32 [ %183, %176 ], [ 0, %.preheader10 ]
+    <   %storemerge31 = phi i32 [ %183, %176 ], [ 0, %.preheader10 ]
+  in block %176 / %176:
+    >   %179 = add i32 %storemerge10, %177
+    >   %180 = add i32 %179, %178
+    >   %181 = sext i32 %180 to i64
+    >   %182 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %181
+    >   store i32 1, ptr %182, align 4
+    <   %179 = add i32 %178, %storemerge10
+    <   %180 = add i32 %179, %177
+    <   %181 = sext i32 %180 to i64
+    <   %182 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %181
+    <   store i32 1, ptr %182, align 4
+  in block %193 / %193:
+    >   %storemerge29 = phi i32 [ %202, %195 ], [ 0, %.preheader8 ]
+    <   %storemerge29 = phi i32 [ %202, %195 ], [ 0, %.preheader8 ]
+  in block %195 / %195:
+    >   %198 = add i32 %storemerge11, %196
+    >   %199 = add i32 %198, %197
+    >   %200 = sext i32 %199 to i64
+    >   %201 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %200
+    >   store i32 1, ptr %201, align 4
+    <   %198 = add i32 %197, %storemerge11
+    <   %199 = add i32 %198, %196
+    <   %200 = sext i32 %199 to i64
+    <   %201 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %200
+    <   store i32 1, ptr %201, align 4
+  in block %212 / %212:
+    >   %storemerge27 = phi i32 [ %221, %214 ], [ 0, %.preheader6 ]
+    <   %storemerge27 = phi i32 [ %221, %214 ], [ 0, %.preheader6 ]
+  in block %214 / %214:
+    >   %217 = add i32 %storemerge12, %215
+    >   %218 = add i32 %217, %216
+    >   %219 = sext i32 %218 to i64
+    >   %220 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %219
+    >   store i32 1, ptr %220, align 4
+    <   %217 = add i32 %216, %storemerge12
+    <   %218 = add i32 %217, %215
+    <   %219 = sext i32 %218 to i64
+    <   %220 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %219
+    <   store i32 1, ptr %220, align 4
+  in block %231 / %231:
+    >   %storemerge25 = phi i32 [ %240, %233 ], [ 0, %.preheader4 ]
+    <   %storemerge25 = phi i32 [ %240, %233 ], [ 0, %.preheader4 ]
+  in block %233 / %233:
+    >   %236 = add i32 %storemerge13, %234
+    >   %237 = add i32 %236, %235
+    >   %238 = sext i32 %237 to i64
+    >   %239 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %238
+    >   store i32 1, ptr %239, align 4
+    <   %236 = add i32 %235, %storemerge13
+    <   %237 = add i32 %236, %234
+    <   %238 = sext i32 %237 to i64
+    <   %239 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %238
+    <   store i32 1, ptr %239, align 4
+  in block %250 / %250:
+    >   %storemerge23 = phi i32 [ %259, %252 ], [ 0, %.preheader2 ]
+    <   %storemerge23 = phi i32 [ %259, %252 ], [ 0, %.preheader2 ]
+  in block %252 / %252:
+    >   %255 = add i32 %storemerge14, %253
+    >   %256 = add i32 %255, %254
+    >   %257 = sext i32 %256 to i64
+    >   %258 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %257
+    >   store i32 1, ptr %258, align 4
+    <   %255 = add i32 %254, %storemerge14
+    <   %256 = add i32 %255, %253
+    <   %257 = sext i32 %256 to i64
+    <   %258 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %257
+    <   store i32 1, ptr %258, align 4
+  in block %269 / %269:
+    >   %storemerge21 = phi i32 [ %278, %271 ], [ 0, %.preheader ]
+    <   %storemerge21 = phi i32 [ %278, %271 ], [ 0, %.preheader ]
+  in block %271 / %271:
+    >   %274 = add i32 %storemerge15, %272
+    >   %275 = add i32 %274, %273
+    >   %276 = sext i32 %275 to i64
+    >   %277 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %276
+    >   store i32 1, ptr %277, align 4
+    <   %274 = add i32 %273, %storemerge15
+    <   %275 = add i32 %274, %272
+    <   %276 = sext i32 %275 to i64
+    <   %277 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %276
+    <   store i32 1, ptr %277, align 4
+  in block %117 / %117:
+    >   %storemerge37 = phi i32 [ %126, %119 ], [ 0, %.preheader16 ]
+    <   %storemerge37 = phi i32 [ %126, %119 ], [ 0, %.preheader16 ]
+  in block %119 / %119:
+    >   %122 = add i32 %storemerge7, %120
+    >   %123 = add i32 %122, %121
+    >   %124 = sext i32 %123 to i64
+    >   %125 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %124
+    >   store i32 1, ptr %125, align 4
+    <   %122 = add i32 %121, %storemerge7
+    <   %123 = add i32 %122, %120
+    <   %124 = sext i32 %123 to i64
+    <   %125 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %124
+    <   store i32 1, ptr %125, align 4
+  in block %79 / %79:
+    >   %storemerge41 = phi i32 [ %88, %81 ], [ 0, %.preheader20 ]
+    <   %storemerge41 = phi i32 [ %88, %81 ], [ 0, %.preheader20 ]
+  in block %81 / %81:
+    >   %84 = add i32 %storemerge5, %82
+    >   %85 = add i32 %84, %83
+    >   %86 = sext i32 %85 to i64
+    >   %87 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %86
+    >   store i32 1, ptr %87, align 4
+    <   %84 = add i32 %83, %storemerge5
+    <   %85 = add i32 %84, %82
+    <   %86 = sext i32 %85 to i64
+    <   %87 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %86
+    <   store i32 1, ptr %87, align 4"
+instcombine,simplifycfg,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__simplifycfg.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,dce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__dce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__instcombine.ll,
+instcombine,sroa,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__sroa.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__instcombine.ll,"in function Fit:
+  in block %7 / %7:
+    >   %9 = zext nneg i32 %storemerge to i64
+    >   %10 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not2 = icmp eq i32 %11, 0
+    >   br i1 %.not2, label %17, label %12
+    <   %9 = sext i32 %storemerge to i64
+    <   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %.not2 = icmp eq i32 %11, 0
+    <   br i1 %.not2, label %17, label %12
+
+in function Place:
+  in block %7 / %7:
+    >   %9 = zext nneg i32 %storemerge to i64
+    >   %10 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not4 = icmp eq i32 %11, 0
+    >   br i1 %.not4, label %16, label %12
+    <   %9 = sext i32 %storemerge to i64
+    <   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %.not4 = icmp eq i32 %11, 0
+    <   br i1 %.not4, label %16, label %12
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    >   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond.not, label %.loopexit, label %27
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    <   %27 = trunc nsw i64 %indvars.iv to i32
+    <   %exitcond.not = icmp eq i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond.not, label %.loopexit, label %28
+
+in function Remove:
+  in block %7 / %7:
+    >   %9 = zext nneg i32 %storemerge to i64
+    >   %10 = getelementptr inbounds nuw [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not1 = icmp eq i32 %11, 0
+    >   br i1 %.not1, label %16, label %12
+    <   %9 = sext i32 %storemerge to i64
+    <   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    <   %11 = load i32, ptr %10, align 4
+    <   %.not1 = icmp eq i32 %11, 0
+    <   br i1 %.not1, label %16, label %12
+
+in function Trial:
+  in block %4 / %4:
+    >   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    >   %5 = icmp samesign ult i32 %storemerge, 13
+    >   br i1 %5, label %6, label %22
+    <   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    <   %5 = icmp slt i32 %storemerge, 13
+    <   br i1 %5, label %6, label %22
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    >   %2 = icmp samesign ult i32 %storemerge, 512
+    >   br i1 %2, label %3, label %.preheader31
+    <   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    <   %2 = icmp slt i32 %storemerge, 512
+    <   br i1 %2, label %3, label %.preheader31
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    >   %2 = icmp samesign ult i32 %storemerge, 100
+    >   br i1 %2, label %3, label %5
+    <   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %2 = icmp slt i32 %storemerge, 100
+    <   br i1 %2, label %3, label %5"
+instcombine,early-cse,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__early-cse.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__gvn.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__instcombine.ll,"in function Fit:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+
+in function Place:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+
+in function Remove:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+
+in function Trial:
+  in block %1 / %1:
+    <   %2 = alloca i32, align 4
+    <   %3 = alloca i32, align 4
+    <   store i32 %0, ptr %2, align 4
+
+in function Puzzle:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4
+    <   %2 = alloca i32, align 4
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+
+in function main:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4"
+instcombine,sccp,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__instcombine.ll,
+instcombine,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__instcombine.ll,"in function Fit:
+  in block %2 / %2:
+    >   %6 = sext i32 %0 to i64
+    >   %7 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not1 = icmp slt i32 %8, 0
+    >   br i1 %.not1, label %28, label %.lr.ph
+    <   %6 = load i32, ptr %3, align 4
+    <   %7 = sext i32 %6 to i64
+    <   %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+    <   %9 = load i32, ptr %8, align 4
+    <   %.not1 = icmp sgt i32 0, %9
+    <   br i1 %.not1, label %29, label %.lr.ph
+
+in function Place:
+  in block %2 / %2:
+    >   %6 = sext i32 %0 to i64
+    >   %7 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not1 = icmp slt i32 %8, 0
+    >   br i1 %.not1, label %27, label %.lr.ph
+    <   %6 = load i32, ptr %3, align 4
+    <   %7 = sext i32 %6 to i64
+    <   %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+    <   %9 = load i32, ptr %8, align 4
+    <   %.not2 = icmp sgt i32 0, %9
+    <   br i1 %.not2, label %28, label %.lr.ph
+
+in function Remove:
+  in block %2 / %2:
+    >   %6 = sext i32 %0 to i64
+    >   %7 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %6
+    >   %8 = load i32, ptr %7, align 4
+    >   %.not2 = icmp slt i32 %8, 0
+    >   br i1 %.not2, label %27, label %.lr.ph
+    <   %6 = load i32, ptr %3, align 4
+    <   %7 = sext i32 %6 to i64
+    <   %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+    <   %9 = load i32, ptr %8, align 4
+    <   %.not2 = icmp sgt i32 0, %9
+    <   br i1 %.not2, label %28, label %.lr.ph
+
+in function Trial:
+  in block %6 / %6:
+    >   %storemerge2 = phi i32 [ 0, %1 ], [ %27, %25 ]
+    <   %storemerge2 = phi i32 [ 0, %1 ], [ %27, %25 ]
+  in block %25 / %25:
+    >   %28 = icmp slt i32 %26, 12
+    >   br i1 %28, label %6, label %29, !llvm.loop !7
+    <   %28 = icmp slt i32 %27, 13
+    <   br i1 %28, label %6, label %29, !llvm.loop !7
+
+in function Puzzle:
+  in block %5 / %5:
+    >   %storemerge16 = phi i32 [ 0, %0 ], [ %9, %5 ]
+    >   %6 = sext i32 %storemerge16 to i64
+    >   %7 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %6
+    >   store i32 1, ptr %7, align 4
+    <   %storemerge16 = phi i32 [ 0, %0 ], [ %9, %5 ]
+    <   %6 = sext i32 %storemerge16 to i64
+    <   %7 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %6
+    <   store i32 1, ptr %7, align 4
+        %8 = load i32, ptr %4, align 4
+        %9 = add nsw i32 %8, 1
+        store i32 %9, ptr %4, align 4
+    >   %10 = icmp slt i32 %8, 511
+    >   br i1 %10, label %5, label %.preheader31, !llvm.loop !7
+    <   %10 = icmp slt i32 %9, 512
+    <   br i1 %10, label %5, label %.preheader31, !llvm.loop !7
+
+in function main:
+  in block %2 / %2:
+    >   %5 = icmp slt i32 %3, 99
+    >   br i1 %5, label %2, label %6, !llvm.loop !7
+    <   %5 = icmp slt i32 %4, 100
+    <   br i1 %5, label %2, label %6, !llvm.loop !7"
+instcombine,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__instcombine.ll,"in function Fit:
+  in block %2 / %2:
+    >   %3 = sext i32 %0 to i64
+    >   %4 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %3
+    >   %5 = load i32, ptr %4, align 4
+    >   %6 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+    <   %6 = load i32, ptr %3, align 4
+    <   %7 = sext i32 %6 to i64
+    <   %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+    <   %9 = load i32, ptr %8, align 4
+    <   %10 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    <   %11 = load i32, ptr %4, align 4
+
+in function Place:
+  in block %2 / %2:
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+        %5 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+        store i32 %1, ptr %4, align 4
+    >   %4 = sext i32 %0 to i64
+    >   %5 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %4
+    >   %6 = load i32, ptr %5, align 4
+    >   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %4
+    <   %6 = load i32, ptr %3, align 4
+    <   %7 = sext i32 %6 to i64
+    <   %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+    <   %9 = load i32, ptr %8, align 4
+    <   %10 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    <   %11 = load i32, ptr %4, align 4
+
+in function Remove:
+  in block %2 / %2:
+    >   %3 = sext i32 %0 to i64
+    >   %4 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %3
+    >   %5 = load i32, ptr %4, align 4
+    >   %6 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %3 = alloca i32, align 4
+    <   %4 = alloca i32, align 4
+    <   %5 = alloca i32, align 4
+    <   store i32 %0, ptr %3, align 4
+    <   store i32 %1, ptr %4, align 4
+    <   %6 = load i32, ptr %3, align 4
+    <   %7 = sext i32 %6 to i64
+    <   %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+    <   %9 = load i32, ptr %8, align 4
+    <   %10 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    <   %11 = load i32, ptr %4, align 4
+
+in function Trial:
+  in block %1 / %1:
+    <   %2 = alloca i32, align 4
+        %3 = alloca i32, align 4
+    <   store i32 %0, ptr %2, align 4
+        %4 = load i32, ptr @kount, align 4
+        %5 = add nsw i32 %4, 1
+        store i32 %5, ptr @kount, align 4
+    <   %6 = load i32, ptr %2, align 4
+    <   %7 = load i32, ptr %2, align 4
+
+in function Puzzle:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4
+    <   %2 = alloca i32, align 4
+    <   %3 = alloca i32, align 4
+
+in function main:
+  in block %0 / %0:
+    <   %1 = alloca i32, align 4"
+instcombine,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__instcombine.ll,"in function Place:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, -1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, -1
+    <   store i32 %30, ptr %28, align 4
+
+in function Remove:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, 1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, 1
+    <   store i32 %30, ptr %28, align 4"
+instcombine,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__instcombine.ll,"in function Place:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, -1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, -1
+    <   store i32 %30, ptr %28, align 4
+
+in function Remove:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, 1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, 1
+    <   store i32 %30, ptr %28, align 4"
+instcombine,reassociate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\instcombine__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__instcombine.ll,"in function Trial:
+  in block %18 / %18:
+    in instruction %or.cond / %or.cond:
+      operands %23 and %.not3 differ
+  in block %18 / %18:
+    >   %or.cond = or i1 %.not3, %23
+    <   %or.cond = or i1 %23, %.not3
+
+in function Puzzle:
+  in block %78 / %78:
+    >   %storemerge43 = phi i32 [ %90, %80 ], [ 0, %.preheader22 ]
+    <   %storemerge43 = phi i32 [ %90, %80 ], [ 0, %.preheader22 ]
+  in block %80 / %80:
+    >   %83 = shl i32 %storemerge43, 6
+    >   %84 = shl i32 %82, 3
+    >   %85 = add i32 %81, %83
+    >   %86 = add i32 %85, %84
+    >   %87 = sext i32 %86 to i64
+    >   %88 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %87
+    >   store i32 1, ptr %88, align 4
+    <   %83 = mul i32 %storemerge43, 64
+    <   %84 = mul i32 %82, 8
+    <   %85 = add i32 %81, %83
+    <   %86 = add i32 %85, %84
+    <   %87 = sext i32 %86 to i64
+    <   %88 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %87
+    <   store i32 1, ptr %88, align 4
+  in block %16 / %16:
+    >   %storemerge48 = phi i32 [ %28, %18 ], [ 1, %.preheader29 ]
+    <   %storemerge48 = phi i32 [ %28, %18 ], [ 1, %.preheader29 ]
+  in block %18 / %18:
+    >   %21 = shl i32 %storemerge48, 6
+    >   %22 = shl i32 %20, 3
+    >   %23 = add i32 %19, %21
+    >   %24 = add i32 %23, %22
+    >   %25 = sext i32 %24 to i64
+    >   %26 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %25
+    >   store i32 0, ptr %26, align 4
+    <   %21 = mul i32 %storemerge48, 64
+    <   %22 = mul i32 %20, 8
+    <   %23 = add i32 %19, %21
+    <   %24 = add i32 %23, %22
+    <   %25 = sext i32 %24 to i64
+    <   %26 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %25
+    <   store i32 0, ptr %26, align 4
+  in block %54 / %54:
+    >   %storemerge45 = phi i32 [ %66, %56 ], [ 0, %.preheader24 ]
+    <   %storemerge45 = phi i32 [ %66, %56 ], [ 0, %.preheader24 ]
+  in block %56 / %56:
+    >   %59 = shl i32 %storemerge45, 6
+    >   %60 = shl i32 %58, 3
+    >   %61 = add i32 %57, %59
+    >   %62 = add i32 %61, %60
+    >   %63 = sext i32 %62 to i64
+    >   %64 = getelementptr inbounds [4 x i8], ptr @p, i64 %63
+    >   store i32 1, ptr %64, align 4
+    <   %59 = mul i32 %storemerge45, 64
+    <   %60 = mul i32 %58, 8
+    <   %61 = add i32 %57, %59
+    <   %62 = add i32 %61, %60
+    <   %63 = sext i32 %62 to i64
+    <   %64 = getelementptr inbounds [4 x i8], ptr @p, i64 %63
+    <   store i32 1, ptr %64, align 4
+  in block %126 / %126:
+    >   %storemerge39 = phi i32 [ %138, %128 ], [ 0, %.preheader18 ]
+    <   %storemerge39 = phi i32 [ %138, %128 ], [ 0, %.preheader18 ]
+  in block %128 / %128:
+    >   %131 = shl i32 %storemerge39, 6
+    >   %132 = shl i32 %130, 3
+    >   %133 = add i32 %129, %131
+    >   %134 = add i32 %133, %132
+    >   %135 = sext i32 %134 to i64
+    >   %136 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %135
+    >   store i32 1, ptr %136, align 4
+    <   %131 = mul i32 %storemerge39, 64
+    <   %132 = mul i32 %130, 8
+    <   %133 = add i32 %129, %131
+    <   %134 = add i32 %133, %132
+    <   %135 = sext i32 %134 to i64
+    <   %136 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %135
+    <   store i32 1, ptr %136, align 4
+  in block %174 / %174:
+    >   %storemerge35 = phi i32 [ %186, %176 ], [ 0, %.preheader14 ]
+    <   %storemerge35 = phi i32 [ %186, %176 ], [ 0, %.preheader14 ]
+  in block %176 / %176:
+    >   %179 = shl i32 %storemerge35, 6
+    >   %180 = shl i32 %178, 3
+    >   %181 = add i32 %177, %179
+    >   %182 = add i32 %181, %180
+    >   %183 = sext i32 %182 to i64
+    >   %184 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %183
+    >   store i32 1, ptr %184, align 4
+    <   %179 = mul i32 %storemerge35, 64
+    <   %180 = mul i32 %178, 8
+    <   %181 = add i32 %177, %179
+    <   %182 = add i32 %181, %180
+    <   %183 = sext i32 %182 to i64
+    <   %184 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %183
+    <   store i32 1, ptr %184, align 4
+  in block %198 / %198:
+    >   %storemerge33 = phi i32 [ %210, %200 ], [ 0, %.preheader12 ]
+    <   %storemerge33 = phi i32 [ %210, %200 ], [ 0, %.preheader12 ]
+  in block %200 / %200:
+    >   %203 = shl i32 %storemerge33, 6
+    >   %204 = shl i32 %202, 3
+    >   %205 = add i32 %201, %203
+    >   %206 = add i32 %205, %204
+    >   %207 = sext i32 %206 to i64
+    >   %208 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %207
+    >   store i32 1, ptr %208, align 4
+    <   %203 = mul i32 %storemerge33, 64
+    <   %204 = mul i32 %202, 8
+    <   %205 = add i32 %201, %203
+    <   %206 = add i32 %205, %204
+    <   %207 = sext i32 %206 to i64
+    <   %208 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %207
+    <   store i32 1, ptr %208, align 4
+  in block %222 / %222:
+    >   %storemerge31 = phi i32 [ %234, %224 ], [ 0, %.preheader10 ]
+    <   %storemerge31 = phi i32 [ %234, %224 ], [ 0, %.preheader10 ]
+  in block %224 / %224:
+    >   %227 = shl i32 %storemerge31, 6
+    >   %228 = shl i32 %226, 3
+    >   %229 = add i32 %225, %227
+    >   %230 = add i32 %229, %228
+    >   %231 = sext i32 %230 to i64
+    >   %232 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %231
+    >   store i32 1, ptr %232, align 4
+    <   %227 = mul i32 %storemerge31, 64
+    <   %228 = mul i32 %226, 8
+    <   %229 = add i32 %225, %227
+    <   %230 = add i32 %229, %228
+    <   %231 = sext i32 %230 to i64
+    <   %232 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %231
+    <   store i32 1, ptr %232, align 4
+  in block %246 / %246:
+    >   %storemerge29 = phi i32 [ %258, %248 ], [ 0, %.preheader8 ]
+    <   %storemerge29 = phi i32 [ %258, %248 ], [ 0, %.preheader8 ]
+  in block %248 / %248:
+    >   %251 = shl i32 %storemerge29, 6
+    >   %252 = shl i32 %250, 3
+    >   %253 = add i32 %249, %251
+    >   %254 = add i32 %253, %252
+    >   %255 = sext i32 %254 to i64
+    >   %256 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %255
+    >   store i32 1, ptr %256, align 4
+    <   %251 = mul i32 %storemerge29, 64
+    <   %252 = mul i32 %250, 8
+    <   %253 = add i32 %249, %251
+    <   %254 = add i32 %253, %252
+    <   %255 = sext i32 %254 to i64
+    <   %256 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %255
+    <   store i32 1, ptr %256, align 4
+  in block %270 / %270:
+    >   %storemerge27 = phi i32 [ %282, %272 ], [ 0, %.preheader6 ]
+    <   %storemerge27 = phi i32 [ %282, %272 ], [ 0, %.preheader6 ]
+  in block %272 / %272:
+    >   %275 = shl i32 %storemerge27, 6
+    >   %276 = shl i32 %274, 3
+    >   %277 = add i32 %273, %275
+    >   %278 = add i32 %277, %276
+    >   %279 = sext i32 %278 to i64
+    >   %280 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %279
+    >   store i32 1, ptr %280, align 4
+    <   %275 = mul i32 %storemerge27, 64
+    <   %276 = mul i32 %274, 8
+    <   %277 = add i32 %273, %275
+    <   %278 = add i32 %277, %276
+    <   %279 = sext i32 %278 to i64
+    <   %280 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %279
+    <   store i32 1, ptr %280, align 4
+  in block %294 / %294:
+    >   %storemerge25 = phi i32 [ %306, %296 ], [ 0, %.preheader4 ]
+    <   %storemerge25 = phi i32 [ %306, %296 ], [ 0, %.preheader4 ]
+  in block %296 / %296:
+    >   %299 = shl i32 %storemerge25, 6
+    >   %300 = shl i32 %298, 3
+    >   %301 = add i32 %297, %299
+    >   %302 = add i32 %301, %300
+    >   %303 = sext i32 %302 to i64
+    >   %304 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %303
+    >   store i32 1, ptr %304, align 4
+    <   %299 = mul i32 %storemerge25, 64
+    <   %300 = mul i32 %298, 8
+    <   %301 = add i32 %297, %299
+    <   %302 = add i32 %301, %300
+    <   %303 = sext i32 %302 to i64
+    <   %304 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %303
+    <   store i32 1, ptr %304, align 4
+  in block %318 / %318:
+    >   %storemerge23 = phi i32 [ %330, %320 ], [ 0, %.preheader2 ]
+    <   %storemerge23 = phi i32 [ %330, %320 ], [ 0, %.preheader2 ]
+  in block %320 / %320:
+    >   %323 = shl i32 %storemerge23, 6
+    >   %324 = shl i32 %322, 3
+    >   %325 = add i32 %321, %323
+    >   %326 = add i32 %325, %324
+    >   %327 = sext i32 %326 to i64
+    >   %328 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %327
+    >   store i32 1, ptr %328, align 4
+    <   %323 = mul i32 %storemerge23, 64
+    <   %324 = mul i32 %322, 8
+    <   %325 = add i32 %321, %323
+    <   %326 = add i32 %325, %324
+    <   %327 = sext i32 %326 to i64
+    <   %328 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %327
+    <   store i32 1, ptr %328, align 4
+  in block %342 / %342:
+    >   %storemerge21 = phi i32 [ %354, %344 ], [ 0, %.preheader ]
+    <   %storemerge21 = phi i32 [ %354, %344 ], [ 0, %.preheader ]
+  in block %344 / %344:
+    >   %347 = shl i32 %storemerge21, 6
+    >   %348 = shl i32 %346, 3
+    >   %349 = add i32 %345, %347
+    >   %350 = add i32 %349, %348
+    >   %351 = sext i32 %350 to i64
+    >   %352 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %351
+    >   store i32 1, ptr %352, align 4
+    <   %347 = mul i32 %storemerge21, 64
+    <   %348 = mul i32 %346, 8
+    <   %349 = add i32 %345, %347
+    <   %350 = add i32 %349, %348
+    <   %351 = sext i32 %350 to i64
+    <   %352 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %351
+    <   store i32 1, ptr %352, align 4
+  in block %150 / %150:
+    >   %storemerge37 = phi i32 [ %162, %152 ], [ 0, %.preheader16 ]
+    <   %storemerge37 = phi i32 [ %162, %152 ], [ 0, %.preheader16 ]
+  in block %152 / %152:
+    >   %155 = shl i32 %storemerge37, 6
+    >   %156 = shl i32 %154, 3
+    >   %157 = add i32 %153, %155
+    >   %158 = add i32 %157, %156
+    >   %159 = sext i32 %158 to i64
+    >   %160 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %159
+    >   store i32 1, ptr %160, align 4
+    <   %155 = mul i32 %storemerge37, 64
+    <   %156 = mul i32 %154, 8
+    <   %157 = add i32 %153, %155
+    <   %158 = add i32 %157, %156
+    <   %159 = sext i32 %158 to i64
+    <   %160 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %159
+    <   store i32 1, ptr %160, align 4
+  in block %102 / %102:
+    >   %storemerge41 = phi i32 [ %114, %104 ], [ 0, %.preheader20 ]
+    <   %storemerge41 = phi i32 [ %114, %104 ], [ 0, %.preheader20 ]
+  in block %104 / %104:
+    >   %107 = shl i32 %storemerge41, 6
+    >   %108 = shl i32 %106, 3
+    >   %109 = add i32 %105, %107
+    >   %110 = add i32 %109, %108
+    >   %111 = sext i32 %110 to i64
+    >   %112 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %111
+    >   store i32 1, ptr %112, align 4
+    <   %107 = mul i32 %storemerge41, 64
+    <   %108 = mul i32 %106, 8
+    <   %109 = add i32 %105, %107
+    <   %110 = add i32 %109, %108
+    <   %111 = sext i32 %110 to i64
+    <   %112 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %111
+    <   store i32 1, ptr %112, align 4"
+simplifycfg,dce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__dce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,sroa,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__sroa.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__simplifycfg.ll,
+simplifycfg,early-cse,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__early-cse.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__simplifycfg.ll,"in function Place:
+  in block %.loopexit:
+    in instruction %storemerge2 / %storemerge2:
+      successor %38 cannot be equivalent to %35; it's already equivalent to %.loopexit
+  in block %38 / %.loopexit:
+    >   %storemerge2 = phi i32 [ %34, %35 ], [ 0, %33 ]
+    >   ret i32 %storemerge2
+    <   br label %.loopexit"
+simplifycfg,gvn,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__gvn.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__simplifycfg.ll,"in function Place:
+  in block %.loopexit:
+    in instruction %storemerge2 / %storemerge2:
+      successor %32 cannot be equivalent to %29; it's already equivalent to %.loopexit
+  in block %32 / %.loopexit:
+    >   %storemerge2 = phi i32 [ %28, %29 ], [ 0, %27 ]
+    >   ret i32 %storemerge2
+    <   br label %.loopexit"
+simplifycfg,sccp,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__simplifycfg.ll,"in function Place:
+  in block %.loopexit:
+    in instruction %storemerge2 / %storemerge2:
+      successor %.loopexit.loopexit cannot be equivalent to %33; it's already equivalent to %.loopexit
+  in block %.loopexit.loopexit / %.loopexit:
+    >   %storemerge2 = phi i32 [ %39, %38 ], [ 0, %33 ]
+    >   ret i32 %storemerge2
+    <   br label %.loopexit
+
+in function Puzzle:
+  in block %.preheader31.preheader / %.preheader31:
+    >   %storemerge1 = phi i32 [ %31, %29 ], [ 1, %5 ]
+    >   store i32 %storemerge1, ptr %1, align 4
+    >   %12 = icmp slt i32 %storemerge1, 6
+    >   br i1 %12, label %.preheader30, label %.preheader28
+    <   br label %.preheader31"
+simplifycfg,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__simplifycfg.ll,"in function Fit:
+  in block %.lr.ph:
+    >   %10 = phi i64 [ %25, %21 ], [ %7, %2 ]
+    >   %storemerge2 = phi i32 [ %23, %21 ], [ 0, %2 ]
+    >   %11 = getelementptr inbounds [2048 x i8], ptr @p, i64 %10
+    >   %12 = sext i32 %storemerge2 to i64
+    >   %13 = getelementptr inbounds [4 x i8], ptr %11, i64 %12
+    >   %14 = load i32, ptr %13, align 4
+    >   %.not2 = icmp eq i32 %14, 0
+    >   br i1 %.not2, label %21, label %15
+    <   br label %10
+  in block %29 / %._crit_edge:
+    >   %storemerge1 = phi i32 [ 1, %2 ], [ 0, %15 ], [ 1, %21 ]
+    >   ret i32 %storemerge1
+    <   %storemerge1 = phi i32 [ %split, %._crit_edge ], [ %split4, %._crit_edge3 ], [ 1, %2 ]
+    <   ret i32 %storemerge1
+
+in function Place:
+  in block %.lr.ph:
+    >   %10 = phi i64 [ %24, %20 ], [ %7, %2 ]
+    >   %storemerge3 = phi i32 [ %22, %20 ], [ 0, %2 ]
+    >   %11 = getelementptr inbounds [2048 x i8], ptr @p, i64 %10
+    >   %12 = sext i32 %storemerge3 to i64
+    >   %13 = getelementptr inbounds [4 x i8], ptr %11, i64 %12
+    >   %14 = load i32, ptr %13, align 4
+    >   %.not4 = icmp eq i32 %14, 0
+    >   br i1 %.not4, label %20, label %15
+    <   br label %10
+  in block %28 / %._crit_edge:
+    >   %.lcssa = phi i64 [ %7, %2 ], [ %24, %20 ]
+    >   %27 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    >   %28 = load i32, ptr %27, align 4
+    >   %29 = sext i32 %28 to i64
+    >   %30 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %29
+    >   %31 = load i32, ptr %30, align 4
+    >   %32 = add nsw i32 %31, -1
+    >   store i32 %32, ptr %30, align 4
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %7, %2 ]
+    <   %29 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %30 = load i32, ptr %29, align 4
+    <   %31 = sext i32 %30 to i64
+    <   %32 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %31
+    <   %33 = load i32, ptr %32, align 4
+    <   %34 = add nsw i32 %33, -1
+    <   store i32 %34, ptr %32, align 4
+
+in function Remove:
+  in block %.lr.ph:
+    >   %10 = phi i64 [ %24, %20 ], [ %7, %2 ]
+    >   %storemerge3 = phi i32 [ %22, %20 ], [ 0, %2 ]
+    >   %11 = getelementptr inbounds [2048 x i8], ptr @p, i64 %10
+    >   %12 = sext i32 %storemerge3 to i64
+    >   %13 = getelementptr inbounds [4 x i8], ptr %11, i64 %12
+    >   %14 = load i32, ptr %13, align 4
+    >   %.not1 = icmp eq i32 %14, 0
+    >   br i1 %.not1, label %20, label %15
+    <   br label %10
+  in block %28 / %._crit_edge:
+    >   %.lcssa = phi i64 [ %7, %2 ], [ %24, %20 ]
+    >   %27 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    >   %28 = load i32, ptr %27, align 4
+    >   %29 = sext i32 %28 to i64
+    >   %30 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %29
+    >   %31 = load i32, ptr %30, align 4
+    >   %32 = add nsw i32 %31, 1
+    >   store i32 %32, ptr %30, align 4
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %7, %2 ]
+    <   %29 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %30 = load i32, ptr %29, align 4
+    <   %31 = sext i32 %30 to i64
+    <   %32 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %31
+    <   %33 = load i32, ptr %32, align 4
+    <   %34 = add nsw i32 %33, 1
+    <   store i32 %34, ptr %32, align 4"
+simplifycfg,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__simplifycfg.ll,"in function Puzzle:
+  in block %.preheader13:
+    in instruction %storemerge33.lcssa37 / %storemerge33.lcssa37:
+      successor %.preheader13.preheader cannot be equivalent to %134; it's already equivalent to %.preheader13
+    in instruction %storemerge32 / %storemerge32:
+      successor %.preheader13.preheader cannot be equivalent to %134; it's already equivalent to %.preheader13
+  in block %.preheader25:
+    in instruction %storemerge45.lcssa7 / %storemerge45.lcssa7:
+      successor %.preheader25.preheader cannot be equivalent to %38; it's already equivalent to %.preheader25
+    in instruction %storemerge44 / %storemerge44:
+      successor %.preheader25.preheader cannot be equivalent to %38; it's already equivalent to %.preheader25
+  in block %.preheader17:
+    in instruction %storemerge37.lcssa27 / %storemerge37.lcssa27:
+      successor %.preheader17.preheader cannot be equivalent to %102; it's already equivalent to %.preheader17
+    in instruction %storemerge36 / %storemerge36:
+      successor %.preheader17.preheader cannot be equivalent to %102; it's already equivalent to %.preheader17
+  in block %.preheader3:
+    in instruction %storemerge23.lcssa62 / %storemerge23.lcssa62:
+      successor %.preheader3.preheader cannot be equivalent to %214; it's already equivalent to %.preheader3
+    in instruction %storemerge22 / %storemerge22:
+      successor %.preheader3.preheader cannot be equivalent to %214; it's already equivalent to %.preheader3
+  in block %.preheader30:
+    in instruction %storemerge48.lcssa1 / %storemerge48.lcssa1:
+      successor %.preheader30.preheader cannot be equivalent to %11; it's already equivalent to %.preheader30
+    in instruction %storemerge47 / %storemerge47:
+      successor %.preheader30.preheader cannot be equivalent to %11; it's already equivalent to %.preheader30
+  in block %.preheader21:
+    in instruction %storemerge41.lcssa17 / %storemerge41.lcssa17:
+      successor %.preheader21.preheader cannot be equivalent to %70; it's already equivalent to %.preheader21
+    in instruction %storemerge40 / %storemerge40:
+      successor %.preheader21.preheader cannot be equivalent to %70; it's already equivalent to %.preheader21
+  in block %.preheader9:
+    in instruction %storemerge29.lcssa47 / %storemerge29.lcssa47:
+      successor %.preheader9.preheader cannot be equivalent to %166; it's already equivalent to %.preheader9
+    in instruction %storemerge28 / %storemerge28:
+      successor %.preheader9.preheader cannot be equivalent to %166; it's already equivalent to %.preheader9
+  in block %.preheader11:
+    in instruction %storemerge31.lcssa42 / %storemerge31.lcssa42:
+      successor %.preheader11.preheader cannot be equivalent to %150; it's already equivalent to %.preheader11
+    in instruction %storemerge30 / %storemerge30:
+      successor %.preheader11.preheader cannot be equivalent to %150; it's already equivalent to %.preheader11
+  in block %.preheader15:
+    in instruction %storemerge35.lcssa32 / %storemerge35.lcssa32:
+      successor %.preheader15.preheader cannot be equivalent to %118; it's already equivalent to %.preheader15
+    in instruction %storemerge34 / %storemerge34:
+      successor %.preheader15.preheader cannot be equivalent to %118; it's already equivalent to %.preheader15
+  in block %.preheader23:
+    in instruction %storemerge43.lcssa12 / %storemerge43.lcssa12:
+      successor %.preheader23.preheader cannot be equivalent to %54; it's already equivalent to %.preheader23
+    in instruction %storemerge42 / %storemerge42:
+      successor %.preheader23.preheader cannot be equivalent to %54; it's already equivalent to %.preheader23
+  in block %.preheader1:
+    in instruction %storemerge21.lcssa67 / %storemerge21.lcssa67:
+      successor %.preheader1.preheader cannot be equivalent to %230; it's already equivalent to %.preheader1
+    in instruction %storemerge20 / %storemerge20:
+      successor %.preheader1.preheader cannot be equivalent to %230; it's already equivalent to %.preheader1
+  in block %.preheader5:
+    in instruction %storemerge25.lcssa57 / %storemerge25.lcssa57:
+      successor %.preheader5.preheader cannot be equivalent to %198; it's already equivalent to %.preheader5
+    in instruction %storemerge24 / %storemerge24:
+      successor %.preheader5.preheader cannot be equivalent to %198; it's already equivalent to %.preheader5
+  in block %.preheader7:
+    in instruction %storemerge27.lcssa52 / %storemerge27.lcssa52:
+      successor %.preheader7.preheader cannot be equivalent to %182; it's already equivalent to %.preheader7
+    in instruction %storemerge26 / %storemerge26:
+      successor %.preheader7.preheader cannot be equivalent to %182; it's already equivalent to %.preheader7
+  in block %.preheader19:
+    in instruction %storemerge39.lcssa22 / %storemerge39.lcssa22:
+      successor %.preheader19.preheader cannot be equivalent to %86; it's already equivalent to %.preheader19
+    in instruction %storemerge38 / %storemerge38:
+      successor %.preheader19.preheader cannot be equivalent to %86; it's already equivalent to %.preheader19
+  in block %.preheader30.preheader / %.preheader30:
+    >   %storemerge48.lcssa1 = phi i32 [ %storemerge48.lcssa, %22 ], [ poison, %11 ]
+    >   %storemerge47 = phi i32 [ %23, %22 ], [ 1, %11 ]
+    >   %13 = icmp slt i32 %storemerge47, 6
+    >   br i1 %13, label %.preheader29, label %24
+    <   br label %.preheader30
+  in block %.preheader25.preheader / %.preheader25:
+    >   %storemerge45.lcssa7 = phi i32 [ %storemerge45.lcssa, %49 ], [ poison, %38 ]
+    >   %storemerge44 = phi i32 [ %50, %49 ], [ 0, %38 ]
+    >   %40 = icmp slt i32 %storemerge44, 2
+    >   br i1 %40, label %.preheader24, label %51
+    <   br label %.preheader25
+  in block %.preheader23.preheader / %.preheader23:
+    >   %storemerge43.lcssa12 = phi i32 [ %storemerge43.lcssa, %65 ], [ poison, %54 ]
+    >   %storemerge42 = phi i32 [ %66, %65 ], [ 0, %54 ]
+    >   %56 = icmp slt i32 %storemerge42, 1
+    >   br i1 %56, label %.preheader22, label %67
+    <   br label %.preheader23
+  in block %.preheader21.preheader / %.preheader21:
+    >   %storemerge41.lcssa17 = phi i32 [ %storemerge41.lcssa, %81 ], [ poison, %70 ]
+    >   %storemerge40 = phi i32 [ %82, %81 ], [ 0, %70 ]
+    >   %72 = icmp slt i32 %storemerge40, 4
+    >   br i1 %72, label %.preheader20, label %83
+    <   br label %.preheader21
+  in block %.preheader19.preheader / %.preheader19:
+    >   %storemerge39.lcssa22 = phi i32 [ %storemerge39.lcssa, %97 ], [ poison, %86 ]
+    >   %storemerge38 = phi i32 [ %98, %97 ], [ 0, %86 ]
+    >   %88 = icmp slt i32 %storemerge38, 4
+    >   br i1 %88, label %.preheader18, label %99
+    <   br label %.preheader19
+  in block %.preheader17.preheader / %.preheader17:
+    >   %storemerge37.lcssa27 = phi i32 [ %storemerge37.lcssa, %113 ], [ poison, %102 ]
+    >   %storemerge36 = phi i32 [ %114, %113 ], [ 0, %102 ]
+    >   %104 = icmp slt i32 %storemerge36, 1
+    >   br i1 %104, label %.preheader16, label %115
+    <   br label %.preheader17
+  in block %.preheader15.preheader / %.preheader15:
+    >   %storemerge35.lcssa32 = phi i32 [ %storemerge35.lcssa, %129 ], [ poison, %118 ]
+    >   %storemerge34 = phi i32 [ %130, %129 ], [ 0, %118 ]
+    >   %120 = icmp slt i32 %storemerge34, 2
+    >   br i1 %120, label %.preheader14, label %131
+    <   br label %.preheader15
+  in block %.preheader13.preheader / %.preheader13:
+    >   %storemerge33.lcssa37 = phi i32 [ %storemerge33.lcssa, %145 ], [ poison, %134 ]
+    >   %storemerge32 = phi i32 [ %146, %145 ], [ 0, %134 ]
+    >   %136 = icmp slt i32 %storemerge32, 1
+    >   br i1 %136, label %.preheader12, label %147
+    <   br label %.preheader13
+  in block %.preheader11.preheader / %.preheader11:
+    >   %storemerge31.lcssa42 = phi i32 [ %storemerge31.lcssa, %161 ], [ poison, %150 ]
+    >   %storemerge30 = phi i32 [ %162, %161 ], [ 0, %150 ]
+    >   %152 = icmp slt i32 %storemerge30, 3
+    >   br i1 %152, label %.preheader10, label %163
+    <   br label %.preheader11
+  in block %.preheader9.preheader / %.preheader9:
+    >   %storemerge29.lcssa47 = phi i32 [ %storemerge29.lcssa, %177 ], [ poison, %166 ]
+    >   %storemerge28 = phi i32 [ %178, %177 ], [ 0, %166 ]
+    >   %168 = icmp slt i32 %storemerge28, 1
+    >   br i1 %168, label %.preheader8, label %179
+    <   br label %.preheader9
+  in block %.preheader7.preheader / %.preheader7:
+    >   %storemerge27.lcssa52 = phi i32 [ %storemerge27.lcssa, %193 ], [ poison, %182 ]
+    >   %storemerge26 = phi i32 [ %194, %193 ], [ 0, %182 ]
+    >   %184 = icmp slt i32 %storemerge26, 2
+    >   br i1 %184, label %.preheader6, label %195
+    <   br label %.preheader7
+  in block %.preheader5.preheader / %.preheader5:
+    >   %storemerge25.lcssa57 = phi i32 [ %storemerge25.lcssa, %209 ], [ poison, %198 ]
+    >   %storemerge24 = phi i32 [ %210, %209 ], [ 0, %198 ]
+    >   %200 = icmp slt i32 %storemerge24, 1
+    >   br i1 %200, label %.preheader4, label %211
+    <   br label %.preheader5
+  in block %.preheader3.preheader / %.preheader3:
+    >   %storemerge23.lcssa62 = phi i32 [ %storemerge23.lcssa, %225 ], [ poison, %214 ]
+    >   %storemerge22 = phi i32 [ %226, %225 ], [ 0, %214 ]
+    >   %216 = icmp slt i32 %storemerge22, 2
+    >   br i1 %216, label %.preheader2, label %227
+    <   br label %.preheader3
+  in block %.preheader1.preheader / %.preheader1:
+    >   %storemerge21.lcssa67 = phi i32 [ %storemerge21.lcssa, %241 ], [ poison, %230 ]
+    >   %storemerge20 = phi i32 [ %242, %241 ], [ 0, %230 ]
+    >   %232 = icmp slt i32 %storemerge20, 2
+    >   br i1 %232, label %.preheader, label %243
+    <   br label %.preheader1"
+simplifycfg,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__simplifycfg.ll,"in function Place:
+  in block %.loopexit:
+    in instruction %storemerge2 / %storemerge2:
+      successor %.loopexit.loopexit cannot be equivalent to %33; it's already equivalent to %.loopexit
+  in block %.loopexit.loopexit / %.loopexit:
+    >   %storemerge2 = phi i32 [ %39, %38 ], [ 0, %33 ]
+    >   ret i32 %storemerge2
+    <   br label %.loopexit
+
+in function Puzzle:
+  in block %.preheader31.preheader / %.preheader31:
+    >   %storemerge1 = phi i32 [ %31, %29 ], [ 1, %5 ]
+    >   store i32 %storemerge1, ptr %1, align 4
+    >   %12 = icmp slt i32 %storemerge1, 6
+    >   br i1 %12, label %.preheader30, label %.preheader28
+    <   br label %.preheader31"
+simplifycfg,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__simplifycfg.ll,"in function Place:
+  in block %.loopexit:
+    in instruction %storemerge2 / %storemerge2:
+      successor %.loopexit.loopexit cannot be equivalent to %33; it's already equivalent to %.loopexit
+  in block %.loopexit.loopexit / %.loopexit:
+    >   %storemerge2 = phi i32 [ %39, %38 ], [ 0, %33 ]
+    >   ret i32 %storemerge2
+    <   br label %.loopexit
+
+in function Puzzle:
+  in block %.preheader31.preheader / %.preheader31:
+    >   %storemerge1 = phi i32 [ %31, %29 ], [ 1, %5 ]
+    >   store i32 %storemerge1, ptr %1, align 4
+    >   %12 = icmp slt i32 %storemerge1, 6
+    >   br i1 %12, label %.preheader30, label %.preheader28
+    <   br label %.preheader31"
+simplifycfg,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\simplifycfg__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__simplifycfg.ll,
+dce,sroa,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__sroa.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__dce.ll,"in function Place:
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %27, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    <   %27 = trunc nsw i64 %indvars.iv to i32
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %28, label %.loopexit"
+dce,early-cse,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__early-cse.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__dce.ll,
+dce,gvn,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__gvn.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__dce.ll,
+dce,sccp,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__dce.ll,
+dce,adce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__dce.ll,
+dce,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__dce.ll,
+dce,loop-rotate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__dce.ll,
+dce,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\dce__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__dce.ll,
+sroa,early-cse,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__early-cse.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__sroa.ll,"in function Place:
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit"
+sroa,gvn,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__gvn.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__sroa.ll,"in function Trial:
+  in block %4 / %4:
+    >   %5 = phi i32 [ %0, %1 ], [ %23, %22 ]
+    >   %6 = phi i32 [ 0, %1 ], [ %24, %22 ]
+    >   %7 = icmp slt i32 %6, 13
+    >   br i1 %7, label %8, label %25
+    <   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    <   %5 = icmp slt i32 %storemerge, 13
+    <   br i1 %5, label %6, label %22
+
+in function Puzzle:
+  in block %7 / %8:
+    >   %9 = phi i32 [ %30, %29 ], [ 1, %.preheader31 ]
+    <   %storemerge1 = phi i32 [ %24, %23 ], [ 1, %.preheader31 ]
+  in block %23 / %29:
+    >   %30 = add nsw i32 %12, 1
+    <   %24 = add nsw i32 %storemerge1, 1
+  in block %37 / %45:
+    >   %46 = phi i32 [ %67, %66 ], [ 0, %.preheader26 ]
+    <   %storemerge3 = phi i32 [ %54, %53 ], [ 0, %.preheader26 ]
+  in block %56 / %69:
+    >   %70 = phi i32 [ 0, %68 ], [ %91, %90 ]
+    <   %storemerge4 = phi i32 [ 0, %55 ], [ %73, %72 ]
+  in block %53 / %66:
+    >   %67 = add nsw i32 %49, 1
+    <   %54 = add nsw i32 %storemerge3, 1
+  in block %58 / %72:
+    >   %73 = phi i32 [ %77, %88 ], [ %70, %.preheader23 ]
+    >   %74 = phi i32 [ %89, %88 ], [ 0, %.preheader23 ]
+    >   %75 = icmp slt i32 %74, 1
+    >   br i1 %75, label %.preheader22, label %90
+    <   %storemerge42 = phi i32 [ %71, %70 ], [ 0, %.preheader23 ]
+    <   %59 = icmp slt i32 %storemerge42, 1
+    <   br i1 %59, label %.preheader22, label %72
+  in block %75 / %93:
+    >   %94 = phi i32 [ 0, %92 ], [ %115, %114 ]
+    <   %storemerge5 = phi i32 [ 0, %74 ], [ %92, %91 ]
+  in block %72 / %90:
+    >   %91 = add nsw i32 %73, 1
+    <   %73 = add nsw i32 %storemerge4, 1
+  in block %77 / %96:
+    >   %97 = phi i32 [ %101, %112 ], [ %94, %.preheader21 ]
+    >   %98 = phi i32 [ %113, %112 ], [ 0, %.preheader21 ]
+    >   %99 = icmp slt i32 %98, 4
+    >   br i1 %99, label %.preheader20, label %114
+    <   %storemerge40 = phi i32 [ %90, %89 ], [ 0, %.preheader21 ]
+    <   %78 = icmp slt i32 %storemerge40, 4
+    <   br i1 %78, label %.preheader20, label %91
+  in block %94 / %117:
+    >   %118 = phi i32 [ 0, %116 ], [ %139, %138 ]
+    <   %storemerge6 = phi i32 [ 0, %93 ], [ %111, %110 ]
+  in block %91 / %114:
+    >   %115 = add nsw i32 %97, 1
+    <   %92 = add nsw i32 %storemerge5, 1
+  in block %96 / %120:
+    >   %121 = phi i32 [ %125, %136 ], [ %118, %.preheader19 ]
+    >   %122 = phi i32 [ %137, %136 ], [ 0, %.preheader19 ]
+    >   %123 = icmp slt i32 %122, 4
+    >   br i1 %123, label %.preheader18, label %138
+    <   %storemerge38 = phi i32 [ %109, %108 ], [ 0, %.preheader19 ]
+    <   %97 = icmp slt i32 %storemerge38, 4
+    <   br i1 %97, label %.preheader18, label %110
+  in block %113 / %141:
+    >   %142 = phi i32 [ 0, %140 ], [ %163, %162 ]
+    <   %storemerge7 = phi i32 [ 0, %112 ], [ %130, %129 ]
+  in block %110 / %138:
+    >   %139 = add nsw i32 %121, 1
+    <   %111 = add nsw i32 %storemerge6, 1
+  in block %115 / %144:
+    >   %145 = phi i32 [ %149, %160 ], [ %142, %.preheader17 ]
+    >   %146 = phi i32 [ %161, %160 ], [ 0, %.preheader17 ]
+    >   %147 = icmp slt i32 %146, 1
+    >   br i1 %147, label %.preheader16, label %162
+    <   %storemerge36 = phi i32 [ %128, %127 ], [ 0, %.preheader17 ]
+    <   %116 = icmp slt i32 %storemerge36, 1
+    <   br i1 %116, label %.preheader16, label %129
+  in block %132 / %165:
+    >   %166 = phi i32 [ 0, %164 ], [ %187, %186 ]
+    <   %storemerge8 = phi i32 [ 0, %131 ], [ %149, %148 ]
+  in block %129 / %162:
+    >   %163 = add nsw i32 %145, 1
+    <   %130 = add nsw i32 %storemerge7, 1
+  in block %134 / %168:
+    >   %169 = phi i32 [ %173, %184 ], [ %166, %.preheader15 ]
+    >   %170 = phi i32 [ %185, %184 ], [ 0, %.preheader15 ]
+    >   %171 = icmp slt i32 %170, 2
+    >   br i1 %171, label %.preheader14, label %186
+    <   %storemerge34 = phi i32 [ %147, %146 ], [ 0, %.preheader15 ]
+    <   %135 = icmp slt i32 %storemerge34, 2
+    <   br i1 %135, label %.preheader14, label %148
+  in block %151 / %189:
+    >   %190 = phi i32 [ 0, %188 ], [ %211, %210 ]
+    <   %storemerge9 = phi i32 [ 0, %150 ], [ %168, %167 ]
+  in block %148 / %186:
+    >   %187 = add nsw i32 %169, 1
+    <   %149 = add nsw i32 %storemerge8, 1
+  in block %153 / %192:
+    >   %193 = phi i32 [ %197, %208 ], [ %190, %.preheader13 ]
+    >   %194 = phi i32 [ %209, %208 ], [ 0, %.preheader13 ]
+    >   %195 = icmp slt i32 %194, 1
+    >   br i1 %195, label %.preheader12, label %210
+    <   %storemerge32 = phi i32 [ %166, %165 ], [ 0, %.preheader13 ]
+    <   %154 = icmp slt i32 %storemerge32, 1
+    <   br i1 %154, label %.preheader12, label %167
+  in block %170 / %213:
+    >   %214 = phi i32 [ 0, %212 ], [ %235, %234 ]
+    <   %storemerge10 = phi i32 [ 0, %169 ], [ %187, %186 ]
+  in block %167 / %210:
+    >   %211 = add nsw i32 %193, 1
+    <   %168 = add nsw i32 %storemerge9, 1
+  in block %172 / %216:
+    >   %217 = phi i32 [ %221, %232 ], [ %214, %.preheader11 ]
+    >   %218 = phi i32 [ %233, %232 ], [ 0, %.preheader11 ]
+    >   %219 = icmp slt i32 %218, 3
+    >   br i1 %219, label %.preheader10, label %234
+    <   %storemerge30 = phi i32 [ %185, %184 ], [ 0, %.preheader11 ]
+    <   %173 = icmp slt i32 %storemerge30, 3
+    <   br i1 %173, label %.preheader10, label %186
+  in block %189 / %237:
+    >   %238 = phi i32 [ 0, %236 ], [ %259, %258 ]
+    <   %storemerge11 = phi i32 [ 0, %188 ], [ %206, %205 ]
+  in block %186 / %234:
+    >   %235 = add nsw i32 %217, 1
+    <   %187 = add nsw i32 %storemerge10, 1
+  in block %191 / %240:
+    >   %241 = phi i32 [ %245, %256 ], [ %238, %.preheader9 ]
+    >   %242 = phi i32 [ %257, %256 ], [ 0, %.preheader9 ]
+    >   %243 = icmp slt i32 %242, 1
+    >   br i1 %243, label %.preheader8, label %258
+    <   %storemerge28 = phi i32 [ %204, %203 ], [ 0, %.preheader9 ]
+    <   %192 = icmp slt i32 %storemerge28, 1
+    <   br i1 %192, label %.preheader8, label %205
+  in block %208 / %261:
+    >   %262 = phi i32 [ 0, %260 ], [ %283, %282 ]
+    <   %storemerge12 = phi i32 [ 0, %207 ], [ %225, %224 ]
+  in block %205 / %258:
+    >   %259 = add nsw i32 %241, 1
+    <   %206 = add nsw i32 %storemerge11, 1
+  in block %210 / %264:
+    >   %265 = phi i32 [ %269, %280 ], [ %262, %.preheader7 ]
+    >   %266 = phi i32 [ %281, %280 ], [ 0, %.preheader7 ]
+    >   %267 = icmp slt i32 %266, 2
+    >   br i1 %267, label %.preheader6, label %282
+    <   %storemerge26 = phi i32 [ %223, %222 ], [ 0, %.preheader7 ]
+    <   %211 = icmp slt i32 %storemerge26, 2
+    <   br i1 %211, label %.preheader6, label %224
+  in block %227 / %285:
+    >   %286 = phi i32 [ 0, %284 ], [ %307, %306 ]
+    <   %storemerge13 = phi i32 [ 0, %226 ], [ %244, %243 ]
+  in block %224 / %282:
+    >   %283 = add nsw i32 %265, 1
+    <   %225 = add nsw i32 %storemerge12, 1
+  in block %229 / %288:
+    >   %289 = phi i32 [ %293, %304 ], [ %286, %.preheader5 ]
+    >   %290 = phi i32 [ %305, %304 ], [ 0, %.preheader5 ]
+    >   %291 = icmp slt i32 %290, 1
+    >   br i1 %291, label %.preheader4, label %306
+    <   %storemerge24 = phi i32 [ %242, %241 ], [ 0, %.preheader5 ]
+    <   %230 = icmp slt i32 %storemerge24, 1
+    <   br i1 %230, label %.preheader4, label %243
+  in block %246 / %309:
+    >   %310 = phi i32 [ 0, %308 ], [ %331, %330 ]
+    <   %storemerge14 = phi i32 [ 0, %245 ], [ %263, %262 ]
+  in block %243 / %306:
+    >   %307 = add nsw i32 %289, 1
+    <   %244 = add nsw i32 %storemerge13, 1
+  in block %248 / %312:
+    >   %313 = phi i32 [ %317, %328 ], [ %310, %.preheader3 ]
+    >   %314 = phi i32 [ %329, %328 ], [ 0, %.preheader3 ]
+    >   %315 = icmp slt i32 %314, 2
+    >   br i1 %315, label %.preheader2, label %330
+    <   %storemerge22 = phi i32 [ %261, %260 ], [ 0, %.preheader3 ]
+    <   %249 = icmp slt i32 %storemerge22, 2
+    <   br i1 %249, label %.preheader2, label %262
+  in block %265 / %333:
+    >   %334 = phi i32 [ 0, %332 ], [ %355, %354 ]
+    <   %storemerge15 = phi i32 [ 0, %264 ], [ %282, %281 ]
+  in block %262 / %330:
+    >   %331 = add nsw i32 %313, 1
+    <   %263 = add nsw i32 %storemerge14, 1
+  in block %281 / %354:
+    >   %355 = add nsw i32 %337, 1
+    <   %282 = add nsw i32 %storemerge15, 1
+  in block %39 / %48:
+    >   %49 = phi i32 [ %53, %64 ], [ %46, %.preheader25 ]
+    >   %50 = phi i32 [ %65, %64 ], [ 0, %.preheader25 ]
+    >   %51 = icmp slt i32 %50, 2
+    >   br i1 %51, label %.preheader24, label %66
+    <   %storemerge44 = phi i32 [ %52, %51 ], [ 0, %.preheader25 ]
+    <   %40 = icmp slt i32 %storemerge44, 2
+    <   br i1 %40, label %.preheader24, label %53
+  in block %9 / %11:
+    >   %12 = phi i32 [ %16, %27 ], [ %9, %.preheader30 ]
+    >   %13 = phi i32 [ %28, %27 ], [ 1, %.preheader30 ]
+    >   %14 = icmp slt i32 %13, 6
+    >   br i1 %14, label %.preheader29, label %29
+    <   %storemerge47 = phi i32 [ %22, %21 ], [ 1, %.preheader30 ]
+    <   %10 = icmp slt i32 %storemerge47, 6
+    <   br i1 %10, label %.preheader29, label %23
+  in block %267 / %336:
+    >   %337 = phi i32 [ %341, %352 ], [ %334, %.preheader1 ]
+    >   %338 = phi i32 [ %353, %352 ], [ 0, %.preheader1 ]
+    >   %339 = icmp slt i32 %338, 2
+    >   br i1 %339, label %.preheader, label %354
+    <   %storemerge20 = phi i32 [ %280, %279 ], [ 0, %.preheader1 ]
+    <   %268 = icmp slt i32 %storemerge20, 2
+    <   br i1 %268, label %.preheader, label %281"
+sroa,sccp,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__sroa.ll,"in function Puzzle:
+  in block %56 / %58:
+    >   %storemerge42 = phi i32 [ %71, %70 ], [ 0, %.preheader23 ]
+    >   %59 = icmp slt i32 %storemerge42, 1
+    >   br i1 %59, label %.preheader22, label %72
+    <   %storemerge42 = phi i32 [ 1, %67 ], [ 0, %.preheader23 ]
+    <   %57 = icmp slt i32 %storemerge42, 1
+    <   br i1 %57, label %.preheader22, label %68
+  in block %71 / %75:
+    >   %storemerge5 = phi i32 [ 0, %74 ], [ %92, %91 ]
+    >   %76 = icmp slt i32 %storemerge5, 1
+    >   br i1 %76, label %.preheader21, label %93
+    <   %storemerge5 = phi i32 [ 0, %70 ], [ 1, %87 ]
+    <   %72 = icmp slt i32 %storemerge5, 1
+    <   br i1 %72, label %.preheader21, label %88
+  in block %41 / %41:
+    >   %storemerge45 = phi i32 [ %50, %43 ], [ 0, %.preheader24 ]
+    >   %42 = icmp slt i32 %storemerge45, 1
+    >   br i1 %42, label %43, label %51
+    <   %storemerge45 = phi i32 [ 1, %43 ], [ 0, %.preheader24 ]
+    <   %42 = icmp slt i32 %storemerge45, 1
+    <   br i1 %42, label %43, label %49"
+sroa,adce,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__sroa.ll,"in function Place:
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit"
+sroa,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__sroa.ll,
+sroa,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__sroa.ll,"in function Fit:
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 0, %.lr.ph ], [ %18, %17 ]
+    >   %7 = phi i64 [ %3, %.lr.ph ], [ %19, %17 ]
+    >   %storemerge2 = phi i32 [ 0, %.lr.ph ], [ %18, %17 ]
+    >   %8 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %9 = sext i32 %storemerge2 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not2 = icmp eq i32 %11, 0
+    >   br i1 %.not2, label %17, label %12
+    <   %storemerge5 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    <   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %8 = sext i32 %storemerge5 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr %7, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not2 = icmp eq i32 %10, 0
+    <   br i1 %.not2, label %16, label %11
+  in block %11 / %12:
+    >   %13 = add nsw i32 %1, %storemerge2
+    <   %12 = add nsw i32 %1, %storemerge5
+  in block %16 / %17:
+    >   %18 = add nsw i32 %.0, 1
+    >   %19 = sext i32 %0 to i64
+    >   %20 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %19
+    >   %21 = load i32, ptr %20, align 4
+    >   %.not = icmp sgt i32 %18, %21
+    >   br i1 %.not, label %._crit_edge3, label %6, !llvm.loop !7
+    <   %17 = add nsw i32 %storemerge5, 1
+    <   %18 = load i32, ptr %4, align 4
+    <   %.not = icmp sgt i32 %17, %18
+    <   br i1 %.not, label %._crit_edge6, label %6, !llvm.loop !7
+
+in function Place:
+  in block %18 / %21:
+    >   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+  in block %._crit_edge:
+    >   %split = phi i64 [ %18, %16 ]
+    <   %split = phi i64 [ %3, %15 ]
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %7 = phi i64 [ %3, %.lr.ph ], [ %18, %16 ]
+    >   %storemerge3 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %8 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %9 = sext i32 %storemerge3 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not4 = icmp eq i32 %11, 0
+    >   br i1 %.not4, label %16, label %12
+    <   %storemerge6 = phi i32 [ 0, %.lr.ph ], [ %16, %15 ]
+    <   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %8 = sext i32 %storemerge6 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr %7, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not4 = icmp eq i32 %10, 0
+    <   br i1 %.not4, label %15, label %11
+
+in function Remove:
+  in block %18 / %21:
+    >   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %3, %2 ]
+  in block %6 / %6:
+    >   %.0 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %7 = phi i64 [ %3, %.lr.ph ], [ %18, %16 ]
+    >   %storemerge3 = phi i32 [ 0, %.lr.ph ], [ %17, %16 ]
+    >   %8 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %9 = sext i32 %storemerge3 to i64
+    >   %10 = getelementptr inbounds [4 x i8], ptr %8, i64 %9
+    >   %11 = load i32, ptr %10, align 4
+    >   %.not1 = icmp eq i32 %11, 0
+    >   br i1 %.not1, label %16, label %12
+    <   %storemerge4 = phi i32 [ 0, %.lr.ph ], [ %16, %15 ]
+    <   %7 = getelementptr inbounds [2048 x i8], ptr @p, i64 %3
+    <   %8 = sext i32 %storemerge4 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr %7, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not1 = icmp eq i32 %10, 0
+    <   br i1 %.not1, label %15, label %11
+  in block %._crit_edge:
+    >   %split = phi i64 [ %18, %16 ]
+    <   %split = phi i64 [ %3, %15 ]
+
+in function Trial:
+  in block %4 / %4:
+    >   %.0 = phi i32 [ 0, %1 ], [ %19, %18 ]
+    >   %storemerge2 = phi i32 [ 0, %1 ], [ %19, %18 ]
+    >   %5 = sext i32 %storemerge2 to i64
+    >   %6 = getelementptr inbounds [4 x i8], ptr @class, i64 %5
+    >   %7 = load i32, ptr %6, align 4
+    >   %8 = sext i32 %7 to i64
+    >   %9 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %8
+    >   %10 = load i32, ptr %9, align 4
+    >   %.not = icmp eq i32 %10, 0
+    >   br i1 %.not, label %18, label %11
+    <   %storemerge7 = phi i32 [ 0, %1 ], [ %19, %18 ]
+    <   %5 = sext i32 %storemerge7 to i64
+    <   %6 = getelementptr inbounds [4 x i8], ptr @class, i64 %5
+    <   %7 = load i32, ptr %6, align 4
+    <   %8 = sext i32 %7 to i64
+    <   %9 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %8
+    <   %10 = load i32, ptr %9, align 4
+    <   %.not = icmp eq i32 %10, 0
+    <   br i1 %.not, label %18, label %11
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %.0 = phi i32 [ 0, %0 ], [ %4, %1 ]
+    >   %storemerge16 = phi i32 [ 0, %0 ], [ %4, %1 ]
+    >   %2 = sext i32 %storemerge16 to i64
+    >   %3 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %2
+    >   store i32 1, ptr %3, align 4
+    >   %4 = add nsw i32 %.0, 1
+    >   %5 = icmp slt i32 %4, 512
+    >   br i1 %5, label %1, label %.preheader31, !llvm.loop !7
+    <   %storemerge75 = phi i32 [ 0, %0 ], [ %4, %1 ]
+    <   %2 = sext i32 %storemerge75 to i64
+    <   %3 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %2
+    <   store i32 1, ptr %3, align 4
+    <   %4 = add nsw i32 %storemerge75, 1
+    <   %5 = icmp slt i32 %4, 512
+    <   br i1 %5, label %1, label %.preheader31, !llvm.loop !7"
+sroa,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__sroa.ll,"in function Fit:
+  in block %19 / %19:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %12 ], [ %storemerge, %7 ]
+
+in function Place:
+  in block %18 / %18:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %7 ]
+
+in function Remove:
+  in block %18 / %18:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %7 ]
+
+in function Trial:
+  in block %4 / %4:
+    >   %5 = phi i32 [ undef, %1 ], [ %22, %21 ]
+    >   %storemerge = phi i32 [ 0, %1 ], [ %23, %21 ]
+    >   %6 = icmp slt i32 %storemerge, 13
+    >   br i1 %6, label %7, label %24
+    <   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    <   %5 = icmp slt i32 %storemerge, 13
+    <   br i1 %5, label %6, label %22
+
+in function Puzzle:
+  in block %.preheader31:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]
+
+in function main:
+  in block %5 / %5:
+    >   %storemerge.lcssa = phi i32 [ %storemerge, %1 ]"
+sroa,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__sroa.ll,"in function Fit:
+  in block %2 / %2:
+    <   %3 = sext i32 %1 to i64
+
+in function Place:
+  in block %2 / %2:
+    <   %3 = sext i32 %1 to i64
+
+in function Remove:
+  in block %2 / %2:
+    <   %3 = sext i32 %1 to i64
+
+in function Trial:
+  in block %4 / %4:
+    >   %storemerge = phi i32 [ 0, %1 ], [ %21, %20 ]
+    >   %5 = icmp slt i32 %storemerge, 13
+    >   br i1 %5, label %6, label %22
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %21 ], [ 0, %1 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 13
+    <   br i1 %exitcond, label %5, label %22
+
+in function Puzzle:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 512
+    >   br i1 %2, label %3, label %.preheader31
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %2 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 512
+    <   br i1 %exitcond, label %2, label %.preheader31
+
+in function main:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 100
+    >   br i1 %2, label %3, label %5
+    <   %storemerge = phi i32 [ 0, %0 ], [ %3, %2 ]
+    <   %exitcond = icmp ne i32 %storemerge, 100
+    <   br i1 %exitcond, label %2, label %4"
+sroa,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__sroa.ll,"in function Puzzle:
+  in block %1 / %1:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %6, %3 ]
+    >   %2 = icmp slt i32 %storemerge, 512
+    >   br i1 %2, label %3, label %.preheader31
+    <   %storemerge = phi i32 [ 0, %0 ], [ %14, %11 ]
+    <   br label %2"
+sroa,reassociate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sroa__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__sroa.ll,"in function Fit:
+  in block %12 / %12:
+    >   %13 = add nsw i32 %1, %storemerge
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    >   %16 = load i32, ptr %15, align 4
+    >   %.not3 = icmp eq i32 %16, 0
+    >   br i1 %.not3, label %17, label %19
+    <   %13 = add nsw i32 %storemerge, %1
+    <   %14 = sext i32 %13 to i64
+    <   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    <   %16 = load i32, ptr %15, align 4
+    <   %.not3 = icmp eq i32 %16, 0
+    <   br i1 %.not3, label %17, label %19
+
+in function Place:
+  in block %12 / %12:
+    >   %13 = add nsw i32 %1, %storemerge
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    >   store i32 1, ptr %15, align 4
+    <   %13 = add nsw i32 %storemerge, %1
+    <   %14 = sext i32 %13 to i64
+    <   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    <   store i32 1, ptr %15, align 4
+  in block %26 / %26:
+    >   %indvars.iv = phi i64 [ %indvars.iv.next, %33 ], [ %25, %18 ]
+    >   %27 = trunc nsw i64 %indvars.iv to i32
+    >   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    >   br i1 %exitcond, label %28, label %.loopexit
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %32 ], [ %25, %18 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, %wide.trip.count
+    <   br i1 %exitcond, label %27, label %.loopexit
+
+in function Remove:
+  in block %12 / %12:
+    >   %13 = add nsw i32 %1, %storemerge
+    >   %14 = sext i32 %13 to i64
+    >   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    >   store i32 0, ptr %15, align 4
+    <   %13 = add nsw i32 %storemerge, %1
+    <   %14 = sext i32 %13 to i64
+    <   %15 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %14
+    <   store i32 0, ptr %15, align 4
+
+in function Puzzle:
+  in block %60 / %60:
+    >   %storemerge43 = phi i32 [ %69, %62 ], [ 0, %.preheader22 ]
+    <   %storemerge43 = phi i32 [ %69, %62 ], [ 0, %.preheader22 ]
+  in block %62 / %62:
+    >   %65 = add i32 %storemerge4, %63
+    >   %66 = add i32 %65, %64
+    >   %67 = sext i32 %66 to i64
+    >   %68 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %67
+    >   store i32 1, ptr %68, align 4
+    <   %65 = add i32 %64, %storemerge4
+    <   %66 = add i32 %65, %63
+    <   %67 = sext i32 %66 to i64
+    <   %68 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %67
+    <   store i32 1, ptr %68, align 4
+  in block %11 / %11:
+    >   %storemerge48 = phi i32 [ %20, %13 ], [ 1, %.preheader29 ]
+    <   %storemerge48 = phi i32 [ %20, %13 ], [ 1, %.preheader29 ]
+  in block %13 / %13:
+    >   %16 = add i32 %storemerge1, %14
+    >   %17 = add i32 %16, %15
+    >   %18 = sext i32 %17 to i64
+    >   %19 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %18
+    >   store i32 0, ptr %19, align 4
+    <   %16 = add i32 %15, %storemerge1
+    <   %17 = add i32 %16, %14
+    <   %18 = sext i32 %17 to i64
+    <   %19 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %18
+    <   store i32 0, ptr %19, align 4
+  in block %41 / %41:
+    >   %storemerge45 = phi i32 [ %50, %43 ], [ 0, %.preheader24 ]
+    <   %storemerge45 = phi i32 [ %50, %43 ], [ 0, %.preheader24 ]
+  in block %43 / %43:
+    >   %46 = add i32 %storemerge3, %44
+    >   %47 = add i32 %46, %45
+    >   %48 = sext i32 %47 to i64
+    >   %49 = getelementptr inbounds [4 x i8], ptr @p, i64 %48
+    >   store i32 1, ptr %49, align 4
+    <   %46 = add i32 %45, %storemerge3
+    <   %47 = add i32 %46, %44
+    <   %48 = sext i32 %47 to i64
+    <   %49 = getelementptr inbounds [4 x i8], ptr @p, i64 %48
+    <   store i32 1, ptr %49, align 4
+  in block %98 / %98:
+    >   %storemerge39 = phi i32 [ %107, %100 ], [ 0, %.preheader18 ]
+    <   %storemerge39 = phi i32 [ %107, %100 ], [ 0, %.preheader18 ]
+  in block %100 / %100:
+    >   %103 = add i32 %storemerge6, %101
+    >   %104 = add i32 %103, %102
+    >   %105 = sext i32 %104 to i64
+    >   %106 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %105
+    >   store i32 1, ptr %106, align 4
+    <   %103 = add i32 %102, %storemerge6
+    <   %104 = add i32 %103, %101
+    <   %105 = sext i32 %104 to i64
+    <   %106 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %105
+    <   store i32 1, ptr %106, align 4
+  in block %136 / %136:
+    >   %storemerge35 = phi i32 [ %145, %138 ], [ 0, %.preheader14 ]
+    <   %storemerge35 = phi i32 [ %145, %138 ], [ 0, %.preheader14 ]
+  in block %138 / %138:
+    >   %141 = add i32 %storemerge8, %139
+    >   %142 = add i32 %141, %140
+    >   %143 = sext i32 %142 to i64
+    >   %144 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %143
+    >   store i32 1, ptr %144, align 4
+    <   %141 = add i32 %140, %storemerge8
+    <   %142 = add i32 %141, %139
+    <   %143 = sext i32 %142 to i64
+    <   %144 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %143
+    <   store i32 1, ptr %144, align 4
+  in block %155 / %155:
+    >   %storemerge33 = phi i32 [ %164, %157 ], [ 0, %.preheader12 ]
+    <   %storemerge33 = phi i32 [ %164, %157 ], [ 0, %.preheader12 ]
+  in block %157 / %157:
+    >   %160 = add i32 %storemerge9, %158
+    >   %161 = add i32 %160, %159
+    >   %162 = sext i32 %161 to i64
+    >   %163 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %162
+    >   store i32 1, ptr %163, align 4
+    <   %160 = add i32 %159, %storemerge9
+    <   %161 = add i32 %160, %158
+    <   %162 = sext i32 %161 to i64
+    <   %163 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %162
+    <   store i32 1, ptr %163, align 4
+  in block %174 / %174:
+    >   %storemerge31 = phi i32 [ %183, %176 ], [ 0, %.preheader10 ]
+    <   %storemerge31 = phi i32 [ %183, %176 ], [ 0, %.preheader10 ]
+  in block %176 / %176:
+    >   %179 = add i32 %storemerge10, %177
+    >   %180 = add i32 %179, %178
+    >   %181 = sext i32 %180 to i64
+    >   %182 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %181
+    >   store i32 1, ptr %182, align 4
+    <   %179 = add i32 %178, %storemerge10
+    <   %180 = add i32 %179, %177
+    <   %181 = sext i32 %180 to i64
+    <   %182 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %181
+    <   store i32 1, ptr %182, align 4
+  in block %193 / %193:
+    >   %storemerge29 = phi i32 [ %202, %195 ], [ 0, %.preheader8 ]
+    <   %storemerge29 = phi i32 [ %202, %195 ], [ 0, %.preheader8 ]
+  in block %195 / %195:
+    >   %198 = add i32 %storemerge11, %196
+    >   %199 = add i32 %198, %197
+    >   %200 = sext i32 %199 to i64
+    >   %201 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %200
+    >   store i32 1, ptr %201, align 4
+    <   %198 = add i32 %197, %storemerge11
+    <   %199 = add i32 %198, %196
+    <   %200 = sext i32 %199 to i64
+    <   %201 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %200
+    <   store i32 1, ptr %201, align 4
+  in block %212 / %212:
+    >   %storemerge27 = phi i32 [ %221, %214 ], [ 0, %.preheader6 ]
+    <   %storemerge27 = phi i32 [ %221, %214 ], [ 0, %.preheader6 ]
+  in block %214 / %214:
+    >   %217 = add i32 %storemerge12, %215
+    >   %218 = add i32 %217, %216
+    >   %219 = sext i32 %218 to i64
+    >   %220 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %219
+    >   store i32 1, ptr %220, align 4
+    <   %217 = add i32 %216, %storemerge12
+    <   %218 = add i32 %217, %215
+    <   %219 = sext i32 %218 to i64
+    <   %220 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %219
+    <   store i32 1, ptr %220, align 4
+  in block %231 / %231:
+    >   %storemerge25 = phi i32 [ %240, %233 ], [ 0, %.preheader4 ]
+    <   %storemerge25 = phi i32 [ %240, %233 ], [ 0, %.preheader4 ]
+  in block %233 / %233:
+    >   %236 = add i32 %storemerge13, %234
+    >   %237 = add i32 %236, %235
+    >   %238 = sext i32 %237 to i64
+    >   %239 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %238
+    >   store i32 1, ptr %239, align 4
+    <   %236 = add i32 %235, %storemerge13
+    <   %237 = add i32 %236, %234
+    <   %238 = sext i32 %237 to i64
+    <   %239 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %238
+    <   store i32 1, ptr %239, align 4
+  in block %250 / %250:
+    >   %storemerge23 = phi i32 [ %259, %252 ], [ 0, %.preheader2 ]
+    <   %storemerge23 = phi i32 [ %259, %252 ], [ 0, %.preheader2 ]
+  in block %252 / %252:
+    >   %255 = add i32 %storemerge14, %253
+    >   %256 = add i32 %255, %254
+    >   %257 = sext i32 %256 to i64
+    >   %258 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %257
+    >   store i32 1, ptr %258, align 4
+    <   %255 = add i32 %254, %storemerge14
+    <   %256 = add i32 %255, %253
+    <   %257 = sext i32 %256 to i64
+    <   %258 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %257
+    <   store i32 1, ptr %258, align 4
+  in block %269 / %269:
+    >   %storemerge21 = phi i32 [ %278, %271 ], [ 0, %.preheader ]
+    <   %storemerge21 = phi i32 [ %278, %271 ], [ 0, %.preheader ]
+  in block %271 / %271:
+    >   %274 = add i32 %storemerge15, %272
+    >   %275 = add i32 %274, %273
+    >   %276 = sext i32 %275 to i64
+    >   %277 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %276
+    >   store i32 1, ptr %277, align 4
+    <   %274 = add i32 %273, %storemerge15
+    <   %275 = add i32 %274, %272
+    <   %276 = sext i32 %275 to i64
+    <   %277 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %276
+    <   store i32 1, ptr %277, align 4
+  in block %117 / %117:
+    >   %storemerge37 = phi i32 [ %126, %119 ], [ 0, %.preheader16 ]
+    <   %storemerge37 = phi i32 [ %126, %119 ], [ 0, %.preheader16 ]
+  in block %119 / %119:
+    >   %122 = add i32 %storemerge7, %120
+    >   %123 = add i32 %122, %121
+    >   %124 = sext i32 %123 to i64
+    >   %125 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %124
+    >   store i32 1, ptr %125, align 4
+    <   %122 = add i32 %121, %storemerge7
+    <   %123 = add i32 %122, %120
+    <   %124 = sext i32 %123 to i64
+    <   %125 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %124
+    <   store i32 1, ptr %125, align 4
+  in block %79 / %79:
+    >   %storemerge41 = phi i32 [ %88, %81 ], [ 0, %.preheader20 ]
+    <   %storemerge41 = phi i32 [ %88, %81 ], [ 0, %.preheader20 ]
+  in block %81 / %81:
+    >   %84 = add i32 %storemerge5, %82
+    >   %85 = add i32 %84, %83
+    >   %86 = sext i32 %85 to i64
+    >   %87 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %86
+    >   store i32 1, ptr %87, align 4
+    <   %84 = add i32 %83, %storemerge5
+    <   %85 = add i32 %84, %82
+    <   %86 = sext i32 %85 to i64
+    <   %87 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %86
+    <   store i32 1, ptr %87, align 4"
+early-cse,gvn,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__gvn.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__early-cse.ll,
+early-cse,adce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__early-cse.ll,
+early-cse,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__early-cse.ll,"in function Fit:
+  in block %._crit_edge3:
+    <   %split4 = phi i32 [ 1, %22 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ 0, %16 ]
+  in block %29 / %29:
+    >   %storemerge1 = phi i32 [ 0, %._crit_edge ], [ 1, %._crit_edge3 ], [ 1, %2 ]
+    >   ret i32 %storemerge1
+    <   %storemerge1 = phi i32 [ %split, %._crit_edge ], [ %split4, %._crit_edge3 ], [ 1, %2 ]
+    <   ret i32 %storemerge1
+
+in function Place:
+  in block %28 / %28:
+    >   %.lcssa = phi i64 [ %25, %._crit_edge ], [ %7, %2 ]
+    >   %29 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    >   %30 = load i32, ptr %29, align 4
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %31
+    >   %33 = load i32, ptr %32, align 4
+    >   %34 = add nsw i32 %33, -1
+    >   store i32 %34, ptr %32, align 4
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %7, %2 ]
+    <   %29 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %30 = load i32, ptr %29, align 4
+    <   %31 = sext i32 %30 to i64
+    <   %32 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %31
+    <   %33 = load i32, ptr %32, align 4
+    <   %34 = add nsw i32 %33, -1
+    <   store i32 %34, ptr %32, align 4
+  in block %._crit_edge:
+    <   %split = phi i64 [ %25, %21 ]
+
+in function Remove:
+  in block %28 / %28:
+    >   %.lcssa = phi i64 [ %25, %._crit_edge ], [ %7, %2 ]
+    >   %29 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    >   %30 = load i32, ptr %29, align 4
+    >   %31 = sext i32 %30 to i64
+    >   %32 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %31
+    >   %33 = load i32, ptr %32, align 4
+    >   %34 = add nsw i32 %33, 1
+    >   store i32 %34, ptr %32, align 4
+    <   %.lcssa = phi i64 [ %split, %._crit_edge ], [ %7, %2 ]
+    <   %29 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %30 = load i32, ptr %29, align 4
+    <   %31 = sext i32 %30 to i64
+    <   %32 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %31
+    <   %33 = load i32, ptr %32, align 4
+    <   %34 = add nsw i32 %33, 1
+    <   store i32 %34, ptr %32, align 4
+  in block %._crit_edge:
+    <   %split = phi i64 [ %25, %21 ]"
+early-cse,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__early-cse.ll,"in function Fit:
+  in block %2 / %2:
+    <   %11 = load i32, ptr %4, align 4
+
+in function Place:
+  in block %2 / %2:
+    <   %11 = load i32, ptr %4, align 4
+
+in function Remove:
+  in block %2 / %2:
+    <   %11 = load i32, ptr %4, align 4
+
+in function Trial:
+  in block %1 / %1:
+    <   %7 = load i32, ptr %2, align 4
+    <   %8 = load i32, ptr %2, align 4
+
+in function Puzzle:
+  in block %.preheader31:
+    >   store i32 %storemerge, ptr %4, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %5 ]
+    <   store i32 %storemerge.lcssa, ptr %4, align 4
+
+in function main:
+  in block %6 / %6:
+    >   store i32 %storemerge, ptr %1, align 4
+    <   %storemerge.lcssa = phi i32 [ %storemerge, %2 ]
+    <   store i32 %storemerge.lcssa, ptr %1, align 4"
+early-cse,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__early-cse.ll,"in function Place:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, -1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, -1
+    <   store i32 %30, ptr %28, align 4
+
+in function Remove:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, 1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, 1
+    <   store i32 %30, ptr %28, align 4"
+early-cse,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__early-cse.ll,"in function Place:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, -1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, -1
+    <   store i32 %30, ptr %28, align 4
+
+in function Remove:
+  in block %24 / %24:
+    >   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %8
+    >   %26 = load i32, ptr %25, align 4
+    >   %27 = sext i32 %26 to i64
+    >   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    >   %29 = load i32, ptr %28, align 4
+    >   %30 = add nsw i32 %29, 1
+    >   store i32 %30, ptr %28, align 4
+    <   %.lcssa = phi i64 [ %8, %6 ]
+    <   %25 = getelementptr inbounds [4 x i8], ptr @class, i64 %.lcssa
+    <   %26 = load i32, ptr %25, align 4
+    <   %27 = sext i32 %26 to i64
+    <   %28 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %27
+    <   %29 = load i32, ptr %28, align 4
+    <   %30 = add nsw i32 %29, 1
+    <   store i32 %30, ptr %28, align 4"
+early-cse,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\early-cse__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__early-cse.ll,
+gvn,sccp,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__sccp.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__gvn.ll,"in function Puzzle:
+  in block %74 / %76:
+    >   %77 = phi i32 [ %81, %92 ], [ %74, %.preheader23 ]
+    >   %78 = phi i32 [ %93, %92 ], [ 0, %.preheader23 ]
+    >   store i32 %78, ptr %2, align 4
+    >   %79 = icmp slt i32 %78, 1
+    >   br i1 %79, label %.preheader22, label %94
+    <   %75 = phi i32 [ %79, %89 ], [ %72, %.preheader23 ]
+    <   %76 = phi i32 [ 1, %89 ], [ 0, %.preheader23 ]
+    <   store i32 %76, ptr %2, align 4
+    <   %77 = icmp slt i32 %76, 1
+    <   br i1 %77, label %.preheader22, label %90
+  in block %93 / %97:
+    >   %98 = phi i32 [ 0, %96 ], [ %119, %118 ]
+    >   store i32 %98, ptr %1, align 4
+    >   %99 = icmp slt i32 %98, 1
+    >   br i1 %99, label %.preheader21, label %120
+    <   %94 = phi i32 [ 0, %92 ], [ 1, %112 ]
+    <   store i32 %94, ptr %1, align 4
+    <   %95 = icmp slt i32 %94, 1
+    <   br i1 %95, label %.preheader21, label %113
+  in block %90 / %94:
+    >   %95 = add nsw i32 %77, 1
+    <   %91 = add nuw nsw i32 %75, 1
+  in block %52 / %52:
+    >   %53 = phi i32 [ %57, %68 ], [ %50, %.preheader25 ]
+    <   %53 = phi i32 [ %57, %66 ], [ %50, %.preheader25 ]
+  in block %56 / %56:
+    >   %58 = phi i32 [ %67, %60 ], [ 0, %.preheader24 ]
+    >   store i32 %58, ptr %3, align 4
+    >   %59 = icmp slt i32 %58, 1
+    >   br i1 %59, label %60, label %68
+    <   %58 = phi i32 [ 1, %60 ], [ 0, %.preheader24 ]
+    <   store i32 %58, ptr %3, align 4
+    <   %59 = icmp slt i32 %58, 1
+    <   br i1 %59, label %60, label %66"
+gvn,adce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__gvn.ll,
+gvn,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__gvn.ll,"in function Fit:
+  in block %2 / %2:
+    >   store i32 0, ptr %5, align 4
+        %.phi.trans.insert = sext i32 %0 to i64
+        %.phi.trans.insert1 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %.phi.trans.insert
+        %.pre = load i32, ptr %.phi.trans.insert1, align 4
+    <   store i32 0, ptr %5, align 4
+
+in function Place:
+  in block %2 / %2:
+    >   store i32 0, ptr %5, align 4
+        %.phi.trans.insert = sext i32 %0 to i64
+        %.phi.trans.insert1 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %.phi.trans.insert
+        %.pre = load i32, ptr %.phi.trans.insert1, align 4
+    <   store i32 0, ptr %5, align 4
+
+in function Remove:
+  in block %2 / %2:
+    >   store i32 0, ptr %5, align 4
+        %.phi.trans.insert = sext i32 %0 to i64
+        %.phi.trans.insert1 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %.phi.trans.insert
+        %.pre = load i32, ptr %.phi.trans.insert1, align 4
+    <   store i32 0, ptr %5, align 4
+
+in function Trial:
+  in block %7 / %7:
+    >   %8 = phi i32 [ %0, %1 ], [ %24, %23 ]
+    >   %9 = phi i32 [ 0, %1 ], [ %25, %23 ]
+    >   %10 = sext i32 %9 to i64
+    >   %11 = getelementptr inbounds [4 x i8], ptr @class, i64 %10
+    >   %12 = load i32, ptr %11, align 4
+    >   %13 = sext i32 %12 to i64
+    >   %14 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %13
+    >   %15 = load i32, ptr %14, align 4
+    >   %.not = icmp eq i32 %15, 0
+    >   br i1 %.not, label %23, label %16
+    <   %8 = phi i32 [ 0, %1 ], [ %25, %23 ]
+    <   %9 = phi i32 [ %0, %1 ], [ %24, %23 ]
+    <   %10 = sext i32 %8 to i64
+    <   %11 = getelementptr inbounds [4 x i8], ptr @class, i64 %10
+    <   %12 = load i32, ptr %11, align 4
+    <   %13 = sext i32 %12 to i64
+    <   %14 = getelementptr inbounds [4 x i8], ptr @piececount, i64 %13
+    <   %15 = load i32, ptr %14, align 4
+    <   %.not = icmp eq i32 %15, 0
+    <   br i1 %.not, label %23, label %16
+
+in function Puzzle:
+  in block %.preheader30:
+    >   %11 = phi i32 [ 1, %.preheader31 ], [ %27, %26 ]
+    <   %11 = phi i32 [ 1, %.preheader31 ], [ %27, %26 ]
+  in block %26 / %26:
+    >   %27 = add nsw i32 %11, 1
+    >   store i32 %27, ptr %1, align 4
+    >   %28 = icmp slt i32 %27, 6
+    >   br i1 %28, label %.preheader30, label %.preheader28, !llvm.loop !11
+    <   %.lcssa27 = phi i32 [ %.lcssa26, %23 ]
+    <   %27 = add nsw i32 %.lcssa27, 1
+    <   store i32 %27, ptr %1, align 4
+    <   %28 = icmp slt i32 %27, 6
+    <   br i1 %28, label %.preheader30, label %.preheader28, !llvm.loop !11
+  in block %.preheader29:
+    >   %12 = phi i32 [ 1, %.preheader30 ], [ %24, %23 ]
+    <   %12 = phi i32 [ 1, %.preheader30 ], [ %24, %23 ]
+  in block %23 / %23:
+    <   %.lcssa26 = phi i32 [ %11, %13 ]"
+gvn,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__gvn.ll,"in function Fit:
+  in block %20 / %22:
+    <   %.lcssa = phi i32 [ %8, %13 ], [ %8, %7 ]
+        %storemerge1 = phi i32 [ 0, %13 ], [ 1, %7 ]
+    >   store i32 %storemerge, ptr %5, align 4
+    <   store i32 %.lcssa, ptr %5, align 4
+
+in function Place:
+  in block %19 / %21:
+    >   store i32 %storemerge, ptr %5, align 4
+    <   %.lcssa = phi i32 [ %8, %7 ]
+    <   store i32 %.lcssa, ptr %5, align 4
+
+in function Remove:
+  in block %19 / %21:
+    >   store i32 %storemerge, ptr %5, align 4
+    <   %.lcssa = phi i32 [ %8, %7 ]
+    <   store i32 %.lcssa, ptr %5, align 4
+
+in function Trial:
+  in block %1 / %1:
+    <   %.promoted = load i32, ptr %4, align 1
+
+in function Puzzle:
+  in block %.preheader31:
+    >   store i32 %storemerge, ptr %4, align 4
+    <   %.lcssa28 = phi i32 [ %6, %5 ]
+    <   store i32 %.lcssa28, ptr %4, align 4
+
+in function main:
+  in block %7 / %6:
+    >   store i32 %storemerge, ptr %1, align 4
+    <   %.lcssa = phi i32 [ %3, %2 ]
+    <   store i32 %.lcssa, ptr %1, align 4"
+gvn,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__gvn.ll,"in function Fit:
+  in block %2 / %2:
+    <   %6 = sext i32 %1 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.pre, i32 -1)
+    <   %7 = add i32 %smax, 1
+    <   %wide.trip.count = zext i32 %7 to i64
+
+in function Place:
+  in block %2 / %2:
+    <   %6 = sext i32 %1 to i64
+    <   %smax6 = call i32 @llvm.smax.i32(i32 %.pre, i32 -1)
+    <   %7 = add i32 %smax6, 1
+    <   %wide.trip.count7 = zext i32 %7 to i64
+
+in function Remove:
+  in block %2 / %2:
+    <   %6 = sext i32 %1 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %.pre, i32 -1)
+    <   %7 = add i32 %smax, 1
+    <   %wide.trip.count = zext i32 %7 to i64
+
+in function Trial:
+  in block %7 / %7:
+    >   %8 = phi i32 [ %0, %1 ], [ %26, %25 ]
+    >   %9 = phi i32 [ 0, %1 ], [ %27, %25 ]
+    >   store i32 %9, ptr %3, align 4
+    >   %10 = icmp slt i32 %9, 13
+    >   br i1 %10, label %11, label %28
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %26 ], [ 0, %1 ]
+    <   %8 = phi i32 [ %0, %1 ], [ %27, %26 ]
+    <   %9 = trunc nuw nsw i64 %indvars.iv to i32
+    <   store i32 %9, ptr %3, align 4
+    <   %exitcond = icmp ne i64 %indvars.iv, 13
+    <   br i1 %exitcond, label %10, label %28
+
+in function Puzzle:
+  in block %5 / %5:
+    >   %6 = phi i32 [ 0, %0 ], [ %11, %8 ]
+    >   store i32 %6, ptr %4, align 4
+    >   %7 = icmp slt i32 %6, 512
+    >   br i1 %7, label %8, label %.preheader31
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %7 ], [ 0, %0 ]
+    <   %6 = trunc nuw nsw i64 %indvars.iv to i32
+    <   store i32 %6, ptr %4, align 4
+    <   %exitcond = icmp ne i64 %indvars.iv, 512
+    <   br i1 %exitcond, label %7, label %.preheader31
+
+in function main:
+  in block %2 / %2:
+    >   %3 = phi i32 [ 0, %0 ], [ %6, %5 ]
+    >   store i32 %3, ptr %1, align 4
+    >   %4 = icmp slt i32 %3, 100
+    >   br i1 %4, label %5, label %7
+    <   %3 = phi i32 [ 0, %0 ], [ %5, %4 ]
+    <   store i32 %3, ptr %1, align 4
+    <   %exitcond = icmp ne i32 %3, 100
+    <   br i1 %exitcond, label %4, label %6"
+gvn,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__gvn.ll,"in function Place:
+  in block %32 / %32:
+    <   %.lcssa2 = phi i32 [ %28, %29 ]
+  in block %34 / %34:
+    >   %storemerge2 = phi i32 [ %28, %32 ], [ 0, %.loopexit ]
+    >   ret i32 %storemerge2
+    <   %storemerge2 = phi i32 [ %.lcssa2, %32 ], [ 0, %.loopexit ]
+    <   ret i32 %storemerge2
+
+in function Puzzle:
+  in block %5 / %5:
+    >   %6 = phi i32 [ 0, %0 ], [ %11, %8 ]
+    >   store i32 %6, ptr %4, align 4
+    >   %7 = icmp slt i32 %6, 512
+    >   br i1 %7, label %8, label %.preheader31
+    <   %6 = phi i32 [ 0, %0 ], [ %19, %16 ]
+    <   store i32 %6, ptr %4, align 4
+    <   br label %7"
+gvn,reassociate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\gvn__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__gvn.ll,"in function Fit:
+  in block %13 / %13:
+    >   %14 = add nsw i32 %1, %7
+    >   %15 = sext i32 %14 to i64
+    >   %16 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %15
+    >   %17 = load i32, ptr %16, align 4
+    >   %.not3 = icmp eq i32 %17, 0
+    >   br i1 %.not3, label %18, label %20
+    <   %14 = add nsw i32 %7, %1
+    <   %15 = sext i32 %14 to i64
+    <   %16 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %15
+    <   %17 = load i32, ptr %16, align 4
+    <   %.not3 = icmp eq i32 %17, 0
+    <   br i1 %.not3, label %18, label %20
+
+in function Place:
+  in block %13 / %13:
+    >   %14 = add nsw i32 %1, %7
+    >   %15 = sext i32 %14 to i64
+    >   %16 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %15
+    >   store i32 1, ptr %16, align 4
+    <   %14 = add nsw i32 %7, %1
+    <   %15 = sext i32 %14 to i64
+    <   %16 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %15
+    <   store i32 1, ptr %16, align 4
+
+in function Remove:
+  in block %13 / %13:
+    >   %14 = add nsw i32 %1, %7
+    >   %15 = sext i32 %14 to i64
+    >   %16 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %15
+    >   store i32 0, ptr %16, align 4
+    <   %14 = add nsw i32 %7, %1
+    <   %15 = sext i32 %14 to i64
+    <   %16 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %15
+    <   store i32 0, ptr %16, align 4
+
+in function Puzzle:
+  in block %80 / %80:
+    >   %82 = phi i32 [ %91, %84 ], [ 0, %.preheader22 ]
+    <   %82 = phi i32 [ %91, %84 ], [ 0, %.preheader22 ]
+  in block %84 / %84:
+    >   %87 = add i32 %74, %85
+    >   %88 = add i32 %87, %86
+    >   %89 = sext i32 %88 to i64
+    >   %90 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %89
+    >   store i32 1, ptr %90, align 4
+    <   %87 = add i32 %86, %74
+    <   %88 = add i32 %87, %85
+    <   %89 = sext i32 %88 to i64
+    <   %90 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %89
+    <   store i32 1, ptr %90, align 4
+  in block %19 / %19:
+    >   %21 = phi i32 [ %30, %23 ], [ 1, %.preheader29 ]
+    <   %21 = phi i32 [ %30, %23 ], [ 1, %.preheader29 ]
+  in block %23 / %23:
+    >   %26 = add i32 %13, %24
+    >   %27 = add i32 %26, %25
+    >   %28 = sext i32 %27 to i64
+    >   %29 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %28
+    >   store i32 0, ptr %29, align 4
+    <   %26 = add i32 %25, %13
+    <   %27 = add i32 %26, %24
+    <   %28 = sext i32 %27 to i64
+    <   %29 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %28
+    <   store i32 0, ptr %29, align 4
+  in block %56 / %56:
+    >   %58 = phi i32 [ %67, %60 ], [ 0, %.preheader24 ]
+    <   %58 = phi i32 [ %67, %60 ], [ 0, %.preheader24 ]
+  in block %60 / %60:
+    >   %63 = add i32 %50, %61
+    >   %64 = add i32 %63, %62
+    >   %65 = sext i32 %64 to i64
+    >   %66 = getelementptr inbounds [4 x i8], ptr @p, i64 %65
+    >   store i32 1, ptr %66, align 4
+    <   %63 = add i32 %62, %50
+    <   %64 = add i32 %63, %61
+    <   %65 = sext i32 %64 to i64
+    <   %66 = getelementptr inbounds [4 x i8], ptr @p, i64 %65
+    <   store i32 1, ptr %66, align 4
+  in block %128 / %128:
+    >   %130 = phi i32 [ %139, %132 ], [ 0, %.preheader18 ]
+    <   %130 = phi i32 [ %139, %132 ], [ 0, %.preheader18 ]
+  in block %132 / %132:
+    >   %135 = add i32 %122, %133
+    >   %136 = add i32 %135, %134
+    >   %137 = sext i32 %136 to i64
+    >   %138 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %137
+    >   store i32 1, ptr %138, align 4
+    <   %135 = add i32 %134, %122
+    <   %136 = add i32 %135, %133
+    <   %137 = sext i32 %136 to i64
+    <   %138 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %137
+    <   store i32 1, ptr %138, align 4
+  in block %176 / %176:
+    >   %178 = phi i32 [ %187, %180 ], [ 0, %.preheader14 ]
+    <   %178 = phi i32 [ %187, %180 ], [ 0, %.preheader14 ]
+  in block %180 / %180:
+    >   %183 = add i32 %170, %181
+    >   %184 = add i32 %183, %182
+    >   %185 = sext i32 %184 to i64
+    >   %186 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %185
+    >   store i32 1, ptr %186, align 4
+    <   %183 = add i32 %182, %170
+    <   %184 = add i32 %183, %181
+    <   %185 = sext i32 %184 to i64
+    <   %186 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %185
+    <   store i32 1, ptr %186, align 4
+  in block %200 / %200:
+    >   %202 = phi i32 [ %211, %204 ], [ 0, %.preheader12 ]
+    <   %202 = phi i32 [ %211, %204 ], [ 0, %.preheader12 ]
+  in block %204 / %204:
+    >   %207 = add i32 %194, %205
+    >   %208 = add i32 %207, %206
+    >   %209 = sext i32 %208 to i64
+    >   %210 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %209
+    >   store i32 1, ptr %210, align 4
+    <   %207 = add i32 %206, %194
+    <   %208 = add i32 %207, %205
+    <   %209 = sext i32 %208 to i64
+    <   %210 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %209
+    <   store i32 1, ptr %210, align 4
+  in block %224 / %224:
+    >   %226 = phi i32 [ %235, %228 ], [ 0, %.preheader10 ]
+    <   %226 = phi i32 [ %235, %228 ], [ 0, %.preheader10 ]
+  in block %228 / %228:
+    >   %231 = add i32 %218, %229
+    >   %232 = add i32 %231, %230
+    >   %233 = sext i32 %232 to i64
+    >   %234 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %233
+    >   store i32 1, ptr %234, align 4
+    <   %231 = add i32 %230, %218
+    <   %232 = add i32 %231, %229
+    <   %233 = sext i32 %232 to i64
+    <   %234 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %233
+    <   store i32 1, ptr %234, align 4
+  in block %248 / %248:
+    >   %250 = phi i32 [ %259, %252 ], [ 0, %.preheader8 ]
+    <   %250 = phi i32 [ %259, %252 ], [ 0, %.preheader8 ]
+  in block %252 / %252:
+    >   %255 = add i32 %242, %253
+    >   %256 = add i32 %255, %254
+    >   %257 = sext i32 %256 to i64
+    >   %258 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %257
+    >   store i32 1, ptr %258, align 4
+    <   %255 = add i32 %254, %242
+    <   %256 = add i32 %255, %253
+    <   %257 = sext i32 %256 to i64
+    <   %258 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %257
+    <   store i32 1, ptr %258, align 4
+  in block %272 / %272:
+    >   %274 = phi i32 [ %283, %276 ], [ 0, %.preheader6 ]
+    <   %274 = phi i32 [ %283, %276 ], [ 0, %.preheader6 ]
+  in block %276 / %276:
+    >   %279 = add i32 %266, %277
+    >   %280 = add i32 %279, %278
+    >   %281 = sext i32 %280 to i64
+    >   %282 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %281
+    >   store i32 1, ptr %282, align 4
+    <   %279 = add i32 %278, %266
+    <   %280 = add i32 %279, %277
+    <   %281 = sext i32 %280 to i64
+    <   %282 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %281
+    <   store i32 1, ptr %282, align 4
+  in block %296 / %296:
+    >   %298 = phi i32 [ %307, %300 ], [ 0, %.preheader4 ]
+    <   %298 = phi i32 [ %307, %300 ], [ 0, %.preheader4 ]
+  in block %300 / %300:
+    >   %303 = add i32 %290, %301
+    >   %304 = add i32 %303, %302
+    >   %305 = sext i32 %304 to i64
+    >   %306 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %305
+    >   store i32 1, ptr %306, align 4
+    <   %303 = add i32 %302, %290
+    <   %304 = add i32 %303, %301
+    <   %305 = sext i32 %304 to i64
+    <   %306 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %305
+    <   store i32 1, ptr %306, align 4
+  in block %320 / %320:
+    >   %322 = phi i32 [ %331, %324 ], [ 0, %.preheader2 ]
+    <   %322 = phi i32 [ %331, %324 ], [ 0, %.preheader2 ]
+  in block %324 / %324:
+    >   %327 = add i32 %314, %325
+    >   %328 = add i32 %327, %326
+    >   %329 = sext i32 %328 to i64
+    >   %330 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %329
+    >   store i32 1, ptr %330, align 4
+    <   %327 = add i32 %326, %314
+    <   %328 = add i32 %327, %325
+    <   %329 = sext i32 %328 to i64
+    <   %330 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %329
+    <   store i32 1, ptr %330, align 4
+  in block %344 / %344:
+    >   %346 = phi i32 [ %355, %348 ], [ 0, %.preheader ]
+    <   %346 = phi i32 [ %355, %348 ], [ 0, %.preheader ]
+  in block %348 / %348:
+    >   %351 = add i32 %338, %349
+    >   %352 = add i32 %351, %350
+    >   %353 = sext i32 %352 to i64
+    >   %354 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %353
+    >   store i32 1, ptr %354, align 4
+    <   %351 = add i32 %350, %338
+    <   %352 = add i32 %351, %349
+    <   %353 = sext i32 %352 to i64
+    <   %354 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %353
+    <   store i32 1, ptr %354, align 4
+  in block %152 / %152:
+    >   %154 = phi i32 [ %163, %156 ], [ 0, %.preheader16 ]
+    <   %154 = phi i32 [ %163, %156 ], [ 0, %.preheader16 ]
+  in block %156 / %156:
+    >   %159 = add i32 %146, %157
+    >   %160 = add i32 %159, %158
+    >   %161 = sext i32 %160 to i64
+    >   %162 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %161
+    >   store i32 1, ptr %162, align 4
+    <   %159 = add i32 %158, %146
+    <   %160 = add i32 %159, %157
+    <   %161 = sext i32 %160 to i64
+    <   %162 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %161
+    <   store i32 1, ptr %162, align 4
+  in block %104 / %104:
+    >   %106 = phi i32 [ %115, %108 ], [ 0, %.preheader20 ]
+    <   %106 = phi i32 [ %115, %108 ], [ 0, %.preheader20 ]
+  in block %108 / %108:
+    >   %111 = add i32 %98, %109
+    >   %112 = add i32 %111, %110
+    >   %113 = sext i32 %112 to i64
+    >   %114 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %113
+    >   store i32 1, ptr %114, align 4
+    <   %111 = add i32 %110, %98
+    <   %112 = add i32 %111, %109
+    <   %113 = sext i32 %112 to i64
+    <   %114 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %113
+    <   store i32 1, ptr %114, align 4"
+sccp,adce,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__adce.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__sccp.ll,
+sccp,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__sccp.ll,"in function Fit:
+  in block %._crit_edge3:
+    <   %split4 = phi i32 [ 1, %22 ]
+  in block %._crit_edge:
+    <   %split = phi i32 [ 0, %16 ]
+  in block %29 / %29:
+    >   %storemerge1 = phi i32 [ 0, %._crit_edge ], [ 1, %._crit_edge3 ], [ 1, %2 ]
+    >   ret i32 %storemerge1
+    <   %storemerge1 = phi i32 [ %split, %._crit_edge ], [ %split4, %._crit_edge3 ], [ 1, %2 ]
+    <   ret i32 %storemerge1"
+sccp,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__sccp.ll,"in function Puzzle:
+  in block %58 / %56:
+    >   %storemerge43.lcssa12 = phi i32 [ %storemerge43.lcssa, %65 ], [ poison, %.preheader23 ]
+    >   %storemerge42 = phi i32 [ 1, %65 ], [ 0, %.preheader23 ]
+    >   %57 = icmp slt i32 %storemerge42, 1
+    >   br i1 %57, label %.preheader22, label %66
+    <   %storemerge43.lcssa12 = phi i32 [ %storemerge43.lcssa, %68 ], [ poison, %.preheader23 ]
+    <   %storemerge42 = phi i32 [ %69, %68 ], [ 0, %.preheader23 ]
+    <   %59 = icmp slt i32 %storemerge42, 1
+    <   br i1 %59, label %.preheader22, label %70
+  in block %73 / %69:
+    >   %storemerge41.lcssa17.lcssa19 = phi i32 [ poison, %68 ], [ %storemerge41.lcssa17.lcssa, %83 ]
+    >   %storemerge40.lcssa18 = phi i32 [ poison, %68 ], [ %storemerge40.lcssa, %83 ]
+    >   %storemerge5 = phi i32 [ 0, %68 ], [ 1, %83 ]
+    >   %70 = icmp slt i32 %storemerge5, 1
+    >   br i1 %70, label %.preheader21, label %84
+    <   %storemerge41.lcssa17.lcssa19 = phi i32 [ poison, %72 ], [ %storemerge41.lcssa17.lcssa, %87 ]
+    <   %storemerge40.lcssa18 = phi i32 [ poison, %72 ], [ %storemerge40.lcssa, %87 ]
+    <   %storemerge5 = phi i32 [ 0, %72 ], [ %88, %87 ]
+    <   %74 = icmp slt i32 %storemerge5, 1
+    <   br i1 %74, label %.preheader21, label %89
+  in block %70 / %66:
+    >   %storemerge43.lcssa12.lcssa = phi i32 [ %storemerge43.lcssa12, %56 ]
+    >   %storemerge42.lcssa = phi i32 [ %storemerge42, %56 ]
+    <   %storemerge43.lcssa12.lcssa = phi i32 [ %storemerge43.lcssa12, %58 ]
+    <   %storemerge42.lcssa = phi i32 [ %storemerge42, %58 ]
+  in block %51 / %49:
+    >   %storemerge45.lcssa = phi i32 [ %storemerge45, %44 ]
+    <   %storemerge45.lcssa = phi i32 [ %storemerge45, %44 ]
+  in block %44 / %44:
+    >   %storemerge45 = phi i32 [ 1, %46 ], [ 0, %.preheader24 ]
+    >   %45 = icmp slt i32 %storemerge45, 1
+    >   br i1 %45, label %46, label %49
+    <   %storemerge45 = phi i32 [ %50, %46 ], [ 0, %.preheader24 ]
+    <   %45 = icmp slt i32 %storemerge45, 1
+    <   br i1 %45, label %46, label %51"
+sccp,indvars,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\sccp__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__sccp.ll,
+adce,loop-simplify,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__loop-simplify.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__adce.ll,
+adce,loop-rotate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__adce.ll,
+adce,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\adce__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__adce.ll,
+loop-simplify,loop-rotate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__loop-rotate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-simplify,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-simplify__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__loop-simplify.ll,
+loop-rotate,licm,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__licm.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__loop-rotate.ll,"in function Fit:
+  in block %2 / %2:
+    <   store i32 0, ptr %5, align 4
+        %6 = load i32, ptr %3, align 4
+        %7 = sext i32 %6 to i64
+        %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+        %9 = load i32, ptr %8, align 4
+    >   %10 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %11 = load i32, ptr %4, align 4
+
+in function Place:
+  in block %2 / %2:
+    <   store i32 0, ptr %5, align 4
+        %6 = load i32, ptr %3, align 4
+        %7 = sext i32 %6 to i64
+        %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+        %9 = load i32, ptr %8, align 4
+    >   %10 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %11 = load i32, ptr %4, align 4
+
+in function Remove:
+  in block %2 / %2:
+    <   store i32 0, ptr %5, align 4
+        %6 = load i32, ptr %3, align 4
+        %7 = sext i32 %6 to i64
+        %8 = getelementptr inbounds [4 x i8], ptr @piecemax, i64 %7
+        %9 = load i32, ptr %8, align 4
+    >   %10 = getelementptr inbounds [2048 x i8], ptr @p, i64 %7
+    >   %11 = load i32, ptr %4, align 4
+
+in function Trial:
+  in block %1 / %1:
+    in instruction %.promoted / %9:
+      operands %3 and %2 differ
+    <   store i32 0, ptr %3, align 4
+    <   %7 = load i32, ptr %2, align 4
+
+in function Puzzle:
+  in block %0 / %0:
+    <   store i32 0, ptr %4, align 4
+    <   %.promoted = load i32, ptr %4, align 4
+
+in function main:
+  in block %0 / %0:
+    <   store i32 0, ptr %1, align 4
+    <   %.promoted = load i32, ptr %1, align 4"
+loop-rotate,indvars,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-rotate__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__indvars.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__licm.ll,"in function Fit:
+  in block %2 / %2:
+    <   %12 = sext i32 %11 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %9, i32 -1)
+    <   %13 = add i32 %smax, 1
+    <   %wide.trip.count = zext i32 %13 to i64
+
+in function Place:
+  in block %2 / %2:
+    <   %12 = sext i32 %11 to i64
+    <   %smax6 = call i32 @llvm.smax.i32(i32 %9, i32 -1)
+    <   %13 = add i32 %smax6, 1
+    <   %wide.trip.count7 = zext i32 %13 to i64
+
+in function Remove:
+  in block %2 / %2:
+    <   %12 = sext i32 %11 to i64
+    <   %smax = call i32 @llvm.smax.i32(i32 %9, i32 -1)
+    <   %13 = add i32 %smax, 1
+    <   %wide.trip.count = zext i32 %13 to i64
+
+in function Trial:
+  in block %10 / %10:
+    >   %11 = phi i32 [ %.promoted, %1 ], [ %28, %27 ]
+    >   %storemerge = phi i32 [ 0, %1 ], [ %29, %27 ]
+    >   %12 = icmp slt i32 %storemerge, 13
+    >   br i1 %12, label %13, label %30
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %29 ], [ 0, %1 ]
+    <   %11 = phi i32 [ %.promoted, %1 ], [ %30, %29 ]
+    <   %12 = trunc nuw nsw i64 %indvars.iv to i32
+    <   %exitcond = icmp ne i64 %indvars.iv, 13
+    <   br i1 %exitcond, label %13, label %31
+
+in function Puzzle:
+  in block %5 / %5:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %10, %7 ]
+    >   %6 = icmp slt i32 %storemerge, 512
+    >   br i1 %6, label %7, label %.preheader31
+    <   %indvars.iv = phi i64 [ %indvars.iv.next, %7 ], [ 0, %0 ]
+    <   %exitcond = icmp ne i64 %indvars.iv, 512
+    <   br i1 %exitcond, label %7, label %.preheader31
+
+in function main:
+  in block %2 / %2:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %5, %4 ]
+    >   %3 = icmp slt i32 %storemerge, 100
+    >   br i1 %3, label %4, label %6
+    <   %storemerge = phi i32 [ 0, %0 ], [ %4, %3 ]
+    <   %exitcond = icmp ne i32 %storemerge, 100
+    <   br i1 %exitcond, label %3, label %5"
+licm,loop-unroll,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__licm.ll,"in function Puzzle:
+  in block %5 / %5:
+    >   %storemerge = phi i32 [ 0, %0 ], [ %10, %7 ]
+    >   %6 = icmp slt i32 %storemerge, 512
+    >   br i1 %6, label %7, label %.preheader31
+    <   %storemerge = phi i32 [ 0, %0 ], [ %18, %15 ]
+    <   br label %6"
+licm,reassociate,false,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\licm__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__licm.ll,"in function Fit:
+  in block %17 / %17:
+    >   %18 = add nsw i32 %11, %storemerge
+    >   %19 = sext i32 %18 to i64
+    >   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %19
+    >   %21 = load i32, ptr %20, align 4
+    >   %.not3 = icmp eq i32 %21, 0
+    >   br i1 %.not3, label %22, label %24
+    <   %18 = add nsw i32 %storemerge, %11
+    <   %19 = sext i32 %18 to i64
+    <   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %19
+    <   %21 = load i32, ptr %20, align 4
+    <   %.not3 = icmp eq i32 %21, 0
+    <   br i1 %.not3, label %22, label %24
+
+in function Place:
+  in block %17 / %17:
+    >   %18 = add nsw i32 %11, %storemerge
+    >   %19 = sext i32 %18 to i64
+    >   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %19
+    >   store i32 1, ptr %20, align 4
+    <   %18 = add nsw i32 %storemerge, %11
+    <   %19 = sext i32 %18 to i64
+    <   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %19
+    <   store i32 1, ptr %20, align 4
+
+in function Remove:
+  in block %17 / %17:
+    >   %18 = add nsw i32 %11, %storemerge
+    >   %19 = sext i32 %18 to i64
+    >   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %19
+    >   store i32 0, ptr %20, align 4
+    <   %18 = add nsw i32 %storemerge, %11
+    <   %19 = sext i32 %18 to i64
+    <   %20 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %19
+    <   store i32 0, ptr %20, align 4
+
+in function Puzzle:
+  in block %.preheader22:
+    >   %invariant.op10 = add i32 %storemerge4, %60
+    <   %invariant.op10 = add i32 %60, %storemerge4
+  in block %.preheader24:
+    >   %invariant.op5 = add i32 %storemerge3, %43
+    <   %invariant.op5 = add i32 %43, %storemerge3
+  in block %.preheader20:
+    >   %invariant.op15 = add i32 %storemerge5, %77
+    <   %invariant.op15 = add i32 %77, %storemerge5
+  in block %44 / %44:
+    >   %storemerge45 = phi i32 [ %50, %46 ], [ 0, %.preheader24 ]
+    <   %storemerge45 = phi i32 [ %50, %46 ], [ 0, %.preheader24 ]
+  in block %46 / %46:
+    >   %.reass6 = add i32 %47, %invariant.op5
+    >   %48 = sext i32 %.reass6 to i64
+    >   %49 = getelementptr inbounds [4 x i8], ptr @p, i64 %48
+    >   store i32 1, ptr %49, align 4
+    <   %.reass6 = add i32 %invariant.op5, %47
+    <   %48 = sext i32 %.reass6 to i64
+    <   %49 = getelementptr inbounds [4 x i8], ptr @p, i64 %48
+    <   store i32 1, ptr %49, align 4
+  in block %.preheader29:
+    >   %invariant.op = add i32 %storemerge1, %15
+    <   %invariant.op = add i32 %15, %storemerge1
+  in block %61 / %61:
+    >   %storemerge43 = phi i32 [ %67, %63 ], [ 0, %.preheader22 ]
+    <   %storemerge43 = phi i32 [ %67, %63 ], [ 0, %.preheader22 ]
+  in block %63 / %63:
+    >   %.reass11 = add i32 %64, %invariant.op10
+    >   %65 = sext i32 %.reass11 to i64
+    >   %66 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %65
+    >   store i32 1, ptr %66, align 4
+    <   %.reass11 = add i32 %invariant.op10, %64
+    <   %65 = sext i32 %.reass11 to i64
+    <   %66 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 2048), i64 %65
+    <   store i32 1, ptr %66, align 4
+  in block %.preheader16:
+    >   %invariant.op25 = add i32 %storemerge7, %111
+    <   %invariant.op25 = add i32 %111, %storemerge7
+  in block %.preheader14:
+    >   %invariant.op30 = add i32 %storemerge8, %128
+    <   %invariant.op30 = add i32 %128, %storemerge8
+  in block %.preheader10:
+    >   %invariant.op40 = add i32 %storemerge10, %162
+    <   %invariant.op40 = add i32 %162, %storemerge10
+  in block %.preheader8:
+    >   %invariant.op45 = add i32 %storemerge11, %179
+    <   %invariant.op45 = add i32 %179, %storemerge11
+  in block %163 / %163:
+    >   %storemerge31 = phi i32 [ %169, %165 ], [ 0, %.preheader10 ]
+    <   %storemerge31 = phi i32 [ %169, %165 ], [ 0, %.preheader10 ]
+  in block %165 / %165:
+    >   %.reass41 = add i32 %166, %invariant.op40
+    >   %167 = sext i32 %.reass41 to i64
+    >   %168 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %167
+    >   store i32 1, ptr %168, align 4
+    <   %.reass41 = add i32 %invariant.op40, %166
+    <   %167 = sext i32 %.reass41 to i64
+    <   %168 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 14336), i64 %167
+    <   store i32 1, ptr %168, align 4
+  in block %180 / %180:
+    >   %storemerge29 = phi i32 [ %186, %182 ], [ 0, %.preheader8 ]
+    <   %storemerge29 = phi i32 [ %186, %182 ], [ 0, %.preheader8 ]
+  in block %182 / %182:
+    >   %.reass46 = add i32 %183, %invariant.op45
+    >   %184 = sext i32 %.reass46 to i64
+    >   %185 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %184
+    >   store i32 1, ptr %185, align 4
+    <   %.reass46 = add i32 %invariant.op45, %183
+    <   %184 = sext i32 %.reass46 to i64
+    <   %185 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 16384), i64 %184
+    <   store i32 1, ptr %185, align 4
+  in block %.preheader6:
+    >   %invariant.op50 = add i32 %storemerge12, %196
+    <   %invariant.op50 = add i32 %196, %storemerge12
+  in block %.preheader4:
+    >   %invariant.op55 = add i32 %storemerge13, %213
+    <   %invariant.op55 = add i32 %213, %storemerge13
+  in block %.preheader2:
+    >   %invariant.op60 = add i32 %storemerge14, %230
+    <   %invariant.op60 = add i32 %230, %storemerge14
+  in block %231 / %231:
+    >   %storemerge23 = phi i32 [ %237, %233 ], [ 0, %.preheader2 ]
+    <   %storemerge23 = phi i32 [ %237, %233 ], [ 0, %.preheader2 ]
+  in block %214 / %214:
+    >   %storemerge25 = phi i32 [ %220, %216 ], [ 0, %.preheader4 ]
+    <   %storemerge25 = phi i32 [ %220, %216 ], [ 0, %.preheader4 ]
+  in block %233 / %233:
+    >   %.reass61 = add i32 %234, %invariant.op60
+    >   %235 = sext i32 %.reass61 to i64
+    >   %236 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %235
+    >   store i32 1, ptr %236, align 4
+    <   %.reass61 = add i32 %invariant.op60, %234
+    <   %235 = sext i32 %.reass61 to i64
+    <   %236 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 22528), i64 %235
+    <   store i32 1, ptr %236, align 4
+  in block %216 / %216:
+    >   %.reass56 = add i32 %217, %invariant.op55
+    >   %218 = sext i32 %.reass56 to i64
+    >   %219 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %218
+    >   store i32 1, ptr %219, align 4
+    <   %.reass56 = add i32 %invariant.op55, %217
+    <   %218 = sext i32 %.reass56 to i64
+    <   %219 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 20480), i64 %218
+    <   store i32 1, ptr %219, align 4
+  in block %197 / %197:
+    >   %storemerge27 = phi i32 [ %203, %199 ], [ 0, %.preheader6 ]
+    <   %storemerge27 = phi i32 [ %203, %199 ], [ 0, %.preheader6 ]
+  in block %199 / %199:
+    >   %.reass51 = add i32 %200, %invariant.op50
+    >   %201 = sext i32 %.reass51 to i64
+    >   %202 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %201
+    >   store i32 1, ptr %202, align 4
+    <   %.reass51 = add i32 %invariant.op50, %200
+    <   %201 = sext i32 %.reass51 to i64
+    <   %202 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 18432), i64 %201
+    <   store i32 1, ptr %202, align 4
+  in block %.preheader12:
+    >   %invariant.op35 = add i32 %storemerge9, %145
+    <   %invariant.op35 = add i32 %145, %storemerge9
+  in block %78 / %78:
+    >   %storemerge41 = phi i32 [ %84, %80 ], [ 0, %.preheader20 ]
+    <   %storemerge41 = phi i32 [ %84, %80 ], [ 0, %.preheader20 ]
+  in block %80 / %80:
+    >   %.reass16 = add i32 %81, %invariant.op15
+    >   %82 = sext i32 %.reass16 to i64
+    >   %83 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %82
+    >   store i32 1, ptr %83, align 4
+    <   %.reass16 = add i32 %invariant.op15, %81
+    <   %82 = sext i32 %.reass16 to i64
+    <   %83 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 4096), i64 %82
+    <   store i32 1, ptr %83, align 4
+  in block %.preheader:
+    >   %invariant.op65 = add i32 %storemerge15, %247
+    <   %invariant.op65 = add i32 %247, %storemerge15
+  in block %16 / %16:
+    >   %storemerge48 = phi i32 [ %22, %18 ], [ 1, %.preheader29 ]
+    <   %storemerge48 = phi i32 [ %22, %18 ], [ 1, %.preheader29 ]
+  in block %18 / %18:
+    >   %.reass = add i32 %19, %invariant.op
+    >   %20 = sext i32 %.reass to i64
+    >   %21 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %20
+    >   store i32 0, ptr %21, align 4
+    <   %.reass = add i32 %invariant.op, %19
+    <   %20 = sext i32 %.reass to i64
+    <   %21 = getelementptr inbounds [4 x i8], ptr @puzzl, i64 %20
+    <   store i32 0, ptr %21, align 4
+  in block %146 / %146:
+    >   %storemerge33 = phi i32 [ %152, %148 ], [ 0, %.preheader12 ]
+    <   %storemerge33 = phi i32 [ %152, %148 ], [ 0, %.preheader12 ]
+  in block %148 / %148:
+    >   %.reass36 = add i32 %149, %invariant.op35
+    >   %150 = sext i32 %.reass36 to i64
+    >   %151 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %150
+    >   store i32 1, ptr %151, align 4
+    <   %.reass36 = add i32 %invariant.op35, %149
+    <   %150 = sext i32 %.reass36 to i64
+    <   %151 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 12288), i64 %150
+    <   store i32 1, ptr %151, align 4
+  in block %248 / %248:
+    >   %storemerge21 = phi i32 [ %254, %250 ], [ 0, %.preheader ]
+    <   %storemerge21 = phi i32 [ %254, %250 ], [ 0, %.preheader ]
+  in block %250 / %250:
+    >   %.reass66 = add i32 %251, %invariant.op65
+    >   %252 = sext i32 %.reass66 to i64
+    >   %253 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %252
+    >   store i32 1, ptr %253, align 4
+    <   %.reass66 = add i32 %invariant.op65, %251
+    <   %252 = sext i32 %.reass66 to i64
+    <   %253 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 24576), i64 %252
+    <   store i32 1, ptr %253, align 4
+  in block %.preheader18:
+    >   %invariant.op20 = add i32 %storemerge6, %94
+    <   %invariant.op20 = add i32 %94, %storemerge6
+  in block %112 / %112:
+    >   %storemerge37 = phi i32 [ %118, %114 ], [ 0, %.preheader16 ]
+    <   %storemerge37 = phi i32 [ %118, %114 ], [ 0, %.preheader16 ]
+  in block %114 / %114:
+    >   %.reass26 = add i32 %115, %invariant.op25
+    >   %116 = sext i32 %.reass26 to i64
+    >   %117 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %116
+    >   store i32 1, ptr %117, align 4
+    <   %.reass26 = add i32 %invariant.op25, %115
+    <   %116 = sext i32 %.reass26 to i64
+    <   %117 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 8192), i64 %116
+    <   store i32 1, ptr %117, align 4
+  in block %129 / %129:
+    >   %storemerge35 = phi i32 [ %135, %131 ], [ 0, %.preheader14 ]
+    <   %storemerge35 = phi i32 [ %135, %131 ], [ 0, %.preheader14 ]
+  in block %131 / %131:
+    >   %.reass31 = add i32 %132, %invariant.op30
+    >   %133 = sext i32 %.reass31 to i64
+    >   %134 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %133
+    >   store i32 1, ptr %134, align 4
+    <   %.reass31 = add i32 %invariant.op30, %132
+    <   %133 = sext i32 %.reass31 to i64
+    <   %134 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 10240), i64 %133
+    <   store i32 1, ptr %134, align 4
+  in block %95 / %95:
+    >   %storemerge39 = phi i32 [ %101, %97 ], [ 0, %.preheader18 ]
+    <   %storemerge39 = phi i32 [ %101, %97 ], [ 0, %.preheader18 ]
+  in block %97 / %97:
+    >   %.reass21 = add i32 %98, %invariant.op20
+    >   %99 = sext i32 %.reass21 to i64
+    >   %100 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %99
+    >   store i32 1, ptr %100, align 4
+    <   %.reass21 = add i32 %invariant.op20, %98
+    <   %99 = sext i32 %.reass21 to i64
+    <   %100 = getelementptr inbounds [4 x i8], ptr getelementptr inbounds nuw (i8, ptr @p, i64 6144), i64 %99
+    <   store i32 1, ptr %100, align 4"
+indvars,loop-unroll,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__loop-unroll.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__indvars.ll,
+indvars,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\indvars__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,true,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\loop-unroll__then__reassociate.ll,results\test_rule2\Stanford_Puzzle\round_004\analysis\Stanford_Puzzle\commutativity\reassociate__then__loop-unroll.ll,

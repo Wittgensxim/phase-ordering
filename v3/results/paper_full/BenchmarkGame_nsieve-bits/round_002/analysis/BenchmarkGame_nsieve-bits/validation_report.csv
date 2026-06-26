@@ -1,0 +1,171 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+  in block %42 / %42:
+    <   %.lcssa = phi i32 [ %40, %39 ]"
+early-cse,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+early-cse,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->gvn,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+  in block %42 / %42:
+    <   %.lcssa = phi i32 [ %40, %39 ]"
+gvn,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+gvn,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->instcombine,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %47, %45 ]
+    >   %exitcond1.not = icmp eq i32 %7, 3
+    >   br i1 %exitcond1.not, label %48, label %8
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %exitcond1 = icmp ne i32 %7, 3
+    <   br i1 %exitcond1, label %8, label %49"
+indvars,licm,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+indvars,loop-rotate,dependent,false,agree_dependent,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:bb5:1:call,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:bb5:1:call,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:%9;inst:main:bb5:1:call,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%28;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%40;inst:main:%41;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:%9;inst:main:bb5:1:call,,inst,mixed,expansion,loop-rotate->indvars;indvars->loop-rotate,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %45, %43 ]
+    >   %8 = lshr exact i32 40960000, %7
+    >   %9 = lshr exact i32 5120000, %7
+    >   %10 = or disjoint i32 %9, 4
+    >   %11 = zext nneg i32 %10 to i64
+    <   %7 = phi i32 [ 0, %5 ], [ %45, %43 ]
+    <   %8 = lshr exact i32 40960000, %7
+    <   %9 = lshr exact i32 5120000, %7
+    <   %10 = or disjoint i32 %9, 4
+    <   %11 = zext nneg i32 %10 to i64
+        call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(1) %3, i8 -1, i64 %11, i1 false)
+    >   %12 = add nuw nsw i32 %8, 1
+    >   %umax = call i32 @llvm.umax.i32(i32 %12, i32 2)
+    >   %exitcond3 = icmp eq i32 2, %umax
+    >   br i1 %exitcond3, label %43, label %.lr.ph5
+    <   %12 = add nuw nsw i32 %8, 1
+    <   %umax = call i32 @llvm.umax.i32(i32 %12, i32 3)
+    <   br label %13"
+indvars,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+indvars,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+indvars,sccp,dependent,true,false_positive,inst:main:%27;inst:main:%41;inst:main:%45,inst:main:%27;inst:main:%41;inst:main:%45,inst:main:%27;inst:main:%41;inst:main:%45,read_write;enablement,strong,strong,strong,none,inst:main:%27;inst:main:%41;inst:main:%45,,inst,symmetric_rewrite,expansion,sccp->indvars,
+indvars,simplifycfg,dependent,false,agree_dependent,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:bb5:1:call,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:bb5:1:call,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%42;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:%9;inst:main:bb5:1:call,read_write;enablement,strong,strong,strong,none,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%42;inst:main:%45;inst:main:%47;inst:main:%8;inst:main:%9;inst:main:bb5:1:call,,inst,mixed,expansion,simplifycfg->indvars;indvars->simplifycfg,"in function main:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %46, %44 ], [ 0, %2 ]
+    >   %exitcond1 = icmp ne i32 %5, 3
+    >   br i1 %exitcond1, label %6, label %47
+    <   br label %4"
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->instcombine,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->instcombine,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+  in block %42 / %42:
+    <   %.lcssa = phi i32 [ %40, %39 ]
+        %43 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str, i32 noundef %8, i32 noundef %.lcssa) #5
+        %44 = add nuw nsw i32 %7, 1
+    >   %45 = icmp samesign ult i32 %7, 2
+    >   br i1 %45, label %6, label %46, !llvm.loop !10
+    <   %45 = icmp samesign ult i32 %44, 3
+    <   br i1 %45, label %6, label %46, !llvm.loop !10"
+instcombine,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->instcombine,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+    <   %7 = phi i32 [ 0, %5 ], [ %48, %46 ]
+  in block %46 / %46:
+    <   %.lcssa = phi i32 [ %15, %14 ]"
+instcombine,sccp,dependent,true,false_positive,,,,enablement,strong,none,strong,none,,,,none,activation,sccp->instcombine,
+instcombine,simplifycfg,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-rotate,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+licm,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+licm,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+licm,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->licm,"in function main:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %45, %43 ], [ 0, %2 ]
+    >   %6 = icmp samesign ult i32 %5, 3
+    >   br i1 %6, label %7, label %46
+    <   br label %4"
+loop-rotate,loop-simplify,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-rotate,loop-unroll,dependent,false,agree_dependent,,,inst:main:%.lcssa,read_write;enablement,strong,strong,strong,none,inst:main:%.lcssa,,inst,write_write_only,expansion,loop-rotate->loop-unroll,"in function main:
+  in block %6 / %6:
+    >   %7 = phi i32 [ 0, %5 ], [ %44, %42 ]
+    >   %8 = lshr exact i32 40960000, %7
+    >   %9 = lshr exact i32 5120000, %7
+    >   %10 = or disjoint i32 %9, 4
+    >   %11 = zext nneg i32 %10 to i64
+    >   call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(1) %3, i8 -1, i64 %11, i1 false)
+    <   call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(1) %3, i8 -1, i64 5120004, i1 false)
+  in block %101 / %46:
+    <   %.lcssa.2 = phi i32 [ %99, %98 ]
+    <   %102 = call i32 (ptr, ...) @printf(ptr noundef nonnull dereferenceable(1) @.str, i32 noundef 10240000, i32 noundef %.lcssa.2) #5"
+loop-rotate,sccp,dependent,true,false_positive,inst:main:%27;inst:main:%41;inst:main:%45,inst:main:%27;inst:main:%41;inst:main:%45,inst:main:%27;inst:main:%41;inst:main:%45,read_write;enablement,strong,strong,strong,none,inst:main:%27;inst:main:%41;inst:main:%45,,inst,symmetric_rewrite,expansion,sccp->loop-rotate,
+loop-rotate,simplifycfg,dependent,false,agree_dependent,bb:main:bb13;bb:main:bb14;bb:main:bb15;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%15;inst:main:%16;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%47;inst:main:%48;inst:main:%51;inst:main:%8;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb15:1:store;inst:main:bb15:2:br;inst:main:bb3:1:br;inst:main:bb4:1:call;inst:main:bb4:2:br;inst:main:bb5:1:call;inst:main:bb5:2:br;inst:main:bb7:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb3;loop:main:bb6,bb:main:bb13;bb:main:bb14;bb:main:bb15;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%15;inst:main:%16;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%47;inst:main:%48;inst:main:%51;inst:main:%8;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb15:1:store;inst:main:bb15:2:br;inst:main:bb3:1:br;inst:main:bb4:1:call;inst:main:bb4:2:br;inst:main:bb5:1:call;inst:main:bb5:2:br;inst:main:bb7:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb3;loop:main:bb6,bb:main:bb13;bb:main:bb14;bb:main:bb15;inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%47;inst:main:%48;inst:main:%51;inst:main:%8;inst:main:%9;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb12:2:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb15:1:store;inst:main:bb15:2:br;inst:main:bb3:1:br;inst:main:bb3:1:call;inst:main:bb3:2:br;inst:main:bb4:1:br;inst:main:bb4:1:call;inst:main:bb4:2:br;inst:main:bb5:1:br;inst:main:bb5:1:call;inst:main:bb5:2:br;inst:main:bb7:1:br;inst:main:bb9:1:br;loop:main:bb11;loop:main:bb3;loop:main:bb6,read_write;enablement,strong,strong,strong,none,inst:main:%10;inst:main:%11;inst:main:%12;inst:main:%13;inst:main:%14;inst:main:%15;inst:main:%16;inst:main:%17;inst:main:%18;inst:main:%19;inst:main:%20;inst:main:%21;inst:main:%22;inst:main:%23;inst:main:%24;inst:main:%26;inst:main:%27;inst:main:%29;inst:main:%30;inst:main:%31;inst:main:%32;inst:main:%33;inst:main:%34;inst:main:%35;inst:main:%36;inst:main:%37;inst:main:%39;inst:main:%41;inst:main:%44;inst:main:%45;inst:main:%47;inst:main:%48;inst:main:%51;inst:main:%8;inst:main:%9;inst:main:bb15:1:store;inst:main:bb3:1:call;inst:main:bb4:1:call;inst:main:bb5:1:call;loop:main:bb11;loop:main:bb3;loop:main:bb6,bb:main:bb13;bb:main:bb14;bb:main:bb15;inst:main:bb10:1:br;inst:main:bb11:1:br;inst:main:bb12:1:br;inst:main:bb12:2:br;inst:main:bb13:1:br;inst:main:bb14:1:br;inst:main:bb15:2:br;inst:main:bb3:1:br;inst:main:bb3:2:br;inst:main:bb4:1:br;inst:main:bb4:2:br;inst:main:bb5:1:br;inst:main:bb5:2:br;inst:main:bb7:1:br;inst:main:bb9:1:br,bb;inst;loop,mixed,expansion,simplifycfg->loop-rotate;loop-rotate->simplifycfg,"in function main:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %39, %37 ], [ 0, %2 ]
+    >   %6 = lshr exact i32 40960000, %5
+    >   %7 = lshr exact i32 5120000, %5
+    >   %8 = or disjoint i32 %7, 4
+    >   %9 = zext nneg i32 %8 to i64
+    >   call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(1) %3, i8 -1, i64 %9, i1 false)"
+loop-simplify,loop-unroll,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-simplify,simplifycfg,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,simplifycfg->loop-simplify,"in function main:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %45, %43 ], [ 0, %2 ]
+    >   %6 = icmp samesign ult i32 %5, 3
+    >   br i1 %6, label %7, label %46
+    <   br label %4"
+loop-unroll,sccp,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+loop-unroll,simplifycfg,uncertain,false,uncertain_non_commuting,,,,enablement,weak,none,weak,high,,,,none,expansion,simplifycfg->loop-unroll,"in function main:
+  in block %.preheader / %4:
+    >   %5 = phi i32 [ %45, %43 ], [ 0, %2 ]
+    >   %6 = icmp samesign ult i32 %5, 3
+    >   br i1 %6, label %7, label %46
+    <   br label %4"
+sccp,simplifycfg,dependent,true,false_positive,inst:main:%27;inst:main:%41;inst:main:%45,inst:main:%27;inst:main:%41;inst:main:%45,inst:main:%27;inst:main:%41;inst:main:%45,read_write;enablement,strong,strong,strong,none,inst:main:%27;inst:main:%41;inst:main:%45,,inst,symmetric_rewrite,expansion;mutation,simplifycfg->sccp;sccp->simplifycfg,

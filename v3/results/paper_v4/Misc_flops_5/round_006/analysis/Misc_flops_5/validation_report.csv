@@ -1,0 +1,466 @@
+pass_a,pass_b,footprint_classification,commute,agreement,wa_intersect_rb,wb_intersect_ra,wa_intersect_wb,dependency_kinds,dependency_strength,read_write_strength,enablement_strength,uncertainty_risk,strong_intersections,weak_intersections,intersection_token_kinds,overlap_pattern,enablement_edge_kinds,enablement_edges,commutativity_details
+early-cse,gvn,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->early-cse,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+early-cse,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+early-cse,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->early-cse,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+early-cse,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->early-cse,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+early-cse,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->early-cse,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+gvn,indvars,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,indvars->gvn,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+gvn,instcombine,independent,true,agree_independent,,,,,none,none,none,none,,,,none,,,
+gvn,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,licm->gvn,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+gvn,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-rotate->gvn,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+gvn,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,activation,loop-unroll->gvn,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+indvars,instcombine,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,indvars->instcombine,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+indvars,licm,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+indvars,loop-rotate,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+indvars,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+instcombine,licm,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,licm->instcombine,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+instcombine,loop-rotate,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-rotate->instcombine,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+instcombine,loop-unroll,dependent,false,agree_dependent,,,,enablement,strong,none,strong,none,,,,none,expansion,loop-unroll->instcombine,"in function main:
+  in block %27 / %27:
+    <   %.lcssa = phi double [ %25, %5 ]
+        %28 = fdiv double %1, %2
+        %29 = fmul double %28, %28
+        %30 = call double @llvm.fmuladd.f64(double %.pre, double %29, double %.pre1)
+        %31 = call double @llvm.fmuladd.f64(double %30, double %29, double %.pre2)
+        %32 = call double @llvm.fmuladd.f64(double %31, double %29, double %.pre3)
+        %33 = call double @llvm.fmuladd.f64(double %32, double %29, double %.pre4)
+        %34 = call double @llvm.fmuladd.f64(double %33, double %29, double %.pre5)
+        %35 = call double @llvm.fmuladd.f64(double %34, double %29, double %.pre6)
+        %36 = fmul double %28, %35
+        store double %36, ptr @sa, align 8
+        %37 = call double @llvm.fmuladd.f64(double %.pre7, double %29, double %.pre8)
+        %38 = call double @llvm.fmuladd.f64(double %29, double %37, double %.pre9)
+        %39 = call double @llvm.fmuladd.f64(double %29, double %38, double %.pre10)
+        %40 = call double @llvm.fmuladd.f64(double %29, double %39, double %.pre11)
+        %41 = call double @llvm.fmuladd.f64(double %29, double %40, double %.pre12)
+        %42 = call double @llvm.fmuladd.f64(double %29, double %41, double %.pre6)
+        store double %42, ptr @sb, align 8
+        %43 = fdiv double %36, %42
+        store double %43, ptr @sa, align 8
+        %44 = load double, ptr @two, align 8
+    >   %45 = call double @llvm.fmuladd.f64(double %44, double %25, double %43)
+    >   %46 = fmul double %4, %45
+    >   %47 = fdiv double %46, %44
+    >   store double %47, ptr @sa, align 8
+    <   %45 = call double @llvm.fmuladd.f64(double %44, double %.lcssa, double %43)
+    <   %46 = fmul double %4, %45
+    <   %47 = fdiv double %46, %44
+    <   store double %47, ptr @sa, align 8
+        store double f0x3FE62E42FEFA39EF, ptr @sb, align 8
+    >   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    >   store double %48, ptr @sc, align 8
+    >   %49 = fmul double %48, 1.000000e-30
+    <   %48 = fadd double %47, f0xBFE62E42FEFA39EF
+    <   store double %48, ptr @sc, align 8
+    <   %49 = fmul double %48, 1.000000e-30"
+licm,loop-rotate,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+licm,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,
+loop-rotate,loop-unroll,dependent,true,false_positive,,,inst:main:%.lcssa,read_write,strong,strong,none,none,inst:main:%.lcssa,,inst,write_write_only,,,

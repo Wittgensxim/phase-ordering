@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "indvars",
+    "gvn"
+  ],
+  "winner": "B->A",
+  "score_improvement": -12.5,
+  "details": "oracle chose indvars->gvn (improvement: -12.50)",
+  "changed": true
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "loop-rotate",
+    "gvn"
+  ],
+  "winner": "B->A",
+  "score_improvement": 23.0,
+  "details": "oracle chose loop-rotate->gvn (improvement: 23.00)",
+  "changed": true
+}

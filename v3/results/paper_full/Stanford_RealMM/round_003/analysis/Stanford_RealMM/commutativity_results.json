@@ -1,0 +1,129 @@
+{
+  "summary": {
+    "total_pairs": 15,
+    "commuting_pairs": 11,
+    "non_commuting_pairs": 4
+  },
+  "pairs": [
+    {
+      "pass_a": "instcombine",
+      "pass_b": "simplifycfg",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\instcombine__then__simplifycfg.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\simplifycfg__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\instcombine__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\early-cse__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\instcombine__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\gvn__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\instcombine__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\licm__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "instcombine",
+      "pass_b": "loop-unroll",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\instcombine__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\loop-unroll__then__instcombine.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "early-cse",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\simplifycfg__then__early-cse.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\early-cse__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\simplifycfg__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\gvn__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\simplifycfg__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\licm__then__simplifycfg.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "simplifycfg",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\simplifycfg__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\loop-unroll__then__simplifycfg.ll",
+      "details": "in function main:\n  in block %0 / %0:\n    >   call void @Mm(i32 noundef 0)\n    >   call void @Mm(i32 noundef 1)\n    >   call void @Mm(i32 noundef 2)\n    >   call void @Mm(i32 noundef 3)\n    >   call void @Mm(i32 noundef 4)\n    >   call void @Mm(i32 noundef 5)\n    >   call void @Mm(i32 noundef 6)\n    >   call void @Mm(i32 noundef 7)\n    >   call void @Mm(i32 noundef 8)\n    >   call void @Mm(i32 noundef 9)\n    >   ret i32 0\n    <   br label %1"
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "gvn",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\early-cse__then__gvn.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\gvn__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\early-cse__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\licm__then__early-cse.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "early-cse",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\early-cse__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\loop-unroll__then__early-cse.ll",
+      "details": "in function rInnerproduct:\n  in block %6 / %6:\n    >   %7 = phi double [ 0.000000e+00, %5 ], [ %22, %6 ]\n    >   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]\n    <   %7 = phi double [ 0.000000e+00, %5 ], [ %25, %6 ]\n    <   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]\n        %8 = sext i32 %3 to i64\n        %9 = getelementptr inbounds [328 x i8], ptr %1, i64 %8\n    >   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2\n    >   %11 = load double, ptr %10, align 8\n    >   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2\n    <   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2\n    <   %11 = load double, ptr %10, align 8\n    <   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2\n        %13 = sext i32 %4 to i64\n    >   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13\n    >   %15 = load double, ptr %14, align 8\n    <   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13\n    <   %15 = load double, ptr %14, align 8\n        %16 = call double @llvm.fmuladd.f64(double %11, double %15, double %7)\n        store double %16, ptr %0, align 8\n    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1\n    >   %17 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv.next\n    >   %18 = load double, ptr %17, align 8\n    >   %19 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next\n    >   %20 = getelementptr inbounds [8 x i8], ptr %19, i64 %13\n    >   %21 = load double, ptr %20, align 8\n    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1\n    <   %17 = sext i32 %3 to i64\n    <   %18 = getelementptr inbounds [328 x i8], ptr %1, i64 %17\n    <   %19 = getelementptr inbounds nuw [8 x i8], ptr %18, i64 %indvars.iv.next\n    <   %20 = load double, ptr %19, align 8\n    <   %21 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next\n    <   %22 = sext i32 %4 to i64\n    <   %23 = getelementptr inbounds [8 x i8], ptr %21, i64 %22\n    <   %24 = load double, ptr %23, align 8\n        %25 = call double @llvm.fmuladd.f64(double %20, double %24, double %16)\n        store double %25, ptr %0, align 8\n    >   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2\n    >   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41\n    >   br i1 %exitcond.1, label %6, label %23, !llvm.loop !7\n    <   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2\n    <   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41\n    <   br i1 %exitcond.1, label %6, label %26, !llvm.loop !7"
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "licm",
+      "commute": true,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\gvn__then__licm.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\licm__then__gvn.ll",
+      "details": ""
+    },
+    {
+      "pass_a": "gvn",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\gvn__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\loop-unroll__then__gvn.ll",
+      "details": "in function rInnerproduct:\n  in block %6 / %6:\n    >   %7 = phi double [ 0.000000e+00, %5 ], [ %22, %6 ]\n    >   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]\n    <   %7 = phi double [ 0.000000e+00, %5 ], [ %25, %6 ]\n    <   %indvars.iv2 = phi i64 [ 1, %5 ], [ %indvars.iv.next.1, %6 ]\n        %8 = sext i32 %3 to i64\n        %9 = getelementptr inbounds [328 x i8], ptr %1, i64 %8\n    >   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2\n    >   %11 = load double, ptr %10, align 8\n    >   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2\n    <   %10 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv2\n    <   %11 = load double, ptr %10, align 8\n    <   %12 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv2\n        %13 = sext i32 %4 to i64\n    >   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13\n    >   %15 = load double, ptr %14, align 8\n    <   %14 = getelementptr inbounds [8 x i8], ptr %12, i64 %13\n    <   %15 = load double, ptr %14, align 8\n        %16 = call double @llvm.fmuladd.f64(double %11, double %15, double %7)\n        store double %16, ptr %0, align 8\n    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1\n    >   %17 = getelementptr inbounds nuw [8 x i8], ptr %9, i64 %indvars.iv.next\n    >   %18 = load double, ptr %17, align 8\n    >   %19 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next\n    >   %20 = getelementptr inbounds [8 x i8], ptr %19, i64 %13\n    >   %21 = load double, ptr %20, align 8\n    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv2, 1\n    <   %17 = sext i32 %3 to i64\n    <   %18 = getelementptr inbounds [328 x i8], ptr %1, i64 %17\n    <   %19 = getelementptr inbounds nuw [8 x i8], ptr %18, i64 %indvars.iv.next\n    <   %20 = load double, ptr %19, align 8\n    <   %21 = getelementptr inbounds nuw [328 x i8], ptr %2, i64 %indvars.iv.next\n    <   %22 = sext i32 %4 to i64\n    <   %23 = getelementptr inbounds [8 x i8], ptr %21, i64 %22\n    <   %24 = load double, ptr %23, align 8\n        %25 = call double @llvm.fmuladd.f64(double %20, double %24, double %16)\n        store double %25, ptr %0, align 8\n    >   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2\n    >   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41\n    >   br i1 %exitcond.1, label %6, label %23, !llvm.loop !7\n    <   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv2, 2\n    <   %exitcond.1 = icmp ne i64 %indvars.iv.next.1, 41\n    <   br i1 %exitcond.1, label %6, label %26, !llvm.loop !7\n\nin function main:\n  in block %0 / %0:\n    >   call void @Mm(i32 noundef 0)\n    >   call void @Mm(i32 noundef 1)\n    >   call void @Mm(i32 noundef 2)\n    >   call void @Mm(i32 noundef 3)\n    >   call void @Mm(i32 noundef 4)\n    >   call void @Mm(i32 noundef 5)\n    >   call void @Mm(i32 noundef 6)\n    >   call void @Mm(i32 noundef 7)\n    >   call void @Mm(i32 noundef 8)\n    >   call void @Mm(i32 noundef 9)\n    >   ret i32 0\n    <   br label %1"
+    },
+    {
+      "pass_a": "licm",
+      "pass_b": "loop-unroll",
+      "commute": false,
+      "ab_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\licm__then__loop-unroll.ll",
+      "ba_path": "results\\paper_full\\Stanford_RealMM\\round_003\\analysis\\Stanford_RealMM\\commutativity\\loop-unroll__then__licm.ll",
+      "details": "in function rInnerproduct:\n  in block %5 / %5:\n    >   %6 = sext i32 %3 to i64\n    >   %7 = getelementptr inbounds [328 x i8], ptr %1, i64 %6\n    >   %8 = sext i32 %4 to i64\n    >   %invariant.gep = getelementptr [8 x i8], ptr %2, i64 %8"
+    }
+  ]
+}

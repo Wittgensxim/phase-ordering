@@ -1,0 +1,11 @@
+{
+  "kind": "oracle_ordered_pair",
+  "passes": [
+    "indvars",
+    "loop-rotate"
+  ],
+  "winner": "tie",
+  "score_improvement": 12.0,
+  "details": "oracle chose indvars->loop-rotate (improvement: 12.00)",
+  "changed": true
+}

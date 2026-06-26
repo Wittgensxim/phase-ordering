@@ -1,0 +1,1444 @@
+{
+  "benchmark": "Stanford_IntMM",
+  "rounds": 7,
+  "final_metrics": {
+    "function_count": 6,
+    "basic_block_count": 11,
+    "instruction_count": 90,
+    "load_count": 6,
+    "store_count": 6,
+    "call_count": 16,
+    "branch_count": 11,
+    "phi_count": 6,
+    "ret_count": 6,
+    "ir_file_size": 8886,
+    "score_ir": 139.5,
+    "score": 139.5
+  },
+  "trace": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_000\\input.ll",
+      "input_hash": "f53eb925637fa237cb8a63b4fabf10a4de8b63292fd037e5f59ae73eef164c54",
+      "metric_score": 251.0,
+      "instruction_count": 160,
+      "candidate_pass_count": 12,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "reassociate"
+      ],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-unroll",
+        "mem2reg",
+        "sccp",
+        "simplifycfg",
+        "sroa"
+      ],
+      "decision_required_pairs": [
+        "early-cse,instcombine",
+        "early-cse,licm",
+        "early-cse,loop-rotate",
+        "early-cse,sccp",
+        "gvn,indvars",
+        "gvn,instcombine",
+        "gvn,licm",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "gvn,mem2reg",
+        "gvn,sccp",
+        "gvn,sroa",
+        "indvars,licm",
+        "indvars,mem2reg",
+        "indvars,sroa",
+        "instcombine,licm",
+        "instcombine,loop-rotate",
+        "instcombine,mem2reg",
+        "instcombine,sccp",
+        "instcombine,simplifycfg",
+        "instcombine,sroa",
+        "licm,loop-rotate",
+        "licm,mem2reg",
+        "licm,sroa",
+        "loop-rotate,mem2reg",
+        "loop-rotate,simplifycfg",
+        "loop-rotate,sroa",
+        "loop-unroll,mem2reg",
+        "loop-unroll,sroa",
+        "mem2reg,simplifycfg",
+        "simplifycfg,sroa"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "gvn,instcombine",
+      "action_details": "oracle chose gvn->instcombine (improvement: 133.00)",
+      "output_hash": "0bf56f3dc48ef6ed6d233baa90a5781fc8722b47d4b35d6faec784a3d1141fd0",
+      "metric_after": 118.0,
+      "metric_delta": -133.0,
+      "changed": "true"
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_001\\input.ll",
+      "input_hash": "0bf56f3dc48ef6ed6d233baa90a5781fc8722b47d4b35d6faec784a3d1141fd0",
+      "metric_score": 118.0,
+      "instruction_count": 86,
+      "candidate_pass_count": 10,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "indvars",
+        "instcombine",
+        "licm",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "sccp",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,loop-unroll",
+        "indvars,instcombine",
+        "indvars,licm",
+        "indvars,loop-rotate",
+        "indvars,loop-unroll",
+        "indvars,simplifycfg",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "licm,loop-unroll",
+        "loop-rotate,loop-unroll",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,sccp",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "indvars,loop-rotate",
+      "action_details": "oracle chose indvars->loop-rotate (improvement: 12.00)",
+      "output_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_after": 106.0,
+      "metric_delta": -12.0,
+      "changed": "true"
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_002\\input.ll",
+      "input_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_score": 106.0,
+      "instruction_count": 77,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "instcombine"
+      ],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,loop-unroll",
+        "licm,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,gvn",
+      "action_details": "oracle chose loop-unroll->gvn (improvement: -33.00)",
+      "output_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_after": 106.0,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_003\\input.ll",
+      "input_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_score": 106.0,
+      "instruction_count": 77,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "instcombine"
+      ],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,loop-unroll",
+        "licm,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "licm,loop-unroll",
+      "action_details": "oracle chose licm->loop-unroll (improvement: -33.50)",
+      "output_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_after": 106.0,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_004\\input.ll",
+      "input_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_score": 106.0,
+      "instruction_count": 77,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "instcombine"
+      ],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,loop-unroll",
+        "licm,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,early-cse",
+      "action_details": "oracle chose loop-unroll->early-cse (improvement: -34.50)",
+      "output_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_after": 106.0,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_005\\input.ll",
+      "input_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_score": 106.0,
+      "instruction_count": 77,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "instcombine"
+      ],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,loop-unroll",
+        "licm,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,simplifycfg",
+      "action_details": "oracle chose loop-unroll->simplifycfg (improvement: -36.00)",
+      "output_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_after": 106.0,
+      "metric_delta": 0.0,
+      "changed": "false"
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\paper_full\\Stanford_IntMM\\round_006\\input.ll",
+      "input_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_score": 106.0,
+      "instruction_count": 77,
+      "candidate_pass_count": 6,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [
+        "instcombine"
+      ],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "licm",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-unroll",
+        "gvn,loop-unroll",
+        "licm,loop-unroll",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-unroll,gvn",
+      "action_details": "oracle chose loop-unroll->gvn (improvement: -33.00)",
+      "output_hash": "8f657adb1e2b638220032ea014b7389ffdf606ffc9f214c10dd748535f2d1c01",
+      "metric_after": 106.0,
+      "metric_delta": 0.0,
+      "changed": "false"
+    }
+  ],
+  "policy_reports": [
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:order_sensitive",
+        "early-cse,licm:order_sensitive",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-unroll:confirmed_independent",
+        "early-cse,mem2reg:needs_attribution",
+        "early-cse,reassociate:needs_attribution",
+        "early-cse,sccp:order_sensitive",
+        "early-cse,simplifycfg:needs_attribution",
+        "early-cse,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:likely_independent",
+        "gvn,indvars:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,mem2reg:order_sensitive",
+        "gvn,reassociate:needs_attribution",
+        "gvn,sccp:order_sensitive",
+        "gvn,simplifycfg:likely_independent",
+        "gvn,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "indvars,loop-unroll:confirmed_independent",
+        "indvars,mem2reg:order_sensitive",
+        "indvars,reassociate:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "indvars,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.6364
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:order_sensitive",
+        "gvn,instcombine:order_sensitive",
+        "indvars,instcombine:confirmed_independent",
+        "instcombine,licm:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-unroll:confirmed_independent",
+        "instcombine,mem2reg:order_sensitive",
+        "instcombine,reassociate:needs_attribution",
+        "instcombine,sccp:order_sensitive",
+        "instcombine,simplifycfg:order_sensitive",
+        "instcombine,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:order_sensitive",
+        "gvn,licm:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "licm,loop-unroll:confirmed_independent",
+        "licm,mem2reg:order_sensitive",
+        "licm,reassociate:needs_attribution",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:needs_attribution",
+        "licm,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "indvars,loop-rotate:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:order_sensitive",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.2727
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:confirmed_independent",
+        "instcombine,loop-unroll:confirmed_independent",
+        "licm,loop-unroll:confirmed_independent",
+        "loop-rotate,loop-unroll:confirmed_independent",
+        "loop-unroll,mem2reg:order_sensitive",
+        "loop-unroll,reassociate:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "loop-unroll,simplifycfg:confirmed_independent",
+        "loop-unroll,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.7273
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "mem2reg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,mem2reg:needs_attribution",
+        "gvn,mem2reg:order_sensitive",
+        "indvars,mem2reg:order_sensitive",
+        "instcombine,mem2reg:order_sensitive",
+        "licm,mem2reg:order_sensitive",
+        "loop-rotate,mem2reg:order_sensitive",
+        "loop-unroll,mem2reg:order_sensitive",
+        "mem2reg,reassociate:needs_attribution",
+        "mem2reg,sccp:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "mem2reg,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.0909
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "reassociate",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "early-cse,reassociate:needs_attribution",
+        "gvn,reassociate:needs_attribution",
+        "indvars,reassociate:confirmed_independent",
+        "instcombine,reassociate:needs_attribution",
+        "licm,reassociate:needs_attribution",
+        "loop-rotate,reassociate:needs_attribution",
+        "loop-unroll,reassociate:confirmed_independent",
+        "mem2reg,reassociate:needs_attribution",
+        "reassociate,sccp:needs_attribution",
+        "reassociate,simplifycfg:needs_attribution",
+        "reassociate,sroa:needs_attribution"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.1818
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:order_sensitive",
+        "gvn,sccp:order_sensitive",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:order_sensitive",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-unroll,sccp:confirmed_independent",
+        "mem2reg,sccp:confirmed_independent",
+        "reassociate,sccp:needs_attribution",
+        "sccp,simplifycfg:confirmed_independent",
+        "sccp,sroa:confirmed_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.6364
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:needs_attribution",
+        "gvn,simplifycfg:likely_independent",
+        "indvars,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:order_sensitive",
+        "licm,simplifycfg:needs_attribution",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:confirmed_independent",
+        "mem2reg,simplifycfg:order_sensitive",
+        "reassociate,simplifycfg:needs_attribution",
+        "sccp,simplifycfg:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.3636
+    },
+    {
+      "round": 0,
+      "benchmark": "Stanford_IntMM",
+      "pass": "sroa",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sroa:needs_attribution",
+        "gvn,sroa:order_sensitive",
+        "indvars,sroa:order_sensitive",
+        "instcombine,sroa:order_sensitive",
+        "licm,sroa:order_sensitive",
+        "loop-rotate,sroa:order_sensitive",
+        "loop-unroll,sroa:order_sensitive",
+        "mem2reg,sroa:needs_attribution",
+        "reassociate,sroa:needs_attribution",
+        "sccp,sroa:confirmed_independent",
+        "simplifycfg,sroa:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 11,
+      "safe_edge_ratio": 0.0909
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,indvars:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-rotate:confirmed_independent",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,sccp:confirmed_independent",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,indvars:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,sccp:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "indvars",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,indvars:confirmed_independent",
+        "gvn,indvars:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "indvars,licm:order_sensitive",
+        "indvars,loop-rotate:order_sensitive",
+        "indvars,loop-simplify:confirmed_independent",
+        "indvars,loop-unroll:order_sensitive",
+        "indvars,sccp:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "indvars,instcombine:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,sccp:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "indvars,licm:order_sensitive",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-rotate:needs_attribution",
+        "licm,loop-simplify:confirmed_independent",
+        "licm,loop-unroll:order_sensitive",
+        "licm,sccp:confirmed_independent",
+        "licm,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.5556
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:confirmed_independent",
+        "gvn,loop-rotate:confirmed_independent",
+        "indvars,loop-rotate:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "licm,loop-rotate:needs_attribution",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-rotate,simplifycfg:needs_attribution"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "indvars,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "licm,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:confirmed_independent",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "indvars,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "licm,loop-unroll:order_sensitive",
+        "loop-rotate,loop-unroll:order_sensitive",
+        "loop-simplify,loop-unroll:confirmed_independent",
+        "loop-unroll,sccp:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 1,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.1111
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "sccp",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,sccp:confirmed_independent",
+        "gvn,sccp:confirmed_independent",
+        "indvars,sccp:confirmed_independent",
+        "instcombine,sccp:confirmed_independent",
+        "licm,sccp:confirmed_independent",
+        "loop-rotate,sccp:confirmed_independent",
+        "loop-simplify,sccp:confirmed_independent",
+        "loop-unroll,sccp:order_sensitive",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.8889
+    },
+    {
+      "round": 1,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "indvars,simplifycfg:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:needs_attribution",
+        "loop-rotate,simplifycfg:needs_attribution",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "sccp,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 9,
+      "safe_edge_ratio": 0.4444
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-unroll:order_sensitive",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 2,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-unroll:order_sensitive",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 3,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-unroll:order_sensitive",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 4,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-unroll:order_sensitive",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 5,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,licm:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "pass": "instcombine",
+      "scheduler_class": "blocked_for_auto",
+      "blocking_reasons": [
+        "needs_attribution"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "instcombine,loop-unroll:needs_attribution",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "pass": "licm",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,licm:confirmed_independent",
+        "gvn,licm:confirmed_independent",
+        "instcombine,licm:confirmed_independent",
+        "licm,loop-unroll:order_sensitive",
+        "licm,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:needs_attribution",
+        "licm,loop-unroll:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 0,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.0
+    },
+    {
+      "round": 6,
+      "benchmark": "Stanford_IntMM",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "licm,simplifycfg:confirmed_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 5,
+      "safe_edge_ratio": 0.8
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_score": 109.0,
+    "scheduler_score": 139.5,
+    "improvement": -30.5,
+    "baseline_instruction_count": 80,
+    "scheduler_instruction_count": 90
+  }
+}

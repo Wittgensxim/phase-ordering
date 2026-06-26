@@ -1,0 +1,541 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,dce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__dce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__instcombine.ll,
+instcombine,early-cse,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__early-cse.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__gvn.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__instcombine.ll,
+instcombine,sccp,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__sccp.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__instcombine.ll,
+instcombine,adce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__adce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__instcombine.ll,
+instcombine,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__instcombine.ll,
+instcombine,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__instcombine.ll,
+instcombine,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__instcombine.ll,"in function main:
+  in block %.lr.ph.preheader:
+    <   %13 = add nsw i64 %wide.trip.count, -1
+        %xtraiter = and i64 %wide.trip.count, 7
+    >   %13 = icmp slt i32 %9, 8
+    >   br i1 %13, label %.lr.ph.epil.preheader, label %.lr.ph.preheader.new
+    <   %14 = icmp ult i64 %13, 7
+    <   br i1 %14, label %.lr.ph.epil.preheader, label %.lr.ph.preheader.new
+  in block %.preheader1.preheader:
+    <   %17 = add nsw i64 %10, -1"
+instcombine,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\instcombine__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__instcombine.ll,
+simplifycfg,dce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__dce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__simplifycfg.ll,
+simplifycfg,early-cse,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__simplifycfg.ll,
+simplifycfg,gvn,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__gvn.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__simplifycfg.ll,
+simplifycfg,sccp,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__sccp.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,adce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__adce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %8 ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %13 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %14 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %14, ptr %13, align 4
+    >   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %.lr.ph, label %.preheader1.preheader, !llvm.loop !7
+    <   br label %.lr.ph
+  in block %.preheader.preheader1 / %.preheader:
+    >   %indvars.iv24 = phi i64 [ %indvars.iv.next3, %.preheader ], [ %10, %.preheader.preheader ]
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv24, -1
+    >   %17 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3
+    >   %18 = load i32, ptr %17, align 4
+    >   %19 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = add nsw i32 %20, %18
+    >   store i32 %21, ptr %19, align 4
+    >   %22 = icmp sgt i64 %indvars.iv.next3, 0
+    >   br i1 %22, label %.preheader, label %.preheader1, !llvm.loop !9
+    <   br label %.preheader"
+simplifycfg,loop-rotate,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %8 ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %13 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %14 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %14, ptr %13, align 4
+    >   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %.lr.ph, label %.preheader1.preheader, !llvm.loop !7
+    <   br label %.lr.ph
+  in block %.preheader.preheader1 / %.preheader:
+    >   %indvars.iv24 = phi i64 [ %indvars.iv.next3, %.preheader ], [ %10, %.preheader.preheader ]
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv24, -1
+    >   %17 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3
+    >   %18 = load i32, ptr %17, align 4
+    >   %19 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = add nsw i32 %20, %18
+    >   store i32 %21, ptr %19, align 4
+    >   %22 = icmp sgt i64 %indvars.iv.next3, 0
+    >   br i1 %22, label %.preheader, label %.preheader1, !llvm.loop !9
+    <   br label %.preheader"
+simplifycfg,licm,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %8 ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %14 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %15 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %15, ptr %14, align 4
+    >   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %.lr.ph, label %.preheader1.preheader, !llvm.loop !7
+    <   br label %.lr.ph
+  in block %.preheader.preheader1 / %.preheader:
+    >   %indvars.iv24 = phi i64 [ %indvars.iv.next3, %.preheader ], [ %10, %.preheader.preheader ]
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv24, -1
+    >   %17 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3
+    >   %18 = load i32, ptr %17, align 4
+    >   %19 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = add nsw i32 %20, %18
+    >   store i32 %21, ptr %19, align 4
+    >   %22 = icmp sgt i64 %indvars.iv.next3, 0
+    >   br i1 %22, label %.preheader, label %.preheader1, !llvm.loop !9
+    <   br label %.preheader"
+simplifycfg,indvars,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph.preheader / %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %8 ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %13 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %14 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %14, ptr %13, align 4
+    >   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %.lr.ph, label %.preheader1.preheader, !llvm.loop !7
+    <   br label %.lr.ph
+  in block %.preheader.preheader1 / %.preheader:
+    >   %indvars.iv24 = phi i64 [ %indvars.iv.next3, %.preheader ], [ %10, %.preheader.preheader ]
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv24, -1
+    >   %17 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3
+    >   %18 = load i32, ptr %17, align 4
+    >   %19 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3
+    >   %20 = load i32, ptr %19, align 4
+    >   %21 = add nsw i32 %20, %18
+    >   store i32 %21, ptr %19, align 4
+    >   %22 = icmp sgt i64 %indvars.iv.next3, 0
+    >   br i1 %22, label %.preheader, label %.preheader1, !llvm.loop !9
+    <   br label %.preheader"
+simplifycfg,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__simplifycfg.ll,"in function main:
+  in block %.preheader1.preheader.loopexit.epilog-lcssa / %.preheader1.preheader:
+    in instruction   br label %.preheader1.preheader.loopexit /   br label %.preheader.preheader:
+      successor %.preheader1.preheader.loopexit cannot be equivalent to %.preheader.preheader; it's already equivalent to %.preheader1.preheader
+    >   %17 = add nsw i64 %10, -1
+  in block %.preheader1.preheader.loopexit / %.preheader1.preheader:
+    in instruction   br label %.preheader1.preheader /   br label %.preheader.preheader:
+      successor %.preheader1.preheader cannot be equivalent to %.preheader.preheader; it's already equivalent to %.preheader1.preheader
+    >   %17 = add nsw i64 %10, -1
+  in block %.preheader.prol.preheader / %.preheader.prol:
+    >   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.preheader1 ]
+    >   %prol.iter = phi i64 [ %prol.iter.next, %.preheader.prol ], [ 0, %.preheader.preheader1 ]
+    >   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    >   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, %37
+    >   store i32 %40, ptr %38, align 4
+    >   %41 = icmp sgt i64 %indvars.iv.next3.prol, 0
+    >   %prol.iter.next = add i64 %prol.iter, 1
+    >   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    >   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit, !llvm.loop !11
+    <   br label %.preheader.prol
+  in block %.preheader.prol.loopexit:
+    >   %indvars.iv24.unr = phi i64 [ %10, %.preheader.preheader1 ], [ %indvars.iv.next3.prol, %.preheader.prol ]
+    <   %indvars.iv24.unr = phi i64 [ %10, %.preheader.preheader1 ], [ %indvars.iv24.unr.ph, %.preheader.prol.loopexit.unr-lcssa ]"
+simplifycfg,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\simplifycfg__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__simplifycfg.ll,
+dce,early-cse,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__early-cse.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__dce.ll,
+dce,gvn,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__gvn.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__dce.ll,
+dce,sccp,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__sccp.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__dce.ll,
+dce,adce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__adce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__dce.ll,
+dce,loop-simplify,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__dce.ll,
+dce,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__dce.ll,
+dce,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__dce.ll,
+dce,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__dce.ll,
+dce,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__dce.ll,"in function main:
+  in block %.lr.ph.epil:
+    >   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    >   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    >   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    >   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    >   store i32 %16, ptr %15, align 4
+    >   %epil.iter.next = add i64 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+    <   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    <   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    <   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    <   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    <   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    <   store i32 %16, ptr %15, align 4
+    <   %exitcond.epil = icmp ne i64 %indvars.iv.next.epil, %wide.trip.count
+    <   %epil.iter.next = add i64 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+  in block %.preheader.prol:
+    >   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    >   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    >   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    >   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, %37
+    >   store i32 %40, ptr %38, align 4
+    >   %prol.iter.next = add i64 %prol.iter, 1
+    >   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    >   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+    <   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    <   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    <   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    <   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    <   %37 = load i32, ptr %36, align 4
+    <   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    <   %39 = load i32, ptr %38, align 4
+    <   %40 = add nsw i32 %39, %37
+    <   store i32 %40, ptr %38, align 4
+    <   %41 = icmp sgt i64 %indvars.iv.next3.prol, 0
+    <   %prol.iter.next = add i64 %prol.iter, 1
+    <   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    <   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+  in block %.preheader.prol.loopexit.unr-lcssa:
+    >   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]
+    <   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]"
+dce,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\dce__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__dce.ll,
+early-cse,gvn,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__gvn.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__sccp.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__early-cse.ll,
+early-cse,adce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__adce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__early-cse.ll,
+early-cse,loop-simplify,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__early-cse.ll,
+early-cse,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__early-cse.ll,
+early-cse,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__early-cse.ll,
+early-cse,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__early-cse.ll,"in function main:
+  in block %.lr.ph.epil.preheader:
+    >   %indvars.iv3.epil.init = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv.next.7, %.preheader1.preheader.loopexit.unr-lcssa ]
+    <   %indvars.iv3.epil.init = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv3.unr, %.preheader1.preheader.loopexit.unr-lcssa ]
+  in block %.preheader1.preheader.loopexit.unr-lcssa:
+    <   %indvars.iv3.unr = phi i64 [ %indvars.iv.next.7, %.lr.ph ]
+  in block %.preheader.prol:
+    >   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    >   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    >   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    >   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, %37
+    >   store i32 %40, ptr %38, align 4
+    >   %prol.iter.next = add i64 %prol.iter, 1
+    >   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    >   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+    <   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    <   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    <   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    <   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    <   %37 = load i32, ptr %36, align 4
+    <   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    <   %39 = load i32, ptr %38, align 4
+    <   %40 = add nsw i32 %39, %37
+    <   store i32 %40, ptr %38, align 4
+    <   %41 = icmp sgt i64 %indvars.iv.next3.prol, 0
+    <   %prol.iter.next = add i64 %prol.iter, 1
+    <   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    <   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+  in block %.preheader.prol.loopexit:
+    >   %indvars.iv24.unr = phi i64 [ %10, %.preheader.preheader1 ], [ %indvars.iv.next3.prol, %.preheader.prol.loopexit.unr-lcssa ]
+    <   %indvars.iv24.unr = phi i64 [ %10, %.preheader.preheader1 ], [ %indvars.iv24.unr.ph, %.preheader.prol.loopexit.unr-lcssa ]"
+early-cse,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\early-cse__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__early-cse.ll,
+gvn,sccp,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__sccp.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__gvn.ll,
+gvn,adce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__adce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__gvn.ll,
+gvn,loop-simplify,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__gvn.ll,
+gvn,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__gvn.ll,
+gvn,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__gvn.ll,
+gvn,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %.lr.ph.epil.preheader:
+    >   %indvars.iv3.epil.init = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv.next.7, %.preheader1.preheader.loopexit.unr-lcssa ]
+    <   %indvars.iv3.epil.init = phi i64 [ 0, %.lr.ph.preheader ], [ %indvars.iv3.unr, %.preheader1.preheader.loopexit.unr-lcssa ]
+  in block %.preheader1.preheader.loopexit.unr-lcssa:
+    <   %indvars.iv3.unr = phi i64 [ %indvars.iv.next.7, %.lr.ph ]
+  in block %.preheader.prol.loopexit.unr-lcssa:
+    <   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]
+  in block %.preheader.prol.loopexit:
+    >   %indvars.iv24.unr = phi i64 [ %10, %.preheader.preheader1 ], [ %indvars.iv.next3.prol, %.preheader.prol.loopexit.unr-lcssa ]
+    <   %indvars.iv24.unr = phi i64 [ %10, %.preheader.preheader1 ], [ %indvars.iv24.unr.ph, %.preheader.prol.loopexit.unr-lcssa ]"
+gvn,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\gvn__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__gvn.ll,
+sccp,adce,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__adce.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__sccp.ll,
+sccp,loop-simplify,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__sccp.ll,
+sccp,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\sccp__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__sccp.ll,
+adce,loop-simplify,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__adce.ll,
+adce,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__adce.ll,
+adce,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__adce.ll,
+adce,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__adce.ll,
+adce,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__adce.ll,"in function main:
+  in block %.lr.ph.epil:
+    >   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    >   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    >   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    >   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    >   store i32 %16, ptr %15, align 4
+    >   %epil.iter.next = add i64 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+    <   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    <   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    <   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    <   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    <   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    <   store i32 %16, ptr %15, align 4
+    <   %exitcond.epil = icmp ne i64 %indvars.iv.next.epil, %wide.trip.count
+    <   %epil.iter.next = add i64 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+  in block %.preheader.prol:
+    >   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    >   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    >   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    >   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, %37
+    >   store i32 %40, ptr %38, align 4
+    >   %prol.iter.next = add i64 %prol.iter, 1
+    >   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    >   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+    <   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    <   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    <   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    <   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    <   %37 = load i32, ptr %36, align 4
+    <   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    <   %39 = load i32, ptr %38, align 4
+    <   %40 = add nsw i32 %39, %37
+    <   store i32 %40, ptr %38, align 4
+    <   %41 = icmp sgt i64 %indvars.iv.next3.prol, 0
+    <   %prol.iter.next = add i64 %prol.iter, 1
+    <   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    <   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+  in block %.preheader.prol.loopexit.unr-lcssa:
+    >   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]
+    <   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]"
+adce,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\adce__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__adce.ll,
+loop-simplify,loop-rotate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-simplify,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-simplify__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__loop-simplify.ll,
+loop-rotate,licm,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__licm.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__loop-rotate.ll,
+loop-rotate,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__loop-rotate.ll,
+loop-rotate,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-rotate__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__loop-rotate.ll,
+licm,indvars,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__indvars.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__licm.ll,
+licm,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__licm.ll,"in function main:
+  in block %.lr.ph.epil:
+    >   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    >   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    >   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    >   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    >   store i32 %16, ptr %15, align 4
+    >   %epil.iter.next = add i64 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+    <   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    <   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    <   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    <   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    <   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    <   store i32 %16, ptr %15, align 4
+    <   %exitcond.epil = icmp ne i64 %indvars.iv.next.epil, %wide.trip.count
+    <   %epil.iter.next = add i64 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+  in block %.preheader1.preheader:
+    >   %17 = add nsw i64 %10, -1
+        %17 = icmp sgt i64 %10, 0
+    >   %xtraiter3 = and i64 %10, 3
+    >   %lcmp.mod4 = icmp ne i64 %xtraiter3, 0
+    >   %19 = icmp ult i64 %17, 3
+    <   %18 = add nsw i64 %10, -1"
+licm,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\licm__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__licm.ll,
+indvars,loop-unroll,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__indvars.ll,"in function main:
+  in block %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ 0, %.lr.ph.preheader.new ], [ %indvars.iv.next.7, %.lr.ph ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %18 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %19 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %19, ptr %18, align 4
+    >   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv3, 2
+    >   %20 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next
+    >   %21 = trunc nuw i64 %indvars.iv.next.1 to i32
+    >   store i32 %21, ptr %20, align 4
+    >   %indvars.iv.next.2 = add nuw nsw i64 %indvars.iv3, 3
+    >   %22 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.1
+    >   %23 = trunc nuw i64 %indvars.iv.next.2 to i32
+    >   store i32 %23, ptr %22, align 4
+    >   %indvars.iv.next.3 = add nuw nsw i64 %indvars.iv3, 4
+    >   %24 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.2
+    >   %25 = trunc nuw i64 %indvars.iv.next.3 to i32
+    >   store i32 %25, ptr %24, align 4
+    >   %indvars.iv.next.4 = add nuw nsw i64 %indvars.iv3, 5
+    >   %26 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.3
+    >   %27 = trunc nuw i64 %indvars.iv.next.4 to i32
+    >   store i32 %27, ptr %26, align 4
+    >   %indvars.iv.next.5 = add nuw nsw i64 %indvars.iv3, 6
+    >   %28 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.4
+    >   %29 = trunc nuw i64 %indvars.iv.next.5 to i32
+    >   store i32 %29, ptr %28, align 4
+    >   %indvars.iv.next.6 = add nuw nsw i64 %indvars.iv3, 7
+    >   %30 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.5
+    >   %31 = trunc nuw i64 %indvars.iv.next.6 to i32
+    >   store i32 %31, ptr %30, align 4
+    >   %indvars.iv.next.7 = add i64 %indvars.iv3, 8
+    >   %32 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.6
+    >   %33 = trunc nuw i64 %indvars.iv.next.7 to i32
+    >   store i32 %33, ptr %32, align 4
+    >   %niter.ncmp.7 = icmp ne i64 %indvars.iv.next.7, %unroll_iter
+    >   br i1 %niter.ncmp.7, label %.lr.ph, label %.preheader1.preheader.loopexit.unr-lcssa, !llvm.loop !9
+    <   %indvars.iv3 = phi i64 [ 0, %.lr.ph.preheader.new ], [ %indvars.iv.next.7, %.lr.ph ]
+    <   %niter = phi i64 [ 0, %.lr.ph.preheader.new ], [ %niter.next.7, %.lr.ph ]
+    <   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    <   %18 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    <   %19 = trunc nuw i64 %indvars.iv.next to i32
+    <   store i32 %19, ptr %18, align 4
+    <   %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv3, 2
+    <   %20 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next
+    <   %21 = trunc nuw i64 %indvars.iv.next.1 to i32
+    <   store i32 %21, ptr %20, align 4
+    <   %indvars.iv.next.2 = add nuw nsw i64 %indvars.iv3, 3
+    <   %22 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.1
+    <   %23 = trunc nuw i64 %indvars.iv.next.2 to i32
+    <   store i32 %23, ptr %22, align 4
+    <   %indvars.iv.next.3 = add nuw nsw i64 %indvars.iv3, 4
+    <   %24 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.2
+    <   %25 = trunc nuw i64 %indvars.iv.next.3 to i32
+    <   store i32 %25, ptr %24, align 4
+    <   %indvars.iv.next.4 = add nuw nsw i64 %indvars.iv3, 5
+    <   %26 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.3
+    <   %27 = trunc nuw i64 %indvars.iv.next.4 to i32
+    <   store i32 %27, ptr %26, align 4
+    <   %indvars.iv.next.5 = add nuw nsw i64 %indvars.iv3, 6
+    <   %28 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.4
+    <   %29 = trunc nuw i64 %indvars.iv.next.5 to i32
+    <   store i32 %29, ptr %28, align 4
+    <   %indvars.iv.next.6 = add nuw nsw i64 %indvars.iv3, 7
+    <   %30 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.5
+    <   %31 = trunc nuw i64 %indvars.iv.next.6 to i32
+    <   store i32 %31, ptr %30, align 4
+    <   %indvars.iv.next.7 = add nuw nsw i64 %indvars.iv3, 8
+    <   %32 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv.next.6
+    <   %33 = trunc nuw i64 %indvars.iv.next.7 to i32
+    <   store i32 %33, ptr %32, align 4
+    <   %niter.next.7 = add i64 %niter, 8
+    <   %niter.ncmp.7 = icmp ne i64 %niter.next.7, %unroll_iter
+    <   br i1 %niter.ncmp.7, label %.lr.ph, label %.preheader1.preheader.loopexit.unr-lcssa, !llvm.loop !9
+  in block %.preheader1.preheader.loopexit.unr-lcssa:
+    >   %indvars.iv3.unr = phi i64 [ %indvars.iv.next.7, %.lr.ph ]
+    <   %indvars.iv3.unr = phi i64 [ %indvars.iv.next.7, %.lr.ph ]
+  in block %.lr.ph.epil:
+    >   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    >   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    >   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    >   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    >   store i32 %16, ptr %15, align 4
+    >   %epil.iter.next = add nuw nsw i64 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+    <   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    <   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    <   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    <   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    <   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    <   store i32 %16, ptr %15, align 4
+    <   %exitcond.epil = icmp ne i64 %indvars.iv.next.epil, %wide.trip.count
+    <   %epil.iter.next = add i64 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+  in block %.preheader.prol:
+    >   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    >   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    >   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    >   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, %37
+    >   store i32 %40, ptr %38, align 4
+    >   %prol.iter.next = add nuw nsw i64 %prol.iter, 1
+    >   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    >   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+    <   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    <   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    <   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    <   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    <   %37 = load i32, ptr %36, align 4
+    <   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    <   %39 = load i32, ptr %38, align 4
+    <   %40 = add nsw i32 %39, %37
+    <   store i32 %40, ptr %38, align 4
+    <   %41 = icmp sgt i64 %indvars.iv.next3.prol, 0
+    <   %prol.iter.next = add i64 %prol.iter, 1
+    <   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    <   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+  in block %.preheader.prol.loopexit.unr-lcssa:
+    >   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]
+    <   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]"
+indvars,reassociate,true,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\indvars__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__indvars.ll,
+loop-unroll,reassociate,false,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\loop-unroll__then__reassociate.ll,results\paper_full\Shootout_ary3\round_008\analysis\Shootout_ary3\commutativity\reassociate__then__loop-unroll.ll,"in function main:
+  in block %.lr.ph.epil:
+    >   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    >   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    >   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    >   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    >   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    >   store i32 %16, ptr %15, align 4
+    >   %exitcond.epil = icmp ne i64 %indvars.iv.next.epil, %wide.trip.count
+    >   %epil.iter.next = add i64 %epil.iter, 1
+    >   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    >   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+    <   %indvars.iv3.epil = phi i64 [ %indvars.iv.next.epil, %.lr.ph.epil ], [ %indvars.iv3.epil.init, %.lr.ph.epil.preheader ]
+    <   %epil.iter = phi i64 [ 0, %.lr.ph.epil.preheader ], [ %epil.iter.next, %.lr.ph.epil ]
+    <   %indvars.iv.next.epil = add nuw nsw i64 %indvars.iv3.epil, 1
+    <   %15 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3.epil
+    <   %16 = trunc nuw i64 %indvars.iv.next.epil to i32
+    <   store i32 %16, ptr %15, align 4
+    <   %epil.iter.next = add i64 %epil.iter, 1
+    <   %epil.iter.cmp = icmp ne i64 %epil.iter.next, %xtraiter
+    <   br i1 %epil.iter.cmp, label %.lr.ph.epil, label %.preheader1.preheader.loopexit.epilog-lcssa, !llvm.loop !7
+  in block %.preheader.prol:
+    >   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    >   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    >   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    >   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    >   %37 = load i32, ptr %36, align 4
+    >   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    >   %39 = load i32, ptr %38, align 4
+    >   %40 = add nsw i32 %39, %37
+    >   store i32 %40, ptr %38, align 4
+    >   %41 = icmp sgt i64 %indvars.iv.next3.prol, 0
+    >   %prol.iter.next = add i64 %prol.iter, 1
+    >   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    >   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+    <   %indvars.iv24.prol = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ], [ %10, %.preheader.prol.preheader ]
+    <   %prol.iter = phi i64 [ 0, %.preheader.prol.preheader ], [ %prol.iter.next, %.preheader.prol ]
+    <   %indvars.iv.next3.prol = add nsw i64 %indvars.iv24.prol, -1
+    <   %36 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3.prol
+    <   %37 = load i32, ptr %36, align 4
+    <   %38 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3.prol
+    <   %39 = load i32, ptr %38, align 4
+    <   %40 = add nsw i32 %39, %37
+    <   store i32 %40, ptr %38, align 4
+    <   %prol.iter.next = add i64 %prol.iter, 1
+    <   %prol.iter.cmp = icmp ne i64 %prol.iter.next, %xtraiter3
+    <   br i1 %prol.iter.cmp, label %.preheader.prol, label %.preheader.prol.loopexit.unr-lcssa, !llvm.loop !11
+  in block %.preheader.prol.loopexit.unr-lcssa:
+    >   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]
+    <   %indvars.iv24.unr.ph = phi i64 [ %indvars.iv.next3.prol, %.preheader.prol ]"

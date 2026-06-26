@@ -1,0 +1,118 @@
+pass_a,pass_b,commute,ab_path,ba_path,details
+instcombine,simplifycfg,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__simplifycfg.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__instcombine.ll,
+instcombine,early-cse,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__early-cse.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__instcombine.ll,
+instcombine,gvn,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__gvn.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__instcombine.ll,
+instcombine,sccp,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__sccp.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__instcombine.ll,
+instcombine,loop-simplify,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__instcombine.ll,
+instcombine,loop-rotate,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__instcombine.ll,"in function main:
+  in block %8 / %8:
+    >   %exitcond1.not = icmp slt i32 %9, 1
+    >   br i1 %exitcond1.not, label %16, label %.lr.ph
+    <   %exitcond.not1 = icmp eq i64 0, %wide.trip.count
+    <   br i1 %exitcond.not1, label %16, label %.lr.ph"
+instcombine,licm,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__instcombine.ll,
+instcombine,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__instcombine.ll,
+instcombine,loop-unroll,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\instcombine__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__instcombine.ll,
+simplifycfg,early-cse,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__early-cse.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__simplifycfg.ll,"in function main:
+  in block %17 / %17:
+    >   %18 = phi i32 [ %28, %27 ], [ 0, %13 ]
+    >   %exitcond5 = icmp ne i32 %18, 1000
+    >   br i1 %exitcond5, label %19, label %29
+    <   br label %18"
+simplifycfg,gvn,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__gvn.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__simplifycfg.ll,"in function main:
+  in block %17 / %17:
+    >   %18 = phi i32 [ %28, %27 ], [ 0, %13 ]
+    >   %exitcond5 = icmp ne i32 %18, 1000
+    >   br i1 %exitcond5, label %19, label %29
+    <   br label %18"
+simplifycfg,sccp,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__sccp.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__simplifycfg.ll,
+simplifycfg,loop-simplify,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__simplifycfg.ll,"in function main:
+  in block %.preheader:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %22 ], [ %18, %19 ]
+    >   %21 = icmp sgt i64 %indvars.iv2, 0
+    >   br i1 %21, label %22, label %28
+    <   br label %21"
+simplifycfg,loop-rotate,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__simplifycfg.ll,"in function main:
+  in block %.lr.ph:
+    >   %indvars.iv3 = phi i64 [ %indvars.iv.next, %.lr.ph ], [ 0, %8 ]
+    >   %indvars.iv.next = add nuw nsw i64 %indvars.iv3, 1
+    >   %13 = getelementptr inbounds nuw [4 x i8], ptr %11, i64 %indvars.iv3
+    >   %14 = trunc nuw i64 %indvars.iv.next to i32
+    >   store i32 %14, ptr %13, align 4
+    >   %exitcond = icmp ne i64 %indvars.iv.next, %wide.trip.count
+    >   br i1 %exitcond, label %.lr.ph, label %._crit_edge, !llvm.loop !7
+    <   br label %13
+  in block %.lr.ph5:
+    >   %indvars.iv24 = phi i64 [ %indvars.iv.next3, %.lr.ph5 ], [ %15, %.preheader ]
+    >   %indvars.iv.next3 = add nsw i64 %indvars.iv24, -1
+    >   %18 = getelementptr inbounds [4 x i8], ptr %11, i64 %indvars.iv.next3
+    >   %19 = load i32, ptr %18, align 4
+    >   %20 = getelementptr inbounds [4 x i8], ptr %12, i64 %indvars.iv.next3
+    >   %21 = load i32, ptr %20, align 4
+    >   %22 = add nsw i32 %21, %19
+    >   store i32 %22, ptr %20, align 4
+    >   %23 = icmp sgt i64 %indvars.iv.next3, 0
+    >   br i1 %23, label %.lr.ph5, label %._crit_edge6, !llvm.loop !9
+    <   br label %20"
+simplifycfg,licm,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__simplifycfg.ll,"in function main:
+  in block %.preheader:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %22 ], [ %18, %19 ]
+    >   %21 = icmp sgt i64 %indvars.iv2, 0
+    >   br i1 %21, label %22, label %28
+    <   br label %21"
+simplifycfg,indvars,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__simplifycfg.ll,"in function main:
+  in block %.preheader:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %22 ], [ %18, %19 ]
+    >   %21 = icmp sgt i64 %indvars.iv2, 0
+    >   br i1 %21, label %22, label %28
+    <   br label %21"
+simplifycfg,loop-unroll,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\simplifycfg__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__simplifycfg.ll,"in function main:
+  in block %.preheader:
+    >   %indvars.iv2 = phi i64 [ %indvars.iv.next3, %22 ], [ %18, %19 ]
+    >   %21 = icmp sgt i64 %indvars.iv2, 0
+    >   br i1 %21, label %22, label %.preheader.1
+    <   br label %21"
+early-cse,gvn,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__gvn.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__early-cse.ll,
+early-cse,sccp,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__sccp.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__early-cse.ll,
+early-cse,loop-simplify,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__early-cse.ll,
+early-cse,loop-rotate,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__early-cse.ll,
+early-cse,licm,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__early-cse.ll,
+early-cse,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__early-cse.ll,
+early-cse,loop-unroll,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\early-cse__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__early-cse.ll,
+gvn,sccp,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__sccp.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__gvn.ll,
+gvn,loop-simplify,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__gvn.ll,
+gvn,loop-rotate,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__gvn.ll,
+gvn,licm,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__gvn.ll,
+gvn,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__gvn.ll,
+gvn,loop-unroll,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\gvn__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__gvn.ll,"in function main:
+  in block %.preheader.1 / %28:
+    >   %indvars.iv2.1 = phi i64 [ %indvars.iv.next3.1, %32 ], [ %10, %.preheader.1 ]
+    >   %29 = icmp sgt i64 %indvars.iv2.1, 0
+    >   br i1 %29, label %32, label %30
+    <   br label %29"
+sccp,loop-simplify,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__loop-simplify.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__sccp.ll,
+sccp,loop-rotate,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__sccp.ll,
+sccp,licm,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__sccp.ll,
+sccp,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__sccp.ll,
+sccp,loop-unroll,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\sccp__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__sccp.ll,
+loop-simplify,loop-rotate,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__loop-rotate.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__loop-simplify.ll,
+loop-simplify,licm,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__loop-simplify.ll,
+loop-simplify,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__loop-simplify.ll,
+loop-simplify,loop-unroll,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-simplify__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__loop-simplify.ll,
+loop-rotate,licm,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__licm.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__loop-rotate.ll,"in function main:
+  in block %16 / %16:
+    <   %18 = icmp sgt i64 %17, 0"
+loop-rotate,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__loop-rotate.ll,
+loop-rotate,loop-unroll,false,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-rotate__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__loop-rotate.ll,"function @llvm.assume exists only in left module
+in function main:
+  in block %.lr.ph:
+    >   br label %13
+    <   %13 = add nsw i64 %wide.trip.count, -1
+    <   %xtraiter = and i64 %wide.trip.count, 7
+    <   %14 = icmp ult i64 %13, 7
+    <   br i1 %14, label %.epil.preheader, label %.lr.ph.new
+  in block %35 / %16:
+    <   %37 = add nsw i64 %36, -1"
+licm,indvars,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__indvars.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__licm.ll,
+licm,loop-unroll,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\licm__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__licm.ll,
+indvars,loop-unroll,true,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\indvars__then__loop-unroll.ll,results\paper_full\Shootout_ary3\round_003\analysis\Shootout_ary3\commutativity\loop-unroll__then__indvars.ll,

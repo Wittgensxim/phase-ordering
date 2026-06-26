@@ -1,0 +1,689 @@
+{
+  "benchmark": "demo",
+  "rounds": 3,
+  "final_metrics": {
+    "function_count": 2,
+    "basic_block_count": 6,
+    "instruction_count": 19,
+    "load_count": 1,
+    "store_count": 0,
+    "call_count": 1,
+    "branch_count": 4,
+    "phi_count": 3,
+    "ret_count": 2,
+    "ir_file_size": 1174,
+    "score_ir": 24.0,
+    "score": 24.0
+  },
+  "trace": [
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\test_demo_scheduler\\demo\\round_000\\input.ll",
+      "input_hash": "31ec1d7220683d9298b07f49db892af7b974f219116f7ce721b60ee3c03550ad",
+      "metric_score": 20.0,
+      "instruction_count": 16,
+      "candidate_pass_count": 11,
+      "auto_safe_passes": [
+        "adce",
+        "dce",
+        "sccp",
+        "sroa"
+      ],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "instcombine",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "auto_safe_pass",
+      "selected_action": "adce",
+      "action_details": "single safe pass: adce",
+      "output_hash": "",
+      "metric_after": "",
+      "metric_delta": "",
+      "changed": "true"
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\test_demo_scheduler\\demo\\round_001\\input.ll",
+      "input_hash": "f97ab88e6d435385ccdd60bb59c4fd2592cdeaa78ce939851bd8a143d2f186c1",
+      "metric_score": 20.0,
+      "instruction_count": 16,
+      "candidate_pass_count": 7,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "instcombine",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-rotate,simplifycfg",
+      "action_details": "oracle chose loop-rotate->simplifycfg (improvement: 0.00)",
+      "output_hash": "",
+      "metric_after": "",
+      "metric_delta": "",
+      "changed": "true"
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "scheduler_mode": "relaxed",
+      "independence_threshold": 0.9,
+      "input_ir": "results\\test_demo_scheduler\\demo\\round_002\\input.ll",
+      "input_hash": "b281ed983791c8b30145ebbc19f7573a50b6bbebc67505771f3fea5d24b5d65f",
+      "metric_score": 20.0,
+      "instruction_count": 16,
+      "candidate_pass_count": 7,
+      "auto_safe_passes": [],
+      "candidate_safe_passes": [],
+      "blocked_passes": [],
+      "decision_required_passes": [
+        "early-cse",
+        "gvn",
+        "instcombine",
+        "loop-rotate",
+        "loop-simplify",
+        "loop-unroll",
+        "simplifycfg"
+      ],
+      "decision_required_pairs": [
+        "early-cse,loop-rotate",
+        "early-cse,loop-unroll",
+        "gvn,loop-rotate",
+        "gvn,loop-unroll",
+        "instcombine,loop-rotate",
+        "instcombine,loop-unroll",
+        "loop-rotate,simplifycfg",
+        "loop-simplify,simplifycfg",
+        "loop-unroll,simplifycfg"
+      ],
+      "selected_action_kind": "oracle_ordered_pair",
+      "selected_action": "loop-rotate,simplifycfg",
+      "action_details": "oracle chose loop-rotate->simplifycfg (improvement: 0.00)",
+      "output_hash": "",
+      "metric_after": "",
+      "metric_delta": "",
+      "changed": "true"
+    }
+  ],
+  "policy_reports": [
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "adce",
+      "scheduler_class": "auto_safe",
+      "blocking_reasons": [],
+      "incident_pairs": [
+        "adce,dce:likely_independent",
+        "adce,early-cse:likely_independent",
+        "adce,gvn:likely_independent",
+        "adce,instcombine:likely_independent",
+        "adce,loop-rotate:likely_independent",
+        "adce,loop-simplify:likely_independent",
+        "adce,loop-unroll:likely_independent",
+        "adce,sccp:likely_independent",
+        "adce,simplifycfg:likely_independent",
+        "adce,sroa:likely_independent"
+      ],
+      "safe_edge_count": 10,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 1.0
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "dce",
+      "scheduler_class": "auto_safe",
+      "blocking_reasons": [],
+      "incident_pairs": [
+        "adce,dce:likely_independent",
+        "dce,early-cse:likely_independent",
+        "dce,gvn:likely_independent",
+        "dce,instcombine:likely_independent",
+        "dce,loop-rotate:likely_independent",
+        "dce,loop-simplify:likely_independent",
+        "dce,loop-unroll:likely_independent",
+        "dce,sccp:likely_independent",
+        "dce,simplifycfg:likely_independent",
+        "dce,sroa:likely_independent"
+      ],
+      "safe_edge_count": 10,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 1.0
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,early-cse:likely_independent",
+        "dce,early-cse:likely_independent",
+        "early-cse,gvn:likely_independent",
+        "early-cse,instcombine:likely_independent",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:likely_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,sccp:likely_independent",
+        "early-cse,simplifycfg:likely_independent",
+        "early-cse,sroa:likely_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,gvn:likely_independent",
+        "dce,gvn:likely_independent",
+        "early-cse,gvn:likely_independent",
+        "gvn,instcombine:likely_independent",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:likely_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,sccp:likely_independent",
+        "gvn,simplifycfg:likely_independent",
+        "gvn,sroa:likely_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,instcombine:likely_independent",
+        "dce,instcombine:likely_independent",
+        "early-cse,instcombine:likely_independent",
+        "gvn,instcombine:likely_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:needs_attribution",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,sccp:likely_independent",
+        "instcombine,simplifycfg:likely_independent",
+        "instcombine,sroa:likely_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.7
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,loop-rotate:likely_independent",
+        "dce,loop-rotate:likely_independent",
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,sccp:likely_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-rotate,sroa:likely_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "needs_attribution",
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,loop-simplify:likely_independent",
+        "dce,loop-simplify:likely_independent",
+        "early-cse,loop-simplify:likely_independent",
+        "gvn,loop-simplify:likely_independent",
+        "instcombine,loop-simplify:needs_attribution",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,sccp:likely_independent",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-simplify,sroa:likely_independent"
+      ],
+      "safe_edge_count": 8,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.8
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,loop-unroll:likely_independent",
+        "dce,loop-unroll:likely_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,sccp:likely_independent",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "loop-unroll,sroa:likely_independent"
+      ],
+      "safe_edge_count": 6,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.6
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "sccp",
+      "scheduler_class": "auto_safe",
+      "blocking_reasons": [],
+      "incident_pairs": [
+        "adce,sccp:likely_independent",
+        "dce,sccp:likely_independent",
+        "early-cse,sccp:likely_independent",
+        "gvn,sccp:likely_independent",
+        "instcombine,sccp:likely_independent",
+        "loop-rotate,sccp:likely_independent",
+        "loop-simplify,sccp:likely_independent",
+        "loop-unroll,sccp:likely_independent",
+        "sccp,simplifycfg:likely_independent",
+        "sccp,sroa:likely_independent"
+      ],
+      "safe_edge_count": 10,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 1.0
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "adce,simplifycfg:likely_independent",
+        "dce,simplifycfg:likely_independent",
+        "early-cse,simplifycfg:likely_independent",
+        "gvn,simplifycfg:likely_independent",
+        "instcombine,simplifycfg:likely_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive",
+        "sccp,simplifycfg:likely_independent",
+        "simplifycfg,sroa:likely_independent"
+      ],
+      "safe_edge_count": 7,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 0.7
+    },
+    {
+      "round": 0,
+      "benchmark": "demo",
+      "pass": "sroa",
+      "scheduler_class": "auto_safe",
+      "blocking_reasons": [],
+      "incident_pairs": [
+        "adce,sroa:likely_independent",
+        "dce,sroa:likely_independent",
+        "early-cse,sroa:likely_independent",
+        "gvn,sroa:likely_independent",
+        "instcombine,sroa:likely_independent",
+        "loop-rotate,sroa:likely_independent",
+        "loop-simplify,sroa:likely_independent",
+        "loop-unroll,sroa:likely_independent",
+        "sccp,sroa:likely_independent",
+        "simplifycfg,sroa:likely_independent"
+      ],
+      "safe_edge_count": 10,
+      "total_edge_count": 10,
+      "safe_edge_ratio": 1.0
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.8333
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 1,
+      "benchmark": "demo",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.5
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "early-cse",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "early-cse,instcombine:confirmed_independent",
+        "early-cse,loop-rotate:order_sensitive",
+        "early-cse,loop-simplify:confirmed_independent",
+        "early-cse,loop-unroll:order_sensitive",
+        "early-cse,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "gvn",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,gvn:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "gvn,loop-rotate:order_sensitive",
+        "gvn,loop-simplify:confirmed_independent",
+        "gvn,loop-unroll:order_sensitive",
+        "gvn,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "instcombine",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,instcombine:confirmed_independent",
+        "gvn,instcombine:confirmed_independent",
+        "instcombine,loop-rotate:order_sensitive",
+        "instcombine,loop-simplify:confirmed_independent",
+        "instcombine,loop-unroll:order_sensitive",
+        "instcombine,simplifycfg:confirmed_independent"
+      ],
+      "safe_edge_count": 4,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.6667
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "loop-rotate",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-rotate:order_sensitive",
+        "gvn,loop-rotate:order_sensitive",
+        "instcombine,loop-rotate:order_sensitive",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-rotate,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "loop-simplify",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-simplify:confirmed_independent",
+        "gvn,loop-simplify:confirmed_independent",
+        "instcombine,loop-simplify:confirmed_independent",
+        "loop-rotate,loop-simplify:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-simplify,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 5,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.8333
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "loop-unroll",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,loop-unroll:order_sensitive",
+        "gvn,loop-unroll:order_sensitive",
+        "instcombine,loop-unroll:order_sensitive",
+        "loop-rotate,loop-unroll:likely_independent",
+        "loop-simplify,loop-unroll:likely_independent",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 2,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.3333
+    },
+    {
+      "round": 2,
+      "benchmark": "demo",
+      "pass": "simplifycfg",
+      "scheduler_class": "decision_required",
+      "blocking_reasons": [
+        "order_sensitive"
+      ],
+      "incident_pairs": [
+        "early-cse,simplifycfg:confirmed_independent",
+        "gvn,simplifycfg:confirmed_independent",
+        "instcombine,simplifycfg:confirmed_independent",
+        "loop-rotate,simplifycfg:order_sensitive",
+        "loop-simplify,simplifycfg:order_sensitive",
+        "loop-unroll,simplifycfg:order_sensitive"
+      ],
+      "safe_edge_count": 3,
+      "total_edge_count": 6,
+      "safe_edge_ratio": 0.5
+    }
+  ],
+  "baseline_comparison": {}
+}
