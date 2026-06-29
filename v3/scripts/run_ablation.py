@@ -167,7 +167,7 @@ def parse_args():
     parser.add_argument("--manifest", default="configs/benchmarks_quick.json")
     parser.add_argument("--benchmark", help="Filter to specific benchmark")
     parser.add_argument("--pass-set-config", default="configs/pass_sets.json")
-    parser.add_argument("--pass-set", default="research")
+    parser.add_argument("--pass-set", default="research_27")
     parser.add_argument("--scheduler-mode", default="relaxed")
     parser.add_argument("--independence-threshold", type=float, default=0.9)
     parser.add_argument("--max-rounds", type=int, default=15)

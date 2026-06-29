@@ -5,25 +5,19 @@ Key improvements over v2:
 - Level 1: IR static instruction count (fast, always available)
 - Level 2: LLVM TTI-based cost model (requires opt -cost-model)
 - Level 3: Compile + runtime measurement (for final evaluation)
-- V4 (ratio-based): normalized score relative to original IR, cross-benchmark comparable
+- L1 codesize: real .text bytes via llc → llvm-size (CGO'25-compatible)
+- Reported metric: IR instruction-count reduction over Oz (MeanOverOz, CGO'25).
+  `compute_score` is the scheduler's internal cost-based objective, NOT the
+  reported metric (it no longer mixes in file-byte size).
 """
 
+import hashlib
+import re
 import subprocess
 from pathlib import Path
 
 
-# Default opcode categories and their IR-level weights
-IR_LEVEL_WEIGHTS = {
-    "load": 1.0,
-    "store": 1.0,
-    "call": 2.0,
-    "br": 1.0,
-    "switch": 1.0,
-    "indirectbr": 1.0,
-    "phi": 0.25,
-    "ret": 0.25,
-}
-
+# Opcode category → metric counter mapping (for instruction classification)
 INSTRUCTION_OPCODE_MAP = {
     "load": "load_count",
     "store": "store_count",
@@ -108,48 +102,117 @@ def measure_ir_text(text):
 
 
 def ir_cost(metrics):
-    """IR complexity cost with CFG fragmentation and over-unrolling penalties.
+    """IR cost: instruction count (the target of MeanOverOz, our reported metric).
 
-    Combines instruction-weighted cost with bb/phi density ratios
-    to penalize structurally problematic IR (fragmented CFG, excessive unrolling).
+    The scheduler's internal objective IS the reported metric now — no more
+    "optimizing A, reporting B" logical gap.  The previous formula with ad-hoc
+    bb/phi density penalties and call/load/store weights was never calibrated
+    against any ground truth (codesize, runtime, or TTI cost).  Removing the
+    unvalidated penalties eliminates a major reviewer attack surface.
 
-    Returns a raw cost value (absolute, not normalized).
+    The old penalized formula is preserved as ir_cost_penalized() for ablation.
+    """
+    return metrics["instruction_count"]
+
+
+def ir_cost_penalized(metrics):
+    """[Ablation only] Old penalized cost with CFG fragmentation & over-unroll penalties.
+
+    base = instruction_count + 2*call + load + store + br
+    penalty = 1 + bb_ratio + 0.5*phi_ratio
+    cost = base * penalty
+
+    NOTE: The weights (2×call, 1.0 bb_ratio, 0.5 phi_ratio) are uncalibrated.
+    Use only for sensitivity/ablation experiments, not as the primary objective.
     """
     base = (
         metrics["instruction_count"]
-        + IR_LEVEL_WEIGHTS["call"] * metrics["call_count"]
-        + IR_LEVEL_WEIGHTS["load"] * metrics["load_count"]
-        + IR_LEVEL_WEIGHTS["store"] * metrics["store_count"]
-        + IR_LEVEL_WEIGHTS["br"] * metrics["branch_count"]
+        + 2.0 * metrics["call_count"]
+        + metrics["load_count"]
+        + metrics["store_count"]
+        + metrics["branch_count"]
     )
-    # BB density penalty: high BB/instruction ratio = CFG fragmentation
     bb_ratio = metrics["basic_block_count"] / max(metrics["instruction_count"], 1)
-    # Phi density penalty: high phi/instruction ratio = over-unrolling
     phi_ratio = metrics["phi_count"] / max(metrics["instruction_count"], 1)
     return round(base * (1.0 + bb_ratio + 0.5 * phi_ratio), 2)
 
 
 def compute_score(original_metrics, current_metrics, penalty=0):
-    """Compute normalized score relative to original IR.
+    """Internal driving score: instruction-count ratio relative to O0 IR.
 
-    Score = 100 means same as original IR.
-    Score < 100 means improvement over original.
-    Score > 100 means degradation.
+    Score = 100 means same instruction count as O0.
+    Score < 100 means fewer instructions (better).
+    Score > 100 means more instructions (degradation).
 
-    Formula: 100 × cost_ratio^0.6 × size_ratio^0.4 + penalty
+    Uses instruction_count directly — the same quantity that MeanOverOz reports.
+    This eliminates the "optimizing A, reporting B" logical gap.
     """
     if penalty >= 1000:
         return float(penalty)
 
-    oc = original_metrics.get("ir_cost", original_metrics.get("score_ir", 0))
-    cc = current_metrics.get("ir_cost", current_metrics.get("score_ir", 0))
-    osize = original_metrics.get("ir_file_size", 1)
-    csize = current_metrics.get("ir_file_size", 1)
+    oi = original_metrics.get("instruction_count", 1)
+    ci = current_metrics.get("instruction_count", 1)
 
-    cost_ratio = (cc + 1) / max(oc + 1, 1)
-    size_ratio = (csize + 1) / max(osize + 1, 1)
+    ratio = (ci + 1) / max(oi + 1, 1)
 
-    return round(100.0 * (cost_ratio ** 0.6) * (size_ratio ** 0.4) + penalty, 2)
+    return round(100.0 * ratio + penalty, 2)
+
+
+def get_metric_value(metrics, metric_mode="ir"):
+    """Get the optimization target value from a metrics dict.
+
+    Args:
+        metrics: dict from measure_ir_file() or measure_codesize_file()
+        metric_mode: "ir" (instruction count) or "codesize" (.text bytes)
+
+    Returns:
+        The target value (int), or 0 if unavailable.
+    """
+    if metric_mode == "codesize":
+        return metrics.get("codesize_text", metrics.get("instruction_count", 0))
+    return metrics.get("instruction_count", 0)
+
+
+def compute_metric_score(original_metrics, current_metrics, metric_mode="ir", penalty=0):
+    """Internal driving score with configurable metric mode.
+
+    Score = 100 means same cost as O0.
+    Score < 100 means better (fewer instructions / smaller .text).
+    Score > 100 means worse.
+    """
+    if penalty >= 1000:
+        return float(penalty)
+
+    oi = get_metric_value(original_metrics, metric_mode)
+    ci = get_metric_value(current_metrics, metric_mode)
+
+    ratio = (ci + 1) / max(oi + 1, 1)
+
+    return round(100.0 * ratio + penalty, 2)
+
+
+def reduction_pct(baseline_instr, method_instr):
+    """Per-program IR instruction-count reduction relative to a baseline (e.g. Oz).
+
+    Positive  -> method has FEWER instructions than the baseline (better).
+    This is the per-program term of CGO'25 MeanOverOz:
+        (I_baseline - I_method) / I_baseline * 100%
+    """
+    if not baseline_instr or baseline_instr <= 0:
+        return 0.0
+    return round(100.0 * (baseline_instr - method_instr) / baseline_instr, 4)
+
+
+def mean_over_oz(pairs):
+    """Aggregate MeanOverOz across programs.
+
+    Args:
+        pairs: iterable of (baseline_instr, method_instr) tuples (baseline = Oz).
+    Returns:
+        mean percentage reduction over the baseline, or None if no valid pairs.
+    """
+    vals = [reduction_pct(b, m) for b, m in pairs if b and b > 0]
+    return round(sum(vals) / len(vals), 4) if vals else None
 
 
 def measure_ir_with_tti(opt_path, ir_path, target_triple="x86_64-unknown-linux-gnu"):
@@ -173,6 +236,172 @@ def measure_ir_with_tti(opt_path, ir_path, target_triple="x86_64-unknown-linux-g
 
     metrics["score"] = metrics["score_tti"]
     return metrics
+
+
+# ── L1 Codesize measurement (llc → llvm-size) ─────────────────────────────
+
+# Module-level codesize cache: {sha256_of_ll_file: text_bytes}
+_CODESIZE_CACHE = {}
+
+
+def _file_sha256(path):
+    """SHA-256 hash of file contents (used for codesize cache key)."""
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def measure_codesize(ir_path, llc_path, llvm_size_path,
+                     target_triple="x86_64-unknown-linux-gnu",
+                     mcpu="generic", use_cache=True):
+    """Measure real object-file .text bytes: .ll → llc → .o → llvm-size.
+
+    This is the CGO'25-compatible codesize metric:
+      (I_baseline_text - I_method_text) / I_baseline_text * 100%
+
+    Uses Berkeley llvm-size output (first column = text).
+    Caches results by SHA-256 of the .ll file to avoid re-compilation.
+
+    Args:
+        ir_path: path to .ll file
+        llc_path: path to llc executable
+        llvm_size_path: path to llvm-size executable
+        target_triple: LLVM target triple (default: x86_64-unknown-linux-gnu)
+        mcpu: target CPU (default: generic)
+        use_cache: whether to use the module-level cache
+
+    Returns:
+        text_bytes (int), or None on failure
+    """
+    ir_path = Path(ir_path)
+    if not ir_path.exists():
+        return None
+
+    # Cache lookup
+    if use_cache:
+        fhash = _file_sha256(ir_path)
+        if fhash in _CODESIZE_CACHE:
+            return _CODESIZE_CACHE[fhash]
+
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".o", delete=False) as tmp:
+        obj_path = tmp.name
+
+    try:
+        # Step 1: .ll → .o
+        llc_cmd = [
+            str(llc_path), "-filetype=obj",
+            f"-mtriple={target_triple}", f"-mcpu={mcpu}",
+            str(ir_path), "-o", obj_path,
+        ]
+        llc_result = subprocess.run(llc_cmd, text=True, capture_output=True, check=False)
+        if llc_result.returncode != 0:
+            return None
+
+        # Step 2: .o → text bytes (Berkeley format, first column)
+        size_cmd = [str(llvm_size_path), "--radix=10", obj_path]
+        size_result = subprocess.run(size_cmd, text=True, capture_output=True, check=False)
+        if size_result.returncode != 0:
+            return None
+
+        # Parse: "   725       0       0     725     2d5 filename.o"
+        # First number = text
+        text_bytes = _parse_llvm_size_text(size_result.stdout)
+        if text_bytes is not None and use_cache:
+            _CODESIZE_CACHE[fhash] = text_bytes
+        return text_bytes
+
+    finally:
+        try:
+            Path(obj_path).unlink()
+        except Exception:
+            pass
+
+
+def _parse_llvm_size_text(stdout):
+    """Parse Berkeley llvm-size output. Returns text column (int) or None."""
+    for line in stdout.strip().splitlines():
+        # Skip section headers from -A format
+        if line.startswith("section") or line.startswith("Total"):
+            continue
+        parts = line.split()
+        if len(parts) >= 4:
+            try:
+                return int(parts[0])
+            except ValueError:
+                continue
+    return None
+
+
+def clear_codesize_cache():
+    """Clear the module-level codesize cache."""
+    _CODESIZE_CACHE.clear()
+
+
+def measure_codesize_file(ir_path, llc_path, llvm_size_path,
+                          target_triple="x86_64-unknown-linux-gnu",
+                          mcpu="generic", use_cache=True):
+    """Convenience: measure codesize and return a metrics-compatible dict."""
+    text_bytes = measure_codesize(ir_path, llc_path, llvm_size_path,
+                                  target_triple, mcpu, use_cache)
+    if text_bytes is None:
+        return None
+    return {
+        "codesize_text": text_bytes,
+        "instruction_count": text_bytes,  # alias for compatibility
+        "ir_cost": text_bytes,
+        "score_ir": text_bytes,
+        "score": text_bytes,
+    }
+
+
+def make_measure_fn(metric_mode="ir", opt_path=None, llc_path=None,
+                    llvm_size_path=None, target_triple="x86_64-unknown-linux-gnu",
+                    mcpu="generic", use_tti=False, use_cache=True):
+    """Build the single measurement callback used by ALL measurement points.
+
+    The returned `measure_fn(ir_path) -> metrics_dict` guarantees one consistent
+    optimization target across the scheduler, oracle, Stage A, exact_optimum and
+    compare_all — so switching metric never leaves a call site on the wrong one.
+
+    The returned dict always preserves the real `instruction_count` (needed for
+    MeanOverOz-IR reporting) and sets a single comparison key `score`:
+      - metric_mode == "ir":       score = instruction_count
+      - metric_mode == "codesize": score = .text bytes (codesize_text)
+
+    In codesize mode `ir_cost` is ALSO aligned to codesize_text so Stage A's
+    existing `ir_cost`-based delta comparison transparently optimizes codesize.
+
+    If codesize measurement fails (llc/llvm-size error), the metrics fall back to
+    the IR-level dict (score = instruction_count) rather than crashing.
+    """
+    def measure_fn(ir_path):
+        if use_tti and target_triple:
+            metrics = measure_ir_with_tti(opt_path, ir_path, target_triple)
+        else:
+            metrics = measure_ir_file(ir_path)
+
+        if metric_mode == "codesize" and llc_path and llvm_size_path:
+            text_bytes = measure_codesize(
+                ir_path, llc_path, llvm_size_path,
+                target_triple=target_triple, mcpu=mcpu, use_cache=use_cache,
+            )
+            if text_bytes is not None:
+                metrics["codesize_text"] = text_bytes
+                # Align all comparison keys to codesize; keep instruction_count intact.
+                metrics["ir_cost"] = text_bytes
+                metrics["score_ir"] = text_bytes
+                metrics["score"] = text_bytes
+                return metrics
+            # codesize failed → fall through to IR-level score below
+
+        # ir mode (or codesize fallback): score is the raw instruction count.
+        metrics["score"] = metrics["instruction_count"]
+        return metrics
+
+    return measure_fn
 
 
 def _run_cost_model(opt_path, ir_path, target_triple):

@@ -4,7 +4,7 @@ Pass pipeline name resolution and mandatory ordering constraints.
 Key improvements over v2:
 - Config-driven pass aliases loaded from pass_sets.json
 - Mandatory order validation: prevents forbidden reorderings
-- Supports multiple pass sets (O1/O2/O3/research)
+- Supports multiple pass sets (O1/O2/O3/research/research_27/minimal)
 """
 
 import json
@@ -14,9 +14,45 @@ from pathlib import Path
 PASS_PIPELINE_ALIASES = {
     # licm requires MemorySSA: use loop-mssa(licm).
     "licm": "loop-mssa(licm)",
+    # lnicm: loop nest invariant code motion (LLVM 23+)
+    "lnicm": "loop-mssa(lnicm)",
     # instcombine may fail with fixpoint verification on some IR.
-    # Use no-verify-fixpoint to suppress the crash (safe, LLVM-documented).
     "instcombine": "instcombine<no-verify-fixpoint>",
+    # loop-instsimplify: LoopPass, needs loop-mssa wrapper like licm
+    "loop-instsimplify": "loop-mssa(loop-instsimplify)",
+    # loop-deletion: LoopPass, needs loop() wrapper
+    "loop-deletion": "loop(loop-deletion)",
+    # loop-idiom: LoopPass, needs loop() wrapper
+    "loop-idiom": "loop(loop-idiom)",
+    # ── New: loop/vectorization passes (LLVM 23) ──
+    "loop-vectorize": "loop-mssa(loop-vectorize)",
+    "slp-vectorizer": "loop-mssa(slp-vectorizer)",
+    "loop-unroll": "loop-mssa(loop-unroll)",
+    "loop-unroll-full": "loop-mssa(loop-unroll-full)",
+    "loop-distribute": "loop-mssa(loop-distribute)",
+    "loop-fusion": "loop-mssa(loop-fusion)",
+    "loop-versioning": "loop-mssa(loop-versioning)",
+    "loop-versioning-licm": "loop-mssa(loop-versioning-licm)",
+    "loop-sink": "loop-mssa(loop-sink)",
+    "simple-loop-unswitch": "loop-mssa(simple-loop-unswitch)",
+    "loop-bound-split": "loop-mssa(loop-bound-split)",
+    "loop-predication": "loop-mssa(loop-predication)",
+    "loop-reduce": "loop-mssa(loop-reduce)",
+    "loop-term-fold": "loop(loop-term-fold)",
+    "loop-idiom-vectorize": "loop-mssa(loop-idiom-vectorize)",
+    "load-store-vectorizer": "loop-mssa(load-store-vectorizer)",
+    "loop-flatten": "loop(loop-flatten)",
+    "loop-interchange": "loop-mssa(loop-interchange)",
+    "loop-unroll-and-jam": "loop-mssa(loop-unroll-and-jam)",
+    "lcssa": "loop-mssa(lcssa)",
+    "unify-loop-exits": "loop-mssa(unify-loop-exits)",
+    "loop-data-prefetch": "loop-mssa(loop-data-prefetch)",
+    "extra-simple-loop-unswitch-passes": "loop-mssa(extra-simple-loop-unswitch-passes)",
+    "extra-vector-passes": "loop-mssa(extra-vector-passes)",
+    "loop-simplifycfg": "loop(loop-simplifycfg)",
+    "irce": "loop-mssa(irce)",
+    "hardware-loops": "loop-mssa(hardware-loops)",
+    "mldst-motion": "loop-mssa(mldst-motion)",
 }
 
 
@@ -30,7 +66,7 @@ def pipeline_names(pass_names):
     return [pipeline_name(pn) for pn in pass_names]
 
 
-def load_pass_set(config_path, set_name="research"):
+def load_pass_set(config_path, set_name="research_27"):
     """Load a pass set from config and return (passes, mandatory_orders)."""
     config = json.loads(Path(config_path).read_text(encoding="utf-8"))
     pass_sets = config.get("pass_sets", {})

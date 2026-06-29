@@ -1,0 +1,46 @@
+{
+  "description": "10 diverse MultiSource benchmarks for quick test",
+  "test_suite_root": "E:/llvm-test-suite",
+  "benchmarks": [
+    {
+      "name": "toast_toast_ulaw",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/toast_ulaw.c"
+    },
+    {
+      "name": "rawcaudio_rawcaudio",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/adpcm/rawcaudio/rawcaudio.c"
+    },
+    {
+      "name": "cfrac_psub",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/psub.c"
+    },
+    {
+      "name": "mpeg2dec_verify",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/verify.c"
+    },
+    {
+      "name": "spiff_line",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/spiff/line.c"
+    },
+    {
+      "name": "gs_zmatrix",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zmatrix.c"
+    },
+    {
+      "name": "encode_ag_enc",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/ALAC/encode/ag_enc.c"
+    },
+    {
+      "name": "telecomm-gsm_gsm_explode",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/telecomm-gsm/gsm_explode.c"
+    },
+    {
+      "name": "jpeg-6a_jcmaster",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jcmaster.c"
+    },
+    {
+      "name": "jpeg-6a_jctrans",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jctrans.c"
+    }
+  ]
+}

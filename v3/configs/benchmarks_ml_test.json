@@ -1,0 +1,66 @@
+{
+  "description": "ML test set: 15 benchmarks",
+  "test_suite_root": "E:/llvm-test-suite",
+  "benchmarks": [
+    {
+      "name": "AMGmk_vector",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/ASC_Sequoia/AMGmk/vector.c"
+    },
+    {
+      "name": "dc_c_print_results",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/NPB-serial/dc/c_print_results.c"
+    },
+    {
+      "name": "drop3_drop3",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/BitBench/drop3/drop3.c"
+    },
+    {
+      "name": "bc_storage",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Ptrdist/bc/storage.c"
+    },
+    {
+      "name": "analyzer_functs",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/FreeBench/analyzer/functs.c"
+    },
+    {
+      "name": "health_list",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/health/list.c"
+    },
+    {
+      "name": "mpeg2dec_getpic",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/getpic.c"
+    },
+    {
+      "name": "gnugo_findsavr",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/gnugo/findsavr.c"
+    },
+    {
+      "name": "ecbdes_ecb_enc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/ecbdes/ecb_enc.c"
+    },
+    {
+      "name": "BenchmarkGame_partialsums",
+      "source": "E:/llvm-test-suite/SingleSource/Benchmarks/BenchmarkGame/partialsums.c"
+    },
+    {
+      "name": "09-vor_intersec",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/09-vor/intersec.c"
+    },
+    {
+      "name": "CoMD_CoMD",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/CoMD/CoMD.c"
+    },
+    {
+      "name": "bc_global",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Ptrdist/bc/global.c"
+    },
+    {
+      "name": "analyzer_parse_settings",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/FreeBench/analyzer/parse_settings.c"
+    },
+    {
+      "name": "toast_gsm_encode",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/gsm_encode.c"
+    }
+  ]
+}

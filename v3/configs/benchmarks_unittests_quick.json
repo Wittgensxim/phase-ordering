@@ -1,0 +1,46 @@
+{
+    "description": "UnitTests quick set: 5 benchmarks for fast iteration",
+    "test_suite_root": "E:/llvm-test-suite",
+    "benchmarks": [
+        {
+            "name": "UnitTests_LoopBug",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2008-04-18-LoopBug.c"
+        },
+        {
+            "name": "UnitTests_LoopBug2",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2008-04-20-LoopBug2.c"
+        },
+        {
+            "name": "UnitTests_TestLoop",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/TestLoop.c"
+        },
+        {
+            "name": "UnitTests_Popcount",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2005-05-11-Popcount-ffs-fls.c"
+        },
+        {
+            "name": "UnitTests_Switch",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-04-22-Switch.c"
+        },
+        {
+            "name": "UnitTests_BitOpsTest",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-07-08-BitOpsTest.c"
+        },
+        {
+            "name": "UnitTests_ScalarReplBug",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-10-29-ScalarReplBug.c"
+        },
+        {
+            "name": "UnitTests_DivRem",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2006-02-04-DivRem.c"
+        },
+        {
+            "name": "UnitTests_InstCombine",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/testcase-InstCombine-1.c"
+        },
+        {
+            "name": "UnitTests_LoadConstants",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2006-12-11-LoadConstants.c"
+        }
+    ]
+}

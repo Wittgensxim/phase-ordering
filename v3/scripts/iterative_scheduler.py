@@ -29,13 +29,20 @@ from pass_pipeline import (
 from run_benchmark_suite import run_benchmark
 from scheduler_policy import (
     classify_passes_for_scheduling, auto_safe_passes,
-    decision_required_pairs, build_ablation_rows, load_mandatory_orders,
+    build_ablation_rows, load_mandatory_orders,
+    build_decision_graph,
 )
 from oracle_chooser import oracle_choose_from_decision_pairs
 from rule_chooser import rule_choose_from_decision_pairs
 from commutativity_test import (
     run_batch_commutativity_spot_check,
     run_third_order_probe,
+)
+from measure_beneficial_independence import (
+    stage_a_beneficial,
+    stage_a_enabling,
+    canonical_order,
+    _safe,
 )
 
 
@@ -46,6 +53,8 @@ TRACE_FIELDS = [
     "input_ir", "input_hash", "metric_score", "instruction_count",
     "candidate_pass_count", "auto_safe_passes", "candidate_safe_passes",
     "blocked_passes", "decision_required_passes", "decision_required_pairs",
+    "total_pairs_analyzed", "auto_resolved_pairs", "decision_reduction_rate",
+    "auto_safe_batch_count", "auto_safe_batch_sizes",
     "selected_action_kind", "selected_action", "action_details",
     "output_hash", "metric_after", "metric_delta", "changed",
 ]
@@ -73,8 +82,9 @@ class IterativeScheduler:
         metric_stagnation_rounds=5,
         safe_pass_strategy="one_at_a_time",
         use_oracle=True,
-        oracle_max_candidates=10,
+        oracle_max_candidates=0,  # 0 = test ALL order-sensitive pairs (no truncation)
         chooser="oracle",
+        min_gain=0.5,  # Stage A: minimum ir_cost reduction to count as beneficial
         use_tti=False,
         target_triple="x86_64-unknown-linux-gnu",
         enable_batch_check=True,
@@ -82,6 +92,10 @@ class IterativeScheduler:
         mandatory_orders=None,
         pass_set_config=None,
         baseline_pipeline=None,
+        metric_mode="ir",
+        llc_path=None,
+        llvm_size_path=None,
+        inject_minsize=False,
     ):
         self.passes = list(passes)
         self.clang_path = Path(clang_path)
@@ -95,7 +109,11 @@ class IterativeScheduler:
         self.safe_pass_strategy = safe_pass_strategy
         self.use_oracle = use_oracle
         self.oracle_max_candidates = oracle_max_candidates
-        self.chooser = chooser  # "oracle" / "rule" / "ml"
+        self.chooser = chooser  # "oracle" / "rule" / "random" (ml/ml-hybrid removed in v3.1)
+        self.min_gain = min_gain  # Stage A: minimum ir_cost delta for beneficial
+        self.beam_rank = 0  # 0=best, 1=2nd best, etc. (for beam search in multi-start)
+        self.epsilon = 0.0  # ε-greedy exploration rate at R0
+        self.positive_gate_mode = "zero-only"  # off | zero-only | adaptive | strict
         self.use_tti = use_tti
         self.target_triple = target_triple
         self.enable_batch_check = enable_batch_check
@@ -103,6 +121,22 @@ class IterativeScheduler:
         self.mandatory_orders = mandatory_orders or []
         self.pass_set_config = pass_set_config
         self.baseline_pipeline = baseline_pipeline
+        self.baseline_level = None  # Named level like "O2"/"Oz" for real-pipeline baseline
+        self.metric_mode = metric_mode  # "ir" or "codesize"
+        self.llc_path = Path(llc_path) if llc_path else None
+        self.llvm_size_path = Path(llvm_size_path) if llvm_size_path else None
+        self.inject_minsize = inject_minsize  # inject minsize/optsize attrs for codesize fair comparison
+
+        # ── Unified measurement callback ─────────────────────────────────
+        from ir_metrics import make_measure_fn
+        self.measure_fn = make_measure_fn(
+            metric_mode=self.metric_mode,
+            opt_path=str(self.opt_path) if use_tti else None,
+            llc_path=str(self.llc_path) if self.llc_path else None,
+            llvm_size_path=str(self.llvm_size_path) if self.llvm_size_path else None,
+            target_triple=self.target_triple,
+            use_tti=self.use_tti,
+        )
 
         # State
         self.current_ir = None
@@ -114,6 +148,18 @@ class IterativeScheduler:
         self.action_history = []
         self.action_memory = []  # (action_key, score_before, score_after, improved, round)
         self.original_metrics = None  # Original IR metrics for score normalization
+        self.executed_passes = set()  # Passes actually applied (for enablement-aware fallback)
+        # Cross-round beneficial memory: {pass_name: last_beneficial_round}
+        # Passes here get a relaxed min_gain (0.2×) to avoid being dropped by
+        # minor IR changes after an oracle action, preventing oscillation.
+        self.beneficial_memory = {}
+        self.beneficial_memory_ttl = 3  # Rounds before a pass is evicted
+        # Best-so-far tracking: ensures the scheduler never returns a result worse
+        # than any intermediate state.  Critical when cumulative small degradations
+        # or perturbation push the final IR past an earlier, better state.
+        self.best_norm = float('inf')
+        self.best_ir_path = None
+        self._best_round = 0
 
     def run(self, benchmark):
         """Run the iterative scheduler on a single benchmark.
@@ -130,6 +176,15 @@ class IterativeScheduler:
 
         # Resolve input IR
         self.current_ir = self._resolve_ir(benchmark, bench_dir)
+        # Inject minsize/optsize attributes for fair codesize comparison
+        if self.inject_minsize:
+            from baseline_pipelines import _inject_attrs
+            text = Path(self.current_ir).read_text(encoding="utf-8")
+            injected = _inject_attrs(text, "minsize optsize")
+            minsize_ir = bench_dir / f"{bench_name}_minsize.ll"
+            minsize_ir.write_text(injected, encoding="utf-8")
+            self.current_ir = minsize_ir
+            print(f"[{bench_name}] Injected minsize/optsize attributes for fair codesize comparison")
         self.original_metrics = self._measure_ir(self.current_ir)
         print(f"[{bench_name}] Starting iterative scheduler on {self.current_ir}")
         print(f"  Mode: {self.scheduler_mode}, threshold: {self.independence_threshold}")
@@ -167,8 +222,28 @@ class IterativeScheduler:
             })
 
             # Extract from analysis result
-            candidate_passes = analysis["summary"]["candidate_passes"]
+            raw_candidate_passes = analysis["summary"]["candidate_passes"]
             confirmation_rows = analysis["confirmation_rows"]
+
+            # --- Stage A: beneficial+enabling pass filtering (advisor step 1) ---
+            # Replace the active-only candidate set with the genuinely beneficial
+            # set.  A pass that changes IR without reducing cost (active_only) is
+            # noise for phase ordering — it inflates the decision graph without
+            # contributing to the optimization target.
+            before_cost = before_metrics.get("ir_cost", before_metrics.get("score_ir", 0))
+            # Load enablement edges for smart fallback when beneficial set is empty
+            enablement_edges = self._load_enablement_edges(analysis)
+            candidate_passes = self._filter_beneficial(
+                raw_candidate_passes, before_cost, round_dir, bench_name,
+                enablement_edges=enablement_edges,
+            )
+            # Update beneficial memory for adaptive threshold in future rounds
+            self._update_beneficial_memory(candidate_passes)
+            if len(candidate_passes) < len(raw_candidate_passes):
+                dropped = sorted(set(raw_candidate_passes) - set(candidate_passes))
+                print(f"  [{bench_name}] Stage A: {len(raw_candidate_passes)} active → "
+                      f"{len(candidate_passes)} beneficial (dropped: {', '.join(dropped) if dropped else 'none'})")
+            # -------------------------------------------------------------------
 
             # Classify passes
             classifications = classify_passes_for_scheduling(
@@ -183,9 +258,21 @@ class IterativeScheduler:
                 p for p, r in classifications.items()
                 if r["scheduler_class"] == "auto_safe"
             ]
-            decision_pairs = decision_required_pairs(
-                confirmation_rows, candidate_passes
-            )
+
+            # Build explicit decision graph (core contribution — single source of truth)
+            dg = build_decision_graph(confirmation_rows, candidate_passes)
+            decision_pairs = dg["decision_pairs"]  # from decision graph, NOT separate function
+            if self.round_index == 0 or dg["decision_reduction_rate"] > 0:
+                batches_str = ", ".join(
+                    f"[{','.join(b['passes'][:3])}{'...' if len(b['passes'])>3 else ''}]({b['size']})"
+                    for b in dg["auto_safe_batches"][:3]
+                ) if dg["auto_safe_batches"] else "none"
+                unaccounted_str = f", {dg['unaccounted_edges']} unaccounted" if dg.get("unaccounted_edges", 0) > 0 else ""
+                print(f"  [{bench_name}] Decision graph: {dg['total_possible_edges']} pairs -> "
+                      f"{dg['auto_resolved_edges']} auto-resolved ({dg['decision_reduction_rate']:.0%}), "
+                      f"{dg['decision_edges']} need oracle{unaccounted_str}, "
+                      f"batches: {batches_str}")
+            self._current_dg = dg  # Save for trace
 
             # Record policy
             self._record_policy(classifications, bench_name)
@@ -203,15 +290,20 @@ class IterativeScheduler:
 
             changed = self._execute_action(action, round_dir)
 
+            # Track executed passes for enablement-aware fallback (Direction 1)
+            if changed and action.get("kind") not in ("stop", "fixed_point_candidate"):
+                executed = action.get("passes", [action.get("pass", "")])
+                self.executed_passes.update(p for p in executed if p)
+
             # Measure AFTER metrics
             score_degraded = False
+            before_norm = self._norm_score(before_metrics)
             if changed:
                 after_metrics = self._measure_ir(self.current_ir)
                 after_hash = _file_sha256(self.current_ir)
+                after_norm = self._norm_score(after_metrics)
 
                 # Rollback if action made things significantly worse (>5% score increase)
-                before_norm = self._norm_score(before_metrics)
-                after_norm = self._norm_score(after_metrics)
                 if (before_norm > 0
                         and after_norm > before_norm * 1.05
                         and action["kind"] != "perturbation"):
@@ -221,17 +313,26 @@ class IterativeScheduler:
                     self.current_ir = round_input
                     after_metrics = before_metrics
                     after_hash = before_hash
+                    after_norm = before_norm
                     score_degraded = True
                     changed = False
             else:
                 after_metrics = before_metrics
                 after_hash = before_hash
+                after_norm = before_norm
+
+            # Update best-so-far (monotonicity guarantee: scheduler result ≥ best intermediate)
+            if after_norm < self.best_norm:
+                self.best_norm = after_norm
+                self.best_ir_path = Path(self.current_ir)
+                self._best_round = self.round_index
 
             # Record action memory for cycle detection
             action_key = self._action_key(action)
             score_improved = after_norm < before_norm
             self.action_memory.append({
                 "key": action_key,
+                "action": action,
                 "score_before": before_norm,
                 "score_after": after_norm,
                 "improved": score_improved,
@@ -250,28 +351,51 @@ class IterativeScheduler:
                 after_metrics=after_metrics,
                 after_hash=after_hash,
                 changed=changed,
+                confirmation_rows=confirmation_rows,
             )
             self.trace.append(trace_row)
 
             self.round_index += 1
 
-            # Perturbation: if stagnating, try a random decision pair
+            # Perturbation: if stagnating, try a random decision pair.
+            # After perturbation, if the result is worse than best-so-far,
+            # roll back to best-so-far IR (perturbation must not degrade).
             if self.enable_perturbation and self._is_stagnating():
                 perturb_count += 1
                 if perturb_count <= 3:
                     print(f"[{bench_name}] Metric stagnating, applying perturbation #{perturb_count}")
                     self._apply_perturbation(decision_pairs, analysis, round_dir)
+                    # Check if perturbation helped
+                    post_metrics = self._measure_ir(self.current_ir)
+                    post_norm = self._norm_score(post_metrics)
+                    if post_norm >= self.best_norm and self.best_ir_path is not None:
+                        print(f"  [{bench_name}] Perturbation #{perturb_count} degraded "
+                              f"({post_norm:.1f} >= best {self.best_norm:.1f}), "
+                              f"rolling back to best-so-far")
+                        self.current_ir = Path(self.best_ir_path)
 
-        # Final metrics
-        final_metrics = self._measure_ir(self.current_ir)
-        final_ir_path = bench_dir / "final.ll"
-        shutil.copy2(self.current_ir, final_ir_path)
+        # Final: use best-so-far IR, not last-round IR.
+        # This guarantees monotonicity: adding passes can never make the
+        # reported result worse than what was achieved earlier.
+        if self.best_ir_path is not None and self.best_ir_path != Path(self.current_ir):
+            final_ir_path = bench_dir / "final.ll"
+            shutil.copy2(self.best_ir_path, final_ir_path)
+            final_metrics = self._measure_ir(final_ir_path)
+            best_round = self._best_round
+            print(f"[{bench_name}] Returning best-so-far IR (round {best_round}), "
+                  f"instr={final_metrics.get('instruction_count', '?')}")
+        else:
+            final_metrics = self._measure_ir(self.current_ir)
+            final_ir_path = bench_dir / "final.ll"
+            shutil.copy2(self.current_ir, final_ir_path)
+            best_round = self.round_index - 1
 
         # Build result
         result = {
             "benchmark": bench_name,
             "rounds": self.round_index,
             "final_metrics": final_metrics,
+            "best_round": best_round,
             "trace": self.trace,
             "policy_reports": self.policy_reports,
             "baseline_comparison": {},
@@ -306,9 +430,26 @@ class IterativeScheduler:
         raise ValueError(f"Benchmark {benchmark.get('name')} needs source or ir")
 
     def _run_baseline(self, bench_dir):
-        """Run the baseline pipeline and return metrics."""
-        import subprocess
+        """Run the baseline pipeline and return metrics.
+
+        Uses run_real_pipeline (default<Ox> / Oz=default<O2>+minsize) for named
+        levels O1/O2/O3/Oz — the literature-standard reference.
+        Falls back to custom pass-list pipeline for non-standard baseline names.
+        """
+        from baseline_pipelines import run_real_pipeline, DIRECT_LEVELS, ATTR_LEVELS
         baseline_ir = bench_dir / "baseline.ll"
+
+        level = self.baseline_level or ""
+        if level in DIRECT_LEVELS or level in ATTR_LEVELS:
+            try:
+                run_real_pipeline(self.opt_path, self.current_ir, level, baseline_ir)
+                return self._measure_ir(baseline_ir)
+            except Exception as e:
+                print(f"  Warning: real baseline {level} failed: {e}")
+                return None
+
+        # Legacy fallback: custom pass list pipeline
+        import subprocess
         cmd = [
             str(self.opt_path), "-S",
             f"-passes=function({','.join(pipeline_names(self.baseline_pipeline))})",
@@ -321,16 +462,15 @@ class IterativeScheduler:
         return self._measure_ir(baseline_ir)
 
     def _measure_ir(self, ir_path):
-        """Measure IR metrics. Uses TTI cost model if enabled, else IR-level."""
-        if self.use_tti and self.target_triple:
-            return measure_ir_with_tti(self.opt_path, ir_path, self.target_triple)
-        return measure_ir_file(ir_path)
+        """Measure IR/codesize via the unified measurement factory."""
+        return self.measure_fn(ir_path)
 
     def _norm_score(self, metrics):
         """Compute normalized score relative to original IR. 100 = no change, <100 = better."""
         if self.original_metrics is None:
             return metrics.get("score", 0)
-        return compute_score(self.original_metrics, metrics)
+        from ir_metrics import compute_metric_score
+        return compute_metric_score(self.original_metrics, metrics, metric_mode=self.metric_mode)
 
     def _run_analysis_chain(self, benchmark, round_dir):
         """Run the full analysis chain on current IR."""
@@ -344,13 +484,194 @@ class IterativeScheduler:
             out_dir=analysis_dir,
         )
 
+    def _filter_beneficial(self, candidate_passes, current_cost, round_dir, bench_name,
+                           enablement_edges=None):
+        """Stage A: filter candidate passes to beneficial ∪ enabling only.
+
+        A pass that changes IR without reducing cost ('active_only') is noise for
+        phase ordering — it inflates the decision graph without contributing to
+        the optimization target.
+
+        When no pass is directly beneficial or enabling on the current IR, this
+        method uses enablement-probe data as a smart fallback (Direction 1):
+        instead of falling back to ALL active passes, it only promotes those
+        active_only passes that were *enabled by a previously-executed pass*.
+        These passes may now be in a position to reduce cost.
+
+        Cross-round beneficial memory: passes that were beneficial in a recent
+        round get a relaxed min_gain (0.2× default), preventing oscillation where
+        a pass is repeatedly dropped/recovered due to minor IR changes from
+        oracle actions.  This is general — it applies to ANY pass, not a specific
+        hardcoded list.
+
+        Returns the filtered beneficial+enabling pass list in canonical order.
+        """
+        work_dir = Path(round_dir) / "stageA"
+        work_dir.mkdir(parents=True, exist_ok=True)
+
+        # Adaptive min_gain: passes remembered from recent rounds get a lower bar
+        remembered = {
+            p for p, last_r in self.beneficial_memory.items()
+            if self.round_index - last_r <= self.beneficial_memory_ttl
+        }
+        effective_min_gain = self.min_gain
+        if remembered:
+            effective_min_gain = self.min_gain * 0.2
+
+        # ── No-op pre-filter (codesize mode): skip passes that don't change IR ──
+        # Safe: ΔIR=0 ⇒ Δcodesize=0. Group B passes (vectorization, unrolling)
+        # change IR → they pass this filter and get proper codesize evaluation.
+        # Surviving passes run opt again in stage_a_beneficial (opt is fast; the
+        # real savings are from skipping llc on no-ops and from independence analysis
+        # cutting O(n²) oracle pairs).
+        candidate_passes_prefiltered = list(candidate_passes)
+        if self.metric_mode == "codesize":
+            orig_text = Path(self.current_ir).read_text(encoding="utf-8")
+            active_only = []
+            for p in candidate_passes:
+                out_path = Path(work_dir) / "stageA_pre" / f"{p}.ll"
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                try:
+                    from commutativity_test import run_opt_pipeline
+                    run_opt_pipeline(self.opt_path, self.current_ir, [p], out_path)
+                    after_text = out_path.read_text(encoding="utf-8")
+                    if after_text != orig_text:
+                        active_only.append(p)
+                except Exception:
+                    active_only.append(p)
+            skipped = len(candidate_passes) - len(active_only)
+            if skipped > 0:
+                print(f"  [{bench_name}] No-op pre-filter: {skipped}/{len(candidate_passes)} "
+                      f"skipped ({len(active_only)} active → codesize eval)")
+            candidate_passes_prefiltered = active_only
+            if not candidate_passes_prefiltered:
+                candidate_passes_prefiltered = list(candidate_passes)
+
+        # Stage A.1: directly beneficial (cost strictly decreases)
+        _, beneficial = stage_a_beneficial(
+            self.opt_path, self.current_ir, current_cost,
+            candidate_passes_prefiltered, work_dir, effective_min_gain,
+            measure_fn=self.measure_fn,
+        )
+        # Also check passes in remembered set with the relaxed threshold
+        if remembered and effective_min_gain < self.min_gain:
+            remembered_only = [p for p in candidate_passes_prefiltered if p in remembered and p not in beneficial]
+            if remembered_only:
+                _, remembered_beneficial = stage_a_beneficial(
+                    self.opt_path, self.current_ir, current_cost,
+                    remembered_only, work_dir, effective_min_gain,
+                    measure_fn=self.measure_fn,
+                )
+                newly_found = set(remembered_beneficial) - set(beneficial)
+                if newly_found:
+                    beneficial = list(beneficial) + list(newly_found)
+                    print(f"  [{bench_name}] Adaptive threshold: recovered "
+                          f"{', '.join(sorted(newly_found))} via beneficial memory "
+                          f"(min_gain={effective_min_gain:.2f})")
+
+        # Stage A.2: enabling (not beneficial alone, but helps in combination)
+        enabling, _ = stage_a_enabling(
+            self.opt_path, self.current_ir, beneficial,
+            candidate_passes, current_cost, work_dir, self.min_gain,
+            measure_fn=self.measure_fn,
+        )
+
+        b_set = canonical_order(list(beneficial) + list(enabling), candidate_passes)
+
+        if not b_set and self.executed_passes and enablement_edges:
+            # --- Smart fallback: enablement-guided promotion (Direction 1) ---
+            # If a previously-executed pass enables an active_only pass, that
+            # pass may now be in a position to reduce cost even though the
+            # cost-model says it doesn't (cost-model myopia for loop/CFG passes).
+            enabled_by_executed = self._get_enabled_by_executed(
+                enablement_edges, candidate_passes
+            )
+            if enabled_by_executed:
+                # When the beneficial set is empty, stage_a_enabling can't work:
+                # it requires a non-empty beneficial bundle to test against.
+                # Loop/CFG passes (loop-rotate, licm, etc.) never reduce cost
+                # alone, but they DO become beneficial AFTER earlier passes run.
+                # Since they were enabled by executed passes, promote them directly.
+                if not beneficial:
+                    b_set = canonical_order(list(enabled_by_executed), candidate_passes)
+                    print(f"  [{bench_name}] Stage A: 0 beneficial -> "
+                          f"enablement-guided recovery: {len(b_set)} passes "
+                          f"(enabled by executed: {', '.join(sorted(enabled_by_executed))})")
+                else:
+                    enabling2, _enable_cost = stage_a_enabling(
+                        self.opt_path, self.current_ir, beneficial,
+                        list(enabled_by_executed), current_cost, work_dir, self.min_gain,
+                        measure_fn=self.measure_fn,
+                    )
+                    if enabling2:
+                        b_set = canonical_order(list(beneficial) + list(enabling2), candidate_passes)
+                        print(f"  [{bench_name}] Stage A: 0 beneficial -> "
+                              f"enablement-guided recovery: {len(enabling2)} passes "
+                              f"({', '.join(enabling2)})")
+
+        if not b_set:
+            # Last resort: no beneficial pass found, even with enablement guidance.
+            # Fall back to the active set so the scheduler can still make progress.
+            print(f"  [{bench_name}] Stage A: 0 beneficial passes; "
+                  f"falling back to {len(candidate_passes)} active passes")
+            return candidate_passes
+
+        return b_set
+
+    def _update_beneficial_memory(self, beneficial_passes):
+        """Update cross-round memory of which passes were recently beneficial.
+
+        Passes in the current beneficial set get their timestamp refreshed.
+        Older entries decay naturally — after beneficial_memory_ttl rounds
+        without being beneficial, a pass is evicted.
+
+        This is general: ANY pass that was recently beneficial gets a relaxed
+        min_gain in the next round, not just a hardcoded list like sroa.
+        """
+        for p in beneficial_passes:
+            self.beneficial_memory[p] = self.round_index
+        # Evict stale entries
+        stale = [
+            p for p, last_r in self.beneficial_memory.items()
+            if self.round_index - last_r > self.beneficial_memory_ttl
+        ]
+        for p in stale:
+            del self.beneficial_memory[p]
+
+    def _get_enabled_by_executed(self, enablement_edges, candidate_passes):
+        """Find passes in candidate_passes that were enabled by an executed pass.
+
+        An enablement edge (enabler -> enabled) means running 'enabler' before
+        'enabled' activates or expands 'enabled'.  If 'enabler' has already
+        been executed, 'enabled' may now be in a position to reduce cost.
+        """
+        candidates = set(candidate_passes)
+        enabled = set()
+        for edge in enablement_edges:
+            enabler = edge.get("enabler", "")
+            enabled_pass = edge.get("enabled", "")
+            if enabler in self.executed_passes and enabled_pass in candidates:
+                enabled.add(enabled_pass)
+        return enabled
+
+    def _load_enablement_edges(self, analysis):
+        """Load enablement edges from the analysis result."""
+        paths = analysis.get("paths", {})
+        en_path = paths.get("enablement")
+        if not en_path or not Path(en_path).exists():
+            return []
+        try:
+            data = json.loads(Path(en_path).read_text(encoding="utf-8"))
+            return data.get("edges", [])
+        except Exception:
+            return []
+
     def _decide_action(self, auto_safe, decision_pairs, candidate_passes,
                         confirmation_rows, round_dir, bench_name):
         """Decide what action to take this round."""
         # Priority 1: auto_safe passes
         if auto_safe:
             if self.safe_pass_strategy == "one_at_a_time":
-                # Batch check before executing
                 if self.enable_batch_check and len(auto_safe) > 1:
                     batch_result = run_batch_commutativity_spot_check(
                         self.opt_path, self.llvm_diff_path,
@@ -365,14 +686,37 @@ class IterativeScheduler:
                     "details": f"single safe pass: {auto_safe[0]}",
                 }
             else:
-                # Batch execution
                 return {
                     "kind": "safe_batch",
                     "passes": list(auto_safe),
                     "details": f"batch of {len(auto_safe)} safe passes",
                 }
 
+        # Priority 1.5: Auto-execute boundary-safe independent batch
+        # Layer 3 of the decision-reduction framework:
+        # A batch formed from independence-connected passes CAN be auto-executed
+        # iff it has NO external order_sensitive edges to other active passes.
+        dg = getattr(self, '_current_dg', None)
+        if dg and dg["auto_safe_batches"]:
+            safe_batch = _pick_boundary_safe_batch(
+                dg, confirmation_rows, candidate_passes,
+                self.action_memory,
+            )
+            if safe_batch:
+                return {
+                    "kind": "safe_batch",
+                    "passes": list(safe_batch),
+                    "details": (
+                        f"auto_safe_batch: [{','.join(safe_batch[:4])}"
+                        f"{'...' if len(safe_batch) > 4 else ''}] "
+                        f"(size={len(safe_batch)}, boundary-safe, no oracle needed)"
+                    ),
+                }
+
         # Priority 2: Oracle ordered-pair choice
+        # Independence contribution: oracle only sees decision_required pairs.
+        # confirmed_independent pairs are auto-resolved (removed from decision graph).
+        # This reduction is tracked in TRACE_FIELDS and reported per-round.
         if decision_pairs and self.chooser == "oracle":
             oracle_result = oracle_choose_from_decision_pairs(
                 self.opt_path, self.current_ir,
@@ -383,6 +727,8 @@ class IterativeScheduler:
                 use_tti=self.use_tti,
                 target_triple=self.target_triple,
                 mandatory_orders=self.mandatory_orders,
+                decision_pairs=decision_pairs,
+                measure_fn=self.measure_fn,
             )
 
             # Filter oracle results by action memory (skip recently ineffective)
@@ -392,6 +738,58 @@ class IterativeScheduler:
 
             if oracle_result["best_action"]:
                 action = oracle_result["best_action"]
+                results = oracle_result.get("results", [])
+
+                # ε-greedy at R0: with probability ε, pick random pair (escape local optima)
+                if self.epsilon > 0 and self.round_index == 0 and results:
+                    import random as _random
+                    if _random.random() < self.epsilon:
+                        # Pick from top-5 (not totally random, just not #1)
+                        sorted_r = sorted(results, key=lambda r: r.get("best_score", float("inf")))
+                        pick = sorted_r[_random.randint(1, min(4, len(sorted_r)-1))]
+                        action = {
+                            "kind": "ordered_pair",
+                            "passes": pick["best_direction"],
+                            "winner": pick.get("winner", ""),
+                            "score_improvement": pick.get("before_score", 0) - pick.get("best_score", 0),
+                        }
+                        print(f"  [{bench_name}] ε-greedy R0: random pick {pick['best_direction'][0]}->{pick['best_direction'][1]}")
+
+                # Beam search: if beam_rank > 0, pick the Nth-best instead of #1
+                if self.beam_rank > 0 and len(results) > self.beam_rank:
+                    # Sort by improvement descending, pick Nth
+                    sorted_results = sorted(
+                        results,
+                        key=lambda r: r.get("best_score", float("inf"))
+                    )
+                    # Filter out same pairs as higher-ranked results
+                    seen_pairs = set()
+                    unique_results = []
+                    for r in sorted_results:
+                        key = ",".join(sorted([r.get("pass_a",""), r.get("pass_b","")]))
+                        if key not in seen_pairs:
+                            seen_pairs.add(key)
+                            unique_results.append(r)
+                    if self.beam_rank < len(unique_results):
+                        chosen = unique_results[self.beam_rank]
+                        action = {
+                            "kind": "ordered_pair",
+                            "passes": chosen["best_direction"],
+                            "winner": chosen.get("winner", ""),
+                            "score_improvement": chosen.get("before_score", 0) - chosen.get("best_score", 0),
+                        }
+                        print(f"  [{bench_name}] Beam rank {self.beam_rank}: "
+                              f"chose {chosen['best_direction'][0]}->{chosen['best_direction'][1]} "
+                              f"(score={chosen.get('best_score',0):.1f})")
+
+                # Positive-improvement gate: adaptive filtering of no-gain actions
+                best_improvement = _compute_best_improvement(oracle_result)
+                if _should_gate(best_improvement, self.positive_gate_mode,
+                                self.action_memory):
+                    print(f"  [{bench_name}] Gate({self.positive_gate_mode}): "
+                          f"best improvement={best_improvement:.2f}, no action taken")
+                    return {"kind": "fixed_point_candidate",
+                            "details": f"gate blocked (Δ={best_improvement:.2f})"}
                 return {
                     "kind": "oracle_ordered_pair",
                     "passes": action["passes"],
@@ -403,8 +801,8 @@ class IterativeScheduler:
                     ),
                 }
 
-        # Priority 2b: Rule/ML/Random-based choice
-        if decision_pairs and self.chooser in ("rule", "ml", "random"):
+        # Priority 2b: Rule / Random-based choice (ML choosers removed in v3.1)
+        if decision_pairs and self.chooser in ("rule", "random"):
             enablement_edges = _load_enablement_if_available(
                 round_dir / "analysis" / bench_name / "enablement_probe.json"
             )
@@ -433,28 +831,16 @@ class IterativeScheduler:
                     }
 
             elif self.chooser == "ml":
-                from ml_chooser import ml_choose_from_decision_pairs
-                ml_result = ml_choose_from_decision_pairs(
-                    ir_path=str(self.current_ir),
-                    confirmation_rows=confirmation_rows,
-                    candidate_passes=candidate_passes,
-                    enablement_edges=enablement_edges,
-                    mandatory_orders=self.mandatory_orders,
+                raise NotImplementedError(
+                    "ML chooser has been removed (v3.1). "
+                    "Use --chooser oracle or --chooser rule instead."
                 )
-                ml_result = self._filter_oracle_by_memory(ml_result, bench_name)
 
-                if ml_result["best_action"]:
-                    action = ml_result["best_action"]
-                    return {
-                        "kind": "ml_ordered_pair",
-                        "passes": action["passes"],
-                        "winner": action.get("ml_confidence", 0),
-                        "score_improvement": 0,
-                        "details": (
-                            f"ML chose {action['passes'][0]}->{action['passes'][1]} "
-                            f"(confidence={action.get('ml_confidence', 0):.2f})"
-                        ),
-                    }
+            elif self.chooser == "ml-hybrid":
+                raise NotImplementedError(
+                    "ML-hybrid chooser has been removed (v3.1). "
+                    "Use --chooser oracle or --chooser rule instead."
+                )
 
             elif self.chooser == "random":
                 import random
@@ -484,7 +870,7 @@ class IterativeScheduler:
             pipeline = [action["pass"]]
         elif action["kind"] == "safe_batch":
             pipeline = action["passes"]
-        elif action["kind"] in ("oracle_ordered_pair", "rule_ordered_pair", "ml_ordered_pair", "random_ordered_pair"):
+        elif action["kind"] in ("oracle_ordered_pair", "rule_ordered_pair", "ml_ordered_pair", "random_ordered_pair", "safe_pair"):
             pipeline = action["passes"]
         elif action["kind"] == "perturbation":
             pipeline = action["passes"]
@@ -567,6 +953,69 @@ class IterativeScheduler:
             return f"pair:{','.join(sorted(passes))}"
         return f"other:{action.get('kind', 'unknown')}"
 
+    @staticmethod
+    def _pass_category(pass_name):
+        """Classify a pass into a coarse category for diversity tracking."""
+        cleanup = {"instcombine", "dce", "adce", "simplifycfg", "early-cse"}
+        loop = {"loop-rotate", "loop-unroll", "loop-simplify", "licm", "indvars"}
+        value = {"gvn", "sccp", "reassociate"}
+        mem = {"mem2reg", "sroa"}
+        if pass_name in cleanup:
+            return "cleanup"
+        if pass_name in loop:
+            return "loop"
+        if pass_name in value:
+            return "value"
+        if pass_name in mem:
+            return "mem"
+        return "other"
+
+    def _diversify_ml_results(self, ml_result, recent_categories, diversity_penalty=0.15):
+        """Re-rank ML results to favor pairs whose categories differ from recent history.
+
+        Args:
+            ml_result: dict with 'results' list (each has pass_a, pass_b, ml_confidence)
+            recent_categories: set of category strings from last N rounds
+            diversity_penalty: confidence reduction for each repeated category
+
+        Returns:
+            ml_result with re-sorted results (most diverse+confident first)
+        """
+        results = ml_result.get("results", [])
+        if not results or not recent_categories:
+            return ml_result
+
+        for r in results:
+            cat_a = self._pass_category(r.get("pass_a", ""))
+            cat_b = self._pass_category(r.get("pass_b", ""))
+            repeat_count = (1 if cat_a in recent_categories else 0) + \
+                           (1 if cat_b in recent_categories else 0)
+            # Adjust confidence down for repeated categories
+            r["ml_confidence_raw"] = r.get("ml_confidence", 0)
+            r["ml_confidence"] = round(r["ml_confidence_raw"] * (1 - diversity_penalty * repeat_count), 3)
+            r["diversity_penalty"] = diversity_penalty * repeat_count
+
+        # Re-sort by adjusted confidence
+        results.sort(key=lambda r: r["ml_confidence"], reverse=True)
+        ml_result["results"] = results
+        if results:
+            ml_result["best_result"] = results[0]
+            ml_result["best_action"] = {
+                "kind": "ordered_pair",
+                "passes": results[0]["best_direction"],
+                "ml_confidence": results[0]["ml_confidence"],
+            }
+        return ml_result
+
+    def _get_recent_categories(self, n=3):
+        """Get set of pass categories used in the last N actions."""
+        cats = set()
+        for mem in self.action_memory[-n:]:
+            action = mem.get("action", {})
+            for p in action.get("passes", []):
+                cats.add(self._pass_category(p))
+        return cats
+
     def _filter_oracle_by_memory(self, oracle_result, bench_name):
         """Filter oracle results: skip actions that were recently ineffective.
 
@@ -624,7 +1073,9 @@ class IterativeScheduler:
             "best_action": {
                 "kind": "ordered_pair",
                 "passes": best_result["best_direction"],
-                "winner": best_result["winner"],
+                "winner": best_result.get("winner",
+                    best_result.get("ml_confidence",
+                        best_result.get("rule_score", 0))),
                 "score_improvement": best_improvement,
             },
             "best_result": best_result,
@@ -664,7 +1115,8 @@ class IterativeScheduler:
 
     def _build_trace_row(self, bench_name, before_metrics, candidate_passes, classifications,
                          auto_safe, decision_pairs, action, input_ir,
-                         after_metrics=None, after_hash="", changed=False):
+                         after_metrics=None, after_hash="", changed=False,
+                         confirmation_rows=None):
         """Build a single trace row for this round.
 
         Called AFTER execution, so after_metrics, after_hash, and changed are known.
@@ -676,6 +1128,14 @@ class IterativeScheduler:
             round(after_norm - before_norm, 2)
             if after else ""
         )
+        # Compute decision reduction stats from explicit decision graph
+        dg = getattr(self, '_current_dg', None)
+        total_pairs = dg["total_possible_edges"] if dg else 0
+        auto_resolved = dg["auto_resolved_edges"] if dg else 0
+        reduction_rate = dg["decision_reduction_rate"] if dg else 0
+        batch_count = len(dg["auto_safe_batches"]) if dg else 0
+        batch_sizes = ",".join(str(b["size"]) for b in (dg["auto_safe_batches"] or [])) if dg else ""
+
         return {
             "round": self.round_index,
             "benchmark": bench_name,
@@ -691,6 +1151,11 @@ class IterativeScheduler:
             "blocked_passes": _class_passes(classifications, "blocked_for_auto"),
             "decision_required_passes": _class_passes(classifications, "decision_required"),
             "decision_required_pairs": [f"{a},{b}" for a, b in decision_pairs],
+            "total_pairs_analyzed": total_pairs,
+            "auto_resolved_pairs": auto_resolved,
+            "decision_reduction_rate": reduction_rate,
+            "auto_safe_batch_count": batch_count,
+            "auto_safe_batch_sizes": batch_sizes,
             "selected_action_kind": action["kind"],
             "selected_action": (
                 action.get("pass", "")
@@ -739,6 +1204,11 @@ def run_multi_start_search(
     - "o2_pipeline": start from O2 pipeline output
     """
     strategies = start_strategies or ["original"]
+    # Add beam-rank-based strategies: beam1 = 2nd-best R0, beam2 = 3rd-best R0
+    if num_starts > len(strategies) and not start_strategies:
+        strategies = ["original"]
+        for k in range(1, min(num_starts, 3)):
+            strategies.append(f"beam{k}")
     results = []
 
     for i, strategy in enumerate(strategies[:num_starts]):
@@ -752,7 +1222,9 @@ def run_multi_start_search(
 
         # Modify starting IR based on strategy
         if strategy == "original":
-            pass  # use as-is
+            scheduler.beam_rank = 0
+        elif strategy.startswith("beam"):
+            scheduler.beam_rank = int(strategy[4:])  # beam1 → rank 1, beam2 → rank 2
         elif strategy == "random":
             import random
             random_passes = list(scheduler.passes)
@@ -778,6 +1250,91 @@ def run_multi_start_search(
         key=lambda r: r["final_metrics"].get("score", float("inf")),
     )
     return {"results": results, "best": best}
+
+
+def _pick_boundary_safe_batch(dg, confirmation_rows, candidate_passes, action_memory):
+    """Pick the largest auto_safe_batch that is boundary-safe.
+
+    A batch is boundary-safe iff:
+    1. All internal pairs are confirmed/likely_independent (guaranteed)
+    2. NO pass in the batch has an external order_sensitive edge to
+       any pass OUTSIDE the batch
+    3. Batch hasn't been recently tried
+
+    This implements Layer 3 of the decision-reduction framework.
+    """
+    candidates = set(candidate_passes)
+    # Build external order_sensitive edge map
+    external_conflicts = {}
+    for row in confirmation_rows:
+        if row.get("confirmation") != "order_sensitive":
+            continue
+        pa, pb = row.get("pass_a"), row.get("pass_b")
+        if pa not in candidates or pb not in candidates:
+            continue
+        external_conflicts.setdefault(pa, set()).add(pb)
+        external_conflicts.setdefault(pb, set()).add(pa)
+
+    for batch_info in dg["auto_safe_batches"]:
+        batch_set = set(batch_info["passes"])
+
+        # Check boundary safety: no external order_sensitive edges
+        boundary_safe = True
+        for p in batch_set:
+            conflicts = external_conflicts.get(p, set())
+            external = conflicts - batch_set
+            if external:
+                boundary_safe = False
+                break
+
+        if not boundary_safe:
+            continue
+
+        # Check action memory: haven't tried this exact batch recently
+        batch_key = f"batch:{'|'.join(sorted(batch_set))}"
+        if any(m.get("key") == batch_key for m in action_memory[-5:]):
+            continue
+
+        return batch_info["passes"]
+
+    return None
+
+
+def _compute_best_improvement(oracle_result):
+    """Compute the best improvement from oracle results (before_score - best_score)."""
+    results = oracle_result.get("results", [])
+    if not results:
+        return 0
+    before = oracle_result.get("before_score", 100)
+    best = min(r.get("best_score", before) for r in results)
+    return round(before - best, 2)
+
+
+def _should_gate(improvement, mode, action_memory):
+    """Decide whether to gate (block) an oracle action based on improvement.
+
+    Modes:
+      off:        never gate
+      zero-only:  only gate improvement == 0 (safe default)
+      adaptive:   gate <= 0 if last N actions were also no-gain
+      strict:     gate all improvement <= 0
+    """
+    if mode == "off":
+        return False
+    if mode == "strict":
+        return improvement <= 0
+    if mode == "zero-only":
+        return improvement == 0
+    if mode == "adaptive":
+        if improvement > 0:
+            return False
+        # Gate only if recent actions also had no gain
+        recent_no_gain = sum(
+            1 for m in action_memory[-3:]
+            if not m.get("improved", True)
+        )
+        return recent_no_gain >= 2
+    return False
 
 
 def _load_enablement_if_available(path):
@@ -846,7 +1403,7 @@ def parse_args():
         help="Path to pass_sets.json config."
     )
     parser.add_argument(
-        "--pass-set", default="research",
+        "--pass-set", default="research_27",
         help="Pass set name (O1/O2/O3/research/minimal)."
     )
     parser.add_argument(
@@ -863,9 +1420,34 @@ def parse_args():
     parser.add_argument("--no-oracle", action="store_true", help="Disable oracle chooser (use rule instead).")
     parser.add_argument("--chooser", default="oracle", choices=["oracle", "rule", "ml", "random"],
                         help="Decision mechanism: oracle (default), rule, ml, or random.")
-    parser.add_argument("--oracle-max-candidates", type=int, default=10)
+    parser.add_argument("--beam-rank", type=int, default=0,
+                        help="For oracle: pick Nth-best candidate (0=best). Used by multi-start beam search.")
+    parser.add_argument("--epsilon", type=float, default=0.0,
+                        help="ε-greedy exploration rate at R0 (0-1). 0.1 = 10% random pick from top-5.")
+    parser.add_argument("--positive-gate-mode", default="zero-only",
+                        choices=["off", "zero-only", "adaptive", "strict"],
+                        help="Gate mode for no-improvement oracle actions (default: zero-only).")
+    parser.add_argument("--oracle-max-candidates", type=int, default=0,
+                        help="Cap on order-sensitive pairs the oracle tests per round. "
+                             "0 (default) = test ALL of them (true upper bound; the old "
+                             "default of 10 truncated in alphabetical order and biased "
+                             "the oracle toward a/d/e-initial passes).")
+    parser.add_argument("--min-gain", type=float, default=0.5,
+                        help="Stage A: minimum ir_cost reduction to count a pass as beneficial (default: 0.5).")
     parser.add_argument("--use-tti", action="store_true", help="Use TTI-based cost model.")
     parser.add_argument("--target-triple", default="x86_64-unknown-linux-gnu")
+    parser.add_argument(
+        "--metric", default="ir", choices=["ir", "codesize"],
+        help="Optimization metric: 'ir' = instruction count, 'codesize' = .text bytes via llc (default: ir)."
+    )
+    parser.add_argument(
+        "--llc", default=r"E:\llvm\build\bin\llc.exe", help="Path to llc (for --metric codesize)."
+    )
+    parser.add_argument(
+        "--llvm-size", default=r"E:\llvm\build\bin\llvm-size.exe", help="Path to llvm-size (for --metric codesize)."
+    )
+    parser.add_argument("--inject-minsize", action="store_true",
+                        help="Inject minsize/optsize attrs into input IR (auto-enabled with --metric codesize).")
     parser.add_argument("--no-batch-check", action="store_true")
     parser.add_argument("--no-perturbation", action="store_true")
     parser.add_argument("--baseline-pipeline", help="Comma-separated baseline passes (e.g., O2).")
@@ -900,21 +1482,31 @@ def main():
 
     # Resolve baseline pipeline
     baseline_pipeline = None
+    baseline_level = None
     if args.baseline_pipeline:
-        # Allow O1/O2/O3 as aliases for baseline pass sets
-        if args.baseline_pipeline.strip().upper() in {"O1", "O2", "O3"}:
-            baseline_pipeline, _ = load_pass_set(
-                args.pass_set_config, args.baseline_pipeline.strip().upper()
-            )
+        bl_upper = args.baseline_pipeline.strip().upper()
+        # O1/O2/O3/Oz → use real LLVM pipeline
+        if bl_upper in {"O1", "O2", "O3", "Oz"}:
+            baseline_level = bl_upper
+            # Also load the pass list for legacy compatibility
+            if bl_upper in {"O1", "O2", "O3"}:
+                baseline_pipeline, _ = load_pass_set(
+                    args.pass_set_config, bl_upper
+                )
+            else:
+                baseline_pipeline, _ = load_pass_set(
+                    args.pass_set_config, "O2"
+                )
         else:
             from run_benchmark_suite import parse_passes
             baseline_pipeline = parse_passes(args.baseline_pipeline)
-        print(f"Baseline: {args.baseline_pipeline} ({len(baseline_pipeline)} passes)")
+        print(f"Baseline: {args.baseline_pipeline} ({len(baseline_pipeline)} passes)"
+              + (f", real={baseline_level}" if baseline_level else ""))
     elif args.pass_set in {"O2", "O3"}:
-        # Default baseline is O2 for comparison
+        baseline_level = "O2"
         baseline_passes, _ = load_pass_set(args.pass_set_config, "O2")
         baseline_pipeline = baseline_passes
-        print(f"Baseline: O2 (default, {len(baseline_pipeline)} passes)")
+        print(f"Baseline: O2 (real, {len(baseline_pipeline)} passes)")
 
     # Build benchmark list
     benchmarks = []
@@ -958,6 +1550,7 @@ def main():
                 use_oracle=not args.no_oracle,
                 oracle_max_candidates=args.oracle_max_candidates,
                 chooser=args.chooser,
+                min_gain=args.min_gain,
                 use_tti=args.use_tti,
                 target_triple=args.target_triple,
                 enable_batch_check=not args.no_batch_check,
@@ -965,7 +1558,15 @@ def main():
                 mandatory_orders=mandatory_orders,
                 pass_set_config=args.pass_set_config,
                 baseline_pipeline=baseline_pipeline,
+                metric_mode=args.metric,
+                llc_path=args.llc,
+                llvm_size_path=getattr(args, 'llvm_size', None),
+                inject_minsize=args.inject_minsize or (args.metric == "codesize"),
             )
+            scheduler.baseline_level = baseline_level
+            scheduler.beam_rank = args.beam_rank
+            scheduler.epsilon = args.epsilon
+            scheduler.positive_gate_mode = args.positive_gate_mode
 
             if args.multi_start > 1:
                 result = run_multi_start_search(

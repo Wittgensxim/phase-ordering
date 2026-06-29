@@ -1,0 +1,46 @@
+{
+    "description": "User-specified 10 UnitTests benchmarks",
+    "test_suite_root": "E:/llvm-test-suite",
+    "benchmarks": [
+        {
+            "name": "UT_ArgumentTest",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2002-05-02-ArgumentTest.c"
+        },
+        {
+            "name": "UT_CastTest",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2002-05-02-CastTest.c"
+        },
+        {
+            "name": "UT_DependentPHI",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-05-02-DependentPHI.c"
+        },
+        {
+            "name": "UT_CastToBool",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-05-31-CastToBool.c"
+        },
+        {
+            "name": "UT_SignConversions",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2003-07-10-SignConversions.c"
+        },
+        {
+            "name": "UT_DivRem",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2006-02-04-DivRem.c"
+        },
+        {
+            "name": "UT_KNRArgs",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2007-01-04-KNR-Args.c"
+        },
+        {
+            "name": "UT_StructReturn",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2009-12-07-StructReturn.c"
+        },
+        {
+            "name": "UT_Coverage001",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2020-01-06-coverage-001.c"
+        },
+        {
+            "name": "UT_Coverage002",
+            "source": "E:/llvm-test-suite/SingleSource/UnitTests/2020-01-06-coverage-002.c"
+        }
+    ]
+}

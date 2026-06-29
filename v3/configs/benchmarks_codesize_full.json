@@ -1,0 +1,27 @@
+{
+    "description": "Real LLVM test-suite SingleSource benchmarks for codesize full-scale evaluation. All single-file, end-to-end validated (clang->opt->llc->llvm-size). O2 .text range 695B-16KB; all >=~700B so codesize signal exceeds 16B function-alignment padding noise. Selected by measured O2_text size, not by name.",
+    "test_suite_root": "E:/llvm-test-suite",
+    "benchmarks": [
+        { "name": "Stanford_Oscar", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Oscar.c" },
+        { "name": "Stanford_Puzzle", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Puzzle.c" },
+        { "name": "Stanford_Queens", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Queens.c" },
+        { "name": "Stanford_Towers", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Towers.c" },
+        { "name": "Stanford_Treesort", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Treesort.c" },
+        { "name": "Stanford_IntMM", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/IntMM.c" },
+        { "name": "Stanford_RealMM", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/RealMM.c" },
+        { "name": "Stanford_Bubblesort", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Bubblesort.c" },
+        { "name": "Stanford_Quicksort", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Stanford/Quicksort.c" },
+        { "name": "Shootout_hash", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/hash.c" },
+        { "name": "Shootout_lists", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/lists.c" },
+        { "name": "Shootout_matrix", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Shootout/matrix.c" },
+        { "name": "Misc_evalloop", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/evalloop.c" },
+        { "name": "Misc_ffbench", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/ffbench.c" },
+        { "name": "Misc_salsa20", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/salsa20.c" },
+        { "name": "Misc_whetstone", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Misc/whetstone.c" },
+        { "name": "McGill_queens", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/McGill/queens.c" },
+        { "name": "CoyoteBench_huffbench", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/CoyoteBench/huffbench.c" },
+        { "name": "CoyoteBench_almabench", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/CoyoteBench/almabench.c" },
+        { "name": "CoyoteBench_fftbench", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/CoyoteBench/fftbench.cpp" },
+        { "name": "Linpack_pc", "source": "E:/llvm-test-suite/SingleSource/Benchmarks/Linpack/linpack-pc.c" }
+    ]
+}

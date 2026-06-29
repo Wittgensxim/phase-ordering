@@ -1,0 +1,706 @@
+{
+  "description": "MultiSource benchmarks: 175 compilable files",
+  "test_suite_root": "E:/llvm-test-suite",
+  "benchmarks": [
+    {
+      "name": "lua_lzio",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lzio.c"
+    },
+    {
+      "name": "espresso_expand",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/espresso/expand.c"
+    },
+    {
+      "name": "automotive-bitcount_bitfiles",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/automotive-bitcount/bitfiles.c"
+    },
+    {
+      "name": "jpeg-6a_jdhuff",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jdhuff.c"
+    },
+    {
+      "name": "toast_gsm_explode",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/gsm_explode.c"
+    },
+    {
+      "name": "gs_gsdevice",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/gsdevice.c"
+    },
+    {
+      "name": "cfrac_psub",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/psub.c"
+    },
+    {
+      "name": "pcompress2_unarithmetic",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/FreeBench/pcompress2/unarithmetic.c"
+    },
+    {
+      "name": "dbms_openFiles",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/openFiles.c"
+    },
+    {
+      "name": "gnugo_suicide",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/gnugo/suicide.c"
+    },
+    {
+      "name": "cfrac_pcmp",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/pcmp.c"
+    },
+    {
+      "name": "g721encode_g723_40",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/g721/g721encode/g723_40.c"
+    },
+    {
+      "name": "jpeg-6a_djpeg",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/djpeg.c"
+    },
+    {
+      "name": "unix-tbl_t6",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/unix-tbl/t6.c"
+    },
+    {
+      "name": "decode_EndianPortable",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/ALAC/decode/EndianPortable.c"
+    },
+    {
+      "name": "NodeSplitting-flt_dummy",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/TSVC/NodeSplitting-flt/dummy.c"
+    },
+    {
+      "name": "03-testtrie_trie",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/03-testtrie/trie.c"
+    },
+    {
+      "name": "spiff_output",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/spiff/output.c"
+    },
+    {
+      "name": "gnugo_random",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/gnugo/random.c"
+    },
+    {
+      "name": "toast_debug",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/debug.c"
+    },
+    {
+      "name": "TimberWolfMC_doublecheck",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/doublecheck.c"
+    },
+    {
+      "name": "dbms_insertEntry",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/insertEntry.c"
+    },
+    {
+      "name": "consumer-jpeg_jcapimin",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-jpeg/jcapimin.c"
+    },
+    {
+      "name": "CrystalMk_SPEdriver",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/ASC_Sequoia/CrystalMk/SPEdriver.c"
+    },
+    {
+      "name": "gs_zdict",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zdict.c"
+    },
+    {
+      "name": "loader_convert",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/loader/convert.c"
+    },
+    {
+      "name": "telecomm-gsm_gsm_explode",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/telecomm-gsm/gsm_explode.c"
+    },
+    {
+      "name": "gs_stream",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/stream.c"
+    },
+    {
+      "name": "rawcaudio_rawcaudio",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/adpcm/rawcaudio/rawcaudio.c"
+    },
+    {
+      "name": "telecomm-gsm_code",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/telecomm-gsm/code.c"
+    },
+    {
+      "name": "cfrac_padd",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/padd.c"
+    },
+    {
+      "name": "allroots_all",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/allroots/all.c"
+    },
+    {
+      "name": "cfrac_picmp",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/picmp.c"
+    },
+    {
+      "name": "health_health",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/health/health.c"
+    },
+    {
+      "name": "telecomm-gsm_short_term",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/telecomm-gsm/short_term.c"
+    },
+    {
+      "name": "encode_ag_enc",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/ALAC/encode/ag_enc.c"
+    },
+    {
+      "name": "mpeg2dec_getpic",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/getpic.c"
+    },
+    {
+      "name": "miniAMR_block",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/miniAMR/block.c"
+    },
+    {
+      "name": "TimberWolfMC_grdcell",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/grdcell.c"
+    },
+    {
+      "name": "netbench-crc_packet",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Trimaran/netbench-crc/packet.c"
+    },
+    {
+      "name": "gawk_alloca",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gawk/alloca.c"
+    },
+    {
+      "name": "agrep_preprocess",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/agrep/preprocess.c"
+    },
+    {
+      "name": "Fhourstones_c4",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Fhourstones/c4.c"
+    },
+    {
+      "name": "consumer-jpeg_jdsample",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-jpeg/jdsample.c"
+    },
+    {
+      "name": "lua_lfunc",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lfunc.c"
+    },
+    {
+      "name": "mst_main",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/mst/main.c"
+    },
+    {
+      "name": "dbms_clearLine",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/clearLine.c"
+    },
+    {
+      "name": "XSBench_GridInit",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/XSBench/GridInit.c"
+    },
+    {
+      "name": "miniAMR_init",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/miniAMR/init.c"
+    },
+    {
+      "name": "treecc_skels",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/treecc/skels.c"
+    },
+    {
+      "name": "toast_table",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/table.c"
+    },
+    {
+      "name": "consumer-jpeg_jdhuff",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-jpeg/jdhuff.c"
+    },
+    {
+      "name": "Fhourstones_time",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Fhourstones/time.c"
+    },
+    {
+      "name": "cfrac_ppowmod",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/ppowmod.c"
+    },
+    {
+      "name": "TimberWolfMC_fulllink",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/fulllink.c"
+    },
+    {
+      "name": "lua_lstrlib",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lstrlib.c"
+    },
+    {
+      "name": "power_main",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/power/main.c"
+    },
+    {
+      "name": "gs_zmatrix",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zmatrix.c"
+    },
+    {
+      "name": "voronoi_vector",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/voronoi/vector.c"
+    },
+    {
+      "name": "bisort_args",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/bisort/args.c"
+    },
+    {
+      "name": "12-IOtest_IOtestA",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/12-IOtest/IOtestA.c"
+    },
+    {
+      "name": "mpeg2dec_mpeg2dec",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/mpeg2dec.c"
+    },
+    {
+      "name": "spiff_line",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/spiff/line.c"
+    },
+    {
+      "name": "XSBench_XSutils",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/XSBench/XSutils.c"
+    },
+    {
+      "name": "Burg_fe",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/Burg/fe.c"
+    },
+    {
+      "name": "lua_lstring",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lstring.c"
+    },
+    {
+      "name": "enc-3des_des",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Trimaran/enc-3des/des.c"
+    },
+    {
+      "name": "gs_zmisc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zmisc.c"
+    },
+    {
+      "name": "TimberWolfMC_loadpg",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/loadpg.c"
+    },
+    {
+      "name": "agrep_utilities",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/agrep/utilities.c"
+    },
+    {
+      "name": "mpeg2dec_verify",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/verify.c"
+    },
+    {
+      "name": "lua_print",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/print.c"
+    },
+    {
+      "name": "toast_add",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/add.c"
+    },
+    {
+      "name": "Pathfinder_node",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/Pathfinder/node.c"
+    },
+    {
+      "name": "toast_toast_audio",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/toast_audio.c"
+    },
+    {
+      "name": "consumer-lame_takehiro",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-lame/takehiro.c"
+    },
+    {
+      "name": "bison_print",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/bison/print.c"
+    },
+    {
+      "name": "mpeg2dec_spatscal",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/spatscal.c"
+    },
+    {
+      "name": "SimpleMOC_papi",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/SimpleMOC/papi.c"
+    },
+    {
+      "name": "15-trie_trie",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/15-trie/trie.c"
+    },
+    {
+      "name": "Reductions-flt_dummy",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/TSVC/Reductions-flt/dummy.c"
+    },
+    {
+      "name": "consumer-lame_tabinit",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-lame/tabinit.c"
+    },
+    {
+      "name": "18-imp_L_canny",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/18-imp/L_canny.c"
+    },
+    {
+      "name": "treecc_gen_cs",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/treecc/gen_cs.c"
+    },
+    {
+      "name": "unix-smail_map",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/unix-smail/map.c"
+    },
+    {
+      "name": "bison_derives",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/bison/derives.c"
+    },
+    {
+      "name": "siod_siod",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/siod/siod.c"
+    },
+    {
+      "name": "TimberWolfMC_gpass2",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/gpass2.c"
+    },
+    {
+      "name": "gs_gsmatrix",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/gsmatrix.c"
+    },
+    {
+      "name": "mpeg2dec_getvlc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/getvlc.c"
+    },
+    {
+      "name": "jpeg-6a_jdmaster",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jdmaster.c"
+    },
+    {
+      "name": "ControlFlow-dbl_dummy",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/TSVC/ControlFlow-dbl/dummy.c"
+    },
+    {
+      "name": "mpeg2dec_getbits",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/getbits.c"
+    },
+    {
+      "name": "dbms_getInsertCommand",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/getInsertCommand.c"
+    },
+    {
+      "name": "plot2fig_color",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/plot2fig/color.c"
+    },
+    {
+      "name": "dbms_getFloat",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/getFloat.c"
+    },
+    {
+      "name": "bison_LR0",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/bison/LR0.c"
+    },
+    {
+      "name": "mst_makegraph",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Olden/mst/makegraph.c"
+    },
+    {
+      "name": "gs_gscolor",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/gscolor.c"
+    },
+    {
+      "name": "unix-tbl_ti",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/unix-tbl/ti.c"
+    },
+    {
+      "name": "TimberWolfMC_wireratio",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/wireratio.c"
+    },
+    {
+      "name": "cfrac_itop",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/cfrac/itop.c"
+    },
+    {
+      "name": "miniAMR_plot",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/miniAMR/plot.c"
+    },
+    {
+      "name": "espresso_equiv",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/espresso/equiv.c"
+    },
+    {
+      "name": "gs_iinit",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/iinit.c"
+    },
+    {
+      "name": "lua_ldo",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/ldo.c"
+    },
+    {
+      "name": "gs_zfile",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zfile.c"
+    },
+    {
+      "name": "ecbdes_des_enc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/ecbdes/des_enc.c"
+    },
+    {
+      "name": "SimpleMOC_comms",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/SimpleMOC/comms.c"
+    },
+    {
+      "name": "dbms_volume",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/volume.c"
+    },
+    {
+      "name": "TimberWolfMC_output",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/output.c"
+    },
+    {
+      "name": "SciMark2-C_FFT",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/SciMark2-C/FFT.c"
+    },
+    {
+      "name": "jpeg-6a_jfdctint",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jfdctint.c"
+    },
+    {
+      "name": "InductionVariable-flt_dummy",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/TSVC/InductionVariable-flt/dummy.c"
+    },
+    {
+      "name": "espresso_indep",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/espresso/indep.c"
+    },
+    {
+      "name": "netbench-url_packet",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Trimaran/netbench-url/packet.c"
+    },
+    {
+      "name": "SIBsim4_align",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/SIBsim4/align.c"
+    },
+    {
+      "name": "consumer-jpeg_jdtrans",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-jpeg/jdtrans.c"
+    },
+    {
+      "name": "plot2fig_plot",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/plot2fig/plot.c"
+    },
+    {
+      "name": "gs_zcolor",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zcolor.c"
+    },
+    {
+      "name": "TimberWolfMC_fuloop",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/fuloop.c"
+    },
+    {
+      "name": "AMGmk_relax",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/ASC_Sequoia/AMGmk/relax.c"
+    },
+    {
+      "name": "mpeg2dec_getblk",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/mpeg2/mpeg2dec/getblk.c"
+    },
+    {
+      "name": "unix-smail_resolve",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/unix-smail/resolve.c"
+    },
+    {
+      "name": "unix-tbl_tc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/unix-tbl/tc.c"
+    },
+    {
+      "name": "espresso_contain",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/espresso/contain.c"
+    },
+    {
+      "name": "lua_lauxlib",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lauxlib.c"
+    },
+    {
+      "name": "consumer-jpeg_jquant2",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-jpeg/jquant2.c"
+    },
+    {
+      "name": "lua_lvm",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lvm.c"
+    },
+    {
+      "name": "agrep_asearch",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/agrep/asearch.c"
+    },
+    {
+      "name": "gs_zgstate",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zgstate.c"
+    },
+    {
+      "name": "SciMark2-C_MonteCarlo",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/SciMark2-C/MonteCarlo.c"
+    },
+    {
+      "name": "AMGmk_csr_matvec",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/ASC_Sequoia/AMGmk/csr_matvec.c"
+    },
+    {
+      "name": "aha_userfun",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/aha/userfun.c"
+    },
+    {
+      "name": "TimberWolfMC_usite2",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/usite2.c"
+    },
+    {
+      "name": "espresso_gasp",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/espresso/gasp.c"
+    },
+    {
+      "name": "consumer-lame_ieeefloat",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-lame/ieeefloat.c"
+    },
+    {
+      "name": "jpeg-6a_jcphuff",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jcphuff.c"
+    },
+    {
+      "name": "Pathfinder_statistics",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/Pathfinder/statistics.c"
+    },
+    {
+      "name": "jpeg-6a_jctrans",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jctrans.c"
+    },
+    {
+      "name": "pcompress2_arithmetic",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/FreeBench/pcompress2/arithmetic.c"
+    },
+    {
+      "name": "TimberWolfMC_unbust",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/unbust.c"
+    },
+    {
+      "name": "XSBench_CalculateXS",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/XSBench/CalculateXS.c"
+    },
+    {
+      "name": "SciMark2-C_SparseCompRow",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/SciMark2-C/SparseCompRow.c"
+    },
+    {
+      "name": "treecc_options",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/treecc/options.c"
+    },
+    {
+      "name": "TimberWolfMC_readgraph",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/readgraph.c"
+    },
+    {
+      "name": "GlobalDataFlow-flt_dummy",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/TSVC/GlobalDataFlow-flt/dummy.c"
+    },
+    {
+      "name": "gs_zpath2",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/gs/zpath2.c"
+    },
+    {
+      "name": "encode_matrix_enc",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/ALAC/encode/matrix_enc.c"
+    },
+    {
+      "name": "loader_load",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/loader/load.c"
+    },
+    {
+      "name": "17-bintr_bintree",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/17-bintr/bintree.c"
+    },
+    {
+      "name": "05-eks_Divsol",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/McCat/05-eks/Divsol.c"
+    },
+    {
+      "name": "consumer-lame_portableio",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-lame/portableio.c"
+    },
+    {
+      "name": "OptimizerEval_valnum",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/OptimizerEval/valnum.c"
+    },
+    {
+      "name": "simulator_instruct",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/simulator/instruct.c"
+    },
+    {
+      "name": "ft_Fheap",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Ptrdist/ft/Fheap.c"
+    },
+    {
+      "name": "TimberWolfMC_findloc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Prolangs-C/TimberWolfMC/findloc.c"
+    },
+    {
+      "name": "espresso_setc",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MallocBench/espresso/setc.c"
+    },
+    {
+      "name": "jpeg-6a_jdphuff",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jdphuff.c"
+    },
+    {
+      "name": "toast_gsm_print",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/gsm_print.c"
+    },
+    {
+      "name": "SimpleMOC_glibc_compat_rand",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/SimpleMOC/glibc_compat_rand.c"
+    },
+    {
+      "name": "telecomm-gsm_gsm_create",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/telecomm-gsm/gsm_create.c"
+    },
+    {
+      "name": "dbms_initMetricsData",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/initMetricsData.c"
+    },
+    {
+      "name": "toast_toast_ulaw",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/toast_ulaw.c"
+    },
+    {
+      "name": "dbms_insert",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/VersaBench/dbms/insert.c"
+    },
+    {
+      "name": "IRSmk_main",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/ASC_Sequoia/IRSmk/main.c"
+    },
+    {
+      "name": "XSBench_Materials",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/XSBench/Materials.c"
+    },
+    {
+      "name": "lua_lmathlib",
+      "source": "E:/llvm-test-suite/MultiSource/Applications/lua/lmathlib.c"
+    },
+    {
+      "name": "Pathfinder_utils",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/Pathfinder/utils.c"
+    },
+    {
+      "name": "toast_toast_alaw",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/gsm/toast/toast_alaw.c"
+    },
+    {
+      "name": "SimpleMOC_test",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/DOE-ProxyApps-C/SimpleMOC/test.c"
+    },
+    {
+      "name": "security-blowfish_bf_skey",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/security-blowfish/bf_skey.c"
+    },
+    {
+      "name": "bc_global",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/Ptrdist/bc/global.c"
+    },
+    {
+      "name": "jpeg-6a_jcmaster",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/mediabench/jpeg/jpeg-6a/jcmaster.c"
+    },
+    {
+      "name": "consumer-jpeg_jcapistd",
+      "source": "E:/llvm-test-suite/MultiSource/Benchmarks/MiBench/consumer-jpeg/jcapistd.c"
+    }
+  ]
+}
