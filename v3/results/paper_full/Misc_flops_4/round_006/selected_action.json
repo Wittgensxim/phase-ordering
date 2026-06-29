@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "instcombine",
-    "loop-unroll"
-  ],
-  "details": "perturbation: instcombine->loop-unroll",
-  "changed": true
-}

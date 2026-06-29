@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "licm",
-    "loop-rotate"
-  ],
-  "details": "perturbation: licm->loop-rotate",
-  "changed": true
-}

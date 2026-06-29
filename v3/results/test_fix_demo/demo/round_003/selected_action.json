@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "loop-simplify",
-    "simplifycfg"
-  ],
-  "details": "perturbation: loop-simplify->simplifycfg",
-  "changed": true
-}

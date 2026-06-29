@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "loop-unroll",
-    "early-cse"
-  ],
-  "details": "perturbation: loop-unroll->early-cse",
-  "changed": true
-}

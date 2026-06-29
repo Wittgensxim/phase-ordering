@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "loop-rotate",
-    "loop-unroll"
-  ],
-  "details": "perturbation: loop-rotate->loop-unroll",
-  "changed": true
-}

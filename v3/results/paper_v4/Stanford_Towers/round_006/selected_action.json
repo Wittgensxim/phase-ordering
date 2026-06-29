@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "indvars",
-    "simplifycfg"
-  ],
-  "details": "perturbation: indvars->simplifycfg",
-  "changed": true
-}

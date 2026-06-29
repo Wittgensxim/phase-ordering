@@ -1,6 +1,0 @@
-{
-  "kind": "auto_safe_pass",
-  "pass": "sccp",
-  "details": "single safe pass: sccp",
-  "changed": true
-}

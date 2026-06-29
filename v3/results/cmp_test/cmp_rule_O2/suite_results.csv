@@ -1,2 +1,0 @@
-benchmark,status,rounds,final_score,final_instructions,baseline_score,improvement
-Dhrystone_dry,ok,5,495.84,236,49.27,-9.629999999999995

@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "licm",
-    "loop-unroll"
-  ],
-  "details": "perturbation: licm->loop-unroll",
-  "changed": true
-}

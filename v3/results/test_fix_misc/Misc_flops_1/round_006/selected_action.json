@@ -1,9 +1,0 @@
-{
-  "kind": "perturbation",
-  "passes": [
-    "gvn",
-    "loop-unroll"
-  ],
-  "details": "perturbation: gvn->loop-unroll",
-  "changed": true
-}

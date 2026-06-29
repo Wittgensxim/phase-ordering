@@ -1,6 +1,0 @@
-{
-  "kind": "auto_safe_pass",
-  "pass": "simplifycfg",
-  "details": "single safe pass: simplifycfg",
-  "changed": true
-}
