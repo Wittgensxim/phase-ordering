@@ -312,8 +312,16 @@ def _apply_mandatory_orders(classifications, mandatory_orders):
         before = order["before"]
         after = order["after"]
         if after == "*":
-            # before must be first; no pass should be classified as auto_safe
-            # if it would skip before
+            # Wildcard: 'before' must be executed before ALL other passes.
+            # If 'before' is still in the candidate set, no other pass can
+            # be auto_safe — they must wait for 'before' to execute first.
+            if before in classifications:
+                for pname, rec in classifications.items():
+                    if pname != before and rec["scheduler_class"] == "auto_safe":
+                        rec["scheduler_class"] = "blocked_for_auto"
+                        rec["blocking_reasons"].append(
+                            f"mandatory_order:{before}_before_*"
+                        )
             continue
         # If both passes are present and the 'after' pass is auto_safe,
         # it might accidentally run before 'before', so downgrade it

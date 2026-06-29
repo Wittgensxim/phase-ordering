@@ -76,14 +76,52 @@ def build_pair_result(pass_a, pass_b, diff_rc, diff_out, diff_err, ab_path, ba_p
 
 
 def run_pair_test(opt_path, llvm_diff_path, input_ir, pass_a, pass_b, work_dir):
-    """Test commutativity of a single pass pair."""
+    """Test commutativity of a single pass pair.
+
+    Each direction is independently tested — failure of one does not
+    prevent the other from being evaluated.
+    """
     work_path = Path(work_dir)
     work_path.mkdir(parents=True, exist_ok=True)
     sa, sb = _safe_name(pass_a), _safe_name(pass_b)
     ab_path = work_path / f"{sa}__then__{sb}.ll"
     ba_path = work_path / f"{sb}__then__{sa}.ll"
-    run_opt_pipeline(opt_path, input_ir, [pass_a, pass_b], ab_path)
-    run_opt_pipeline(opt_path, input_ir, [pass_b, pass_a], ba_path)
+
+    ab_ok, ba_ok = True, True
+    try:
+        run_opt_pipeline(opt_path, input_ir, [pass_a, pass_b], ab_path)
+    except Exception as e:
+        ab_ok = False
+        ab_path.write_text(f"; A->B FAILED: {e}\n", encoding="utf-8")
+
+    try:
+        run_opt_pipeline(opt_path, input_ir, [pass_b, pass_a], ba_path)
+    except Exception as e:
+        ba_ok = False
+        ba_path.write_text(f"; B->A FAILED: {e}\n", encoding="utf-8")
+
+    if not ab_ok and not ba_ok:
+        return {
+            "pass_a": pass_a, "pass_b": pass_b,
+            "commute": False,
+            "ab_path": str(ab_path), "ba_path": str(ba_path),
+            "details": "Both directions failed",
+        }
+    if not ab_ok:
+        return {
+            "pass_a": pass_a, "pass_b": pass_b,
+            "commute": False,
+            "ab_path": str(ab_path), "ba_path": str(ba_path),
+            "details": "A->B failed; B->A succeeded (non-commutative)",
+        }
+    if not ba_ok:
+        return {
+            "pass_a": pass_a, "pass_b": pass_b,
+            "commute": False,
+            "ab_path": str(ab_path), "ba_path": str(ba_path),
+            "details": "B->A failed; A->B succeeded (non-commutative)",
+        }
+
     diff = compare_ir(llvm_diff_path, ab_path, ba_path)
     return build_pair_result(pass_a, pass_b, diff.returncode,
                              diff.stdout, diff.stderr, ab_path, ba_path)

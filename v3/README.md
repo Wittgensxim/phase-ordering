@@ -1,6 +1,6 @@
 # Phase Ordering v3 — 迭代式依赖感知调度器
 
-> **状态**: 139-pass (research_codesize), codesize metric | **更新**: 2026-06-29
+> **状态**: v3.4 — 139-pass (research_codesize), codesize metric, 双层并行 | **更新**: 2026-06-29
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 文档 | 内容 |
 |------|------|
-| **[docs/迭代调度器完整机制.md](docs/迭代调度器完整机制.md)** | ⭐ **主文档**：Pass 集合、分析链、决策图、控制流、对比框架、指标体系 |
+| **[docs/迭代调度器完整机制.md](docs/迭代调度器完整机制.md)** | ⭐ **主文档**：Pass 集合、分析链（Stage A 先行）、决策图、控制流、对比框架、指标体系 |
 | **[docs/决策图_独立对与oracle.md](docs/决策图_独立对与oracle.md)** | 专题：为什么独立对不需要 oracle（回答 reviewer 核心质疑） |
 | **[docs/项目完整文档.md](docs/项目完整文档.md)** | 历史记录（v3.0–v3.1，已不再维护） |
 
@@ -17,35 +17,35 @@
 ## 快速开始
 
 ```powershell
-# 验证配置
-python scripts/verify_config.py
-
 # 单 benchmark 迭代调度（观察过程）
-python scripts/iterative_scheduler.py --manifest configs/benchmarks_cs31.json --benchmark Misc_evalloop --chooser oracle --max-rounds 10 --metric codesize
+python scripts/iterative_scheduler.py --manifest configs/benchmarks_codesize_full.json --benchmark Stanford_Oscar --chooser oracle --max-rounds 5 --metric codesize
 
-# 全量对比（论文主实验）
-python scripts/compare_all.py --manifest configs/benchmarks_cs31.json --pass-set research_codesize --metric codesize --out-dir results/compare_final
+# 全量对比（论文主实验：21 benchmark, 4 并行）
+python scripts/compare_all.py --manifest configs/benchmarks_codesize_full.json --metric codesize --parallel 4 --intra-parallel 3
 
 # Pass sweep（发现哪些 pass 对 codesize 有益）
-python scripts/pass_sweep.py --manifest configs/benchmarks_cs31.json
-
-# 精确最优（ground truth, 仅小 benchmark 可枚举）
-python scripts/exact_optimum.py --manifest configs/benchmarks_cs31.json --metric codesize --trace-cap 10
+python scripts/pass_sweep.py --manifest configs/benchmarks_codesize_full.json
 ```
 
 ---
 
 ## 核心贡献
 
-**独立性分析驱动的搜索空间塌缩**：通过足迹分析 + 黑盒交换性验证，将 phase ordering 中需要 oracle 决策的 pass 对从 C(n,2) 削减为仅 order_sensitive 对。auto_safe pass 和 safe_batch 通过 Priority 1/1.5 自动执行，无需 oracle 评估。
+**独立性分析驱动的搜索空间塌缩 + 双层并行加速**：
+
+1. **Stage A 先行**：每轮先对全部 139 pass 测 codesize，筛选 beneficial+enabling 子集（~3-13 个），然后**仅对该子集**运行重量分析链（footprint/enablement/commutativity）。非 beneficial pass 不参与 O(b²) pairwise 分析。
+
+2. **双层并行**：inter-benchmark（`--parallel`，跨 benchmark） + intra-benchmark（`--intra-parallel`，单 benchmark 内部 fixed/oracle/random 同时跑）。
+
+3. **多项性能优化**：预过滤器 opt 输出复用（消除双 opt）、oracle 成对评估并行化。
 
 ### 实验对比框架
 
 | 方法 | Pass 集 | 排序方式 | 度量 |
 |------|---------|---------|------|
 | **oracle** | 139 (全集) | 独立性分析 + 贪心 | codesize (.text bytes) |
-| **LLVM-order** | 139 (全集) | LLVM 注册顺序（客观固定序） | codesize |
-| **random** | 139 (全集) | best-of-K（K=oracle预算） | codesize |
+| **random** | 139 (全集) | 迭代 + 随机选择 | codesize |
+| **fixed** | 139 (全集) | LLVM 注册顺序（客观固定序） | codesize |
 | **Oz** | LLVM 全集 | LLVM -Oz 管线 | codesize |
 | **O2/O3** | LLVM 全集 | LLVM -O2/-O3 管线 | codesize (参考) |
 

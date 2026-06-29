@@ -22,7 +22,7 @@ import statistics
 import subprocess
 import sys
 import tempfile
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from ir_metrics import measure_ir_file, compute_score, reduction_pct, mean_over_oz, measure_codesize, get_metric_value
@@ -191,6 +191,8 @@ def run_scheduler_subprocess(benchmark, passes, args, chooser, baseline_name):
         "--baseline-pipeline", baseline_name,
         "--multi-start", "1",
         "--metric", args.metric,
+        "--pass-set-config", args.pass_set_config,
+        "--pass-set", args.pass_set,
         "--out-dir", str(out_dir),
         "--opt", args.opt, "--clang", args.clang,
         "--llvm-diff", args.llvm_diff,
@@ -245,18 +247,96 @@ def run_baseline_only(opt_path, ir_path, baseline_name, pass_set_config, origina
         return False, 0, 0
 
 
-def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
-    """Process one benchmark: run all choosers, baselines, and fixed_order.
+# ── Intra-benchmark parallel sub-tasks ─────────────────────────────────────
 
-    Returns a dict row and a correctness_result tuple.
-    """
+def _task_fixed_order(args, name, passes, ir_path_for_baselines, o0_metrics):
+    """Run fixed-order pipeline. Returns {fixed_score, fixed_inst, fixed_ok, fixed_ir}."""
+    result = {"fixed_score": "FAIL", "fixed_inst": 0, "fixed_ok": False, "fixed_ir": None}
+    fixed_ir = Path(args.out_dir) / "fixed_order" / f"{name}.ll"
+    fixed_ir.parent.mkdir(parents=True, exist_ok=True)
+    llvm_order = _build_llvm_fixed_order(args.opt, passes)
+    fixed_ok = run_fixed_order_pipeline(args.opt, llvm_order, ir_path_for_baselines, fixed_ir)
+    result["fixed_ok"] = fixed_ok
+    result["fixed_ir"] = fixed_ir
+    if fixed_ok:
+        result["fixed_inst"] = _metric_val(fixed_ir, args)
+        if args.metric == "codesize":
+            result["fixed_score"] = "PENDING"  # resolved after O0_inst known
+        else:
+            result["fixed_score"] = round(compute_score(o0_metrics, measure_ir_file(fixed_ir)), 1)
+    return result
+
+
+def _task_chooser(args, bench, passes, chooser, baseline_name="O2"):
+    """Run one chooser via subprocess. Returns {ch_score, ch_inst, ch_rounds} dict."""
+    ok, score, inst, rounds = run_scheduler_subprocess(bench, passes, args, chooser, baseline_name)
+    result = {f"{chooser}_score": "FAIL", f"{chooser}_inst": 0, f"{chooser}_rounds": 0}
+    if ok:
+        out_dir = Path(args.out_dir) / f"cmp_{chooser}_{baseline_name}"
+        val = _scheduler_metric_val(bench["name"], out_dir, args)
+        result[f"{chooser}_inst"] = val
+        result[f"{chooser}_score"] = "PENDING"  # resolved after O0_inst known
+        result[f"{chooser}_rounds"] = rounds
+    return result
+
+
+def _task_rand_budget(args, bench, oracle_opt_budget):
+    """Run budget-aligned random. Returns {randB_score, randB_inst, randB_rounds}."""
+    result = {"randB_score": "N/A", "randB_inst": 0, "randB_rounds": 0}
+    if args.skip_rand_budget or oracle_opt_budget <= 1:
+        return result
+
+    rand_budget_dir = Path(args.out_dir) / "cmp_random_budget_O2"
+    rand_budget_dir.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        sys.executable, "scripts/iterative_scheduler.py",
+        "--scheduler-mode", args.scheduler_mode,
+        "--max-rounds", str(args.max_rounds),
+        "--metric-stagnation-rounds", str(args.metric_stagnation_rounds),
+        "--chooser", "random",
+        "--baseline-pipeline", "O2",
+        "--multi-start", str(oracle_opt_budget),
+        "--metric", args.metric,
+        "--pass-set-config", args.pass_set_config,
+        "--pass-set", args.pass_set,
+        "--out-dir", str(rand_budget_dir),
+        "--opt", args.opt, "--clang", args.clang,
+        "--llvm-diff", args.llvm_diff,
+    ]
+    if args.metric == "codesize":
+        cmd += ["--llc", args.llc, "--llvm-size", args.llvm_size, "--inject-minsize"]
+    if bench.get("ir"):
+        cmd += ["--ir", bench["ir"], "--name", bench["name"]]
+    elif args.manifest:
+        cmd += ["--manifest", args.manifest, "--benchmark", bench["name"]]
+
+    sp_result = subprocess.run(cmd, text=True, capture_output=True, check=False)
+    bench_dir = rand_budget_dir / bench["name"]
+    trace_file = bench_dir / "schedule_trace.csv"
+    if trace_file.exists():
+        with open(trace_file) as f:
+            rows = list(csv.DictReader(f))
+            if rows:
+                result["randB_score"] = round(float(rows[-1].get("metric_after",
+                    rows[-1].get("metric_score", 0))), 1)
+                result["randB_inst"] = int(float(rows[-1].get("instruction_count", 0)))
+                result["randB_rounds"] = len(rows)
+            else:
+                result["randB_score"] = "FAIL"
+    else:
+        result["randB_score"] = "FAIL"
+    return result
+
+
+def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
+    """Process one benchmark: baselines first, then fan-out fixed_order +
+    choosers + randB in parallel via thread pool.  Returns (row, correctness)."""
     name = bench["name"]
     tag = f"[{idx}/{total}] {name}"
     print(f"{tag}: starting...")
 
     row = {"benchmark": name}
-    correctness = None  # (fixed_ok, oracle_ok) or None if can't validate
-    oracle_opt_budget = 0  # tracked for budget-aligned random
+    correctness = None
 
     # Resolve IR path
     ir_path = bench.get("ir")
@@ -266,144 +346,115 @@ def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
         tmp_dir.mkdir(parents=True, exist_ok=True)
         ir_path = compile_to_ir(args.clang, source_path, tmp_dir / f"{name}.ll")
 
-    # ── Phase 1: Real LLVM baselines (O0/O1/O2/O3/Oz) ──────────────────────
-    if ir_path and Path(ir_path).exists():
-        # Inject minsize for fair codesize comparison (Oz already has it)
-        if args.metric == "codesize":
-            from baseline_pipelines import _inject_attrs
-            orig_text = Path(ir_path).read_text(encoding="utf-8")
-            minsize_text = _inject_attrs(orig_text, "minsize optsize")
-            minsize_ir = Path(args.out_dir) / "ir_cache" / f"{name}_minsize.ll"
-            minsize_ir.parent.mkdir(parents=True, exist_ok=True)
-            minsize_ir.write_text(minsize_text, encoding="utf-8")
-            ir_path_for_baselines = minsize_ir
-        else:
-            ir_path_for_baselines = ir_path
-            
-        o0_metrics = measure_ir_file(ir_path_for_baselines)
-        for bl in baselines:
-            ok, score, inst = run_baseline_only(
-                args.opt, ir_path, bl, args.pass_set_config, o0_metrics
-            )
-            if ok:
-                # Re-measure with codesize if in codesize mode
-                bl_ir = Path(tempfile.gettempdir()) / f"{name}_{bl}.ll"
-                if bl == "O0":
-                    bl_ir = ir_path_for_baselines
-                else:
-                    try:
-                        run_real_pipeline(args.opt, ir_path_for_baselines, bl, bl_ir)
-                    except Exception:
-                        bl_ir = None
-                if bl_ir and bl_ir.exists():
-                    row[f"{bl}_inst"] = _metric_val(bl_ir, args)
-                else:
-                    row[f"{bl}_inst"] = inst
-                row[f"{bl}_score"] = round(score, 1)
-            else:
-                row[f"{bl}_score"] = "FAIL"
-                row[f"{bl}_inst"] = 0
-        # In codesize mode, recompute scores using codesize values for consistency
-        if args.metric == "codesize":
-            o0_val = row.get("O0_inst", 1) or 1
-            for bl in baselines:
-                bl_val = row.get(f"{bl}_inst", 0)
-                if isinstance(bl_val, (int, float)) and bl_val > 0:
-                    row[f"{bl}_score"] = round(100.0 * bl_val / o0_val, 1)
+    if not ir_path or not Path(ir_path).exists():
+        print(f"  {tag}: SKIP (no IR)")
+        return row, None
 
-    # ── Phase 2: LLVM-order baseline (same pass set, registry-derived order) ──
-    fixed_ir = Path(args.out_dir) / "fixed_order" / f"{name}.ll"
-    fixed_ir.parent.mkdir(parents=True, exist_ok=True)
-    llvm_order = _build_llvm_fixed_order(args.opt, passes)
-    fixed_passes = llvm_order
-    fixed_ok = run_fixed_order_pipeline(args.opt, fixed_passes, ir_path_for_baselines, fixed_ir)
-    if fixed_ok:
-        fixed_metrics = measure_ir_file(fixed_ir)
-        row["fixed_inst"] = _metric_val(fixed_ir, args)
-        # Compute score consistently: codesize or IR
-        if args.metric == "codesize":
-            o0_val = row.get("O0_inst", 1) or 1
-            row["fixed_score"] = round(100.0 * row["fixed_inst"] / o0_val, 1)
+    # ── Phase 1: Baselines (sequential — fast, shared O0 ref) ──────────────
+    if args.metric == "codesize":
+        from baseline_pipelines import _inject_attrs
+        orig_text = Path(ir_path).read_text(encoding="utf-8")
+        minsize_text = _inject_attrs(orig_text, "minsize optsize")
+        minsize_ir = Path(args.out_dir) / "ir_cache" / f"{name}_minsize.ll"
+        minsize_ir.parent.mkdir(parents=True, exist_ok=True)
+        minsize_ir.write_text(minsize_text, encoding="utf-8")
+        ir_path_for_baselines = minsize_ir
+    else:
+        ir_path_for_baselines = ir_path
+
+    o0_metrics = measure_ir_file(ir_path_for_baselines)
+    for bl in baselines:
+        ok, score, inst = run_baseline_only(
+            args.opt, ir_path, bl, args.pass_set_config, o0_metrics
+        )
+        if ok:
+            bl_ir = Path(tempfile.gettempdir()) / f"{name}_{bl}.ll"
+            if bl == "O0":
+                bl_ir = ir_path_for_baselines
+            else:
+                try:
+                    run_real_pipeline(args.opt, ir_path_for_baselines, bl, bl_ir)
+                except Exception:
+                    bl_ir = None
+            if bl_ir and bl_ir.exists():
+                row[f"{bl}_inst"] = _metric_val(bl_ir, args)
+            else:
+                row[f"{bl}_inst"] = inst
+            row[f"{bl}_score"] = round(score, 1)
         else:
-            row["fixed_score"] = round(compute_score(o0_metrics, fixed_metrics), 1)
+            row[f"{bl}_score"] = "FAIL"
+            row[f"{bl}_inst"] = 0
+
+    if args.metric == "codesize":
+        o0_val = row.get("O0_inst", 1) or 1
+        for bl in baselines:
+            bl_val = row.get(f"{bl}_inst", 0)
+            if isinstance(bl_val, (int, float)) and bl_val > 0:
+                row[f"{bl}_score"] = round(100.0 * bl_val / o0_val, 1)
+
+    # ── Phase 2: Fan-out — fixed_order + all choosers in parallel ──────────
+    # We don't know oracle_rounds yet, so randB is deferred until choosers finish.
+    intra_workers = getattr(args, "intra_parallel", len(choosers) + 1)
+    with ThreadPoolExecutor(max_workers=intra_workers) as executor:
+        futures = {}
+
+        # Fixed order
+        futures[executor.submit(
+            _task_fixed_order, args, name, passes, ir_path_for_baselines, o0_metrics
+        )] = "fixed"
+
+        # Choosers
+        for ch in choosers:
+            futures[executor.submit(
+                _task_chooser, args, bench, passes, ch, "O2"
+            )] = ch
+
+        # Collect results as they complete
+        fixed_result = None
+        for future in as_completed(futures):
+            key = futures[future]
+            result = future.result()
+            if key == "fixed":
+                fixed_result = result
+            else:
+                row.update(result)
+
+    # Merge fixed result
+    if fixed_result:
+        row["fixed_score"] = fixed_result["fixed_score"]
+        row["fixed_inst"] = fixed_result["fixed_inst"]
+        fixed_ok = fixed_result["fixed_ok"]
+        fixed_ir = fixed_result["fixed_ir"]
     else:
         row["fixed_score"] = "FAIL"
         row["fixed_inst"] = 0
+        fixed_ok = False
+        fixed_ir = None
 
-    # ── Phase 3: Scheduler with each chooser ────────────────────────────────
-    for ch in choosers:
-        ok, score, inst, rounds = run_scheduler_subprocess(
-            bench, passes, args, ch, "O2"
-        )
-        if ok:
-            out_dir = Path(args.out_dir) / f"cmp_{ch}_O2"
-            val = _scheduler_metric_val(bench["name"], out_dir, args)
-            row[f"{ch}_inst"] = val
-            # Recompute score consistently with baselines
-            if args.metric == "codesize":
-                o0_val = row.get("O0_inst", 1) or 1
-                row[f"{ch}_score"] = round(100.0 * val / o0_val, 1) if val > 0 else score
+    # Resolve "PENDING" scores (need O0_inst reference)
+    o0_val = row.get("O0_inst", 1) or 1
+    for key_suffix in ["fixed"] + choosers:
+        sk = f"{key_suffix}_score"
+        ik = f"{key_suffix}_inst"
+        if row.get(sk) == "PENDING":
+            val = row.get(ik, 0)
+            if isinstance(val, (int, float)) and val > 0:
+                row[sk] = round(100.0 * val / o0_val, 1)
             else:
-                row[f"{ch}_score"] = round(score, 1)
-        else:
-            row[f"{ch}_score"] = "FAIL"
-            row[f"{ch}_inst"] = 0
-        row[f"{ch}_rounds"] = rounds if ok else 0
+                row[sk] = "FAIL"
 
-    # ── Phase 4: Track oracle's opt budget for budget-aligned random ────────
-    # Oracle: each round evaluates ALL auto_safe passes → 1 opt call each;
-    # plus 1 final pipeline call.  Budget ≈ rounds × avg_auto_safe + 1.
-    # We estimate auto_safe ≈ |B| (beneficial passes) as an upper bound.
+    # ── Phase 3: Budget-aligned random (depends on oracle_rounds) ───────────
     oracle_rounds = int(row.get("oracle_rounds", 0) or 0)
-    # Estimate: oracle_rounds was already stored; auto_safe ≈ len(passes)//3
     estimated_auto_safe = max(1, len(passes) // 3)
     oracle_opt_budget = oracle_rounds * estimated_auto_safe + 1
-
-    # ── Phase 5: Budget-aligned random (best-of-K, K = oracle budget) ───────
-    if not args.skip_rand_budget and oracle_opt_budget > 1:
-        rand_budget_dir = Path(args.out_dir) / f"cmp_random_budget_O2"
-        rand_budget_dir.mkdir(parents=True, exist_ok=True)
-        cmd = [
-            sys.executable, "scripts/iterative_scheduler.py",
-            "--scheduler-mode", args.scheduler_mode,
-            "--max-rounds", str(args.max_rounds),
-            "--metric-stagnation-rounds", str(args.metric_stagnation_rounds),
-            "--chooser", "random",
-            "--baseline-pipeline", "O2",
-            "--multi-start", str(oracle_opt_budget),
-            "--out-dir", str(rand_budget_dir),
-            "--opt", args.opt, "--clang", args.clang,
-            "--llvm-diff", args.llvm_diff,
-        ]
-        if bench.get("ir"):
-            cmd += ["--ir", bench["ir"], "--name", bench["name"]]
-        elif args.manifest:
-            cmd += ["--manifest", args.manifest, "--benchmark", bench["name"]]
-
-        sp_result = subprocess.run(cmd, text=True, capture_output=True, check=False)
-        bench_dir = rand_budget_dir / bench["name"]
-        trace_file = bench_dir / "schedule_trace.csv"
-        if trace_file.exists():
-            with open(trace_file) as f:
-                rows = list(csv.DictReader(f))
-                if rows:
-                    row["randB_score"] = round(float(rows[-1].get("metric_after",
-                        rows[-1].get("metric_score", 0))), 1)
-                    row["randB_inst"] = int(float(rows[-1].get("instruction_count", 0)))
-                    row["randB_rounds"] = len(rows)
-                else:
-                    row["randB_score"] = "FAIL"; row["randB_inst"] = 0; row["randB_rounds"] = 0
-        else:
-            row["randB_score"] = "FAIL"; row["randB_inst"] = 0; row["randB_rounds"] = 0
-    else:
-        row["randB_score"] = "N/A"; row["randB_inst"] = 0; row["randB_rounds"] = 0
-
     row["oracle_budget"] = oracle_opt_budget
 
-    # ── Phase 6: Correctness validation (compile + execute + output diff) ───
+    randb_result = _task_rand_budget(args, bench, oracle_opt_budget)
+    row.update(randb_result)
+
+    # ── Phase 4: Correctness validation (if requested) ─────────────────────
     if args.correctness and source_path and os.path.exists(source_path):
-        # Check fixed_order correctness
-        if fixed_ok and fixed_ir.exists():
+        if fixed_ok and fixed_ir and fixed_ir.exists():
             fixed_correct, fixed_detail = validate_correctness(
                 args.clang, source_path, fixed_ir, args.out_dir
             )
@@ -411,8 +462,7 @@ def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
         else:
             row["fixed_correct"] = "N/A"
 
-        # Check oracle final IR correctness
-        oracle_dir = Path(args.out_dir) / f"cmp_oracle_O2" / name
+        oracle_dir = Path(args.out_dir) / "cmp_oracle_O2" / name
         oracle_final = oracle_dir / "final.ll"
         if oracle_final.exists():
             oracle_correct, oracle_detail = validate_correctness(
@@ -424,7 +474,7 @@ def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
 
         correctness = (row.get("fixed_correct"), row.get("oracle_correct"))
 
-    # Find best
+    # ── Find best ──────────────────────────────────────────────────────────
     best_score = float("inf")
     best_method = "?"
     for key in [f"{bl}_score" for bl in baselines] + [f"{ch}_score" for ch in choosers]\
@@ -448,16 +498,19 @@ def main():
     parser.add_argument("--ir", help="Single IR file (--name required)")
     parser.add_argument("--name", default="benchmark")
     parser.add_argument("--pass-set-config", default="configs/pass_sets.json")
-    parser.add_argument("--pass-set", default="research_27")
+    parser.add_argument("--pass-set", default="research_codesize")
     parser.add_argument("--scheduler-mode", default="relaxed")
     parser.add_argument("--max-rounds", type=int, default=10)
     parser.add_argument("--metric-stagnation-rounds", type=int, default=4)
     parser.add_argument("--opt", default=r"E:\llvm\build\bin\opt.exe")
     parser.add_argument("--llvm-diff", default=r"E:\llvm\build\bin\llvm-diff.exe")
     parser.add_argument("--clang", default=r"E:\llvm\build\bin\clang.exe")
-    parser.add_argument("--out-dir", default="results/compare_all")
+    parser.add_argument("--out-dir", default=None,
+                        help="Output directory (default: results/<pass_set>_<manifest_name>/).")
     parser.add_argument("--parallel", type=int, default=1,
                         help="Number of parallel benchmark workers.")
+    parser.add_argument("--intra-parallel", type=int, default=5,
+                        help="Sub-tasks per benchmark to run in parallel (fixed+choosers+randB).")
     parser.add_argument("--correctness", action="store_true",
                         help="Run compile+execute+output-diff correctness validation.")
     parser.add_argument("--skip-rand-budget", action="store_true",
@@ -467,6 +520,13 @@ def main():
     parser.add_argument("--llc", default=r"E:\llvm\build\bin\llc.exe")
     parser.add_argument("--llvm-size", default=r"E:\llvm\build\bin\llvm-size.exe")
     args = parser.parse_args()
+
+    # Auto-derive output directory from pass-set and manifest name
+    if args.out_dir is None:
+        manifest_stem = Path(args.manifest).stem if args.manifest else "direct"
+        args.out_dir = f"results/{args.pass_set}_{manifest_stem}"
+        if args.benchmark:
+            args.out_dir += f"_{args.benchmark}"
 
     passes, _ = load_pass_set(args.pass_set_config, args.pass_set)
 
@@ -480,7 +540,7 @@ def main():
         print("Need --manifest or --ir")
         return
 
-    choosers = ["oracle", "rule", "random"]
+    choosers = ["oracle", "random"]
     # Real LLVM baselines (industry reference)
     real_baselines = ["O0", "O1", "O2", "O3", "Oz"]
     # Same-set controls (isolate ordering contribution)
@@ -655,6 +715,29 @@ def main():
         for row in all_rows:
             writer.writerow(row)
     print(f"\nSaved to {csv_path}")
+
+    # ── Cleanup: delete intermediate directories, keep only ──────────────
+    # comparison_table.csv + cmp_oracle_O2/*/schedule_trace.csv
+    import shutil
+    for sub in ["cmp_random_O2",
+                "cmp_random_budget_O2", "fixed_order", "ir_cache"]:
+        p = Path(args.out_dir) / sub
+        if p.exists():
+            shutil.rmtree(p, ignore_errors=True)
+            print(f"Cleaned up {p}")
+    # Clean up .ll files and round dirs inside cmp_oracle_O2
+    # (iterative_scheduler already does this, but belt-and-suspenders)
+    oracle_dir = Path(args.out_dir) / "cmp_oracle_O2"
+    if oracle_dir.exists():
+        for bench_dir in oracle_dir.glob("*"):
+            if bench_dir.is_dir():
+                for ll_file in bench_dir.glob("*.ll"):
+                    try: ll_file.unlink()
+                    except Exception: pass
+                for round_d in bench_dir.glob("round_*"):
+                    if round_d.is_dir():
+                        try: shutil.rmtree(round_d, ignore_errors=True)
+                        except Exception: pass
 
 
 if __name__ == "__main__":

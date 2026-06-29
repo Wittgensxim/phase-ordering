@@ -96,6 +96,7 @@ class IterativeScheduler:
         llc_path=None,
         llvm_size_path=None,
         inject_minsize=False,
+        cleanup_rounds=True,
     ):
         self.passes = list(passes)
         self.clang_path = Path(clang_path)
@@ -126,6 +127,7 @@ class IterativeScheduler:
         self.llc_path = Path(llc_path) if llc_path else None
         self.llvm_size_path = Path(llvm_size_path) if llvm_size_path else None
         self.inject_minsize = inject_minsize  # inject minsize/optsize attrs for codesize fair comparison
+        self.cleanup_rounds = cleanup_rounds    # delete intermediate .ll files after each round
 
         # ── Unified measurement callback ─────────────────────────────────
         from ir_metrics import make_measure_fn
@@ -209,10 +211,7 @@ class IterativeScheduler:
             round_input = round_dir / "input.ll"
             shutil.copy2(self.current_ir, round_input)
 
-            # Run analysis chain on current IR
-            analysis = self._run_analysis_chain(benchmark, round_dir)
-
-            # Measure BEFORE metrics
+            # ── Measure BEFORE metrics ──────────────────────────────────
             before_metrics = self._measure_ir(self.current_ir)
             before_hash = _file_sha256(self.current_ir)
             self.metric_history.append({
@@ -221,29 +220,33 @@ class IterativeScheduler:
                 "instruction_count": before_metrics["instruction_count"],
             })
 
-            # Extract from analysis result
-            raw_candidate_passes = analysis["summary"]["candidate_passes"]
-            confirmation_rows = analysis["confirmation_rows"]
-
-            # --- Stage A: beneficial+enabling pass filtering (advisor step 1) ---
-            # Replace the active-only candidate set with the genuinely beneficial
-            # set.  A pass that changes IR without reducing cost (active_only) is
-            # noise for phase ordering — it inflates the decision graph without
-            # contributing to the optimization target.
+            # ── Stage A: lightweight codesize filter on ALL passes ─────
+            # (opt→llc→llvm-size per pass; ~O(n) cost, n=139)
             before_cost = before_metrics.get("ir_cost", before_metrics.get("score_ir", 0))
-            # Load enablement edges for smart fallback when beneficial set is empty
-            enablement_edges = self._load_enablement_edges(analysis)
+            raw_candidate_passes = list(self.passes)
+            enablement_edges = self._stored_enablement_edges if hasattr(self, '_stored_enablement_edges') else {}
             candidate_passes = self._filter_beneficial(
                 raw_candidate_passes, before_cost, round_dir, bench_name,
-                enablement_edges=enablement_edges,
+                enablement_edges=enablement_edges or None,
             )
-            # Update beneficial memory for adaptive threshold in future rounds
             self._update_beneficial_memory(candidate_passes)
             if len(candidate_passes) < len(raw_candidate_passes):
                 dropped = sorted(set(raw_candidate_passes) - set(candidate_passes))
                 print(f"  [{bench_name}] Stage A: {len(raw_candidate_passes)} active → "
                       f"{len(candidate_passes)} beneficial (dropped: {', '.join(dropped) if dropped else 'none'})")
-            # -------------------------------------------------------------------
+
+            # ── Full analysis chain ONLY on beneficial+enabling subset ─
+            # (pairwise commutativity tests; ~O(b²) cost, b≈3-10)
+            if candidate_passes:
+                analysis = self._run_analysis_chain(benchmark, round_dir,
+                                                    passes_override=candidate_passes)
+                confirmation_rows = analysis["confirmation_rows"]
+                # Store enablement edges for next round's Stage A fallback
+                self._stored_enablement_edges = self._load_enablement_edges(analysis)
+            else:
+                confirmation_rows = []
+                analysis = {"summary": {"candidate_passes": []}}
+            # ───────────────────────────────────────────────────────────
 
             # Classify passes
             classifications = classify_passes_for_scheduling(
@@ -357,6 +360,23 @@ class IterativeScheduler:
 
             self.round_index += 1
 
+            # Before cleanup: save current_ir and best_ir_path to safe locations
+            # since cleanup deletes .ll files in round_dir that they may point to.
+            safe_current = bench_dir / "current.ll"
+            if Path(self.current_ir) != safe_current:
+                shutil.copy2(self.current_ir, safe_current)
+                self.current_ir = safe_current
+            if self.best_ir_path:
+                best_path = Path(self.best_ir_path)
+                safe_best = bench_dir / "best.ll"
+                if best_path != safe_best and best_path.exists():
+                    shutil.copy2(best_path, safe_best)
+                    self.best_ir_path = str(safe_best)
+
+            # Cleanup intermediate .ll files to save disk space
+            if self.cleanup_rounds:
+                _cleanup_round_dir(round_dir)
+
             # Perturbation: if stagnating, try a random decision pair.
             # After perturbation, if the result is worse than best-so-far,
             # roll back to best-so-far IR (perturbation must not degrade).
@@ -415,6 +435,20 @@ class IterativeScheduler:
         # Write outputs
         self._write_outputs(bench_dir, result)
 
+        # Final cleanup: delete all .ll files and round directories to keep
+        # only result CSVs/JSONs (schedule_trace.csv, final_metrics.json, etc.)
+        for ll_file in bench_dir.glob("*.ll"):
+            try:
+                ll_file.unlink()
+            except Exception:
+                pass
+        for round_d in sorted(bench_dir.glob("round_*")):
+            if round_d.is_dir():
+                try:
+                    shutil.rmtree(round_d, ignore_errors=True)
+                except Exception:
+                    pass
+
         return result
 
     # --- Internal methods ---
@@ -472,12 +506,18 @@ class IterativeScheduler:
         from ir_metrics import compute_metric_score
         return compute_metric_score(self.original_metrics, metrics, metric_mode=self.metric_mode)
 
-    def _run_analysis_chain(self, benchmark, round_dir):
-        """Run the full analysis chain on current IR."""
+    def _run_analysis_chain(self, benchmark, round_dir, passes_override=None):
+        """Run the full analysis chain on current IR.
+
+        Args:
+            passes_override: if provided, only run analysis on this pass subset
+                             (skipping non-beneficial passes from expensive pairwise tests).
+        """
         analysis_dir = round_dir / "analysis"
+        passes_to_analyze = passes_override if passes_override is not None else self.passes
         return run_benchmark(
             benchmark={"name": benchmark["name"], "ir": str(self.current_ir)},
-            passes=self.passes,
+            passes=passes_to_analyze,
             clang_path=self.clang_path,
             opt_path=self.opt_path,
             llvm_diff_path=self.llvm_diff_path,
@@ -521,22 +561,24 @@ class IterativeScheduler:
         # ── No-op pre-filter (codesize mode): skip passes that don't change IR ──
         # Safe: ΔIR=0 ⇒ Δcodesize=0. Group B passes (vectorization, unrolling)
         # change IR → they pass this filter and get proper codesize evaluation.
-        # Surviving passes run opt again in stage_a_beneficial (opt is fast; the
-        # real savings are from skipping llc on no-ops and from independence analysis
-        # cutting O(n²) oracle pairs).
+        # Output written to stageA/ dir so stage_a_beneficial reuses it (no double opt).
         candidate_passes_prefiltered = list(candidate_passes)
+        prefilter_skip = set()  # passes confirmed no-op, skip codesize eval
         if self.metric_mode == "codesize":
+            stage_a_dir = Path(work_dir) / "stageA"
+            stage_a_dir.mkdir(parents=True, exist_ok=True)
             orig_text = Path(self.current_ir).read_text(encoding="utf-8")
             active_only = []
             for p in candidate_passes:
-                out_path = Path(work_dir) / "stageA_pre" / f"{p}.ll"
-                out_path.parent.mkdir(parents=True, exist_ok=True)
+                out_path = stage_a_dir / f"{_safe(p)}.ll"
                 try:
                     from commutativity_test import run_opt_pipeline
                     run_opt_pipeline(self.opt_path, self.current_ir, [p], out_path)
                     after_text = out_path.read_text(encoding="utf-8")
                     if after_text != orig_text:
                         active_only.append(p)
+                    else:
+                        prefilter_skip.add(p)
                 except Exception:
                     active_only.append(p)
             skipped = len(candidate_passes) - len(active_only)
@@ -548,10 +590,12 @@ class IterativeScheduler:
                 candidate_passes_prefiltered = list(candidate_passes)
 
         # Stage A.1: directly beneficial (cost strictly decreases)
+        # Pass skip_hint: passes already confirmed no-op skip codesize measurement
         _, beneficial = stage_a_beneficial(
             self.opt_path, self.current_ir, current_cost,
             candidate_passes_prefiltered, work_dir, effective_min_gain,
             measure_fn=self.measure_fn,
+            skip_opt_for=prefilter_skip,
         )
         # Also check passes in remembered set with the relaxed threshold
         if remembered and effective_min_gain < self.min_gain:
@@ -945,12 +989,17 @@ class IterativeScheduler:
         return len(set(recent_scores)) == 1
 
     def _action_key(self, action):
-        """Generate a stable key for an action to detect repeats."""
+        """Generate a stable key for an action to detect repeats.
+
+        IMPORTANT: pair keys preserve direction (A->B ≠ B->A) because
+        ordering is directional — a harmful A->B action should NOT
+        blacklist the reverse B->A which may be beneficial.
+        """
         if action.get("pass"):
             return f"single:{action['pass']}"
         passes = action.get("passes", [])
         if passes:
-            return f"pair:{','.join(sorted(passes))}"
+            return f"pair:{passes[0]},{passes[1]}"
         return f"other:{action.get('kind', 'unknown')}"
 
     @staticmethod
@@ -1045,7 +1094,8 @@ class IterativeScheduler:
 
         for r in results:
             pa, pb = r.get("pass_a", ""), r.get("pass_b", "")
-            pair_key = f"pair:{','.join(sorted([pa, pb]))}"
+            # Match blacklist with direction preserved (see _action_key)
+            pair_key = f"pair:{pa},{pb}"
             if pair_key in bad_keys:
                 continue
             improvement = before_score - r.get("best_score", before_score)
@@ -1056,14 +1106,14 @@ class IterativeScheduler:
         if best_result is None:
             # All results blacklisted — use the oracle's original best
             skipped = len([r for r in results
-                          if f"pair:{','.join(sorted([r.get('pass_a',''), r.get('pass_b','')]))}" in bad_keys])
+                          if f"pair:{r.get('pass_a','')},{r.get('pass_b','')}" in bad_keys])
             print(f"  [{bench_name}] Cycle guard: all {len(results)} pairs "
                   f"blacklisted ({skipped} skipped), using best available")
             return oracle_result
 
         skipped_count = len(results) - sum(
             1 for r in results
-            if f"pair:{','.join(sorted([r.get('pass_a',''), r.get('pass_b','')]))}" not in bad_keys
+            if f"pair:{r.get('pass_a','')},{r.get('pass_b','')}" not in bad_keys
         )
         if skipped_count > 0:
             print(f"  [{bench_name}] Cycle guard: skipped {skipped_count} "
@@ -1367,6 +1417,22 @@ def _file_sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def _cleanup_round_dir(round_dir):
+    """Delete intermediate .ll and analysis files, keep trace/policy CSVs and action JSON."""
+    import shutil
+    # Remove large subdirectories
+    for sub in ["stageA", "stageA_pre", "stageA_enable", "oracle", "analysis", "exact"]:
+        p = Path(round_dir) / sub
+        if p.exists():
+            shutil.rmtree(p, ignore_errors=True)
+    # Remove .ll files (input/output intermediate IRs)
+    for ll in Path(round_dir).glob("*.ll"):
+        try:
+            ll.unlink()
+        except Exception:
+            pass
+
+
 def _class_passes(classifications, cls):
     return [p for p, r in sorted(classifications.items()) if r["scheduler_class"] == cls]
 
@@ -1403,7 +1469,7 @@ def parse_args():
         help="Path to pass_sets.json config."
     )
     parser.add_argument(
-        "--pass-set", default="research_27",
+        "--pass-set", default="research_codesize",
         help="Pass set name (O1/O2/O3/research/minimal)."
     )
     parser.add_argument(

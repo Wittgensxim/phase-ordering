@@ -55,18 +55,22 @@ from run_benchmark_suite import compile_to_ir, load_manifest
 # --- Stage A: beneficial-pass filtering -------------------------------------
 
 def stage_a_beneficial(opt_path, original_ir, original_cost, passes, work_dir, min_gain,
-                       measure_fn=None):
+                       measure_fn=None, skip_opt_for=None):
     """Run each pass alone; classify directly_beneficial / active_only / no_op.
 
     Args:
         measure_fn: optional callable(ir_path) -> metrics dict.
                     If None, uses measure_ir_file(). Pass a codesize-aware
                     function to drive Stage A by .text bytes instead of IR instr.
+        skip_opt_for: set of pass names whose opt output already exists in
+                      work_dir/stageA/ (pre-computed by pre-filter). Avoids
+                      double opt calls in codesize mode.
 
     Returns (vector, beneficial_passes) where vector is a list of per-pass dicts.
     """
     if measure_fn is None:
         measure_fn = measure_ir_file
+    skip_opt = skip_opt_for or set()
 
     orig_text = Path(original_ir).read_text(encoding="utf-8")
     vector = []
@@ -75,7 +79,8 @@ def stage_a_beneficial(opt_path, original_ir, original_cost, passes, work_dir, m
         out_path = Path(work_dir) / "stageA" / f"{_safe(p)}.ll"
         entry = {"pass": p}
         try:
-            run_opt_pipeline(opt_path, original_ir, [p], out_path)
+            if p not in skip_opt:
+                run_opt_pipeline(opt_path, original_ir, [p], out_path)
             after = measure_fn(out_path)
             after_text = out_path.read_text(encoding="utf-8")
             changed = after_text != orig_text

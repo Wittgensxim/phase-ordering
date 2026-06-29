@@ -25,34 +25,19 @@ PASS_PIPELINE_ALIASES = {
     # loop-idiom: LoopPass, needs loop() wrapper
     "loop-idiom": "loop(loop-idiom)",
     # ── New: loop/vectorization passes (LLVM 23) ──
-    "loop-vectorize": "loop-mssa(loop-vectorize)",
-    "slp-vectorizer": "loop-mssa(slp-vectorizer)",
-    "loop-unroll": "loop-mssa(loop-unroll)",
+    # NOTE: In LLVM 23+, many passes that were formerly LoopPass are now
+    # FunctionPass and must NOT be wrapped with loop-mssa(). Only passes
+    # that are still true LoopPass wrappers need the loop-mssa() invocation.
     "loop-unroll-full": "loop-mssa(loop-unroll-full)",
-    "loop-distribute": "loop-mssa(loop-distribute)",
-    "loop-fusion": "loop-mssa(loop-fusion)",
-    "loop-versioning": "loop-mssa(loop-versioning)",
     "loop-versioning-licm": "loop-mssa(loop-versioning-licm)",
-    "loop-sink": "loop-mssa(loop-sink)",
     "simple-loop-unswitch": "loop-mssa(simple-loop-unswitch)",
     "loop-bound-split": "loop-mssa(loop-bound-split)",
     "loop-predication": "loop-mssa(loop-predication)",
     "loop-reduce": "loop-mssa(loop-reduce)",
-    "loop-term-fold": "loop(loop-term-fold)",
     "loop-idiom-vectorize": "loop-mssa(loop-idiom-vectorize)",
-    "load-store-vectorizer": "loop-mssa(load-store-vectorizer)",
-    "loop-flatten": "loop(loop-flatten)",
+    "extra-simple-loop-unswitch-passes": "loop-mssa(extra-simple-loop-unswitch-passes)",
     "loop-interchange": "loop-mssa(loop-interchange)",
     "loop-unroll-and-jam": "loop-mssa(loop-unroll-and-jam)",
-    "lcssa": "loop-mssa(lcssa)",
-    "unify-loop-exits": "loop-mssa(unify-loop-exits)",
-    "loop-data-prefetch": "loop-mssa(loop-data-prefetch)",
-    "extra-simple-loop-unswitch-passes": "loop-mssa(extra-simple-loop-unswitch-passes)",
-    "extra-vector-passes": "loop-mssa(extra-vector-passes)",
-    "loop-simplifycfg": "loop(loop-simplifycfg)",
-    "irce": "loop-mssa(irce)",
-    "hardware-loops": "loop-mssa(hardware-loops)",
-    "mldst-motion": "loop-mssa(mldst-motion)",
 }
 
 

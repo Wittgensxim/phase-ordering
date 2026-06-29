@@ -82,7 +82,9 @@ def run_oracle_ordered_pair(
         "ba_score": ba_score,
         "best_score": best_score,
         "ab_metrics": ab_metrics,
-        "ba_metrics": ab_metrics if winner == "tie" else (ab_metrics if winner == "A->B" else ba_metrics),
+        # Always report true ba_metrics — even on tie, the B->A measurement
+        # is independent data that downstream analysis may need.
+        "ba_metrics": ba_metrics,
         "before_metrics": before_metrics,
         "ab_ir": str(ab_path),
         "ba_ir": str(ba_path),
@@ -94,7 +96,7 @@ def run_oracle_ordered_pair(
 def oracle_choose_best_pair(
     opt_path, input_ir, candidate_pairs, work_dir,
     max_candidates=0, use_tti=False, target_triple="",
-    measure_fn=None,
+    measure_fn=None, mandatory_orders=None,
 ):
     """Enumerate candidate ordered pairs and pick the one with best metric improvement.
 
@@ -121,25 +123,53 @@ def oracle_choose_best_pair(
         # Bound cost without alphabetical bias: this is still a heuristic cap, but at
         # least it is not the sorted-set order. Default path (max_candidates=0) avoids
         # truncation entirely.
+        # Deterministic sort (alphabetical by pass_a, then pass_b) —
+        # avoids Python's per-process randomized hash(frozenset).
         pairs_to_test = sorted(
-            pairs_to_test, key=lambda ab: (hash(frozenset(ab)),)
+            pairs_to_test, key=lambda ab: (ab[0], ab[1])
         )[:max_candidates]
     results = []
 
-    for pass_a, pass_b in pairs_to_test:
-        result = run_oracle_ordered_pair(
-            opt_path, input_ir, pass_a, pass_b, work_dir,
-            use_tti=use_tti, target_triple=target_triple,
-            measure_fn=measure_fn,
-        )
-        results.append(result)
+    # Evaluate all pairs in parallel (each runs independent opt subprocesses)
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    with ThreadPoolExecutor(max_workers=min(len(pairs_to_test), 8)) as executor:
+        future_to_pair = {
+            executor.submit(
+                run_oracle_ordered_pair,
+                opt_path, input_ir, a, b, work_dir,
+                use_tti=use_tti, target_triple=target_triple,
+                measure_fn=measure_fn,
+            ): (a, b)
+            for a, b in pairs_to_test
+        }
+        for future in as_completed(future_to_pair):
+            results.append(future.result())
 
-    # Find the best by score improvement
+    # Restore original order for deterministic results
+    pair_order = {ab: i for i, ab in enumerate(pairs_to_test)}
+    results.sort(key=lambda r: pair_order.get((r["pass_a"], r["pass_b"]), 999))
+
+    # Find the best by score improvement (respect mandatory orders)
     before_score = results[0]["before_metrics"]["score"] if results else float("inf")
     best_result = None
     best_improvement = float("-inf")
 
     for r in results:
+        # Skip directions forbidden by mandatory orders
+        if mandatory_orders:
+            from pass_pipeline import filter_forbidden_directions
+            constraints = filter_forbidden_directions(
+                r["pass_a"], r["pass_b"], mandatory_orders
+            )
+            # If the chosen direction (winner) is forbidden, skip this result
+            if r["winner"] == "A->B" and constraints["a_to_b_forbidden"]:
+                continue
+            if r["winner"] == "B->A" and constraints["b_to_a_forbidden"]:
+                continue
+            # On tie, default A->B; skip if that direction is forbidden
+            if r["winner"] == "tie" and constraints["a_to_b_forbidden"]:
+                continue
+
         improvement = before_score - r["best_score"]
         if improvement > best_improvement:
             best_improvement = improvement
@@ -192,6 +222,7 @@ def oracle_choose_from_decision_pairs(
         max_candidates=max_candidates, use_tti=use_tti,
         target_triple=target_triple,
         measure_fn=measure_fn,
+        mandatory_orders=mandatory_orders,
     )
 
 
