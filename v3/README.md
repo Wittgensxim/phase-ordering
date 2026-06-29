@@ -1,6 +1,6 @@
 # Phase Ordering v3 — 迭代式依赖感知调度器
 
-> **状态**: v3.4 — 139-pass (research_codesize), codesize metric, 双层并行 | **更新**: 2026-06-29
+> **状态**: v3.4 — 139-pass, codesize, 双层并行, 正确性门控 | **更新**: 2026-06-30
 
 ---
 
@@ -35,9 +35,11 @@ python scripts/pass_sweep.py --manifest configs/benchmarks_codesize_full.json
 
 1. **Stage A 先行**：每轮先对全部 139 pass 测 codesize，筛选 beneficial+enabling 子集（~3-13 个），然后**仅对该子集**运行重量分析链（footprint/enablement/commutativity）。非 beneficial pass 不参与 O(b²) pairwise 分析。
 
-2. **双层并行**：inter-benchmark（`--parallel`，跨 benchmark） + intra-benchmark（`--intra-parallel`，单 benchmark 内部 fixed/oracle/random 同时跑）。
+2. **双层并行**：inter-benchmark（`--parallel`）+ intra-benchmark（`--intra-parallel`，fixed/oracle/random 同时跑）。
 
-3. **多项性能优化**：预过滤器 opt 输出复用（消除双 opt）、oracle 成对评估并行化。
+3. **正确性门控**（`--runtime-correctness`）：每轮执行后自动 compile+run+diff vs O0 参考输出，不通过则回滚。
+
+4. **多项性能优化**：Stage A 先行（分析链仅对 beneficial 子集）、预过滤器 opt 输出复用、oracle 成对评估并行化。
 
 ### 实验对比框架
 

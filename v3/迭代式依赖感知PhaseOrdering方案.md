@@ -1,18 +1,20 @@
 # 迭代式依赖感知 Phase Ordering 方案
 
-> **实现状态**: v3 已完整实现 | 115 benchmark 评估完成 | 2026-06-28
+> **版本**: v3.4 | 139 pass (research_codesize) | codesize metric (.text bytes) | 2026-06-30
 
 ## 概述
 
-本文档描述一个**已完整实现**的 phase ordering 搜索框架。它先用依赖分析自动消除大量 pair order decision，再把剩余的顺序敏感子图交给 oracle/rule 决策。
+用一个**依赖分析先行**的策略解决 phase ordering 搜索空间爆炸问题：每轮先用轻量 codesize 测量筛选出 beneficial pass（~3-14 个），然后**仅对该子集**运行 O(b²) 的 independence 分析，将需要在意的 pair order 数量从 C(139,2)≈9500 削到几十个。剩余的顺序敏感对交给 oracle 贪心择优，非敏感对自动解析无需决策。
 
-核心思想（已实现）：
+核心架构 (v3.4)：
 
-```text
-不是: ML 直接搜索完整 pass 序列
-不是: 找"全局安全的 pass"自动执行
-而是: 用独立性分析把需要决策的 pair order 数量削下来
-      只把真正顺序敏感的 pair 交给 oracle
+```
+每轮:
+  Stage A (O(n)): 139 pass 单跑测 codesize → beneficial + enabling (~5-14 pass)
+  分析链 (O(b²)): 仅对 beneficial 子集做 footprint→commutativity→confirmation
+  决策图: auto-resolved pair 自动消除，order_sensitive pair 交 oracle
+  Oracle: 并行评估所有 decision pair，选 codesize 改善最大的方向
+  执行 → 正确性门控 → 回滚/推进
 ```
 
 ## 1. 核心贡献：决策图（Decision Graph）
@@ -103,21 +105,15 @@ while not fixed_point (平均 ~7 轮):
 
 ## 3. Pass 集合
 
-**当前配置: 20 pass**（15 基础 + 5 经 oracle 使用率筛选）
+**当前: `research_codesize` = 139 pass**（LLVM 23 全部变换 pass 安全子集）
 
-```
-基础 (15):
-  mem2reg, instcombine, simplifycfg, dce, sroa, early-cse,
-  gvn, sccp, adce, loop-simplify, loop-rotate, licm,
-  indvars, loop-unroll, reassociate
+- 136 安全可用（经 pass_sweep 实测，从不 crash）
+- 27 "strong candidates"（单跑即降 codesize）
+- 106 "keep-for-ordering"（改变 IR 但不单独降 codesize，需序列上下文）
+- `mem2reg → *` 通配符约束确保 SSA 构建最先
+- 32 条强制顺序约束（loop-simplify 前置所有 loop/vector pass）
 
-经筛选新增 (5):
-  correlated-propagation, loop-instsimplify, loop-deletion,
-  loop-idiom, aggressive-instcombine
-
-未采用 (5): bdce, jump-threading, sink, tailcallelim, constraint-elimination
-  原因: oracle 从未选中，仅增加噪声候选（190→300 对）
-```
+**为什么用全集而非精选**: 消除 pass 集的人为选择偏差。fixed_order 基准从 LLVM 注册顺序自动生成（客观可辩护）。
 
 ## 4. 分析链（每轮执行）
 
@@ -154,50 +150,47 @@ dependency graph 中低风险的孤立节点
 
 等实验确认 false_negative 仍然为 0 后，再考虑把 only-likely-independent-edge 的 pass 纳入 safe 集合。
 
-## 5. safe passes 如何运行
+## 5. 安全机制 (v3.4)
 
-如果一轮中找到多个 safe pass，有两种策略：
+| 机制 | 触发条件 | 效果 |
+|------|---------|------|
+| **强制顺序** | 每对 pass | 禁止违反 mandatory_orders |
+| **正确性门控** | 每轮执行后 | 编译+运行+diff vs O0 参考输出，错误则回滚 |
+| **批次抽查** | ≥2 auto_safe pass | 随机打乱验证 batch commutativity |
+| **动作记忆** | 连续无效/有害 | 有向黑名单（A→B ≠ B→A） |
+| **Rollback** | score 退化 >5% | 回退到执行前 IR |
+| **Perturbation** | metric 停滞 | 随机选 decision pair 跳出局部最优 |
+| **Best-so-far** | 始终追踪 | 最终返回所有轮中的最优 IR |
 
-### 5.1 批量运行
+## 6. 并行架构 (v3.4)
 
-```text
-IR -> safe_pass_1,safe_pass_2,...,safe_pass_k
+**双层并行**:
+
+```
+inter-benchmark (--parallel N): 跨 benchmark ProcessPoolExecutor
+intra-benchmark (--intra-parallel M): 单 benchmark 内 ThreadPoolExecutor
+  ├─ fixed_order ─┐
+  ├─ oracle ──────┤ 同时跑（各自独立 subprocess）
+  └─ random ──────┘
+
+Oracle pair 评估: ThreadPoolExecutor (max 8 workers)
+  每个 decision pair 的 A→B / B→A 并行评估
 ```
 
-优点：
+## 7. 对比框架
 
-```text
-速度快
-更接近 LLVM pass pipeline
-```
+| 方法 | Pass 集 | 排序方式 | 度量 |
+|------|---------|---------|------|
+| **oracle** | 139 | 独立性分析 + 贪心 + 正确性门控 | codesize (.text) |
+| **random** | 139 | 迭代 + 随机选择 | codesize |
+| **fixed** | 139 | LLVM 注册顺序 | codesize |
+| **O0/O1/O2/O3/Oz** | LLVM 全集 | clang 标准管线 | codesize |
 
-风险：
+## 8. 已知限制
 
-```text
-pairwise independent 不一定保证 batch independent
-可能存在三阶 enablement 或高阶交互
-```
-
-### 5.2 逐个运行
-
-```text
-IR -> safe_pass_1 -> rescan
-IR -> safe_pass_2 -> rescan
-...
-```
-
-优点：
-
-```text
-更安全
-每次 IR 变化后都会重新判断
-更容易定位错误
-```
-
-风险：
-
-```text
-实验成本更高
+- **Pass 交互 bug**: 单 pass 安全不代表组合安全（如 Towers 上 normalize 在特定 IR 后破坏语义）——由正确性门控兜底
+- **贪心次优**: 每轮只选局部最优，可能错过全局更优——用 `exact_optimum.py` 量化 greedy_gap
+- **编译运行开销**: 正确性门控每轮需 compile+run，约增加 2-3s/轮
 运行速度更慢
 ```
 
