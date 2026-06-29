@@ -1,182 +1,199 @@
-# Phase Ordering v3 — Iterative Dependency-Aware Scheduler
+# Phase Ordering v3 — 迭代式依赖感知调度器
 
-## What's New in v3
+> **状态**: 139-pass (research_codesize), codesize metric | **更新**: 2026-06-29
 
-v3 is a major upgrade from v2, implementing the full executive scheduler with all improvements discussed for the limitations of the dependency-aware phase ordering approach.
+---
 
-### Key Improvements
+## 文档导航
 
-| Area | v2 | v3 |
-|------|----|----|
-| **Scheduler** | Dry-run only (analyzes, no execution) | Executive: actually runs passes, iterates to fixed point |
-| **Automation rate** | 0 auto_safe (too conservative) | Relaxed mode promotes `likely_independent` → `auto_safe` |
-| **Scheduler modes** | Only strict | 3 modes: strict / relaxed / threshold (ratio-based) |
-| **Cost model** | Simple IR weighted formula | Multi-level: IR + TTI + runtime (pluggable) |
-| **Stopping condition** | IR hash only | Metric convergence + IR hash cycle + max rounds |
-| **Pass config** | Hardcoded 11 passes | JSON-driven pass sets (O1/O2/O3/research) |
-| **Mandatory orders** | None | Config-driven mandatory ordering constraints |
-| **Decision mechanism** | Manual pair enumeration | Oracle ordered-pair chooser (auto-selects best direction) |
-| **Batch safety** | No check | Batch commutativity spot-checking |
-| **Perturbation** | None | Metric stagnation → perturbation to escape local optima |
-| **Multi-start** | None | Multi-start search (original, random, O2 pipeline) |
-| **Baseline** | None | O2/O3 baseline comparison built-in |
-| **Test suite** | E:\Phase Ordering\examples\ | E:\llvm-test-suite (30+ real benchmarks) |
+| 文档 | 内容 |
+|------|------|
+| **[docs/迭代调度器完整机制.md](docs/迭代调度器完整机制.md)** | ⭐ **主文档**：Pass 集合、分析链、决策图、控制流、对比框架、指标体系 |
+| **[docs/决策图_独立对与oracle.md](docs/决策图_独立对与oracle.md)** | 专题：为什么独立对不需要 oracle（回答 reviewer 核心质疑） |
+| **[docs/项目完整文档.md](docs/项目完整文档.md)** | 历史记录（v3.0–v3.1，已不再维护） |
 
-## Architecture
+---
+
+## 快速开始
+
+```powershell
+# 验证配置
+python scripts/verify_config.py
+
+# 单 benchmark 迭代调度（观察过程）
+python scripts/iterative_scheduler.py --manifest configs/benchmarks_cs31.json --benchmark Misc_evalloop --chooser oracle --max-rounds 10 --metric codesize
+
+# 全量对比（论文主实验）
+python scripts/compare_all.py --manifest configs/benchmarks_cs31.json --pass-set research_codesize --metric codesize --out-dir results/compare_final
+
+# Pass sweep（发现哪些 pass 对 codesize 有益）
+python scripts/pass_sweep.py --manifest configs/benchmarks_cs31.json
+
+# 精确最优（ground truth, 仅小 benchmark 可枚举）
+python scripts/exact_optimum.py --manifest configs/benchmarks_cs31.json --metric codesize --trace-cap 10
+```
+
+---
+
+## 核心贡献
+
+**独立性分析驱动的搜索空间塌缩**：通过足迹分析 + 黑盒交换性验证，将 phase ordering 中需要 oracle 决策的 pass 对从 C(n,2) 削减为仅 order_sensitive 对。auto_safe pass 和 safe_batch 通过 Priority 1/1.5 自动执行，无需 oracle 评估。
+
+### 实验对比框架
+
+| 方法 | Pass 集 | 排序方式 | 度量 |
+|------|---------|---------|------|
+| **oracle** | 139 (全集) | 独立性分析 + 贪心 | codesize (.text bytes) |
+| **LLVM-order** | 139 (全集) | LLVM 注册顺序（客观固定序） | codesize |
+| **random** | 139 (全集) | best-of-K（K=oracle预算） | codesize |
+| **Oz** | LLVM 全集 | LLVM -Oz 管线 | codesize |
+| **O2/O3** | LLVM 全集 | LLVM -O2/-O3 管线 | codesize (参考) |
+
+### 指标
+
+| 指标 | 定义 | 用途 |
+|------|------|------|
+| **MeanReduction** over LLVM-order | (fixed − oracle)/fixed | PRIMARY：同集排序收益 |
+| **MeanOverOz** | (Oz − oracle)/Oz | SECONDARY：离工业线距离 |
+| **auto_resolved_rate** | 每轮独立对占比 | 搜索空间塌缩证据 |
+| **Wins vs LLVM-order** | oracle 更好的 benchmark 比例 | 排序可靠性 |
+| **收敛轮数** | 平均有效轮 | 效率 |
+
+---
+
+## 关键特性
+
+| 特性 | 说明 |
+|------|------|
+| **codesize 度量** | L1：llc → llvm-size 测量真实 .text 字节（CGO'25 兼容） |
+| **minsize 注入** | 给输入 IR 注入 `minsize optsize` 属性，与 Oz 公平对比 |
+| **LLVM-order 基线** | 固定序从 LLVM 注册顺序自动生成（可辩护，非手写） |
+| **measure_fn 工厂** | `make_measure_fn()` 统一 Stage A / oracle / scheduler 的度量入口 |
+| **no-op 预过滤** | codesize 模式下跳过 ΔIR=0 的 pass（安全：ΔIR=0 ⇒ Δcodesize=0） |
+| **pass sweep** | 逐 pass 测量 codesize 影响，数据驱动 pass 集选择 |
+| **正确性验证** | `--correctness` 标志：编译执行 + 输出对拍 O0 |
+
+## Pass 集: research_codesize
+
+139 个 LLVM 变换 pass（safe subset of full LLVM 23 transform passes, 13 crash excluded），单次应用。32 条 mandatory_orders 覆盖所有 loop/vector 类 pass 的前置约束。
+
+## Benchmark: benchmarks_cs31.json
+
+32 个 SingleSource C 程序，覆盖 8 个类别（Stanford, Shootout, CoyoteBench, Misc, McGill, Linpack, Dhrystone, BenchmarkGame）。O2 .text 范围 ~700B–16KB。
+
+---
+
+## 架构
 
 ```
 v3/
 ├── configs/
-│   ├── pass_sets.json           # Pass sets for O1/O2/O3/research + mandatory orders
-│   ├── benchmarks_smoke.json    # 30+ benchmarks from llvm-test-suite
-│   └── benchmarks_quick.json    # 5 quick smoke-test benchmarks
+│   ├── pass_sets.json              # Pass 集（research_codesize: 139 pass, 32 orders）
+│   ├── benchmarks_cs31.json        # 32 SingleSource benchmark
+│   └── benchmarks_curated.json     # 115 benchmark（旧 curated set）
+├── docs/
+│   ├── 迭代调度器完整机制.md        # 主文档
+│   ├── 决策图_独立对与oracle.md     # 专题
+│   └── 项目完整文档.md              # 历史
 ├── scripts/
-│   ├── pass_pipeline.py         # Pass name resolution + mandatory order validation
-│   ├── ir_metrics.py            # Multi-level IR metrics (IR + TTI)
-│   ├── collect_pass_footprints.py  # Single-pass footprint collection
-│   ├── enablement_probe.py      # Enablement edge detection
-│   ├── analyze_footprints.py    # Pairwise dependency analysis
-│   ├── commutativity_test.py    # Black-box commutativity + batch spot-check
-│   ├── compare_validation.py    # Cross-validation (static vs. black-box)
-│   ├── confirm_independence.py  # Confirmation layer (4 labels)
-│   ├── scheduler_policy.py      # Scheduler policy (3 modes + ablation)
-│   ├── oracle_chooser.py        # Oracle ordered-pair selector
-│   ├── iterative_scheduler.py   # Executive iterative scheduler (core)
-│   ├── baseline_runner.py       # O0/O1/O2/O3 baseline runner
-│   └── run_benchmark_suite.py   # Full analysis chain orchestrator
-├── tests/
-│   ├── test_pass_pipeline.py
-│   ├── test_ir_metrics.py
-│   ├── test_collect_pass_footprints.py
-│   ├── test_scheduler_policy.py
-│   ├── test_confirm_independence.py
-│   ├── test_oracle_chooser.py
-│   └── test_iterative_scheduler.py
-└── results/                     # Output directory
+│   ├── iterative_scheduler.py      # ★ 核心：迭代调度器
+│   ├── compare_all.py              # ★ 统一对比（chooser + LLVM baselines + LLVM-order）
+│   ├── exact_optimum.py            # ★ 精确全局最优（trace 等价类枚举）
+│   ├── ir_metrics.py               # ★ codesize 测量 + make_measure_fn 工厂
+│   ├── baseline_pipelines.py       # 真实 LLVM 管线 + minsize 注入
+│   ├── pass_sweep.py               # Pass sweep（codesize 影响分析）
+│   ├── pass_pipeline.py            # Pass 管线名称映射（30+ alias）
+│   ├── measure_beneficial_independence.py  # Stage A+B 独立性测量
+│   ├── oracle_chooser.py           # Oracle 决策器（支持 measure_fn）
+│   ├── scheduler_policy.py         # 调度策略 + 决策图构建
+│   ├── commutativity_test.py       # 黑盒交换性验证
+│   ├── rule_chooser.py             # 规则决策器
+│   └── ...                         # 更多辅助脚本
+├── results/                        # 实验结果
+└── tests/                          # 单元测试
 ```
 
-## Quick Start
+│   ├── compare_validation.py       # 交叉验证
+│   ├── confirm_independence.py     # 确认层
+│   ├── run_benchmark_suite.py      # 全分析链编排
+│   └── quantify_search.py          # 搜索空间量化
+├── tests/                          # 单元测试
+└── results/
+    ├── beneficial_independence_v31/  # Stage A+B 测量（115 bench）
+    ├── exact_optimum/                # 精确最优实验（115 bench）
+    └── compare_all_115/              # 调度器 vs baseline 对比
 
-### 1. Install dependencies
+```
+
+## 快速开始
+
+### 环境要求
 
 ```powershell
-# Python 3.9+ required. No external packages needed (stdlib only).
-# LLVM binaries expected at E:\llvm\build\bin\ (opt.exe, clang.exe, llvm-diff.exe)
+# Python 3.9+, 无需外部包（仅 stdlib）
+# LLVM 23.0.0git: E:\llvm\build\bin\opt.exe, clang.exe, llvm-diff.exe
 ```
 
-### 2. Run tests
+### 运行
 
 ```powershell
-cd v3
-python -m pytest tests/ -v
-# Or individually:
-python tests\test_pass_pipeline.py
-python tests\test_scheduler_policy.py
+# 单元测试
+cd v3 ; python -m pytest tests/ -v
+
+# 测量 beneficial pass + 独立性 + trace 等价类（核心实验）
+python scripts\measure_beneficial_independence.py --parallel 8
+
+# 精确最优 vs LLVM 基线（核心实验）
+python scripts\exact_optimum.py --manifest configs\benchmarks_curated.json --parallel 8
+
+# 调度器全量对比（oracle + rule + random vs 真实 O0/O1/O2/O3/Oz）
+python scripts\compare_all.py --manifest configs\benchmarks_curated.json --parallel 8
+
+# 单个 benchmark（oracle chooser）
+python scripts\iterative_scheduler.py --ir examples\demo.ll --name demo
 ```
 
-### 3. Run single benchmark analysis (dry-run)
+## Pass 集合（20 pass）
 
-```powershell
-python scripts\run_benchmark_suite.py --ir examples\demo.ll --name demo --out-dir results\demo_analysis
-```
+15 基础 + 5 经 oracle 使用率筛选的新 pass：`correlated-propagation`、`loop-instsimplify`、`loop-deletion`、`loop-idiom`、`aggressive-instcombine`。
 
-### 4. Run iterative scheduler (executive mode)
+试验的另外 5 个（bdce/jump-threading/sink/tailcallelim/constraint-elimination）从未被 oracle 选中，已移除。
 
-```powershell
-# Single benchmark
-python scripts\iterative_scheduler.py --ir examples\demo.ll --name demo --scheduler-mode relaxed --max-rounds 20
+## Chooser 对比
 
-# From test suite
-python scripts\iterative_scheduler.py --manifest configs\benchmarks_quick.json --scheduler-mode relaxed
+> ⚠️ 旧 numbers（71% vs O2 等）基于有缺陷的度量和非真实基线，已弃用。
+> 当前建议使用 exact_optimum 作为 ground truth，而非 greedy oracle 作为 "upper bound"。
+> 详见 [精确最优 vs LLVM 基线](#精确最优-vs-llvm-基线meanoverozcgo25-标准) 和 `results/exact_optimum/summary.json`。
 
-# With O2 baseline comparison
-python scripts\iterative_scheduler.py --manifest configs\benchmarks_quick.json --baseline-pipeline O2
-```
+## 调度模式
 
-### 5. Run full benchmark suite analysis
+| 模式 | likely_independent | 适用 |
+|------|-------------------|------|
+| **strict** | candidate_safe（不自动） | 最安全 |
+| **relaxed** | 升级为 auto_safe（推荐） | 平衡 |
+| **threshold** | 达阈值才升级 | 可调节 |
 
-```powershell
-# Analyze all benchmarks (dependency + commutativity + confirmation)
-python scripts\run_benchmark_suite.py --manifest configs\benchmarks_smoke.json --out-dir results\suite
-
-# Analyze specific benchmark
-python scripts\run_benchmark_suite.py --manifest configs\benchmarks_smoke.json --benchmark Misc_flops_1
-```
-
-### 6. Run baselines
-
-```powershell
-python scripts\baseline_runner.py examples\demo.ll --out-dir results\baselines
-```
-
-## Scheduler Modes
-
-| Mode | `likely_independent` | Auto-safe condition |
-|------|---------------------|---------------------|
-| **strict** | `candidate_safe` (not auto) | All edges must be `confirmed_independent` |
-| **relaxed** | `auto_safe` (promoted) | All edges must be `confirmed_independent` or `likely_independent` |
-| **threshold** | Configurable ratio | ≥X% of edges safe (`--independence-threshold 0.9`) |
-
-## Output Files
-
-Each benchmark run produces:
+## 算法
 
 ```
-results/iterative_scheduler/<benchmark>/
-├── <benchmark>.ll              # Original IR
-├── round_000/
-│   ├── input.ll                # IR at start of round
-│   ├── output.ll               # IR after executing action
-│   ├── selected_action.json    # What was chosen and why
-│   └── analysis/               # Full analysis chain results
-│       ├── footprints.jsonl
-│       ├── enablement_probe.json
-│       ├── dependency_matrix.csv
-│       ├── commutativity_results.json
-│       ├── validation_report.csv
-│       └── ...
-├── schedule_trace.csv          # Round-by-round trace
-├── schedule_trace.json
-├── scheduler_policy_report.csv # Per-pass classifications
-├── final.ll                    # Final optimized IR
-├── final_metrics.json          # Final IR metrics
-└── baseline_comparison.json    # vs O2 (if enabled)
+IR = 原始输入（clang -O0）
+
+Stage A: beneficial+enabling pass 过滤
+  → 从 15 pass 中筛出 |B| 个有效 pass（中位 7 个）
+
+Stage B: 黑盒交换性分析
+  → 对 |B| 中每对 pass 运行 llvm-diff(A→B, B→A)
+  → 可交换 → independent（不需要顺序决策）
+  → 不可交换 → order_sensitive（唯一需要决策的 pair）
+
+Stage C: 枚举 trace 等价类 → 精确全局最优
+  → 79/115 benchmark (68.7%) 可在 trace_cap=8 内精确穷举
+  → Random(k=30) 以 93.7% 概率命中精确最优
+
+安全保证: false_negative = 0（绝不误判独立 pair）
+强制顺序约束: mem2reg-first、loop-simplify 在 loop 优化之前
 ```
 
-## Configuration
+## 详细文档
 
-### Pass Sets (`configs/pass_sets.json`)
-
-```json
-{
-  "pass_sets": {
-    "research": ["instcombine", "simplifycfg", "sroa", ...]
-  },
-  "mandatory_orders": [
-    {"before": "mem2reg", "after": "*", "reason": "mem2reg must run first"},
-    {"before": "loop-simplify", "after": "loop-rotate"}
-  ],
-  "scheduler_defaults": {
-    "mode": "relaxed",
-    "independence_threshold": 0.9,
-    "max_rounds": 50
-  }
-}
-```
-
-### Benchmarks (`configs/benchmarks_smoke.json`)
-
-Points to `E:\llvm-test-suite\SingleSource\Benchmarks\` for real-world test programs.
-
-## Algorithm
-
-```
-IR = original
-while not fixed_point:
-    1. Scan all passes on current IR → footprints, enablement, dependency
-    2. Validate independence → confirmation labels
-    3. Classify passes → auto_safe / decision_required
-    4. If auto_safe exists → execute safe pass, update IR, re-scan
-    5. If no auto_safe → oracle picks best ordered pair, execute, re-scan
-    6. Stop if: metric stagnates OR IR hash cycles OR max rounds reached
-```
+参见 [`docs/项目完整文档.md`](docs/项目完整文档.md)

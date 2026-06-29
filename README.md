@@ -1,136 +1,44 @@
-# Phase Ordering ML 依赖感知原型
+# Phase Ordering — 迭代式依赖感知调度器
 
-本项目探索一种依赖感知的 LLVM phase ordering 方法：先用 footprint 和黑盒验证判断 pass pair 的独立、依赖、可疑关系，再把 ML 留给真正需要决策的局部位置，而不是一开始就让 ML 在完整 pass 序列空间里盲搜。
+> **当前版本**: v3 | **更新**: 2026-06-28 | **Pass 集合**: 20 pass | **115 benchmark 评估完成**
 
-当前项目已经跑通的主链路是：
+## 核心成果
 
-```text
-LLVM IR / SingleSource C
-  -> 自动运行单个 pass
-  -> 生成对象级 read/write footprint
-  -> 探测 enablement / expansion / mutation edge
-  -> 生成 dependent / uncertain / independent 三分类 dependency matrix
-  -> 运行 pass pair commutativity 黑盒验证
-  -> 聚合 false positive / false negative / uncertain 结果
-  -> 输出 batch benchmark suite 报告
-```
+**核心贡献**：提出 **decision graph 驱动的决策削减框架**。将安全粒度从 pass-level 降到 pair-level：每轮构建决策图，独立 pair 的顺序决策自动消除（~40% 削减率），oracle 只在剩余 order_sensitive 子图上择优。
 
-当前最重要的实验结论来自 extended SingleSource suite：
+115 benchmark 评估：Oracle **47% 胜率**、平均分 **55**（O2=58）、vs O2 **71% 胜率**、迭代调度整体 **69% 胜率**、**false_negative = 0**。
 
-```text
-extended SingleSource suite:
-25 configured benchmarks
-24 successful benchmarks
-1 failed benchmark
-758 validation pairs
-215 strict independent
-332 dependent
-211 uncertain
-43 false_positive
-0 false_negative
+### 当前代码 → [`v3/`](v3/)
+
+详细文档： [`v3/docs/项目完整文档.md`](v3/docs/项目完整文档.md)
 143 uncertain_commuting
 68 uncertain_non_commuting
+
 ```
 
-这说明当前版本在更多 SingleSource 样例上仍然守住了安全底线：没有把真实 non-commuting 的 pair 错判成 independent。extended suite 的黑盒 commuting 是 `401 / 758`，严格判 independent 是 `215 / 758`，新增确认层进一步标出 `126` 个 `likely_independent` 观察点，但不会把 `order_sensitive` 或 `high-risk uncertain` 放进 independent。
-
-## 当前目录
-
-```text
-configs/
-  singlesource_smoke.json     # 5 个 SingleSource smoke benchmark
-  singlesource_extra.json     # 5 个额外 SingleSource benchmark
-  singlesource_broader.json   # 15 个 SingleSource benchmark，当前主实验入口
-  singlesource_extended.json  # 25 个 SingleSource benchmark，当前扩展验证入口
-
-examples/
-  demo.c
-  demo.ll
-  sample_footprints.jsonl
-  singlesource/
-
-scripts/
-  collect_pass_footprints.py  # 从 .ll 自动运行单个 pass，生成 footprints.jsonl
-  analyze_footprints.py       # 生成 dependency matrix，支持 enablement edge 和强弱证据
-  enablement_probe.py         # 一阶 enablement / expansion / mutation 探测
-  commutativity_test.py       # A->B 与 B->A 黑盒可交换性验证
-  compare_validation.py       # 对照 dependency matrix 和黑盒验证
-  benchmark_suite.py          # benchmark 编译与调度辅助
-  run_benchmark_suite.py      # 一键批量运行完整链路
-  confirm_independence.py     # 生成 confirmed/likely/order-sensitive 独立性确认报告
-  pass_pipeline.py            # LLVM pass pipeline 名称映射
-
-results/
-  benchmark_suite/            # smoke suite 结果
-  benchmark_suite_extra/      # extra suite 结果
-  benchmark_suite_broader/    # broader suite 结果，当前主结果
-  benchmark_suite_extended/   # extended suite 结果，当前最新结果
-
-tests/
-  test_*.py                   # 当前共 51 个 unittest
-```
-
-## 环境要求
-
-默认脚本使用本机 LLVM 路径：
-
-```text
-E:\llvm\build\bin\clang.exe
-E:\llvm\build\bin\opt.exe
-E:\llvm\build\bin\llvm-diff.exe
-```
-
-如果需要验证工具链：
+### 快速开始
 
 ```powershell
-E:\llvm\build\bin\clang.exe --version
-E:\llvm\build\bin\opt.exe --version
-E:\llvm\build\bin\llvm-diff.exe --version
+# 环境: Python 3.9+, LLVM 23.0.0git at E:\llvm\build\bin\
+
+# 单元测试
+cd v3 ; python -m pytest tests/ -v
+
+# 全量 115 benchmark 对比
+python v3\scripts\compare_all.py --manifest v3\configs\benchmarks_curated.json --parallel 8
 ```
 
-从 C 生成 LLVM IR 的示例命令：
+### 目录
 
-```powershell
-E:\llvm\build\bin\clang.exe -S -emit-llvm -O0 -Xclang -disable-O0-optnone examples\demo.c -o examples\demo.ll
-```
-
-`-disable-O0-optnone` 很重要，否则 O0 生成的 `optnone` 属性会阻止很多 LLVM pass 改写函数。
-
-## 一键运行当前主实验
-
-当前推荐先跑 15 个 SingleSource benchmark：
-
-```powershell
-python scripts\run_benchmark_suite.py --manifest configs\singlesource_broader.json --out-dir results\benchmark_suite_broader --min-stable-count 3
-```
-
-它会为每个 benchmark 生成：
-
-```text
-footprints.jsonl
-enablement_probe.json
-enablement_probe.csv
-dependency_matrix.csv
-independence_analysis.json
-commutativity_results.json
-commutativity_results.csv
-validation_report.json
-validation_report.csv
-```
-
-suite 级别会生成：
-
-```text
-suite_summary.json
-suite_summary.csv
-false_positive_attribution.csv
-stable_false_positive_pairs.csv
-rewrite_direction_report.csv
-independence_confirmation_report.csv
+- `v1/` — 原始 prototype（已归档）
+- `v2/` — dry-run 依赖分析（已归档）
+- **`v3/`** — 当前版本：迭代执行调度器 + 115 benchmark 评估
+- `configs/`、`examples/`、`results/` — v1/v2 遗留文件
 independence_confirmation_pairs.csv
 high_risk_uncertain_report.csv
 pair_attribution_report.csv
 failed_benchmarks.csv
+
 ```
 
 如果某个 benchmark 因 LLVM 工具链或 pass pipeline 失败，runner 会写入 `failed_benchmarks.csv` 并继续跑其它样例，不会让整批实验直接中断。

@@ -60,6 +60,234 @@
             "indvars",
             "loop-unroll",
             "reassociate"
+        ],
+        "research_27": [
+            "mem2reg",
+            "instcombine",
+            "simplifycfg",
+            "dce",
+            "sroa",
+            "early-cse",
+            "gvn",
+            "sccp",
+            "adce",
+            "loop-simplify",
+            "loop-rotate",
+            "licm",
+            "indvars",
+            "reassociate",
+            "correlated-propagation",
+            "loop-instsimplify",
+            "loop-deletion",
+            "loop-idiom",
+            "aggressive-instcombine",
+            "jump-threading",
+            "tailcallelim",
+            "bdce",
+            "memcpyopt",
+            "dse",
+            "mergeicmps",
+            "instsimplify",
+            "loop-load-elim"
+        ],
+        "research_codesize": [
+            "mem2reg",
+            "instcombine",
+            "simplifycfg",
+            "dce",
+            "sroa",
+            "early-cse",
+            "gvn",
+            "sccp",
+            "adce",
+            "loop-simplify",
+            "loop-rotate",
+            "licm",
+            "indvars",
+            "reassociate",
+            "correlated-propagation",
+            "loop-instsimplify",
+            "loop-deletion",
+            "loop-idiom",
+            "aggressive-instcombine",
+            "jump-threading",
+            "tailcallelim",
+            "bdce",
+            "memcpyopt",
+            "dse",
+            "mergeicmps",
+            "instsimplify",
+            "loop-load-elim",
+            "loop-vectorize",
+            "slp-vectorizer",
+            "loop-unroll",
+            "loop-unroll-full",
+            "loop-distribute",
+            "loop-fusion",
+            "loop-versioning",
+            "loop-versioning-licm",
+            "loop-simplifycfg",
+            "loop-sink",
+            "simple-loop-unswitch",
+            "loop-bound-split",
+            "loop-data-prefetch",
+            "loop-predication",
+            "loop-reduce",
+            "loop-term-fold",
+            "load-store-vectorizer",
+            "newgvn",
+            "structurizecfg",
+            "lcssa",
+            "unify-loop-exits",
+            "loop-idiom-vectorize",
+            "div-rem-pairs",
+            "float2int",
+            "slsr",
+            "nary-reassociate",
+            "constraint-elimination",
+            "gvn-hoist",
+            "gvn-sink",
+            "irce",
+            "chr",
+            "infer-alignment",
+            "alignment-from-assumptions",
+            "assume-builder",
+            "assume-simplify",
+            "callsite-splitting",
+            "speculative-execution",
+            "separate-const-offset-from-gep",
+            "expand-memcmp",
+            "expand-reductions",
+            "interleaved-access",
+            "interleaved-load-combine",
+            "vector-combine",
+            "libcalls-shrinkwrap",
+            "partially-inline-libcalls",
+            "tailcallelim",
+            "mergereturn",
+            "sink",
+            "flatten-cfg",
+            "fix-irreducible",
+            "break-crit-edges",
+            "lower-switch",
+            "lower-expect",
+            "lower-constant-intrinsics",
+            "lower-guard-intrinsic",
+            "lower-invoke",
+            "lower-atomic",
+            "lower-widenable-condition",
+            "make-guards-explicit",
+            "indirectbr-expand",
+            "jump-table-to-switch",
+            "reg2mem",
+            "consthoist",
+            "canon-freeze",
+            "guard-widening",
+            "loop-flatten",
+            "loop-interchange",
+            "loop-unroll-and-jam",
+            "extra-simple-loop-unswitch-passes",
+            "extra-vector-passes",
+            "mldst-motion",
+            "hardware-loops",
+            "tsan",
+            "safe-stack",
+            "stack-protector",
+            "cfguard",
+            "gc-lowering",
+            "objc-arc",
+            "pgo-memop-opt",
+            "lower-matrix-intrinsics",
+            "scalarizer",
+            "replace-with-veclib",
+            "complex-deinterleaving",
+            "infer-address-spaces",
+            "typepromotion",
+            "instcount",
+            "normalize",
+            "declare-to-assign",
+            "move-auto-init",
+            "drop-unnecessary-assumes",
+            "ee-instrument",
+            "inject-tli-mappings",
+            "inline-asm-prepare",
+            "bounds-checking",
+            "coro-elide",
+            "objc-arc-contract",
+            "objc-arc-expand",
+            "strip-gc-relocates",
+            "sjlj-eh-prepare",
+            "wasm-eh-prepare",
+            "win-eh-prepare",
+            "place-safepoints",
+            "scalarize-masked-mem-intrin",
+            "sandbox-vectorizer",
+            "redundant-dbg-inst-elim",
+            "strip-convergence-intrinsics",
+            "kcfi",
+            "unreachableblockelim",
+            "prof-inject",
+            "memprof",
+            "dfa-jump-threading",
+            "lower-allow-check"
+        ],
+        "research_cs56": [
+            "mem2reg",
+            "sroa",
+            "instcombine",
+            "early-cse",
+            "simplifycfg",
+            "dse",
+            "gvn",
+            "newgvn",
+            "gvn-hoist",
+            "gvn-sink",
+            "load-store-vectorizer",
+            "tailcallelim",
+            "memcpyopt",
+            "prof-inject",
+            "lower-invoke",
+            "normalize",
+            "mldst-motion",
+            "loop-instsimplify",
+            "sink",
+            "separate-const-offset-from-gep",
+            "instsimplify",
+            "jump-threading",
+            "loop-rotate",
+            "structurizecfg",
+            "sandbox-vectorizer",
+            "slp-vectorizer",
+            "memprof",
+            "adce",
+            "bdce",
+            "dce",
+            "loop-deletion",
+            "loop-idiom",
+            "aggressive-instcombine",
+            "correlated-propagation",
+            "reassociate",
+            "loop-simplify",
+            "indvars",
+            "licm",
+            "lcssa",
+            "loop-simplifycfg",
+            "loop-vectorize",
+            "loop-unroll",
+            "loop-unroll-full",
+            "loop-distribute",
+            "loop-fusion",
+            "loop-versioning",
+            "loop-versioning-licm",
+            "simple-loop-unswitch",
+            "loop-flatten",
+            "loop-interchange",
+            "irce",
+            "constraint-elimination",
+            "float2int",
+            "slsr",
+            "nary-reassociate",
+            "div-rem-pairs"
         ]
     },
     "mandatory_orders": [
@@ -80,8 +308,28 @@
         },
         {
             "before": "loop-simplify",
-            "after": "loop-unroll",
-            "reason": "loop-simplify canonicalizes loops before unrolling"
+            "after": "loop-instsimplify",
+            "reason": "loop-simplify canonicalizes loops before instruction simplify"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-deletion",
+            "reason": "loop-simplify canonicalizes loops before deletion"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-idiom",
+            "reason": "loop-simplify canonicalizes loops before idiom recognition"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-load-elim",
+            "reason": "loop-simplify canonicalizes loops before load elimination"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "indvars",
+            "reason": "indvars requires canonicalized loop structure (simplified/LCSSA form)"
         },
         {
             "before": "loop-rotate",
@@ -89,9 +337,119 @@
             "reason": "loop-rotate exposes more loop-invariant code for licm"
         },
         {
-            "before": "indvars",
+            "before": "loop-simplify",
+            "after": "loop-vectorize",
+            "reason": "loop-vectorize requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "slp-vectorizer",
+            "reason": "SLP vectorizer requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
             "after": "loop-unroll",
-            "reason": "indvars simplifies induction variables before unrolling"
+            "reason": "loop-unroll requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-unroll-full",
+            "reason": "loop-unroll-full requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-distribute",
+            "reason": "loop-distribute requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-fusion",
+            "reason": "loop-fusion requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-versioning",
+            "reason": "loop-versioning requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-versioning-licm",
+            "reason": "loop-versioning-licm requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-simplifycfg",
+            "reason": "loop-simplifycfg (loop-level CFG simplification)"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-sink",
+            "reason": "loop-sink requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "simple-loop-unswitch",
+            "reason": "simple-loop-unswitch requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-bound-split",
+            "reason": "loop-bound-split requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-predication",
+            "reason": "loop-predication requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-reduce",
+            "reason": "loop-reduce requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-term-fold",
+            "reason": "loop-term-fold requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-idiom-vectorize",
+            "reason": "loop-idiom-vectorize requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "load-store-vectorizer",
+            "reason": "load-store-vectorizer requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-flatten",
+            "reason": "loop-flatten requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-interchange",
+            "reason": "loop-interchange requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "loop-unroll-and-jam",
+            "reason": "loop-unroll-and-jam requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "lcssa",
+            "reason": "LCSSA requires canonicalized loops"
+        },
+        {
+            "before": "loop-simplify",
+            "after": "unify-loop-exits",
+            "reason": "unify-loop-exits requires canonicalized loops"
+        },
+        {
+            "before": "loop-rotate",
+            "after": "loop-vectorize",
+            "reason": "loop-rotate exposes more vectorization opportunities"
         }
     ],
     "scheduler_defaults": {
@@ -101,6 +459,6 @@
         "metric_stagnation_rounds": 5,
         "ir_cycle_detection": true,
         "safe_pass_strategy": "one_at_a_time",
-        "oracle_max_candidates": 10
+        "oracle_max_candidates": 0
     }
 }
