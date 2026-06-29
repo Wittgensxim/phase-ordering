@@ -8,6 +8,7 @@ logs/
 
 # LLVM/generated benchmark artifacts
 results/**
+v3/results/**
 
 # Keep compact suite-level reports that document current experiments
 !results/

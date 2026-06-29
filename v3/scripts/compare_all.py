@@ -199,6 +199,8 @@ def run_scheduler_subprocess(benchmark, passes, args, chooser, baseline_name):
     ]
     if args.metric == "codesize":
         cmd += ["--llc", args.llc, "--llvm-size", args.llvm_size, "--inject-minsize"]
+    if getattr(args, "runtime_correctness", False):
+        cmd += ["--runtime-correctness"]
     if benchmark.get("ir"):
         cmd += ["--ir", benchmark["ir"], "--name", benchmark["name"]]
     elif args.manifest:
@@ -452,27 +454,32 @@ def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
     randb_result = _task_rand_budget(args, bench, oracle_opt_budget)
     row.update(randb_result)
 
-    # ── Phase 4: Correctness validation (if requested) ─────────────────────
+    # ── Phase 4: Correctness validation (default: on, use --no-correctness to skip) ─
     if args.correctness and source_path and os.path.exists(source_path):
         if fixed_ok and fixed_ir and fixed_ir.exists():
-            fixed_correct, fixed_detail = validate_correctness(
+            fixed_correct, _ = validate_correctness(
                 args.clang, source_path, fixed_ir, args.out_dir
             )
             row["fixed_correct"] = str(fixed_correct) if fixed_correct is not None else "N/A"
         else:
             row["fixed_correct"] = "N/A"
 
-        oracle_dir = Path(args.out_dir) / "cmp_oracle_O2" / name
-        oracle_final = oracle_dir / "final.ll"
-        if oracle_final.exists():
-            oracle_correct, oracle_detail = validate_correctness(
-                args.clang, source_path, oracle_final, args.out_dir
-            )
-            row["oracle_correct"] = str(oracle_correct) if oracle_correct is not None else "N/A"
-        else:
-            row["oracle_correct"] = "N/A"
+        for ch in choosers:
+            ch_dir = Path(args.out_dir) / f"cmp_{ch}_O2" / name
+            ch_final = ch_dir / "final.ll"
+            if ch_final.exists():
+                ch_correct, _ = validate_correctness(
+                    args.clang, source_path, ch_final, args.out_dir
+                )
+                row[f"{ch}_correct"] = str(ch_correct) if ch_correct is not None else "N/A"
+            else:
+                row[f"{ch}_correct"] = "N/A"
 
         correctness = (row.get("fixed_correct"), row.get("oracle_correct"))
+    else:
+        row["fixed_correct"] = "N/A"
+        for ch in choosers:
+            row[f"{ch}_correct"] = "N/A"
 
     # ── Find best ──────────────────────────────────────────────────────────
     best_score = float("inf")
@@ -485,7 +492,8 @@ def process_benchmark(bench, idx, total, passes, args, choosers, baselines):
             best_method = key.replace("_score", "")
 
     print(f"  {tag}: best={best_method} ({best_score:.0f})"
-          f"{' [correctness: ' + str(correctness) + ']' if correctness else ''}")
+          f"{' [OK]' if row.get(best_method+'_correct') == 'True' else ''}"
+          f"{' [FAIL]' if row.get(best_method+'_correct') not in (None,'N/A','True') else ''}")
     return row, correctness
 
 
@@ -507,18 +515,23 @@ def main():
     parser.add_argument("--clang", default=r"E:\llvm\build\bin\clang.exe")
     parser.add_argument("--out-dir", default=None,
                         help="Output directory (default: results/<pass_set>_<manifest_name>/).")
-    parser.add_argument("--parallel", type=int, default=1,
+    parser.add_argument("--parallel", type=int, default=5,
                         help="Number of parallel benchmark workers.")
     parser.add_argument("--intra-parallel", type=int, default=5,
                         help="Sub-tasks per benchmark to run in parallel (fixed+choosers+randB).")
-    parser.add_argument("--correctness", action="store_true",
-                        help="Run compile+execute+output-diff correctness validation.")
+    parser.add_argument("--correctness", action="store_true", default=None,
+                        help="Enable correctness validation (default: on).")
+    parser.add_argument("--no-correctness", action="store_false", dest="correctness",
+                        help="Disable correctness validation.")
+    parser.set_defaults(correctness=True)
     parser.add_argument("--skip-rand-budget", action="store_true",
                         help="Skip budget-aligned random (saves time).")
     parser.add_argument("--metric", default="ir", choices=["ir", "codesize"],
                         help="Optimization metric (default: ir)")
     parser.add_argument("--llc", default=r"E:\llvm\build\bin\llc.exe")
     parser.add_argument("--llvm-size", default=r"E:\llvm\build\bin\llvm-size.exe")
+    parser.add_argument("--runtime-correctness", action="store_true",
+                        help="Per-action compile+run+diff gate (slower but safer).")
     args = parser.parse_args()
 
     # Auto-derive output directory from pass-set and manifest name
@@ -557,7 +570,6 @@ def main():
     print()
 
     all_rows = []
-    correctness_results = []
     if args.parallel > 1:
         with ProcessPoolExecutor(max_workers=args.parallel) as executor:
             futures = {}
@@ -568,20 +580,16 @@ def main():
             for f in as_completed(futures):
                 name = futures[f]
                 try:
-                    row, corr = f.result()
+                    row, _ = f.result()
                     all_rows.append(row)
-                    if corr:
-                        correctness_results.append((name, corr))
                 except Exception as e:
                     print(f"  [{name}]: EXCEPTION: {e}")
                     all_rows.append({"benchmark": name})
     else:
         for i, bench in enumerate(benchmarks, 1):
-            row, corr = process_benchmark(bench, i, len(benchmarks),
-                                          passes, args, choosers, real_baselines)
+            row, _ = process_benchmark(bench, i, len(benchmarks),
+                                       passes, args, choosers, real_baselines)
             all_rows.append(row)
-            if corr:
-                correctness_results.append((name := bench["name"], corr))
 
     all_rows.sort(key=lambda r: r.get("benchmark", ""))
 
@@ -672,18 +680,21 @@ def main():
                   f"{ties} ties")
 
     # ── Report: Correctness ─────────────────────────────────────────────────
-    if correctness_results:
+    if args.correctness:
         print(f"\n{'─' * 120}")
         print("CORRECTNESS VALIDATION (compile + execute + output diff vs O0)")
-        fixed_pass = sum(1 for _, (f, _) in correctness_results if f == "True")
-        oracle_pass = sum(1 for _, (_, o) in correctness_results if o == "True")
-        total = len(correctness_results)
-        print(f"  fixed_order: {fixed_pass}/{total} passed")
-        print(f"  oracle:      {oracle_pass}/{total} passed")
+        for method in ["fixed"] + choosers:
+            col = f"{method}_correct"
+            passed = sum(1 for row in all_rows if row.get(col) == "True")
+            total = sum(1 for row in all_rows if row.get(col) not in (None, "N/A"))
+            if total:
+                print(f"  {method:10s}: {passed}/{total} passed")
         # List any failures
-        for name, (f, o) in correctness_results:
-            if f != "True" or o != "True":
-                print(f"  !! {name}: fixed={f}, oracle={o}")
+        for row in all_rows:
+            for method in ["fixed"] + choosers:
+                col = f"{method}_correct"
+                if row.get(col) not in (None, "True", "N/A"):
+                    print(f"  !! {row['benchmark']} {method}: {row.get(col)}")
 
     # ── Report: Best method per benchmark ───────────────────────────────────
     print(f"\n{'─' * 120}")
@@ -706,9 +717,9 @@ def main():
         fields += [f"{bl}_score", f"{bl}_inst"]
     fields += ["fixed_score", "fixed_inst", "fixed_correct"]
     for ch in choosers:
-        fields += [f"{ch}_score", f"{ch}_inst", f"{ch}_rounds"]
+        fields += [f"{ch}_score", f"{ch}_inst", f"{ch}_rounds", f"{ch}_correct"]
     fields += ["randB_score", "randB_inst", "randB_rounds"]
-    fields += ["oracle_budget", "oracle_correct"]
+    fields += ["oracle_budget"]
     with csv_path.open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()

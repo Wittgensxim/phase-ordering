@@ -18,6 +18,7 @@ import csv
 import hashlib
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -128,6 +129,7 @@ class IterativeScheduler:
         self.llvm_size_path = Path(llvm_size_path) if llvm_size_path else None
         self.inject_minsize = inject_minsize  # inject minsize/optsize attrs for codesize fair comparison
         self.cleanup_rounds = cleanup_rounds    # delete intermediate .ll files after each round
+        self.runtime_correctness = False  # per-action compile+run+diff gate
 
         # ── Unified measurement callback ─────────────────────────────────
         from ir_metrics import make_measure_fn
@@ -195,6 +197,16 @@ class IterativeScheduler:
         baseline_metrics = None
         if self.baseline_pipeline:
             baseline_metrics = self._run_baseline(bench_dir)
+
+        # ── Runtime correctness gate: capture O0 reference output ────────
+        self._ref_output = None
+        if self.runtime_correctness and benchmark.get("source"):
+            self._ref_output = self._capture_reference_output(
+                benchmark["source"], bench_dir
+            )
+            if self._ref_output is not None:
+                print(f"[{bench_name}] Correctness gate: reference captured "
+                      f"({len(self._ref_output.splitlines())} lines)")
 
         # Main loop
         perturb_count = 0
@@ -300,11 +312,27 @@ class IterativeScheduler:
 
             # Measure AFTER metrics
             score_degraded = False
+            correctness_failed = False
             before_norm = self._norm_score(before_metrics)
             if changed:
                 after_metrics = self._measure_ir(self.current_ir)
                 after_hash = _file_sha256(self.current_ir)
                 after_norm = self._norm_score(after_metrics)
+
+                # ── Runtime correctness gate: compile + run + diff ────────
+                if self.runtime_correctness and self._ref_output is not None:
+                    ok = self._check_runtime_correctness(
+                        self.current_ir, self._ref_output, bench_dir
+                    )
+                    if not ok:
+                        print(f"  [{bench_name}] Rollback: correctness gate "
+                              f"failed, reverting to previous IR")
+                        self.current_ir = round_input
+                        after_metrics = before_metrics
+                        after_hash = before_hash
+                        after_norm = before_norm
+                        correctness_failed = True
+                        changed = False
 
                 # Rollback if action made things significantly worse (>5% score increase)
                 if (before_norm > 0
@@ -435,9 +463,11 @@ class IterativeScheduler:
         # Write outputs
         self._write_outputs(bench_dir, result)
 
-        # Final cleanup: delete all .ll files and round directories to keep
-        # only result CSVs/JSONs (schedule_trace.csv, final_metrics.json, etc.)
+        # Final cleanup: delete intermediate .ll files and round directories.
+        # Keep final.ll (needed for correctness validation by compare_all.py).
         for ll_file in bench_dir.glob("*.ll"):
+            if ll_file.name == "final.ll":
+                continue  # preserved for correctness validation
             try:
                 ll_file.unlink()
             except Exception:
@@ -1163,6 +1193,36 @@ class IterativeScheduler:
                 "safe_edge_ratio": rec["safe_edge_ratio"],
             })
 
+    def _capture_reference_output(self, source_path, bench_dir):
+        """Compile source with O0, run, capture stdout as reference."""
+        exe = bench_dir / "_ref.exe"
+        r = subprocess.run(
+            [str(self.clang_path), str(source_path), "-O0", "-w", "-o", str(exe)],
+            capture_output=True, text=True,
+        )
+        if r.returncode != 0:
+            return None
+        try:
+            run = subprocess.run([str(exe)], capture_output=True, text=True, timeout=30)
+            return run.stdout.rstrip()
+        except Exception:
+            return None
+
+    def _check_runtime_correctness(self, ir_path, ref_output, bench_dir):
+        """Compile optimized IR, run, compare output to reference."""
+        exe = bench_dir / "_check.exe"
+        r = subprocess.run(
+            [str(self.clang_path), str(ir_path), "-O0", "-w", "-o", str(exe)],
+            capture_output=True, text=True,
+        )
+        if r.returncode != 0:
+            return True  # compile failure is not a correctness failure
+        try:
+            run = subprocess.run([str(exe)], capture_output=True, text=True, timeout=30)
+            return run.stdout.rstrip().splitlines() == ref_output.splitlines()
+        except Exception:
+            return True
+
     def _build_trace_row(self, bench_name, before_metrics, candidate_passes, classifications,
                          auto_safe, decision_pairs, action, input_ir,
                          after_metrics=None, after_hash="", changed=False,
@@ -1514,6 +1574,8 @@ def parse_args():
     )
     parser.add_argument("--inject-minsize", action="store_true",
                         help="Inject minsize/optsize attrs into input IR (auto-enabled with --metric codesize).")
+    parser.add_argument("--runtime-correctness", action="store_true",
+                        help="Per-action compile+run+diff gate: roll back if output changes vs O0.")
     parser.add_argument("--no-batch-check", action="store_true")
     parser.add_argument("--no-perturbation", action="store_true")
     parser.add_argument("--baseline-pipeline", help="Comma-separated baseline passes (e.g., O2).")
@@ -1633,6 +1695,7 @@ def main():
             scheduler.beam_rank = args.beam_rank
             scheduler.epsilon = args.epsilon
             scheduler.positive_gate_mode = args.positive_gate_mode
+            scheduler.runtime_correctness = args.runtime_correctness
 
             if args.multi_start > 1:
                 result = run_multi_start_search(
